@@ -1,0 +1,220 @@
+import { STORAGE_KEY } from '../constants/index';
+import LunesLib from 'lunes-lib';
+
+class BuyController {
+  constructor($scope, HttpService, $translate, $timeout, $state) {
+    this.$scope = $scope;
+    this.HttpService = HttpService;
+    this.$translate = $translate;
+    this.$timeout = $timeout;
+    this.$state = $state;
+    this.currentUser = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    this.showContainerCoins = false;
+    this.balanceCoins = {};
+    this.currentPhase = [];
+    this.valueToDeposit = '0.00000000';
+    this.valueToReceive = '0.00000000';
+    this.bonusAmountFinal = '0';
+    this.coins = [{
+      label: 'Bitcoin',
+      name: 'BTC',
+      img: 'https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_btc.svg',
+      selected: true
+    }, {
+      label: 'Litecoin',
+      name: 'LTC',
+      img: 'https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon_ltc.svg',
+      selected: false
+    }, {
+      label: 'Ethereum',
+      name: 'ETH',
+      img: 'http://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_eth.svg',
+      selected: false
+    }];
+    this.currentCoinSelected = JSON.parse(JSON.stringify(this.coins[0]));
+    this.currentQRCode = { address: '', img: '' };
+    this.getBalanceCoin('BTC').catch(error => {
+      console.log(error);
+    });
+    this.getBalanceCoin('LTC').catch(error => {
+      console.log(error);
+    });
+    this.getBalanceCoin('ETH').catch(error => {
+      console.log(error);
+    });
+    /*this.getBalanceLunes('LNS', this.currentUser).catch(error => {
+      console.log(error);
+    });*/
+    this.showDepositWalletAddressQRCode();
+    this.obtainPhase().catch(error => {
+      console.log(error);
+    });
+    this.showLoading(true);
+  }
+
+  async showDepositWalletAddressQRCode() {
+    const a = await this.HttpService.showDepositWalletAddressQRCode(this.currentUser, this.currentCoinSelected);
+    this.currentQRCode = JSON.parse(JSON.stringify(a));
+  }
+
+  async doBuy() {
+
+  }
+
+  async obtainPhase() {
+    try {
+      console.log("");
+      if (localStorage.getItem('lunes.phase')) {
+        this.currentPhase = JSON.parse(localStorage.getItem('lunes.phase'));
+        this.showLoading(false);
+        return;
+      }
+      this.currentPhase = await this.HttpService.obtainPhase().catch(error => {
+        alert('Erro ao tentar recuperar dados da fase da ICO');  
+      });
+      console.log(this.currentPhase);
+      if (this.currentPhase) {
+        localStorage.setItem('lunes.phase', JSON.stringify(this.currentPhase));
+      }
+      this.showLoading(false);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async getBalanceCoin(coin) {
+    const balance = await this.HttpService.getBitcoinBalance(coin);
+    this.balanceCoins[coin] = { balance };
+  }
+
+  async getBalanceCoinETH(coin) {
+    const balance = await this.HttpService.getBalanceCoinETH(coin);
+    this.balanceCoins[coin] = { balance };  
+  }
+
+  async getBalanceLunes(coin, currentUser) {
+    const balance = await this.HttpService.getBalanceLunes(coin, currentUser);
+    this.balanceCoins[coin] = { balance };  
+  }
+
+  goToHome() {
+    this.$state.go('buy');
+  }
+
+  showLoading(isShow) {
+    if (isShow) {
+      $(`<div class="modal-backdrop"><img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442469/loading_y9ob8i.svg" /></div>`).appendTo(document.body);
+    } else {
+      this.$timeout(function() {
+        $(".modal-backdrop").remove();
+      }, 1000);
+    }
+  }
+
+  /**
+   * coinDestination, bonusRate, coinAmount, exchangeRate, unitPrice, coupon
+   * coinDestination  - eh o simbolo da moeda, 
+   * bonusRate        - eh a taxa de bonus da fase atual da ico, 
+   * coinAmount       - eh a quantidade de criptomoeda, 
+   * exchangeRate     - o preco em dolar, 
+   * unitPrice        - o preco atual da lunes em dolar e 
+   * coupon           - eh o cupom de bonus do usuario se houver
+  */
+  calcValue(LNS) {
+    this.checkMaxLength();
+    const phase = this.currentPhase[0];
+    const bonusRate = phase.bonus;
+    const currentPrice = this.balanceCoins[this.currentCoinSelected.name].balance.PRICE;
+    const coupon = this.currentUser.coupon;
+    let coinAmount = (LNS) ? this.valueToReceive : this.valueToDeposit;
+    if (isNaN(coinAmount)) {
+      coinAmount = 0;
+    }
+    const unitPrice = phase.price_value;
+    let calculateFinal = 0;
+
+    if (LNS) {
+      calculateFinal = LunesLib.ico.buyConversion.fromLNS(bonusRate, coinAmount, currentPrice, unitPrice, coupon);
+      this.valueToDeposit = calculateFinal.buyAmount;
+      this.bonusAmountFinal = calculateFinal.bonusAmount;
+      if (this.valueToDeposit.indexOf(',') !== -1) {
+        this.valueToDeposit = this.valueToDeposit.replace(",", "."); 
+      }
+      return;
+    }
+    console.log(this.currentPhase);
+    calculateFinal = LunesLib.ico.buyConversion.toLNS(bonusRate, coinAmount, currentPrice, unitPrice, coupon);
+    this.valueToReceive = calculateFinal.buyAmount;
+    this.bonusAmountFinal = calculateFinal.bonusAmount;
+    if (this.valueToReceive.indexOf(',') !== -1) {
+      this.valueToReceive = this.valueToReceive.replace(",", ".");
+    }
+  }
+
+  /**
+   * Quantidade de Lunes (qtd) = resultado da calculadora
+   * 30% Bônus (bonus) = 30% de qtd
+   * Total = qtd + bonus
+  */
+  getTotal() {
+    const amountLNS = parseFloat(this.valueToReceive);
+    const bonus = parseFloat(this.currentPhase[0].bonus) * amountLNS;
+    const total = amountLNS + bonus;
+    return total.toFixed(8);
+  }
+
+  checkMaxLength() {
+    const numberMax = 10;
+    if (this.valueToDeposit.indexOf(',') !== -1) {
+      this.valueToDeposit = this.valueToDeposit.replace(",", "."); 
+    }
+    if (this.valueToDeposit.length > numberMax) {
+      this.valueToDeposit = this.valueToDeposit.substring(0, numberMax);
+    }
+  }
+
+  showQuotation() {
+    if (Object.keys(this.balanceCoins).length) {
+      return this.balanceCoins[this.currentCoinSelected.name].balance.PRICE;
+    } else {
+      return this.$translate.instant('LOADING');
+    }
+  }
+
+  getFlag() {
+    const flagUS = 'https://res.cloudinary.com/luneswallet/image/upload/v1519442468/flag-us_jxifyu.png';
+    const flagBR = 'https://res.cloudinary.com/luneswallet/image/upload/v1519442467/flag-br_ksncrn.png';
+    return this.$translate.instant('CURRENCY_USER') === 'USD' ? flagUS : flagBR;
+  }
+
+  logout() {
+    localStorage.removeItem(STORAGE_KEY);
+  }
+
+  selectCoin(coinSelected) {
+    this.valueToDeposit = '0.00000000';
+    this.valueToReceive = '0.00000000';
+    let self = this;
+    this.coins = this.coins.filter(coin => {
+      coin.selected = false;
+      if (coin.label === coinSelected.label) {
+        self.currentCoinSelected = JSON.parse(JSON.stringify(coin));
+        self.showDepositWalletAddressQRCode(self.currentUser, coin);
+        coin.selected = true;
+      }
+      return coin;
+    });
+    this.$timeout(() => {
+      this.$scope.$apply();
+    }, 200);
+    //this.openCoinSelect();  
+  }
+
+  openCoinSelect() {
+    this.showContainerCoins = !this.showContainerCoins;  
+  }
+}
+
+BuyController.$inject = ['$scope', 'HttpService', '$translate', '$timeout', '$state'];
+
+export default BuyController;

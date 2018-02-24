@@ -1,0 +1,158 @@
+<!--<loading show="$ctrl.loading"></loading>-->
+<div class="container">
+
+  <!-- HEADER - criar diretiva depois -->
+  <nav class="header nav">
+    <div class="col-sm-12 col-md-2 col-lg-2 logo" ng-click="$ctrl.goToHome()" style="cursor: pointer;margin: 13px 0;">
+      <!-- eslint-disable -->
+      <span>L</span>
+      <span>u</span>
+      <span>n</span>
+      <span class="txt-green">e</span>
+      <span>s</span>
+      <!-- eslint-disable -->
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 nav-menu">
+      <!--<ul class="menu horizontal">
+        <li>
+          <a href="#!/whitelist">{{'WHITELIST' | translate}}</a>
+        </li>
+        <li>
+          <a href="#!/buy">{{'BUY' | translate}}</a>
+        </li>
+        <li>
+          <a href="#!/dashboard">{{'DASHBOARD' | translate}}</a>
+        </li>
+      </ul>-->
+    </div>
+
+    <div class="col-xs-12 col-lg-4 txt-right" style="margin-top: 10px;">
+      <ul class="menu horizontal">
+        <li>
+          <a href="https://www.facebook.com/lunesplatform/" target="_blank" class="round-menu">
+            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg" alt="facebook" />
+          </a>
+        </li>
+        <li>
+          <a href="https://t.me/LunesPlatformEN" target="_blank" class="round-menu">
+            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg" alt="telegram" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/lunesplatform" target="_blank" class="round-menu">
+            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg" alt="twitter" />
+          </a>
+        </li>
+        <li>
+          <a href="https://medium.com/@lunes.platform" target="_blank" class="round-menu">
+            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg" alt="medium" />
+          </a>
+        </li>
+        <li>
+          <a href="#!/login" class="round-menu" ng-click="$ctrl.logout()">
+            {{'LOGOUT' | translate}}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- BUY -->
+  <section class="buy">
+    <div>
+      <div class="row">
+
+        <div class="col-12 title">
+          <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>
+        </div>
+
+        <div class="col-12 error-fields" ng-show="$ctrl.showErrorForm">{{'ALL_FIELDS_REQUIRED' | translate}}</div>
+
+        <div class="col-sm-12 col-md-7 col-lg-7">
+          <div class="row calculator">
+            <div class="col-lg-6 no-padding" style="margin: 5px 0 20px 0;">
+              <div class="valueCripto row">
+                <div class="select-coin col-xs-12 col-lg-5">
+                  <ul>
+                    <li ng-repeat="coin in $ctrl.coins" ng-click="$ctrl.selectCoin(coin)" ng-class="coin.selected ? 'selected': ''">
+                      <img ng-src="{{coin.img}}" alt="coin.label">
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-xs-12 col-lg-5">
+                  <input type="text" class="input-transparent" name="value" ng-model="$ctrl.valueToDeposit" ng-change="$ctrl.calcValue()" />
+                </div>
+              </div>
+              <div class="col-lg-12">
+                USD / {{$ctrl.currentCoinSelected.name}} - {{$ctrl.showQuotation()}}
+              </div>
+            </div>
+
+            <div class="col-lg-1 equal" style="margin: 5px 0 20px 0;">=</div>
+
+            <div class="col-lg-5 no-padding" style="margin: 5px 0 20px 0;">
+              <div class="lunesAmount">
+                <div class="flag-lns">
+                  <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png" alt="Icon Lunes">
+                </div>
+                <input type="text" class="input-transparent" name="value" ng-model="$ctrl.valueToReceive" ng-change="$ctrl.calcValue('LNS')"
+                  style="padding-top: 10px;" />
+              </div>
+
+              <div class="col-lg-12" style="text-align: right;">
+                <label for="#">
+                  <small>{{'PRICE_LUNES' | translate}}</small> = USD 0.01
+                </label>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="amountBalance row">
+            <div class="col-sm-12 col-lg-12 total">
+              <div class="result" style="margin-top: 15px;">
+                <div>{{'AMOUNT_LUNES' | translate}}</div>
+                <div>{{$ctrl.valueToReceive}}</div>
+              </div>
+              <div class="result">
+                <div>{{'BONUS' | translate}} 30%</div>
+                <div>0.30</div>
+              </div>
+              <div class="line-break">
+                <hr />
+              </div>
+              <div class="result">
+                <div>Total</div>
+                <div>{{$ctrl.getTotal()}}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 no-padding">
+              <div class="area-button" ng-show="false">
+                <button class="primary-button" data-ng-click="$ctrl.doSignup()">{{'BUY' | translate}}</button>
+              </div>
+            </div>
+            <div class="col-lg-12" style="text-align: center; margin: 10px 0;">
+              * {{'MSG_BALANCE_DEPOSITED' | translate}}
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-xs-12 col-lg-5 container-qr-code" style="text-align: center;">
+          <div style="margin-bottom: 10px;">
+            <span class="selected-label">{{'COIN_SELECTED' | translate}}</span>
+            <span>{{$ctrl.currentCoinSelected.name}}</span>
+          </div>
+          <img ng-src="{{$ctrl.currentQRCode.img}}" class="qr-code img-thumbnail img-responsive" />
+          <p class="address">{{$ctrl.currentQRCode.address}}</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>

@@ -1,0 +1,177 @@
+<div class="container">
+
+  <!-- MODAL - criar directiva depois -->
+  <div id="modal-terms" class="modal">
+    <div class="modal-header">
+      <p class="icon-close" data-dismiss="modal">
+        &times;
+      </p>
+    </div>
+    <div class="modal-content">
+      <h5 class="modal-title">{{'TERM_TITLE' | translate}}</h5>
+      <div class="content" ng-bind-html="$ctrl.terms"> </div>
+      <div class="footer">
+        <div>
+          <div class="form-check has-success">
+            <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" ng-model="$ctrl.user.check1" ng-change="$ctrl.allCheckboxIsChecked()">
+            <label for="checkboxG1" class="css-label radGroup1 clr"> {{'US_CITIZEN' | translate}} </label>
+          </div>
+          <div class="form-check has-success">
+            <input type="checkbox" name="checkboxG2" id="checkboxG2" class="css-checkbox" ng-model="$ctrl.user.check2">
+            <label for="checkboxG2" class="css-label radGroup1 clr"> {{'AGREE_TERM' | translate}} </label>
+          </div>
+          <!--<div class="form-check has-success">
+            <input type="checkbox" name="checkboxG3" id="checkboxG3" class="css-checkbox" ng-model="$ctrl.user.check3">
+            <label for="checkboxG3" class="css-label radGroup1 clr"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>
+          </div>-->
+          <div class="form-check has-success">
+            <input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" ng-model="$ctrl.user.check4">
+            <label for="checkboxG4" class="css-label radGroup1 clr"> {{'AGREE_FUTURE_VALUE' | translate}}</label>
+          </div>
+          <div class="area-button">
+            <button ng-show="$ctrl.allCheckboxIsChecked()" class="primary-button" data-ng-click="$ctrl.doSignup()" data-dismiss="modal">{{'AGREE' | translate}}</button>
+            <!--<button ng-show="!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()" class="disabled-button">{{'AGREE' | translate}}</button>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER - criar diretiva depois -->
+  <nav class="header nav" style="padding: 20px 0;">
+    <div class="nav-left logo">
+      <!-- eslint-disable -->
+      <span>L</span>
+      <span>u</span>
+      <span>n</span>
+      <span class="txt-green">e</span>
+      <span>s</span>
+      <!-- eslint-disable -->
+    </div>
+
+    <div class="nav-right nav-menu"></div>
+  </nav>
+
+  <!-- AUTHENTICATION FORM -->
+  <section class="authentication">
+    <div>
+      <form name="$ctrl.loginForm">
+        <div class="row">
+          <div class="col-xs-12 col-lg-12 title">
+            <h4>{{'WELCOME' | translate}}</h4>
+            <h4>{{'BEGIN_YOUR_REGISTRATION' | translate}}</h4>
+          </div>
+          <div class="col-xs-12 col-lg-12 error-fields" ng-show="$ctrl.showErrorForm">{{'ALL_FIELDS_REQUIRED' | translate}}</div>
+          <div class="alert alert-danger" ng-show="$ctrl.serverError" role="alert">
+            <h4 class="alert-heading">An error occured while creating account</h4>
+            <p>{{$ctrl.serverErrorMessage</p>
+          </div>
+          <div class="col-xs-12 col-lg-6">
+            <div class="input-form">
+              <label for="input-name">{{'NAME' | translate}}</label>
+              <input data-ng-model="$ctrl.user.name" id="input-name" name="name" required type="text" placeholder="{{'NAME' | translate}}">
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-lg-6">
+            <div class="input-form">
+              <label for="input-lastname">{{'LAST_NAME' | translate}}</label>
+              <input data-ng-model="$ctrl.user.lastname" id="input-lastname" name="lastname" required type="text" placeholder="{{'LAST_NAME' | translate}}">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-lg-6">
+            <div class="input-form">
+              <label for="input-email">{{'EMAIL' | translate}}</label>
+              <input data-ng-model="$ctrl.user.email" id="input-email" name="email" ng-model-options="{ debounce: 500 }" required type="email"
+                placeholder="{{'EMAIL' | translate}}">
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-lg-6">
+            <div class="input-form">
+              <label for="input-confirm-email">{{'CONFIRM_EMAIL' | translate}}</label>
+              <input data-ng-model="$ctrl.user.confirmEmail" id="input-confirm-email" email name="confirmEmail" email-match required type="email"
+                placeholder="{{'CONFIRM_EMAIL' | translate}}">
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-lg-6">
+            <div class="input-form">
+              <label for="input-password">{{'PASSWORD' | translate}}</label>
+              <input type="password" data-ng-model="$ctrl.user.password" id="input-password" ng-model-options="{ debounce: 500 }" uppercase
+                lowercase numeric special-character required name="password" ng-minlength="8" placeholder="{{'PASSWORD' | translate}}">
+            </div>
+
+            <!-- exibit validation -->
+            <span style="color:#f8e71c;" ng-show="$ctrl.loginForm.email.$dirty && $ctrl.loginForm.email.$invalid">
+              <span ng-show="$ctrl.loginForm.email.$error.required">{{'EMAIL_REQUIRED' | translate}}
+                <br>
+              </span>
+              <span ng-show="$ctrl.loginForm.email.$error.email">{{'EMAIL_INVALID' | translate}}
+                <br> </span>
+
+            </span>
+            <span style="color:#f8e71c;" ng-show="$ctrl.loginForm.confirmEmail.$dirty && $ctrl.loginForm.confirmEmail.$invalid">
+              <span ng-show="$ctrl.loginForm.confirmEmail.$error.compareEmail || $ctrl.loginForm.email.$error.compareEmail">{{'EMAIL_MATCH' | translate}}
+                <br> </span>
+            </span>
+            <span style="color:#f8e71c;" ng-show="$ctrl.loginForm.password.$dirty && $ctrl.loginForm.password.$invalid">
+              <span ng-show="$ctrl.loginForm.password.$error.required">{{'PASSWORD_REQUIRED' | translate}}
+                <br>
+              </span>
+              <span ng-show="$ctrl.loginForm.password.$error.minlength">{{'PASSWORD_LENGTH' | translate}}
+                <br>
+              </span>
+              <span ng-show="$ctrl.loginForm.password.$error.uppercase">{{'PASSWORD_UPPERCASE' | translate}}
+                <br>
+              </span>
+              <span ng-show="$ctrl.loginForm.password.$error.lowercase">{{'PASSWORD_LOWERCASE' | translate}}
+                <br>
+              </span>
+              <span ng-show="$ctrl.loginForm.password.$error.numeric">{{'PASSWORD_ALPHANUMERIC' | translate}}
+                <br>
+              </span>
+              <span ng-show="$ctrl.loginForm.password.$error.specialCharacter">{{'PASSWORD_SPECIALCHARACTER' | translate}}
+                <br>
+              </span>
+
+            </span>
+
+            <span style="color:#f8e71c;" ng-show="$ctrl.loginForm.confirmPassword.$dirty && $ctrl.loginForm.confirmPassword.$invalid">
+              <span ng-show="$ctrl.loginForm.confirmPassword.$error.comparePassword || $ctrl.loginForm.password.$error.comparePassword">{{'PASSWORD_MATCH' | translate}}
+                <br> </span>
+            </span>
+          </div>
+
+          <div class="col-xs-12 col-lg-6">
+            <div class="input-form">
+              <label for="input-confirm-password">{{'CONFIRM_PASSWORD' | translate}}</label>
+              <input type="password" data-ng-model="$ctrl.user.confirmPassword" id="input-confirm-password" ng-model-options="{ debounce: 500 }"
+                required name="confirmPassword" ng-minlength="8" placeholder="{{'CONFIRM_PASSWORD' | translate}}">
+
+            </div>
+
+            <div class="area-button txt-right">
+              <button class="rounded-button" data-toggle="modal" data-target="#modal-terms" ng-show="$ctrl.loginForm.$valid">
+                <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png" width="20px" alt="next" />
+              </button>
+
+              <button class="rounded-button" ng-show="!$ctrl.loginForm.$valid" ng-click="$ctrl.showError()">
+                <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png" width="20px" alt="next" />
+              </button>
+            </div>
+
+
+
+
+
+      </form>
+      </div>
+  </section>
+  </div>

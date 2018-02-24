@@ -1,0 +1,189 @@
+<div class="container">
+
+  <!-- MODAL - criar directiva depois -->
+  <div id="modal-terms" class="modal">
+    <div class="modal-header">
+      <p class="icon-close" data-dismiss="modal">
+        &times;
+      </p>
+    </div>
+    <div class="modal-content">
+      <div class="content">{{'TERMS_CONDITIONS' | translate}}</div>
+      <div class="footer">
+        <div>
+          <div class="form-check has-success">
+            <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" ng-model="$ctrl.user.check1" ng-change="$ctrl.allCheckboxIsChecked()">
+            <label for="checkboxG1" class="css-label radGroup1 clr">Eu concordo que não sou cidadão dos Estados Unidos</label>
+          </div>
+          <div class="form-check has-success">
+            <input type="checkbox" name="checkboxG2" id="checkboxG2" class="css-checkbox" ng-model="$ctrl.user.check2">
+            <label for="checkboxG2" class="css-label radGroup1 clr">Eu concordo com os termos de uso acima</label>
+          </div>
+          <div class="form-check has-success">
+            <input type="checkbox" name="checkboxG3" id="checkboxG3" class="css-checkbox" ng-model="$ctrl.user.check3">
+            <label for="checkboxG3" class="css-label radGroup1 clr">Eu concordo com a política de privacidade</label>
+          </div>
+          <div class="form-check has-success">
+            <input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" ng-model="$ctrl.user.check4">
+            <label for="checkboxG4" class="css-label radGroup1 clr">Eu concordo que a compra da moeda lunes não garante seu valor futuro</label>
+          </div>
+          <div class="area-button">
+            <button ng-show="$ctrl.userIsValidToSignup() && $ctrl.allCheckboxIsChecked()" class="primary-button" data-ng-click="$ctrl.doSignup()"
+              data-dismiss="modal">{{'AGREE' | translate}}</button>
+            <button ng-show="!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()" class="disabled-button">{{'AGREE' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER - criar diretiva depois -->
+  <nav class="header nav" style="padding: 20px 0;">
+    <div class="col-xs-12 col-lg-2 logo">
+      <!-- eslint-disable -->
+      <span>L</span>
+      <span>u</span>
+      <span>n</span>
+      <span class="txt-green">e</span>
+      <span>s</span>
+      <!-- eslint-disable -->
+    </div>
+
+    <div class="col-xs-12 col-lg-6  nav-menu" style="margin-bottom: 20px;">
+      <!--<ul class="menu horizontal">
+        <li>
+          <a href="#!/whitelist">{{'WHITELIST' | translate}}</a>
+        </li>
+        <li>
+          <a href="#!/buy">{{'BUY' | translate}}</a>
+        </li>
+        <li>
+          <a href="#!/dashboard">{{'DASHBOARD' | translate}}</a>
+        </li>
+      </ul>-->
+    </div>
+
+    <div class="col-xs-12 col-lg-4 txt-right">
+      <ul class="menu horizontal">
+        <li>
+          <a href="https://www.facebook.com/lunesplatform/" target="_blank" class="round-menu">
+            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg" alt="facebook" />
+          </a>
+        </li>
+        <li>
+          <a href="https://t.me/LunesPlatformEN" target="_blank" class="round-menu">
+            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg" alt="telegram" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/lunesplatform" target="_blank" class="round-menu">
+            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg" alt="twitter" />
+          </a>
+        </li>
+        <li>
+          <a href="https://medium.com/@lunes.platform" target="_blank" class="round-menu">
+            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg" alt="medium" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- AUTHENTICATION FORM -->
+  <section class="authentication">
+    <div>
+      <form name="$ctrl.loginForm">
+        <div class="row">
+
+          <div class="col-12 title">
+            <h4>{{'WELCOME' | translate}}</h4>
+          </div>
+
+          <div class="col-12 col-lg-12 error-fields" ng-show="$ctrl.showErrorForm">{{'ALL_FIELDS_REQUIRED' | translate}}</div>
+
+          <div class="col-lg-6 col-xs-12">
+            <div class="input-form">
+              <label for="input-email">{{'EMAIL' | translate}}</label>
+              <input data-ng-model="$ctrl.user.email" id="input-email" name="email" required type="text" placeholder="{{'EMAIL' | translate}}">
+            </div>
+            <div class="input-form">
+              <label for="input-password">{{'PASSWORD' | translate}}</label>
+              <input data-ng-model="$ctrl.user.password" id="input-password" name="password" minlength="8" required type="password" placeholder="{{'PASSWORD' | translate}}">
+            </div>
+            <div class="area-button txt-center">
+              <button class="rounded-button" data-toggle="modal" ng-click="$ctrl.doLogin()">
+                <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png" width="20px" alt="next" />
+              </button>
+            </div>
+            <div class="dont-have-account">
+              <label>{{'DONT_HAVE_ACCOUNT' | translate}}</label>
+              <label class="txt-green label-signup" ng-click="$ctrl.goToSignup()">{{'SIGNUP' | translate}}</label>
+              <!--<p class="cursor-pointer">{{'RESET_PASSWORD' | translate}}</p>-->
+            </div>
+
+          </div>
+
+          <div class="col-lg-5 col-xs-12">
+            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442473/whitelist-illustration_pclyxv.png" width="100%"
+              alt="next" />
+          </div>
+
+          <div class="col-lg-4 col-xs-12" ng-show="false">
+            <div id="counter" class="">
+              <span id="coin_counter" ng-show="false">$ 00 000 000</span>
+              <div id="loading_bar">
+                <div id="loading_bar_green" style="width:50%;"></div>
+              </div>
+              <div>
+                <div class="row" style="text-align: center;">
+                  <div class="col-xs-6 col-lg-6">
+                    Pre-Ico
+                  </div>
+                  <div class="col-xs-6 col-lg-6">
+                    Ico
+                  </div>
+                </div>
+
+                <!-- conter -->
+                <div class="row" id="number">
+                  <div class="col-xs-12" id="time">
+                    <div id="clockdiv">
+                      <div>
+                        <span class="days"></span>
+                        <div class="smalltext">Days</div>
+                      </div>
+                      <div>
+                        <span class="hours"></span>
+                        <div class="smalltext">Hours</div>
+                      </div>
+                      <div>
+                        <span class="minutes"></span>
+                        <div class="smalltext">Minutes</div>
+                      </div>
+                      <div>
+                        <span class="seconds"></span>
+                        <div class="smalltext">Seconds</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- hard cap -->
+                <div class="row" id="number">
+                  <div class="col-xs-12 col-lg-12" id="hard-cap">
+                    <p>Hard cap</p>
+                    <p>$ 100 000 000</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+
+
+      </form>
+      </div>
+  </section>
+  </div>

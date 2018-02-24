@@ -1,0 +1,94 @@
+.dont-have-account {
+  margin-top: 50px;
+  .label-signup {
+    cursor: pointer;
+  }
+}
+
+/* counter */
+#counter {
+  font-family: 'Offside', cursive;
+  margin-top:20px;
+  margin-bottom:20px;
+  
+}
+#counter #coin_counter {
+  display: block;
+  text-align: right;
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  padding-right: 20px;
+}
+#counter #loading_bar {
+  display:block;
+  background-color: #fff;
+  height: 5px;
+}
+#counter #loading_bar_green {
+  display: block;
+  background-color: #4cd566;
+  height: 5px;
+}
+#counter #base_counter {
+  background-color: #544d8f;
+  padding:20px;
+  border-radius: 0px 0px 4px 4px;
+}
+#counter #number {
+  margin-top: 30px;
+  display: block;
+  text-align: center;
+}
+#counter #number span {
+  font-size: .2em;
+  color:#fff;
+  display: block;
+  margin-top: 20px;
+}
+#counter #hard-cap {
+  display: block;
+  background-color: #544d8f;
+  max-width: 160px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #4cd566;
+  font-size: .8em;
+  text-align: center;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: -40px;
+}
+#counter #hard-cap span {
+  display: block;
+  color: #fff;
+  font-size: 1.2em;
+}
+
+#clockdiv{
+  font-family: sans-serif;
+  color: #fff;
+  display: inline-block;
+  font-weight: 100;
+  text-align: center;
+  font-size: 30px;
+}
+
+#clockdiv > div{
+  padding: 5px;
+  border-radius: 3px;
+  background: #00BF96;
+  display: inline-block;
+  width: 80px;
+}
+
+#clockdiv div > span{
+  padding: 15px;
+  border-radius: 3px;
+  background: #00816A;
+  display: inline-block;
+}
+
+.smalltext{
+  padding-top: 5px;
+  font-size: 16px;
+}

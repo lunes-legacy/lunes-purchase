@@ -1,0 +1,21 @@
+<div class="container airport-content">
+  <label class="label">AirportSelector</label>
+  <div class="left-box">
+    <input-autocomplete
+      name="departure"
+      ng-model="$ctrl.search.departure"
+      input-change="$ctrl.inputChange(prop, value)"
+      call-data-list="$ctrl.callDataList()"
+      placeholder="Departure Airport"
+    >
+    </input-autocomplete>
+  </div>
+  <!-- <div class="right-box">
+    <input-autocomplete
+      name="destination"
+      input-change="$ctrl.inputChange(prop, value)"
+      ng-model="$ctrl.search.destination"
+      placeholder="Destination Airport"
+    >
+    </input-autocomplete> -->
+</div>
