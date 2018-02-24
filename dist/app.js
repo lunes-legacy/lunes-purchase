@@ -9209,25 +9209,25 @@
 	
 	var _signup2 = _interopRequireDefault(_signup);
 	
-	var _buy = __webpack_require__(485);
+	var _buy = __webpack_require__(487);
 	
 	var _buy2 = _interopRequireDefault(_buy);
 	
-	var _language = __webpack_require__(696);
+	var _language = __webpack_require__(698);
 	
 	var _language2 = _interopRequireDefault(_language);
 	
-	var _en = __webpack_require__(697);
+	var _en = __webpack_require__(699);
 	
 	var _en2 = _interopRequireDefault(_en);
 	
-	var _pt = __webpack_require__(698);
+	var _pt = __webpack_require__(700);
 	
 	var _pt2 = _interopRequireDefault(_pt);
 	
-	var _services = __webpack_require__(699);
+	var _services = __webpack_require__(701);
 	
-	__webpack_require__(704);
+	__webpack_require__(706);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -52918,9 +52918,9 @@
 	
 	var _signup2 = _interopRequireDefault(_signup);
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	__webpack_require__(485);
 	
-	//import './signup.component.scss';
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var SignupComponent = {
 	  template: _signupComponent2.default,
@@ -52933,7 +52933,7 @@
 /* 483 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"container\">\n\n  <!-- MODAL - criar directiva depois -->\n  <div id=\"modal-terms\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <h5 class=\"modal-title\">{{'TERM_TITLE' | translate}}</h5>\n      <div class=\"content\" ng-bind-html=\"$ctrl.terms\"> </div>\n      <div class=\"footer\">\n        <div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG1\" id=\"checkboxG1\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check1\" ng-change=\"$ctrl.allCheckboxIsChecked()\">\n            <label for=\"checkboxG1\" class=\"css-label radGroup1 clr\"> {{'US_CITIZEN' | translate}} </label>\n          </div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG2\" id=\"checkboxG2\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check2\">\n            <label for=\"checkboxG2\" class=\"css-label radGroup1 clr\"> {{'AGREE_TERM' | translate}} </label>\n          </div>\n          <!--<div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG3\" id=\"checkboxG3\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check3\">\n            <label for=\"checkboxG3\" class=\"css-label radGroup1 clr\"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>\n          </div>-->\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG4\" id=\"checkboxG4\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check4\">\n            <label for=\"checkboxG4\" class=\"css-label radGroup1 clr\"> {{'AGREE_FUTURE_VALUE' | translate}}</label>\n          </div>\n          <div class=\"area-button\">\n            <button ng-show=\"$ctrl.allCheckboxIsChecked()\" class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\" data-dismiss=\"modal\">{{'AGREE' | translate}}</button>\n            <!--<button ng-show=\"!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()\" class=\"disabled-button\">{{'AGREE' | translate}}</button>-->\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- HEADER - criar diretiva depois -->\n  <nav class=\"header nav\" style=\"padding: 20px 0;\">\n    <div class=\"nav-left logo\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n\n    <div class=\"nav-right nav-menu\"></div>\n  </nav>\n\n  <!-- AUTHENTICATION FORM -->\n  <section class=\"authentication\">\n    <div>\n      <form name=\"$ctrl.loginForm\">\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-12 title\">\n            <h4>{{'WELCOME' | translate}}</h4>\n            <h4>{{'BEGIN_YOUR_REGISTRATION' | translate}}</h4>\n          </div>\n          <div class=\"col-xs-12 col-lg-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n          <div class=\"alert alert-danger\" ng-show=\"$ctrl.serverError\" role=\"alert\">\n            <h4 class=\"alert-heading\">{{'AN_ERROR_CREATE_ACCOUNT' | translate}}</h4>\n            <p>{{$ctrl.serverErrorMessage</p>\n          </div>\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-name\">{{'NAME' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.name\" id=\"input-name\" name=\"name\" required type=\"text\" placeholder=\"{{'NAME' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-lastname\">{{'LAST_NAME' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.lastname\" id=\"input-lastname\" name=\"lastname\" required type=\"text\" placeholder=\"{{'LAST_NAME' | translate}}\">\n            </div>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-email\">{{'EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.email\" id=\"input-email\" name=\"email\" ng-model-options=\"{ debounce: 500 }\" required type=\"email\"\n                placeholder=\"{{'EMAIL' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-confirm-email\">{{'CONFIRM_EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.confirmEmail\" id=\"input-confirm-email\" email name=\"confirmEmail\" email-match required type=\"email\"\n                placeholder=\"{{'CONFIRM_EMAIL' | translate}}\">\n            </div>\n\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-password\">{{'PASSWORD' | translate}}</label>\n              <input type=\"password\" data-ng-model=\"$ctrl.user.password\" id=\"input-password\" ng-model-options=\"{ debounce: 500 }\" uppercase\n                lowercase numeric special-character required name=\"password\" ng-minlength=\"8\" placeholder=\"{{'PASSWORD' | translate}}\">\n            </div>\n\n            <!-- exibit validation -->\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.email.$dirty && $ctrl.loginForm.email.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.email.$error.required\">{{'EMAIL_REQUIRED' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.email.$error.email\">{{'EMAIL_INVALID' | translate}}\n                <br> </span>\n\n            </span>\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.confirmEmail.$dirty && $ctrl.loginForm.confirmEmail.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.confirmEmail.$error.compareEmail || $ctrl.loginForm.email.$error.compareEmail\">{{'EMAIL_MATCH' | translate}}\n                <br> </span>\n            </span>\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.password.$dirty && $ctrl.loginForm.password.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.password.$error.required\">{{'PASSWORD_REQUIRED' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.minlength\">{{'PASSWORD_LENGTH' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.uppercase\">{{'PASSWORD_UPPERCASE' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.lowercase\">{{'PASSWORD_LOWERCASE' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.numeric\">{{'PASSWORD_ALPHANUMERIC' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.specialCharacter\">{{'PASSWORD_SPECIALCHARACTER' | translate}}\n                <br>\n              </span>\n\n            </span>\n\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.confirmPassword.$dirty && $ctrl.loginForm.confirmPassword.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.confirmPassword.$error.comparePassword || $ctrl.loginForm.password.$error.comparePassword\">{{'PASSWORD_MATCH' | translate}}\n                <br> </span>\n            </span>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-confirm-password\">{{'CONFIRM_PASSWORD' | translate}}</label>\n              <input type=\"password\" data-ng-model=\"$ctrl.user.confirmPassword\" id=\"input-confirm-password\" ng-model-options=\"{ debounce: 500 }\"\n                required name=\"confirmPassword\" ng-minlength=\"8\" placeholder=\"{{'CONFIRM_PASSWORD' | translate}}\">\n\n            </div>\n\n            <div class=\"area-button txt-right\">\n              <button class=\"rounded-button\" data-toggle=\"modal\" data-target=\"#modal-terms\" ng-show=\"$ctrl.loginForm.$valid\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\" />\n              </button>\n\n              <button class=\"rounded-button\" ng-show=\"!$ctrl.loginForm.$valid\" ng-click=\"$ctrl.showError()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\" />\n              </button>\n            </div>\n\n\n\n\n\n      </form>\n      </div>\n  </section>\n  </div>"
+	module.exports = "<div class=\"container\">\n\n  <!-- MODAL - criar directiva depois -->\n  <div id=\"modal-terms\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <div>\n        <script>\n          function openCity(evt, cityName) {\n            // Declare all variables\n            var i, tabcontent, tablinks;\n\n            // Get all elements with class=\"tabcontent\" and hide them\n            tabcontent = document.getElementsByClassName(\"tabcontent\");\n            for (i = 0; i < tabcontent.length; i++) {\n              tabcontent[i].style.display = \"none\";\n            }\n\n            // Get all elements with class=\"tablinks\" and remove the class \"active\"\n            tablinks = document.getElementsByClassName(\"tablinks\");\n            for (i = 0; i < tablinks.length; i++) {\n              tablinks[i].className = tablinks[i].className.replace(\" active\", \"\");\n            }\n\n            // Show the current tab, and add an \"active\" class to the button that opened the tab\n            document.getElementById(cityName).style.display = \"block\";\n            evt.currentTarget.className += \" active\";\n          }\n        </script>\n        <!-- Tab links -->\n        <div class=\"tab\">\n          <button class=\"tablinks\" onclick=\"openCity(event, 'terms_condition')\" id=\"defaultOpen\">{{'TERMS_CONDITION_TITLE' | translate}}</button>\n          <button class=\"tablinks\" onclick=\"openCity(event, 'representation_condition')\">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>\n        </div>\n        <!-- Tab content -->\n        <div id=\"terms_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsCondition\" style=\"height: 500px;\"> </div>\n        </div>\n\n        <div id=\"representation_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsRepresentation\" style=\"height: 500px;\"> </div>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG1\" id=\"checkboxG1\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check1\" ng-change=\"$ctrl.allCheckboxIsChecked()\">\n            <label for=\"checkboxG1\" class=\"css-label radGroup1 clr\"> {{'US_CITIZEN' | translate}} </label>\n          </div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG2\" id=\"checkboxG2\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check2\">\n            <label for=\"checkboxG2\" class=\"css-label radGroup1 clr\"> {{'AGREE_TERM' | translate}} </label>\n          </div>\n          <!--<div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG3\" id=\"checkboxG3\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check3\">\n            <label for=\"checkboxG3\" class=\"css-label radGroup1 clr\"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>\n          </div>-->\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG4\" id=\"checkboxG4\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check4\">\n            <label for=\"checkboxG4\" class=\"css-label radGroup1 clr\"> {{'AGREE_FUTURE_VALUE' | translate}}</label>\n          </div>\n          <div class=\"area-button\">\n            <button ng-show=\"$ctrl.allCheckboxIsChecked()\" class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\" data-dismiss=\"modal\">{{'AGREE' | translate}}</button>\n            <!--<button ng-show=\"!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()\" class=\"disabled-button\">{{'AGREE' | translate}}</button>-->\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- HEADER - criar diretiva depois -->\n  <nav class=\"header nav\" style=\"padding: 20px 0;\">\n    <div class=\"nav-left logo\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n\n    <div class=\"nav-right nav-menu\"></div>\n  </nav>\n\n  <!-- AUTHENTICATION FORM -->\n  <section class=\"authentication\">\n    <div>\n      <form name=\"$ctrl.loginForm\">\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-12 title\">\n            <h4>{{'WELCOME' | translate}}</h4>\n            <h4>{{'BEGIN_YOUR_REGISTRATION' | translate}}</h4>\n          </div>\n          <div class=\"col-xs-12 col-lg-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n          <div class=\"alert alert-danger\" ng-show=\"$ctrl.serverError\" role=\"alert\">\n            <h4 class=\"alert-heading\">{{'AN_ERROR_CREATE_ACCOUNT' | translate}}</h4>\n            <p>{{$ctrl.serverErrorMessage</p>\n          </div>\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-name\">{{'NAME' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.name\" id=\"input-name\" name=\"name\" required type=\"text\" placeholder=\"{{'NAME' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-lastname\">{{'LAST_NAME' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.lastname\" id=\"input-lastname\" name=\"lastname\" required type=\"text\" placeholder=\"{{'LAST_NAME' | translate}}\">\n            </div>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-email\">{{'EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.email\" id=\"input-email\" name=\"email\" ng-model-options=\"{ debounce: 500 }\" required type=\"email\"\n                placeholder=\"{{'EMAIL' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-confirm-email\">{{'CONFIRM_EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.confirmEmail\" id=\"input-confirm-email\" email name=\"confirmEmail\" email-match required type=\"email\"\n                placeholder=\"{{'CONFIRM_EMAIL' | translate}}\">\n            </div>\n\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-password\">{{'PASSWORD' | translate}}</label>\n              <input type=\"password\" data-ng-model=\"$ctrl.user.password\" id=\"input-password\" ng-model-options=\"{ debounce: 500 }\" uppercase\n                lowercase numeric special-character required name=\"password\" ng-minlength=\"8\" placeholder=\"{{'PASSWORD' | translate}}\">\n            </div>\n\n            <!-- exibit validation -->\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.email.$dirty && $ctrl.loginForm.email.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.email.$error.required\">{{'EMAIL_REQUIRED' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.email.$error.email\">{{'EMAIL_INVALID' | translate}}\n                <br> </span>\n\n            </span>\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.confirmEmail.$dirty && $ctrl.loginForm.confirmEmail.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.confirmEmail.$error.compareEmail || $ctrl.loginForm.email.$error.compareEmail\">{{'EMAIL_MATCH' | translate}}\n                <br> </span>\n            </span>\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.password.$dirty && $ctrl.loginForm.password.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.password.$error.required\">{{'PASSWORD_REQUIRED' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.minlength\">{{'PASSWORD_LENGTH' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.uppercase\">{{'PASSWORD_UPPERCASE' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.lowercase\">{{'PASSWORD_LOWERCASE' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.numeric\">{{'PASSWORD_ALPHANUMERIC' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.specialCharacter\">{{'PASSWORD_SPECIALCHARACTER' | translate}}\n                <br>\n              </span>\n\n            </span>\n\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.confirmPassword.$dirty && $ctrl.loginForm.confirmPassword.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.confirmPassword.$error.comparePassword || $ctrl.loginForm.password.$error.comparePassword\">{{'PASSWORD_MATCH' | translate}}\n                <br> </span>\n            </span>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-confirm-password\">{{'CONFIRM_PASSWORD' | translate}}</label>\n              <input type=\"password\" data-ng-model=\"$ctrl.user.confirmPassword\" id=\"input-confirm-password\" ng-model-options=\"{ debounce: 500 }\"\n                required name=\"confirmPassword\" ng-minlength=\"8\" placeholder=\"{{'CONFIRM_PASSWORD' | translate}}\">\n\n            </div>\n\n            <div class=\"area-button txt-right\">\n              <button class=\"rounded-button\" data-toggle=\"modal\" data-target=\"#modal-terms\" ng-show=\"$ctrl.loginForm.$valid\" ng-click=\"$ctrl.enableTab()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\" />\n              </button>\n\n              <button class=\"rounded-button\" ng-show=\"!$ctrl.loginForm.$valid\" ng-click=\"$ctrl.showError()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\" />\n              </button>\n            </div>\n\n\n\n\n\n      </form>\n      </div>\n  </section>\n  </div>"
 
 /***/ },
 /* 484 */
@@ -52942,7 +52942,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
@@ -52950,118 +52950,125 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	var SignupController = function () {
-	    function SignupController($state, HttpService, $filter, $sce, $injector, $timeout, $translate) {
-	        _classCallCheck(this, SignupController);
+	  function SignupController($state, HttpService, $filter, $sce, $injector, $timeout, $translate) {
+	    _classCallCheck(this, SignupController);
 	
-	        this.$state = $state;
-	        this.$timeout = $timeout;
-	        this.HttpService = HttpService;
-	        this.$translate = $translate;
-	        this.showErrorForm = false;
-	        this.terms = $sce.trustAsHtml($filter('translate')('TERMS_CONDITIONS'));
-	        this.serverError = false;
-	        this.user = {
-	            name: '',
-	            lastname: '',
-	            email: '',
-	            confirmEmail: '',
-	            password: '',
-	            confirmPassword: '',
-	            check1: false,
-	            check2: false,
-	            check3: false,
-	            check4: false
-	        };
+	    this.$state = $state;
+	    this.$timeout = $timeout;
+	    this.HttpService = HttpService;
+	    this.$translate = $translate;
+	    this.showErrorForm = false;
+	    this.termsCondition = $sce.trustAsHtml($filter('translate')('TERMS_CONDITIONS'));
+	    this.termsRepresentation = $sce.trustAsHtml($filter('translate')('REPRESENTATION_TERM'));
+	    this.serverError = false;
+	    this.user = {
+	      name: 'sdsdsds',
+	      lastname: 'dsd sddsd',
+	      email: 'dansymbols@gmail.com',
+	      confirmEmail: 'dansymbols@gmail.com',
+	      password: 'Dan123456#',
+	      confirmPassword: 'Dan123456#',
+	      check1: false,
+	      check2: false,
+	      check3: false,
+	      check4: false
+	    };
+	  }
+	
+	  SignupController.prototype.doSignup = function () {
+	    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+	      var _this = this;
+	
+	      var obj, a;
+	      return regeneratorRuntime.wrap(function _callee$(_context) {
+	        while (1) {
+	          switch (_context.prev = _context.next) {
+	            case 0:
+	              this.showLoading(true);
+	              obj = {
+	                name: this.user.name,
+	                lastname: this.user.lastname,
+	                email: this.user.email,
+	                password: this.user.password,
+	                testnet: true
+	              };
+	              _context.next = 4;
+	              return this.HttpService.signup(obj).catch(function (error) {
+	                _this.serverError = true;
+	                _this.serverErrorMessage = error.message;
+	                console.log(error);
+	              });
+	
+	            case 4:
+	              a = _context.sent;
+	
+	              if (a && a.accessToken) {
+	                this.serverError = false;
+	                this.serverErrorMessage = '';
+	                localStorage.setItem('lunes.accessToken', JSON.stringify(a));
+	                this.showLoading(false);
+	                this.notification(true);
+	              }
+	
+	            case 6:
+	            case 'end':
+	              return _context.stop();
+	          }
+	        }
+	      }, _callee, this);
+	    }));
+	
+	    function doSignup() {
+	      return _ref.apply(this, arguments);
 	    }
 	
-	    SignupController.prototype.doSignup = function () {
-	        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-	            var _this = this;
+	    return doSignup;
+	  }();
 	
-	            var obj, a;
-	            return regeneratorRuntime.wrap(function _callee$(_context) {
-	                while (1) {
-	                    switch (_context.prev = _context.next) {
-	                        case 0:
-	                            this.showLoading(true);
-	                            obj = {
-	                                name: this.user.name,
-	                                lastname: this.user.lastname,
-	                                email: this.user.email,
-	                                password: this.user.password,
-	                                testnet: true
-	                            };
-	                            _context.next = 4;
-	                            return this.HttpService.signup(obj).catch(function (error) {
-	                                _this.serverError = true;
-	                                _this.serverErrorMessage = error.message;
-	                                console.log(error);
-	                            });
+	  SignupController.prototype.userIsValidToSignup = function userIsValidToSignup() {
+	    return this.user.name && this.user.email && this.user.password && this.user.lastname && this.user.confirmEmail && this.user.confirmPassword;
+	  };
 	
-	                        case 4:
-	                            a = _context.sent;
+	  SignupController.prototype.enableTab = function enableTab() {
+	    setTimeout(function () {
+	      document.getElementById("defaultOpen").click();
+	    }, 200);
+	  };
 	
-	                            if (a && a.accessToken) {
-	                                this.serverError = false;
-	                                this.serverErrorMessage = '';
-	                                localStorage.setItem('lunes.accessToken', JSON.stringify(a));
-	                                this.showLoading(false);
-	                                this.notification(true);
-	                            }
+	  SignupController.prototype.allCheckboxIsChecked = function allCheckboxIsChecked() {
+	    return this.user.check1 && this.user.check2 && this.user.check4;
+	  };
 	
-	                        case 6:
-	                        case 'end':
-	                            return _context.stop();
-	                    }
-	                }
-	            }, _callee, this);
-	        }));
+	  SignupController.prototype.showError = function showError() {
+	    this.showErrorForm = true;
+	  };
 	
-	        function doSignup() {
-	            return _ref.apply(this, arguments);
-	        }
+	  SignupController.prototype.showLoading = function showLoading(isShow) {
+	    if (isShow) {
+	      $('<div class="modal-backdrop"><img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442469/loading_y9ob8i.svg" /></div>').appendTo(document.body);
+	    } else {
+	      this.$timeout(function () {
+	        $(".modal-backdrop").remove();
+	      }, 1000);
+	    }
+	  };
 	
-	        return doSignup;
-	    }();
+	  SignupController.prototype.notification = function notification(isShow) {
+	    if (isShow) {
+	      var self = this;
+	      $('<div class="modal-backdrop"><h4>' + this.$translate.instant('SIGNUP_SUCCESSFULY') + '</h4><br /><p>' + this.$translate.instant('REDIRECTING') + '</p></div>').appendTo(document.body);
+	      this.$timeout(function () {
+	        self.notification(false);
+	        self.$state.go('login');
+	      }, 5000);
+	    } else {
+	      this.$timeout(function () {
+	        $(".modal-backdrop").remove();
+	      }, 1000);
+	    }
+	  };
 	
-	    SignupController.prototype.userIsValidToSignup = function userIsValidToSignup() {
-	        return this.user.name && this.user.email && this.user.password && this.user.lastname && this.user.confirmEmail && this.user.confirmPassword;
-	    };
-	
-	    SignupController.prototype.allCheckboxIsChecked = function allCheckboxIsChecked() {
-	        return this.user.check1 && this.user.check2 && this.user.check4;
-	    };
-	
-	    SignupController.prototype.showError = function showError() {
-	        this.showErrorForm = true;
-	    };
-	
-	    SignupController.prototype.showLoading = function showLoading(isShow) {
-	        if (isShow) {
-	            $('<div class="modal-backdrop"><img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442469/loading_y9ob8i.svg" /></div>').appendTo(document.body);
-	        } else {
-	            this.$timeout(function () {
-	                $(".modal-backdrop").remove();
-	            }, 1000);
-	        }
-	    };
-	
-	    SignupController.prototype.notification = function notification(isShow) {
-	        if (isShow) {
-	            var self = this;
-	            $('<div class="modal-backdrop"><h4>' + this.$translate.instant('SIGNUP_SUCCESSFULY') + '</h4><br /><p>' + this.$translate.instant('REDIRECTING') + '</p></div>').appendTo(document.body);
-	            this.$timeout(function () {
-	                self.notification(false);
-	                self.$state.go('login');
-	            }, 5000);
-	        } else {
-	            this.$timeout(function () {
-	                $(".modal-backdrop").remove();
-	            }, 1000);
-	        }
-	    };
-	
-	    return SignupController;
+	  return SignupController;
 	}();
 	
 	SignupController.$inject = ['$state', 'HttpService', '$filter', '$sce', '$injector', '$timeout', '$translate'];
@@ -53072,36 +53079,41 @@
 /* 485 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _buyComponent = __webpack_require__(486);
-	
-	var _buyComponent2 = _interopRequireDefault(_buyComponent);
-	
-	var _buy = __webpack_require__(487);
-	
-	var _buy2 = _interopRequireDefault(_buy);
-	
-	__webpack_require__(694);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var BuyComponent = {
-	  template: _buyComponent2.default,
-	  controller: _buy2.default
-	};
-	
-	exports.default = BuyComponent;
+	// load the styles
+	var content = __webpack_require__(486);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(480)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../node_modules/css-loader/index.js?sourceMap!../../node_modules/postcss-loader/index.js!../../node_modules/sass-loader/index.js?config=sassLoader!./signup.component.scss", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js?sourceMap!../../node_modules/postcss-loader/index.js!../../node_modules/sass-loader/index.js?config=sassLoader!./signup.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
 /***/ },
 /* 486 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<!--<loading show=\"$ctrl.loading\"></loading>-->\n<div class=\"container\">\n\n  <!-- HEADER - criar diretiva depois -->\n  <nav class=\"header nav\">\n    <div class=\"col-sm-12 col-md-2 col-lg-2 logo\" ng-click=\"$ctrl.goToHome()\" style=\"cursor: pointer;margin: 13px 0;\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n\n    <div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6 nav-menu\">\n      <!--<ul class=\"menu horizontal\">\n        <li>\n          <a href=\"#!/whitelist\">{{'WHITELIST' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/buy\">{{'BUY' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/dashboard\">{{'DASHBOARD' | translate}}</a>\n        </li>\n      </ul>-->\n    </div>\n\n    <div class=\"col-xs-12 col-lg-4 txt-right\" style=\"margin-top: 10px;\">\n      <ul class=\"menu horizontal\">\n        <li>\n          <a href=\"https://www.facebook.com/lunesplatform/\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg\" alt=\"facebook\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://t.me/LunesPlatformEN\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg\" alt=\"telegram\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://twitter.com/lunesplatform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg\" alt=\"twitter\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://medium.com/@lunes.platform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg\" alt=\"medium\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"#!/login\" class=\"round-menu\" ng-click=\"$ctrl.logout()\">\n            {{'LOGOUT' | translate}}\n          </a>\n        </li>\n      </ul>\n    </div>\n  </nav>\n\n  <!-- BUY -->\n  <section class=\"buy\">\n    <div>\n      <div class=\"row\">\n\n        <div class=\"col-12 title\">\n          <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>\n        </div>\n\n        <div class=\"col-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n        <div class=\"col-sm-12 col-md-7 col-lg-7\">\n          <div class=\"row calculator\">\n            <div class=\"col-lg-6 no-padding\" style=\"margin: 5px 0 20px 0;\">\n              <div class=\"valueCripto row\">\n                <div class=\"select-coin col-xs-12 col-lg-5\">\n                  <ul>\n                    <li ng-repeat=\"coin in $ctrl.coins\" ng-click=\"$ctrl.selectCoin(coin)\" ng-class=\"coin.selected ? 'selected': ''\">\n                      <img ng-src=\"{{coin.img}}\" alt=\"coin.label\">\n                    </li>\n                  </ul>\n                </div>\n                <div class=\"col-xs-12 col-lg-5\">\n                  <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToDeposit\" ng-change=\"$ctrl.calcValue()\" />\n                </div>\n              </div>\n              <div class=\"col-lg-12\">\n                USD / {{$ctrl.currentCoinSelected.name}} - {{$ctrl.showQuotation()}}\n              </div>\n            </div>\n\n            <div class=\"col-lg-1 equal\" style=\"margin: 5px 0 20px 0;\">=</div>\n\n            <div class=\"col-lg-5 no-padding\" style=\"margin: 5px 0 20px 0;\">\n              <div class=\"lunesAmount\">\n                <div class=\"flag-lns\">\n                  <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\">\n                </div>\n                <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToReceive\" ng-change=\"$ctrl.calcValue('LNS')\"\n                  style=\"padding-top: 10px;\" />\n              </div>\n\n              <div class=\"col-lg-12\" style=\"text-align: right;\">\n                <label for=\"#\">\n                  <small>{{'PRICE_LUNES' | translate}}</small> = USD {{$ctrl.priceValueLunes}}\n                </label>\n              </div>\n            </div>\n\n          </div>\n\n          <div class=\"amountBalance row\">\n            <div class=\"col-sm-12 col-lg-12 total\">\n              <div class=\"result\" style=\"margin-top: 15px;\">\n                <div>{{'AMOUNT_LUNES' | translate}}</div>\n                <div>{{$ctrl.valueToReceive}}</div>\n              </div>\n              <div class=\"result\">\n                <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>\n                <div>{{$ctrl.bonusAmountFinal}}</div>\n              </div>\n              <div class=\"line-break\">\n                <hr />\n              </div>\n              <div class=\"result\">\n                <div>Total</div>\n                <div>{{$ctrl.getTotal()}}</div>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"col-lg-12 no-padding\">\n              <div class=\"area-button\" ng-show=\"false\">\n                <button class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\">{{'BUY' | translate}}</button>\n              </div>\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\">\n              * {{'MSG_BALANCE_DEPOSITED' | translate}}\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\">\n              * {{'BUY_LIMIT_PHASE' | translate}}\n              <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n            </div>\n          </div>\n\n        </div>\n\n        <div class=\"col-xs-12 col-lg-5 container-qr-code\" style=\"text-align: center;\">\n          <div style=\"margin-bottom: 10px;\">\n            <span class=\"selected-label\">{{'COIN_SELECTED' | translate}}</span>\n            <span>{{$ctrl.currentCoinSelected.name}}</span>\n          </div>\n          <img ng-src=\"{{$ctrl.currentQRCode.img}}\" class=\"qr-code img-thumbnail img-responsive\" />\n          <p class=\"address\">{{$ctrl.currentQRCode.address}}</p>\n        </div>\n\n      </div>\n    </div>\n  </section>\n\n</div>"
+	exports = module.exports = __webpack_require__(479)(true);
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "/* Style the tab */\n.tab {\n  overflow: hidden;\n  padding: 0 22px; }\n\n/* Style the buttons that are used to open the tab content */\n.tab button {\n  border: 0;\n  border-radius: 20px;\n  padding: 5px 20px;\n  background-color: #f9f9f9;\n  float: left;\n  outline: none;\n  cursor: pointer;\n  transition: 0.3s;\n  margin-right: 10px; }\n\n/* Change background color of buttons on hover */\n.tab button:hover {\n  background-color: #4cd466; }\n\n/* Create an active/current tablink class */\n.tab button.active {\n  background-color: #4cd466;\n  color: #fff; }\n\n/* Style the tab content */\n.tabcontent {\n  display: none;\n  padding: 6px 12px;\n  border-top: none; }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/signup/src/signup/signup.component.scss","D:/workspaces/lunes/lunes-purchase/src/signup/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA,mBAAmB;AACnB;EACE,iBAAgB;EAChB,gBAAe,EAChB;;AAED,6DAA6D;AAC7D;EACE,UAAS;EACT,oBAAmB;EACnB,kBAAiB;EACjB,0BAAyB;EACzB,YAAW;EACX,cAAa;EACb,gBAAe;EACf,iBAAgB;EAChB,mBAAkB,EACnB;;AAED,iDAAiD;AACjD;EACE,0BCpBa,EDqBd;;AAED,4CAA4C;AAC5C;EACE,0BCzBa;ED0Bb,YAAW,EACZ;;AAED,2BAA2B;AAC3B;EACE,cAAa;EACb,kBAAiB;EACjB,iBAAgB,EACjB","file":"signup.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n/* Style the tab */\r\n.tab {\r\n  overflow: hidden;\r\n  padding: 0 22px;\r\n}\r\n\r\n/* Style the buttons that are used to open the tab content */\r\n.tab button {\r\n  border: 0;\r\n  border-radius: 20px;\r\n  padding: 5px 20px;\r\n  background-color: #f9f9f9;\r\n  float: left;\r\n  outline: none;\r\n  cursor: pointer;\r\n  transition: 0.3s;\r\n  margin-right: 10px;\r\n}\r\n\r\n/* Change background color of buttons on hover */\r\n.tab button:hover {\r\n  background-color: $green;\r\n}\r\n\r\n/* Create an active/current tablink class */\r\n.tab button.active {\r\n  background-color: $green;\r\n  color: #fff;\r\n}\r\n\r\n/* Style the tab content */\r\n.tabcontent {\r\n  display: none;\r\n  padding: 6px 12px;\r\n  border-top: none;\r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$darkPrimary: #41256f;\r\n$green: #4cd466;\r\n$yellow: #f9d660;"],"sourceRoot":""}]);
+	
+	// exports
+
 
 /***/ },
 /* 487 */
@@ -53113,9 +53125,44 @@
 	  value: true
 	});
 	
+	var _buyComponent = __webpack_require__(488);
+	
+	var _buyComponent2 = _interopRequireDefault(_buyComponent);
+	
+	var _buy = __webpack_require__(489);
+	
+	var _buy2 = _interopRequireDefault(_buy);
+	
+	__webpack_require__(696);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var BuyComponent = {
+	  template: _buyComponent2.default,
+	  controller: _buy2.default
+	};
+	
+	exports.default = BuyComponent;
+
+/***/ },
+/* 488 */
+/***/ function(module, exports) {
+
+	module.exports = "<!--<loading show=\"$ctrl.loading\"></loading>-->\n<div class=\"container\">\n\n  <!-- HEADER - criar diretiva depois -->\n  <nav class=\"header nav\">\n    <div class=\"col-sm-12 col-md-2 col-lg-2 logo\" ng-click=\"$ctrl.goToHome()\" style=\"cursor: pointer;margin: 13px 0;\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n\n    <div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6 nav-menu\">\n      <!--<ul class=\"menu horizontal\">\n        <li>\n          <a href=\"#!/whitelist\">{{'WHITELIST' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/buy\">{{'BUY' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/dashboard\">{{'DASHBOARD' | translate}}</a>\n        </li>\n      </ul>-->\n    </div>\n\n    <div class=\"col-xs-12 col-lg-4 txt-right\" style=\"margin-top: 10px;\">\n      <ul class=\"menu horizontal\">\n        <li>\n          <a href=\"https://www.facebook.com/lunesplatform/\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg\" alt=\"facebook\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://t.me/LunesPlatformEN\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg\" alt=\"telegram\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://twitter.com/lunesplatform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg\" alt=\"twitter\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://medium.com/@lunes.platform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg\" alt=\"medium\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"#!/login\" class=\"round-menu\" ng-click=\"$ctrl.logout()\">\n            {{'LOGOUT' | translate}}\n          </a>\n        </li>\n      </ul>\n    </div>\n  </nav>\n\n  <!-- BUY -->\n  <section class=\"buy\">\n    <div>\n      <div class=\"row\">\n\n        <div class=\"col-12 title\">\n          <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>\n        </div>\n\n        <div class=\"col-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n        <div class=\"col-sm-12 col-md-7 col-lg-7\">\n          <div class=\"row calculator\">\n            <div class=\"col-lg-6 no-padding\" style=\"margin: 5px 0 20px 0;\">\n              <div class=\"valueCripto row\">\n                <div class=\"select-coin col-xs-12 col-lg-7\">\n                  <ul>\n                    <li ng-repeat=\"coin in $ctrl.coins\" ng-click=\"$ctrl.selectCoin(coin)\" ng-class=\"coin.selected ? 'selected': ''\">\n                      <img ng-src=\"{{coin.img}}\" alt=\"coin.label\">\n                    </li>\n                  </ul>\n                </div>\n                <div class=\"col-xs-12 col-lg-5\">\n                  <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToDeposit\" ng-change=\"$ctrl.calcValue()\" />\n                </div>\n              </div>\n              <div class=\"col-lg-12\">\n                USD / {{$ctrl.currentCoinSelected.name}} - {{$ctrl.showQuotation()}}\n              </div>\n            </div>\n\n            <div class=\"col-lg-1 equal\" style=\"margin: 5px 0 20px 0;\">=</div>\n\n            <div class=\"col-lg-5 no-padding\" style=\"margin: 5px 0 20px 0;\">\n              <div class=\"lunesAmount\">\n                <div class=\"flag-lns\">\n                  <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\">\n                </div>\n                <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToReceive\" ng-change=\"$ctrl.calcValue('LNS')\"\n                  style=\"padding-top: 10px;\" />\n              </div>\n\n              <div class=\"col-lg-12\" style=\"text-align: right;\">\n                <label for=\"#\">\n                  <small>{{'PRICE_LUNES' | translate}}</small> = USD {{$ctrl.priceValueLunes}}\n                </label>\n              </div>\n            </div>\n\n          </div>\n\n          <div class=\"amountBalance row\">\n            <div class=\"col-sm-12 col-lg-12 total\">\n              <div class=\"result\" style=\"margin-top: 15px;\">\n                <div>{{'AMOUNT_LUNES' | translate}}</div>\n                <div>{{$ctrl.valueToReceive}}</div>\n              </div>\n              <div class=\"result\">\n                <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>\n                <div>{{$ctrl.bonusAmountFinal}}</div>\n              </div>\n              <div class=\"line-break\">\n                <hr />\n              </div>\n              <div class=\"result\">\n                <div>Total</div>\n                <div>{{$ctrl.getTotal()}}</div>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"col-lg-12 no-padding\">\n              <div class=\"area-button\" ng-show=\"false\">\n                <button class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\">{{'BUY' | translate}}</button>\n              </div>\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\">\n              * {{'MSG_BALANCE_DEPOSITED' | translate}}\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\">\n              * {{'BUY_LIMIT_PHASE' | translate}}\n              <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n            </div>\n          </div>\n\n        </div>\n\n        <div class=\"col-xs-12 col-lg-5 container-qr-code\" style=\"text-align: center;\">\n          <div style=\"margin-bottom: 10px;\">\n            <span class=\"selected-label\">{{'COIN_SELECTED' | translate}}</span>\n            <span>{{$ctrl.currentCoinSelected.name}}</span>\n          </div>\n          <img ng-src=\"{{$ctrl.currentQRCode.img}}\" class=\"qr-code img-thumbnail img-responsive\" />\n          <p class=\"address\">{{$ctrl.currentQRCode.address}}</p>\n        </div>\n\n      </div>\n    </div>\n  </section>\n\n</div>"
+
+/***/ },
+/* 489 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
 	var _index = __webpack_require__(475);
 	
-	var _lunesLib = __webpack_require__(488);
+	var _lunesLib = __webpack_require__(490);
 	
 	var _lunesLib2 = _interopRequireDefault(_lunesLib);
 	
@@ -53562,22 +53609,22 @@
 	exports.default = BuyController;
 
 /***/ },
-/* 488 */
+/* 490 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(489);
+	module.exports = __webpack_require__(491);
 
 /***/ },
-/* 489 */
+/* 491 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var users = __webpack_require__(490);
-	var coins = __webpack_require__(601);
-	var ico = __webpack_require__(687);
+	var users = __webpack_require__(492);
+	var coins = __webpack_require__(603);
+	var ico = __webpack_require__(689);
 	module.exports = {
 	  users: users,
 	  coins: coins,
@@ -53585,20 +53632,20 @@
 	};
 
 /***/ },
-/* 490 */
+/* 492 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var create = __webpack_require__(491);
-	var login = __webpack_require__(593);
-	var resetPassword = __webpack_require__(594);
-	var obtain = __webpack_require__(595);
-	var createPin = __webpack_require__(596);
-	var confirmPin = __webpack_require__(597);
-	var confirmPhone = __webpack_require__(598);
-	var logout = __webpack_require__(599);
-	var update = __webpack_require__(600);
+	var create = __webpack_require__(493);
+	var login = __webpack_require__(595);
+	var resetPassword = __webpack_require__(596);
+	var obtain = __webpack_require__(597);
+	var createPin = __webpack_require__(598);
+	var confirmPin = __webpack_require__(599);
+	var confirmPhone = __webpack_require__(600);
+	var logout = __webpack_require__(601);
+	var update = __webpack_require__(602);
 	
 	module.exports = {
 	  create: create,
@@ -53613,18 +53660,18 @@
 	};
 
 /***/ },
-/* 491 */
+/* 493 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var validator = __webpack_require__(492);
+	var validator = __webpack_require__(494);
 	
-	var axios = __webpack_require__(565);
+	var axios = __webpack_require__(567);
 	
-	var BASE_URL = __webpack_require__(592);
+	var BASE_URL = __webpack_require__(594);
 	
 	var endpoint = BASE_URL + '/users/create';
 	
@@ -53693,16 +53740,16 @@
 	}();
 
 /***/ },
-/* 492 */
+/* 494 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var Validator = __webpack_require__(493);
+	var Validator = __webpack_require__(495);
 	
-	var _require = __webpack_require__(564),
+	var _require = __webpack_require__(566),
 	    PASSWORD_LENGTH = _require.PASSWORD_LENGTH,
 	    MAX_PIN_VALUE = _require.MAX_PIN_VALUE;
 	
@@ -53733,7 +53780,7 @@
 	};
 
 /***/ },
-/* 493 */
+/* 495 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53742,271 +53789,271 @@
 	  value: true
 	});
 	
-	var _toDate = __webpack_require__(494);
+	var _toDate = __webpack_require__(496);
 	
 	var _toDate2 = _interopRequireDefault(_toDate);
 	
-	var _toFloat = __webpack_require__(496);
+	var _toFloat = __webpack_require__(498);
 	
 	var _toFloat2 = _interopRequireDefault(_toFloat);
 	
-	var _toInt = __webpack_require__(497);
+	var _toInt = __webpack_require__(499);
 	
 	var _toInt2 = _interopRequireDefault(_toInt);
 	
-	var _toBoolean = __webpack_require__(498);
+	var _toBoolean = __webpack_require__(500);
 	
 	var _toBoolean2 = _interopRequireDefault(_toBoolean);
 	
-	var _equals = __webpack_require__(499);
+	var _equals = __webpack_require__(501);
 	
 	var _equals2 = _interopRequireDefault(_equals);
 	
-	var _contains = __webpack_require__(500);
+	var _contains = __webpack_require__(502);
 	
 	var _contains2 = _interopRequireDefault(_contains);
 	
-	var _matches = __webpack_require__(502);
+	var _matches = __webpack_require__(504);
 	
 	var _matches2 = _interopRequireDefault(_matches);
 	
-	var _isEmail = __webpack_require__(503);
+	var _isEmail = __webpack_require__(505);
 	
 	var _isEmail2 = _interopRequireDefault(_isEmail);
 	
-	var _isURL = __webpack_require__(507);
+	var _isURL = __webpack_require__(509);
 	
 	var _isURL2 = _interopRequireDefault(_isURL);
 	
-	var _isMACAddress = __webpack_require__(509);
+	var _isMACAddress = __webpack_require__(511);
 	
 	var _isMACAddress2 = _interopRequireDefault(_isMACAddress);
 	
-	var _isIP = __webpack_require__(508);
+	var _isIP = __webpack_require__(510);
 	
 	var _isIP2 = _interopRequireDefault(_isIP);
 	
-	var _isFQDN = __webpack_require__(506);
+	var _isFQDN = __webpack_require__(508);
 	
 	var _isFQDN2 = _interopRequireDefault(_isFQDN);
 	
-	var _isBoolean = __webpack_require__(510);
+	var _isBoolean = __webpack_require__(512);
 	
 	var _isBoolean2 = _interopRequireDefault(_isBoolean);
 	
-	var _isAlpha = __webpack_require__(511);
+	var _isAlpha = __webpack_require__(513);
 	
 	var _isAlpha2 = _interopRequireDefault(_isAlpha);
 	
-	var _isAlphanumeric = __webpack_require__(513);
+	var _isAlphanumeric = __webpack_require__(515);
 	
 	var _isAlphanumeric2 = _interopRequireDefault(_isAlphanumeric);
 	
-	var _isNumeric = __webpack_require__(514);
+	var _isNumeric = __webpack_require__(516);
 	
 	var _isNumeric2 = _interopRequireDefault(_isNumeric);
 	
-	var _isPort = __webpack_require__(515);
+	var _isPort = __webpack_require__(517);
 	
 	var _isPort2 = _interopRequireDefault(_isPort);
 	
-	var _isLowercase = __webpack_require__(517);
+	var _isLowercase = __webpack_require__(519);
 	
 	var _isLowercase2 = _interopRequireDefault(_isLowercase);
 	
-	var _isUppercase = __webpack_require__(518);
+	var _isUppercase = __webpack_require__(520);
 	
 	var _isUppercase2 = _interopRequireDefault(_isUppercase);
 	
-	var _isAscii = __webpack_require__(519);
+	var _isAscii = __webpack_require__(521);
 	
 	var _isAscii2 = _interopRequireDefault(_isAscii);
 	
-	var _isFullWidth = __webpack_require__(520);
+	var _isFullWidth = __webpack_require__(522);
 	
 	var _isFullWidth2 = _interopRequireDefault(_isFullWidth);
 	
-	var _isHalfWidth = __webpack_require__(521);
+	var _isHalfWidth = __webpack_require__(523);
 	
 	var _isHalfWidth2 = _interopRequireDefault(_isHalfWidth);
 	
-	var _isVariableWidth = __webpack_require__(522);
+	var _isVariableWidth = __webpack_require__(524);
 	
 	var _isVariableWidth2 = _interopRequireDefault(_isVariableWidth);
 	
-	var _isMultibyte = __webpack_require__(523);
+	var _isMultibyte = __webpack_require__(525);
 	
 	var _isMultibyte2 = _interopRequireDefault(_isMultibyte);
 	
-	var _isSurrogatePair = __webpack_require__(524);
+	var _isSurrogatePair = __webpack_require__(526);
 	
 	var _isSurrogatePair2 = _interopRequireDefault(_isSurrogatePair);
 	
-	var _isInt = __webpack_require__(516);
+	var _isInt = __webpack_require__(518);
 	
 	var _isInt2 = _interopRequireDefault(_isInt);
 	
-	var _isFloat = __webpack_require__(525);
+	var _isFloat = __webpack_require__(527);
 	
 	var _isFloat2 = _interopRequireDefault(_isFloat);
 	
-	var _isDecimal = __webpack_require__(526);
+	var _isDecimal = __webpack_require__(528);
 	
 	var _isDecimal2 = _interopRequireDefault(_isDecimal);
 	
-	var _isHexadecimal = __webpack_require__(527);
+	var _isHexadecimal = __webpack_require__(529);
 	
 	var _isHexadecimal2 = _interopRequireDefault(_isHexadecimal);
 	
-	var _isDivisibleBy = __webpack_require__(528);
+	var _isDivisibleBy = __webpack_require__(530);
 	
 	var _isDivisibleBy2 = _interopRequireDefault(_isDivisibleBy);
 	
-	var _isHexColor = __webpack_require__(529);
+	var _isHexColor = __webpack_require__(531);
 	
 	var _isHexColor2 = _interopRequireDefault(_isHexColor);
 	
-	var _isISRC = __webpack_require__(530);
+	var _isISRC = __webpack_require__(532);
 	
 	var _isISRC2 = _interopRequireDefault(_isISRC);
 	
-	var _isMD = __webpack_require__(531);
+	var _isMD = __webpack_require__(533);
 	
 	var _isMD2 = _interopRequireDefault(_isMD);
 	
-	var _isHash = __webpack_require__(532);
+	var _isHash = __webpack_require__(534);
 	
 	var _isHash2 = _interopRequireDefault(_isHash);
 	
-	var _isJSON = __webpack_require__(533);
+	var _isJSON = __webpack_require__(535);
 	
 	var _isJSON2 = _interopRequireDefault(_isJSON);
 	
-	var _isEmpty = __webpack_require__(534);
+	var _isEmpty = __webpack_require__(536);
 	
 	var _isEmpty2 = _interopRequireDefault(_isEmpty);
 	
-	var _isLength = __webpack_require__(535);
+	var _isLength = __webpack_require__(537);
 	
 	var _isLength2 = _interopRequireDefault(_isLength);
 	
-	var _isByteLength = __webpack_require__(505);
+	var _isByteLength = __webpack_require__(507);
 	
 	var _isByteLength2 = _interopRequireDefault(_isByteLength);
 	
-	var _isUUID = __webpack_require__(536);
+	var _isUUID = __webpack_require__(538);
 	
 	var _isUUID2 = _interopRequireDefault(_isUUID);
 	
-	var _isMongoId = __webpack_require__(537);
+	var _isMongoId = __webpack_require__(539);
 	
 	var _isMongoId2 = _interopRequireDefault(_isMongoId);
 	
-	var _isAfter = __webpack_require__(538);
+	var _isAfter = __webpack_require__(540);
 	
 	var _isAfter2 = _interopRequireDefault(_isAfter);
 	
-	var _isBefore = __webpack_require__(539);
+	var _isBefore = __webpack_require__(541);
 	
 	var _isBefore2 = _interopRequireDefault(_isBefore);
 	
-	var _isIn = __webpack_require__(540);
+	var _isIn = __webpack_require__(542);
 	
 	var _isIn2 = _interopRequireDefault(_isIn);
 	
-	var _isCreditCard = __webpack_require__(541);
+	var _isCreditCard = __webpack_require__(543);
 	
 	var _isCreditCard2 = _interopRequireDefault(_isCreditCard);
 	
-	var _isISIN = __webpack_require__(542);
+	var _isISIN = __webpack_require__(544);
 	
 	var _isISIN2 = _interopRequireDefault(_isISIN);
 	
-	var _isISBN = __webpack_require__(543);
+	var _isISBN = __webpack_require__(545);
 	
 	var _isISBN2 = _interopRequireDefault(_isISBN);
 	
-	var _isISSN = __webpack_require__(544);
+	var _isISSN = __webpack_require__(546);
 	
 	var _isISSN2 = _interopRequireDefault(_isISSN);
 	
-	var _isMobilePhone = __webpack_require__(545);
+	var _isMobilePhone = __webpack_require__(547);
 	
 	var _isMobilePhone2 = _interopRequireDefault(_isMobilePhone);
 	
-	var _isCurrency = __webpack_require__(546);
+	var _isCurrency = __webpack_require__(548);
 	
 	var _isCurrency2 = _interopRequireDefault(_isCurrency);
 	
-	var _isISO = __webpack_require__(547);
+	var _isISO = __webpack_require__(549);
 	
 	var _isISO2 = _interopRequireDefault(_isISO);
 	
-	var _isISO31661Alpha = __webpack_require__(548);
+	var _isISO31661Alpha = __webpack_require__(550);
 	
 	var _isISO31661Alpha2 = _interopRequireDefault(_isISO31661Alpha);
 	
-	var _isBase = __webpack_require__(549);
+	var _isBase = __webpack_require__(551);
 	
 	var _isBase2 = _interopRequireDefault(_isBase);
 	
-	var _isDataURI = __webpack_require__(550);
+	var _isDataURI = __webpack_require__(552);
 	
 	var _isDataURI2 = _interopRequireDefault(_isDataURI);
 	
-	var _isMimeType = __webpack_require__(551);
+	var _isMimeType = __webpack_require__(553);
 	
 	var _isMimeType2 = _interopRequireDefault(_isMimeType);
 	
-	var _isLatLong = __webpack_require__(552);
+	var _isLatLong = __webpack_require__(554);
 	
 	var _isLatLong2 = _interopRequireDefault(_isLatLong);
 	
-	var _isPostalCode = __webpack_require__(553);
+	var _isPostalCode = __webpack_require__(555);
 	
 	var _isPostalCode2 = _interopRequireDefault(_isPostalCode);
 	
-	var _ltrim = __webpack_require__(554);
+	var _ltrim = __webpack_require__(556);
 	
 	var _ltrim2 = _interopRequireDefault(_ltrim);
 	
-	var _rtrim = __webpack_require__(555);
+	var _rtrim = __webpack_require__(557);
 	
 	var _rtrim2 = _interopRequireDefault(_rtrim);
 	
-	var _trim = __webpack_require__(556);
+	var _trim = __webpack_require__(558);
 	
 	var _trim2 = _interopRequireDefault(_trim);
 	
-	var _escape = __webpack_require__(557);
+	var _escape = __webpack_require__(559);
 	
 	var _escape2 = _interopRequireDefault(_escape);
 	
-	var _unescape = __webpack_require__(558);
+	var _unescape = __webpack_require__(560);
 	
 	var _unescape2 = _interopRequireDefault(_unescape);
 	
-	var _stripLow = __webpack_require__(559);
+	var _stripLow = __webpack_require__(561);
 	
 	var _stripLow2 = _interopRequireDefault(_stripLow);
 	
-	var _whitelist = __webpack_require__(561);
+	var _whitelist = __webpack_require__(563);
 	
 	var _whitelist2 = _interopRequireDefault(_whitelist);
 	
-	var _blacklist = __webpack_require__(560);
+	var _blacklist = __webpack_require__(562);
 	
 	var _blacklist2 = _interopRequireDefault(_blacklist);
 	
-	var _isWhitelisted = __webpack_require__(562);
+	var _isWhitelisted = __webpack_require__(564);
 	
 	var _isWhitelisted2 = _interopRequireDefault(_isWhitelisted);
 	
-	var _normalizeEmail = __webpack_require__(563);
+	var _normalizeEmail = __webpack_require__(565);
 	
 	var _normalizeEmail2 = _interopRequireDefault(_normalizeEmail);
 	
-	var _toString = __webpack_require__(501);
+	var _toString = __webpack_require__(503);
 	
 	var _toString2 = _interopRequireDefault(_toString);
 	
@@ -54091,7 +54138,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 494 */
+/* 496 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54101,7 +54148,7 @@
 	});
 	exports.default = toDate;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54117,7 +54164,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 495 */
+/* 497 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54136,7 +54183,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 496 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54146,7 +54193,7 @@
 	});
 	exports.default = toFloat;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54161,7 +54208,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 497 */
+/* 499 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54171,7 +54218,7 @@
 	});
 	exports.default = toInt;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54186,7 +54233,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 498 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54196,7 +54243,7 @@
 	});
 	exports.default = toBoolean;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54214,7 +54261,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 499 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54224,7 +54271,7 @@
 	});
 	exports.default = equals;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54239,7 +54286,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 500 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54249,11 +54296,11 @@
 	});
 	exports.default = contains;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _toString = __webpack_require__(501);
+	var _toString = __webpack_require__(503);
 	
 	var _toString2 = _interopRequireDefault(_toString);
 	
@@ -54268,7 +54315,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 501 */
+/* 503 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54301,7 +54348,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 502 */
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54311,7 +54358,7 @@
 	});
 	exports.default = matches;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54329,7 +54376,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 503 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54339,19 +54386,19 @@
 	});
 	exports.default = isEmail;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _merge = __webpack_require__(504);
+	var _merge = __webpack_require__(506);
 	
 	var _merge2 = _interopRequireDefault(_merge);
 	
-	var _isByteLength = __webpack_require__(505);
+	var _isByteLength = __webpack_require__(507);
 	
 	var _isByteLength2 = _interopRequireDefault(_isByteLength);
 	
-	var _isFQDN = __webpack_require__(506);
+	var _isFQDN = __webpack_require__(508);
 	
 	var _isFQDN2 = _interopRequireDefault(_isFQDN);
 	
@@ -54425,7 +54472,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 504 */
+/* 506 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54448,7 +54495,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 505 */
+/* 507 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54467,7 +54514,7 @@
 	
 	exports.default = isByteLength;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54494,7 +54541,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 506 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54504,11 +54551,11 @@
 	});
 	exports.default = isFQDN;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _merge = __webpack_require__(504);
+	var _merge = __webpack_require__(506);
 	
 	var _merge2 = _interopRequireDefault(_merge);
 	
@@ -54562,7 +54609,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 507 */
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54572,19 +54619,19 @@
 	});
 	exports.default = isURL;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _isFQDN = __webpack_require__(506);
+	var _isFQDN = __webpack_require__(508);
 	
 	var _isFQDN2 = _interopRequireDefault(_isFQDN);
 	
-	var _isIP = __webpack_require__(508);
+	var _isIP = __webpack_require__(510);
 	
 	var _isIP2 = _interopRequireDefault(_isIP);
 	
-	var _merge = __webpack_require__(504);
+	var _merge = __webpack_require__(506);
 	
 	var _merge2 = _interopRequireDefault(_merge);
 	
@@ -54716,7 +54763,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 508 */
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54726,7 +54773,7 @@
 	});
 	exports.default = isIP;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54804,7 +54851,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 509 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54814,7 +54861,7 @@
 	});
 	exports.default = isMACAddress;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54831,7 +54878,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 510 */
+/* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54841,7 +54888,7 @@
 	});
 	exports.default = isBoolean;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54856,7 +54903,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 511 */
+/* 513 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54866,11 +54913,11 @@
 	});
 	exports.default = isAlpha;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _alpha = __webpack_require__(512);
+	var _alpha = __webpack_require__(514);
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -54888,7 +54935,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 512 */
+/* 514 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54989,7 +55036,7 @@
 	decimal['pt-BR'] = decimal['pt-PT'];
 
 /***/ },
-/* 513 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54999,11 +55046,11 @@
 	});
 	exports.default = isAlphanumeric;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _alpha = __webpack_require__(512);
+	var _alpha = __webpack_require__(514);
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -55021,7 +55068,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 514 */
+/* 516 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55031,7 +55078,7 @@
 	});
 	exports.default = isNumeric;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55048,7 +55095,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 515 */
+/* 517 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55058,7 +55105,7 @@
 	});
 	exports.default = isPort;
 	
-	var _isInt = __webpack_require__(516);
+	var _isInt = __webpack_require__(518);
 	
 	var _isInt2 = _interopRequireDefault(_isInt);
 	
@@ -55072,7 +55119,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 516 */
+/* 518 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55082,7 +55129,7 @@
 	});
 	exports.default = isInt;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55112,7 +55159,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 517 */
+/* 519 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55122,7 +55169,7 @@
 	});
 	exports.default = isLowercase;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55137,7 +55184,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 518 */
+/* 520 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55147,7 +55194,7 @@
 	});
 	exports.default = isUppercase;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55162,7 +55209,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 519 */
+/* 521 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55172,7 +55219,7 @@
 	});
 	exports.default = isAscii;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55191,7 +55238,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 520 */
+/* 522 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55202,7 +55249,7 @@
 	exports.fullWidth = undefined;
 	exports.default = isFullWidth;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55218,7 +55265,7 @@
 	}
 
 /***/ },
-/* 521 */
+/* 523 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55229,7 +55276,7 @@
 	exports.halfWidth = undefined;
 	exports.default = isHalfWidth;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55245,7 +55292,7 @@
 	}
 
 /***/ },
-/* 522 */
+/* 524 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55255,13 +55302,13 @@
 	});
 	exports.default = isVariableWidth;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _isFullWidth = __webpack_require__(520);
+	var _isFullWidth = __webpack_require__(522);
 	
-	var _isHalfWidth = __webpack_require__(521);
+	var _isHalfWidth = __webpack_require__(523);
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -55274,7 +55321,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 523 */
+/* 525 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55284,7 +55331,7 @@
 	});
 	exports.default = isMultibyte;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55303,7 +55350,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 524 */
+/* 526 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55313,7 +55360,7 @@
 	});
 	exports.default = isSurrogatePair;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55330,7 +55377,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 525 */
+/* 527 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55340,11 +55387,11 @@
 	});
 	exports.default = isFloat;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _alpha = __webpack_require__(512);
+	var _alpha = __webpack_require__(514);
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -55362,7 +55409,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 526 */
+/* 528 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55372,15 +55419,15 @@
 	});
 	exports.default = isDecimal;
 	
-	var _merge = __webpack_require__(504);
+	var _merge = __webpack_require__(506);
 	
 	var _merge2 = _interopRequireDefault(_merge);
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _alpha = __webpack_require__(512);
+	var _alpha = __webpack_require__(514);
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -55410,7 +55457,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 527 */
+/* 529 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55420,7 +55467,7 @@
 	});
 	exports.default = isHexadecimal;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55437,7 +55484,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 528 */
+/* 530 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55447,11 +55494,11 @@
 	});
 	exports.default = isDivisibleBy;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _toFloat = __webpack_require__(496);
+	var _toFloat = __webpack_require__(498);
 	
 	var _toFloat2 = _interopRequireDefault(_toFloat);
 	
@@ -55466,7 +55513,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 529 */
+/* 531 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55476,7 +55523,7 @@
 	});
 	exports.default = isHexColor;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55493,7 +55540,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 530 */
+/* 532 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55503,7 +55550,7 @@
 	});
 	exports.default = isISRC;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55521,7 +55568,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 531 */
+/* 533 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55531,7 +55578,7 @@
 	});
 	exports.default = isMD5;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55548,7 +55595,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 532 */
+/* 534 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55558,7 +55605,7 @@
 	});
 	exports.default = isHash;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55590,7 +55637,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 533 */
+/* 535 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55609,7 +55656,7 @@
 	
 	exports.default = isJSON;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55628,7 +55675,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 534 */
+/* 536 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55638,7 +55685,7 @@
 	});
 	exports.default = isEmpty;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55653,7 +55700,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 535 */
+/* 537 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55672,7 +55719,7 @@
 	
 	exports.default = isLength;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55700,7 +55747,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 536 */
+/* 538 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55710,7 +55757,7 @@
 	});
 	exports.default = isUUID;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55735,7 +55782,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 537 */
+/* 539 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55745,11 +55792,11 @@
 	});
 	exports.default = isMongoId;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _isHexadecimal = __webpack_require__(527);
+	var _isHexadecimal = __webpack_require__(529);
 	
 	var _isHexadecimal2 = _interopRequireDefault(_isHexadecimal);
 	
@@ -55764,7 +55811,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 538 */
+/* 540 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55774,11 +55821,11 @@
 	});
 	exports.default = isAfter;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _toDate = __webpack_require__(494);
+	var _toDate = __webpack_require__(496);
 	
 	var _toDate2 = _interopRequireDefault(_toDate);
 	
@@ -55797,7 +55844,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 539 */
+/* 541 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55807,11 +55854,11 @@
 	});
 	exports.default = isBefore;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _toDate = __webpack_require__(494);
+	var _toDate = __webpack_require__(496);
 	
 	var _toDate2 = _interopRequireDefault(_toDate);
 	
@@ -55830,7 +55877,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 540 */
+/* 542 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55849,11 +55896,11 @@
 	
 	exports.default = isIn;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _toString = __webpack_require__(501);
+	var _toString = __webpack_require__(503);
 	
 	var _toString2 = _interopRequireDefault(_toString);
 	
@@ -55882,7 +55929,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 541 */
+/* 543 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55892,7 +55939,7 @@
 	});
 	exports.default = isCreditCard;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55934,7 +55981,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 542 */
+/* 544 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55944,7 +55991,7 @@
 	});
 	exports.default = isISIN;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55989,7 +56036,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 543 */
+/* 545 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55999,7 +56046,7 @@
 	});
 	exports.default = isISBN;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56053,7 +56100,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 544 */
+/* 546 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56063,7 +56110,7 @@
 	});
 	exports.default = isISSN;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56118,7 +56165,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 545 */
+/* 547 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56128,7 +56175,7 @@
 	});
 	exports.default = isMobilePhone;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56228,7 +56275,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 546 */
+/* 548 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56238,11 +56285,11 @@
 	});
 	exports.default = isCurrency;
 	
-	var _merge = __webpack_require__(504);
+	var _merge = __webpack_require__(506);
 	
 	var _merge2 = _interopRequireDefault(_merge);
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56327,7 +56374,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 547 */
+/* 549 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56337,7 +56384,7 @@
 	});
 	exports.default = isISO8601;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56357,7 +56404,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 548 */
+/* 550 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56367,7 +56414,7 @@
 	});
 	exports.default = isISO31661Alpha2;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56385,7 +56432,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 549 */
+/* 551 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56395,7 +56442,7 @@
 	});
 	exports.default = isBase64;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56417,7 +56464,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 550 */
+/* 552 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56427,7 +56474,7 @@
 	});
 	exports.default = isDataURI;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56473,7 +56520,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 551 */
+/* 553 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56483,7 +56530,7 @@
 	});
 	exports.default = isMimeType;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56532,7 +56579,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 552 */
+/* 554 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56548,7 +56595,7 @@
 	  return lat.test(pair[0]) && long.test(pair[1]);
 	};
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56562,7 +56609,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 553 */
+/* 555 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56590,7 +56637,7 @@
 	  throw new Error('Invalid locale \'' + locale + '\'');
 	};
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56645,7 +56692,7 @@
 	var locales = exports.locales = Object.keys(patterns);
 
 /***/ },
-/* 554 */
+/* 556 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56655,7 +56702,7 @@
 	});
 	exports.default = ltrim;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56671,7 +56718,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 555 */
+/* 557 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56681,7 +56728,7 @@
 	});
 	exports.default = rtrim;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56703,7 +56750,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 556 */
+/* 558 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56713,11 +56760,11 @@
 	});
 	exports.default = trim;
 	
-	var _rtrim = __webpack_require__(555);
+	var _rtrim = __webpack_require__(557);
 	
 	var _rtrim2 = _interopRequireDefault(_rtrim);
 	
-	var _ltrim = __webpack_require__(554);
+	var _ltrim = __webpack_require__(556);
 	
 	var _ltrim2 = _interopRequireDefault(_ltrim);
 	
@@ -56731,7 +56778,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 557 */
+/* 559 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56741,7 +56788,7 @@
 	});
 	exports.default = escape;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56756,7 +56803,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 558 */
+/* 560 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56766,7 +56813,7 @@
 	});
 	exports.default = unescape;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56781,7 +56828,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 559 */
+/* 561 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56791,11 +56838,11 @@
 	});
 	exports.default = stripLow;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _blacklist = __webpack_require__(560);
+	var _blacklist = __webpack_require__(562);
 	
 	var _blacklist2 = _interopRequireDefault(_blacklist);
 	
@@ -56811,7 +56858,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 560 */
+/* 562 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56821,7 +56868,7 @@
 	});
 	exports.default = blacklist;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56836,7 +56883,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 561 */
+/* 563 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56846,7 +56893,7 @@
 	});
 	exports.default = whitelist;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56861,7 +56908,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 562 */
+/* 564 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56871,7 +56918,7 @@
 	});
 	exports.default = isWhitelisted;
 	
-	var _assertString = __webpack_require__(495);
+	var _assertString = __webpack_require__(497);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56891,7 +56938,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 563 */
+/* 565 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56901,7 +56948,7 @@
 	});
 	exports.default = normalizeEmail;
 	
-	var _merge = __webpack_require__(504);
+	var _merge = __webpack_require__(506);
 	
 	var _merge2 = _interopRequireDefault(_merge);
 	
@@ -57027,7 +57074,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 564 */
+/* 566 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -57039,23 +57086,23 @@
 	};
 
 /***/ },
-/* 565 */
+/* 567 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(566);
+	module.exports = __webpack_require__(568);
 
 /***/ },
-/* 566 */
+/* 568 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(567);
-	var bind = __webpack_require__(568);
-	var Axios = __webpack_require__(570);
-	var defaults = __webpack_require__(571);
+	var utils = __webpack_require__(569);
+	var bind = __webpack_require__(570);
+	var Axios = __webpack_require__(572);
+	var defaults = __webpack_require__(573);
 	
 	/**
 	 * Create an instance of Axios
@@ -57088,15 +57135,15 @@
 	};
 	
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(589);
-	axios.CancelToken = __webpack_require__(590);
-	axios.isCancel = __webpack_require__(586);
+	axios.Cancel = __webpack_require__(591);
+	axios.CancelToken = __webpack_require__(592);
+	axios.isCancel = __webpack_require__(588);
 	
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(591);
+	axios.spread = __webpack_require__(593);
 	
 	module.exports = axios;
 	
@@ -57104,15 +57151,15 @@
 	module.exports.default = axios;
 
 /***/ },
-/* 567 */
+/* 569 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var bind = __webpack_require__(568);
-	var isBuffer = __webpack_require__(569);
+	var bind = __webpack_require__(570);
+	var isBuffer = __webpack_require__(571);
 	
 	/*global toString:true*/
 	
@@ -57411,7 +57458,7 @@
 	};
 
 /***/ },
-/* 568 */
+/* 570 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57427,7 +57474,7 @@
 	};
 
 /***/ },
-/* 569 */
+/* 571 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57455,15 +57502,15 @@
 	}
 
 /***/ },
-/* 570 */
+/* 572 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var defaults = __webpack_require__(571);
-	var utils = __webpack_require__(567);
-	var InterceptorManager = __webpack_require__(583);
-	var dispatchRequest = __webpack_require__(584);
+	var defaults = __webpack_require__(573);
+	var utils = __webpack_require__(569);
+	var InterceptorManager = __webpack_require__(585);
+	var dispatchRequest = __webpack_require__(586);
 	
 	/**
 	 * Create a new instance of Axios
@@ -57539,13 +57586,13 @@
 	module.exports = Axios;
 
 /***/ },
-/* 571 */
+/* 573 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(567);
-	var normalizeHeaderName = __webpack_require__(573);
+	var utils = __webpack_require__(569);
+	var normalizeHeaderName = __webpack_require__(575);
 	
 	var DEFAULT_CONTENT_TYPE = {
 	  'Content-Type': 'application/x-www-form-urlencoded'
@@ -57561,10 +57608,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(574);
+	    adapter = __webpack_require__(576);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(574);
+	    adapter = __webpack_require__(576);
 	  }
 	  return adapter;
 	}
@@ -57628,10 +57675,10 @@
 	});
 	
 	module.exports = defaults;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(572)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(574)))
 
 /***/ },
-/* 572 */
+/* 574 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57823,12 +57870,12 @@
 	};
 
 /***/ },
-/* 573 */
+/* 575 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(567);
+	var utils = __webpack_require__(569);
 	
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -57840,18 +57887,18 @@
 	};
 
 /***/ },
-/* 574 */
+/* 576 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(567);
-	var settle = __webpack_require__(575);
-	var buildURL = __webpack_require__(578);
-	var parseHeaders = __webpack_require__(579);
-	var isURLSameOrigin = __webpack_require__(580);
-	var createError = __webpack_require__(576);
-	var btoa = typeof window !== 'undefined' && window.btoa && window.btoa.bind(window) || __webpack_require__(581);
+	var utils = __webpack_require__(569);
+	var settle = __webpack_require__(577);
+	var buildURL = __webpack_require__(580);
+	var parseHeaders = __webpack_require__(581);
+	var isURLSameOrigin = __webpack_require__(582);
+	var createError = __webpack_require__(578);
+	var btoa = typeof window !== 'undefined' && window.btoa && window.btoa.bind(window) || __webpack_require__(583);
 	
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -57944,7 +57991,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(582);
+	      var cookies = __webpack_require__(584);
 	
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ? cookies.read(config.xsrfCookieName) : undefined;
@@ -58017,15 +58064,15 @@
 	    request.send(requestData);
 	  });
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(572)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(574)))
 
 /***/ },
-/* 575 */
+/* 577 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var createError = __webpack_require__(576);
+	var createError = __webpack_require__(578);
 	
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -58045,12 +58092,12 @@
 	};
 
 /***/ },
-/* 576 */
+/* 578 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var enhanceError = __webpack_require__(577);
+	var enhanceError = __webpack_require__(579);
 	
 	/**
 	 * Create an Error with the specified message, config, error code, request and response.
@@ -58068,7 +58115,7 @@
 	};
 
 /***/ },
-/* 577 */
+/* 579 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58095,12 +58142,12 @@
 	};
 
 /***/ },
-/* 578 */
+/* 580 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(567);
+	var utils = __webpack_require__(569);
 	
 	function encode(val) {
 	  return encodeURIComponent(val).replace(/%40/gi, '@').replace(/%3A/gi, ':').replace(/%24/g, '$').replace(/%2C/gi, ',').replace(/%20/g, '+').replace(/%5B/gi, '[').replace(/%5D/gi, ']');
@@ -58161,12 +58208,12 @@
 	};
 
 /***/ },
-/* 579 */
+/* 581 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(567);
+	var utils = __webpack_require__(569);
 	
 	// Headers whose duplicates are ignored by node
 	// c.f. https://nodejs.org/api/http.html#http_message_headers
@@ -58216,12 +58263,12 @@
 	};
 
 /***/ },
-/* 580 */
+/* 582 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(567);
+	var utils = __webpack_require__(569);
 	
 	module.exports = utils.isStandardBrowserEnv() ?
 	
@@ -58284,7 +58331,7 @@
 	}();
 
 /***/ },
-/* 581 */
+/* 583 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58324,12 +58371,12 @@
 	module.exports = btoa;
 
 /***/ },
-/* 582 */
+/* 584 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(567);
+	var utils = __webpack_require__(569);
 	
 	module.exports = utils.isStandardBrowserEnv() ?
 	
@@ -58382,12 +58429,12 @@
 	}();
 
 /***/ },
-/* 583 */
+/* 585 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(567);
+	var utils = __webpack_require__(569);
 	
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -58439,17 +58486,17 @@
 	module.exports = InterceptorManager;
 
 /***/ },
-/* 584 */
+/* 586 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(567);
-	var transformData = __webpack_require__(585);
-	var isCancel = __webpack_require__(586);
-	var defaults = __webpack_require__(571);
-	var isAbsoluteURL = __webpack_require__(587);
-	var combineURLs = __webpack_require__(588);
+	var utils = __webpack_require__(569);
+	var transformData = __webpack_require__(587);
+	var isCancel = __webpack_require__(588);
+	var defaults = __webpack_require__(573);
+	var isAbsoluteURL = __webpack_require__(589);
+	var combineURLs = __webpack_require__(590);
 	
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -58511,12 +58558,12 @@
 	};
 
 /***/ },
-/* 585 */
+/* 587 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(567);
+	var utils = __webpack_require__(569);
 	
 	/**
 	 * Transform the data for a request or a response
@@ -58536,7 +58583,7 @@
 	};
 
 /***/ },
-/* 586 */
+/* 588 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58546,7 +58593,7 @@
 	};
 
 /***/ },
-/* 587 */
+/* 589 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58567,7 +58614,7 @@
 	};
 
 /***/ },
-/* 588 */
+/* 590 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58585,7 +58632,7 @@
 	};
 
 /***/ },
-/* 589 */
+/* 591 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58610,12 +58657,12 @@
 	module.exports = Cancel;
 
 /***/ },
-/* 590 */
+/* 592 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var Cancel = __webpack_require__(589);
+	var Cancel = __webpack_require__(591);
 	
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -58672,7 +58719,7 @@
 	module.exports = CancelToken;
 
 /***/ },
-/* 591 */
+/* 593 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58705,7 +58752,7 @@
 	};
 
 /***/ },
-/* 592 */
+/* 594 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58713,18 +58760,18 @@
 	module.exports = 'https://apiw.lunes.io/api';
 
 /***/ },
-/* 593 */
+/* 595 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var validator = __webpack_require__(492);
+	var validator = __webpack_require__(494);
 	
-	var axios = __webpack_require__(565);
+	var axios = __webpack_require__(567);
 	
-	var BASE_URL = __webpack_require__(592);
+	var BASE_URL = __webpack_require__(594);
 	
 	var endpoint = BASE_URL + '/users/login';
 	
@@ -58772,18 +58819,18 @@
 	}();
 
 /***/ },
-/* 594 */
+/* 596 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var validator = __webpack_require__(492);
+	var validator = __webpack_require__(494);
 	
-	var axios = __webpack_require__(565);
+	var axios = __webpack_require__(567);
 	
-	var BASE_URL = __webpack_require__(592);
+	var BASE_URL = __webpack_require__(594);
 	
 	var endpoint = BASE_URL + '/users/reset-password';
 	
@@ -58831,16 +58878,16 @@
 	}();
 
 /***/ },
-/* 595 */
+/* 597 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(565);
+	var axios = __webpack_require__(567);
 	
-	var BASE_URL = __webpack_require__(592);
+	var BASE_URL = __webpack_require__(594);
 	
 	var endpoint = BASE_URL + '/users/obtain/';
 	
@@ -58880,18 +58927,18 @@
 	}();
 
 /***/ },
-/* 596 */
+/* 598 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(565);
+	var axios = __webpack_require__(567);
 	
-	var validator = __webpack_require__(492);
+	var validator = __webpack_require__(494);
 	
-	var BASE_URL = __webpack_require__(592);
+	var BASE_URL = __webpack_require__(594);
 	
 	var endpoint = BASE_URL + '/users/security-check/create-pin';
 	
@@ -58940,18 +58987,18 @@
 	}();
 
 /***/ },
-/* 597 */
+/* 599 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var validator = __webpack_require__(492);
+	var validator = __webpack_require__(494);
 	
-	var axios = __webpack_require__(565);
+	var axios = __webpack_require__(567);
 	
-	var BASE_URL = __webpack_require__(592);
+	var BASE_URL = __webpack_require__(594);
 	
 	var endpoint = BASE_URL + '/users/confirm-pin';
 	
@@ -59000,16 +59047,16 @@
 	}();
 
 /***/ },
-/* 598 */
+/* 600 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(565);
+	var axios = __webpack_require__(567);
 	
-	var BASE_URL = __webpack_require__(592);
+	var BASE_URL = __webpack_require__(594);
 	
 	var endpoint = BASE_URL + '/users/security-check/confirm-phone';
 	
@@ -59058,16 +59105,16 @@
 	}();
 
 /***/ },
-/* 599 */
+/* 601 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(565);
+	var axios = __webpack_require__(567);
 	
-	var BASE_URL = __webpack_require__(592);
+	var BASE_URL = __webpack_require__(594);
 	
 	var endpoint = BASE_URL + '/users/logout';
 	
@@ -59106,16 +59153,16 @@
 	}();
 
 /***/ },
-/* 600 */
+/* 602 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(565);
+	var axios = __webpack_require__(567);
 	
-	var BASE_URL = __webpack_require__(592);
+	var BASE_URL = __webpack_require__(594);
 	
 	var endpoint = BASE_URL + '/users/update/';
 	
@@ -59155,17 +59202,17 @@
 	}();
 
 /***/ },
-/* 601 */
+/* 603 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var bitcoin = __webpack_require__(602);
-	var getPrice = __webpack_require__(606);
-	var getHistory = __webpack_require__(608);
-	var obtainWallet = __webpack_require__(647);
-	var getFees = __webpack_require__(683);
-	var createDepositWallet = __webpack_require__(686);
+	var bitcoin = __webpack_require__(604);
+	var getPrice = __webpack_require__(608);
+	var getHistory = __webpack_require__(610);
+	var obtainWallet = __webpack_require__(649);
+	var getFees = __webpack_require__(685);
+	var createDepositWallet = __webpack_require__(688);
 	module.exports = {
 	  bitcoin: bitcoin,
 	  obtainWallet: obtainWallet,
@@ -59176,14 +59223,14 @@
 	};
 
 /***/ },
-/* 602 */
+/* 604 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var getBalance = __webpack_require__(603);
-	var getHistory = __webpack_require__(604);
-	var createTransaction = __webpack_require__(605);
+	var getBalance = __webpack_require__(605);
+	var getHistory = __webpack_require__(606);
+	var createTransaction = __webpack_require__(607);
 	
 	module.exports = {
 	  getBalance: getBalance,
@@ -59192,16 +59239,16 @@
 	};
 
 /***/ },
-/* 603 */
+/* 605 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(565);
+	var axios = __webpack_require__(567);
 	
-	var endpoint = __webpack_require__(592) + '/coins/balance';
+	var endpoint = __webpack_require__(594) + '/coins/balance';
 	
 	module.exports = function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(params, accessToken) {
@@ -59248,16 +59295,16 @@
 	}();
 
 /***/ },
-/* 604 */
+/* 606 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(565);
+	var axios = __webpack_require__(567);
 	
-	var endpoint = __webpack_require__(592) + '/coins/history';
+	var endpoint = __webpack_require__(594) + '/coins/history';
 	
 	module.exports = function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(params, accessToken) {
@@ -59295,16 +59342,16 @@
 	}();
 
 /***/ },
-/* 605 */
+/* 607 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(565);
+	var axios = __webpack_require__(567);
 	
-	var createEndpoint = __webpack_require__(592) + '/coins/tx/create/btc';
+	var createEndpoint = __webpack_require__(594) + '/coins/tx/create/btc';
 	
 	/**
 	 *
@@ -59379,17 +59426,17 @@
 	}();
 
 /***/ },
-/* 606 */
+/* 608 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(565);
-	var validator = __webpack_require__(492);
+	var axios = __webpack_require__(567);
+	var validator = __webpack_require__(494);
 	
-	var endpoint = __webpack_require__(607) + '/price';
+	var endpoint = __webpack_require__(609) + '/price';
 	
 	module.exports = function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(params) {
@@ -59430,7 +59477,7 @@
 	}();
 
 /***/ },
-/* 607 */
+/* 609 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59438,17 +59485,17 @@
 	module.exports = 'https://min-api.cryptocompare.com/data';
 
 /***/ },
-/* 608 */
+/* 610 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(565);
-	var Promise = __webpack_require__(609);
+	var axios = __webpack_require__(567);
+	var Promise = __webpack_require__(611);
 	
-	var apiUrl = '' + __webpack_require__(607);
+	var apiUrl = '' + __webpack_require__(609);
 	
 	module.exports = function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(params) {
@@ -59552,7 +59599,7 @@
 	};
 
 /***/ },
-/* 609 */
+/* 611 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -59565,12 +59612,12 @@
 	    } catch (e) {}
 	    return bluebird;
 	}
-	var bluebird = __webpack_require__(610)();
+	var bluebird = __webpack_require__(612)();
 	bluebird.noConflict = noConflict;
 	module.exports = bluebird;
 
 /***/ },
-/* 610 */
+/* 612 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -59587,7 +59634,7 @@
 	    };
 	    function Proxyable() {}
 	    var UNDEFINED_BINDING = {};
-	    var util = __webpack_require__(611);
+	    var util = __webpack_require__(613);
 	
 	    var getDomain;
 	    if (util.isNode) {
@@ -59603,11 +59650,11 @@
 	    }
 	    util.notEnumerableProp(Promise, "_getDomain", getDomain);
 	
-	    var es5 = __webpack_require__(612);
-	    var Async = __webpack_require__(613);
+	    var es5 = __webpack_require__(614);
+	    var Async = __webpack_require__(615);
 	    var async = new Async();
 	    es5.defineProperty(Promise, "_async", { value: async });
-	    var errors = __webpack_require__(618);
+	    var errors = __webpack_require__(620);
 	    var TypeError = Promise.TypeError = errors.TypeError;
 	    Promise.RangeError = errors.RangeError;
 	    var CancellationError = Promise.CancellationError = errors.CancellationError;
@@ -59618,16 +59665,16 @@
 	    var INTERNAL = function INTERNAL() {};
 	    var APPLY = {};
 	    var NEXT_FILTER = {};
-	    var tryConvertToPromise = __webpack_require__(619)(Promise, INTERNAL);
-	    var PromiseArray = __webpack_require__(620)(Promise, INTERNAL, tryConvertToPromise, apiRejection, Proxyable);
-	    var Context = __webpack_require__(621)(Promise);
+	    var tryConvertToPromise = __webpack_require__(621)(Promise, INTERNAL);
+	    var PromiseArray = __webpack_require__(622)(Promise, INTERNAL, tryConvertToPromise, apiRejection, Proxyable);
+	    var Context = __webpack_require__(623)(Promise);
 	    /*jshint unused:false*/
 	    var createContext = Context.create;
-	    var debug = __webpack_require__(622)(Promise, Context);
+	    var debug = __webpack_require__(624)(Promise, Context);
 	    var CapturedTrace = debug.CapturedTrace;
-	    var PassThroughHandlerContext = __webpack_require__(623)(Promise, tryConvertToPromise, NEXT_FILTER);
-	    var catchFilter = __webpack_require__(624)(NEXT_FILTER);
-	    var nodebackForPromise = __webpack_require__(625);
+	    var PassThroughHandlerContext = __webpack_require__(625)(Promise, tryConvertToPromise, NEXT_FILTER);
+	    var catchFilter = __webpack_require__(626)(NEXT_FILTER);
+	    var nodebackForPromise = __webpack_require__(627);
 	    var errorObj = util.errorObj;
 	    var tryCatch = util.tryCatch;
 	    function check(self, executor) {
@@ -60262,29 +60309,29 @@
 	
 	    util.notEnumerableProp(Promise, "_makeSelfResolutionError", makeSelfResolutionError);
 	
-	    __webpack_require__(626)(Promise, INTERNAL, tryConvertToPromise, apiRejection, debug);
-	    __webpack_require__(627)(Promise, INTERNAL, tryConvertToPromise, debug);
-	    __webpack_require__(628)(Promise, PromiseArray, apiRejection, debug);
-	    __webpack_require__(629)(Promise);
-	    __webpack_require__(630)(Promise);
-	    __webpack_require__(631)(Promise, PromiseArray, tryConvertToPromise, INTERNAL, async, getDomain);
+	    __webpack_require__(628)(Promise, INTERNAL, tryConvertToPromise, apiRejection, debug);
+	    __webpack_require__(629)(Promise, INTERNAL, tryConvertToPromise, debug);
+	    __webpack_require__(630)(Promise, PromiseArray, apiRejection, debug);
+	    __webpack_require__(631)(Promise);
+	    __webpack_require__(632)(Promise);
+	    __webpack_require__(633)(Promise, PromiseArray, tryConvertToPromise, INTERNAL, async, getDomain);
 	    Promise.Promise = Promise;
 	    Promise.version = "3.5.1";
-	    __webpack_require__(632)(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
-	    __webpack_require__(633)(Promise);
-	    __webpack_require__(634)(Promise, apiRejection, tryConvertToPromise, createContext, INTERNAL, debug);
-	    __webpack_require__(635)(Promise, INTERNAL, debug);
-	    __webpack_require__(636)(Promise, apiRejection, INTERNAL, tryConvertToPromise, Proxyable, debug);
-	    __webpack_require__(637)(Promise);
-	    __webpack_require__(638)(Promise, INTERNAL);
-	    __webpack_require__(639)(Promise, PromiseArray, tryConvertToPromise, apiRejection);
-	    __webpack_require__(640)(Promise, INTERNAL, tryConvertToPromise, apiRejection);
-	    __webpack_require__(641)(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
-	    __webpack_require__(642)(Promise, PromiseArray, debug);
-	    __webpack_require__(643)(Promise, PromiseArray, apiRejection);
-	    __webpack_require__(644)(Promise, INTERNAL);
-	    __webpack_require__(645)(Promise, INTERNAL);
-	    __webpack_require__(646)(Promise);
+	    __webpack_require__(634)(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
+	    __webpack_require__(635)(Promise);
+	    __webpack_require__(636)(Promise, apiRejection, tryConvertToPromise, createContext, INTERNAL, debug);
+	    __webpack_require__(637)(Promise, INTERNAL, debug);
+	    __webpack_require__(638)(Promise, apiRejection, INTERNAL, tryConvertToPromise, Proxyable, debug);
+	    __webpack_require__(639)(Promise);
+	    __webpack_require__(640)(Promise, INTERNAL);
+	    __webpack_require__(641)(Promise, PromiseArray, tryConvertToPromise, apiRejection);
+	    __webpack_require__(642)(Promise, INTERNAL, tryConvertToPromise, apiRejection);
+	    __webpack_require__(643)(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
+	    __webpack_require__(644)(Promise, PromiseArray, debug);
+	    __webpack_require__(645)(Promise, PromiseArray, apiRejection);
+	    __webpack_require__(646)(Promise, INTERNAL);
+	    __webpack_require__(647)(Promise, INTERNAL);
+	    __webpack_require__(648)(Promise);
 	
 	    util.toFastProperties(Promise);
 	    util.toFastProperties(Promise.prototype);
@@ -60308,17 +60355,17 @@
 	    debug.setBounds(Async.firstLineError, util.lastLineError);
 	    return Promise;
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(572)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(574)))
 
 /***/ },
-/* 611 */
+/* 613 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {"use strict";
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var es5 = __webpack_require__(612);
+	var es5 = __webpack_require__(614);
 	var canEvaluate = typeof navigator == "undefined";
 	
 	var errorObj = { e: {} };
@@ -60677,10 +60724,10 @@
 	    ret.lastLineError = e;
 	}
 	module.exports = ret;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(572)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(574)))
 
 /***/ },
-/* 612 */
+/* 614 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -60766,7 +60813,7 @@
 	}
 
 /***/ },
-/* 613 */
+/* 615 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -60777,9 +60824,9 @@
 	} catch (e) {
 	    firstLineError = e;
 	}
-	var schedule = __webpack_require__(614);
-	var Queue = __webpack_require__(617);
-	var util = __webpack_require__(611);
+	var schedule = __webpack_require__(616);
+	var Queue = __webpack_require__(619);
+	var util = __webpack_require__(613);
 	
 	function Async() {
 	    this._customScheduler = false;
@@ -60935,15 +60982,15 @@
 	
 	module.exports = Async;
 	module.exports.firstLineError = firstLineError;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(572)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(574)))
 
 /***/ },
-/* 614 */
+/* 616 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process, setImmediate) {"use strict";
 	
-	var util = __webpack_require__(611);
+	var util = __webpack_require__(613);
 	var schedule;
 	var noAsyncScheduler = function noAsyncScheduler() {
 	    throw new Error("No async scheduler available\n\n    See http://goo.gl/MqrFmX\n");
@@ -61001,10 +61048,10 @@
 	    schedule = noAsyncScheduler;
 	}
 	module.exports = schedule;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(572), __webpack_require__(615).setImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(574), __webpack_require__(617).setImmediate))
 
 /***/ },
-/* 615 */
+/* 617 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -61057,12 +61104,12 @@
 	};
 	
 	// setimmediate attaches itself to the global object
-	__webpack_require__(616);
+	__webpack_require__(618);
 	exports.setImmediate = setImmediate;
 	exports.clearImmediate = clearImmediate;
 
 /***/ },
-/* 616 */
+/* 618 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {"use strict";
@@ -61249,10 +61296,10 @@
 	    attachTo.setImmediate = setImmediate;
 	    attachTo.clearImmediate = clearImmediate;
 	})(typeof self === "undefined" ? typeof global === "undefined" ? undefined : global : self);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(572)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(574)))
 
 /***/ },
-/* 617 */
+/* 619 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -61331,14 +61378,14 @@
 	module.exports = Queue;
 
 /***/ },
-/* 618 */
+/* 620 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var es5 = __webpack_require__(612);
+	var es5 = __webpack_require__(614);
 	var Objectfreeze = es5.freeze;
-	var util = __webpack_require__(611);
+	var util = __webpack_require__(613);
 	var inherits = util.inherits;
 	var notEnumerableProp = util.notEnumerableProp;
 	
@@ -61449,13 +61496,13 @@
 	};
 
 /***/ },
-/* 619 */
+/* 621 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, INTERNAL) {
-	    var util = __webpack_require__(611);
+	    var util = __webpack_require__(613);
 	    var errorObj = util.errorObj;
 	    var isObject = util.isObject;
 	
@@ -61535,13 +61582,13 @@
 	};
 
 /***/ },
-/* 620 */
+/* 622 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, INTERNAL, tryConvertToPromise, apiRejection, Proxyable) {
-	    var util = __webpack_require__(611);
+	    var util = __webpack_require__(613);
 	    var isArray = util.isArray;
 	
 	    function toResolutionValue(val) {
@@ -61720,7 +61767,7 @@
 	};
 
 /***/ },
-/* 621 */
+/* 623 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -61797,7 +61844,7 @@
 	};
 
 /***/ },
-/* 622 */
+/* 624 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -61807,8 +61854,8 @@
 	module.exports = function (Promise, Context) {
 	    var getDomain = Promise._getDomain;
 	    var async = Promise._async;
-	    var Warning = __webpack_require__(618).Warning;
-	    var util = __webpack_require__(611);
+	    var Warning = __webpack_require__(620).Warning;
+	    var util = __webpack_require__(613);
 	    var canAttachTrace = util.canAttachTrace;
 	    var unhandledRejectionHandled;
 	    var possiblyUnhandledRejection;
@@ -62679,19 +62726,19 @@
 	        fireGlobalEvent: fireGlobalEvent
 	    };
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(572)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(574)))
 
 /***/ },
-/* 623 */
+/* 625 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, tryConvertToPromise, NEXT_FILTER) {
-	    var util = __webpack_require__(611);
+	    var util = __webpack_require__(613);
 	    var CancellationError = Promise.CancellationError;
 	    var errorObj = util.errorObj;
-	    var catchFilter = __webpack_require__(624)(NEXT_FILTER);
+	    var catchFilter = __webpack_require__(626)(NEXT_FILTER);
 	
 	    function PassThroughHandlerContext(promise, type, handler) {
 	        this.promise = promise;
@@ -62811,14 +62858,14 @@
 	};
 
 /***/ },
-/* 624 */
+/* 626 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (NEXT_FILTER) {
-	    var util = __webpack_require__(611);
-	    var getKeys = __webpack_require__(612).keys;
+	    var util = __webpack_require__(613);
+	    var getKeys = __webpack_require__(614).keys;
 	    var tryCatch = util.tryCatch;
 	    var errorObj = util.errorObj;
 	
@@ -62858,16 +62905,16 @@
 	};
 
 /***/ },
-/* 625 */
+/* 627 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var util = __webpack_require__(611);
+	var util = __webpack_require__(613);
 	var maybeWrapAsError = util.maybeWrapAsError;
-	var errors = __webpack_require__(618);
+	var errors = __webpack_require__(620);
 	var OperationalError = errors.OperationalError;
-	var es5 = __webpack_require__(612);
+	var es5 = __webpack_require__(614);
 	
 	function isUntypedError(obj) {
 	    return obj instanceof Error && es5.getPrototypeOf(obj) === Error.prototype;
@@ -62916,13 +62963,13 @@
 	module.exports = nodebackForPromise;
 
 /***/ },
-/* 626 */
+/* 628 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, INTERNAL, tryConvertToPromise, apiRejection, debug) {
-	    var util = __webpack_require__(611);
+	    var util = __webpack_require__(613);
 	    var tryCatch = util.tryCatch;
 	
 	    Promise.method = function (fn) {
@@ -62973,7 +63020,7 @@
 	};
 
 /***/ },
-/* 627 */
+/* 629 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -63045,13 +63092,13 @@
 	};
 
 /***/ },
-/* 628 */
+/* 630 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, apiRejection, debug) {
-	    var util = __webpack_require__(611);
+	    var util = __webpack_require__(613);
 	    var tryCatch = util.tryCatch;
 	    var errorObj = util.errorObj;
 	    var async = Promise._async;
@@ -63178,7 +63225,7 @@
 	};
 
 /***/ },
-/* 629 */
+/* 631 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -63228,7 +63275,7 @@
 	};
 
 /***/ },
-/* 630 */
+/* 632 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -63334,13 +63381,13 @@
 	};
 
 /***/ },
-/* 631 */
+/* 633 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, tryConvertToPromise, INTERNAL, async, getDomain) {
-	    var util = __webpack_require__(611);
+	    var util = __webpack_require__(613);
 	    var canEvaluate = util.canEvaluate;
 	    var tryCatch = util.tryCatch;
 	    var errorObj = util.errorObj;
@@ -63500,7 +63547,7 @@
 	};
 
 /***/ },
-/* 632 */
+/* 634 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63509,7 +63556,7 @@
 	
 	module.exports = function (Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug) {
 	    var getDomain = Promise._getDomain;
-	    var util = __webpack_require__(611);
+	    var util = __webpack_require__(613);
 	    var tryCatch = util.tryCatch;
 	    var errorObj = util.errorObj;
 	    var async = Promise._async;
@@ -63657,7 +63704,7 @@
 	};
 
 /***/ },
-/* 633 */
+/* 635 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63670,7 +63717,7 @@
 	}
 	
 	module.exports = function (Promise) {
-	    var util = __webpack_require__(611);
+	    var util = __webpack_require__(613);
 	    var canEvaluate = util.canEvaluate;
 	    var isIdentifier = util.isIdentifier;
 	
@@ -63787,15 +63834,15 @@
 	};
 
 /***/ },
-/* 634 */
+/* 636 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, apiRejection, tryConvertToPromise, createContext, INTERNAL, debug) {
-	    var util = __webpack_require__(611);
-	    var TypeError = __webpack_require__(618).TypeError;
-	    var inherits = __webpack_require__(611).inherits;
+	    var util = __webpack_require__(613);
+	    var TypeError = __webpack_require__(620).TypeError;
+	    var inherits = __webpack_require__(613).inherits;
 	    var errorObj = util.errorObj;
 	    var tryCatch = util.tryCatch;
 	    var NULL = {};
@@ -64004,13 +64051,13 @@
 	};
 
 /***/ },
-/* 635 */
+/* 637 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, INTERNAL, debug) {
-	    var util = __webpack_require__(611);
+	    var util = __webpack_require__(613);
 	    var TimeoutError = Promise.TimeoutError;
 	
 	    function HandleWrapper(handle) {
@@ -64103,15 +64150,15 @@
 	};
 
 /***/ },
-/* 636 */
+/* 638 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, apiRejection, INTERNAL, tryConvertToPromise, Proxyable, debug) {
-	    var errors = __webpack_require__(618);
+	    var errors = __webpack_require__(620);
 	    var TypeError = errors.TypeError;
-	    var util = __webpack_require__(611);
+	    var util = __webpack_require__(613);
 	    var errorObj = util.errorObj;
 	    var tryCatch = util.tryCatch;
 	    var yieldHandlers = [];
@@ -64306,13 +64353,13 @@
 	};
 
 /***/ },
-/* 637 */
+/* 639 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise) {
-	    var util = __webpack_require__(611);
+	    var util = __webpack_require__(613);
 	    var async = Promise._async;
 	    var tryCatch = util.tryCatch;
 	    var errorObj = util.errorObj;
@@ -64360,7 +64407,7 @@
 	};
 
 /***/ },
-/* 638 */
+/* 640 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64369,12 +64416,12 @@
 	
 	module.exports = function (Promise, INTERNAL) {
 	    var THIS = {};
-	    var util = __webpack_require__(611);
-	    var nodebackForPromise = __webpack_require__(625);
+	    var util = __webpack_require__(613);
+	    var nodebackForPromise = __webpack_require__(627);
 	    var withAppended = util.withAppended;
 	    var maybeWrapAsError = util.maybeWrapAsError;
 	    var canEvaluate = util.canEvaluate;
-	    var TypeError = __webpack_require__(618).TypeError;
+	    var TypeError = __webpack_require__(620).TypeError;
 	    var defaultSuffix = "Async";
 	    var defaultPromisified = { __isPromisified__: true };
 	    var noCopyProps = ["arity", "length", "name", "arguments", "caller", "callee", "prototype", "__isPromisified__"];
@@ -64627,15 +64674,15 @@
 	};
 
 /***/ },
-/* 639 */
+/* 641 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, tryConvertToPromise, apiRejection) {
-	    var util = __webpack_require__(611);
+	    var util = __webpack_require__(613);
 	    var isObject = util.isObject;
-	    var es5 = __webpack_require__(612);
+	    var es5 = __webpack_require__(614);
 	    var Es6Map;
 	    if (typeof Map === "function") Es6Map = Map;
 	
@@ -64749,13 +64796,13 @@
 	};
 
 /***/ },
-/* 640 */
+/* 642 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, INTERNAL, tryConvertToPromise, apiRejection) {
-	    var util = __webpack_require__(611);
+	    var util = __webpack_require__(613);
 	
 	    var raceLater = function raceLater(promise) {
 	        return promise.then(function (array) {
@@ -64801,14 +64848,14 @@
 	};
 
 /***/ },
-/* 641 */
+/* 643 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug) {
 	    var getDomain = Promise._getDomain;
-	    var util = __webpack_require__(611);
+	    var util = __webpack_require__(613);
 	    var tryCatch = util.tryCatch;
 	
 	    function ReductionPromiseArray(promises, fn, initialValue, _each) {
@@ -64964,14 +65011,14 @@
 	};
 
 /***/ },
-/* 642 */
+/* 644 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, debug) {
 	    var PromiseInspection = Promise.PromiseInspection;
-	    var util = __webpack_require__(611);
+	    var util = __webpack_require__(613);
 	
 	    function SettledPromiseArray(values) {
 	        this.constructor$(values);
@@ -65012,15 +65059,15 @@
 	};
 
 /***/ },
-/* 643 */
+/* 645 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, apiRejection) {
-	    var util = __webpack_require__(611);
-	    var RangeError = __webpack_require__(618).RangeError;
-	    var AggregateError = __webpack_require__(618).AggregateError;
+	    var util = __webpack_require__(613);
+	    var RangeError = __webpack_require__(620).RangeError;
+	    var AggregateError = __webpack_require__(620).AggregateError;
 	    var isArray = util.isArray;
 	    var CANCELLATION = {};
 	
@@ -65160,7 +65207,7 @@
 	};
 
 /***/ },
-/* 644 */
+/* 646 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -65178,7 +65225,7 @@
 	};
 
 /***/ },
-/* 645 */
+/* 647 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -65211,7 +65258,7 @@
 	};
 
 /***/ },
-/* 646 */
+/* 648 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -65237,12 +65284,12 @@
 	};
 
 /***/ },
-/* 647 */
+/* 649 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var Mnemonic = __webpack_require__(648);
+	var Mnemonic = __webpack_require__(650);
 	
 	module.exports = function (encryptedWallet, password) {
 	  try {
@@ -65257,12 +65304,12 @@
 	};
 
 /***/ },
-/* 648 */
+/* 650 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var CryptoJS = __webpack_require__(649);
+	var CryptoJS = __webpack_require__(651);
 	
 	var encryptMnemonic = function encryptMnemonic(mnemonic, passphrase) {
 	  var ciphertext = CryptoJS.AES.encrypt(mnemonic, passphrase);
@@ -65281,7 +65328,7 @@
 	};
 
 /***/ },
-/* 649 */
+/* 651 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -65291,10 +65338,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(651), __webpack_require__(652), __webpack_require__(653), __webpack_require__(654), __webpack_require__(655), __webpack_require__(656), __webpack_require__(657), __webpack_require__(658), __webpack_require__(659), __webpack_require__(660), __webpack_require__(661), __webpack_require__(662), __webpack_require__(663), __webpack_require__(664), __webpack_require__(665), __webpack_require__(666), __webpack_require__(667), __webpack_require__(668), __webpack_require__(669), __webpack_require__(670), __webpack_require__(671), __webpack_require__(672), __webpack_require__(673), __webpack_require__(674), __webpack_require__(675), __webpack_require__(676), __webpack_require__(677), __webpack_require__(678), __webpack_require__(679), __webpack_require__(680), __webpack_require__(681), __webpack_require__(682));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(653), __webpack_require__(654), __webpack_require__(655), __webpack_require__(656), __webpack_require__(657), __webpack_require__(658), __webpack_require__(659), __webpack_require__(660), __webpack_require__(661), __webpack_require__(662), __webpack_require__(663), __webpack_require__(664), __webpack_require__(665), __webpack_require__(666), __webpack_require__(667), __webpack_require__(668), __webpack_require__(669), __webpack_require__(670), __webpack_require__(671), __webpack_require__(672), __webpack_require__(673), __webpack_require__(674), __webpack_require__(675), __webpack_require__(676), __webpack_require__(677), __webpack_require__(678), __webpack_require__(679), __webpack_require__(680), __webpack_require__(681), __webpack_require__(682), __webpack_require__(683), __webpack_require__(684));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(651), __webpack_require__(652), __webpack_require__(653), __webpack_require__(654), __webpack_require__(655), __webpack_require__(656), __webpack_require__(657), __webpack_require__(658), __webpack_require__(659), __webpack_require__(660), __webpack_require__(661), __webpack_require__(662), __webpack_require__(663), __webpack_require__(664), __webpack_require__(665), __webpack_require__(666), __webpack_require__(667), __webpack_require__(668), __webpack_require__(669), __webpack_require__(670), __webpack_require__(671), __webpack_require__(672), __webpack_require__(673), __webpack_require__(674), __webpack_require__(675), __webpack_require__(676), __webpack_require__(677), __webpack_require__(678), __webpack_require__(679), __webpack_require__(680), __webpack_require__(681), __webpack_require__(682)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(653), __webpack_require__(654), __webpack_require__(655), __webpack_require__(656), __webpack_require__(657), __webpack_require__(658), __webpack_require__(659), __webpack_require__(660), __webpack_require__(661), __webpack_require__(662), __webpack_require__(663), __webpack_require__(664), __webpack_require__(665), __webpack_require__(666), __webpack_require__(667), __webpack_require__(668), __webpack_require__(669), __webpack_require__(670), __webpack_require__(671), __webpack_require__(672), __webpack_require__(673), __webpack_require__(674), __webpack_require__(675), __webpack_require__(676), __webpack_require__(677), __webpack_require__(678), __webpack_require__(679), __webpack_require__(680), __webpack_require__(681), __webpack_require__(682), __webpack_require__(683), __webpack_require__(684)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			root.CryptoJS = factory(root.CryptoJS);
@@ -65305,7 +65352,7 @@
 	});
 
 /***/ },
-/* 650 */
+/* 652 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66068,7 +66115,7 @@
 	});
 
 /***/ },
-/* 651 */
+/* 653 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66078,10 +66125,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650));
+			module.exports = exports = factory(__webpack_require__(652));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -66377,7 +66424,7 @@
 	});
 
 /***/ },
-/* 652 */
+/* 654 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66387,10 +66434,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650));
+			module.exports = exports = factory(__webpack_require__(652));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -66449,7 +66496,7 @@
 	});
 
 /***/ },
-/* 653 */
+/* 655 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66459,10 +66506,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650));
+			module.exports = exports = factory(__webpack_require__(652));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -66603,7 +66650,7 @@
 	});
 
 /***/ },
-/* 654 */
+/* 656 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66613,10 +66660,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650));
+			module.exports = exports = factory(__webpack_require__(652));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -66742,7 +66789,7 @@
 	});
 
 /***/ },
-/* 655 */
+/* 657 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66752,10 +66799,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650));
+			module.exports = exports = factory(__webpack_require__(652));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67002,7 +67049,7 @@
 	});
 
 /***/ },
-/* 656 */
+/* 658 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67012,10 +67059,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650));
+			module.exports = exports = factory(__webpack_require__(652));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67153,7 +67200,7 @@
 	});
 
 /***/ },
-/* 657 */
+/* 659 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67163,10 +67210,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650));
+			module.exports = exports = factory(__webpack_require__(652));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67353,7 +67400,7 @@
 	});
 
 /***/ },
-/* 658 */
+/* 660 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67363,10 +67410,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(657));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(659));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(657)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(659)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67435,7 +67482,7 @@
 	});
 
 /***/ },
-/* 659 */
+/* 661 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67445,10 +67492,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(651));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(653));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(651)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(653)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67717,7 +67764,7 @@
 	});
 
 /***/ },
-/* 660 */
+/* 662 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67727,10 +67774,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(651), __webpack_require__(659));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(653), __webpack_require__(661));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(651), __webpack_require__(659)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(653), __webpack_require__(661)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67800,7 +67847,7 @@
 	});
 
 /***/ },
-/* 661 */
+/* 663 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67810,10 +67857,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(651));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(653));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(651)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(653)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -68118,7 +68165,7 @@
 	});
 
 /***/ },
-/* 662 */
+/* 664 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -68128,10 +68175,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650));
+			module.exports = exports = factory(__webpack_require__(652));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -68358,7 +68405,7 @@
 	});
 
 /***/ },
-/* 663 */
+/* 665 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -68368,10 +68415,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650));
+			module.exports = exports = factory(__webpack_require__(652));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -68506,7 +68553,7 @@
 	});
 
 /***/ },
-/* 664 */
+/* 666 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -68516,10 +68563,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(656), __webpack_require__(663));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(658), __webpack_require__(665));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(656), __webpack_require__(663)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(658), __webpack_require__(665)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -68656,7 +68703,7 @@
 	});
 
 /***/ },
-/* 665 */
+/* 667 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -68666,10 +68713,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(656), __webpack_require__(663));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(658), __webpack_require__(665));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(656), __webpack_require__(663)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(658), __webpack_require__(665)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -68793,7 +68840,7 @@
 	});
 
 /***/ },
-/* 666 */
+/* 668 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -68803,10 +68850,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(665));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(667));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(665)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(667)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -69678,7 +69725,7 @@
 	});
 
 /***/ },
-/* 667 */
+/* 669 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -69688,10 +69735,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(666));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(666)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -69761,7 +69808,7 @@
 	});
 
 /***/ },
-/* 668 */
+/* 670 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -69771,10 +69818,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(666));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(666)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -69824,7 +69871,7 @@
 	});
 
 /***/ },
-/* 669 */
+/* 671 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -69834,10 +69881,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(666));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(666)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -69931,7 +69978,7 @@
 	});
 
 /***/ },
-/* 670 */
+/* 672 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -69941,10 +69988,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(666));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(666)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -69990,7 +70037,7 @@
 	});
 
 /***/ },
-/* 671 */
+/* 673 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70000,10 +70047,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(666));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(666)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70035,7 +70082,7 @@
 	});
 
 /***/ },
-/* 672 */
+/* 674 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70045,10 +70092,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(666));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(666)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70089,7 +70136,7 @@
 	});
 
 /***/ },
-/* 673 */
+/* 675 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70099,10 +70146,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(666));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(666)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70137,7 +70184,7 @@
 	});
 
 /***/ },
-/* 674 */
+/* 676 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70147,10 +70194,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(666));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(666)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70182,7 +70229,7 @@
 	});
 
 /***/ },
-/* 675 */
+/* 677 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70192,10 +70239,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(666));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(666)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70232,7 +70279,7 @@
 	});
 
 /***/ },
-/* 676 */
+/* 678 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70242,10 +70289,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(666));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(666)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70265,7 +70312,7 @@
 	});
 
 /***/ },
-/* 677 */
+/* 679 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70275,10 +70322,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(666));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(666)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70336,7 +70383,7 @@
 	});
 
 /***/ },
-/* 678 */
+/* 680 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70346,10 +70393,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(654), __webpack_require__(655), __webpack_require__(665), __webpack_require__(666));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(656), __webpack_require__(657), __webpack_require__(667), __webpack_require__(668));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(654), __webpack_require__(655), __webpack_require__(665), __webpack_require__(666)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(656), __webpack_require__(657), __webpack_require__(667), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70572,7 +70619,7 @@
 	});
 
 /***/ },
-/* 679 */
+/* 681 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70582,10 +70629,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(654), __webpack_require__(655), __webpack_require__(665), __webpack_require__(666));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(656), __webpack_require__(657), __webpack_require__(667), __webpack_require__(668));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(654), __webpack_require__(655), __webpack_require__(665), __webpack_require__(666)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(656), __webpack_require__(657), __webpack_require__(667), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -71318,7 +71365,7 @@
 	});
 
 /***/ },
-/* 680 */
+/* 682 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -71328,10 +71375,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(654), __webpack_require__(655), __webpack_require__(665), __webpack_require__(666));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(656), __webpack_require__(657), __webpack_require__(667), __webpack_require__(668));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(654), __webpack_require__(655), __webpack_require__(665), __webpack_require__(666)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(656), __webpack_require__(657), __webpack_require__(667), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -71462,7 +71509,7 @@
 	});
 
 /***/ },
-/* 681 */
+/* 683 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -71472,10 +71519,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(654), __webpack_require__(655), __webpack_require__(665), __webpack_require__(666));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(656), __webpack_require__(657), __webpack_require__(667), __webpack_require__(668));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(654), __webpack_require__(655), __webpack_require__(665), __webpack_require__(666)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(656), __webpack_require__(657), __webpack_require__(667), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -71647,7 +71694,7 @@
 	});
 
 /***/ },
-/* 682 */
+/* 684 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -71657,10 +71704,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(650), __webpack_require__(654), __webpack_require__(655), __webpack_require__(665), __webpack_require__(666));
+			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(656), __webpack_require__(657), __webpack_require__(667), __webpack_require__(668));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(650), __webpack_require__(654), __webpack_require__(655), __webpack_require__(665), __webpack_require__(666)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(656), __webpack_require__(657), __webpack_require__(667), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -71831,15 +71878,15 @@
 	});
 
 /***/ },
-/* 683 */
+/* 685 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(565);
-	var _ = __webpack_require__(684);
+	var axios = __webpack_require__(567);
+	var _ = __webpack_require__(686);
 	
 	var feeURL = 'https://bitaps.com/api/fee';
 	
@@ -71886,7 +71933,7 @@
 	};
 
 /***/ },
-/* 684 */
+/* 686 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {'use strict';var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};/**
@@ -81297,7 +81344,7 @@
 	lodash.prototype.at=wrapperAt;lodash.prototype.chain=wrapperChain;lodash.prototype.commit=wrapperCommit;lodash.prototype.next=wrapperNext;lodash.prototype.plant=wrapperPlant;lodash.prototype.reverse=wrapperReverse;lodash.prototype.toJSON=lodash.prototype.valueOf=lodash.prototype.value=wrapperValue;// Add lazy aliases.
 	lodash.prototype.first=lodash.prototype.head;if(symIterator){lodash.prototype[symIterator]=wrapperToIterator;}return lodash;};/*--------------------------------------------------------------------------*/// Export lodash.
 	var _=runInContext();// Some AMD build optimizers, like r.js, check for condition patterns like:
-	if("function"=='function'&&_typeof(__webpack_require__(685))=='object'&&__webpack_require__(685)){// Expose Lodash on the global object to prevent errors when Lodash is
+	if("function"=='function'&&_typeof(__webpack_require__(687))=='object'&&__webpack_require__(687)){// Expose Lodash on the global object to prevent errors when Lodash is
 	// loaded by a script tag in the presence of an AMD loader.
 	// See http://requirejs.org/docs/errors.html#mismatch for more details.
 	// Use `_.noConflict` to remove Lodash from the global object.
@@ -81311,7 +81358,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(323)(module)))
 
 /***/ },
-/* 685 */
+/* 687 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
@@ -81319,16 +81366,16 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
-/* 686 */
+/* 688 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(565);
+	var axios = __webpack_require__(567);
 	
-	var createDepositWalletEndpoint = __webpack_require__(592) + '/deposit/wallet/create';
+	var createDepositWalletEndpoint = __webpack_require__(594) + '/deposit/wallet/create';
 	
 	/**
 	 *
@@ -81413,17 +81460,17 @@
 	}();
 
 /***/ },
-/* 687 */
+/* 689 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var buyCoin = __webpack_require__(688);
-	var buyConversion = __webpack_require__(689);
-	var buyHistory = __webpack_require__(690);
-	var coinAmount = __webpack_require__(691);
-	var confirmTerm = __webpack_require__(692);
-	var obtainPhase = __webpack_require__(693);
+	var buyCoin = __webpack_require__(690);
+	var buyConversion = __webpack_require__(691);
+	var buyHistory = __webpack_require__(692);
+	var coinAmount = __webpack_require__(693);
+	var confirmTerm = __webpack_require__(694);
+	var obtainPhase = __webpack_require__(695);
 	
 	module.exports = {
 	  buyCoin: buyCoin,
@@ -81435,16 +81482,16 @@
 	};
 
 /***/ },
-/* 688 */
+/* 690 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(565);
+	var axios = __webpack_require__(567);
 	
-	var buyEndpoint = __webpack_require__(592) + '/ico/buy';
+	var buyEndpoint = __webpack_require__(594) + '/ico/buy';
 	
 	/**
 	 *
@@ -81519,7 +81566,7 @@
 	}();
 
 /***/ },
-/* 689 */
+/* 691 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -81598,16 +81645,16 @@
 	};
 
 /***/ },
-/* 690 */
+/* 692 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(565);
+	var axios = __webpack_require__(567);
 	
-	var buyHistoryEndpoint = __webpack_require__(592) + '/ico/buy-history';
+	var buyHistoryEndpoint = __webpack_require__(594) + '/ico/buy-history';
 	
 	/**
 	 *
@@ -81682,22 +81729,22 @@
 	}();
 
 /***/ },
-/* 691 */
+/* 693 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 /***/ },
-/* 692 */
+/* 694 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(565);
+	var axios = __webpack_require__(567);
 	
-	var confirmTermEndpoint = __webpack_require__(592) + '/ico/confirm-term';
+	var confirmTermEndpoint = __webpack_require__(594) + '/ico/confirm-term';
 	
 	/**
 	 *
@@ -81772,16 +81819,16 @@
 	}();
 
 /***/ },
-/* 693 */
+/* 695 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(565);
+	var axios = __webpack_require__(567);
 	
-	var BASE_URL = __webpack_require__(592);
+	var BASE_URL = __webpack_require__(594);
 	
 	var endpoint = BASE_URL + '/ico/phase';
 	
@@ -81813,13 +81860,13 @@
 	}));
 
 /***/ },
-/* 694 */
+/* 696 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(695);
+	var content = __webpack_require__(697);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(480)(content, {});
@@ -81839,7 +81886,7 @@
 	}
 
 /***/ },
-/* 695 */
+/* 697 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(479)(true);
@@ -81847,13 +81894,13 @@
 	
 	
 	// module
-	exports.push([module.id, ".input-transparent {\n  border: 0;\n  margin: 0;\n  padding: 0 5px 0 5px;\n  text-align: right;\n  width: 150px;\n  background-color: transparent;\n  color: #fff;\n  font-size: 18px; }\n\n.calculator .equal {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  font-size: 30px; }\n\n.calculator .valueCripto {\n  min-height: 80px;\n  background-color: rgba(65, 37, 111, 0.8);\n  color: #fff;\n  padding: 10px;\n  border-radius: 5px;\n  text-align: right;\n  font-size: 18px;\n  line-height: 60px; }\n\n.calculator .valueMoney {\n  height: 80px;\n  background-color: rgba(65, 37, 111, 0.8);\n  color: #fff;\n  padding: 20px;\n  border-radius: 5px;\n  text-align: right;\n  font-size: 18px; }\n  .calculator .valueMoney .currency {\n    width: 100%;\n    text-align: right;\n    font-size: 10px;\n    padding-right: 9px;\n    padding-top: 3px; }\n\n.lunesAmount {\n  width: 100%;\n  background-color: rgba(65, 37, 111, 0.8);\n  height: 80px;\n  line-height: 60px;\n  text-align: right;\n  padding-right: 10px;\n  border-radius: 5px; }\n  .lunesAmount label {\n    font-size: 18px; }\n  .lunesAmount .flag-lns {\n    left: 0;\n    position: absolute;\n    background-color: #fff;\n    padding: 10px 30px;\n    border-radius: 5px 0 5px 5px;\n    box-shadow: #41266f 1px 0px 0px 2px; }\n\n.amountBalance {\n  margin-top: 20px;\n  border-radius: 5px; }\n  .amountBalance .total {\n    border-radius: 5px;\n    background-color: rgba(65, 37, 111, 0.8); }\n    .amountBalance .total .line-break {\n      margin-top: 22px;\n      padding: 10px; }\n      .amountBalance .total .line-break hr {\n        border-top: solid 2px #4cd466; }\n  .amountBalance .result {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    margin-bottom: 15px;\n    padding: 0 10px; }\n\n.select-coin {\n  position: relative; }\n  .select-coin ul {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin: 0;\n    padding: 0;\n    float: left;\n    text-align: center; }\n    .select-coin ul li {\n      list-style: none;\n      cursor: pointer;\n      padding: 0px 5px;\n      margin: 0 5px;\n      width: 40px;\n      border-radius: 5px; }\n      .select-coin ul li:hover, .select-coin ul li.selected {\n        background-color: #4c2b82; }\n\n.container-coins {\n  width: 70px;\n  height: 210px;\n  position: absolute;\n  border-radius: 5px;\n  background-color: #e4e4e5;\n  top: 50px;\n  z-index: 99;\n  text-align: center; }\n  .container-coins ul {\n    margin: 0;\n    padding: 0; }\n    .container-coins ul li {\n      list-style: none;\n      text-align: center;\n      padding: 5px 10px;\n      cursor: pointer; }\n      .container-coins ul li.selected, .container-coins ul li:hover {\n        background-color: #c7c7c7;\n        border-radius: 5px; }\n\n.container-qr-code .selected-label {\n  border-radius: 10px;\n  padding: 2px 20px;\n  background-color: #432773;\n  color: #fdfdfd;\n  font-size: 12px; }\n\n.container-qr-code .address {\n  margin-top: 10px;\n  color: #4cd466; }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/buy/src/buy/buy.component.scss","D:/workspaces/lunes/lunes-purchase/src/buy/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA;EACE,UAAS;EACT,UAAS;EACT,qBAAoB;EACpB,kBAAiB;EACjB,aAAY;EACZ,8BAA6B;EAC7B,YAAW;EACX,gBAAe,EAChB;;AAED;EAEI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,yBAAuB;MAAvB,sBAAuB;UAAvB,wBAAuB;EACvB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,gBAAe,EAChB;;AANH;EAQI,iBAAgB;EAChB,yCCpBiB;EDqBjB,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,kBAAiB;EACjB,gBAAe;EACf,kBAAiB,EAClB;;AAhBH;EAkBI,aAAY;EACZ,yCC9BiB;ED+BjB,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,kBAAiB;EACjB,gBAAe,EAQhB;EAhCH;IA0BM,YAAW;IACX,kBAAiB;IACjB,gBAAe;IACf,mBAAkB;IAClB,iBAAgB,EACjB;;AAIL;EACE,YAAW;EACX,yCChDmB;EDiDnB,aAAY;EACZ,kBAAiB;EACjB,kBAAiB;EACjB,oBAAmB;EACnB,mBAAkB,EAYnB;EAnBD;IASI,gBAAe,EAChB;EAVH;IAYI,QAAO;IACP,mBAAkB;IAClB,uBAAsB;IACtB,mBAAkB;IAClB,6BAA4B;IAC5B,oCAAmC,EACpC;;AAGH;EACE,iBAAgB;EAChB,mBAAkB,EAqBnB;EAvBD;IAII,mBAAkB;IAClB,yCCxEiB,EDgFlB;IAbH;MAOM,iBAAgB;MAChB,cAAa,EAId;MAZL;QAUQ,8BC5EO,ED6ER;EAXP;IAgBI,qBAAa;IAAb,qBAAa;IAAb,cAAa;IACb,+BAAmB;IAAnB,8BAAmB;QAAnB,wBAAmB;YAAnB,oBAAmB;IACnB,0BAA8B;QAA9B,uBAA8B;YAA9B,+BAA8B;IAC9B,0BAAmB;QAAnB,uBAAmB;YAAnB,oBAAmB;IACnB,oBAAmB;IACnB,gBAAe,EAChB;;AAGH;EACE,mBAAkB,EAmBnB;EApBD;IAGI,qBAAa;IAAb,qBAAa;IAAb,cAAa;IACb,UAAS;IACT,WAAU;IACV,YAAW;IACX,mBAAkB,EAYnB;IAnBH;MASM,iBAAgB;MAChB,gBAAe;MACf,iBAAgB;MAChB,cAAa;MACb,YAAW;MACX,mBAAkB,EAInB;MAlBL;QAgBQ,0BAAyB,EAC1B;;AAKP;EACE,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,mBAAkB;EAClB,0BAAyB;EACzB,UAAS;EACT,YAAW;EACX,mBAAkB,EAenB;EAvBD;IAUI,UAAS;IACT,WAAU,EAWX;IAtBH;MAaM,iBAAgB;MAChB,mBAAkB;MAClB,kBAAiB;MACjB,gBAAe,EAKhB;MArBL;QAkBQ,0BAAyB;QACzB,mBAAkB,EACnB;;AAKP;EAEI,oBAAmB;EACnB,kBAAiB;EACjB,0BAAyB;EACzB,eAAc;EACd,gBAAe,EAChB;;AAPH;EASI,iBAAgB;EAChB,eCpJW,EDqJZ","file":"buy.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n.input-transparent {\r\n  border: 0;\r\n  margin: 0;\r\n  padding: 0 5px 0 5px;\r\n  text-align: right;\r\n  width: 150px;\r\n  background-color: transparent;\r\n  color: #fff;\r\n  font-size: 18px;\r\n}\r\n\r\n.calculator {\r\n  .equal {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    font-size: 30px;\r\n  }\r\n  .valueCripto {\r\n    min-height: 80px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    color: #fff;\r\n    padding: 10px;\r\n    border-radius: 5px;\r\n    text-align: right;\r\n    font-size: 18px;\r\n    line-height: 60px;\r\n  }\r\n  .valueMoney {\r\n    height: 80px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    color: #fff;\r\n    padding: 20px;\r\n    border-radius: 5px;\r\n    text-align: right;\r\n    font-size: 18px;\r\n    .currency {\r\n      width: 100%;\r\n      text-align: right;\r\n      font-size: 10px;\r\n      padding-right: 9px;\r\n      padding-top: 3px;\r\n    }\r\n  }\r\n}\r\n\r\n.lunesAmount {\r\n  width: 100%;\r\n  background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n  height: 80px;\r\n  line-height: 60px;\r\n  text-align: right;\r\n  padding-right: 10px;\r\n  border-radius: 5px;\r\n  label {\r\n    font-size: 18px;\r\n  }\r\n  .flag-lns {\r\n    left: 0;\r\n    position: absolute;\r\n    background-color: #fff;\r\n    padding: 10px 30px;\r\n    border-radius: 5px 0 5px 5px;\r\n    box-shadow: #41266f 1px 0px 0px 2px;\r\n  }\r\n}\r\n\r\n.amountBalance {\r\n  margin-top: 20px;\r\n  border-radius: 5px;\r\n  .total {\r\n    border-radius: 5px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    .line-break {\r\n      margin-top: 22px;\r\n      padding: 10px;\r\n      hr {\r\n        border-top: solid 2px $green;\r\n      }\r\n    }\r\n  }\r\n\r\n  .result {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    margin-bottom: 15px;\r\n    padding: 0 10px;\r\n  }\r\n}\r\n\r\n.select-coin {\r\n  position: relative;\r\n  ul {\r\n    display: flex;\r\n    margin: 0;\r\n    padding: 0;\r\n    float: left;\r\n    text-align: center;\r\n    li {\r\n      list-style: none;\r\n      cursor: pointer;\r\n      padding: 0px 5px;\r\n      margin: 0 5px;\r\n      width: 40px;\r\n      border-radius: 5px;\r\n      &:hover, &.selected {\r\n        background-color: #4c2b82;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.container-coins {\r\n  width: 70px;\r\n  height: 210px;\r\n  position: absolute;\r\n  border-radius: 5px;\r\n  background-color: #e4e4e5;\r\n  top: 50px;\r\n  z-index: 99;\r\n  text-align: center;\r\n  ul {\r\n    margin: 0;\r\n    padding: 0;\r\n    li {\r\n      list-style: none;\r\n      text-align: center;\r\n      padding: 5px 10px;\r\n      cursor: pointer;\r\n      &.selected, &:hover {\r\n        background-color: #c7c7c7;\r\n        border-radius: 5px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.container-qr-code {\r\n  .selected-label {\r\n    border-radius: 10px;\r\n    padding: 2px 20px;\r\n    background-color: #432773;\r\n    color: #fdfdfd;\r\n    font-size: 12px;\r\n  }\r\n  .address {\r\n    margin-top: 10px;\r\n    color: $green;\r\n  }\r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$darkPrimary: #41256f;\r\n$green: #4cd466;\r\n$yellow: #f9d660;"],"sourceRoot":""}]);
+	exports.push([module.id, ".input-transparent {\n  border: 0;\n  margin: 0;\n  padding: 0 5px 0 5px;\n  text-align: right;\n  width: 100%;\n  background-color: transparent;\n  color: #fff;\n  font-size: 18px; }\n\n.calculator .equal {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  font-size: 30px; }\n\n.calculator .valueCripto {\n  min-height: 80px;\n  background-color: rgba(65, 37, 111, 0.8);\n  color: #fff;\n  padding: 10px;\n  border-radius: 5px;\n  text-align: right;\n  font-size: 18px;\n  line-height: 60px; }\n\n.calculator .valueMoney {\n  height: 80px;\n  background-color: rgba(65, 37, 111, 0.8);\n  color: #fff;\n  padding: 20px;\n  border-radius: 5px;\n  text-align: right;\n  font-size: 18px; }\n  .calculator .valueMoney .currency {\n    width: 100%;\n    text-align: right;\n    font-size: 10px;\n    padding-right: 9px;\n    padding-top: 3px; }\n\n.lunesAmount {\n  width: 100%;\n  background-color: rgba(65, 37, 111, 0.8);\n  height: 80px;\n  line-height: 60px;\n  text-align: right;\n  padding-right: 10px;\n  border-radius: 5px; }\n  .lunesAmount label {\n    font-size: 18px; }\n  .lunesAmount .flag-lns {\n    left: 0;\n    position: absolute;\n    background-color: #fff;\n    padding: 10px 30px;\n    border-radius: 5px 0 5px 5px;\n    box-shadow: #41266f 1px 0px 0px 2px; }\n\n.amountBalance {\n  margin-top: 20px;\n  border-radius: 5px; }\n  .amountBalance .total {\n    border-radius: 5px;\n    background-color: rgba(65, 37, 111, 0.8); }\n    .amountBalance .total .line-break {\n      margin-top: 22px;\n      padding: 10px; }\n      .amountBalance .total .line-break hr {\n        border-top: solid 2px #4cd466; }\n  .amountBalance .result {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    margin-bottom: 15px;\n    padding: 0 10px; }\n\n.select-coin {\n  position: relative; }\n  .select-coin ul {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin: 0;\n    padding: 0;\n    float: left;\n    text-align: center; }\n    .select-coin ul li {\n      list-style: none;\n      cursor: pointer;\n      padding: 0px 5px;\n      margin: 0 5px;\n      width: 40px;\n      border-radius: 5px; }\n      .select-coin ul li:hover, .select-coin ul li.selected {\n        background-color: #32bc57;\n        opacity: 0.9; }\n\n.container-coins {\n  width: 70px;\n  height: 210px;\n  position: absolute;\n  border-radius: 5px;\n  background-color: #e4e4e5;\n  top: 50px;\n  z-index: 99;\n  text-align: center; }\n  .container-coins ul {\n    margin: 0;\n    padding: 0; }\n    .container-coins ul li {\n      list-style: none;\n      text-align: center;\n      padding: 5px 10px;\n      cursor: pointer; }\n      .container-coins ul li.selected, .container-coins ul li:hover {\n        background-color: #c7c7c7;\n        border-radius: 5px; }\n\n.container-qr-code .selected-label {\n  border-radius: 10px;\n  padding: 2px 20px;\n  background-color: #432773;\n  color: #fdfdfd;\n  font-size: 12px; }\n\n.container-qr-code .address {\n  margin-top: 10px;\n  color: #4cd466; }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/buy/src/buy/buy.component.scss","D:/workspaces/lunes/lunes-purchase/src/buy/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA;EACE,UAAS;EACT,UAAS;EACT,qBAAoB;EACpB,kBAAiB;EACjB,YAAW;EACX,8BAA6B;EAC7B,YAAW;EACX,gBAAe,EAChB;;AAED;EAEI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,yBAAuB;MAAvB,sBAAuB;UAAvB,wBAAuB;EACvB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,gBAAe,EAChB;;AANH;EAQI,iBAAgB;EAChB,yCCpBiB;EDqBjB,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,kBAAiB;EACjB,gBAAe;EACf,kBAAiB,EAClB;;AAhBH;EAkBI,aAAY;EACZ,yCC9BiB;ED+BjB,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,kBAAiB;EACjB,gBAAe,EAQhB;EAhCH;IA0BM,YAAW;IACX,kBAAiB;IACjB,gBAAe;IACf,mBAAkB;IAClB,iBAAgB,EACjB;;AAIL;EACE,YAAW;EACX,yCChDmB;EDiDnB,aAAY;EACZ,kBAAiB;EACjB,kBAAiB;EACjB,oBAAmB;EACnB,mBAAkB,EAYnB;EAnBD;IASI,gBAAe,EAChB;EAVH;IAYI,QAAO;IACP,mBAAkB;IAClB,uBAAsB;IACtB,mBAAkB;IAClB,6BAA4B;IAC5B,oCAAmC,EACpC;;AAGH;EACE,iBAAgB;EAChB,mBAAkB,EAqBnB;EAvBD;IAII,mBAAkB;IAClB,yCCxEiB,EDgFlB;IAbH;MAOM,iBAAgB;MAChB,cAAa,EAId;MAZL;QAUQ,8BC5EO,ED6ER;EAXP;IAgBI,qBAAa;IAAb,qBAAa;IAAb,cAAa;IACb,+BAAmB;IAAnB,8BAAmB;QAAnB,wBAAmB;YAAnB,oBAAmB;IACnB,0BAA8B;QAA9B,uBAA8B;YAA9B,+BAA8B;IAC9B,0BAAmB;QAAnB,uBAAmB;YAAnB,oBAAmB;IACnB,oBAAmB;IACnB,gBAAe,EAChB;;AAGH;EACE,mBAAkB,EAoBnB;EArBD;IAGI,qBAAa;IAAb,qBAAa;IAAb,cAAa;IACb,UAAS;IACT,WAAU;IACV,YAAW;IACX,mBAAkB,EAanB;IApBH;MASM,iBAAgB;MAChB,gBAAe;MACf,iBAAgB;MAChB,cAAa;MACb,YAAW;MACX,mBAAkB,EAKnB;MAnBL;QAgBQ,0BAAyB;QACzB,aAAY,EACb;;AAKP;EACE,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,mBAAkB;EAClB,0BAAyB;EACzB,UAAS;EACT,YAAW;EACX,mBAAkB,EAenB;EAvBD;IAUI,UAAS;IACT,WAAU,EAWX;IAtBH;MAaM,iBAAgB;MAChB,mBAAkB;MAClB,kBAAiB;MACjB,gBAAe,EAKhB;MArBL;QAkBQ,0BAAyB;QACzB,mBAAkB,EACnB;;AAKP;EAEI,oBAAmB;EACnB,kBAAiB;EACjB,0BAAyB;EACzB,eAAc;EACd,gBAAe,EAChB;;AAPH;EASI,iBAAgB;EAChB,eCrJW,EDsJZ","file":"buy.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n.input-transparent {\r\n  border: 0;\r\n  margin: 0;\r\n  padding: 0 5px 0 5px;\r\n  text-align: right;\r\n  width: 100%;\r\n  background-color: transparent;\r\n  color: #fff;\r\n  font-size: 18px;\r\n}\r\n\r\n.calculator {\r\n  .equal {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    font-size: 30px;\r\n  }\r\n  .valueCripto {\r\n    min-height: 80px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    color: #fff;\r\n    padding: 10px;\r\n    border-radius: 5px;\r\n    text-align: right;\r\n    font-size: 18px;\r\n    line-height: 60px;\r\n  }\r\n  .valueMoney {\r\n    height: 80px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    color: #fff;\r\n    padding: 20px;\r\n    border-radius: 5px;\r\n    text-align: right;\r\n    font-size: 18px;\r\n    .currency {\r\n      width: 100%;\r\n      text-align: right;\r\n      font-size: 10px;\r\n      padding-right: 9px;\r\n      padding-top: 3px;\r\n    }\r\n  }\r\n}\r\n\r\n.lunesAmount {\r\n  width: 100%;\r\n  background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n  height: 80px;\r\n  line-height: 60px;\r\n  text-align: right;\r\n  padding-right: 10px;\r\n  border-radius: 5px;\r\n  label {\r\n    font-size: 18px;\r\n  }\r\n  .flag-lns {\r\n    left: 0;\r\n    position: absolute;\r\n    background-color: #fff;\r\n    padding: 10px 30px;\r\n    border-radius: 5px 0 5px 5px;\r\n    box-shadow: #41266f 1px 0px 0px 2px;\r\n  }\r\n}\r\n\r\n.amountBalance {\r\n  margin-top: 20px;\r\n  border-radius: 5px;\r\n  .total {\r\n    border-radius: 5px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    .line-break {\r\n      margin-top: 22px;\r\n      padding: 10px;\r\n      hr {\r\n        border-top: solid 2px $green;\r\n      }\r\n    }\r\n  }\r\n\r\n  .result {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    margin-bottom: 15px;\r\n    padding: 0 10px;\r\n  }\r\n}\r\n\r\n.select-coin {\r\n  position: relative;\r\n  ul {\r\n    display: flex;\r\n    margin: 0;\r\n    padding: 0;\r\n    float: left;\r\n    text-align: center;\r\n    li {\r\n      list-style: none;\r\n      cursor: pointer;\r\n      padding: 0px 5px;\r\n      margin: 0 5px;\r\n      width: 40px;\r\n      border-radius: 5px;\r\n      &:hover, &.selected {\r\n        background-color: #32bc57;\r\n        opacity: 0.9;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.container-coins {\r\n  width: 70px;\r\n  height: 210px;\r\n  position: absolute;\r\n  border-radius: 5px;\r\n  background-color: #e4e4e5;\r\n  top: 50px;\r\n  z-index: 99;\r\n  text-align: center;\r\n  ul {\r\n    margin: 0;\r\n    padding: 0;\r\n    li {\r\n      list-style: none;\r\n      text-align: center;\r\n      padding: 5px 10px;\r\n      cursor: pointer;\r\n      &.selected, &:hover {\r\n        background-color: #c7c7c7;\r\n        border-radius: 5px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.container-qr-code {\r\n  .selected-label {\r\n    border-radius: 10px;\r\n    padding: 2px 20px;\r\n    background-color: #432773;\r\n    color: #fdfdfd;\r\n    font-size: 12px;\r\n  }\r\n  .address {\r\n    margin-top: 10px;\r\n    color: $green;\r\n  }\r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$darkPrimary: #41256f;\r\n$green: #4cd466;\r\n$yellow: #f9d660;"],"sourceRoot":""}]);
 	
 	// exports
 
 
 /***/ },
-/* 696 */
+/* 698 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -81876,7 +81923,7 @@
 	};
 
 /***/ },
-/* 697 */
+/* 699 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -81931,70 +81978,76 @@
 	  PASSWORD_ALPHANUMERIC: 'At least one character in the password must be a number',
 	  EMAIL_MATCH: 'E-mail must match',
 	  PASSWORD_MATCH: 'Password must match',
-	  TERMS_CONDITIONS: '\n    The Terms and Conditions (the \u201CT&C\u201D) apply to the buyer of the Lunes token\n    (\u201CLNS\u201D) and future user of the Lunes Platform. You should carefully read the T&C, as well as the white paper of the Lunes project before participating in the Initial Coin Offering.\n     \n    <p>Applicability\n    The following T&C constitute the agreement (the \u201CAgreement\u201D) between Lunes Platform (hereinafter \u201CLunes\u201D or the \u201CCompany\u201D), and you (the \u201CUser\u201D) with respect to the purchase of the Lunes Token and the future services offered through the Lunes Platform. By using our services, you are agreeing to be bound by the T&C in its latest version. You are aware that Lunes may change this T&C at any time. Your continued use of the Lunes Platform means that you accept any new or modified terms.\n     </p>\n    <p>Services\n    Lunes is a platform which provides a set of decentralized solutions through blockchain.\n    In an uncomplicated and affordable way, we will pulverize our technologies into the population. With real solutions for daily life, we deliver services and products ranging from payment processes and fundraising, to authenticity records.\n     </p>\n    <p>The Lunes Token (LNS)\n    LNS does not have the legal qualification as a security. LNS is final and non-refundable. LNS is not a share and does not give any right to participate in the general meetings of Lunes. LNS will not have a particular usage outside the Lunes Platform. The purchase of LNS shall therefore not be done for speculative usage.\n     </p>\n    <p>LNS can be purchased during the Initial Coin Offering directly from the Company or after the ICO at the Company or exchanger.\n     </p>\n    <p>Any future User purchasing LNS expressly acknowledges and represents that she/he has carefully reviewed the T&C and fully understands the risks, costs and benefits associated with the purchase of this token as indicated in the T&C.\n    </p>\n    <p>Knowledge required\n    A future User undertaking to purchase LNS in relation to the token sale should ensure that she/he understands and has significant experience of cryptocurrencies, blockchain systems and services, and that she/he fully understands the risks associated with the token sale as well as the mechanism related to the use of cryptocurrencies (incl. storage).\n     </p>\n    <p>Lunes shall not be responsible for any loss of LNS or situations making it impossible to access to LNS, which may result in any actions or omissions of the future User or any person undertaking to acquire LNS.\n     </p>\n    <p>Risks\n    Acquiring LNS involves various risks, in particular that Lunes may not be able to launch its operations and develop its platform. Therefore, and prior to acquiring LNS, any future user should carefully consider the risks, costs, and benefits of acquiring LNS within the Initial Coin Offering, and, if necessary, obtain independent advice in this regard. Any interested person who is not in the position to accept or to understand the risks associated with the Initial Coin Offering (incl. the risks related to the non- development of Lunes Platform and operations) or any other risks as indicated in the T&C, should not acquire LNS, at this stage or later.\n     </p>\n    <p>Self-Acquisition\n    Lunes is allowed to acquire LNS from the market at market price as value disbursement method. The acquisition must be authorized by the Board of Directors, under the condition that no conflict of interests is identified. Through acquisition of LNS, Lunes is not allowed to perform operations such as manipulation of LNS market.\n     </p>\n    <p>Important Disclaimer\n    The T&C shall not and cannot be considered as an invitation to enter into an investment. They do not constitute or relate in any way nor should they be considered as an offering of securities in any jurisdiction. The T&C do not include or contain any information or indication that might be considered as a recommendation or that might be used to base any investment decision. LNS is a utility token and is not intended to be used as an investment.\n     </p>\n    <p>Lunes will be an operative entity managing a platform and LNS is only a utility token. Therefore, Lunes is not a financial intermediary and is not required to obtain any authorization for anti-money laundering purposes.\n     </p>\n    <p>Acquiring LNS shall not grant any right or influence over Lunes\u2019 organization and governance to the purchasers.\n    </p>\n     <p>\n    Employees of Lunes are allowed to operate with LNS at market price if they are in knowledge of information that may modify the price of the token.\n     </p>\n    <p>Regulatory authorities are carefully scrutinizing businesses and operations associated to cryptocurrencies in the world. In that respect, regulatory measures, investigations or actions may impact Lunes\u2019 business and even limit or prevent it from developing its operations in the future. Any person undertaking to acquire LNS must be aware that the Lunes business model and the T&C may change or need to be modified because of new regulatory and compliance requirements from any applicable laws in any jurisdictions. In such case, purchasers and any person undertaking to acquire LNS acknowledge and understand that neither Lunes nor any of its affiliates shall be held liable for any direct or indirect loss or damages caused by such changes.\n     </p>\n    <p>Lunes will do its best to launch its operations and develop the Lunes Platform. Any person undertaking to acquire LNS acknowledges and understands that Lunes does not provide any guarantee that it will manage to establish an operative platform and therefore it cannot guarantee that the LNS can be used for social trading on the platform. They acknowledge and understand therefore that Lunes (incl. its bodies and employees) assumes no liability or responsibility for any loss or damage that would result from or relate to the incapacity to use LNS, except in the case of intentional misconduct or gross negligence.\n     </p>\n    <p>Representation and Warranties\n    By participating in the Initial Coin Offering, the User agrees to the T&C and in particular, they represent and warrant that they:\n     \n    <br>1.    are authorized and have full power to purchase LNS according to the laws that apply in their jurisdiction of domicile;\n    <br>2.    live in a jurisdiction which allows Lunes to sell the Lunes tokens through a Initial Coin Offering without requiring any local authorization;\n    <br>3.    are familiar with all related regulations in the specific jurisdiction in which they are based and that purchasing cryptographic tokens in that jurisdiction is not prohibited, restricted or subject to additional conditions of any kind;\n    <br>4.    are not a U.S. citizen, resident or entity (a \u201CU.S. Person\u201D) nor are they purchasing Lunes Tokens or signing on behalf of a U.S. Person. Are not acting for the purpose of speculative investment; will not use the Token Sale for any illegal activity, including but not limited to money laundering and the financing of terrorism;\n    <br>5.    are solely responsible for determining whether the acquisition of LNS is appropriate for them; are acquiring LNS for future use of the Lunes Platform; understand the risks associated with the Initial Coin Offering (incl. the risks related to the non-development of Lunes Platform and operations); and\n    <br>6.    understand the use of cryptocurrencies and the associated risks.\n     <p>\n    Intellectual Property Rights\n    To the extent that copyright or other intellectual property rights exist in the Lunes Platform, such as software, know-how, analysis or programs, those copyrights and other intellectual and industrial rights belong to Lunes.\n     </p>\n    <p>Limitation of Liability\n    Lunes, as well as its officers, directors, agents, joint ventures, employees and suppliers, assumes no liability or responsibility for any loss arising out of or related to the use of the Lunes Platform or any technical, interruption or malfunction of the platform.\n     </p>\n    <p>The limitation of liability set out above shall not be applicable in the event that Lunes, or a Lunes-employee, has caused the damage by intentional misconduct or by gross negligence.\n     </p>\n    <p>Severability\n    If any of the provisions of the T&C or of the Agreement are deemed to be invalid, void or unenforceable, the remaining provisions shall continue in full force and effect.\n    </p>\n    '
+	  TERMS_CONDITION_TITLE: 'Terms and Conditions',
+	  REPRESENTATION_TERM_TITLE: 'Representation and Warranties',
+	  REPRESENTATION_TERM: '\n      <h3>Representation and Warranties</h3>\n      <p>By participating in the Initial Coin Offering, the User agrees to the T&C and in particular, they represent and warrant that they:</p>\n      <br>1. are authorized and have full power to purchase LNS according to the laws that apply in their jurisdiction of domicile;\n      <br>2. live in a jurisdiction which allows Lunes to sell the Lunes tokens through a Initial Coin Offering without requiring any local authorization;\n      <br>3. are familiar with all related regulations in the specific jurisdiction in which they are based and that purchasing cryptographic tokens in that jurisdiction is not prohibited, restricted or subject to additional conditions of any kind;\n      <br>4. are not a U.S., or Canadian, or Chinese, or South Korean, or Singaporean citizen, resident or entity (a \u201CU.S., or Canadian, or Chinese, or South Korean, or Singaporean Person\u201D) nor are they purchasing Lunes Tokens or signing on behalf of a U.S., or Canadian, or Chinese, or South Korean, or Singaporean Person. Are not acting for the purpose of speculative investment; will not use the Token Sale for any illegal activity, including but not limited to money laundering and the financing of terrorism;\n      <br>5. are solely responsible for determining whether the acquisition of LNS is appropriate for them; are acquiring LNS for future use of the Lunes Platform; understand the risks associated with the Initial Coin Offering (incl. the risks related to the non-development of Lunes Platform and operations);\n      <br>6. understand the use of cryptocurrencies and the associated risks\n    ',
+	  TERMS_CONDITIONS: '\n      <h3>Terms and Conditions</h3>\n      <p>The Terms and Conditions (the \u201CT&C\u201D) apply to the buyer of the Lunes token\n      (\u201CLNS\u201D) and future user of the Lunes Platform. You should carefully read the T&C, as well as the white paper of the Lunes project before participating in the Initial Coin Offering.</p>\n      \n      <h5>Applicability</h5>\n      <p>The following T&C constitute the agreement (the \u201CAgreement\u201D) between Lunes Platform (hereinafter \u201CLunes\u201D or the \u201CCompany\u201D), and you (the \u201CUser\u201D) with respect to \n      the purchase of the Lunes Token and the future services offered through the Lunes Platform. By using our services, you are agreeing to be bound by the T&C in \n      its latest version. You are aware that Lunes may change this T&C at any time. Your continued use of the Lunes Platform means that you accept any new or modified \n      terms.</p>\n      \n      <h5>Services</h5>\n      <p>Lunes is a platform which provides a set of decentralized solutions through blockchain.\n      In an uncomplicated and affordable way, we will pulverize our technologies into the population. With real solutions for daily life, we deliver services and \n      products ranging from payment processes and fundraising, to authenticity records.</p>\n      \n      <h5>The Lunes Token (LNS)</h5>\n      <p>LNS does not have the legal qualification as a security. LNS is final and non-refundable. LNS is not a share and does not give any right to participate in the \n      general meetings of Lunes. LNS will not have a particular usage outside the Lunes Platform. The purchase of LNS shall therefore not be done for speculative usage.</p>\n      \n      <p>LNS can be purchased during the Initial Coin Offering directly from the Company or after the ICO at the Company or exchanger.</p>\n      \n      <p>Any future User purchasing LNS expressly acknowledges and represents that she/he has carefully reviewed the T&C and fully understands the risks, costs and \n      benefits associated with the purchase of this token as indicated in the T&C.</p>\n      \n      <h5>Knowledge required<h5>\n      <p>A future User undertaking to purchase LNS in relation to the token sale,  should ensure that she/he understands and has significant experience of cryptocurrencies, \n      blockchain systems and services, and that she/he fully understands the risks associated with the token sale as well as the mechanism related to the use of \n      cryptocurrencies (incl. storage).</p>\n      \n      <p>Lunes shall not be responsible for any loss of LNS or situations making it impossible to access to LNS, which may result in any actions or omissions of the future \n      User or any person undertaking to acquire LNS.</p>\n      \n      <h5>Risks</h5>\n      <p>Acquiring LNS involves various risks, in particular that Lunes may not be able to launch its operations and develop its platform. Therefore, and prior to \n      acquiring \n      LNS, any future user should carefully consider the risks, costs, and benefits of acquiring LNS within the Initial Coin Offering, and, if necessary, obtain \n      independent advice in this regard. Any interested person who is not in the position to accept or to understand the risks associated with the Initial Coin \n      Offering (incl. the risks related to the non- development of Lunes Platform and operations) or any other risks as indicated in the T&C, should not acquire \n      LNS, at this stage or later.</p>\n      \n      <h5>Self-Acquisition</h5>\n      <p>Lunes is allowed to acquire LNS from the market at market price as value disbursement method. The acquisition must be authorized by the Board of Directors, \n      under \n      the condition that no conflict of interests is identified. Through acquisition of LNS, Lunes is not allowed to perform operations such as manipulation of LNS \n      market.</p>\n      \n      <h5>Important Disclaimer</h5>\n      <p>The T&C shall not and cannot be considered as an invitation to enter into an investment. They do not constitute or relate in any way nor should they be \n      considered \n      as an offering of securities in any jurisdiction. The T&C do not include or contain any information or indication that might be considered as a recommendation \n      or that might be used to base any investment decision. LNS is a utility token and is not intended to be used as an investment.</p>\n      \n      <p>Lunes will be an operative entity managing a platform and LNS is only a utility token. Therefore, Lunes is not a financial intermediary and is not \n      required to obtain any authorization for anti-money laundering purposes.</p>\n      \n      <p>Acquiring LNS shall not grant any right or influence over Lunes\u2019 organization and governance to the purchasers.</p>\n      \n      <p>Employees of Lunes are allowed to operate with LNS at market price if they are in knowledge of information that may modify the price of the token.</p>\n      \n      <p>Regulatory authorities are carefully scrutinizing businesses and operations associated to cryptocurrencies in the world. In that respect, regulatory measures, \n      investigations or actions may impact Lunes\u2019 business and even limit or prevent it from developing its operations in the future. Any person undertaking to acquire \n      LNS must be aware that the Lunes business model and the T&C may change or need to be modified because of new regulatory and compliance requirements from any \n      applicable laws in any jurisdictions. In such case, purchasers and any person undertaking to acquire LNS acknowledge and understand that neither Lunes nor any \n      of its affiliates shall be held liable for any direct or indirect loss or damages caused by such changes.</p>\n      \n      <p>Lunes will do its best to launch its operations and develop the Lunes Platform. Any person undertaking to acquire LNS acknowledges and understands that Lunes does \n      not provide any guarantee that it will manage to establish an operative platform and therefore it cannot guarantee that the LNS can be used for social trading on \n      the platform. They acknowledge and understand therefore that Lunes (incl. its bodies and employees) assumes no liability or responsibility for any loss or damage \n      that would result from or relate to the incapacity to use LNS, except in the case of intentional misconduct or gross negligence.</p>\n      \n      <h5>Intellectual Property Rights</h5>\n      <p>To the extent that copyright or other intellectual property rights exist in the Lunes Platform, such as software, know-how, analysis or programs, those copyrights \n      and other intellectual and industrial rights belong to Lunes.</p>\n      \n      <h5>Limitation of Liability</h5>\n      <p>Lunes, as well as its officers, directors, agents, joint ventures, employees and suppliers, assumes no liability or responsibility for any loss arising out of or \n      related to the use of the Lunes Platform or any technical, interruption or malfunction of the platform.</p>\n      \n      <p>The limitation of liability set out above shall not be applicable in the event that Lunes, or a Lunes-employee, has caused the damage by intentional misconduct or \n      by gross negligence.</p>\n      \n      <h5>Severability</h5>\n      <p>If any of the provisions of the T&C or of the Agreement are deemed to be invalid, void or unenforceable, the remaining provisions shall continue in full force and \n      effect.</p>\n    '
 	};
 
 /***/ },
-/* 698 */
+/* 700 */
 /***/ function(module, exports) {
 
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	exports.default = {
-	    USER: 'Usuário',
-	    PASSWORD: 'Senha',
-	    NAME: 'Nome',
-	    LAST_NAME: 'Último Nome',
-	    WELCOME: 'Bem-vindo',
-	    EMAIL: 'Email',
-	    CONFIRM_EMAIL: 'Confirmar Email',
-	    CONFIRM_PASSWORD: 'Confirmar Senha',
-	    ALL_FIELDS_REQUIRED: 'Todos os campos são obrigatórios',
-	    BEGIN_YOUR_REGISTRATION: 'Comece seu cadastro',
-	    AGREE: 'Concordo',
-	    DONT_HAVE_ACCOUNT: 'Não possui uma conta?',
-	    SIGNUP: 'Cadastrar',
-	    RESET_PASSWORD: 'Esqueceu sua senha?',
-	    WHITELIST: 'Whitelist',
-	    BUY: 'Comprar',
-	    DASHBOARD: 'Dashboard',
-	    CURRENCY_SYMBOL: 'R$',
-	    CURRENCY_USER: 'BRL',
-	    CURRENCY_EXCHANGE: 'bitstamp',
-	    PRICE_LUNES: '1 LNS',
-	    COIN_SELECTED: 'moeda selecionada',
-	    LOADING: 'carregando...',
-	    AMOUNT_LUNES: 'Quantidade de LNS',
-	    BONUS: 'Bônus',
-	    BUY_LIMIT_PHASE: 'Compra limite nessa fase:',
-	    SIGNUP_SUCCESSFULY: 'Cadastro Realizado',
-	    REDIRECTING: 'redirecionando para o login...',
-	    LOGOUT: 'sair',
-	    AUTHENTICATE_INVALID: 'Autenticação Inválida',
-	    AN_ERROR_CREATE_ACCOUNT: 'Um erro ocorreu ao criar a conta',
-	    MSG_BALANCE_DEPOSITED: 'Todo saldo depositado nesse endereço será automaticamente convertido em Lunes no dia 25/02/2018 às 23:00',
-	    US_CITIZEN: 'Eu concordo que não sou um cidadão dos Estados Unidos da América.',
-	    AGREE_TERM: 'Eu concordo com os termos de uso acima.',
-	    AGREE_FUTURE_VALUE: 'Eu concordo que não há garantia do valor futuro da moeda Lunes.',
-	    TERM_TITLE: 'Termos e condições',
-	    EMAIL_REQUIRED: 'Email is required',
-	    EMAIL_INVALID: 'Invalid email address',
-	    PASSWORD_REQUIRED: 'Password is required',
-	    PASSWORD_LENGTH: 'Password length must be greater than 8 characters',
-	    PASSWORD_UPPERCASE: 'Ao menos um dos caracteres deve ser maiúsculo.',
-	    PASSWORD_LOWERCASE: 'Ao menos um dos caracteres deve minúscula',
-	    PASSWORD_SPECIALCHARACTER: 'Ao menos um dos caracteres deve ser um caractere especial [*&%$#@]',
-	    PASSWORD_ALPHANUMERIC: 'Ao menos um dos caracteres deve ser um número',
-	    EMAIL_MATCH: 'E-mail deve combinar com a confirmação',
-	    PASSWORD_MATCH: 'Senha deve combinar com a confirmação',
-	    TERMS_CONDITIONS: '\n    Termos e condi\xE7\xF5es\nOs termos e condi\xE7\xF5es aplicam-se ao comprador do token Lunes ("LNS") e ao usu\xE1rio futuro da plataforma Lunes. Voc\xEA deve ler atentamente os termos e condi\xE7\xF5es, bem como o Whitepaper do projeto Lunes antes de participar na ICO.\n\nAplicabilidade\nOs seguintes termos e condi\xE7\xF5es constituem o acordo entre a plataforma Lunes (doravante "Lunes" ou a "empresa"), e voc\xEA (o "usu\xE1rio") no que diz respeito \xE0 compra dos tokens Lunes e aos servi\xE7os futuros oferecidos atrav\xE9s da Lunes Plataforma. Ao utilizar os nossos servi\xE7os, voc\xEA est\xE1 concordando em ser vinculado pelos termos e condi\xE7\xF5es em sua vers\xE3o mais recente. Voc\xEA est\xE1 ciente de que a Lunes pode mudar estes termos e condi\xE7\xF5es a qualquer momento. O uso continuado da plataforma Lunes significa que voc\xEA aceita quaisquer termos novos ou modificados.\nServi\xE7os\nLunes \xE9 uma plataforma que fornece um conjunto de solu\xE7\xF5es descentralizadas atrav\xE9s blockchain.\nDe uma forma descomplicada e acess\xEDvel, vamos pulverizar as nossas tecnologias para a  popula\xE7\xE3o. Com solu\xE7\xF5es reais para a vida cotidiana, entregamos servi\xE7os e produtos que v\xE3o desde processos de pagamento e capta\xE7\xE3o de recursos, at\xE9 registros de autenticidade.\n\nO token Lunes (LNS)\n\nLNS n\xE3o tem a qualifica\xE7\xE3o legal de um cau\xE7\xE3o. Uma vez comprado o LNS n\xE3o \xE9 reembols\xE1vel. LNS n\xE3o \xE9 uma participa\xE7\xE3o da Lunes e n\xE3o d\xE1 qualquer direito de intera\xE7\xE3o nas reuni\xF5es gerais da Lunes. Os LNS podem ser adquiridos durante a fase de ICO diretamente da empresa ou ap\xF3s a ICO na empresa ou em certas exchanges.\nQualquer futuro usu\xE1rio que comprar LNS, expressamente reconhece que reviu cuidadosamente os termos e condi\xE7\xF5es e compreende plenamente os riscos, custos e benef\xEDcios associados com a compra deste token, como indicado nos termos e condi\xE7\xF5es.\nUm futuro usu\xE1rio comprador de LNS tokens deve assegurar que compreenda e tenha uma experi\xEAncia significativa com crypto moedas, sistemas e servi\xE7os blockchain, e que compreenda plenamente os riscos associados a venda de tokens, bem como o mecanismo relacionado ao uso de crypto moedas.\nA Lunes n\xE3o ser\xE1 respons\xE1vel por qualquer perda de LNS ou situa\xE7\xF5es que impossibilitam o acesso \xE0 LNS, o que pode resultar em quaisquer a\xE7\xF5es ou omiss\xF5es do futuro usu\xE1rio ou de qualquer pessoa que se comprometa a adquirir ins.\n\nOs riscos\n\nA aquisi\xE7\xE3o de LNS envolve v\xE1rios riscos, em particular que a Lunes pode n\xE3o ser capaz de lan\xE7ar suas opera\xE7\xF5es e desenvolver sua plataforma. Portanto, e antes de adquirir LNS, qualquer futuro usu\xE1rio deve considerar cuidadosamente os riscos, custos e benef\xEDcios da aquisi\xE7\xE3o de LNS dentro da ICO, e, se necess\xE1rio, obter aconselhamento independente a este respeito. Qualquer pessoa interessada que n\xE3o esteja em posi\xE7\xE3o de aceitar ou de compreender os riscos associados \xE0 ICO (incl. os riscos relacionados com o n\xE3o desenvolvimento da plataforma e opera\xE7\xF5es da Lunes) ou quaisquer outros riscos conforme indicado nos termos e condi\xE7\xF5es, n\xE3o devem adquirir LNS, nesta fase ou mais tarde.\n\nAuto-aquisi\xE7\xE3o\n\n\xC9 permitido a Lunes adquirir LNS do mercado a pre\xE7o de mercado como o m\xE9todo do desembolso do valor. A aquisi\xE7\xE3o deve ser autorizada pelo Conselho de administra\xE7\xE3o, a condi\xE7\xE3o de n\xE3o se identificar nenhum conflito de interesses. Atrav\xE9s da aquisi\xE7\xE3o de LNS, Lunes n\xE3o tem permiss\xE3o para realizar opera\xE7\xF5es como a manipula\xE7\xE3o do mercado de LNS.\n\nImportante Aviso De Isen\xE7\xE3o\n\nOs termos e condi\xE7\xF5es n\xE3o devem e n\xE3o podem ser considerados como um convite para entrar em um investimento. Eles n\xE3o constituem ou se relacionam de forma alguma, nem devem ser considerados como uma oferta de t\xEDtulos em qualquer jurisdi\xE7\xE3o. Os termos e condi\xE7\xF5es n\xE3o incluem nem cont\xE9m qualquer informa\xE7\xE3o ou indica\xE7\xE3o que possa ser considerada como uma recomenda\xE7\xE3o ou que possa ser usada para basear qualquer decis\xE3o de investimento. LNS \xE9 um token utilit\xE1rio e n\xE3o se destina a ser usado como um investimento.\nA Lunes ser\xE1 uma entidade operativa gerenciando uma plataforma e LNS \xE9 apenas um token utilit\xE1rio. Portanto, Lunes n\xE3o \xE9 um intermedi\xE1rio financeiro, portanto n\xE3o \xE9 obrigado a obter qualquer autoriza\xE7\xE3o para fins anti-lavagem de dinheiro.\nA aquisi\xE7\xE3o de LNS n\xE3o conceder\xE1 qualquer direito ou influ\xEAncia sobre a organiza\xE7\xE3o e governan\xE7a sobre a Lunes aos compradores.\nOs funcion\xE1rios de Lunes est\xE3o autorizados a operar com o LNS a pre\xE7o de mercado, caso conhe\xE7am informa\xE7\xF5es que possam modificar o pre\xE7o do token.\nAs autoridades reguladoras est\xE3o examinando cuidadosamente as empresas e opera\xE7\xF5es associadas \xE0 crypto moedas no mundo. Nesse sentido, as medidas regulat\xF3rias, investiga\xE7\xF5es ou a\xE7\xF5es podem impactar os neg\xF3cios da Lunes e at\xE9 mesmo limit\xE1-la ou impedi-la de desenvolver suas opera\xE7\xF5es no futuro. Qualquer pessoa que se comprometa a adquirir o LNS deve estar ciente de que o modelo de neg\xF3cios Lunes e o T&C podem mudar ou precisar ser modificados devido a novos requisitos regulat\xF3rios e de conformidade de quaisquer leis aplic\xE1veis em qualquer jurisdi\xE7\xE3o. Nesse caso, os compradores e qualquer pessoa que se comprometa a adquirir LNS reconhecem e compreendem que a Lunes e suas filiais n\xE3o ser\xE3o responsabilizadas por quaisquer perdas ou danos diretos ou indiretos causados por tais altera\xE7\xF5es.\nLunes far\xE1 o seu melhor para lan\xE7ar suas opera\xE7\xF5es e desenvolver a plataforma Lunes. Qualquer pessoa que empreender na aquisi\xE7\xE3o de LNS reconhece e entende que Lunes n\xE3o fornece qualquer garantia de que vai conseguir estabelecer uma plataforma operativa e, portanto, n\xE3o pode garantir que os LNS podem ser utilizados para o com\xE9rcio social na plataforma. Reconhecem e compreendem conseq\xFCentemente que Lunes (incl. seus empregados) n\xE3o assume nenhuma responsabilidade por qualquer perda ou dano que resulte ou se relacione com a incapacidade de usar o LNS, exceto no caso de m\xE1 conduta intencional ou bruta neglig\xEAncia.\n\nDireitos de propriedade intelectual\n\nNa medida em que o copyright ou outros direitos de propriedade intelectual existem na plataforma Lunes, tais como software, know-how, an\xE1lise ou programas, os direitos autorais e outros direitos intelectuais e industriais pertencem a Lunes.\n\nLimita\xE7\xE3o da responsabilidade\n\nLunes, bem como seus oficiais, diretores, agentes, joint-ventures, funcion\xE1rios e fornecedores, n\xE3o assume qualquer responsabilidade por qualquer perda resultante, ou relacionada ao uso, da plataforma Lunes ou qualquer t\xE9cnica, interrup\xE7\xE3o ou avaria da plataforma.\nA limita\xE7\xE3o da responsabilidade acima referida n\xE3o \xE9 aplic\xE1vel no caso de Lunes, ou de um trabalhador Lunes, ter causado o dano por m\xE1 conduta intencional ou por neglig\xEAncia grosseira.\n\nSepara\xE7\xE3o\n\nSe qualquer das disposi\xE7\xF5es do T&C ou do acordo for considerada inv\xE1lida, nula ou inexequ\xEDvel, as restantes disposi\xE7\xF5es continuar\xE3o em pleno vigor e efeito.\n'
+	  USER: 'Usuário',
+	  PASSWORD: 'Senha',
+	  NAME: 'Nome',
+	  LAST_NAME: 'Último Nome',
+	  WELCOME: 'Bem-vindo',
+	  EMAIL: 'Email',
+	  CONFIRM_EMAIL: 'Confirmar Email',
+	  CONFIRM_PASSWORD: 'Confirmar Senha',
+	  ALL_FIELDS_REQUIRED: 'Todos os campos são obrigatórios',
+	  BEGIN_YOUR_REGISTRATION: 'Comece seu cadastro',
+	  AGREE: 'Concordo',
+	  DONT_HAVE_ACCOUNT: 'Não possui uma conta?',
+	  SIGNUP: 'Cadastrar',
+	  RESET_PASSWORD: 'Esqueceu sua senha?',
+	  WHITELIST: 'Whitelist',
+	  BUY: 'Comprar',
+	  DASHBOARD: 'Dashboard',
+	  CURRENCY_SYMBOL: 'R$',
+	  CURRENCY_USER: 'BRL',
+	  CURRENCY_EXCHANGE: 'bitstamp',
+	  PRICE_LUNES: '1 LNS',
+	  COIN_SELECTED: 'moeda selecionada',
+	  LOADING: 'carregando...',
+	  AMOUNT_LUNES: 'Quantidade de LNS',
+	  BONUS: 'Bônus',
+	  BUY_LIMIT_PHASE: 'Compra limite nessa fase:',
+	  SIGNUP_SUCCESSFULY: 'Cadastro Realizado',
+	  REDIRECTING: 'redirecionando para o login...',
+	  LOGOUT: 'sair',
+	  AUTHENTICATE_INVALID: 'Autenticação Inválida',
+	  AN_ERROR_CREATE_ACCOUNT: 'Um erro ocorreu ao criar a conta',
+	  MSG_BALANCE_DEPOSITED: 'Todo saldo depositado nesse endereço será automaticamente convertido em Lunes no dia 25/02/2018 às 23:00',
+	  US_CITIZEN: 'Eu concordo que não sou um cidadão dos Estados Unidos da América.',
+	  AGREE_TERM: 'Eu concordo com os termos de uso acima.',
+	  AGREE_FUTURE_VALUE: 'Eu concordo que não há garantia do valor futuro da moeda Lunes.',
+	  TERM_TITLE: 'Termos e condições',
+	  EMAIL_REQUIRED: 'Email is required',
+	  EMAIL_INVALID: 'Invalid email address',
+	  PASSWORD_REQUIRED: 'Password is required',
+	  PASSWORD_LENGTH: 'Password length must be greater than 8 characters',
+	  PASSWORD_UPPERCASE: 'Ao menos um dos caracteres deve ser maiúsculo.',
+	  PASSWORD_LOWERCASE: 'Ao menos um dos caracteres deve minúscula',
+	  PASSWORD_SPECIALCHARACTER: 'Ao menos um dos caracteres deve ser um caractere especial [*&%$#@]',
+	  PASSWORD_ALPHANUMERIC: 'Ao menos um dos caracteres deve ser um número',
+	  EMAIL_MATCH: 'E-mail deve combinar com a confirmação',
+	  PASSWORD_MATCH: 'Senha deve combinar com a confirmação',
+	  TERMS_CONDITION_TITLE: 'Termos e Condições',
+	  REPRESENTATION_TERM_TITLE: 'Representações e Garantias',
+	  REPRESENTATION_TERM: '\n      <h3>Representa\xE7\xE3o e Garantias</h3>\n      <p>Ao participar da ICO o usu\xE1rio concorda com o T&C e, em particular, eles representam e garantem que:</p>\n      <br>1. S\xE3o autorizados e t\xEAm poder completo para comprar LNS de acordo com as leis que se aplicam em sua jurisdi\xE7\xE3o do domic\xEDlio;\n      <br>2. vivem em uma jurisdi\xE7\xE3o que permite que Lunes venda tokens atrav\xE9s de uma ICO sem exigir qualquer autoriza\xE7\xE3o local;\n      <br>3. est\xE3o familiarizados com todos os regulamentos relacionados na jurisdi\xE7\xE3o espec\xEDficas em que eles vivem e que a compra de tokens criptografados na jurisdi\xE7\xE3o n\xE3o \xE9 proibida, restrita ou sujeitas a qualquer tipo de condi\xE7\xF5es adicionais;\n      <br>4. N\xE3o s\xE3o um cidad\xE3o dos Estados Unidos, do Canad\xE1, de Singapura, da China ou da Cor\xE9ia do Sul ou residente ou entidade e nem est\xE3o comprando tokens Lunes ou assinando em nome de um cidad\xE3o americano, ou canadense, ou singapurense, ou sul coreano, ou chin\xEAs. N\xE3o est\xE3o agindo para fins de investimento especulativo; n\xE3o utilizar\xE1 a venda simb\xF3lica para qualquer actividade ilegal, incluindo, mas n\xE3o se limitando \xE0 lavagem de dinheiro e ao financiamento do terrorismo;\n      <br>5. s\xE3o os \xFAnicos respons\xE1veis por determinar se a aquisi\xE7\xE3o de LNS \xE9 adequada para eles; est\xE3o adquirindo LNS para uso futuro da plataforma Lunes; compreender os riscos associados \xE0 ICO (incl. os riscos relacionados com o n\xE3o desenvolvimento da plataforma e opera\xE7\xF5es da Lunes); e\n      <br>6. compreender o uso de criptomoedas e os riscos associados.\n    ',
+	  TERMS_CONDITIONS: '\n    <h3>Termos e condi\xE7\xF5es</h3>\n    <p>Os termos e condi\xE7\xF5es aplicam-se ao comprador do token Lunes ("LNS") e ao usu\xE1rio futuro da plataforma Lunes. Voc\xEA deve ler atentamente os termos e condi\xE7\xF5es, \n    bem como o Whitepaper do projeto Lunes antes de participar na ICO.</p>\n\n    <h5>Aplicabilidade</h5>\n    <p>Os seguintes termos e condi\xE7\xF5es constituem o acordo entre a plataforma Lunes (doravante "Lunes" ou a "empresa"), e voc\xEA (o "usu\xE1rio") no que diz respeito \xE0 compra dos tokens Lunes e aos servi\xE7os futuros oferecidos atrav\xE9s da Lunes Plataforma. Ao utilizar os nossos servi\xE7os, voc\xEA est\xE1 concordando em ser vinculado pelos termos e condi\xE7\xF5es em sua vers\xE3o mais recente. Voc\xEA est\xE1 ciente de que a Lunes pode mudar estes termos e condi\xE7\xF5es a qualquer momento. O uso continuado da plataforma Lunes significa que voc\xEA aceita quaisquer termos novos ou modificados.\n    Servi\xE7os\n    Lunes \xE9 uma plataforma que fornece um conjunto de solu\xE7\xF5es descentralizadas atrav\xE9s blockchain.\n    De uma forma descomplicada e acess\xEDvel, vamos pulverizar as nossas tecnologias para a  popula\xE7\xE3o. Com solu\xE7\xF5es reais para a vida cotidiana, entregamos servi\xE7os e \n    produtos que v\xE3o desde processos de pagamento e capta\xE7\xE3o de recursos, at\xE9 registros de autenticidade.</p>\n\n    <h5>O token Lunes (LNS)</h5>\n\n    <p>LNS n\xE3o tem a qualifica\xE7\xE3o legal de um cau\xE7\xE3o. Uma vez comprado o LNS n\xE3o \xE9 reembols\xE1vel. LNS n\xE3o \xE9 uma participa\xE7\xE3o da Lunes e n\xE3o d\xE1 qualquer direito de intera\xE7\xE3o nas reuni\xF5es gerais da Lunes. Os LNS podem ser adquiridos durante a fase de ICO diretamente da empresa ou ap\xF3s a ICO na empresa ou em certas exchanges.\n    Qualquer futuro usu\xE1rio que comprar LNS, expressamente reconhece que reviu cuidadosamente os termos e condi\xE7\xF5es e compreende plenamente os riscos, custos e benef\xEDcios associados com a compra deste token, como indicado nos termos e condi\xE7\xF5es.\n    Um futuro usu\xE1rio comprador de LNS tokens deve assegurar que compreenda e tenha uma experi\xEAncia significativa com crypto moedas, sistemas e servi\xE7os blockchain, e que compreenda plenamente os riscos associados a venda de tokens, bem como o mecanismo relacionado ao uso de crypto moedas.\n    A Lunes n\xE3o ser\xE1 respons\xE1vel por qualquer perda de LNS ou situa\xE7\xF5es que impossibilitam o acesso \xE0 LNS, o que pode resultar em quaisquer a\xE7\xF5es ou omiss\xF5es do futuro \n    usu\xE1rio ou de qualquer pessoa que se comprometa a adquirir ins.</p>\n\n    <h5>Os riscos</h5>\n\n    <p>A aquisi\xE7\xE3o de LNS envolve v\xE1rios riscos, em particular que a Lunes pode n\xE3o ser capaz de lan\xE7ar suas opera\xE7\xF5es e desenvolver sua plataforma. Portanto, e \n    antes de adquirir LNS, qualquer futuro usu\xE1rio deve considerar cuidadosamente os riscos, custos e benef\xEDcios da aquisi\xE7\xE3o de LNS dentro da ICO, e, se necess\xE1rio, \n    obter aconselhamento independente a este respeito. Qualquer pessoa interessada que n\xE3o esteja em posi\xE7\xE3o de aceitar ou de compreender os riscos associados \xE0 \n    ICO (incl. os riscos relacionados com o n\xE3o desenvolvimento da plataforma e opera\xE7\xF5es da Lunes) ou quaisquer outros riscos conforme indicado nos termos e condi\xE7\xF5es, \n    n\xE3o devem adquirir LNS, nesta fase ou mais tarde.</p>\n\n    <h5>Auto-aquisi\xE7\xE3o</h5>\n\n    <p>\xC9 permitido a Lunes adquirir LNS do mercado a pre\xE7o de mercado como o m\xE9todo do desembolso do valor. A aquisi\xE7\xE3o deve ser autorizada pelo Conselho de \n    administra\xE7\xE3o, a condi\xE7\xE3o de n\xE3o se identificar nenhum conflito de interesses. Atrav\xE9s da aquisi\xE7\xE3o de LNS, Lunes n\xE3o tem permiss\xE3o para realizar opera\xE7\xF5es \n    como a manipula\xE7\xE3o do mercado de LNS.</p>\n\n    <h5>Importante Aviso De Isen\xE7\xE3o</h5>\n\n    <p>Os termos e condi\xE7\xF5es n\xE3o devem e n\xE3o podem ser considerados como um convite para entrar em um investimento. Eles n\xE3o constituem ou se relacionam de forma alguma, nem devem ser considerados como uma oferta de t\xEDtulos em qualquer jurisdi\xE7\xE3o. Os termos e condi\xE7\xF5es n\xE3o incluem nem cont\xE9m qualquer informa\xE7\xE3o ou indica\xE7\xE3o que possa ser considerada como uma recomenda\xE7\xE3o ou que possa ser usada para basear qualquer decis\xE3o de investimento. LNS \xE9 um token utilit\xE1rio e n\xE3o se destina a ser usado como um investimento.\n    A Lunes ser\xE1 uma entidade operativa gerenciando uma plataforma e LNS \xE9 apenas um token utilit\xE1rio. Portanto, Lunes n\xE3o \xE9 um intermedi\xE1rio financeiro, portanto n\xE3o \xE9 obrigado a obter qualquer autoriza\xE7\xE3o para fins anti-lavagem de dinheiro.\n    A aquisi\xE7\xE3o de LNS n\xE3o conceder\xE1 qualquer direito ou influ\xEAncia sobre a organiza\xE7\xE3o e governan\xE7a sobre a Lunes aos compradores.\n    Os funcion\xE1rios de Lunes est\xE3o autorizados a operar com o LNS a pre\xE7o de mercado, caso conhe\xE7am informa\xE7\xF5es que possam modificar o pre\xE7o do token.\n    As autoridades reguladoras est\xE3o examinando cuidadosamente as empresas e opera\xE7\xF5es associadas \xE0 crypto moedas no mundo. Nesse sentido, as medidas regulat\xF3rias, investiga\xE7\xF5es ou a\xE7\xF5es podem impactar os neg\xF3cios da Lunes e at\xE9 mesmo limit\xE1-la ou impedi-la de desenvolver suas opera\xE7\xF5es no futuro. Qualquer pessoa que se comprometa a adquirir o LNS deve estar ciente de que o modelo de neg\xF3cios Lunes e o T&C podem mudar ou precisar ser modificados devido a novos requisitos regulat\xF3rios e de conformidade de quaisquer leis aplic\xE1veis em qualquer jurisdi\xE7\xE3o. Nesse caso, os compradores e qualquer pessoa que se comprometa a adquirir LNS reconhecem e compreendem que a Lunes e suas filiais n\xE3o ser\xE3o responsabilizadas por quaisquer perdas ou danos diretos ou indiretos causados por tais altera\xE7\xF5es.\n    Lunes far\xE1 o seu melhor para lan\xE7ar suas opera\xE7\xF5es e desenvolver a plataforma Lunes. Qualquer pessoa que empreender na aquisi\xE7\xE3o de LNS reconhece e entende que \n    Lunes n\xE3o fornece qualquer garantia de que vai conseguir estabelecer uma plataforma operativa e, portanto, n\xE3o pode garantir que os LNS podem ser utilizados \n    para o com\xE9rcio social na plataforma. Reconhecem e compreendem conseq\xFCentemente que Lunes (incl. seus empregados) n\xE3o assume nenhuma responsabilidade por qualquer \n    perda ou dano que resulte ou se relacione com a incapacidade de usar o LNS, exceto no caso de m\xE1 conduta intencional ou bruta neglig\xEAncia.</p>\n\n    <h5>Direitos de propriedade intelectual</h5>\n\n    <p>Na medida em que o copyright ou outros direitos de propriedade intelectual existem na plataforma Lunes, tais como software, know-how, an\xE1lise ou programas, \n    os direitos autorais e outros direitos intelectuais e industriais pertencem a Lunes.</p>\n\n    <h5>Limita\xE7\xE3o da responsabilidade</h5>\n\n    <p>Lunes, bem como seus oficiais, diretores, agentes, joint-ventures, funcion\xE1rios e fornecedores, n\xE3o assume qualquer responsabilidade por qualquer perda resultante, ou relacionada ao uso, da plataforma Lunes ou qualquer t\xE9cnica, interrup\xE7\xE3o ou avaria da plataforma.\n    A limita\xE7\xE3o da responsabilidade acima referida n\xE3o \xE9 aplic\xE1vel no caso de Lunes, ou de um trabalhador Lunes, ter causado o dano por m\xE1 conduta intencional ou por \n    neglig\xEAncia grosseira.</p>\n\n    <h5>Separa\xE7\xE3o</h5>\n\n    <p>Se qualquer das disposi\xE7\xF5es do T&C ou do acordo for considerada inv\xE1lida, nula ou inexequ\xEDvel, as restantes disposi\xE7\xF5es continuar\xE3o em pleno vigor e efeito.</p>\n'
 	};
 
 /***/ },
-/* 699 */
+/* 701 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -82003,7 +82056,7 @@
 	  value: true
 	});
 	
-	var _http = __webpack_require__(700);
+	var _http = __webpack_require__(702);
 	
 	Object.defineProperty(exports, 'HttpService', {
 	  enumerable: true,
@@ -82012,7 +82065,7 @@
 	  }
 	});
 	
-	var _cheapflights = __webpack_require__(702);
+	var _cheapflights = __webpack_require__(704);
 	
 	Object.defineProperty(exports, 'CheapFlightService', {
 	  enumerable: true,
@@ -82021,7 +82074,7 @@
 	  }
 	});
 	
-	var _errormessagesService = __webpack_require__(703);
+	var _errormessagesService = __webpack_require__(705);
 	
 	Object.defineProperty(exports, 'ErrorMessagesService', {
 	  enumerable: true,
@@ -82033,7 +82086,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 700 */
+/* 702 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -82042,17 +82095,17 @@
 	  value: true
 	});
 	
-	var _lunesLib = __webpack_require__(488);
+	var _lunesLib = __webpack_require__(490);
 	
 	var _lunesLib2 = _interopRequireDefault(_lunesLib);
 	
-	var _axios = __webpack_require__(565);
+	var _axios = __webpack_require__(567);
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
 	var _constants = __webpack_require__(475);
 	
-	var _cccStreamerUtilities = __webpack_require__(701);
+	var _cccStreamerUtilities = __webpack_require__(703);
 	
 	var _cccStreamerUtilities2 = _interopRequireDefault(_cccStreamerUtilities);
 	
@@ -82381,7 +82434,7 @@
 	exports.default = HttpService;
 
 /***/ },
-/* 701 */
+/* 703 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -82871,7 +82924,7 @@
 	exports.default = CCC;
 
 /***/ },
-/* 702 */
+/* 704 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -82891,7 +82944,7 @@
 	exports.default = CheapFlightService;
 
 /***/ },
-/* 703 */
+/* 705 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -82931,13 +82984,13 @@
 	exports.default = ErrorMessagesService;
 
 /***/ },
-/* 704 */
+/* 706 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(705);
+	var content = __webpack_require__(707);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(480)(content, {});
@@ -82957,7 +83010,7 @@
 	}
 
 /***/ },
-/* 705 */
+/* 707 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(479)(true);
