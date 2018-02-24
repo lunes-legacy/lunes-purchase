@@ -117,7 +117,7 @@
               </div>
               <div class="result">
                 <div>{{'BONUS' | translate}} 30%</div>
-                <div>0.30</div>
+                <div>{{$ctrl.bonusAmountFinal}}</div>
               </div>
               <div class="line-break">
                 <hr />
@@ -150,7 +150,9 @@
           <img ng-src="{{$ctrl.currentQRCode.img}}" class="qr-code img-thumbnail img-responsive" />
           <p class="address">{{$ctrl.currentQRCode.address}}</p>
         </div>
-
+        <div>
+          Buy limit for this phase: {{$ctrl.buyLimit}} LNS
+        </div>
       </div>
     </div>
   </section>
