@@ -70,7 +70,7 @@ class BuyController {
         this.currentPhase = JSON.parse(localStorage.getItem('lunes.phase'));
         phase = this.currentPhase[0];
 
-        if (this.currentUser.whitelist && phase.maximum_individual_limit < 1000000) {
+        if (this.currentUser.whitelist && phase.name === 'Whitelist') {
           this.buyLimit = 1000000;
         } else {
           this.buyLimit = phase.maximum_individual_limit;
@@ -86,7 +86,7 @@ class BuyController {
 
       phase = this.currentPhase[0];
       
-      if (this.currentUser.whitelist && phase.maximum_individual_limit < 1000000) {
+      if (this.currentUser.whitelist && phase.name === 'Whitelist') {
         this.buyLimit = 1000000;
       } else {
         this.buyLimit = phase.maximum_individual_limit;

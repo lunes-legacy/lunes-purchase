@@ -149,10 +149,11 @@
           </div>
           <img ng-src="{{$ctrl.currentQRCode.img}}" class="qr-code img-thumbnail img-responsive" />
           <p class="address">{{$ctrl.currentQRCode.address}}</p>
+          <div>
+            Buy limit for this phase: <span style="font-size:15px;font-weight:bold">{{$ctrl.buyLimit}} LNS </span>
+          </div>
         </div>
-        <div>
-          Buy limit for this phase: {{$ctrl.buyLimit}} LNS
-        </div>
+
       </div>
     </div>
   </section>
