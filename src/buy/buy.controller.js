@@ -62,13 +62,26 @@ class BuyController {
 
   }
 
+  getPhaseActive() {
+    const phase = this.currentPhase.filter(f => {
+      return f.sale_status === 'active';
+    });
+    if (phase && phase.length) {
+      return phase[0];
+    }
+    return {};
+  }
+
   async obtainPhase() {
     console.log('obtainPhase');
     try {
-      let phase
+      let phase;
       if (localStorage.getItem('lunes.phase')) {
         this.currentPhase = JSON.parse(localStorage.getItem('lunes.phase'));
-        phase = this.currentPhase[0];
+        phase = this.getPhaseActive();
+
+        this.percentBonus = phase.bonus*100;
+        this.priceValueLunes = parseFloat(phase.price_value);
 
         if (this.currentUser.whitelist && phase.name === 'Whitelist') {
           this.buyLimit = 1000000;
@@ -84,7 +97,10 @@ class BuyController {
       });
       console.log(this.currentPhase);
 
-      phase = this.currentPhase[0];
+      phase = this.getPhaseActive();
+
+      this.percentBonus = phase.bonus*100;
+      this.priceValueLunes = parseFloat(phase.price_value);
       
       if (this.currentUser.whitelist && phase.name === 'Whitelist') {
         this.buyLimit = 1000000;
@@ -142,8 +158,17 @@ class BuyController {
    * coupon           - eh o cupom de bonus do usuario se houver
   */
   calcValue(LNS) {
+    if (LNS) {
+      if (this.valueToReceive.indexOf(',') !== -1) {
+        this.valueToReceive = this.valueToReceive.replace(/[, ]+/g, "0").trim(); 
+      }
+    } else {
+      if (this.valueToDeposit.indexOf(',') !== -1) {
+        this.valueToDeposit = this.valueToDeposit.replace(/[, ]+/g, "0").trim(); 
+      }
+    }
     this.checkMaxLength();
-    const phase = this.currentPhase[0];
+    const phase = this.getPhaseActive();
     const bonusRate = phase.bonus;
     const currentPrice = this.balanceCoins[this.currentCoinSelected.name].balance.PRICE;
     const coupon = this.currentUser.coupon;
@@ -157,7 +182,6 @@ class BuyController {
     let calculateFinal = 0;
 
     if (LNS) {
-
       if (coinAmount > this.buyLimit) {
         coinAmount = this.buyLimit;
         this.valueToReceive = this.buyLimit;
@@ -165,15 +189,7 @@ class BuyController {
 
       calculateFinal = LunesLib.ico.buyConversion.fromLNS(bonusRate, coinAmount, currentPrice, unitPrice, coupon);
       this.valueToDeposit = calculateFinal.buyAmount;
-      this.bonusAmountFinal = (parseFloat(this.currentPhase[0].bonus) * this.valueToReceive).toString();
-
-      if (this.bonusAmountFinal.indexOf(',') !== -1) {
-        this.bonusAmountFinal = this.bonusAmountFinal.replace(",", "."); 
-      }
-
-      if (this.valueToDeposit.indexOf(',') !== -1) {
-        this.valueToDeposit = this.valueToDeposit.replace(",", "."); 
-      }
+      this.bonusAmountFinal = (parseFloat(phase.bonus) * this.valueToReceive).toString();
       return;
     }
     
@@ -186,16 +202,12 @@ class BuyController {
       calculateFinal = LunesLib.ico.buyConversion.fromLNS(bonusRate, this.buyLimit, currentPrice, unitPrice, coupon);
       this.valueToReceive = this.buyLimit.toString();
       this.valueToDeposit = calculateFinal.buyAmount;
-      this.bonusAmountFinal = (parseFloat(this.currentPhase[0].bonus) * this.valueToReceive).toString();
+      this.bonusAmountFinal = (parseFloat(phase.bonus) * this.valueToReceive).toString();
     }
+  }
 
-    if (this.bonusAmountFinal.indexOf(',') !== -1) {
-      this.bonusAmountFinal = this.bonusAmountFinal.replace(",", ".");
-    }
-
-    if (this.valueToReceive.indexOf(',') !== -1) {
-      this.valueToReceive = this.valueToReceive.replace(",", ".");
-    }
+  getBuyLimit() {
+    return parseFloat(this.buyLimit);
   }
 
   /**

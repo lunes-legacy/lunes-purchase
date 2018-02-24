@@ -102,7 +102,7 @@
 
               <div class="col-lg-12" style="text-align: right;">
                 <label for="#">
-                  <small>{{'PRICE_LUNES' | translate}}</small> = USD 0.01
+                  <small>{{'PRICE_LUNES' | translate}}</small> = USD {{$ctrl.priceValueLunes}}
                 </label>
               </div>
             </div>
@@ -116,7 +116,7 @@
                 <div>{{$ctrl.valueToReceive}}</div>
               </div>
               <div class="result">
-                <div>{{'BONUS' | translate}} 30%</div>
+                <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>
                 <div>{{$ctrl.bonusAmountFinal}}</div>
               </div>
               <div class="line-break">
@@ -135,8 +135,12 @@
                 <button class="primary-button" data-ng-click="$ctrl.doSignup()">{{'BUY' | translate}}</button>
               </div>
             </div>
-            <div class="col-lg-12" style="text-align: center; margin: 10px 0;">
+            <div class="col-lg-12" style="text-align: left; margin: 10px 0;">
               * {{'MSG_BALANCE_DEPOSITED' | translate}}
+            </div>
+            <div class="col-lg-12" style="text-align: left; margin: 10px 0;">
+              * {{'BUY_LIMIT_PHASE' | translate}}
+              <span style="font-size:15px;font-weight:bold">{{$ctrl.getBuyLimit();}} LNS </span>
             </div>
           </div>
 
@@ -149,9 +153,6 @@
           </div>
           <img ng-src="{{$ctrl.currentQRCode.img}}" class="qr-code img-thumbnail img-responsive" />
           <p class="address">{{$ctrl.currentQRCode.address}}</p>
-          <div>
-            Buy limit for this phase: <span style="font-size:15px;font-weight:bold">{{$ctrl.buyLimit}} LNS </span>
-          </div>
         </div>
 
       </div>
