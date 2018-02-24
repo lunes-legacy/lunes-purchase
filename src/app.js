@@ -11,7 +11,8 @@ import pt from './constants/pt';
 
 import {
   CheapFlightService,
-  HttpService
+  HttpService,
+  ErrorMessagesService
 } from './services';
 import './scss/main.scss';
 
@@ -21,6 +22,7 @@ angular.module('myApp', [
   I18n,
 ])
 .service('HttpService', HttpService)
+.service('ErrorMessagesService', ErrorMessagesService)
 .service('CheapFlightService', CheapFlightService)
 .component('loginPage', LoginComponent)
 .component('signupPage', SignupComponent)

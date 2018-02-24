@@ -2,11 +2,12 @@ import { STORAGE_KEY } from '../constants/index';
 import Countdown from '../utils/countdown';
 
 class LoginController {
-    constructor(HttpService, $state, $timeout) {
+    constructor(HttpService, $state, $timeout, ErrorMessagesService) {
       this.$state = $state;
       this.$timeout = $timeout;
       this.currentPhase = [];
       this.HttpService = HttpService;
+      this.ErrorMessagesService = ErrorMessagesService;
       this.user = {
           email: '',
           password: ''
@@ -20,10 +21,7 @@ class LoginController {
     async doLogin() {
       this.showLoading(true);
       const a = await this.HttpService.login(this.user).catch(error => {
-          if (error && error.response && error.response.data) {
-              alert(error.response.data.message)
-          }
-          console.log(error);
+        this.notification(true, error);
       });
       this.showLoading(false);
       if (a && a.accessToken) {
@@ -63,11 +61,6 @@ class LoginController {
     async obtainPhase() {
       try {
         console.log("");
-        if (localStorage.getItem('lunes.phase')) {
-          this.currentPhase = JSON.parse(localStorage.getItem('lunes.phase'));
-          this.showLoading(false);
-          return;
-        }
         this.currentPhase = await this.HttpService.obtainPhase().catch(error => {
           console.log(error);
           alert('Erro ao tentar recuperar dados da fase da ICO');  
@@ -82,9 +75,19 @@ class LoginController {
       }
     }
 
+    notification(isShow, msg) {
+      if (isShow) {
+          let self = this;
+        $(`<div class="modal-backdrop-error"><h4 style="margin-top: 10%;">${this.ErrorMessagesService.get(msg)}</h4><button class="close-error">ok</button></div>`).appendTo(document.body);
+        $('.close-error').on('click', function() {
+          $(".modal-backdrop-error").remove();   
+        });
+      }
+    }
+
   }
   
-  LoginController.$inject = ['HttpService', '$state', '$timeout'];
+  LoginController.$inject = ['HttpService', '$state', '$timeout', 'ErrorMessagesService'];
   
   export default LoginController;
   

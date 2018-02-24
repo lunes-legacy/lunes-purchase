@@ -5,6 +5,26 @@
   }
 }
 
+.modal-backdrop-error {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #4c2b82;
+  opacity: 0.7;
+  text-align: center;
+  .close-error {
+    border: 0;
+    border-radius: 30px;
+    padding: 5px 50px;
+    background-color: #4cd466;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
 /* counter */
 #counter {
   font-family: 'Offside', cursive;
