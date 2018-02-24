@@ -49,6 +49,12 @@ class SignupController {
         return this.user.name && this.user.email && this.user.password && this.user.lastname && this.user.confirmEmail && this.user.confirmPassword;
     }
 
+    enableTab() {
+      setTimeout(() => {
+        document.getElementById("defaultOpen").click();
+      }, 200);
+    }
+
     allCheckboxIsChecked() {
         return this.user.check1 && this.user.check2 && this.user.check4;
     }

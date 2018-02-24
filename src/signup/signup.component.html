@@ -8,7 +8,6 @@
       </p>
     </div>
     <div class="modal-content">
-      <h5 class="modal-title">{{'TERM_TITLE' | translate}}</h5>
       <div>
         <script>
           function openCity(evt, cityName) {
@@ -34,16 +33,16 @@
         </script>
         <!-- Tab links -->
         <div class="tab">
-          <button class="tablinks" onclick="openCity(event, 'terms_condition')">{{'TERMS_CONDITION_TITLE' | translate}}</button>
+          <button class="tablinks" onclick="openCity(event, 'terms_condition')" id="defaultOpen">{{'TERMS_CONDITION_TITLE' | translate}}</button>
           <button class="tablinks" onclick="openCity(event, 'representation_condition')">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>
         </div>
         <!-- Tab content -->
         <div id="terms_condition" class="tabcontent">
-          <div class="content" ng-bind-html="$ctrl.termsCondition"> </div>
+          <div class="content" ng-bind-html="$ctrl.termsCondition" style="height: 500px;"> </div>
         </div>
 
         <div id="representation_condition" class="tabcontent">
-          <div class="content" ng-bind-html="$ctrl.termsRepresentation"> </div>
+          <div class="content" ng-bind-html="$ctrl.termsRepresentation" style="height: 500px;"> </div>
         </div>
       </div>
 
@@ -195,7 +194,7 @@
             </div>
 
             <div class="area-button txt-right">
-              <button class="rounded-button" data-toggle="modal" data-target="#modal-terms" ng-show="$ctrl.loginForm.$valid">
+              <button class="rounded-button" data-toggle="modal" data-target="#modal-terms" ng-show="$ctrl.loginForm.$valid" ng-click="$ctrl.enableTab()">
                 <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png" width="20px" alt="next" />
               </button>
 
