@@ -5,15 +5,16 @@ class SignupController {
         this.HttpService = HttpService;
         this.$translate = $translate;
         this.showErrorForm = false;
-        this.terms = $sce.trustAsHtml($filter('translate')('TERMS_CONDITIONS'));
+        this.termsCondition = $sce.trustAsHtml($filter('translate')('TERMS_CONDITIONS'));
+        this.termsRepresentation = $sce.trustAsHtml($filter('translate')('REPRESENTATION_TERM'));
         this.serverError = false;
         this.user = {
-            name: '',
-            lastname: '',
-            email: '',
-            confirmEmail: '',
-            password: '',
-            confirmPassword: '',
+            name: 'sdsdsds',
+            lastname: 'dsd sddsd',
+            email: 'dansymbols@gmail.com',
+            confirmEmail: 'dansymbols@gmail.com',
+            password: 'Dan123456#',
+            confirmPassword: 'Dan123456#',
             check1: false,
             check2: false,
             check3: false,
@@ -46,6 +47,12 @@ class SignupController {
 
     userIsValidToSignup() {
         return this.user.name && this.user.email && this.user.password && this.user.lastname && this.user.confirmEmail && this.user.confirmPassword;
+    }
+
+    enableTab() {
+      setTimeout(() => {
+        document.getElementById("defaultOpen").click();
+      }, 200);
     }
 
     allCheckboxIsChecked() {

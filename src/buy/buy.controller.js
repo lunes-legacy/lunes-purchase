@@ -217,7 +217,7 @@ class BuyController {
   */
   getTotal() {
     const amountLNS = parseFloat(this.valueToReceive);
-    const bonus = parseFloat(this.currentPhase[0].bonus) * amountLNS;
+    const bonus = parseFloat(this.getPhaseActive().bonus) * amountLNS;
     const total = amountLNS + bonus;
     return total.toFixed(8);
   }

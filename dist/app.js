@@ -53496,7 +53496,7 @@
 	
 	  BuyController.prototype.getTotal = function getTotal() {
 	    var amountLNS = parseFloat(this.valueToReceive);
-	    var bonus = parseFloat(this.currentPhase[0].bonus) * amountLNS;
+	    var bonus = parseFloat(this.getPhaseActive().bonus) * amountLNS;
 	    var total = amountLNS + bonus;
 	    return total.toFixed(8);
 	  };

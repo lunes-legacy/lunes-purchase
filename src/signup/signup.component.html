@@ -8,8 +8,44 @@
       </p>
     </div>
     <div class="modal-content">
-      <h5 class="modal-title">{{'TERM_TITLE' | translate}}</h5>
-      <div class="content" ng-bind-html="$ctrl.terms"> </div>
+      <div>
+        <script>
+          function openCity(evt, cityName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+          }
+        </script>
+        <!-- Tab links -->
+        <div class="tab">
+          <button class="tablinks" onclick="openCity(event, 'terms_condition')" id="defaultOpen">{{'TERMS_CONDITION_TITLE' | translate}}</button>
+          <button class="tablinks" onclick="openCity(event, 'representation_condition')">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>
+        </div>
+        <!-- Tab content -->
+        <div id="terms_condition" class="tabcontent">
+          <div class="content" ng-bind-html="$ctrl.termsCondition" style="height: 500px;"> </div>
+        </div>
+
+        <div id="representation_condition" class="tabcontent">
+          <div class="content" ng-bind-html="$ctrl.termsRepresentation" style="height: 500px;"> </div>
+        </div>
+      </div>
+
       <div class="footer">
         <div>
           <div class="form-check has-success">
@@ -158,7 +194,7 @@
             </div>
 
             <div class="area-button txt-right">
-              <button class="rounded-button" data-toggle="modal" data-target="#modal-terms" ng-show="$ctrl.loginForm.$valid">
+              <button class="rounded-button" data-toggle="modal" data-target="#modal-terms" ng-show="$ctrl.loginForm.$valid" ng-click="$ctrl.enableTab()">
                 <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png" width="20px" alt="next" />
               </button>
 
