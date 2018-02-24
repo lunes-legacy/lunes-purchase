@@ -5,7 +5,7 @@
   margin: 0;
   padding: 0 5px 0 5px;
   text-align: right;
-  width: 150px;
+  width: 100%;
   background-color: transparent;
   color: #fff;
   font-size: 18px;
@@ -108,7 +108,8 @@
       width: 40px;
       border-radius: 5px;
       &:hover, &.selected {
-        background-color: #4c2b82;
+        background-color: #32bc57;
+        opacity: 0.9;
       }
     }
   }

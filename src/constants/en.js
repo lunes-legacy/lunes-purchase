@@ -45,6 +45,31 @@ export default {
     PASSWORD_ALPHANUMERIC: 'At least one character in the password must be a number',
     EMAIL_MATCH: 'E-mail must match',
     PASSWORD_MATCH: 'Password must match',
+    TERMS_CONDITION_TITLE: 'Terms and Conditions',
+    REPRESENTATION_TERM_TITLE: 'Representations and Warranties',
+    REPRESENTATION_TERM: `
+    <h3>Representation and Warranties</h3>
+    <p>By participating in the Initial Coin Offering, the User agrees to the T&C and in particular, they represent and warrant that they:</p>
+     
+    <br>1.    are authorized and have full power to purchase LNS according to the laws that apply in their jurisdiction of domicile;
+    <br>2.    live in a jurisdiction which allows Lunes to sell the Lunes tokens through a Initial Coin Offering without requiring any local authorization;
+    <br>3.    are familiar with all related regulations in the specific jurisdiction in which they are based and that purchasing cryptographic tokens in that jurisdiction is not prohibited, restricted or subject to additional conditions of any kind;
+    <br>4.    are not a U.S. citizen, resident or entity (a “U.S. Person”) nor are they purchasing Lunes Tokens or signing on behalf of a U.S. Person. Are not acting for the purpose of speculative investment; will not use the Token Sale for any illegal activity, including but not limited to money laundering and the financing of terrorism;
+    <br>5.    are solely responsible for determining whether the acquisition of LNS is appropriate for them; are acquiring LNS for future use of the Lunes Platform; understand the risks associated with the Initial Coin Offering (incl. the risks related to the non-development of Lunes Platform and operations); and
+    <br>6.    understand the use of cryptocurrencies and the associated risks.
+     <p>
+    Intellectual Property Rights
+    To the extent that copyright or other intellectual property rights exist in the Lunes Platform, such as software, know-how, analysis or programs, those copyrights and other intellectual and industrial rights belong to Lunes.
+     </p>
+    <p>Limitation of Liability
+    Lunes, as well as its officers, directors, agents, joint ventures, employees and suppliers, assumes no liability or responsibility for any loss arising out of or related to the use of the Lunes Platform or any technical, interruption or malfunction of the platform.
+     </p>
+    <p>The limitation of liability set out above shall not be applicable in the event that Lunes, or a Lunes-employee, has caused the damage by intentional misconduct or by gross negligence.
+     </p>
+    <p>Severability
+    If any of the provisions of the T&C or of the Agreement are deemed to be invalid, void or unenforceable, the remaining provisions shall continue in full force and effect.
+    </p>
+    `,
     TERMS_CONDITIONS: `
     The Terms and Conditions (the “T&C”) apply to the buyer of the Lunes token
     (“LNS”) and future user of the Lunes Platform. You should carefully read the T&C, as well as the white paper of the Lunes project before participating in the Initial Coin Offering.
@@ -88,26 +113,5 @@ export default {
      </p>
     <p>Lunes will do its best to launch its operations and develop the Lunes Platform. Any person undertaking to acquire LNS acknowledges and understands that Lunes does not provide any guarantee that it will manage to establish an operative platform and therefore it cannot guarantee that the LNS can be used for social trading on the platform. They acknowledge and understand therefore that Lunes (incl. its bodies and employees) assumes no liability or responsibility for any loss or damage that would result from or relate to the incapacity to use LNS, except in the case of intentional misconduct or gross negligence.
      </p>
-    <p>Representation and Warranties
-    By participating in the Initial Coin Offering, the User agrees to the T&C and in particular, they represent and warrant that they:
-     
-    <br>1.    are authorized and have full power to purchase LNS according to the laws that apply in their jurisdiction of domicile;
-    <br>2.    live in a jurisdiction which allows Lunes to sell the Lunes tokens through a Initial Coin Offering without requiring any local authorization;
-    <br>3.    are familiar with all related regulations in the specific jurisdiction in which they are based and that purchasing cryptographic tokens in that jurisdiction is not prohibited, restricted or subject to additional conditions of any kind;
-    <br>4.    are not a U.S. citizen, resident or entity (a “U.S. Person”) nor are they purchasing Lunes Tokens or signing on behalf of a U.S. Person. Are not acting for the purpose of speculative investment; will not use the Token Sale for any illegal activity, including but not limited to money laundering and the financing of terrorism;
-    <br>5.    are solely responsible for determining whether the acquisition of LNS is appropriate for them; are acquiring LNS for future use of the Lunes Platform; understand the risks associated with the Initial Coin Offering (incl. the risks related to the non-development of Lunes Platform and operations); and
-    <br>6.    understand the use of cryptocurrencies and the associated risks.
-     <p>
-    Intellectual Property Rights
-    To the extent that copyright or other intellectual property rights exist in the Lunes Platform, such as software, know-how, analysis or programs, those copyrights and other intellectual and industrial rights belong to Lunes.
-     </p>
-    <p>Limitation of Liability
-    Lunes, as well as its officers, directors, agents, joint ventures, employees and suppliers, assumes no liability or responsibility for any loss arising out of or related to the use of the Lunes Platform or any technical, interruption or malfunction of the platform.
-     </p>
-    <p>The limitation of liability set out above shall not be applicable in the event that Lunes, or a Lunes-employee, has caused the damage by intentional misconduct or by gross negligence.
-     </p>
-    <p>Severability
-    If any of the provisions of the T&C or of the Agreement are deemed to be invalid, void or unenforceable, the remaining provisions shall continue in full force and effect.
-    </p>
     `
 };
