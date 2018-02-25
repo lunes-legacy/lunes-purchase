@@ -9,12 +9,12 @@ class SignupController {
         this.termsRepresentation = $sce.trustAsHtml($filter('translate')('REPRESENTATION_TERM'));
         this.serverError = false;
         this.user = {
-            name: 'sdsdsds',
-            lastname: 'dsd sddsd',
-            email: 'dansymbols@gmail.com',
-            confirmEmail: 'dansymbols@gmail.com',
-            password: 'Dan123456#',
-            confirmPassword: 'Dan123456#',
+            name: '',
+            lastname: '',
+            email: '',
+            confirmEmail: '',
+            password: '',
+            confirmPassword: '',
             check1: false,
             check2: false,
             check3: false,
