@@ -25,6 +25,17 @@ class HttpService {
     const data = await LunesLib.users.create(obj);
     return data;
   }
+  
+  async confirmterm(currentUser) {
+    try {
+      console.log("");
+      /* TODO - remove true value to production */
+      let confirmTerm = await LunesLib.ico.confirmTerm(currentUser.email, currentUser.accessToken);
+      return confirmTerm;
+    } catch (error) {
+      throw new Error(error);
+    }  
+  }
 
   async obtainPhase() {
     const phase = await LunesLib.ico.obtainPhase();

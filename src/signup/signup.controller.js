@@ -1,3 +1,4 @@
+import { STORAGE_KEY } from '../constants/index';
 class SignupController {
     constructor($state, HttpService, $filter, $sce, $injector, $timeout, $translate) {
         this.$state = $state;
@@ -41,8 +42,28 @@ class SignupController {
             this.serverErrorMessage = '';
             localStorage.setItem('lunes.accessToken', JSON.stringify(a));
             this.showLoading(false);
-            this.notification(true);
+            const b = await this.HttpService.confirmterm(a).catch(error => {
+                this.serverError = true
+                this.serverErrorMessage = error.message
+                console.log(error);
+            });
+            if (!a.depositWallet || !a.depositWallet.BTC) {
+                const depositWallet = await this.HttpService.createDepositWallet(a).catch(error => {
+                    if (error && error.response && error.response.data) {
+                        alert(error.response.data.message)
+                    }
+                    console.log(error);
+                });
+                a.depositWallet = depositWallet;
+			    localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
+			    this.$state.go('buy');
+            } else {
+			    localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
+			    this.$state.go('buy');
+                console.log(a);
+            }
         }
+
     }
 
     userIsValidToSignup() {
