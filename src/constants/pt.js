@@ -30,7 +30,7 @@ export default {
     LOGOUT: 'sair',
     AUTHENTICATE_INVALID: 'Autenticação Inválida',
     AN_ERROR_CREATE_ACCOUNT: 'Um erro ocorreu ao criar a conta',
-    MSG_BALANCE_DEPOSITED: 'Todo saldo depositado nesse endereço será automaticamente convertido em Lunes no dia 25/02/2018 às 23:00',
+    MSG_BALANCE_DEPOSITED: '* Todo saldo depositado nesse endereço será automaticamente convertido em Lunes no dia 25/02/2018 às 23:00 pela cotação do momento. O saldo excedente além do limite de compra pode ser usado nas próximas fases de venda.',
     US_CITIZEN: 'Eu concordo que não sou um cidadão dos Estados Unidos da América.',
     AGREE_TERM: 'Eu concordo com os termos de uso acima.',
     AGREE_FUTURE_VALUE: 'Eu concordo que não há garantia do valor futuro da moeda Lunes.',

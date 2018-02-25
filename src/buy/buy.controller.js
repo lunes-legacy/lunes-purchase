@@ -16,6 +16,7 @@ class BuyController {
     this.valueToReceive = '0.00000000';
     this.bonusAmountFinal = '0.00000000';
     this.buyLimit = '0';
+    
     this.coins = [{
       label: 'Bitcoin',
       name: 'BTC',
@@ -56,7 +57,7 @@ class BuyController {
   async showDepositWalletAddressQRCode() {
     const a = await this.HttpService.showDepositWalletAddressQRCode(this.currentUser, this.currentCoinSelected);
     this.currentQRCode = JSON.parse(JSON.stringify(a));
-    this.balance = this.HttpService.getBalance(this.currentCoinSelected.name, this.currentQRCode.address, this.currentUser);
+    //this.balance = this.HttpService.getBalance(this.currentCoinSelected.name, this.currentQRCode.address, this.currentUser);
   }
 
   async doBuy() {
@@ -74,7 +75,7 @@ class BuyController {
   }
 
   async obtainPhase() {
-    console.log('obtainPhase');
+    
     try {
       let phase;
       if (localStorage.getItem('lunes.phase')) {
@@ -159,6 +160,7 @@ class BuyController {
    * coupon           - eh o cupom de bonus do usuario se houver
   */
   calcValue(LNS) {
+    
     if (LNS) {
       if (this.valueToReceive.indexOf(',') !== -1) {
         this.valueToReceive = this.valueToReceive.replace(/[, ]+/g, "0").trim(); 
@@ -260,7 +262,6 @@ class BuyController {
       if (coin.label === coinSelected.label) {
         self.currentCoinSelected = JSON.parse(JSON.stringify(coin));
         self.showDepositWalletAddressQRCode(self.currentUser, coin);
-        this.balance = this.HttpService.getBalance(coin.name, this.currentQRCode.address, self.currentUser);
         coin.selected = true;
       }
       return coin;

@@ -30,7 +30,7 @@ export default {
     AUTHENTICATE_INVALID: 'Invalid Authentication',
     BUY_LIMIT_PHASE: 'Buy limit for this phase:',
     AN_ERROR_CREATE_ACCOUNT: 'An error occured while creating account',
-    MSG_BALANCE_DEPOSITED: 'All balance deposited in the address will automatically be converted to Lunes on 02/25/2018',
+    MSG_BALANCE_DEPOSITED: '* All balance deposited in the address will automatically be converted to Lunes on 02/25/2018 using the exchange rate of the moment. Exceeding balance above the buy limit will be available in the next sale phases. ',
     US_CITIZEN: 'I agree i am not a citizen of the United States of America.',
     AGREE_TERM: 'I agree with the above terms of use.',
     AGREE_FUTURE_VALUE: 'I agree the price of the lunes cryptocurrency is not guaranteed in the future.',
