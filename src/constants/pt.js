@@ -47,6 +47,7 @@ export default {
     PASSWORD_MATCH: 'Senha deve combinar com a confirmação',
     BALANCE: 'Saldo',
     EMAIL_ALREADY: 'Email já cadastrado',
+    ERROR_SERVER: 'Erro interno no servidor',
     TERMS_CONDITION_TITLE: 'Termos e Condições',
     REPRESENTATION_TERM_TITLE: 'Representações e Garantias',
     REPRESENTATION_TERM: `

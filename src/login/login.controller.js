@@ -31,23 +31,20 @@ class LoginController {
       });
       this.showLoading(false);
       if (a && a.accessToken) {
-        console.log("");
         localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
         if (a.confirmIcoTerm) {
           if (!a.depositWallet || !a.depositWallet.BTC) {
             const depositWallet = await this.HttpService.createDepositWallet(a).catch(error => {
                 if (error && error.response && error.response.data) {
-                    alert(error.response.data.message)
+                    console.log(error);
                 }
-                console.log(error);
             });
             a.depositWallet = depositWallet;
-			localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
-			this.$state.go('buy');
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
+            this.$state.go('buy');
           } else {
-			localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
-			this.$state.go('buy');
-            console.log(a);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
+            this.$state.go('buy');
           }
         } else {
           $('#modal-terms').modal('show');

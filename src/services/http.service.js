@@ -100,7 +100,7 @@ class HttpService {
   }
 
   async buyHistory(email, accessToken) {
-    const a = await LunesLib.coins.buyHistory(email, accessToken);
+    const a = await LunesLib.ico.buyHistory(email, accessToken);
     console.log(a);
     return a; 
   }

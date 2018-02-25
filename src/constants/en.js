@@ -49,6 +49,7 @@ export default {
     EMAIL_ALREADY: 'The email address already exists',
     TERMS_CONDITION_TITLE: 'Terms and Conditions',
     REPRESENTATION_TERM_TITLE: 'Representation and Warranties',
+    ERROR_SERVER: 'Error on server',
     REPRESENTATION_TERM: `
       <h3>Representation and Warranties</h3>
       <p>By participating in the Initial Coin Offering, the User agrees to the T&C and in particular, they represent and warrant that they:</p>

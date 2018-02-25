@@ -9357,6 +9357,9 @@
 	}).config(["$stateProvider", "$translateProvider", "$urlRouterProvider", function ($stateProvider, $translateProvider, $urlRouterProvider) {
 	  'ngInject';
 	
+	  $translateProvider.useSanitizeValueStrategy('escape');
+	  $translateProvider.useSanitizeValueStrategy('escapeParameters');
+	  //$translateProvider.useSanitizeValueStrategy('sce');
 	  $translateProvider.translations('en', _en2.default);
 	  $translateProvider.translations('pt', _pt2.default);
 	  $translateProvider.preferredLanguage((0, _language2.default)());
@@ -52187,56 +52190,53 @@
 	              this.showLoading(false);
 	
 	              if (!(a && a.accessToken)) {
-	                _context.next = 25;
-	                break;
-	              }
-	
-	              console.log("");
-	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
-	
-	              if (!a.confirmIcoTerm) {
 	                _context.next = 23;
 	                break;
 	              }
 	
-	              if (!(!a.depositWallet || !a.depositWallet.BTC)) {
-	                _context.next = 18;
+	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
+	
+	              if (!a.confirmIcoTerm) {
+	                _context.next = 21;
 	                break;
 	              }
 	
-	              _context.next = 12;
+	              if (!(!a.depositWallet || !a.depositWallet.BTC)) {
+	                _context.next = 17;
+	                break;
+	              }
+	
+	              _context.next = 11;
 	              return this.HttpService.createDepositWallet(a).catch(function (error) {
 	                if (error && error.response && error.response.data) {
-	                  alert(error.response.data.message);
+	                  console.log(error);
 	                }
-	                console.log(error);
 	              });
 	
-	            case 12:
+	            case 11:
 	              depositWallet = _context.sent;
 	
 	              a.depositWallet = depositWallet;
 	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
 	              this.$state.go('buy');
-	              _context.next = 21;
+	              _context.next = 19;
 	              break;
 	
-	            case 18:
+	            case 17:
 	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
 	              this.$state.go('buy');
-	              console.log(a);
 	
-	            case 21:
-	              _context.next = 25;
+	            case 19:
+	              _context.next = 23;
 	              break;
 	
-	            case 23:
+	            case 21:
 	              $('#modal-terms').modal('show');
 	              setTimeout(function () {
 	                document.getElementById("defaultOpen").click();
 	              }, 200);
 	
-	            case 25:
+	            case 23:
 	            case 'end':
 	              return _context.stop();
 	          }
@@ -82264,6 +82264,7 @@
 	  EMAIL_ALREADY: 'The email address already exists',
 	  TERMS_CONDITION_TITLE: 'Terms and Conditions',
 	  REPRESENTATION_TERM_TITLE: 'Representation and Warranties',
+	  ERROR_SERVER: 'Error on server',
 	  REPRESENTATION_TERM: '\n      <h3>Representation and Warranties</h3>\n      <p>By participating in the Initial Coin Offering, the User agrees to the T&C and in particular, they represent and warrant that they:</p>\n      <br>1. are authorized and have full power to purchase LNS according to the laws that apply in their jurisdiction of domicile;\n      <br>2. live in a jurisdiction which allows Lunes to sell the Lunes tokens through a Initial Coin Offering without requiring any local authorization;\n      <br>3. are familiar with all related regulations in the specific jurisdiction in which they are based and that purchasing cryptographic tokens in that jurisdiction is not prohibited, restricted or subject to additional conditions of any kind;\n      <br>4. are not a U.S., or Canadian, or Chinese, or South Korean, or Singaporean citizen, resident or entity (a \u201CU.S., or Canadian, or Chinese, or South Korean, or Singaporean Person\u201D) nor are they purchasing Lunes Tokens or signing on behalf of a U.S., or Canadian, or Chinese, or South Korean, or Singaporean Person. Are not acting for the purpose of speculative investment; will not use the Token Sale for any illegal activity, including but not limited to money laundering and the financing of terrorism;\n      <br>5. are solely responsible for determining whether the acquisition of LNS is appropriate for them; are acquiring LNS for future use of the Lunes Platform; understand the risks associated with the Initial Coin Offering (incl. the risks related to the non-development of Lunes Platform and operations);\n      <br>6. understand the use of cryptocurrencies and the associated risks\n    ',
 	  TERMS_CONDITIONS: '\n      <h3>Terms and Conditions</h3>\n      <p>The Terms and Conditions (the \u201CT&C\u201D) apply to the buyer of the Lunes token\n      (\u201CLNS\u201D) and future user of the Lunes Platform. You should carefully read the T&C, as well as the white paper of the Lunes project before participating in the Initial Coin Offering.</p>\n      \n      <h5>Applicability</h5>\n      <p>The following T&C constitute the agreement (the \u201CAgreement\u201D) between Lunes Platform (hereinafter \u201CLunes\u201D or the \u201CCompany\u201D), and you (the \u201CUser\u201D) with respect to \n      the purchase of the Lunes Token and the future services offered through the Lunes Platform. By using our services, you are agreeing to be bound by the T&C in \n      its latest version. You are aware that Lunes may change this T&C at any time. Your continued use of the Lunes Platform means that you accept any new or modified \n      terms.</p>\n      \n      <h5>Services</h5>\n      <p>Lunes is a platform which provides a set of decentralized solutions through blockchain.\n      In an uncomplicated and affordable way, we will pulverize our technologies into the population. With real solutions for daily life, we deliver services and \n      products ranging from payment processes and fundraising, to authenticity records.</p>\n      \n      <h5>The Lunes Token (LNS)</h5>\n      <p>LNS does not have the legal qualification as a security. LNS is final and non-refundable. LNS is not a share and does not give any right to participate in the \n      general meetings of Lunes. LNS will not have a particular usage outside the Lunes Platform. The purchase of LNS shall therefore not be done for speculative usage.</p>\n      \n      <p>LNS can be purchased during the Initial Coin Offering directly from the Company or after the ICO at the Company or exchanger.</p>\n      \n      <p>Any future User purchasing LNS expressly acknowledges and represents that she/he has carefully reviewed the T&C and fully understands the risks, costs and \n      benefits associated with the purchase of this token as indicated in the T&C.</p>\n      \n      <h5>Knowledge required<h5>\n      <p>A future User undertaking to purchase LNS in relation to the token sale,  should ensure that she/he understands and has significant experience of cryptocurrencies, \n      blockchain systems and services, and that she/he fully understands the risks associated with the token sale as well as the mechanism related to the use of \n      cryptocurrencies (incl. storage).</p>\n      \n      <p>Lunes shall not be responsible for any loss of LNS or situations making it impossible to access to LNS, which may result in any actions or omissions of the future \n      User or any person undertaking to acquire LNS.</p>\n      \n      <h5>Risks</h5>\n      <p>Acquiring LNS involves various risks, in particular that Lunes may not be able to launch its operations and develop its platform. Therefore, and prior to \n      acquiring \n      LNS, any future user should carefully consider the risks, costs, and benefits of acquiring LNS within the Initial Coin Offering, and, if necessary, obtain \n      independent advice in this regard. Any interested person who is not in the position to accept or to understand the risks associated with the Initial Coin \n      Offering (incl. the risks related to the non- development of Lunes Platform and operations) or any other risks as indicated in the T&C, should not acquire \n      LNS, at this stage or later.</p>\n      \n      <h5>Self-Acquisition</h5>\n      <p>Lunes is allowed to acquire LNS from the market at market price as value disbursement method. The acquisition must be authorized by the Board of Directors, \n      under \n      the condition that no conflict of interests is identified. Through acquisition of LNS, Lunes is not allowed to perform operations such as manipulation of LNS \n      market.</p>\n      \n      <h5>Important Disclaimer</h5>\n      <p>The T&C shall not and cannot be considered as an invitation to enter into an investment. They do not constitute or relate in any way nor should they be \n      considered \n      as an offering of securities in any jurisdiction. The T&C do not include or contain any information or indication that might be considered as a recommendation \n      or that might be used to base any investment decision. LNS is a utility token and is not intended to be used as an investment.</p>\n      \n      <p>Lunes will be an operative entity managing a platform and LNS is only a utility token. Therefore, Lunes is not a financial intermediary and is not \n      required to obtain any authorization for anti-money laundering purposes.</p>\n      \n      <p>Acquiring LNS shall not grant any right or influence over Lunes\u2019 organization and governance to the purchasers.</p>\n      \n      <p>Employees of Lunes are allowed to operate with LNS at market price if they are in knowledge of information that may modify the price of the token.</p>\n      \n      <p>Regulatory authorities are carefully scrutinizing businesses and operations associated to cryptocurrencies in the world. In that respect, regulatory measures, \n      investigations or actions may impact Lunes\u2019 business and even limit or prevent it from developing its operations in the future. Any person undertaking to acquire \n      LNS must be aware that the Lunes business model and the T&C may change or need to be modified because of new regulatory and compliance requirements from any \n      applicable laws in any jurisdictions. In such case, purchasers and any person undertaking to acquire LNS acknowledge and understand that neither Lunes nor any \n      of its affiliates shall be held liable for any direct or indirect loss or damages caused by such changes.</p>\n      \n      <p>Lunes will do its best to launch its operations and develop the Lunes Platform. Any person undertaking to acquire LNS acknowledges and understands that Lunes does \n      not provide any guarantee that it will manage to establish an operative platform and therefore it cannot guarantee that the LNS can be used for social trading on \n      the platform. They acknowledge and understand therefore that Lunes (incl. its bodies and employees) assumes no liability or responsibility for any loss or damage \n      that would result from or relate to the incapacity to use LNS, except in the case of intentional misconduct or gross negligence.</p>\n      \n      <h5>Intellectual Property Rights</h5>\n      <p>To the extent that copyright or other intellectual property rights exist in the Lunes Platform, such as software, know-how, analysis or programs, those copyrights \n      and other intellectual and industrial rights belong to Lunes.</p>\n      \n      <h5>Limitation of Liability</h5>\n      <p>Lunes, as well as its officers, directors, agents, joint ventures, employees and suppliers, assumes no liability or responsibility for any loss arising out of or \n      related to the use of the Lunes Platform or any technical, interruption or malfunction of the platform.</p>\n      \n      <p>The limitation of liability set out above shall not be applicable in the event that Lunes, or a Lunes-employee, has caused the damage by intentional misconduct or \n      by gross negligence.</p>\n      \n      <h5>Severability</h5>\n      <p>If any of the provisions of the T&C or of the Agreement are deemed to be invalid, void or unenforceable, the remaining provisions shall continue in full force and \n      effect.</p>\n    '
 	};
@@ -82326,6 +82327,7 @@
 	  PASSWORD_MATCH: 'Senha deve combinar com a confirmação',
 	  BALANCE: 'Saldo',
 	  EMAIL_ALREADY: 'Email já cadastrado',
+	  ERROR_SERVER: 'Erro interno no servidor',
 	  TERMS_CONDITION_TITLE: 'Termos e Condições',
 	  REPRESENTATION_TERM_TITLE: 'Representações e Garantias',
 	  REPRESENTATION_TERM: '\n      <h3>Representa\xE7\xE3o e Garantias</h3>\n      <p>Ao participar da ICO o usu\xE1rio concorda com o T&C e, em particular, eles representam e garantem que:</p>\n      <br>1. S\xE3o autorizados e t\xEAm poder completo para comprar LNS de acordo com as leis que se aplicam em sua jurisdi\xE7\xE3o do domic\xEDlio;\n      <br>2. vivem em uma jurisdi\xE7\xE3o que permite que Lunes venda tokens atrav\xE9s de uma ICO sem exigir qualquer autoriza\xE7\xE3o local;\n      <br>3. est\xE3o familiarizados com todos os regulamentos relacionados na jurisdi\xE7\xE3o espec\xEDficas em que eles vivem e que a compra de tokens criptografados na jurisdi\xE7\xE3o n\xE3o \xE9 proibida, restrita ou sujeitas a qualquer tipo de condi\xE7\xF5es adicionais;\n      <br>4. N\xE3o s\xE3o um cidad\xE3o dos Estados Unidos, do Canad\xE1, de Singapura, da China ou da Cor\xE9ia do Sul ou residente ou entidade e nem est\xE3o comprando tokens Lunes ou assinando em nome de um cidad\xE3o americano, ou canadense, ou singapurense, ou sul coreano, ou chin\xEAs. N\xE3o est\xE3o agindo para fins de investimento especulativo; n\xE3o utilizar\xE1 a venda simb\xF3lica para qualquer actividade ilegal, incluindo, mas n\xE3o se limitando \xE0 lavagem de dinheiro e ao financiamento do terrorismo;\n      <br>5. s\xE3o os \xFAnicos respons\xE1veis por determinar se a aquisi\xE7\xE3o de LNS \xE9 adequada para eles; est\xE3o adquirindo LNS para uso futuro da plataforma Lunes; compreender os riscos associados \xE0 ICO (incl. os riscos relacionados com o n\xE3o desenvolvimento da plataforma e opera\xE7\xF5es da Lunes); e\n      <br>6. compreender o uso de criptomoedas e os riscos associados.\n    ',
@@ -82711,7 +82713,7 @@
 	          switch (_context9.prev = _context9.next) {
 	            case 0:
 	              _context9.next = 2;
-	              return _lunesLib2.default.coins.buyHistory(email, accessToken);
+	              return _lunesLib2.default.ico.buyHistory(email, accessToken);
 	
 	            case 2:
 	              a = _context9.sent;
@@ -83353,16 +83355,20 @@
 	  }
 	
 	  ErrorMessagesService.prototype.get = function get(msg) {
-	    if (msg && msg.message.indexOf("is not a valid email") !== -1) {
-	      msg = this.$translate.instant('AUTHENTICATE_INVALID');
-	    } else if (msg.messageKey === 'auth/user-not-found') {
-	      msg = this.$translate.instant('AUTHENTICATE_INVALID');
-	    } else if (msg.messageKey === 'auth/email-already-in-use') {
-	      msg = this.$translate.instant('EMAIL_ALREADY');
-	    } else if (msg.messageKey === 'auth/wrong-password') {
-	      msg = this.$translate.instant('AUTHENTICATE_INVALID');
+	    try {
+	      if (msg && msg.message.indexOf("is not a valid email") !== -1) {
+	        msg = this.$translate.instant('AUTHENTICATE_INVALID');
+	      } else if (msg.messageKey === 'auth/user-not-found') {
+	        msg = this.$translate.instant('AUTHENTICATE_INVALID');
+	      } else if (msg.messageKey === 'auth/email-already-in-use') {
+	        msg = this.$translate.instant('EMAIL_ALREADY');
+	      } else if (msg.messageKey === 'auth/wrong-password') {
+	        msg = this.$translate.instant('AUTHENTICATE_INVALID');
+	      }
+	      return msg && msg.messageKey ? msg.messageKey : JSON.stringify(msg);
+	    } catch (e) {
+	      return this.$translate.instant('ERROR_SERVER');
 	    }
-	    return msg;
 	  };
 	
 	  return ErrorMessagesService;

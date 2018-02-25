@@ -160,7 +160,10 @@ angular.module('myApp', [
 )
 .config(($stateProvider, $translateProvider, $urlRouterProvider) => {
   'ngInject';
-
+  
+  $translateProvider.useSanitizeValueStrategy('escape');
+  $translateProvider.useSanitizeValueStrategy('escapeParameters');
+  //$translateProvider.useSanitizeValueStrategy('sce');
   $translateProvider.translations('en', en);
   $translateProvider.translations('pt', pt);
   $translateProvider.preferredLanguage(languageUtil());
