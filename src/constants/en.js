@@ -10,7 +10,7 @@ export default {
     WELCOME: 'Welcome',
     BEGIN_YOUR_REGISTRATION: 'Begin your registration',
     AGREE: 'Agree',
-    DONT_HAVE_ACCOUNT: 'D\'ont have an account?',
+    DONT_HAVE_ACCOUNT: 'Don\'t have an account?',
     SIGNUP: 'Signup',
     RESET_PASSWORD: 'Reset your password',
     WHITELIST: 'Whitelist',

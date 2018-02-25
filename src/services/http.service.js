@@ -88,6 +88,12 @@ class HttpService {
     };  
   }
 
+  async buyHistory(email, accessToken) {
+    const a = await LunesLib.coins.buyHistory(email, accessToken);
+    console.log(a);
+    return a; 
+  }
+
   async getBalance(coin, address, currentUser) {
     let underCoin = coin.toLowerCase();
     let balance = await LunesLib.coins.getBalance({ address, coin: underCoin, testnet: false }, currentUser.accessToken);

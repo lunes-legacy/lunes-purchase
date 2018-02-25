@@ -12,6 +12,7 @@ class BuyController {
     this.showContainerCoins = false;
     this.balanceCoins = {};
     this.currentPhase = [];
+    this.buyHistoryUser = {};
     this.valueToDeposit = '0.00000000';
     this.valueToReceive = '0.00000000';
     this.bonusAmountFinal = '0.00000000';
@@ -50,14 +51,21 @@ class BuyController {
     this.obtainPhase().catch(error => {
       console.log(error);
     });
+    /*this.getBuyHistory().catch(error => {
+      console.log(error);
+    });*/
     this.showLoading(true);
+  }
+
+  async getBuyHistory() {
+    const buyHistory = await this.HttpService.buyHistory(this.currentUser.email, this.currentUser.accessToken);
+    this.buyHistoryUser = buyHistory; 
   }
 
   async showDepositWalletAddressQRCode() {
     const a = await this.HttpService.showDepositWalletAddressQRCode(this.currentUser, this.currentCoinSelected);
     this.currentQRCode = JSON.parse(JSON.stringify(a));
     this.getCurrentBalanceUser(this.currentCoinSelected.name, this.currentQRCode.address, this.currentUser);
-    //this.balance = this.HttpService.getBalance(this.currentCoinSelected.name, this.currentQRCode.address, this.currentUser);
   }
 
   async doBuy() {
