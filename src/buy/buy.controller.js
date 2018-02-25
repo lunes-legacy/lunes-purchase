@@ -56,7 +56,8 @@ class BuyController {
   async showDepositWalletAddressQRCode() {
     const a = await this.HttpService.showDepositWalletAddressQRCode(this.currentUser, this.currentCoinSelected);
     this.currentQRCode = JSON.parse(JSON.stringify(a));
-    this.balance = this.HttpService.getBalance(this.currentCoinSelected.name, this.currentQRCode.address, this.currentUser);
+    this.getCurrentBalanceUser(this.currentCoinSelected.name, this.currentQRCode.address, this.currentUser);
+    //this.balance = this.HttpService.getBalance(this.currentCoinSelected.name, this.currentQRCode.address, this.currentUser);
   }
 
   async doBuy() {
@@ -251,6 +252,14 @@ class BuyController {
     localStorage.removeItem(STORAGE_KEY);
   }
 
+  async getCurrentBalanceUser(coin, address, currentUser) {
+    console.log("");
+    const balance = await this.HttpService.getBalance(coin, address, currentUser);
+    this.$timeout(() => {
+      this.balanceUser = balance;
+    }, 200);
+  }
+
   selectCoin(coinSelected) {
     this.valueToDeposit = '0.00000000';
     this.valueToReceive = '0.00000000';
@@ -260,7 +269,7 @@ class BuyController {
       if (coin.label === coinSelected.label) {
         self.currentCoinSelected = JSON.parse(JSON.stringify(coin));
         self.showDepositWalletAddressQRCode(self.currentUser, coin);
-        this.balance = this.HttpService.getBalance(coin.name, this.currentQRCode.address, self.currentUser);
+        self.getCurrentBalanceUser(coin.name, this.currentQRCode.address, self.currentUser);
         coin.selected = true;
       }
       return coin;

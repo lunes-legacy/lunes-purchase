@@ -29,6 +29,7 @@ export default {
     LOGOUT: 'logout',
     AUTHENTICATE_INVALID: 'Invalid Authentication',
     BUY_LIMIT_PHASE: 'Buy limit for this phase:',
+    BALANCE: 'Balance',
     AN_ERROR_CREATE_ACCOUNT: 'An error occured while creating account',
     MSG_BALANCE_DEPOSITED: 'All balance deposited in the address will automatically be converted to Lunes on 02/25/2018',
     US_CITIZEN: 'I agree i am not a citizen of the United States of America.',
