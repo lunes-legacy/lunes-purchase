@@ -46,6 +46,7 @@ export default {
     EMAIL_MATCH: 'E-mail deve combinar com a confirmação',
     PASSWORD_MATCH: 'Senha deve combinar com a confirmação',
     BALANCE: 'Saldo',
+    EMAIL_ALREADY: 'Email já cadastrado',
     TERMS_CONDITION_TITLE: 'Termos e Condições',
     REPRESENTATION_TERM_TITLE: 'Representações e Garantias',
     REPRESENTATION_TERM: `

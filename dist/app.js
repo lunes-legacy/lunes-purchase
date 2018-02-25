@@ -53022,7 +53022,7 @@
 /* 483 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"container\">\n\n  <!-- MODAL - criar directiva depois -->\n  <div id=\"modal-terms\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <div>\n        <script>\n          function openCity(evt, cityName) {\n            // Declare all variables\n            var i, tabcontent, tablinks;\n\n            // Get all elements with class=\"tabcontent\" and hide them\n            tabcontent = document.getElementsByClassName(\"tabcontent\");\n            for (i = 0; i < tabcontent.length; i++) {\n              tabcontent[i].style.display = \"none\";\n            }\n\n            // Get all elements with class=\"tablinks\" and remove the class \"active\"\n            tablinks = document.getElementsByClassName(\"tablinks\");\n            for (i = 0; i < tablinks.length; i++) {\n              tablinks[i].className = tablinks[i].className.replace(\" active\", \"\");\n            }\n\n            // Show the current tab, and add an \"active\" class to the button that opened the tab\n            document.getElementById(cityName).style.display = \"block\";\n            evt.currentTarget.className += \" active\";\n          }\n        </script>\n        <!-- Tab links -->\n        <div class=\"tab\">\n          <button class=\"tablinks\" onclick=\"openCity(event, 'terms_condition')\" id=\"defaultOpen\">{{'TERMS_CONDITION_TITLE' | translate}}</button>\n          <button class=\"tablinks\" onclick=\"openCity(event, 'representation_condition')\">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>\n        </div>\n        <!-- Tab content -->\n        <div id=\"terms_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsCondition\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n\n        <div id=\"representation_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsRepresentation\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG1\" id=\"checkboxG1\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check1\" ng-change=\"$ctrl.allCheckboxIsChecked()\">\n            <label for=\"checkboxG1\" class=\"css-label radGroup1 clr\"> {{'US_CITIZEN' | translate}} </label>\n          </div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG2\" id=\"checkboxG2\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check2\">\n            <label for=\"checkboxG2\" class=\"css-label radGroup1 clr\"> {{'AGREE_TERM' | translate}} </label>\n          </div>\n          <!--<div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG3\" id=\"checkboxG3\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check3\">\n            <label for=\"checkboxG3\" class=\"css-label radGroup1 clr\"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>\n          </div>-->\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG4\" id=\"checkboxG4\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check4\">\n            <label for=\"checkboxG4\" class=\"css-label radGroup1 clr\"> {{'AGREE_FUTURE_VALUE' | translate}}</label>\n          </div>\n          <div class=\"area-button\">\n            <button ng-show=\"$ctrl.allCheckboxIsChecked()\" class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\" data-dismiss=\"modal\">{{'AGREE' | translate}}</button>\n            <!--<button ng-show=\"!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()\" class=\"disabled-button\">{{'AGREE' | translate}}</button>-->\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- HEADER - criar diretiva depois -->\n  <nav class=\"header nav\" style=\"padding: 20px 0;\">\n    <div class=\"nav-left logo\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n\n    <div class=\"nav-right nav-menu\"></div>\n  </nav>\n\n  <!-- AUTHENTICATION FORM -->\n  <section class=\"authentication\">\n    <div>\n      <form name=\"$ctrl.loginForm\">\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-12 title\">\n            <h4>{{'WELCOME' | translate}}</h4>\n            <h4>{{'BEGIN_YOUR_REGISTRATION' | translate}}</h4>\n          </div>\n          <div class=\"col-xs-12 col-lg-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n          <div class=\"alert alert-danger\" ng-show=\"$ctrl.serverError\" role=\"alert\">\n            <h4 class=\"alert-heading\">{{'AN_ERROR_CREATE_ACCOUNT' | translate}}</h4>\n            <p>{{$ctrl.serverErrorMessage</p>\n          </div>\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-name\">{{'NAME' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.name\" id=\"input-name\" name=\"name\" required type=\"text\" placeholder=\"{{'NAME' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-lastname\">{{'LAST_NAME' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.lastname\" id=\"input-lastname\" name=\"lastname\" required type=\"text\" placeholder=\"{{'LAST_NAME' | translate}}\">\n            </div>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-email\">{{'EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.email\" id=\"input-email\" name=\"email\" ng-model-options=\"{ debounce: 500 }\" required type=\"email\"\n                placeholder=\"{{'EMAIL' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-confirm-email\">{{'CONFIRM_EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.confirmEmail\" id=\"input-confirm-email\" email name=\"confirmEmail\" email-match required type=\"email\"\n                placeholder=\"{{'CONFIRM_EMAIL' | translate}}\">\n            </div>\n\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-password\">{{'PASSWORD' | translate}}</label>\n              <input type=\"password\" data-ng-model=\"$ctrl.user.password\" id=\"input-password\" ng-model-options=\"{ debounce: 500 }\" uppercase\n                lowercase numeric special-character required name=\"password\" ng-minlength=\"8\" placeholder=\"{{'PASSWORD' | translate}}\">\n            </div>\n\n            <!-- exibit validation -->\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.email.$dirty && $ctrl.loginForm.email.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.email.$error.required\">{{'EMAIL_REQUIRED' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.email.$error.email\">{{'EMAIL_INVALID' | translate}}\n                <br> </span>\n\n            </span>\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.confirmEmail.$dirty && $ctrl.loginForm.confirmEmail.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.confirmEmail.$error.compareEmail || $ctrl.loginForm.email.$error.compareEmail\">{{'EMAIL_MATCH' | translate}}\n                <br> </span>\n            </span>\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.password.$dirty && $ctrl.loginForm.password.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.password.$error.required\">{{'PASSWORD_REQUIRED' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.minlength\">{{'PASSWORD_LENGTH' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.uppercase\">{{'PASSWORD_UPPERCASE' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.lowercase\">{{'PASSWORD_LOWERCASE' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.numeric\">{{'PASSWORD_ALPHANUMERIC' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.specialCharacter\">{{'PASSWORD_SPECIALCHARACTER' | translate}}\n                <br>\n              </span>\n\n            </span>\n\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.confirmPassword.$dirty && $ctrl.loginForm.confirmPassword.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.confirmPassword.$error.comparePassword || $ctrl.loginForm.password.$error.comparePassword\">{{'PASSWORD_MATCH' | translate}}\n                <br> </span>\n            </span>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-confirm-password\">{{'CONFIRM_PASSWORD' | translate}}</label>\n              <input type=\"password\" data-ng-model=\"$ctrl.user.confirmPassword\" id=\"input-confirm-password\" ng-model-options=\"{ debounce: 500 }\"\n                required name=\"confirmPassword\" ng-minlength=\"8\" placeholder=\"{{'CONFIRM_PASSWORD' | translate}}\">\n\n            </div>\n\n            <div class=\"area-button txt-right\">\n              <button class=\"rounded-button\" data-toggle=\"modal\" data-target=\"#modal-terms\" ng-show=\"$ctrl.loginForm.$valid\" ng-click=\"$ctrl.enableTab()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\" />\n              </button>\n\n              <button class=\"rounded-button\" ng-show=\"!$ctrl.loginForm.$valid\" ng-click=\"$ctrl.showError()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\" />\n              </button>\n            </div>\n\n\n\n\n\n      </form>\n      </div>\n  </section>\n  </div>"
+	module.exports = "<div class=\"container\">\n\n  <!-- MODAL - criar directiva depois -->\n  <div id=\"modal-terms\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <div>\n        <script>\n          function openCity(evt, cityName) {\n            // Declare all variables\n            var i, tabcontent, tablinks;\n\n            // Get all elements with class=\"tabcontent\" and hide them\n            tabcontent = document.getElementsByClassName(\"tabcontent\");\n            for (i = 0; i < tabcontent.length; i++) {\n              tabcontent[i].style.display = \"none\";\n            }\n\n            // Get all elements with class=\"tablinks\" and remove the class \"active\"\n            tablinks = document.getElementsByClassName(\"tablinks\");\n            for (i = 0; i < tablinks.length; i++) {\n              tablinks[i].className = tablinks[i].className.replace(\" active\", \"\");\n            }\n\n            // Show the current tab, and add an \"active\" class to the button that opened the tab\n            document.getElementById(cityName).style.display = \"block\";\n            evt.currentTarget.className += \" active\";\n          }\n        </script>\n        <!-- Tab links -->\n        <div class=\"tab\">\n          <button class=\"tablinks\" onclick=\"openCity(event, 'terms_condition')\" id=\"defaultOpen\">{{'TERMS_CONDITION_TITLE' | translate}}</button>\n          <button class=\"tablinks\" onclick=\"openCity(event, 'representation_condition')\">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>\n        </div>\n        <!-- Tab content -->\n        <div id=\"terms_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsCondition\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n\n        <div id=\"representation_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsRepresentation\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG1\" id=\"checkboxG1\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check1\" ng-change=\"$ctrl.allCheckboxIsChecked()\">\n            <label for=\"checkboxG1\" class=\"css-label radGroup1 clr\"> {{'US_CITIZEN' | translate}} </label>\n          </div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG2\" id=\"checkboxG2\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check2\">\n            <label for=\"checkboxG2\" class=\"css-label radGroup1 clr\"> {{'AGREE_TERM' | translate}} </label>\n          </div>\n          <!--<div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG3\" id=\"checkboxG3\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check3\">\n            <label for=\"checkboxG3\" class=\"css-label radGroup1 clr\"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>\n          </div>-->\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG4\" id=\"checkboxG4\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check4\">\n            <label for=\"checkboxG4\" class=\"css-label radGroup1 clr\"> {{'AGREE_FUTURE_VALUE' | translate}}</label>\n          </div>\n          <div class=\"area-button\">\n            <button ng-show=\"$ctrl.allCheckboxIsChecked()\" class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\" data-dismiss=\"modal\">{{'AGREE' | translate}}</button>\n            <!--<button ng-show=\"!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()\" class=\"disabled-button\">{{'AGREE' | translate}}</button>-->\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- HEADER - criar diretiva depois -->\n  <nav class=\"header nav\" style=\"padding: 20px 0;\">\n    <div class=\"nav-left logo\" style=\"cursor: pointer;\" ng-click=\"$ctrl.goToLogin()\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n\n    <div class=\"nav-right nav-menu\"></div>\n  </nav>\n\n  <!-- AUTHENTICATION FORM -->\n  <section class=\"authentication\">\n    <div>\n      <form name=\"$ctrl.loginForm\">\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-12 title\">\n            <h4>{{'WELCOME' | translate}}</h4>\n            <h4>{{'BEGIN_YOUR_REGISTRATION' | translate}}</h4>\n          </div>\n          <div class=\"col-xs-12 col-lg-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n          <div class=\"alert alert-danger\" ng-show=\"$ctrl.serverError\" role=\"alert\">\n            <h4 class=\"alert-heading\">{{'AN_ERROR_CREATE_ACCOUNT' | translate}}</h4>\n            <p>{{$ctrl.serverErrorMessage</p>\n          </div>\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-name\">{{'NAME' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.name\" id=\"input-name\" name=\"name\" required type=\"text\" placeholder=\"{{'NAME' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-lastname\">{{'LAST_NAME' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.lastname\" id=\"input-lastname\" name=\"lastname\" required type=\"text\" placeholder=\"{{'LAST_NAME' | translate}}\">\n            </div>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-email\">{{'EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.email\" id=\"input-email\" name=\"email\" ng-model-options=\"{ debounce: 500 }\" required type=\"email\"\n                placeholder=\"{{'EMAIL' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-confirm-email\">{{'CONFIRM_EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.confirmEmail\" id=\"input-confirm-email\" email name=\"confirmEmail\" email-match required type=\"email\"\n                placeholder=\"{{'CONFIRM_EMAIL' | translate}}\">\n            </div>\n\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-password\">{{'PASSWORD' | translate}}</label>\n              <input type=\"password\" data-ng-model=\"$ctrl.user.password\" id=\"input-password\" ng-model-options=\"{ debounce: 500 }\" uppercase\n                lowercase numeric special-character required name=\"password\" ng-minlength=\"8\" placeholder=\"{{'PASSWORD' | translate}}\">\n            </div>\n\n            <!-- exibit validation -->\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.email.$dirty && $ctrl.loginForm.email.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.email.$error.required\">{{'EMAIL_REQUIRED' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.email.$error.email\">{{'EMAIL_INVALID' | translate}}\n                <br> </span>\n\n            </span>\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.confirmEmail.$dirty && $ctrl.loginForm.confirmEmail.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.confirmEmail.$error.compareEmail || $ctrl.loginForm.email.$error.compareEmail\">{{'EMAIL_MATCH' | translate}}\n                <br> </span>\n            </span>\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.password.$dirty && $ctrl.loginForm.password.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.password.$error.required\">{{'PASSWORD_REQUIRED' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.minlength\">{{'PASSWORD_LENGTH' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.uppercase\">{{'PASSWORD_UPPERCASE' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.lowercase\">{{'PASSWORD_LOWERCASE' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.numeric\">{{'PASSWORD_ALPHANUMERIC' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.specialCharacter\">{{'PASSWORD_SPECIALCHARACTER' | translate}}\n                <br>\n              </span>\n\n            </span>\n\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.confirmPassword.$dirty && $ctrl.loginForm.confirmPassword.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.confirmPassword.$error.comparePassword || $ctrl.loginForm.password.$error.comparePassword\">{{'PASSWORD_MATCH' | translate}}\n                <br> </span>\n            </span>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-confirm-password\">{{'CONFIRM_PASSWORD' | translate}}</label>\n              <input type=\"password\" data-ng-model=\"$ctrl.user.confirmPassword\" id=\"input-confirm-password\" ng-model-options=\"{ debounce: 500 }\"\n                required name=\"confirmPassword\" ng-minlength=\"8\" placeholder=\"{{'CONFIRM_PASSWORD' | translate}}\">\n\n            </div>\n\n            <div class=\"area-button txt-right\">\n              <button class=\"rounded-button\" data-toggle=\"modal\" data-target=\"#modal-terms\" ng-show=\"$ctrl.loginForm.$valid\" ng-click=\"$ctrl.enableTab()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\" />\n              </button>\n\n              <button class=\"rounded-button\" ng-show=\"!$ctrl.loginForm.$valid\" ng-click=\"$ctrl.showError()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\" />\n              </button>\n            </div>\n\n\n\n\n\n      </form>\n      </div>\n  </section>\n  </div>"
 
 /***/ },
 /* 484 */
@@ -53031,7 +53031,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _index = __webpack_require__(475);
@@ -53041,166 +53041,182 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	var SignupController = function () {
-	    function SignupController($state, HttpService, $filter, $sce, $injector, $timeout, $translate) {
-	        _classCallCheck(this, SignupController);
+	  function SignupController($state, HttpService, $filter, $sce, $injector, $timeout, $translate, ErrorMessagesService) {
+	    _classCallCheck(this, SignupController);
 	
-	        this.$state = $state;
-	        this.$timeout = $timeout;
-	        this.HttpService = HttpService;
-	        this.$translate = $translate;
-	        this.showErrorForm = false;
-	        this.termsCondition = $sce.trustAsHtml($filter('translate')('TERMS_CONDITIONS'));
-	        this.termsRepresentation = $sce.trustAsHtml($filter('translate')('REPRESENTATION_TERM'));
-	        this.serverError = false;
-	        this.user = {
-	            name: '',
-	            lastname: '',
-	            email: '',
-	            confirmEmail: '',
-	            password: '',
-	            confirmPassword: '',
-	            check1: false,
-	            check2: false,
-	            check3: false,
-	            check4: false
-	        };
+	    this.$state = $state;
+	    this.$timeout = $timeout;
+	    this.HttpService = HttpService;
+	    this.$translate = $translate;
+	    this.ErrorMessagesService = ErrorMessagesService;
+	    this.showErrorForm = false;
+	    this.termsCondition = $sce.trustAsHtml($filter('translate')('TERMS_CONDITIONS'));
+	    this.termsRepresentation = $sce.trustAsHtml($filter('translate')('REPRESENTATION_TERM'));
+	    this.serverError = false;
+	    this.user = {
+	      name: '',
+	      lastname: '',
+	      email: '',
+	      confirmEmail: '',
+	      password: '',
+	      confirmPassword: '',
+	      check1: false,
+	      check2: false,
+	      check3: false,
+	      check4: false
+	    };
+	  }
+	
+	  SignupController.prototype.doSignup = function () {
+	    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+	      var _this = this;
+	
+	      var obj, a, b, depositWallet;
+	      return regeneratorRuntime.wrap(function _callee$(_context) {
+	        while (1) {
+	          switch (_context.prev = _context.next) {
+	            case 0:
+	              this.showLoading(true);
+	              obj = {
+	                name: this.user.name,
+	                lastname: this.user.lastname,
+	                email: this.user.email,
+	                password: this.user.password,
+	                testnet: true
+	              };
+	              _context.next = 4;
+	              return this.HttpService.signup(obj).catch(function (error) {
+	                //this.serverError = true
+	                //this.serverErrorMessage = error.message
+	                _this.notificationError(true, error);
+	              });
+	
+	            case 4:
+	              a = _context.sent;
+	
+	              if (!(a && a.accessToken)) {
+	                _context.next = 25;
+	                break;
+	              }
+	
+	              this.serverError = false;
+	              this.serverErrorMessage = '';
+	              localStorage.setItem('lunes.accessToken', JSON.stringify(a));
+	              this.showLoading(false);
+	              _context.next = 12;
+	              return this.HttpService.confirmterm(a).catch(function (error) {
+	                _this.serverError = true;
+	                _this.serverErrorMessage = error.message;
+	                console.log(error);
+	              });
+	
+	            case 12:
+	              b = _context.sent;
+	
+	              if (!(!a.depositWallet || !a.depositWallet.BTC)) {
+	                _context.next = 22;
+	                break;
+	              }
+	
+	              _context.next = 16;
+	              return this.HttpService.createDepositWallet(a).catch(function (error) {
+	                if (error && error.response && error.response.data) {
+	                  alert(error.response.data.message);
+	                }
+	                console.log(error);
+	              });
+	
+	            case 16:
+	              depositWallet = _context.sent;
+	
+	              a.depositWallet = depositWallet;
+	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
+	              this.$state.go('buy');
+	              _context.next = 25;
+	              break;
+	
+	            case 22:
+	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
+	              this.$state.go('buy');
+	              console.log(a);
+	
+	            case 25:
+	            case 'end':
+	              return _context.stop();
+	          }
+	        }
+	      }, _callee, this);
+	    }));
+	
+	    function doSignup() {
+	      return _ref.apply(this, arguments);
 	    }
 	
-	    SignupController.prototype.doSignup = function () {
-	        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-	            var _this = this;
+	    return doSignup;
+	  }();
 	
-	            var obj, a, b, depositWallet;
-	            return regeneratorRuntime.wrap(function _callee$(_context) {
-	                while (1) {
-	                    switch (_context.prev = _context.next) {
-	                        case 0:
-	                            this.showLoading(true);
-	                            obj = {
-	                                name: this.user.name,
-	                                lastname: this.user.lastname,
-	                                email: this.user.email,
-	                                password: this.user.password,
-	                                testnet: true
-	                            };
-	                            _context.next = 4;
-	                            return this.HttpService.signup(obj).catch(function (error) {
-	                                _this.serverError = true;
-	                                _this.serverErrorMessage = error.message;
-	                                console.log(error);
-	                            });
+	  SignupController.prototype.userIsValidToSignup = function userIsValidToSignup() {
+	    return this.user.name && this.user.email && this.user.password && this.user.lastname && this.user.confirmEmail && this.user.confirmPassword;
+	  };
 	
-	                        case 4:
-	                            a = _context.sent;
+	  SignupController.prototype.enableTab = function enableTab() {
+	    setTimeout(function () {
+	      document.getElementById("defaultOpen").click();
+	    }, 200);
+	  };
 	
-	                            if (!(a && a.accessToken)) {
-	                                _context.next = 25;
-	                                break;
-	                            }
+	  SignupController.prototype.allCheckboxIsChecked = function allCheckboxIsChecked() {
+	    return this.user.check1 && this.user.check2 && this.user.check4;
+	  };
 	
-	                            this.serverError = false;
-	                            this.serverErrorMessage = '';
-	                            localStorage.setItem('lunes.accessToken', JSON.stringify(a));
-	                            this.showLoading(false);
-	                            _context.next = 12;
-	                            return this.HttpService.confirmterm(a).catch(function (error) {
-	                                _this.serverError = true;
-	                                _this.serverErrorMessage = error.message;
-	                                console.log(error);
-	                            });
+	  SignupController.prototype.showError = function showError() {
+	    this.showErrorForm = true;
+	  };
 	
-	                        case 12:
-	                            b = _context.sent;
+	  SignupController.prototype.goToLogin = function goToLogin() {
+	    this.$state.go('login');
+	  };
 	
-	                            if (!(!a.depositWallet || !a.depositWallet.BTC)) {
-	                                _context.next = 22;
-	                                break;
-	                            }
+	  SignupController.prototype.showLoading = function showLoading(isShow) {
+	    if (isShow) {
+	      this.notification(false);
+	      $('<div class="modal-backdrop"><img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442469/loading_y9ob8i.svg" /></div>').appendTo(document.body);
+	    } else {
+	      this.$timeout(function () {
+	        $(".modal-backdrop").remove();
+	      }, 1000);
+	    }
+	  };
 	
-	                            _context.next = 16;
-	                            return this.HttpService.createDepositWallet(a).catch(function (error) {
-	                                if (error && error.response && error.response.data) {
-	                                    alert(error.response.data.message);
-	                                }
-	                                console.log(error);
-	                            });
+	  SignupController.prototype.notificationError = function notificationError(isShow, msg) {
+	    if (isShow) {
+	      var self = this;
+	      $('<div class="modal-backdrop-error"><h4 style="margin-top: 10%;">' + this.ErrorMessagesService.get(msg) + '</h4><button class="close-error">ok</button></div>').appendTo(document.body);
+	      $('.close-error').on('click', function () {
+	        $(".modal-backdrop-error").remove();
+	      });
+	    }
+	  };
 	
-	                        case 16:
-	                            depositWallet = _context.sent;
+	  SignupController.prototype.notification = function notification(isShow) {
+	    if (isShow) {
+	      var self = this;
+	      $('<div class="modal-backdrop"><h4>' + this.$translate.instant('SIGNUP_SUCCESSFULY') + '</h4><br /><p>' + this.$translate.instant('REDIRECTING') + '</p></div>').appendTo(document.body);
+	      this.$timeout(function () {
+	        self.notification(false);
+	        self.$state.go('login');
+	      }, 5000);
+	    } else {
+	      this.$timeout(function () {
+	        $(".modal-backdrop").remove();
+	      }, 1000);
+	    }
+	  };
 	
-	                            a.depositWallet = depositWallet;
-	                            localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
-	                            this.$state.go('buy');
-	                            _context.next = 25;
-	                            break;
-	
-	                        case 22:
-	                            localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
-	                            this.$state.go('buy');
-	                            console.log(a);
-	
-	                        case 25:
-	                        case 'end':
-	                            return _context.stop();
-	                    }
-	                }
-	            }, _callee, this);
-	        }));
-	
-	        function doSignup() {
-	            return _ref.apply(this, arguments);
-	        }
-	
-	        return doSignup;
-	    }();
-	
-	    SignupController.prototype.userIsValidToSignup = function userIsValidToSignup() {
-	        return this.user.name && this.user.email && this.user.password && this.user.lastname && this.user.confirmEmail && this.user.confirmPassword;
-	    };
-	
-	    SignupController.prototype.enableTab = function enableTab() {
-	        setTimeout(function () {
-	            document.getElementById("defaultOpen").click();
-	        }, 200);
-	    };
-	
-	    SignupController.prototype.allCheckboxIsChecked = function allCheckboxIsChecked() {
-	        return this.user.check1 && this.user.check2 && this.user.check4;
-	    };
-	
-	    SignupController.prototype.showError = function showError() {
-	        this.showErrorForm = true;
-	    };
-	
-	    SignupController.prototype.showLoading = function showLoading(isShow) {
-	        if (isShow) {
-	            $('<div class="modal-backdrop"><img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442469/loading_y9ob8i.svg" /></div>').appendTo(document.body);
-	        } else {
-	            this.$timeout(function () {
-	                $(".modal-backdrop").remove();
-	            }, 1000);
-	        }
-	    };
-	
-	    SignupController.prototype.notification = function notification(isShow) {
-	        if (isShow) {
-	            var self = this;
-	            $('<div class="modal-backdrop"><h4>' + this.$translate.instant('SIGNUP_SUCCESSFULY') + '</h4><br /><p>' + this.$translate.instant('REDIRECTING') + '</p></div>').appendTo(document.body);
-	            this.$timeout(function () {
-	                self.notification(false);
-	                self.$state.go('login');
-	            }, 5000);
-	        } else {
-	            this.$timeout(function () {
-	                $(".modal-backdrop").remove();
-	            }, 1000);
-	        }
-	    };
-	
-	    return SignupController;
+	  return SignupController;
 	}();
 	
-	SignupController.$inject = ['$state', 'HttpService', '$filter', '$sce', '$injector', '$timeout', '$translate'];
+	SignupController.$inject = ['$state', 'HttpService', '$filter', '$sce', '$injector', '$timeout', '$translate', 'ErrorMessagesService'];
 	
 	exports.default = SignupController;
 
@@ -53349,13 +53365,13 @@
 	    /*this.getBalanceLunes('LNS', this.currentUser).catch(error => {
 	      console.log(error);
 	    });*/
-	    this.showDepositWalletAddressQRCode();
+	    this.showDepositWalletAddressQRCode(this.currentUser, this.currentCoinSelected);
 	    this.obtainPhase().catch(function (error) {
 	      console.log(error);
 	    });
-	    /*this.getBuyHistory().catch(error => {
+	    this.getBuyHistory().catch(function (error) {
 	      console.log(error);
-	    });*/
+	    });
 	    this.showLoading(true);
 	  }
 	
@@ -53390,7 +53406,7 @@
 	  }();
 	
 	  BuyController.prototype.showDepositWalletAddressQRCode = function () {
-	    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+	    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(currentUser, coin) {
 	      var a;
 	      return regeneratorRuntime.wrap(function _callee2$(_context2) {
 	        while (1) {
@@ -53403,7 +53419,9 @@
 	              a = _context2.sent;
 	
 	              this.currentQRCode = JSON.parse(JSON.stringify(a));
-	              this.getCurrentBalanceUser(this.currentCoinSelected.name, this.currentQRCode.address, this.currentUser);
+	              if (coin) {
+	                this.getCurrentBalanceUser(coin.name, this.currentQRCode.address, this.currentUser);
+	              }
 	
 	            case 5:
 	            case 'end':
@@ -53413,7 +53431,7 @@
 	      }, _callee2, this);
 	    }));
 	
-	    function showDepositWalletAddressQRCode() {
+	    function showDepositWalletAddressQRCode(_x, _x2) {
 	      return _ref2.apply(this, arguments);
 	    }
 	
@@ -53554,7 +53572,7 @@
 	      }, _callee5, this);
 	    }));
 	
-	    function getBalanceCoin(_x) {
+	    function getBalanceCoin(_x3) {
 	      return _ref5.apply(this, arguments);
 	    }
 	
@@ -53584,7 +53602,7 @@
 	      }, _callee6, this);
 	    }));
 	
-	    function getBalanceCoinETH(_x2) {
+	    function getBalanceCoinETH(_x4) {
 	      return _ref6.apply(this, arguments);
 	    }
 	
@@ -53614,7 +53632,7 @@
 	      }, _callee7, this);
 	    }));
 	
-	    function getBalanceLunes(_x3, _x4) {
+	    function getBalanceLunes(_x5, _x6) {
 	      return _ref7.apply(this, arguments);
 	    }
 	
@@ -53757,7 +53775,13 @@
 	              balance = _context8.sent;
 	
 	              this.$timeout(function () {
-	                _this.balanceUser = balance;
+	                if (balance && balance.network === 'ETH') {
+	                  _this.balanceUser = {
+	                    confirmed_balance: balance.balance
+	                  };
+	                } else {
+	                  _this.balanceUser = balance;
+	                }
 	              }, 200);
 	
 	            case 5:
@@ -53768,7 +53792,7 @@
 	      }, _callee8, this);
 	    }));
 	
-	    function getCurrentBalanceUser(_x5, _x6, _x7) {
+	    function getCurrentBalanceUser(_x7, _x8, _x9) {
 	      return _ref8.apply(this, arguments);
 	    }
 	
@@ -53786,7 +53810,6 @@
 	      if (coin.label === coinSelected.label) {
 	        self.currentCoinSelected = JSON.parse(JSON.stringify(coin));
 	        self.showDepositWalletAddressQRCode(self.currentUser, coin);
-	        self.getCurrentBalanceUser(coin.name, _this2.currentQRCode.address, self.currentUser);
 	        coin.selected = true;
 	      }
 	      return coin;
@@ -82238,6 +82261,7 @@
 	  PASSWORD_ALPHANUMERIC: 'At least one character in the password must be a number',
 	  EMAIL_MATCH: 'E-mail must match',
 	  PASSWORD_MATCH: 'Password must match',
+	  EMAIL_ALREADY: 'The email address already exists',
 	  TERMS_CONDITION_TITLE: 'Terms and Conditions',
 	  REPRESENTATION_TERM_TITLE: 'Representation and Warranties',
 	  REPRESENTATION_TERM: '\n      <h3>Representation and Warranties</h3>\n      <p>By participating in the Initial Coin Offering, the User agrees to the T&C and in particular, they represent and warrant that they:</p>\n      <br>1. are authorized and have full power to purchase LNS according to the laws that apply in their jurisdiction of domicile;\n      <br>2. live in a jurisdiction which allows Lunes to sell the Lunes tokens through a Initial Coin Offering without requiring any local authorization;\n      <br>3. are familiar with all related regulations in the specific jurisdiction in which they are based and that purchasing cryptographic tokens in that jurisdiction is not prohibited, restricted or subject to additional conditions of any kind;\n      <br>4. are not a U.S., or Canadian, or Chinese, or South Korean, or Singaporean citizen, resident or entity (a \u201CU.S., or Canadian, or Chinese, or South Korean, or Singaporean Person\u201D) nor are they purchasing Lunes Tokens or signing on behalf of a U.S., or Canadian, or Chinese, or South Korean, or Singaporean Person. Are not acting for the purpose of speculative investment; will not use the Token Sale for any illegal activity, including but not limited to money laundering and the financing of terrorism;\n      <br>5. are solely responsible for determining whether the acquisition of LNS is appropriate for them; are acquiring LNS for future use of the Lunes Platform; understand the risks associated with the Initial Coin Offering (incl. the risks related to the non-development of Lunes Platform and operations);\n      <br>6. understand the use of cryptocurrencies and the associated risks\n    ',
@@ -82301,6 +82325,7 @@
 	  EMAIL_MATCH: 'E-mail deve combinar com a confirmação',
 	  PASSWORD_MATCH: 'Senha deve combinar com a confirmação',
 	  BALANCE: 'Saldo',
+	  EMAIL_ALREADY: 'Email já cadastrado',
 	  TERMS_CONDITION_TITLE: 'Termos e Condições',
 	  REPRESENTATION_TERM_TITLE: 'Representações e Garantias',
 	  REPRESENTATION_TERM: '\n      <h3>Representa\xE7\xE3o e Garantias</h3>\n      <p>Ao participar da ICO o usu\xE1rio concorda com o T&C e, em particular, eles representam e garantem que:</p>\n      <br>1. S\xE3o autorizados e t\xEAm poder completo para comprar LNS de acordo com as leis que se aplicam em sua jurisdi\xE7\xE3o do domic\xEDlio;\n      <br>2. vivem em uma jurisdi\xE7\xE3o que permite que Lunes venda tokens atrav\xE9s de uma ICO sem exigir qualquer autoriza\xE7\xE3o local;\n      <br>3. est\xE3o familiarizados com todos os regulamentos relacionados na jurisdi\xE7\xE3o espec\xEDficas em que eles vivem e que a compra de tokens criptografados na jurisdi\xE7\xE3o n\xE3o \xE9 proibida, restrita ou sujeitas a qualquer tipo de condi\xE7\xF5es adicionais;\n      <br>4. N\xE3o s\xE3o um cidad\xE3o dos Estados Unidos, do Canad\xE1, de Singapura, da China ou da Cor\xE9ia do Sul ou residente ou entidade e nem est\xE3o comprando tokens Lunes ou assinando em nome de um cidad\xE3o americano, ou canadense, ou singapurense, ou sul coreano, ou chin\xEAs. N\xE3o est\xE3o agindo para fins de investimento especulativo; n\xE3o utilizar\xE1 a venda simb\xF3lica para qualquer actividade ilegal, incluindo, mas n\xE3o se limitando \xE0 lavagem de dinheiro e ao financiamento do terrorismo;\n      <br>5. s\xE3o os \xFAnicos respons\xE1veis por determinar se a aquisi\xE7\xE3o de LNS \xE9 adequada para eles; est\xE3o adquirindo LNS para uso futuro da plataforma Lunes; compreender os riscos associados \xE0 ICO (incl. os riscos relacionados com o n\xE3o desenvolvimento da plataforma e opera\xE7\xF5es da Lunes); e\n      <br>6. compreender o uso de criptomoedas e os riscos associados.\n    ',
@@ -83328,9 +83353,13 @@
 	  }
 	
 	  ErrorMessagesService.prototype.get = function get(msg) {
-	    if ("asdasd is not a valid email.".indexOf("is not a valid email") !== -1) {
+	    if (msg && msg.message.indexOf("is not a valid email") !== -1) {
 	      msg = this.$translate.instant('AUTHENTICATE_INVALID');
 	    } else if (msg.messageKey === 'auth/user-not-found') {
+	      msg = this.$translate.instant('AUTHENTICATE_INVALID');
+	    } else if (msg.messageKey === 'auth/email-already-in-use') {
+	      msg = this.$translate.instant('EMAIL_ALREADY');
+	    } else if (msg.messageKey === 'auth/wrong-password') {
 	      msg = this.$translate.instant('AUTHENTICATE_INVALID');
 	    }
 	    return msg;

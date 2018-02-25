@@ -46,6 +46,7 @@ export default {
     PASSWORD_ALPHANUMERIC: 'At least one character in the password must be a number',
     EMAIL_MATCH: 'E-mail must match',
     PASSWORD_MATCH: 'Password must match',
+    EMAIL_ALREADY: 'The email address already exists',
     TERMS_CONDITION_TITLE: 'Terms and Conditions',
     REPRESENTATION_TERM_TITLE: 'Representation and Warranties',
     REPRESENTATION_TERM: `

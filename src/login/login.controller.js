@@ -82,13 +82,13 @@ class LoginController {
               console.log(error);
           });
           this.currentUser.depositWallet = depositWallet;
-		  localStorage.setItem(STORAGE_KEY, JSON.stringify(this.currentUser));
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(this.currentUser));
           this.$state.go('buy');
         } else {
-		  localStorage.setItem(STORAGE_KEY, JSON.stringify(this.currentUser));
-          this.$state.go('buy');
-          console.log(this.currentUser);
-        }
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(this.currentUser));
+            this.$state.go('buy');
+            console.log(this.currentUser);
+          }
     }
     
     showLoading(isShow) {

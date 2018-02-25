@@ -1,10 +1,11 @@
 import { STORAGE_KEY } from '../constants/index';
 class SignupController {
-    constructor($state, HttpService, $filter, $sce, $injector, $timeout, $translate) {
+    constructor($state, HttpService, $filter, $sce, $injector, $timeout, $translate, ErrorMessagesService) {
         this.$state = $state;
         this.$timeout = $timeout;
         this.HttpService = HttpService;
         this.$translate = $translate;
+        this.ErrorMessagesService = ErrorMessagesService;
         this.showErrorForm = false;
         this.termsCondition = $sce.trustAsHtml($filter('translate')('TERMS_CONDITIONS'));
         this.termsRepresentation = $sce.trustAsHtml($filter('translate')('REPRESENTATION_TERM'));
@@ -33,9 +34,9 @@ class SignupController {
             testnet: true 
         };
         const a = await this.HttpService.signup(obj).catch(error => {
-            this.serverError = true
-            this.serverErrorMessage = error.message
-            console.log(error);
+            //this.serverError = true
+            //this.serverErrorMessage = error.message
+            this.notificationError(true, error);
         });
         if (a && a.accessToken) {
             this.serverError = false;
@@ -84,13 +85,28 @@ class SignupController {
         this.showErrorForm = true;
     }
 
+    goToLogin() {
+      this.$state.go('login');
+    }
+
     showLoading(isShow) {
       if (isShow) {
+        this.notification(false);
         $(`<div class="modal-backdrop"><img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442469/loading_y9ob8i.svg" /></div>`).appendTo(document.body);
       } else {
         this.$timeout(function() {
           $(".modal-backdrop").remove();
         }, 1000);
+      }
+    }
+
+    notificationError(isShow, msg) {
+      if (isShow) {
+        let self = this;
+        $(`<div class="modal-backdrop-error"><h4 style="margin-top: 10%;">${this.ErrorMessagesService.get(msg)}</h4><button class="close-error">ok</button></div>`).appendTo(document.body);
+        $('.close-error').on('click', function() {
+          $(".modal-backdrop-error").remove();   
+        });
       }
     }
 
@@ -110,7 +126,7 @@ class SignupController {
     }
   }
   
-  SignupController.$inject = ['$state', 'HttpService', '$filter', '$sce', '$injector', '$timeout', '$translate'];
+  SignupController.$inject = ['$state', 'HttpService', '$filter', '$sce', '$injector', '$timeout', '$translate', 'ErrorMessagesService'];
   
   export default SignupController;
   
