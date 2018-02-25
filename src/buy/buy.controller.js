@@ -56,6 +56,7 @@ class BuyController {
   async showDepositWalletAddressQRCode() {
     const a = await this.HttpService.showDepositWalletAddressQRCode(this.currentUser, this.currentCoinSelected);
     this.currentQRCode = JSON.parse(JSON.stringify(a));
+    this.balance = this.HttpService.getBalance(this.currentCoinSelected.name, this.currentQRCode.address, this.currentUser);
   }
 
   async doBuy() {
@@ -259,6 +260,7 @@ class BuyController {
       if (coin.label === coinSelected.label) {
         self.currentCoinSelected = JSON.parse(JSON.stringify(coin));
         self.showDepositWalletAddressQRCode(self.currentUser, coin);
+        this.balance = this.HttpService.getBalance(coin.name, this.currentQRCode.address, self.currentUser);
         coin.selected = true;
       }
       return coin;
