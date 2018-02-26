@@ -17,7 +17,7 @@ class SignupController {
             confirmEmail: '',
             password: '',
             confirmPassword: '',
-			coupon: '',
+            coupon: '',
             check1: false,
             check2: false,
             check3: false,
@@ -26,7 +26,7 @@ class SignupController {
     }
 
     async doSignup() {
-		console.log(this.user.coupon);
+        console.log(this.user.coupon);
         this.showLoading(true);
         const obj = { 
             name: this.user.name, 
@@ -58,11 +58,11 @@ class SignupController {
                     console.log(error);
                 });
                 a.depositWallet = depositWallet;
-			    localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
-			    this.$state.go('buy');
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
+                this.$state.go('buy');
             } else {
-			    localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
-			    this.$state.go('buy');
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
+                this.$state.go('buy');
                 console.log(a);
             }
         }
