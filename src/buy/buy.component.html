@@ -65,6 +65,9 @@
 
         <div class="col-12 title">
           <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>
+          <div>{{'OWN_COUPON' | translate}}
+            <span style="font-weight: bold;color: #3bbe6e;">{{$ctrl.currentUser.ownCoupon}}</span>
+          </div>
         </div>
 
         <div class="col-12 error-fields" ng-show="$ctrl.showErrorForm">{{'ALL_FIELDS_REQUIRED' | translate}}</div>
@@ -118,6 +121,17 @@
               <div class="result">
                 <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>
                 <div>{{$ctrl.bonusAmountFinal}}</div>
+              </div>
+              <div class="result">
+                <div>{{'COUPON' | translate}}</div>
+                <div>
+                  <input type="text" placeholder="{{'TYPE_COUPON' | translate}}" name="coupon" ng-model="$ctrl.currentUser.coupon" style="background-color: transparent;
+                  border: 0;
+                  border-bottom: solid 1px #52318a;
+                  outline: none;
+                  color: #fff;
+                  text-align: right;">
+                </div>
               </div>
               <div class="line-break">
                 <hr />

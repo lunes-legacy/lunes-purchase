@@ -26,6 +26,22 @@ class HttpService {
     return data;
   }
 
+  async changePassword(email, accessToken) {
+    const a = await LunesLib.users.resetPassword({ email });
+    return a;
+  }
+  
+  async confirmterm(currentUser) {
+    try {
+      console.log("");
+      /* TODO - remove true value to production */
+      let confirmTerm = await LunesLib.ico.confirmTerm(currentUser.email, currentUser.accessToken);
+      return confirmTerm;
+    } catch (error) {
+      throw new Error(error);
+    }  
+  }
+
   async obtainPhase() {
     const phase = await LunesLib.ico.obtainPhase();
     return phase;
@@ -86,6 +102,12 @@ class HttpService {
       CURRENTPRICE: `${currencySymbol} ${price}`,
       DISPLAYPRICE: `1 ETH | ${price}`
     };  
+  }
+
+  async buyHistory(email, accessToken) {
+    const a = await LunesLib.ico.buyHistory(email, accessToken);
+    console.log(a);
+    return a; 
   }
 
   async getBalance(coin, address, currentUser) {

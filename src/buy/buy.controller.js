@@ -12,6 +12,7 @@ class BuyController {
     this.showContainerCoins = false;
     this.balanceCoins = {};
     this.currentPhase = [];
+    this.buyHistoryUser = {};
     this.valueToDeposit = '0.00000000';
     this.valueToReceive = '0.00000000';
     this.bonusAmountFinal = '0.00000000';
@@ -46,18 +47,27 @@ class BuyController {
     /*this.getBalanceLunes('LNS', this.currentUser).catch(error => {
       console.log(error);
     });*/
-    this.showDepositWalletAddressQRCode();
+    this.showDepositWalletAddressQRCode(this.currentUser, this.currentCoinSelected);
     this.obtainPhase().catch(error => {
+      console.log(error);
+    });
+    this.getBuyHistory().catch(error => {
       console.log(error);
     });
     this.showLoading(true);
   }
 
-  async showDepositWalletAddressQRCode() {
+  async getBuyHistory() {
+    const buyHistory = await this.HttpService.buyHistory(this.currentUser.email, this.currentUser.accessToken);
+    this.buyHistoryUser = buyHistory; 
+  }
+
+  async showDepositWalletAddressQRCode(currentUser, coin) {
     const a = await this.HttpService.showDepositWalletAddressQRCode(this.currentUser, this.currentCoinSelected);
     this.currentQRCode = JSON.parse(JSON.stringify(a));
-    this.getCurrentBalanceUser(this.currentCoinSelected.name, this.currentQRCode.address, this.currentUser);
-    //this.balance = this.HttpService.getBalance(this.currentCoinSelected.name, this.currentQRCode.address, this.currentUser);
+    if (coin) {
+      this.getCurrentBalanceUser(coin.name, this.currentQRCode.address, this.currentUser);
+    }
   }
 
   async doBuy() {
@@ -256,7 +266,13 @@ class BuyController {
     console.log("");
     const balance = await this.HttpService.getBalance(coin, address, currentUser);
     this.$timeout(() => {
-      this.balanceUser = balance;
+      if (balance && balance.network === 'ETH') {
+        this.balanceUser = {
+          confirmed_balance: balance.balance
+        };
+      } else {
+        this.balanceUser = balance;
+      }
     }, 200);
   }
 
@@ -269,7 +285,6 @@ class BuyController {
       if (coin.label === coinSelected.label) {
         self.currentCoinSelected = JSON.parse(JSON.stringify(coin));
         self.showDepositWalletAddressQRCode(self.currentUser, coin);
-        self.getCurrentBalanceUser(coin.name, this.currentQRCode.address, self.currentUser);
         coin.selected = true;
       }
       return coin;

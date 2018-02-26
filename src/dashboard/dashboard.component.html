@@ -52,6 +52,44 @@
     </div>
   </nav>
 
-
-
+  <!-- DASHBOARD -->
+  <section class="dashboard">
+    <div class="row">
+      <div class="col-12 title mb-2-rem">
+        <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>
+      </div>
+      <div class="col-12 history">
+        <table class="table table-striped">
+          <thead>
+            <th>{{ 'DASHBOARD.DATE' | translate }}</th>
+            <th>{{ 'DASHBOARD.PHASE' | translate }}</th>
+            <th>{{ 'DASHBOARD.DEPOSIT' | translate }}</th>
+            <th>Lunes</th>
+            <th>{{ 'DASHBOARD.BONUS' | translate }}</th>
+            <th>Total</th>
+          </thead>
+          <tbody data-ng-if="$ctrl.history.length > 0">
+            <tr data-ng-repeat="history in $ctrl.history">
+              <td>{{ history.date }}</td>
+              <td>{{ history.phase}}</td>
+              <td>{{ history.deposit }} {{ history.depositCoin}}</td>
+              <td>{{ history.credit }} LNS</td>
+              <td>{{ history.bonus }} LNS </td>
+              <td>{{ history.total }} LNS</td>
+            </tr>
+          </tbody>
+          <tfoot data-ng-if="$ctrl.history.length === 0">
+            <tr>
+              <td colspan="6" style="text-align: center;">{{ 'DASHBOARD.NO_HISTORY' | translate }}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="col-12 balance">
+        <span>Meu saldo:</span>
+        <span class="monetary">{{ $ctrl.balance }}</span>
+        <span class="coin">LNS</span>
+      </div>
+    </div>
+  </section>
 </div>

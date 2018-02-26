@@ -6,6 +6,7 @@ import LoginComponent from './login/login.component';
 import SignupComponent from './signup/signup.component';
 import BuyComponent from './buy/buy.component';
 import DashboardComponent from './dashboard/dashboard.component';
+import FixComponent from './fix/fix.component';
 import languageUtil from './utils/language';
 import en from './constants/en';
 import pt from './constants/pt';
@@ -29,6 +30,7 @@ angular.module('myApp', [
 .component('signupPage', SignupComponent)
 .component('buyPage', BuyComponent)
 .component('dashboardPage', DashboardComponent)
+.component('fixPage', FixComponent)
 .directive('uppercase', function() {
   return {
     require: 'ngModel',
@@ -163,13 +165,16 @@ angular.module('myApp', [
 .config(($stateProvider, $translateProvider, $urlRouterProvider) => {
   'ngInject';
 
+  $translateProvider.useSanitizeValueStrategy('escape');
+  $translateProvider.useSanitizeValueStrategy('escapeParameters');
+  //$translateProvider.useSanitizeValueStrategy('sce');
   $translateProvider.translations('en', en);
   $translateProvider.translations('pt', pt);
   $translateProvider.preferredLanguage(languageUtil());
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('signup', {
+    /*.state('signup', {
       url: '/signup',
       template: '<signup-page></signup-page>',
     })
@@ -180,14 +185,18 @@ angular.module('myApp', [
     .state('buy', {
       url: '/buy',
       template: '<buy-page></buy-page>',
-    })
+    })*/
     .state('dashboard', {
       url: '/dashboard',
       template: '<dashboard-page></dashboard-page>',
-    })
+    })/*
     .state('home', {
       url: '/',
       template: '<login-page></login-page>',
+    })*/
+    .state('fix', {
+      url: '/',
+      template: '<fix-page></fix-page>',
     });
 })
 ;
