@@ -70,11 +70,11 @@
           </thead>
           <tbody data-ng-if="$ctrl.history.length > 0">
             <tr data-ng-repeat="history in $ctrl.history">
-              <td>{{ history.date }}</td>
-              <td>{{ history.phase}}</td>
-              <td>{{ history.deposit }} {{ history.depositCoin}}</td>
-              <td>{{ history.credit }} LNS</td>
-              <td>{{ history.bonus }} LNS </td>
+              <td>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</td>
+              <td>{{ history.phase || 1 }}</td>
+              <td>{{ history.deposit_value }} {{ history.deposit_coin }}</td>
+              <td>{{ history.credit_value }} LNS</td>
+              <td>{{ history.bonus_value }} LNS </td>
               <td>{{ history.total }} LNS</td>
             </tr>
           </tbody>
@@ -87,7 +87,7 @@
       </div>
       <div class="col-12 balance">
         <span>Meu saldo:</span>
-        <span class="monetary">{{ $ctrl.balance }}</span>
+        <span class="monetary">{{ $ctrl.totalLns }}</span>
         <span class="coin">LNS</span>
       </div>
     </div>
