@@ -174,7 +174,7 @@ angular.module('myApp', [
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    /*.state('signup', {
+    .state('signup', {
       url: '/signup',
       template: '<signup-page></signup-page>',
     })
@@ -193,10 +193,10 @@ angular.module('myApp', [
     .state('home', {
       url: '/',
       template: '<login-page></login-page>',
-    });*/
-    .state('fix', {
+    });
+    /*.state('fix', {
       url: '/',
       template: '<fix-page></fix-page>',
-    });
+    });*/
 })
 ;

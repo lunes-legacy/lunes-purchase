@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container login">
 
   <!-- MODAL - criar directiva depois -->
   <div id="modal-terms" class="modal">
@@ -82,44 +82,23 @@
     </div>
     <div class="modal-content" style="height: 100%;">
 
-      <div ng-show="$ctrl.loadingResetPass" style="display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;">
+      <div ng-show="$ctrl.loadingResetPass" class="loadingResetPass">
         {{'LOADING' | translate}}
       </div>
 
-      <div ng-show="$ctrl.showMsgEmailSent" style="display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100%;">
+      <div ng-show="$ctrl.showMsgEmailSent" class="showEmailSent">
         <h3 for="change">{{'EMAIL_SENT' | translate}}</h3>
         <div style="width: 100px;">
-          <button style="border: 0;
-            padding: 5px 20px;
-            border-radius: 20px;
-            cursor: pointer;" class="icon-close" data-dismiss="modal">{{'CLOSE' | translate}}</button>
+          <button class="icon-close" data-dismiss="modal">{{'CLOSE' | translate}}</button>
         </div>
       </div>
 
-      <form style="display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;" ng-show="!$ctrl.loadingResetPass && !$ctrl.showMsgEmailSent">
+      <form class="form-msg-pass" ng-show="!$ctrl.loadingResetPass && !$ctrl.showMsgEmailSent">
         <div>
           <h3 for="change">{{'CHANGE_PASSWORD_INSTRUCTION' | translate}}</h3>
         </div>
-        <div ng-show="$ctrl.showErrorMsgEmailSent" style="display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          height: 100%;">
-          <h5 for="change" style="padding: 2px 10px;
-          background-color: #d83636;
-          border-radius: 20px;">{{'EMAIL_NOT_SENT' | translate}}</h5>
+        <div ng-show="$ctrl.showErrorMsgEmailSent" class="showErrorMsg">
+          <h5 for="change">{{'EMAIL_NOT_SENT' | translate}}</h5>
           <div style="width: 100px;">
             <button style="border: 0;
               padding: 5px 20px;
