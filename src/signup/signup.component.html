@@ -192,22 +192,29 @@
                 required name="confirmPassword" ng-minlength="8" placeholder="{{'CONFIRM_PASSWORD_PLACEHOLDER' | translate}}">
 
             </div>
-
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-lg-6">
+            <div class="input-form">
+              <label for="input-coupon">{{'COUPON' | translate}}</label>
+              <input data-ng-model="$ctrl.user.coupon" id="input-coupon" name="coupon" type="text" placeholder="{{'COUPON_PLACEHOLDER' | translate}}">
+            </div>
+          </div>
+          <div class="col-xs-12 col-lg-6" style="margin-top: 15px;">
             <div class="area-button txt-right">
-              <button class="rounded-button" data-toggle="modal" data-target="#modal-terms" ng-show="$ctrl.loginForm.$valid" ng-click="$ctrl.enableTab()">
-                <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png" width="20px" alt="next" />
+              <button class="rounded-button ng-hide" data-toggle="modal" data-target="#modal-terms" ng-show="$ctrl.loginForm.$valid" ng-click="$ctrl.enableTab()">
+                <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png" width="20px" alt="next">
               </button>
 
               <button class="rounded-button" ng-show="!$ctrl.loginForm.$valid" ng-click="$ctrl.showError()">
-                <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png" width="20px" alt="next" />
+                <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png" width="20px" alt="next">
               </button>
             </div>
-
-
-
-
-
+          </div>
+		  
+        </div>
       </form>
-      </div>
+  </div>
   </section>
   </div>

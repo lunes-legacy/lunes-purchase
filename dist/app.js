@@ -45,7 +45,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
-	module.exports = __webpack_require__(327);
+	module.exports = __webpack_require__(328);
 
 
 /***/ },
@@ -56,9 +56,9 @@
 	
 	__webpack_require__(2);
 	
-	__webpack_require__(322);
+	__webpack_require__(323);
 	
-	__webpack_require__(324);
+	__webpack_require__(325);
 	
 	if (global._babelPolyfill) {
 	  throw new Error("only one instance of babel-polyfill is allowed");
@@ -230,7 +230,6 @@
 	__webpack_require__(256);
 	__webpack_require__(257);
 	__webpack_require__(258);
-	__webpack_require__(260);
 	__webpack_require__(261);
 	__webpack_require__(262);
 	__webpack_require__(263);
@@ -238,19 +237,19 @@
 	__webpack_require__(265);
 	__webpack_require__(266);
 	__webpack_require__(267);
-	__webpack_require__(269);
+	__webpack_require__(268);
 	__webpack_require__(270);
-	__webpack_require__(272);
+	__webpack_require__(271);
 	__webpack_require__(273);
 	__webpack_require__(274);
 	__webpack_require__(275);
-	__webpack_require__(278);
+	__webpack_require__(276);
 	__webpack_require__(279);
-	__webpack_require__(281);
+	__webpack_require__(280);
 	__webpack_require__(282);
 	__webpack_require__(283);
 	__webpack_require__(284);
-	__webpack_require__(286);
+	__webpack_require__(285);
 	__webpack_require__(287);
 	__webpack_require__(288);
 	__webpack_require__(289);
@@ -260,7 +259,7 @@
 	__webpack_require__(293);
 	__webpack_require__(294);
 	__webpack_require__(295);
-	__webpack_require__(297);
+	__webpack_require__(296);
 	__webpack_require__(298);
 	__webpack_require__(299);
 	__webpack_require__(300);
@@ -271,7 +270,7 @@
 	__webpack_require__(305);
 	__webpack_require__(306);
 	__webpack_require__(307);
-	__webpack_require__(309);
+	__webpack_require__(308);
 	__webpack_require__(310);
 	__webpack_require__(311);
 	__webpack_require__(312);
@@ -284,6 +283,7 @@
 	__webpack_require__(319);
 	__webpack_require__(320);
 	__webpack_require__(321);
+	__webpack_require__(322);
 	module.exports = __webpack_require__(9);
 
 /***/ },
@@ -518,7 +518,7 @@
 	    }$replacer = replacer = args[1];
 	    if (!isObject(replacer) && it === undefined || isSymbol(it)) return; // IE8 returns string on undefined
 	    if (!isArray(replacer)) replacer = function replacer(key, value) {
-	      if ($replacer) value = $replacer.call(this, key, value);
+	      if (typeof $replacer == 'function') value = $replacer.call(this, key, value);
 	      if (!isSymbol(value)) return value;
 	    };
 	    args[1] = replacer;
@@ -641,7 +641,7 @@
 
 	'use strict';
 	
-	var core = module.exports = { version: '2.5.2' };
+	var core = module.exports = { version: '2.5.3' };
 	if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 /***/ },
@@ -2889,7 +2889,7 @@
 	  var VALUES_BUG = false;
 	  var proto = Base.prototype;
 	  var $native = proto[ITERATOR] || proto[FF_ITERATOR] || DEFAULT && proto[DEFAULT];
-	  var $default = $native || getMethod(DEFAULT);
+	  var $default = !BUGGY && $native || getMethod(DEFAULT);
 	  var $entries = DEFAULT ? !DEF_VALUES ? $default : getMethod('entries') : undefined;
 	  var $anyNative = NAME == 'Array' ? proto.entries || $native : $native;
 	  var methods, key, IteratorPrototype;
@@ -4587,14 +4587,7 @@
 	  });
 	};
 	var isUnhandled = function isUnhandled(promise) {
-	  if (promise._h == 1) return false;
-	  var chain = promise._a || promise._c;
-	  var i = 0;
-	  var reaction;
-	  while (chain.length > i) {
-	    reaction = chain[i++];
-	    if (reaction.fail || !isUnhandled(reaction.promise)) return false;
-	  }return true;
+	  return promise._h !== 1 && (promise._a || promise._c).length === 0;
 	};
 	var onHandleUnhandled = function onHandleUnhandled(promise) {
 	  task.call(global, function () {
@@ -7051,8 +7044,10 @@
 	
 	var $export = __webpack_require__(8);
 	var $pad = __webpack_require__(259);
+	var userAgent = __webpack_require__(260);
 	
-	$export($export.P, 'String', {
+	// https://github.com/zloirock/core-js/issues/280
+	$export($export.P + $export.F * /Version\/10\.\d+(\.\d+)? Safari\//.test(userAgent), 'String', {
 	  padStart: function padStart(maxLength /* , fillString = ' ' */) {
 	    return $pad(this, maxLength, arguments.length > 1 ? arguments[1] : undefined, true);
 	  }
@@ -7086,19 +7081,32 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+	
+	var global = __webpack_require__(4);
+	var navigator = global.navigator;
+	
+	module.exports = navigator && navigator.userAgent || '';
+
+/***/ },
+/* 261 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
 	// https://github.com/tc39/proposal-string-pad-start-end
 	
 	var $export = __webpack_require__(8);
 	var $pad = __webpack_require__(259);
+	var userAgent = __webpack_require__(260);
 	
-	$export($export.P, 'String', {
+	// https://github.com/zloirock/core-js/issues/280
+	$export($export.P + $export.F * /Version\/10\.\d+(\.\d+)? Safari\//.test(userAgent), 'String', {
 	  padEnd: function padEnd(maxLength /* , fillString = ' ' */) {
 	    return $pad(this, maxLength, arguments.length > 1 ? arguments[1] : undefined, false);
 	  }
 	});
 
 /***/ },
-/* 261 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7111,7 +7119,7 @@
 	}, 'trimStart');
 
 /***/ },
-/* 262 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7124,7 +7132,7 @@
 	}, 'trimEnd');
 
 /***/ },
-/* 263 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7160,7 +7168,7 @@
 	});
 
 /***/ },
-/* 264 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7168,7 +7176,7 @@
 	__webpack_require__(27)('asyncIterator');
 
 /***/ },
-/* 265 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7176,7 +7184,7 @@
 	__webpack_require__(27)('observable');
 
 /***/ },
-/* 266 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7205,14 +7213,14 @@
 	});
 
 /***/ },
-/* 267 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	// https://github.com/tc39/proposal-object-values-entries
 	var $export = __webpack_require__(8);
-	var $values = __webpack_require__(268)(false);
+	var $values = __webpack_require__(269)(false);
 	
 	$export($export.S, 'Object', {
 	  values: function values(it) {
@@ -7221,7 +7229,7 @@
 	});
 
 /***/ },
-/* 268 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7246,14 +7254,14 @@
 	};
 
 /***/ },
-/* 269 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	// https://github.com/tc39/proposal-object-values-entries
 	var $export = __webpack_require__(8);
-	var $entries = __webpack_require__(268)(true);
+	var $entries = __webpack_require__(269)(true);
 	
 	$export($export.S, 'Object', {
 	  entries: function entries(it) {
@@ -7262,7 +7270,7 @@
 	});
 
 /***/ },
-/* 270 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7273,14 +7281,14 @@
 	var $defineProperty = __webpack_require__(11);
 	
 	// B.2.2.2 Object.prototype.__defineGetter__(P, getter)
-	__webpack_require__(6) && $export($export.P + __webpack_require__(271), 'Object', {
+	__webpack_require__(6) && $export($export.P + __webpack_require__(272), 'Object', {
 	  __defineGetter__: function __defineGetter__(P, getter) {
 	    $defineProperty.f(toObject(this), P, { get: aFunction(getter), enumerable: true, configurable: true });
 	  }
 	});
 
 /***/ },
-/* 271 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7295,7 +7303,7 @@
 	});
 
 /***/ },
-/* 272 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7306,33 +7314,9 @@
 	var $defineProperty = __webpack_require__(11);
 	
 	// B.2.2.3 Object.prototype.__defineSetter__(P, setter)
-	__webpack_require__(6) && $export($export.P + __webpack_require__(271), 'Object', {
+	__webpack_require__(6) && $export($export.P + __webpack_require__(272), 'Object', {
 	  __defineSetter__: function __defineSetter__(P, setter) {
 	    $defineProperty.f(toObject(this), P, { set: aFunction(setter), enumerable: true, configurable: true });
-	  }
-	});
-
-/***/ },
-/* 273 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var $export = __webpack_require__(8);
-	var toObject = __webpack_require__(57);
-	var toPrimitive = __webpack_require__(16);
-	var getPrototypeOf = __webpack_require__(58);
-	var getOwnPropertyDescriptor = __webpack_require__(50).f;
-	
-	// B.2.2.4 Object.prototype.__lookupGetter__(P)
-	__webpack_require__(6) && $export($export.P + __webpack_require__(271), 'Object', {
-	  __lookupGetter__: function __lookupGetter__(P) {
-	    var O = toObject(this);
-	    var K = toPrimitive(P, true);
-	    var D;
-	    do {
-	      if (D = getOwnPropertyDescriptor(O, K)) return D.get;
-	    } while (O = getPrototypeOf(O));
 	  }
 	});
 
@@ -7348,8 +7332,32 @@
 	var getPrototypeOf = __webpack_require__(58);
 	var getOwnPropertyDescriptor = __webpack_require__(50).f;
 	
+	// B.2.2.4 Object.prototype.__lookupGetter__(P)
+	__webpack_require__(6) && $export($export.P + __webpack_require__(272), 'Object', {
+	  __lookupGetter__: function __lookupGetter__(P) {
+	    var O = toObject(this);
+	    var K = toPrimitive(P, true);
+	    var D;
+	    do {
+	      if (D = getOwnPropertyDescriptor(O, K)) return D.get;
+	    } while (O = getPrototypeOf(O));
+	  }
+	});
+
+/***/ },
+/* 275 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var $export = __webpack_require__(8);
+	var toObject = __webpack_require__(57);
+	var toPrimitive = __webpack_require__(16);
+	var getPrototypeOf = __webpack_require__(58);
+	var getOwnPropertyDescriptor = __webpack_require__(50).f;
+	
 	// B.2.2.5 Object.prototype.__lookupSetter__(P)
-	__webpack_require__(6) && $export($export.P + __webpack_require__(271), 'Object', {
+	__webpack_require__(6) && $export($export.P + __webpack_require__(272), 'Object', {
 	  __lookupSetter__: function __lookupSetter__(P) {
 	    var O = toObject(this);
 	    var K = toPrimitive(P, true);
@@ -7361,7 +7369,7 @@
 	});
 
 /***/ },
-/* 275 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7369,17 +7377,17 @@
 	// https://github.com/DavidBruant/Map-Set.prototype.toJSON
 	var $export = __webpack_require__(8);
 	
-	$export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(276)('Map') });
+	$export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(277)('Map') });
 
 /***/ },
-/* 276 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	// https://github.com/DavidBruant/Map-Set.prototype.toJSON
 	var classof = __webpack_require__(74);
-	var from = __webpack_require__(277);
+	var from = __webpack_require__(278);
 	module.exports = function (NAME) {
 	  return function toJSON() {
 	    if (classof(this) != NAME) throw TypeError(NAME + "#toJSON isn't generic");
@@ -7388,7 +7396,7 @@
 	};
 
 /***/ },
-/* 277 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7402,7 +7410,7 @@
 	};
 
 /***/ },
-/* 278 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7410,19 +7418,19 @@
 	// https://github.com/DavidBruant/Map-Set.prototype.toJSON
 	var $export = __webpack_require__(8);
 	
-	$export($export.P + $export.R, 'Set', { toJSON: __webpack_require__(276)('Set') });
+	$export($export.P + $export.R, 'Set', { toJSON: __webpack_require__(277)('Set') });
 
 /***/ },
-/* 279 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	// https://tc39.github.io/proposal-setmap-offrom/#sec-map.of
-	__webpack_require__(280)('Map');
+	__webpack_require__(281)('Map');
 
 /***/ },
-/* 280 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7441,22 +7449,13 @@
 	};
 
 /***/ },
-/* 281 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	// https://tc39.github.io/proposal-setmap-offrom/#sec-set.of
-	__webpack_require__(280)('Set');
-
-/***/ },
 /* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	// https://tc39.github.io/proposal-setmap-offrom/#sec-weakmap.of
-	__webpack_require__(280)('WeakMap');
+	// https://tc39.github.io/proposal-setmap-offrom/#sec-set.of
+	__webpack_require__(281)('Set');
 
 /***/ },
 /* 283 */
@@ -7464,8 +7463,8 @@
 
 	'use strict';
 	
-	// https://tc39.github.io/proposal-setmap-offrom/#sec-weakset.of
-	__webpack_require__(280)('WeakSet');
+	// https://tc39.github.io/proposal-setmap-offrom/#sec-weakmap.of
+	__webpack_require__(281)('WeakMap');
 
 /***/ },
 /* 284 */
@@ -7473,11 +7472,20 @@
 
 	'use strict';
 	
-	// https://tc39.github.io/proposal-setmap-offrom/#sec-map.from
-	__webpack_require__(285)('Map');
+	// https://tc39.github.io/proposal-setmap-offrom/#sec-weakset.of
+	__webpack_require__(281)('WeakSet');
 
 /***/ },
 /* 285 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	// https://tc39.github.io/proposal-setmap-offrom/#sec-map.from
+	__webpack_require__(286)('Map');
+
+/***/ },
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7511,22 +7519,13 @@
 	};
 
 /***/ },
-/* 286 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	// https://tc39.github.io/proposal-setmap-offrom/#sec-set.from
-	__webpack_require__(285)('Set');
-
-/***/ },
 /* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	// https://tc39.github.io/proposal-setmap-offrom/#sec-weakmap.from
-	__webpack_require__(285)('WeakMap');
+	// https://tc39.github.io/proposal-setmap-offrom/#sec-set.from
+	__webpack_require__(286)('Set');
 
 /***/ },
 /* 288 */
@@ -7534,8 +7533,8 @@
 
 	'use strict';
 	
-	// https://tc39.github.io/proposal-setmap-offrom/#sec-weakset.from
-	__webpack_require__(285)('WeakSet');
+	// https://tc39.github.io/proposal-setmap-offrom/#sec-weakmap.from
+	__webpack_require__(286)('WeakMap');
 
 /***/ },
 /* 289 */
@@ -7543,10 +7542,8 @@
 
 	'use strict';
 	
-	// https://github.com/tc39/proposal-global
-	var $export = __webpack_require__(8);
-	
-	$export($export.G, { global: __webpack_require__(4) });
+	// https://tc39.github.io/proposal-setmap-offrom/#sec-weakset.from
+	__webpack_require__(286)('WeakSet');
 
 /***/ },
 /* 290 */
@@ -7557,10 +7554,21 @@
 	// https://github.com/tc39/proposal-global
 	var $export = __webpack_require__(8);
 	
-	$export($export.S, 'System', { global: __webpack_require__(4) });
+	$export($export.G, { global: __webpack_require__(4) });
 
 /***/ },
 /* 291 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	// https://github.com/tc39/proposal-global
+	var $export = __webpack_require__(8);
+	
+	$export($export.S, 'System', { global: __webpack_require__(4) });
+
+/***/ },
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7576,7 +7584,7 @@
 	});
 
 /***/ },
-/* 292 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7591,7 +7599,7 @@
 	});
 
 /***/ },
-/* 293 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7602,7 +7610,7 @@
 	$export($export.S, 'Math', { DEG_PER_RAD: Math.PI / 180 });
 
 /***/ },
-/* 294 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7618,14 +7626,14 @@
 	});
 
 /***/ },
-/* 295 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	// https://rwaldron.github.io/proposal-math-extensions/
 	var $export = __webpack_require__(8);
-	var scale = __webpack_require__(296);
+	var scale = __webpack_require__(297);
 	var fround = __webpack_require__(113);
 	
 	$export($export.S, 'Math', {
@@ -7635,7 +7643,7 @@
 	});
 
 /***/ },
-/* 296 */
+/* 297 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -7658,7 +7666,7 @@
 	};
 
 /***/ },
-/* 297 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7676,7 +7684,7 @@
 	});
 
 /***/ },
-/* 298 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7694,7 +7702,7 @@
 	});
 
 /***/ },
-/* 299 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7717,7 +7725,7 @@
 	});
 
 /***/ },
-/* 300 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7728,7 +7736,7 @@
 	$export($export.S, 'Math', { RAD_PER_DEG: 180 / Math.PI });
 
 /***/ },
-/* 301 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7744,7 +7752,7 @@
 	});
 
 /***/ },
-/* 302 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7752,10 +7760,10 @@
 	// https://rwaldron.github.io/proposal-math-extensions/
 	var $export = __webpack_require__(8);
 	
-	$export($export.S, 'Math', { scale: __webpack_require__(296) });
+	$export($export.S, 'Math', { scale: __webpack_require__(297) });
 
 /***/ },
-/* 303 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7778,7 +7786,7 @@
 	});
 
 /***/ },
-/* 304 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7792,7 +7800,7 @@
 	  } });
 
 /***/ },
-/* 305 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://github.com/tc39/proposal-promise-finally
@@ -7819,7 +7827,7 @@
 	  } });
 
 /***/ },
-/* 306 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7837,12 +7845,12 @@
 	  } });
 
 /***/ },
-/* 307 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var metadata = __webpack_require__(308);
+	var metadata = __webpack_require__(309);
 	var anObject = __webpack_require__(12);
 	var toMetaKey = metadata.key;
 	var ordinaryDefineOwnMetadata = metadata.set;
@@ -7852,7 +7860,7 @@
 	  } });
 
 /***/ },
-/* 308 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7914,12 +7922,12 @@
 	};
 
 /***/ },
-/* 309 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var metadata = __webpack_require__(308);
+	var metadata = __webpack_require__(309);
 	var anObject = __webpack_require__(12);
 	var toMetaKey = metadata.key;
 	var getOrCreateMetadataMap = metadata.map;
@@ -7936,12 +7944,12 @@
 	  } });
 
 /***/ },
-/* 310 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var metadata = __webpack_require__(308);
+	var metadata = __webpack_require__(309);
 	var anObject = __webpack_require__(12);
 	var getPrototypeOf = __webpack_require__(58);
 	var ordinaryHasOwnMetadata = metadata.has;
@@ -7960,14 +7968,14 @@
 	  } });
 
 /***/ },
-/* 311 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var Set = __webpack_require__(219);
-	var from = __webpack_require__(277);
-	var metadata = __webpack_require__(308);
+	var from = __webpack_require__(278);
+	var metadata = __webpack_require__(309);
 	var anObject = __webpack_require__(12);
 	var getPrototypeOf = __webpack_require__(58);
 	var ordinaryOwnMetadataKeys = metadata.keys;
@@ -7986,12 +7994,12 @@
 	  } });
 
 /***/ },
-/* 312 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var metadata = __webpack_require__(308);
+	var metadata = __webpack_require__(309);
 	var anObject = __webpack_require__(12);
 	var ordinaryGetOwnMetadata = metadata.get;
 	var toMetaKey = metadata.key;
@@ -8001,12 +8009,12 @@
 	  } });
 
 /***/ },
-/* 313 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var metadata = __webpack_require__(308);
+	var metadata = __webpack_require__(309);
 	var anObject = __webpack_require__(12);
 	var ordinaryOwnMetadataKeys = metadata.keys;
 	var toMetaKey = metadata.key;
@@ -8016,12 +8024,12 @@
 	  } });
 
 /***/ },
-/* 314 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var metadata = __webpack_require__(308);
+	var metadata = __webpack_require__(309);
 	var anObject = __webpack_require__(12);
 	var getPrototypeOf = __webpack_require__(58);
 	var ordinaryHasOwnMetadata = metadata.has;
@@ -8039,12 +8047,12 @@
 	  } });
 
 /***/ },
-/* 315 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var metadata = __webpack_require__(308);
+	var metadata = __webpack_require__(309);
 	var anObject = __webpack_require__(12);
 	var ordinaryHasOwnMetadata = metadata.has;
 	var toMetaKey = metadata.key;
@@ -8054,12 +8062,12 @@
 	  } });
 
 /***/ },
-/* 316 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var $metadata = __webpack_require__(308);
+	var $metadata = __webpack_require__(309);
 	var anObject = __webpack_require__(12);
 	var aFunction = __webpack_require__(21);
 	var toMetaKey = $metadata.key;
@@ -8072,7 +8080,7 @@
 	  } });
 
 /***/ },
-/* 317 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8091,7 +8099,7 @@
 	});
 
 /***/ },
-/* 318 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8306,7 +8314,7 @@
 	__webpack_require__(193)('Observable');
 
 /***/ },
-/* 319 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8314,9 +8322,9 @@
 	// ie9- setTimeout & setInterval additional parameters fix
 	var global = __webpack_require__(4);
 	var $export = __webpack_require__(8);
-	var navigator = global.navigator;
+	var userAgent = __webpack_require__(260);
 	var slice = [].slice;
-	var MSIE = !!navigator && /MSIE .\./.test(navigator.userAgent); // <- dirty ie9- check
+	var MSIE = /MSIE .\./.test(userAgent); // <- dirty ie9- check
 	var wrap = function wrap(set) {
 	  return function (fn, time /* , ...args */) {
 	    var boundArgs = arguments.length > 2;
@@ -8333,7 +8341,7 @@
 	});
 
 /***/ },
-/* 320 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8346,7 +8354,7 @@
 	});
 
 /***/ },
-/* 321 */
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8413,7 +8421,7 @@
 	}
 
 /***/ },
-/* 322 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, module) {"use strict";
@@ -9122,10 +9130,10 @@
 	// object, this seems to be the most reliable technique that does not
 	// use indirect eval (which violates Content Security Policy).
 	(typeof global === "undefined" ? "undefined" : _typeof(global)) === "object" ? global : (typeof window === "undefined" ? "undefined" : _typeof(window)) === "object" ? window : (typeof self === "undefined" ? "undefined" : _typeof(self)) === "object" ? self : undefined);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(323)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(324)(module)))
 
 /***/ },
-/* 323 */
+/* 324 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -9142,30 +9150,30 @@
 	};
 
 /***/ },
-/* 324 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	__webpack_require__(325);
+	__webpack_require__(326);
 	module.exports = __webpack_require__(9).RegExp.escape;
 
 /***/ },
-/* 325 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	// https://github.com/benjamingr/RexExp.escape
 	var $export = __webpack_require__(8);
-	var $re = __webpack_require__(326)(/[\\^$*+?.()|[\]{}]/g, '\\$&');
+	var $re = __webpack_require__(327)(/[\\^$*+?.()|[\]{}]/g, '\\$&');
 	
 	$export($export.S, 'RegExp', { escape: function escape(it) {
 	    return $re(it);
 	  } });
 
 /***/ },
-/* 326 */
+/* 327 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -9180,62 +9188,62 @@
 	};
 
 /***/ },
-/* 327 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var _angular = __webpack_require__(328);
+	var _angular = __webpack_require__(329);
 	
 	var _angular2 = _interopRequireDefault(_angular);
 	
-	var _angularUiRouter = __webpack_require__(330);
+	var _angularUiRouter = __webpack_require__(331);
 	
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 	
-	var _angularTranslate = __webpack_require__(331);
+	var _angularTranslate = __webpack_require__(332);
 	
 	var _angularTranslate2 = _interopRequireDefault(_angularTranslate);
 	
-	var _components = __webpack_require__(332);
+	var _components = __webpack_require__(333);
 	
 	var _components2 = _interopRequireDefault(_components);
 	
-	var _login = __webpack_require__(472);
+	var _login = __webpack_require__(474);
 	
 	var _login2 = _interopRequireDefault(_login);
 	
-	var _signup = __webpack_require__(482);
+	var _signup = __webpack_require__(484);
 	
 	var _signup2 = _interopRequireDefault(_signup);
 	
-	var _buy = __webpack_require__(487);
+	var _buy = __webpack_require__(489);
 	
 	var _buy2 = _interopRequireDefault(_buy);
 	
-	var _dashboard = __webpack_require__(700);
+	var _dashboard = __webpack_require__(702);
 	
 	var _dashboard2 = _interopRequireDefault(_dashboard);
 	
-	var _fix = __webpack_require__(705);
+	var _fix = __webpack_require__(707);
 	
 	var _fix2 = _interopRequireDefault(_fix);
 	
-	var _language = __webpack_require__(710);
+	var _language = __webpack_require__(712);
 	
 	var _language2 = _interopRequireDefault(_language);
 	
-	var _en = __webpack_require__(711);
+	var _en = __webpack_require__(713);
 	
 	var _en2 = _interopRequireDefault(_en);
 	
-	var _pt = __webpack_require__(712);
+	var _pt = __webpack_require__(714);
 	
 	var _pt2 = _interopRequireDefault(_pt);
 	
-	var _services = __webpack_require__(713);
+	var _services = __webpack_require__(715);
 	
-	__webpack_require__(718);
+	__webpack_require__(720);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -9396,16 +9404,16 @@
 	}]);
 
 /***/ },
-/* 328 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	__webpack_require__(329);
+	__webpack_require__(330);
 	module.exports = angular;
 
 /***/ },
-/* 329 */
+/* 330 */
 /***/ function(module, exports) {
 
 	'use strict';var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};/**
@@ -27007,7 +27015,7 @@
 	bindJQuery();publishExternalAPI(angular);angular.module("ngLocale",[],["$provide",function($provide){var PLURAL_CATEGORY={ZERO:"zero",ONE:"one",TWO:"two",FEW:"few",MANY:"many",OTHER:"other"};function getDecimals(n){n=n+'';var i=n.indexOf('.');return i==-1?0:n.length-i-1;}function getVF(n,opt_precision){var v=opt_precision;if(undefined===v){v=Math.min(getDecimals(n),3);}var base=Math.pow(10,v);var f=(n*base|0)%base;return{v:v,f:f};}$provide.value("$locale",{"DATETIME_FORMATS":{"AMPMS":["AM","PM"],"DAY":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"ERANAMES":["Before Christ","Anno Domini"],"ERAS":["BC","AD"],"FIRSTDAYOFWEEK":6,"MONTH":["January","February","March","April","May","June","July","August","September","October","November","December"],"SHORTDAY":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"SHORTMONTH":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"STANDALONEMONTH":["January","February","March","April","May","June","July","August","September","October","November","December"],"WEEKENDRANGE":[5,6],"fullDate":"EEEE, MMMM d, y","longDate":"MMMM d, y","medium":"MMM d, y h:mm:ss a","mediumDate":"MMM d, y","mediumTime":"h:mm:ss a","short":"M/d/yy h:mm a","shortDate":"M/d/yy","shortTime":"h:mm a"},"NUMBER_FORMATS":{"CURRENCY_SYM":"$","DECIMAL_SEP":".","GROUP_SEP":",","PATTERNS":[{"gSize":3,"lgSize":3,"maxFrac":3,"minFrac":0,"minInt":1,"negPre":"-","negSuf":"","posPre":"","posSuf":""},{"gSize":3,"lgSize":3,"maxFrac":2,"minFrac":2,"minInt":1,"negPre":'-\xA4',"negSuf":"","posPre":'\xA4',"posSuf":""}]},"id":"en-us","localeID":"en_US","pluralCat":function pluralCat(n,opt_precision){var i=n|0;var vf=getVF(n,opt_precision);if(i==1&&vf.v==0){return PLURAL_CATEGORY.ONE;}return PLURAL_CATEGORY.OTHER;}});}]);jqLite(function(){angularInit(window.document,bootstrap);});})(window);!window.angular.$$csp().noInlineStyle&&window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ },
-/* 330 */
+/* 331 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -31828,7 +31836,7 @@
 	})(window, window.angular);
 
 /***/ },
-/* 331 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -35599,48 +35607,6 @@
 	});
 
 /***/ },
-/* 332 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _angular = __webpack_require__(328);
-	
-	var _angular2 = _interopRequireDefault(_angular);
-	
-	var _dateWrapper = __webpack_require__(333);
-	
-	var _dateWrapper2 = _interopRequireDefault(_dateWrapper);
-	
-	var _dateSelector = __webpack_require__(456);
-	
-	var _dateSelector2 = _interopRequireDefault(_dateSelector);
-	
-	var _airport = __webpack_require__(459);
-	
-	var _airport2 = _interopRequireDefault(_airport);
-	
-	var _inputAutocomplete = __webpack_require__(463);
-	
-	var _inputAutocomplete2 = _interopRequireDefault(_inputAutocomplete);
-	
-	var _popContent = __webpack_require__(466);
-	
-	var _popContent2 = _interopRequireDefault(_popContent);
-	
-	var _loading = __webpack_require__(469);
-	
-	var _loading2 = _interopRequireDefault(_loading);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = _angular2.default.module('app.components', []).component('dateWrapper', _dateWrapper2.default).component('dateSelector', _dateSelector2.default).component('airportSelect', _airport2.default).component('inputAutocomplete', _inputAutocomplete2.default).component('popContent', _popContent2.default).component('loading', _loading2.default).name;
-
-/***/ },
 /* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -35650,11 +35616,53 @@
 	  value: true
 	});
 	
-	var _dateWrapperComponent = __webpack_require__(334);
+	var _angular = __webpack_require__(329);
+	
+	var _angular2 = _interopRequireDefault(_angular);
+	
+	var _dateWrapper = __webpack_require__(334);
+	
+	var _dateWrapper2 = _interopRequireDefault(_dateWrapper);
+	
+	var _dateSelector = __webpack_require__(458);
+	
+	var _dateSelector2 = _interopRequireDefault(_dateSelector);
+	
+	var _airport = __webpack_require__(461);
+	
+	var _airport2 = _interopRequireDefault(_airport);
+	
+	var _inputAutocomplete = __webpack_require__(465);
+	
+	var _inputAutocomplete2 = _interopRequireDefault(_inputAutocomplete);
+	
+	var _popContent = __webpack_require__(468);
+	
+	var _popContent2 = _interopRequireDefault(_popContent);
+	
+	var _loading = __webpack_require__(471);
+	
+	var _loading2 = _interopRequireDefault(_loading);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = _angular2.default.module('app.components', []).component('dateWrapper', _dateWrapper2.default).component('dateSelector', _dateSelector2.default).component('airportSelect', _airport2.default).component('inputAutocomplete', _inputAutocomplete2.default).component('popContent', _popContent2.default).component('loading', _loading2.default).name;
+
+/***/ },
+/* 334 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _dateWrapperComponent = __webpack_require__(335);
 	
 	var _dateWrapperComponent2 = _interopRequireDefault(_dateWrapperComponent);
 	
-	var _dateWrapper = __webpack_require__(335);
+	var _dateWrapper = __webpack_require__(336);
 	
 	var _dateWrapper2 = _interopRequireDefault(_dateWrapper);
 	
@@ -35672,13 +35680,13 @@
 	exports.default = DateWrapperComponent;
 
 /***/ },
-/* 334 */
+/* 335 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"control is-horizontal\">\n  <div class=\"control-label\">\n    <label class=\"label\">\n      Fly out:\n    </label>\n  </div>\n\n  <div class=\"control\">\n    <date-selector date=\"$ctrl.startDate\">\n    </date-selector>\n  </div>\n\n  <div class=\"control-label\">\n    <label class=\"label\">\n      Fly back:\n    </label>\n  </div>\n  <div class=\"control\">\n    <date-selector date=\"$ctrl.endDate\">\n    </date-selector>\n  </div>\n</div>\n"
 
 /***/ },
-/* 335 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35689,7 +35697,7 @@
 	});
 	exports.default = DateWrapperController;
 	
-	var _moment = __webpack_require__(336);
+	var _moment = __webpack_require__(337);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
@@ -35714,7 +35722,7 @@
 	}
 
 /***/ },
-/* 336 */
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(module) {'use strict';
@@ -35722,7 +35730,7 @@
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
 	//! moment.js
-	//! version : 2.19.4
+	//! version : 2.20.1
 	//! authors : Tim Wood, Iskren Chernev, Moment.js contributors
 	//! license : MIT
 	//! momentjs.com
@@ -36364,7 +36372,7 @@
 	
 	    // any word (or two) characters or numbers including two/three word month in arabic.
 	    // includes scottish gaelic two word and hyphenated months
-	    var matchWord = /[0-9]{0,256}['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]{1,256}|[\u0600-\u06FF\/]{1,256}(\s*?[\u0600-\u06FF]{1,256}){1,2}/i;
+	    var matchWord = /[0-9]{0,256}['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFF07\uFF10-\uFFEF]{1,256}|[\u0600-\u06FF\/]{1,256}(\s*?[\u0600-\u06FF]{1,256}){1,2}/i;
 	
 	    var regexes = {};
 	
@@ -37551,7 +37559,7 @@
 	            try {
 	                oldLocale = globalLocale._abbr;
 	                var aliasedRequire = require;
-	                __webpack_require__(337)("./" + name);
+	                __webpack_require__(338)("./" + name);
 	                getSetGlobalLocale(oldLocale);
 	            } catch (e) {}
 	        }
@@ -38951,19 +38959,24 @@
 	        return this.clone().locale('en').format('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
 	    }
 	
-	    function toISOString() {
+	    function toISOString(keepOffset) {
 	        if (!this.isValid()) {
 	            return null;
 	        }
-	        var m = this.clone().utc();
+	        var utc = keepOffset !== true;
+	        var m = utc ? this.clone().utc() : this;
 	        if (m.year() < 0 || m.year() > 9999) {
-	            return formatMoment(m, 'YYYYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
+	            return formatMoment(m, utc ? 'YYYYYY-MM-DD[T]HH:mm:ss.SSS[Z]' : 'YYYYYY-MM-DD[T]HH:mm:ss.SSSZ');
 	        }
 	        if (isFunction(Date.prototype.toISOString)) {
 	            // native implementation is ~50x faster, use it when we can
-	            return this.toDate().toISOString();
+	            if (utc) {
+	                return this.toDate().toISOString();
+	            } else {
+	                return new Date(this._d.valueOf()).toISOString().replace('Z', formatMoment(m, 'Z'));
+	            }
 	        }
-	        return formatMoment(m, 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
+	        return formatMoment(m, utc ? 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]' : 'YYYY-MM-DD[T]HH:mm:ss.SSSZ');
 	    }
 	
 	    /**
@@ -40094,7 +40107,7 @@
 	    // Side effect imports
 	
 	
-	    hooks.version = '2.19.4';
+	    hooks.version = '2.20.1';
 	
 	    setHookCallback(createLocal);
 	
@@ -40126,251 +40139,266 @@
 	    hooks.calendarFormat = getCalendarFormat;
 	    hooks.prototype = proto;
 	
+	    // currently HTML5 input type only supports 24-hour formats
+	    hooks.HTML5_FMT = {
+	        DATETIME_LOCAL: 'YYYY-MM-DDTHH:mm', // <input type="datetime-local" />
+	        DATETIME_LOCAL_SECONDS: 'YYYY-MM-DDTHH:mm:ss', // <input type="datetime-local" step="1" />
+	        DATETIME_LOCAL_MS: 'YYYY-MM-DDTHH:mm:ss.SSS', // <input type="datetime-local" step="0.001" />
+	        DATE: 'YYYY-MM-DD', // <input type="date" />
+	        TIME: 'HH:mm', // <input type="time" />
+	        TIME_SECONDS: 'HH:mm:ss', // <input type="time" step="1" />
+	        TIME_MS: 'HH:mm:ss.SSS', // <input type="time" step="0.001" />
+	        WEEK: 'YYYY-[W]WW', // <input type="week" />
+	        MONTH: 'YYYY-MM' // <input type="month" />
+	    };
+	
 	    return hooks;
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(323)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(324)(module)))
 
 /***/ },
-/* 337 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./af": 338,
-		"./af.js": 338,
-		"./ar": 339,
-		"./ar-dz": 340,
-		"./ar-dz.js": 340,
-		"./ar-kw": 341,
-		"./ar-kw.js": 341,
-		"./ar-ly": 342,
-		"./ar-ly.js": 342,
-		"./ar-ma": 343,
-		"./ar-ma.js": 343,
-		"./ar-sa": 344,
-		"./ar-sa.js": 344,
-		"./ar-tn": 345,
-		"./ar-tn.js": 345,
-		"./ar.js": 339,
-		"./az": 346,
-		"./az.js": 346,
-		"./be": 347,
-		"./be.js": 347,
-		"./bg": 348,
-		"./bg.js": 348,
-		"./bm": 349,
-		"./bm.js": 349,
-		"./bn": 350,
-		"./bn.js": 350,
-		"./bo": 351,
-		"./bo.js": 351,
-		"./br": 352,
-		"./br.js": 352,
-		"./bs": 353,
-		"./bs.js": 353,
-		"./ca": 354,
-		"./ca.js": 354,
-		"./cs": 355,
-		"./cs.js": 355,
-		"./cv": 356,
-		"./cv.js": 356,
-		"./cy": 357,
-		"./cy.js": 357,
-		"./da": 358,
-		"./da.js": 358,
-		"./de": 359,
-		"./de-at": 360,
-		"./de-at.js": 360,
-		"./de-ch": 361,
-		"./de-ch.js": 361,
-		"./de.js": 359,
-		"./dv": 362,
-		"./dv.js": 362,
-		"./el": 363,
-		"./el.js": 363,
-		"./en-au": 364,
-		"./en-au.js": 364,
-		"./en-ca": 365,
-		"./en-ca.js": 365,
-		"./en-gb": 366,
-		"./en-gb.js": 366,
-		"./en-ie": 367,
-		"./en-ie.js": 367,
-		"./en-nz": 368,
-		"./en-nz.js": 368,
-		"./eo": 369,
-		"./eo.js": 369,
-		"./es": 370,
-		"./es-do": 371,
-		"./es-do.js": 371,
-		"./es-us": 372,
-		"./es-us.js": 372,
-		"./es.js": 370,
-		"./et": 373,
-		"./et.js": 373,
-		"./eu": 374,
-		"./eu.js": 374,
-		"./fa": 375,
-		"./fa.js": 375,
-		"./fi": 376,
-		"./fi.js": 376,
-		"./fo": 377,
-		"./fo.js": 377,
-		"./fr": 378,
-		"./fr-ca": 379,
-		"./fr-ca.js": 379,
-		"./fr-ch": 380,
-		"./fr-ch.js": 380,
-		"./fr.js": 378,
-		"./fy": 381,
-		"./fy.js": 381,
-		"./gd": 382,
-		"./gd.js": 382,
-		"./gl": 383,
-		"./gl.js": 383,
-		"./gom-latn": 384,
-		"./gom-latn.js": 384,
-		"./gu": 385,
-		"./gu.js": 385,
-		"./he": 386,
-		"./he.js": 386,
-		"./hi": 387,
-		"./hi.js": 387,
-		"./hr": 388,
-		"./hr.js": 388,
-		"./hu": 389,
-		"./hu.js": 389,
-		"./hy-am": 390,
-		"./hy-am.js": 390,
-		"./id": 391,
-		"./id.js": 391,
-		"./is": 392,
-		"./is.js": 392,
-		"./it": 393,
-		"./it.js": 393,
-		"./ja": 394,
-		"./ja.js": 394,
-		"./jv": 395,
-		"./jv.js": 395,
-		"./ka": 396,
-		"./ka.js": 396,
-		"./kk": 397,
-		"./kk.js": 397,
-		"./km": 398,
-		"./km.js": 398,
-		"./kn": 399,
-		"./kn.js": 399,
-		"./ko": 400,
-		"./ko.js": 400,
-		"./ky": 401,
-		"./ky.js": 401,
-		"./lb": 402,
-		"./lb.js": 402,
-		"./lo": 403,
-		"./lo.js": 403,
-		"./lt": 404,
-		"./lt.js": 404,
-		"./lv": 405,
-		"./lv.js": 405,
-		"./me": 406,
-		"./me.js": 406,
-		"./mi": 407,
-		"./mi.js": 407,
-		"./mk": 408,
-		"./mk.js": 408,
-		"./ml": 409,
-		"./ml.js": 409,
-		"./mr": 410,
-		"./mr.js": 410,
-		"./ms": 411,
-		"./ms-my": 412,
-		"./ms-my.js": 412,
-		"./ms.js": 411,
-		"./my": 413,
-		"./my.js": 413,
-		"./nb": 414,
-		"./nb.js": 414,
-		"./ne": 415,
-		"./ne.js": 415,
-		"./nl": 416,
-		"./nl-be": 417,
-		"./nl-be.js": 417,
-		"./nl.js": 416,
-		"./nn": 418,
-		"./nn.js": 418,
-		"./pa-in": 419,
-		"./pa-in.js": 419,
-		"./pl": 420,
-		"./pl.js": 420,
-		"./pt": 421,
-		"./pt-br": 422,
-		"./pt-br.js": 422,
-		"./pt.js": 421,
-		"./ro": 423,
-		"./ro.js": 423,
-		"./ru": 424,
-		"./ru.js": 424,
-		"./sd": 425,
-		"./sd.js": 425,
-		"./se": 426,
-		"./se.js": 426,
-		"./si": 427,
-		"./si.js": 427,
-		"./sk": 428,
-		"./sk.js": 428,
-		"./sl": 429,
-		"./sl.js": 429,
-		"./sq": 430,
-		"./sq.js": 430,
-		"./sr": 431,
-		"./sr-cyrl": 432,
-		"./sr-cyrl.js": 432,
-		"./sr.js": 431,
-		"./ss": 433,
-		"./ss.js": 433,
-		"./sv": 434,
-		"./sv.js": 434,
-		"./sw": 435,
-		"./sw.js": 435,
-		"./ta": 436,
-		"./ta.js": 436,
-		"./te": 437,
-		"./te.js": 437,
-		"./tet": 438,
-		"./tet.js": 438,
-		"./th": 439,
-		"./th.js": 439,
-		"./tl-ph": 440,
-		"./tl-ph.js": 440,
-		"./tlh": 441,
-		"./tlh.js": 441,
-		"./tr": 442,
-		"./tr.js": 442,
-		"./tzl": 443,
-		"./tzl.js": 443,
-		"./tzm": 444,
-		"./tzm-latn": 445,
-		"./tzm-latn.js": 445,
-		"./tzm.js": 444,
-		"./uk": 446,
-		"./uk.js": 446,
-		"./ur": 447,
-		"./ur.js": 447,
-		"./uz": 448,
-		"./uz-latn": 449,
-		"./uz-latn.js": 449,
-		"./uz.js": 448,
-		"./vi": 450,
-		"./vi.js": 450,
-		"./x-pseudo": 451,
-		"./x-pseudo.js": 451,
-		"./yo": 452,
-		"./yo.js": 452,
-		"./zh-cn": 453,
-		"./zh-cn.js": 453,
-		"./zh-hk": 454,
-		"./zh-hk.js": 454,
-		"./zh-tw": 455,
-		"./zh-tw.js": 455
+		"./af": 339,
+		"./af.js": 339,
+		"./ar": 340,
+		"./ar-dz": 341,
+		"./ar-dz.js": 341,
+		"./ar-kw": 342,
+		"./ar-kw.js": 342,
+		"./ar-ly": 343,
+		"./ar-ly.js": 343,
+		"./ar-ma": 344,
+		"./ar-ma.js": 344,
+		"./ar-sa": 345,
+		"./ar-sa.js": 345,
+		"./ar-tn": 346,
+		"./ar-tn.js": 346,
+		"./ar.js": 340,
+		"./az": 347,
+		"./az.js": 347,
+		"./be": 348,
+		"./be.js": 348,
+		"./bg": 349,
+		"./bg.js": 349,
+		"./bm": 350,
+		"./bm.js": 350,
+		"./bn": 351,
+		"./bn.js": 351,
+		"./bo": 352,
+		"./bo.js": 352,
+		"./br": 353,
+		"./br.js": 353,
+		"./bs": 354,
+		"./bs.js": 354,
+		"./ca": 355,
+		"./ca.js": 355,
+		"./cs": 356,
+		"./cs.js": 356,
+		"./cv": 357,
+		"./cv.js": 357,
+		"./cy": 358,
+		"./cy.js": 358,
+		"./da": 359,
+		"./da.js": 359,
+		"./de": 360,
+		"./de-at": 361,
+		"./de-at.js": 361,
+		"./de-ch": 362,
+		"./de-ch.js": 362,
+		"./de.js": 360,
+		"./dv": 363,
+		"./dv.js": 363,
+		"./el": 364,
+		"./el.js": 364,
+		"./en-au": 365,
+		"./en-au.js": 365,
+		"./en-ca": 366,
+		"./en-ca.js": 366,
+		"./en-gb": 367,
+		"./en-gb.js": 367,
+		"./en-ie": 368,
+		"./en-ie.js": 368,
+		"./en-nz": 369,
+		"./en-nz.js": 369,
+		"./eo": 370,
+		"./eo.js": 370,
+		"./es": 371,
+		"./es-do": 372,
+		"./es-do.js": 372,
+		"./es-us": 373,
+		"./es-us.js": 373,
+		"./es.js": 371,
+		"./et": 374,
+		"./et.js": 374,
+		"./eu": 375,
+		"./eu.js": 375,
+		"./fa": 376,
+		"./fa.js": 376,
+		"./fi": 377,
+		"./fi.js": 377,
+		"./fo": 378,
+		"./fo.js": 378,
+		"./fr": 379,
+		"./fr-ca": 380,
+		"./fr-ca.js": 380,
+		"./fr-ch": 381,
+		"./fr-ch.js": 381,
+		"./fr.js": 379,
+		"./fy": 382,
+		"./fy.js": 382,
+		"./gd": 383,
+		"./gd.js": 383,
+		"./gl": 384,
+		"./gl.js": 384,
+		"./gom-latn": 385,
+		"./gom-latn.js": 385,
+		"./gu": 386,
+		"./gu.js": 386,
+		"./he": 387,
+		"./he.js": 387,
+		"./hi": 388,
+		"./hi.js": 388,
+		"./hr": 389,
+		"./hr.js": 389,
+		"./hu": 390,
+		"./hu.js": 390,
+		"./hy-am": 391,
+		"./hy-am.js": 391,
+		"./id": 392,
+		"./id.js": 392,
+		"./is": 393,
+		"./is.js": 393,
+		"./it": 394,
+		"./it.js": 394,
+		"./ja": 395,
+		"./ja.js": 395,
+		"./jv": 396,
+		"./jv.js": 396,
+		"./ka": 397,
+		"./ka.js": 397,
+		"./kk": 398,
+		"./kk.js": 398,
+		"./km": 399,
+		"./km.js": 399,
+		"./kn": 400,
+		"./kn.js": 400,
+		"./ko": 401,
+		"./ko.js": 401,
+		"./ky": 402,
+		"./ky.js": 402,
+		"./lb": 403,
+		"./lb.js": 403,
+		"./lo": 404,
+		"./lo.js": 404,
+		"./lt": 405,
+		"./lt.js": 405,
+		"./lv": 406,
+		"./lv.js": 406,
+		"./me": 407,
+		"./me.js": 407,
+		"./mi": 408,
+		"./mi.js": 408,
+		"./mk": 409,
+		"./mk.js": 409,
+		"./ml": 410,
+		"./ml.js": 410,
+		"./mr": 411,
+		"./mr.js": 411,
+		"./ms": 412,
+		"./ms-my": 413,
+		"./ms-my.js": 413,
+		"./ms.js": 412,
+		"./mt": 414,
+		"./mt.js": 414,
+		"./my": 415,
+		"./my.js": 415,
+		"./nb": 416,
+		"./nb.js": 416,
+		"./ne": 417,
+		"./ne.js": 417,
+		"./nl": 418,
+		"./nl-be": 419,
+		"./nl-be.js": 419,
+		"./nl.js": 418,
+		"./nn": 420,
+		"./nn.js": 420,
+		"./pa-in": 421,
+		"./pa-in.js": 421,
+		"./pl": 422,
+		"./pl.js": 422,
+		"./pt": 423,
+		"./pt-br": 424,
+		"./pt-br.js": 424,
+		"./pt.js": 423,
+		"./ro": 425,
+		"./ro.js": 425,
+		"./ru": 426,
+		"./ru.js": 426,
+		"./sd": 427,
+		"./sd.js": 427,
+		"./se": 428,
+		"./se.js": 428,
+		"./si": 429,
+		"./si.js": 429,
+		"./sk": 430,
+		"./sk.js": 430,
+		"./sl": 431,
+		"./sl.js": 431,
+		"./sq": 432,
+		"./sq.js": 432,
+		"./sr": 433,
+		"./sr-cyrl": 434,
+		"./sr-cyrl.js": 434,
+		"./sr.js": 433,
+		"./ss": 435,
+		"./ss.js": 435,
+		"./sv": 436,
+		"./sv.js": 436,
+		"./sw": 437,
+		"./sw.js": 437,
+		"./ta": 438,
+		"./ta.js": 438,
+		"./te": 439,
+		"./te.js": 439,
+		"./tet": 440,
+		"./tet.js": 440,
+		"./th": 441,
+		"./th.js": 441,
+		"./tl-ph": 442,
+		"./tl-ph.js": 442,
+		"./tlh": 443,
+		"./tlh.js": 443,
+		"./tr": 444,
+		"./tr.js": 444,
+		"./tzl": 445,
+		"./tzl.js": 445,
+		"./tzm": 446,
+		"./tzm-latn": 447,
+		"./tzm-latn.js": 447,
+		"./tzm.js": 446,
+		"./uk": 448,
+		"./uk.js": 448,
+		"./ur": 449,
+		"./ur.js": 449,
+		"./uz": 450,
+		"./uz-latn": 451,
+		"./uz-latn.js": 451,
+		"./uz.js": 450,
+		"./vi": 452,
+		"./vi.js": 452,
+		"./x-pseudo": 453,
+		"./x-pseudo.js": 453,
+		"./yo": 454,
+		"./yo.js": 454,
+		"./zh-cn": 455,
+		"./zh-cn.js": 455,
+		"./zh-hk": 456,
+		"./zh-hk.js": 456,
+		"./zh-tw": 457,
+		"./zh-tw.js": 457
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -40383,11 +40411,11 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 337;
+	webpackContext.id = 338;
 
 
 /***/ },
-/* 338 */
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -40399,7 +40427,7 @@
 	//! author : Werner Mollentze : https://github.com/wernerm
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -40441,6 +40469,7 @@
 	            future: 'oor %s',
 	            past: '%s gelede',
 	            s: '\'n paar sekondes',
+	            ss: '%d sekondes',
 	            m: '\'n minuut',
 	            mm: '%d minute',
 	            h: '\'n uur',
@@ -40466,7 +40495,7 @@
 	});
 
 /***/ },
-/* 339 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -40480,7 +40509,7 @@
 	//! author : forabi https://github.com/forabi
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -40529,7 +40558,7 @@
 	            return str.replace(/%d/i, number);
 	        };
 	    };
-	    var months = ['كانون الثاني يناير', 'شباط فبراير', 'آذار مارس', 'نيسان أبريل', 'أيار مايو', 'حزيران يونيو', 'تموز يوليو', 'آب أغسطس', 'أيلول سبتمبر', 'تشرين الأول أكتوبر', 'تشرين الثاني نوفمبر', 'كانون الأول ديسمبر'];
+	    var months = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
 	
 	    var ar = moment.defineLocale('ar', {
 	        months: months,
@@ -40569,6 +40598,7 @@
 	            future: 'بعد %s',
 	            past: 'منذ %s',
 	            s: pluralize('s'),
+	            ss: pluralize('s'),
 	            m: pluralize('m'),
 	            mm: pluralize('m'),
 	            h: pluralize('h'),
@@ -40600,7 +40630,7 @@
 	});
 
 /***/ },
-/* 340 */
+/* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -40612,7 +40642,7 @@
 	//! author : Noureddine LOUAHEDJ : https://github.com/noureddineme
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -40643,6 +40673,7 @@
 	            future: 'في %s',
 	            past: 'منذ %s',
 	            s: 'ثوان',
+	            ss: '%d ثانية',
 	            m: 'دقيقة',
 	            mm: '%d دقائق',
 	            h: 'ساعة',
@@ -40664,7 +40695,7 @@
 	});
 
 /***/ },
-/* 341 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -40676,7 +40707,7 @@
 	//! author : Nusret Parlak: https://github.com/nusretparlak
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -40707,6 +40738,7 @@
 	            future: 'في %s',
 	            past: 'منذ %s',
 	            s: 'ثوان',
+	            ss: '%d ثانية',
 	            m: 'دقيقة',
 	            mm: '%d دقائق',
 	            h: 'ساعة',
@@ -40728,7 +40760,7 @@
 	});
 
 /***/ },
-/* 342 */
+/* 343 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -40740,7 +40772,7 @@
 	//! author : Ali Hmer: https://github.com/kikoanis
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -40817,6 +40849,7 @@
 	            future: 'بعد %s',
 	            past: 'منذ %s',
 	            s: pluralize('s'),
+	            ss: pluralize('s'),
 	            m: pluralize('m'),
 	            mm: pluralize('m'),
 	            h: pluralize('h'),
@@ -40846,7 +40879,7 @@
 	});
 
 /***/ },
-/* 343 */
+/* 344 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -40859,7 +40892,7 @@
 	//! author : Abdel Said : https://github.com/abdelsaid
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -40890,6 +40923,7 @@
 	            future: 'في %s',
 	            past: 'منذ %s',
 	            s: 'ثوان',
+	            ss: '%d ثانية',
 	            m: 'دقيقة',
 	            mm: '%d دقائق',
 	            h: 'ساعة',
@@ -40911,7 +40945,7 @@
 	});
 
 /***/ },
-/* 344 */
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -40923,7 +40957,7 @@
 	//! author : Suhail Alkowaileet : https://github.com/xsoh
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -40990,6 +41024,7 @@
 	            future: 'في %s',
 	            past: 'منذ %s',
 	            s: 'ثوان',
+	            ss: '%d ثانية',
 	            m: 'دقيقة',
 	            mm: '%d دقائق',
 	            h: 'ساعة',
@@ -41021,7 +41056,7 @@
 	});
 
 /***/ },
-/* 345 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -41033,7 +41068,7 @@
 	//! author : Nader Toukabri : https://github.com/naderio
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -41064,6 +41099,7 @@
 	            future: 'في %s',
 	            past: 'منذ %s',
 	            s: 'ثوان',
+	            ss: '%d ثانية',
 	            m: 'دقيقة',
 	            mm: '%d دقائق',
 	            h: 'ساعة',
@@ -41085,7 +41121,7 @@
 	});
 
 /***/ },
-/* 346 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -41097,7 +41133,7 @@
 	//! author : topchiyev : https://github.com/topchiyev
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -41149,6 +41185,7 @@
 	            future: '%s sonra',
 	            past: '%s əvvəl',
 	            s: 'birneçə saniyyə',
+	            ss: '%d saniyə',
 	            m: 'bir dəqiqə',
 	            mm: '%d dəqiqə',
 	            h: 'bir saat',
@@ -41197,7 +41234,7 @@
 	});
 
 /***/ },
-/* 347 */
+/* 348 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -41211,7 +41248,7 @@
 	//! Author : Menelion Elensúle : https://github.com/Oire
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -41221,6 +41258,7 @@
 	    }
 	    function relativeTimeWithPlural(number, withoutSuffix, key) {
 	        var format = {
+	            'ss': withoutSuffix ? 'секунда_секунды_секунд' : 'секунду_секунды_секунд',
 	            'mm': withoutSuffix ? 'хвіліна_хвіліны_хвілін' : 'хвіліну_хвіліны_хвілін',
 	            'hh': withoutSuffix ? 'гадзіна_гадзіны_гадзін' : 'гадзіну_гадзіны_гадзін',
 	            'dd': 'дзень_дні_дзён',
@@ -41335,7 +41373,7 @@
 	});
 
 /***/ },
-/* 348 */
+/* 349 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -41347,7 +41385,7 @@
 	//! author : Krasen Borisov : https://github.com/kraz
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -41389,6 +41427,7 @@
 	            future: 'след %s',
 	            past: 'преди %s',
 	            s: 'няколко секунди',
+	            ss: '%d секунди',
 	            m: 'минута',
 	            mm: '%d минути',
 	            h: 'час',
@@ -41430,7 +41469,7 @@
 	});
 
 /***/ },
-/* 349 */
+/* 350 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -41442,7 +41481,7 @@
 	//! author : Estelle Comment : https://github.com/estellecomment
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -41474,6 +41513,7 @@
 	            future: '%s kɔnɔ',
 	            past: 'a bɛ %s bɔ',
 	            s: 'sanga dama dama',
+	            ss: 'sekondi %d',
 	            m: 'miniti kelen',
 	            mm: 'miniti %d',
 	            h: 'lɛrɛ kelen',
@@ -41495,7 +41535,7 @@
 	});
 
 /***/ },
-/* 350 */
+/* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -41507,7 +41547,7 @@
 	//! author : Kaushik Gandhi : https://github.com/kaushikgandhi
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -41562,6 +41602,7 @@
 	            future: '%s পরে',
 	            past: '%s আগে',
 	            s: 'কয়েক সেকেন্ড',
+	            ss: '%d সেকেন্ড',
 	            m: 'এক মিনিট',
 	            mm: '%d মিনিট',
 	            h: 'এক ঘন্টা',
@@ -41617,7 +41658,7 @@
 	});
 
 /***/ },
-/* 351 */
+/* 352 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -41629,7 +41670,7 @@
 	//! author : Thupten N. Chakrishar : https://github.com/vajradog
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -41684,6 +41725,7 @@
 	            future: '%s ལ་',
 	            past: '%s སྔན་ལ',
 	            s: 'ལམ་སང',
+	            ss: '%d སྐར་ཆ།',
 	            m: 'སྐར་མ་གཅིག',
 	            mm: '%d སྐར་མ',
 	            h: 'ཆུ་ཚོད་གཅིག',
@@ -41739,7 +41781,7 @@
 	});
 
 /***/ },
-/* 352 */
+/* 353 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -41751,7 +41793,7 @@
 	//! author : Jean-Baptiste Le Duigou : https://github.com/jbleduigou
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -41826,6 +41868,7 @@
 	            future: 'a-benn %s',
 	            past: '%s \'zo',
 	            s: 'un nebeud segondennoù',
+	            ss: '%d eilenn',
 	            m: 'ur vunutenn',
 	            mm: relativeTimeWithMutation,
 	            h: 'un eur',
@@ -41852,7 +41895,7 @@
 	});
 
 /***/ },
-/* 353 */
+/* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -41865,13 +41908,22 @@
 	//! based on (hr) translation by Bojan Marković
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
 	    function translate(number, withoutSuffix, key) {
 	        var result = number + ' ';
 	        switch (key) {
+	            case 'ss':
+	                if (number === 1) {
+	                    result += 'sekunda';
+	                } else if (number === 2 || number === 3 || number === 4) {
+	                    result += 'sekunde';
+	                } else {
+	                    result += 'sekundi';
+	                }
+	                return result;
 	            case 'm':
 	                return withoutSuffix ? 'jedna minuta' : 'jedne minute';
 	            case 'mm':
@@ -41977,6 +42029,7 @@
 	            future: 'za %s',
 	            past: 'prije %s',
 	            s: 'par sekundi',
+	            ss: translate,
 	            m: translate,
 	            mm: translate,
 	            h: translate,
@@ -42000,7 +42053,7 @@
 	});
 
 /***/ },
-/* 354 */
+/* 355 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -42012,7 +42065,7 @@
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -42061,6 +42114,7 @@
 	            future: 'd\'aquí %s',
 	            past: 'fa %s',
 	            s: 'uns segons',
+	            ss: '%d segons',
 	            m: 'un minut',
 	            mm: '%d minuts',
 	            h: 'una hora',
@@ -42090,7 +42144,7 @@
 	});
 
 /***/ },
-/* 355 */
+/* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -42102,7 +42156,7 @@
 	//! author : petrbela : https://github.com/petrbela
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -42117,6 +42171,14 @@
 	            case 's':
 	                // a few seconds / in a few seconds / a few seconds ago
 	                return withoutSuffix || isFuture ? 'pár sekund' : 'pár sekundami';
+	            case 'ss':
+	                // 9 seconds / in 9 seconds / 9 seconds ago
+	                if (withoutSuffix || isFuture) {
+	                    return result + (plural(number) ? 'sekundy' : 'sekund');
+	                } else {
+	                    return result + 'sekundami';
+	                }
+	                break;
 	            case 'm':
 	                // a minute / in a minute / a minute ago
 	                return withoutSuffix ? 'minuta' : isFuture ? 'minutu' : 'minutou';
@@ -42258,6 +42320,7 @@
 	            future: 'za %s',
 	            past: 'před %s',
 	            s: translate,
+	            ss: translate,
 	            m: translate,
 	            mm: translate,
 	            h: translate,
@@ -42281,7 +42344,7 @@
 	});
 
 /***/ },
-/* 356 */
+/* 357 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -42293,7 +42356,7 @@
 	//! author : Anatoly Mironov : https://github.com/mirontoli
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -42326,6 +42389,7 @@
 	            },
 	            past: '%s каялла',
 	            s: 'пӗр-ик ҫеккунт',
+	            ss: '%d ҫеккунт',
 	            m: 'пӗр минут',
 	            mm: '%d минут',
 	            h: 'пӗр сехет',
@@ -42349,7 +42413,7 @@
 	});
 
 /***/ },
-/* 357 */
+/* 358 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -42362,7 +42426,7 @@
 	//! author : https://github.com/ryangreaves
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -42394,6 +42458,7 @@
 	            future: 'mewn %s',
 	            past: '%s yn ôl',
 	            s: 'ychydig eiliadau',
+	            ss: '%d eiliad',
 	            m: 'munud',
 	            mm: '%d munud',
 	            h: 'awr',
@@ -42434,7 +42499,7 @@
 	});
 
 /***/ },
-/* 358 */
+/* 359 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -42446,7 +42511,7 @@
 	//! author : Ulrik Nielsen : https://github.com/mrbase
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -42476,6 +42541,7 @@
 	            future: 'om %s',
 	            past: '%s siden',
 	            s: 'få sekunder',
+	            ss: '%d sekunder',
 	            m: 'et minut',
 	            mm: '%d minutter',
 	            h: 'en time',
@@ -42499,7 +42565,7 @@
 	});
 
 /***/ },
-/* 359 */
+/* 360 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -42513,7 +42579,7 @@
 	//! author : Mikolaj Dadela : https://github.com/mik01aj
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -42559,6 +42625,7 @@
 	            future: 'in %s',
 	            past: 'vor %s',
 	            s: 'ein paar Sekunden',
+	            ss: '%d Sekunden',
 	            m: processRelativeTime,
 	            mm: '%d Minuten',
 	            h: processRelativeTime,
@@ -42582,7 +42649,7 @@
 	});
 
 /***/ },
-/* 360 */
+/* 361 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -42597,7 +42664,7 @@
 	//! author : Mikolaj Dadela : https://github.com/mik01aj
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -42643,6 +42710,7 @@
 	            future: 'in %s',
 	            past: 'vor %s',
 	            s: 'ein paar Sekunden',
+	            ss: '%d Sekunden',
 	            m: processRelativeTime,
 	            mm: '%d Minuten',
 	            h: processRelativeTime,
@@ -42666,7 +42734,7 @@
 	});
 
 /***/ },
-/* 361 */
+/* 362 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -42678,7 +42746,7 @@
 	//! author : sschueller : https://github.com/sschueller
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -42707,12 +42775,12 @@
 	        weekdaysMin: 'So_Mo_Di_Mi_Do_Fr_Sa'.split('_'),
 	        weekdaysParseExact: true,
 	        longDateFormat: {
-	            LT: 'HH.mm',
-	            LTS: 'HH.mm.ss',
+	            LT: 'HH:mm',
+	            LTS: 'HH:mm:ss',
 	            L: 'DD.MM.YYYY',
 	            LL: 'D. MMMM YYYY',
-	            LLL: 'D. MMMM YYYY HH.mm',
-	            LLLL: 'dddd, D. MMMM YYYY HH.mm'
+	            LLL: 'D. MMMM YYYY HH:mm',
+	            LLLL: 'dddd, D. MMMM YYYY HH:mm'
 	        },
 	        calendar: {
 	            sameDay: '[heute um] LT [Uhr]',
@@ -42726,6 +42794,7 @@
 	            future: 'in %s',
 	            past: 'vor %s',
 	            s: 'ein paar Sekunden',
+	            ss: '%d Sekunden',
 	            m: processRelativeTime,
 	            mm: '%d Minuten',
 	            h: processRelativeTime,
@@ -42749,7 +42818,7 @@
 	});
 
 /***/ },
-/* 362 */
+/* 363 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -42761,7 +42830,7 @@
 	//! author : Jawish Hameed : https://github.com/jawish
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -42806,6 +42875,7 @@
 	            future: 'ތެރޭގައި %s',
 	            past: 'ކުރިން %s',
 	            s: 'ސިކުންތުކޮޅެއް',
+	            ss: 'd% ސިކުންތު',
 	            m: 'މިނިޓެއް',
 	            mm: 'މިނިޓު %d',
 	            h: 'ގަޑިއިރެއް',
@@ -42833,7 +42903,7 @@
 	});
 
 /***/ },
-/* 363 */
+/* 364 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -42845,7 +42915,7 @@
 	//! author : Aggelos Karalias : https://github.com/mehiel
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -42916,6 +42986,7 @@
 	            future: 'σε %s',
 	            past: '%s πριν',
 	            s: 'λίγα δευτερόλεπτα',
+	            ss: '%d δευτερόλεπτα',
 	            m: 'ένα λεπτό',
 	            mm: '%d λεπτά',
 	            h: 'μία ώρα',
@@ -42939,7 +43010,7 @@
 	});
 
 /***/ },
-/* 364 */
+/* 365 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -42951,7 +43022,7 @@
 	//! author : Jared Morse : https://github.com/jarcoal
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -42981,6 +43052,7 @@
 	            future: 'in %s',
 	            past: '%s ago',
 	            s: 'a few seconds',
+	            ss: '%d seconds',
 	            m: 'a minute',
 	            mm: '%d minutes',
 	            h: 'an hour',
@@ -43008,7 +43080,7 @@
 	});
 
 /***/ },
-/* 365 */
+/* 366 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -43020,7 +43092,7 @@
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -43050,6 +43122,7 @@
 	            future: 'in %s',
 	            past: '%s ago',
 	            s: 'a few seconds',
+	            ss: '%d seconds',
 	            m: 'a minute',
 	            mm: '%d minutes',
 	            h: 'an hour',
@@ -43073,7 +43146,7 @@
 	});
 
 /***/ },
-/* 366 */
+/* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -43085,7 +43158,7 @@
 	//! author : Chris Gedrim : https://github.com/chrisgedrim
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -43115,6 +43188,7 @@
 	            future: 'in %s',
 	            past: '%s ago',
 	            s: 'a few seconds',
+	            ss: '%d seconds',
 	            m: 'a minute',
 	            mm: '%d minutes',
 	            h: 'an hour',
@@ -43142,7 +43216,7 @@
 	});
 
 /***/ },
-/* 367 */
+/* 368 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -43154,7 +43228,7 @@
 	//! author : Chris Cartlidge : https://github.com/chriscartlidge
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -43184,6 +43258,7 @@
 	            future: 'in %s',
 	            past: '%s ago',
 	            s: 'a few seconds',
+	            ss: '%d seconds',
 	            m: 'a minute',
 	            mm: '%d minutes',
 	            h: 'an hour',
@@ -43211,7 +43286,7 @@
 	});
 
 /***/ },
-/* 368 */
+/* 369 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -43223,7 +43298,7 @@
 	//! author : Luke McGregor : https://github.com/lukemcgregor
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -43253,6 +43328,7 @@
 	            future: 'in %s',
 	            past: '%s ago',
 	            s: 'a few seconds',
+	            ss: '%d seconds',
 	            m: 'a minute',
 	            mm: '%d minutes',
 	            h: 'an hour',
@@ -43280,7 +43356,7 @@
 	});
 
 /***/ },
-/* 369 */
+/* 370 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -43294,7 +43370,7 @@
 	//! comment : miestasmia corrected the translation by colindean
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -43335,6 +43411,7 @@
 	            future: 'post %s',
 	            past: 'antaŭ %s',
 	            s: 'sekundoj',
+	            ss: '%d sekundoj',
 	            m: 'minuto',
 	            mm: '%d minutoj',
 	            h: 'horo',
@@ -43358,7 +43435,7 @@
 	});
 
 /***/ },
-/* 370 */
+/* 371 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -43370,7 +43447,7 @@
 	//! author : Julio Napurí : https://github.com/julionc
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -43432,6 +43509,7 @@
 	            future: 'en %s',
 	            past: 'hace %s',
 	            s: 'unos segundos',
+	            ss: '%d segundos',
 	            m: 'un minuto',
 	            mm: '%d minutos',
 	            h: 'una hora',
@@ -43455,7 +43533,7 @@
 	});
 
 /***/ },
-/* 371 */
+/* 372 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -43466,7 +43544,7 @@
 	//! locale : Spanish (Dominican Republic) [es-do]
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -43528,6 +43606,7 @@
 	            future: 'en %s',
 	            past: 'hace %s',
 	            s: 'unos segundos',
+	            ss: '%d segundos',
 	            m: 'un minuto',
 	            mm: '%d minutos',
 	            h: 'una hora',
@@ -43551,7 +43630,7 @@
 	});
 
 /***/ },
-/* 372 */
+/* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -43563,7 +43642,7 @@
 	//! author : bustta : https://github.com/bustta
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -43587,12 +43666,12 @@
 	        weekdaysMin: 'do_lu_ma_mi_ju_vi_sá'.split('_'),
 	        weekdaysParseExact: true,
 	        longDateFormat: {
-	            LT: 'H:mm',
-	            LTS: 'H:mm:ss',
+	            LT: 'h:mm A',
+	            LTS: 'h:mm:ss A',
 	            L: 'MM/DD/YYYY',
 	            LL: 'MMMM [de] D [de] YYYY',
-	            LLL: 'MMMM [de] D [de] YYYY H:mm',
-	            LLLL: 'dddd, MMMM [de] D [de] YYYY H:mm'
+	            LLL: 'MMMM [de] D [de] YYYY h:mm A',
+	            LLLL: 'dddd, MMMM [de] D [de] YYYY h:mm A'
 	        },
 	        calendar: {
 	            sameDay: function sameDay() {
@@ -43616,6 +43695,7 @@
 	            future: 'en %s',
 	            past: 'hace %s',
 	            s: 'unos segundos',
+	            ss: '%d segundos',
 	            m: 'un minuto',
 	            mm: '%d minutos',
 	            h: 'una hora',
@@ -43639,7 +43719,7 @@
 	});
 
 /***/ },
-/* 373 */
+/* 374 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -43652,13 +43732,14 @@
 	//! improvements : Illimar Tambek : https://github.com/ragulka
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
 	    function processRelativeTime(number, withoutSuffix, key, isFuture) {
 	        var format = {
 	            's': ['mõne sekundi', 'mõni sekund', 'paar sekundit'],
+	            'ss': [number + 'sekundi', number + 'sekundit'],
 	            'm': ['ühe minuti', 'üks minut'],
 	            'mm': [number + ' minuti', number + ' minutit'],
 	            'h': ['ühe tunni', 'tund aega', 'üks tund'],
@@ -43701,6 +43782,7 @@
 	            future: '%s pärast',
 	            past: '%s tagasi',
 	            s: processRelativeTime,
+	            ss: processRelativeTime,
 	            m: processRelativeTime,
 	            mm: processRelativeTime,
 	            h: processRelativeTime,
@@ -43724,7 +43806,7 @@
 	});
 
 /***/ },
-/* 374 */
+/* 375 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -43736,7 +43818,7 @@
 	//! author : Eneko Illarramendi : https://github.com/eillarra
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -43772,6 +43854,7 @@
 	            future: '%s barru',
 	            past: 'duela %s',
 	            s: 'segundo batzuk',
+	            ss: '%d segundo',
 	            m: 'minutu bat',
 	            mm: '%d minutu',
 	            h: 'ordu bat',
@@ -43795,7 +43878,7 @@
 	});
 
 /***/ },
-/* 375 */
+/* 376 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -43807,7 +43890,7 @@
 	//! author : Ebrahim Byagowi : https://github.com/ebraminio
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -43875,6 +43958,7 @@
 	            future: 'در %s',
 	            past: '%s پیش',
 	            s: 'چند ثانیه',
+	            ss: 'ثانیه d%',
 	            m: 'یک دقیقه',
 	            mm: '%d دقیقه',
 	            h: 'یک ساعت',
@@ -43908,7 +43992,7 @@
 	});
 
 /***/ },
-/* 376 */
+/* 377 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -43920,7 +44004,7 @@
 	//! author : Tarmo Aidantausta : https://github.com/bleadof
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -43931,6 +44015,8 @@
 	        switch (key) {
 	            case 's':
 	                return isFuture ? 'muutaman sekunnin' : 'muutama sekunti';
+	            case 'ss':
+	                return isFuture ? 'sekunnin' : 'sekuntia';
 	            case 'm':
 	                return isFuture ? 'minuutin' : 'minuutti';
 	            case 'mm':
@@ -43994,6 +44080,7 @@
 	            future: '%s päästä',
 	            past: '%s sitten',
 	            s: translate,
+	            ss: translate,
 	            m: translate,
 	            mm: translate,
 	            h: translate,
@@ -44017,7 +44104,7 @@
 	});
 
 /***/ },
-/* 377 */
+/* 378 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -44029,7 +44116,7 @@
 	//! author : Ragnar Johannesen : https://github.com/ragnar123
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -44059,6 +44146,7 @@
 	            future: 'um %s',
 	            past: '%s síðani',
 	            s: 'fá sekund',
+	            ss: '%d sekundir',
 	            m: 'ein minutt',
 	            mm: '%d minuttir',
 	            h: 'ein tími',
@@ -44082,7 +44170,7 @@
 	});
 
 /***/ },
-/* 378 */
+/* 379 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -44094,7 +44182,7 @@
 	//! author : John Fischer : https://github.com/jfroffice
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -44104,7 +44192,7 @@
 	        monthsParseExact: true,
 	        weekdays: 'dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi'.split('_'),
 	        weekdaysShort: 'dim._lun._mar._mer._jeu._ven._sam.'.split('_'),
-	        weekdaysMin: 'Di_Lu_Ma_Me_Je_Ve_Sa'.split('_'),
+	        weekdaysMin: 'di_lu_ma_me_je_ve_sa'.split('_'),
 	        weekdaysParseExact: true,
 	        longDateFormat: {
 	            LT: 'HH:mm',
@@ -44126,6 +44214,7 @@
 	            future: 'dans %s',
 	            past: 'il y a %s',
 	            s: 'quelques secondes',
+	            ss: '%d secondes',
 	            m: 'une minute',
 	            mm: '%d minutes',
 	            h: 'une heure',
@@ -44170,7 +44259,7 @@
 	});
 
 /***/ },
-/* 379 */
+/* 380 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -44182,7 +44271,7 @@
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -44192,7 +44281,7 @@
 	        monthsParseExact: true,
 	        weekdays: 'dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi'.split('_'),
 	        weekdaysShort: 'dim._lun._mar._mer._jeu._ven._sam.'.split('_'),
-	        weekdaysMin: 'Di_Lu_Ma_Me_Je_Ve_Sa'.split('_'),
+	        weekdaysMin: 'di_lu_ma_me_je_ve_sa'.split('_'),
 	        weekdaysParseExact: true,
 	        longDateFormat: {
 	            LT: 'HH:mm',
@@ -44214,6 +44303,7 @@
 	            future: 'dans %s',
 	            past: 'il y a %s',
 	            s: 'quelques secondes',
+	            ss: '%d secondes',
 	            m: 'une minute',
 	            mm: '%d minutes',
 	            h: 'une heure',
@@ -44249,7 +44339,7 @@
 	});
 
 /***/ },
-/* 380 */
+/* 381 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -44261,7 +44351,7 @@
 	//! author : Gaspard Bucher : https://github.com/gaspard
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -44271,7 +44361,7 @@
 	        monthsParseExact: true,
 	        weekdays: 'dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi'.split('_'),
 	        weekdaysShort: 'dim._lun._mar._mer._jeu._ven._sam.'.split('_'),
-	        weekdaysMin: 'Di_Lu_Ma_Me_Je_Ve_Sa'.split('_'),
+	        weekdaysMin: 'di_lu_ma_me_je_ve_sa'.split('_'),
 	        weekdaysParseExact: true,
 	        longDateFormat: {
 	            LT: 'HH:mm',
@@ -44293,6 +44383,7 @@
 	            future: 'dans %s',
 	            past: 'il y a %s',
 	            s: 'quelques secondes',
+	            ss: '%d secondes',
 	            m: 'une minute',
 	            mm: '%d minutes',
 	            h: 'une heure',
@@ -44332,7 +44423,7 @@
 	});
 
 /***/ },
-/* 381 */
+/* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -44344,7 +44435,7 @@
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -44387,6 +44478,7 @@
 	            future: 'oer %s',
 	            past: '%s lyn',
 	            s: 'in pear sekonden',
+	            ss: '%d sekonden',
 	            m: 'ien minút',
 	            mm: '%d minuten',
 	            h: 'ien oere',
@@ -44412,7 +44504,7 @@
 	});
 
 /***/ },
-/* 382 */
+/* 383 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -44424,7 +44516,7 @@
 	//! author : Jon Ashdown : https://github.com/jonashdown
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -44465,6 +44557,7 @@
 	            future: 'ann an %s',
 	            past: 'bho chionn %s',
 	            s: 'beagan diogan',
+	            ss: '%d diogan',
 	            m: 'mionaid',
 	            mm: '%d mionaidean',
 	            h: 'uair',
@@ -44491,7 +44584,7 @@
 	});
 
 /***/ },
-/* 383 */
+/* 384 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -44503,7 +44596,7 @@
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -44550,6 +44643,7 @@
 	            },
 	            past: 'hai %s',
 	            s: 'uns segundos',
+	            ss: '%d segundos',
 	            m: 'un minuto',
 	            mm: '%d minutos',
 	            h: 'unha hora',
@@ -44573,7 +44667,7 @@
 	});
 
 /***/ },
-/* 384 */
+/* 385 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -44585,13 +44679,14 @@
 	//! author : The Discoverer : https://github.com/WikiDiscoverer
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
 	    function processRelativeTime(number, withoutSuffix, key, isFuture) {
 	        var format = {
 	            's': ['thodde secondanim', 'thodde second'],
+	            'ss': [number + ' secondanim', number + ' second'],
 	            'm': ['eka mintan', 'ek minute'],
 	            'mm': [number + ' mintanim', number + ' mintam'],
 	            'h': ['eka horan', 'ek hor'],
@@ -44635,6 +44730,7 @@
 	            future: '%s',
 	            past: '%s adim',
 	            s: processRelativeTime,
+	            ss: processRelativeTime,
 	            m: processRelativeTime,
 	            mm: processRelativeTime,
 	            h: processRelativeTime,
@@ -44700,7 +44796,7 @@
 	});
 
 /***/ },
-/* 385 */
+/* 386 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -44712,7 +44808,7 @@
 	//! author : Kaushik Thanki : https://github.com/Kaushik1987
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -44768,6 +44864,7 @@
 	            future: '%s મા',
 	            past: '%s પેહલા',
 	            s: 'અમુક પળો',
+	            ss: '%d સેકંડ',
 	            m: 'એક મિનિટ',
 	            mm: '%d મિનિટ',
 	            h: 'એક કલાક',
@@ -44829,7 +44926,7 @@
 	});
 
 /***/ },
-/* 386 */
+/* 387 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -44843,7 +44940,7 @@
 	//! author : Tal Ater : https://github.com/TalAter
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -44877,6 +44974,7 @@
 	            future: 'בעוד %s',
 	            past: 'לפני %s',
 	            s: 'מספר שניות',
+	            ss: '%d שניות',
 	            m: 'דקה',
 	            mm: '%d דקות',
 	            h: 'שעה',
@@ -44934,7 +45032,7 @@
 	});
 
 /***/ },
-/* 387 */
+/* 388 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -44946,7 +45044,7 @@
 	//! author : Mayank Singhal : https://github.com/mayanksinghal
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -45002,6 +45100,7 @@
 	            future: '%s में',
 	            past: '%s पहले',
 	            s: 'कुछ ही क्षण',
+	            ss: '%d सेकंड',
 	            m: 'एक मिनट',
 	            mm: '%d मिनट',
 	            h: 'एक घंटा',
@@ -45063,7 +45162,7 @@
 	});
 
 /***/ },
-/* 388 */
+/* 389 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -45075,13 +45174,22 @@
 	//! author : Bojan Marković : https://github.com/bmarkovic
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
 	    function translate(number, withoutSuffix, key) {
 	        var result = number + ' ';
 	        switch (key) {
+	            case 'ss':
+	                if (number === 1) {
+	                    result += 'sekunda';
+	                } else if (number === 2 || number === 3 || number === 4) {
+	                    result += 'sekunde';
+	                } else {
+	                    result += 'sekundi';
+	                }
+	                return result;
 	            case 'm':
 	                return withoutSuffix ? 'jedna minuta' : 'jedne minute';
 	            case 'mm':
@@ -45190,6 +45298,7 @@
 	            future: 'za %s',
 	            past: 'prije %s',
 	            s: 'par sekundi',
+	            ss: translate,
 	            m: translate,
 	            mm: translate,
 	            h: translate,
@@ -45213,7 +45322,7 @@
 	});
 
 /***/ },
-/* 389 */
+/* 390 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -45225,7 +45334,7 @@
 	//! author : Adam Brunner : https://github.com/adambrunner
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -45235,6 +45344,8 @@
 	        switch (key) {
 	            case 's':
 	                return isFuture || withoutSuffix ? 'néhány másodperc' : 'néhány másodperce';
+	            case 'ss':
+	                return num + (isFuture || withoutSuffix) ? ' másodperc' : ' másodperce';
 	            case 'm':
 	                return 'egy' + (isFuture || withoutSuffix ? ' perc' : ' perce');
 	            case 'mm':
@@ -45303,6 +45414,7 @@
 	            future: '%s múlva',
 	            past: '%s',
 	            s: translate,
+	            ss: translate,
 	            m: translate,
 	            mm: translate,
 	            h: translate,
@@ -45326,7 +45438,7 @@
 	});
 
 /***/ },
-/* 390 */
+/* 391 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -45338,7 +45450,7 @@
 	//! author : Armendarabyan : https://github.com/armendarabyan
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -45375,6 +45487,7 @@
 	            future: '%s հետո',
 	            past: '%s առաջ',
 	            s: 'մի քանի վայրկյան',
+	            ss: '%d վայրկյան',
 	            m: 'րոպե',
 	            mm: '%d րոպե',
 	            h: 'ժամ',
@@ -45427,7 +45540,7 @@
 	});
 
 /***/ },
-/* 391 */
+/* 392 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -45440,7 +45553,7 @@
 	//! reference: http://id.wikisource.org/wiki/Pedoman_Umum_Ejaan_Bahasa_Indonesia_yang_Disempurnakan
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -45494,6 +45607,7 @@
 	            future: 'dalam %s',
 	            past: '%s yang lalu',
 	            s: 'beberapa detik',
+	            ss: '%d detik',
 	            m: 'semenit',
 	            mm: '%d menit',
 	            h: 'sejam',
@@ -45515,7 +45629,7 @@
 	});
 
 /***/ },
-/* 392 */
+/* 393 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -45527,7 +45641,7 @@
 	//! author : Hinrik Örn Sigurðsson : https://github.com/hinrik
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -45544,6 +45658,11 @@
 	        switch (key) {
 	            case 's':
 	                return withoutSuffix || isFuture ? 'nokkrar sekúndur' : 'nokkrum sekúndum';
+	            case 'ss':
+	                if (plural(number)) {
+	                    return result + (withoutSuffix || isFuture ? 'sekúndur' : 'sekúndum');
+	                }
+	                return result + 'sekúnda';
 	            case 'm':
 	                return withoutSuffix ? 'mínúta' : 'mínútu';
 	            case 'mm':
@@ -45624,6 +45743,7 @@
 	            future: 'eftir %s',
 	            past: 'fyrir %s síðan',
 	            s: translate,
+	            ss: translate,
 	            m: translate,
 	            mm: translate,
 	            h: 'klukkustund',
@@ -45647,7 +45767,7 @@
 	});
 
 /***/ },
-/* 393 */
+/* 394 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -45660,7 +45780,7 @@
 	//! author: Mattia Larentis: https://github.com/nostalgiaz
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -45676,7 +45796,7 @@
 	            L: 'DD/MM/YYYY',
 	            LL: 'D MMMM YYYY',
 	            LLL: 'D MMMM YYYY HH:mm',
-	            LLLL: 'dddd, D MMMM YYYY HH:mm'
+	            LLLL: 'dddd D MMMM YYYY HH:mm'
 	        },
 	        calendar: {
 	            sameDay: '[Oggi alle] LT',
@@ -45699,6 +45819,7 @@
 	            },
 	            past: '%s fa',
 	            s: 'alcuni secondi',
+	            ss: '%d secondi',
 	            m: 'un minuto',
 	            mm: '%d minuti',
 	            h: 'un\'ora',
@@ -45722,7 +45843,7 @@
 	});
 
 /***/ },
-/* 394 */
+/* 395 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -45734,7 +45855,7 @@
 	//! author : LI Long : https://github.com/baryon
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -45790,6 +45911,7 @@
 	            future: '%s後',
 	            past: '%s前',
 	            s: '数秒',
+	            ss: '%d秒',
 	            m: '1分',
 	            mm: '%d分',
 	            h: '1時間',
@@ -45807,7 +45929,7 @@
 	});
 
 /***/ },
-/* 395 */
+/* 396 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -45820,7 +45942,7 @@
 	//! reference: http://jv.wikipedia.org/wiki/Basa_Jawa
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -45874,6 +45996,7 @@
 	            future: 'wonten ing %s',
 	            past: '%s ingkang kepengker',
 	            s: 'sawetawis detik',
+	            ss: '%d detik',
 	            m: 'setunggal menit',
 	            mm: '%d menit',
 	            h: 'setunggal jam',
@@ -45895,7 +46018,7 @@
 	});
 
 /***/ },
-/* 396 */
+/* 397 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -45907,7 +46030,7 @@
 	//! author : Irakli Janiashvili : https://github.com/irakli-janiashvili
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -45954,6 +46077,7 @@
 	                }
 	            },
 	            s: 'რამდენიმე წამი',
+	            ss: '%d წამი',
 	            m: 'წუთი',
 	            mm: '%d წუთი',
 	            h: 'საათი',
@@ -45988,7 +46112,7 @@
 	});
 
 /***/ },
-/* 397 */
+/* 398 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -46000,7 +46124,7 @@
 	//! authors : Nurlan Rakhimzhanov : https://github.com/nurlan
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -46053,6 +46177,7 @@
 	            future: '%s ішінде',
 	            past: '%s бұрын',
 	            s: 'бірнеше секунд',
+	            ss: '%d секунд',
 	            m: 'бір минут',
 	            mm: '%d минут',
 	            h: 'бір сағат',
@@ -46080,7 +46205,7 @@
 	});
 
 /***/ },
-/* 398 */
+/* 399 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -46092,7 +46217,7 @@
 	//! author : Kruy Vanna : https://github.com/kruyvanna
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -46122,6 +46247,7 @@
 	            future: '%sទៀត',
 	            past: '%sមុន',
 	            s: 'ប៉ុន្មានវិនាទី',
+	            ss: '%d វិនាទី',
 	            m: 'មួយនាទី',
 	            mm: '%d នាទី',
 	            h: 'មួយម៉ោង',
@@ -46143,7 +46269,7 @@
 	});
 
 /***/ },
-/* 399 */
+/* 400 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -46155,7 +46281,7 @@
 	//! author : Rajeev Naik : https://github.com/rajeevnaikte
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -46211,6 +46337,7 @@
 	            future: '%s ನಂತರ',
 	            past: '%s ಹಿಂದೆ',
 	            s: 'ಕೆಲವು ಕ್ಷಣಗಳು',
+	            ss: '%d ಸೆಕೆಂಡುಗಳು',
 	            m: 'ಒಂದು ನಿಮಿಷ',
 	            mm: '%d ನಿಮಿಷ',
 	            h: 'ಒಂದು ಗಂಟೆ',
@@ -46274,7 +46401,7 @@
 	});
 
 /***/ },
-/* 400 */
+/* 401 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -46287,7 +46414,7 @@
 	//! author : Jeeeyul Lee <jeeeyul@gmail.com>
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -46362,7 +46489,7 @@
 	});
 
 /***/ },
-/* 401 */
+/* 402 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -46374,7 +46501,7 @@
 	//! author : Chyngyz Arystan uulu : https://github.com/chyngyz
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -46427,6 +46554,7 @@
 	            future: '%s ичинде',
 	            past: '%s мурун',
 	            s: 'бирнече секунд',
+	            ss: '%d секунд',
 	            m: 'бир мүнөт',
 	            mm: '%d мүнөт',
 	            h: 'бир саат',
@@ -46454,7 +46582,7 @@
 	});
 
 /***/ },
-/* 402 */
+/* 403 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -46467,7 +46595,7 @@
 	//! author : David Raison : https://github.com/kwisatz
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -46574,6 +46702,7 @@
 	            future: processFutureTime,
 	            past: processPastTime,
 	            s: 'e puer Sekonnen',
+	            ss: '%d Sekonnen',
 	            m: processRelativeTime,
 	            mm: '%d Minutten',
 	            h: processRelativeTime,
@@ -46597,7 +46726,7 @@
 	});
 
 /***/ },
-/* 403 */
+/* 404 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -46609,7 +46738,7 @@
 	//! author : Ryan Hart : https://github.com/ryanhart2
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -46651,6 +46780,7 @@
 	            future: 'ອີກ %s',
 	            past: '%sຜ່ານມາ',
 	            s: 'ບໍ່ເທົ່າໃດວິນາທີ',
+	            ss: '%d ວິນາທີ',
 	            m: '1 ນາທີ',
 	            mm: '%d ນາທີ',
 	            h: '1 ຊົ່ວໂມງ',
@@ -46672,7 +46802,7 @@
 	});
 
 /***/ },
-/* 404 */
+/* 405 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -46684,11 +46814,12 @@
 	//! author : Mindaugas Mozūras : https://github.com/mmozuras
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
 	    var units = {
+	        'ss': 'sekundė_sekundžių_sekundes',
 	        'm': 'minutė_minutės_minutę',
 	        'mm': 'minutės_minučių_minutes',
 	        'h': 'valanda_valandos_valandą',
@@ -46769,6 +46900,7 @@
 	            future: 'po %s',
 	            past: 'prieš %s',
 	            s: translateSeconds,
+	            ss: translate,
 	            m: translateSingular,
 	            mm: translate,
 	            h: translateSingular,
@@ -46794,7 +46926,7 @@
 	});
 
 /***/ },
-/* 405 */
+/* 406 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -46807,11 +46939,12 @@
 	//! author : Jānis Elmeris : https://github.com/JanisE
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
 	    var units = {
+	        'ss': 'sekundes_sekundēm_sekunde_sekundes'.split('_'),
 	        'm': 'minūtes_minūtēm_minūte_minūtes'.split('_'),
 	        'mm': 'minūtes_minūtēm_minūte_minūtes'.split('_'),
 	        'h': 'stundas_stundām_stunda_stundas'.split('_'),
@@ -46873,6 +47006,7 @@
 	            future: 'pēc %s',
 	            past: 'pirms %s',
 	            s: relativeSeconds,
+	            ss: relativeTimeWithPlural,
 	            m: relativeTimeWithSingular,
 	            mm: relativeTimeWithPlural,
 	            h: relativeTimeWithSingular,
@@ -46896,7 +47030,7 @@
 	});
 
 /***/ },
-/* 406 */
+/* 407 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -46908,12 +47042,13 @@
 	//! author : Miodrag Nikač <miodrag@restartit.me> : https://github.com/miodragnikac
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
 	    var translator = {
 	        words: { //Different grammatical cases
+	            ss: ['sekund', 'sekunda', 'sekundi'],
 	            m: ['jedan minut', 'jednog minuta'],
 	            mm: ['minut', 'minuta', 'minuta'],
 	            h: ['jedan sat', 'jednog sata'],
@@ -46981,6 +47116,7 @@
 	            future: 'za %s',
 	            past: 'prije %s',
 	            s: 'nekoliko sekundi',
+	            ss: translator.translate,
 	            m: translator.translate,
 	            mm: translator.translate,
 	            h: translator.translate,
@@ -47004,7 +47140,7 @@
 	});
 
 /***/ },
-/* 407 */
+/* 408 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -47016,7 +47152,7 @@
 	//! author : John Corrigan <robbiecloset@gmail.com> : https://github.com/johnideal
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -47050,6 +47186,7 @@
 	            future: 'i roto i %s',
 	            past: '%s i mua',
 	            s: 'te hēkona ruarua',
+	            ss: '%d hēkona',
 	            m: 'he meneti',
 	            mm: '%d meneti',
 	            h: 'te haora',
@@ -47073,7 +47210,7 @@
 	});
 
 /***/ },
-/* 408 */
+/* 409 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -47085,7 +47222,7 @@
 	//! author : Borislav Mickov : https://github.com/B0k0
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -47127,6 +47264,7 @@
 	            future: 'после %s',
 	            past: 'пред %s',
 	            s: 'неколку секунди',
+	            ss: '%d секунди',
 	            m: 'минута',
 	            mm: '%d минути',
 	            h: 'час',
@@ -47168,7 +47306,7 @@
 	});
 
 /***/ },
-/* 409 */
+/* 410 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -47180,7 +47318,7 @@
 	//! author : Floyd Pink : https://github.com/floydpink
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -47211,6 +47349,7 @@
 	            future: '%s കഴിഞ്ഞ്',
 	            past: '%s മുൻപ്',
 	            s: 'അൽപ നിമിഷങ്ങൾ',
+	            ss: '%d സെക്കൻഡ്',
 	            m: 'ഒരു മിനിറ്റ്',
 	            mm: '%d മിനിറ്റ്',
 	            h: 'ഒരു മണിക്കൂർ',
@@ -47252,7 +47391,7 @@
 	});
 
 /***/ },
-/* 410 */
+/* 411 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -47265,7 +47404,7 @@
 	//! author : Vivek Athalye : https://github.com/vnathalye
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -47300,6 +47439,8 @@
 	            switch (string) {
 	                case 's':
 	                    output = 'काही सेकंद';break;
+	                case 'ss':
+	                    output = '%d सेकंद';break;
 	                case 'm':
 	                    output = 'एक मिनिट';break;
 	                case 'mm':
@@ -47325,6 +47466,8 @@
 	            switch (string) {
 	                case 's':
 	                    output = 'काही सेकंदां';break;
+	                case 'ss':
+	                    output = '%d सेकंदां';break;
 	                case 'm':
 	                    output = 'एका मिनिटा';break;
 	                case 'mm':
@@ -47377,6 +47520,7 @@
 	            future: '%sमध्ये',
 	            past: '%sपूर्वी',
 	            s: relativeTimeMr,
+	            ss: relativeTimeMr,
 	            m: relativeTimeMr,
 	            mm: relativeTimeMr,
 	            h: relativeTimeMr,
@@ -47436,7 +47580,7 @@
 	});
 
 /***/ },
-/* 411 */
+/* 412 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -47448,7 +47592,7 @@
 	//! author : Weldan Jamili : https://github.com/weldan
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -47502,6 +47646,7 @@
 	            future: 'dalam %s',
 	            past: '%s yang lepas',
 	            s: 'beberapa saat',
+	            ss: '%d saat',
 	            m: 'seminit',
 	            mm: '%d minit',
 	            h: 'sejam',
@@ -47523,7 +47668,7 @@
 	});
 
 /***/ },
-/* 412 */
+/* 413 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -47536,7 +47681,7 @@
 	//! author : Weldan Jamili : https://github.com/weldan
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -47590,6 +47735,7 @@
 	            future: 'dalam %s',
 	            past: '%s yang lepas',
 	            s: 'beberapa saat',
+	            ss: '%d saat',
 	            m: 'seminit',
 	            mm: '%d minit',
 	            h: 'sejam',
@@ -47611,7 +47757,73 @@
 	});
 
 /***/ },
-/* 413 */
+/* 414 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	
+	//! moment.js locale configuration
+	//! locale : Maltese (Malta) [mt]
+	//! author : Alessandro Maruccia : https://github.com/alesma
+	
+	;(function (global, factory) {
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	})(undefined, function (moment) {
+	    'use strict';
+	
+	    var mt = moment.defineLocale('mt', {
+	        months: 'Jannar_Frar_Marzu_April_Mejju_Ġunju_Lulju_Awwissu_Settembru_Ottubru_Novembru_Diċembru'.split('_'),
+	        monthsShort: 'Jan_Fra_Mar_Apr_Mej_Ġun_Lul_Aww_Set_Ott_Nov_Diċ'.split('_'),
+	        weekdays: 'Il-Ħadd_It-Tnejn_It-Tlieta_L-Erbgħa_Il-Ħamis_Il-Ġimgħa_Is-Sibt'.split('_'),
+	        weekdaysShort: 'Ħad_Tne_Tli_Erb_Ħam_Ġim_Sib'.split('_'),
+	        weekdaysMin: 'Ħa_Tn_Tl_Er_Ħa_Ġi_Si'.split('_'),
+	        longDateFormat: {
+	            LT: 'HH:mm',
+	            LTS: 'HH:mm:ss',
+	            L: 'DD/MM/YYYY',
+	            LL: 'D MMMM YYYY',
+	            LLL: 'D MMMM YYYY HH:mm',
+	            LLLL: 'dddd, D MMMM YYYY HH:mm'
+	        },
+	        calendar: {
+	            sameDay: '[Illum fil-]LT',
+	            nextDay: '[Għada fil-]LT',
+	            nextWeek: 'dddd [fil-]LT',
+	            lastDay: '[Il-bieraħ fil-]LT',
+	            lastWeek: 'dddd [li għadda] [fil-]LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime: {
+	            future: 'f’ %s',
+	            past: '%s ilu',
+	            s: 'ftit sekondi',
+	            ss: '%d sekondi',
+	            m: 'minuta',
+	            mm: '%d minuti',
+	            h: 'siegħa',
+	            hh: '%d siegħat',
+	            d: 'ġurnata',
+	            dd: '%d ġranet',
+	            M: 'xahar',
+	            MM: '%d xhur',
+	            y: 'sena',
+	            yy: '%d sni'
+	        },
+	        dayOfMonthOrdinalParse: /\d{1,2}º/,
+	        ordinal: '%dº',
+	        week: {
+	            dow: 1, // Monday is the first day of the week.
+	            doy: 4 // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+	
+	    return mt;
+	});
+
+/***/ },
+/* 415 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -47625,7 +47837,7 @@
 	//! author : Tin Aung Lin : https://github.com/thanyawzinmin
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -47681,6 +47893,7 @@
 	            future: 'လာမည့် %s မှာ',
 	            past: 'လွန်ခဲ့သော %s က',
 	            s: 'စက္ကန်.အနည်းငယ်',
+	            ss: '%d စက္ကန့်',
 	            m: 'တစ်မိနစ်',
 	            mm: '%d မိနစ်',
 	            h: 'တစ်နာရီ',
@@ -47712,7 +47925,7 @@
 	});
 
 /***/ },
-/* 414 */
+/* 416 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -47725,7 +47938,7 @@
 	//!           Sigurd Gartmann : https://github.com/sigurdga
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -47757,6 +47970,7 @@
 	            future: 'om %s',
 	            past: '%s siden',
 	            s: 'noen sekunder',
+	            ss: '%d sekunder',
 	            m: 'ett minutt',
 	            mm: '%d minutter',
 	            h: 'en time',
@@ -47780,7 +47994,7 @@
 	});
 
 /***/ },
-/* 415 */
+/* 417 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -47792,7 +48006,7 @@
 	//! author : suvash : https://github.com/suvash
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -47887,6 +48101,7 @@
 	            future: '%sमा',
 	            past: '%s अगाडि',
 	            s: 'केही क्षण',
+	            ss: '%d सेकेण्ड',
 	            m: 'एक मिनेट',
 	            mm: '%d मिनेट',
 	            h: 'एक घण्टा',
@@ -47908,7 +48123,7 @@
 	});
 
 /***/ },
-/* 416 */
+/* 418 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -47921,7 +48136,7 @@
 	//! author : Jacob Middag : https://github.com/middagj
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -47976,6 +48191,7 @@
 	            future: 'over %s',
 	            past: '%s geleden',
 	            s: 'een paar seconden',
+	            ss: '%d seconden',
 	            m: 'één minuut',
 	            mm: '%d minuten',
 	            h: 'één uur',
@@ -48001,7 +48217,7 @@
 	});
 
 /***/ },
-/* 417 */
+/* 419 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -48014,7 +48230,7 @@
 	//! author : Jacob Middag : https://github.com/middagj
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -48069,6 +48285,7 @@
 	            future: 'over %s',
 	            past: '%s geleden',
 	            s: 'een paar seconden',
+	            ss: '%d seconden',
 	            m: 'één minuut',
 	            mm: '%d minuten',
 	            h: 'één uur',
@@ -48094,7 +48311,7 @@
 	});
 
 /***/ },
-/* 418 */
+/* 420 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -48106,7 +48323,7 @@
 	//! author : https://github.com/mechuwind
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -48136,6 +48353,7 @@
 	            future: 'om %s',
 	            past: '%s sidan',
 	            s: 'nokre sekund',
+	            ss: '%d sekund',
 	            m: 'eit minutt',
 	            mm: '%d minutt',
 	            h: 'ein time',
@@ -48159,7 +48377,7 @@
 	});
 
 /***/ },
-/* 419 */
+/* 421 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -48171,7 +48389,7 @@
 	//! author : Harpreet Singh : https://github.com/harpreetkhalsagtbit
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -48227,6 +48445,7 @@
 	            future: '%s ਵਿੱਚ',
 	            past: '%s ਪਿਛਲੇ',
 	            s: 'ਕੁਝ ਸਕਿੰਟ',
+	            ss: '%d ਸਕਿੰਟ',
 	            m: 'ਇਕ ਮਿੰਟ',
 	            mm: '%d ਮਿੰਟ',
 	            h: 'ਇੱਕ ਘੰਟਾ',
@@ -48288,7 +48507,7 @@
 	});
 
 /***/ },
-/* 420 */
+/* 422 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -48300,7 +48519,7 @@
 	//! author : Rafal Hirsz : https://github.com/evoL
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -48312,6 +48531,8 @@
 	    function translate(number, withoutSuffix, key) {
 	        var result = number + ' ';
 	        switch (key) {
+	            case 'ss':
+	                return result + (plural(number) ? 'sekundy' : 'sekund');
 	            case 'm':
 	                return withoutSuffix ? 'minuta' : 'minutę';
 	            case 'mm':
@@ -48394,6 +48615,7 @@
 	            future: 'za %s',
 	            past: '%s temu',
 	            s: 'kilka sekund',
+	            ss: translate,
 	            m: translate,
 	            mm: translate,
 	            h: translate,
@@ -48417,7 +48639,7 @@
 	});
 
 /***/ },
-/* 421 */
+/* 423 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -48429,7 +48651,7 @@
 	//! author : Jefferson : https://github.com/jalex79
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -48463,6 +48685,7 @@
 	            future: 'em %s',
 	            past: 'há %s',
 	            s: 'segundos',
+	            ss: '%d segundos',
 	            m: 'um minuto',
 	            mm: '%d minutos',
 	            h: 'uma hora',
@@ -48486,7 +48709,7 @@
 	});
 
 /***/ },
-/* 422 */
+/* 424 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -48498,7 +48721,7 @@
 	//! author : Caio Ribeiro Pereira : https://github.com/caio-ribeiro-pereira
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -48552,7 +48775,7 @@
 	});
 
 /***/ },
-/* 423 */
+/* 425 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -48565,12 +48788,13 @@
 	//! author : Valentin Agachi : https://github.com/avaly
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
 	    function relativeTimeWithPlural(number, withoutSuffix, key) {
 	        var format = {
+	            'ss': 'secunde',
 	            'mm': 'minute',
 	            'hh': 'ore',
 	            'dd': 'zile',
@@ -48611,6 +48835,7 @@
 	            future: 'peste %s',
 	            past: '%s în urmă',
 	            s: 'câteva secunde',
+	            ss: relativeTimeWithPlural,
 	            m: 'un minut',
 	            mm: relativeTimeWithPlural,
 	            h: 'o oră',
@@ -48632,7 +48857,7 @@
 	});
 
 /***/ },
-/* 424 */
+/* 426 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -48646,7 +48871,7 @@
 	//! author : Коренберг Марк : https://github.com/socketpair
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -48656,6 +48881,7 @@
 	    }
 	    function relativeTimeWithPlural(number, withoutSuffix, key) {
 	        var format = {
+	            'ss': withoutSuffix ? 'секунда_секунды_секунд' : 'секунду_секунды_секунд',
 	            'mm': withoutSuffix ? 'минута_минуты_минут' : 'минуту_минуты_минут',
 	            'hh': 'час_часа_часов',
 	            'dd': 'день_дня_дней',
@@ -48706,12 +48932,12 @@
 	        // Выражение, которое соотвествует только сокращённым формам
 	        monthsShortStrictRegex: /^(янв\.|февр?\.|мар[т.]|апр\.|ма[яй]|июн[ья.]|июл[ья.]|авг\.|сент?\.|окт\.|нояб?\.|дек\.)/i,
 	        longDateFormat: {
-	            LT: 'HH:mm',
-	            LTS: 'HH:mm:ss',
+	            LT: 'H:mm',
+	            LTS: 'H:mm:ss',
 	            L: 'DD.MM.YYYY',
 	            LL: 'D MMMM YYYY г.',
-	            LLL: 'D MMMM YYYY г., HH:mm',
-	            LLLL: 'dddd, D MMMM YYYY г., HH:mm'
+	            LLL: 'D MMMM YYYY г., H:mm',
+	            LLLL: 'dddd, D MMMM YYYY г., H:mm'
 	        },
 	        calendar: {
 	            sameDay: '[Сегодня в] LT',
@@ -48767,6 +48993,7 @@
 	            future: 'через %s',
 	            past: '%s назад',
 	            s: 'несколько секунд',
+	            ss: relativeTimeWithPlural,
 	            m: relativeTimeWithPlural,
 	            mm: relativeTimeWithPlural,
 	            h: 'час',
@@ -48820,7 +49047,7 @@
 	});
 
 /***/ },
-/* 425 */
+/* 427 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -48832,7 +49059,7 @@
 	//! author : Narain Sagar : https://github.com/narainsagar
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -48875,6 +49102,7 @@
 	            future: '%s پوء',
 	            past: '%s اڳ',
 	            s: 'چند سيڪنڊ',
+	            ss: '%d سيڪنڊ',
 	            m: 'هڪ منٽ',
 	            mm: '%d منٽ',
 	            h: 'هڪ ڪلاڪ',
@@ -48902,7 +49130,7 @@
 	});
 
 /***/ },
-/* 426 */
+/* 428 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -48914,7 +49142,7 @@
 	//! authors : Bård Rolstad Henriksen : https://github.com/karamell
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -48944,6 +49172,7 @@
 	            future: '%s geažes',
 	            past: 'maŋit %s',
 	            s: 'moadde sekunddat',
+	            ss: '%d sekunddat',
 	            m: 'okta minuhta',
 	            mm: '%d minuhtat',
 	            h: 'okta diimmu',
@@ -48967,7 +49196,7 @@
 	});
 
 /***/ },
-/* 427 */
+/* 429 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -48979,7 +49208,7 @@
 	//! author : Sampath Sitinamaluwa : https://github.com/sampathsris
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -49012,6 +49241,7 @@
 	            future: '%sකින්',
 	            past: '%sකට පෙර',
 	            s: 'තත්පර කිහිපය',
+	            ss: 'තත්පර %d',
 	            m: 'මිනිත්තුව',
 	            mm: 'මිනිත්තු %d',
 	            h: 'පැය',
@@ -49044,7 +49274,7 @@
 	});
 
 /***/ },
-/* 428 */
+/* 430 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -49057,7 +49287,7 @@
 	//! based on work of petrbela : https://github.com/petrbela
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -49072,6 +49302,14 @@
 	            case 's':
 	                // a few seconds / in a few seconds / a few seconds ago
 	                return withoutSuffix || isFuture ? 'pár sekúnd' : 'pár sekundami';
+	            case 'ss':
+	                // 9 seconds / in 9 seconds / 9 seconds ago
+	                if (withoutSuffix || isFuture) {
+	                    return result + (plural(number) ? 'sekundy' : 'sekúnd');
+	                } else {
+	                    return result + 'sekundami';
+	                }
+	                break;
 	            case 'm':
 	                // a minute / in a minute / a minute ago
 	                return withoutSuffix ? 'minúta' : isFuture ? 'minútu' : 'minútou';
@@ -49187,6 +49425,7 @@
 	            future: 'za %s',
 	            past: 'pred %s',
 	            s: translate,
+	            ss: translate,
 	            m: translate,
 	            mm: translate,
 	            h: translate,
@@ -49210,7 +49449,7 @@
 	});
 
 /***/ },
-/* 429 */
+/* 431 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -49222,7 +49461,7 @@
 	//! author : Robert Sedovšek : https://github.com/sedovsek
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -49231,6 +49470,17 @@
 	        switch (key) {
 	            case 's':
 	                return withoutSuffix || isFuture ? 'nekaj sekund' : 'nekaj sekundami';
+	            case 'ss':
+	                if (number === 1) {
+	                    result += withoutSuffix ? 'sekundo' : 'sekundi';
+	                } else if (number === 2) {
+	                    result += withoutSuffix || isFuture ? 'sekundi' : 'sekundah';
+	                } else if (number < 5) {
+	                    result += withoutSuffix || isFuture ? 'sekunde' : 'sekundah';
+	                } else {
+	                    result += withoutSuffix || isFuture ? 'sekund' : 'sekund';
+	                }
+	                return result;
 	            case 'm':
 	                return withoutSuffix ? 'ena minuta' : 'eno minuto';
 	            case 'mm':
@@ -49354,6 +49604,7 @@
 	            future: 'čez %s',
 	            past: 'pred %s',
 	            s: processRelativeTime,
+	            ss: processRelativeTime,
 	            m: processRelativeTime,
 	            mm: processRelativeTime,
 	            h: processRelativeTime,
@@ -49377,7 +49628,7 @@
 	});
 
 /***/ },
-/* 430 */
+/* 432 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -49391,7 +49642,7 @@
 	//! author : Oerd Cukalla : https://github.com/oerd
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -49429,6 +49680,7 @@
 	            future: 'në %s',
 	            past: '%s më parë',
 	            s: 'disa sekonda',
+	            ss: '%d sekonda',
 	            m: 'një minutë',
 	            mm: '%d minuta',
 	            h: 'një orë',
@@ -49452,7 +49704,7 @@
 	});
 
 /***/ },
-/* 431 */
+/* 433 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -49464,12 +49716,13 @@
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
 	    var translator = {
 	        words: { //Different grammatical cases
+	            ss: ['sekunda', 'sekunde', 'sekundi'],
 	            m: ['jedan minut', 'jedne minute'],
 	            mm: ['minut', 'minute', 'minuta'],
 	            h: ['jedan sat', 'jednog sata'],
@@ -49536,6 +49789,7 @@
 	            future: 'za %s',
 	            past: 'pre %s',
 	            s: 'nekoliko sekundi',
+	            ss: translator.translate,
 	            m: translator.translate,
 	            mm: translator.translate,
 	            h: translator.translate,
@@ -49559,7 +49813,7 @@
 	});
 
 /***/ },
-/* 432 */
+/* 434 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -49571,12 +49825,13 @@
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
 	    var translator = {
 	        words: { //Different grammatical cases
+	            ss: ['секунда', 'секунде', 'секунди'],
 	            m: ['један минут', 'једне минуте'],
 	            mm: ['минут', 'минуте', 'минута'],
 	            h: ['један сат', 'једног сата'],
@@ -49643,6 +49898,7 @@
 	            future: 'за %s',
 	            past: 'пре %s',
 	            s: 'неколико секунди',
+	            ss: translator.translate,
 	            m: translator.translate,
 	            mm: translator.translate,
 	            h: translator.translate,
@@ -49666,7 +49922,7 @@
 	});
 
 /***/ },
-/* 433 */
+/* 435 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -49678,7 +49934,7 @@
 	//! author : Nicolai Davies<mail@nicolai.io> : https://github.com/nicolaidavies
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -49709,6 +49965,7 @@
 	            future: 'nga %s',
 	            past: 'wenteka nga %s',
 	            s: 'emizuzwana lomcane',
+	            ss: '%d mzuzwana',
 	            m: 'umzuzu',
 	            mm: '%d emizuzu',
 	            h: 'lihora',
@@ -49759,7 +50016,7 @@
 	});
 
 /***/ },
-/* 434 */
+/* 436 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -49771,7 +50028,7 @@
 	//! author : Jens Alm : https://github.com/ulmus
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -49803,6 +50060,7 @@
 	            future: 'om %s',
 	            past: 'för %s sedan',
 	            s: 'några sekunder',
+	            ss: '%d sekunder',
 	            m: 'en minut',
 	            mm: '%d minuter',
 	            h: 'en timme',
@@ -49830,7 +50088,7 @@
 	});
 
 /***/ },
-/* 435 */
+/* 437 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -49842,7 +50100,7 @@
 	//! author : Fahad Kassim : https://github.com/fadsel
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -49873,6 +50131,7 @@
 	            future: '%s baadaye',
 	            past: 'tokea %s',
 	            s: 'hivi punde',
+	            ss: 'sekunde %d',
 	            m: 'dakika moja',
 	            mm: 'dakika %d',
 	            h: 'saa limoja',
@@ -49894,7 +50153,7 @@
 	});
 
 /***/ },
-/* 436 */
+/* 438 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -49906,7 +50165,7 @@
 	//! author : Arjunkumar Krishnamoorthy : https://github.com/tk120404
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -49961,6 +50220,7 @@
 	            future: '%s இல்',
 	            past: '%s முன்',
 	            s: 'ஒரு சில விநாடிகள்',
+	            ss: '%d விநாடிகள்',
 	            m: 'ஒரு நிமிடம்',
 	            mm: '%d நிமிடங்கள்',
 	            h: 'ஒரு மணி நேரம்',
@@ -50029,7 +50289,7 @@
 	});
 
 /***/ },
-/* 437 */
+/* 439 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -50041,7 +50301,7 @@
 	//! author : Krishna Chaitanya Thota : https://github.com/kcthota
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -50072,6 +50332,7 @@
 	            future: '%s లో',
 	            past: '%s క్రితం',
 	            s: 'కొన్ని క్షణాలు',
+	            ss: '%d సెకన్లు',
 	            m: 'ఒక నిమిషం',
 	            mm: '%d నిమిషాలు',
 	            h: 'ఒక గంట',
@@ -50123,7 +50384,7 @@
 	});
 
 /***/ },
-/* 438 */
+/* 440 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -50136,7 +50397,7 @@
 	//! author : Onorio De J. Afonso : https://github.com/marobo
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -50166,6 +50427,7 @@
 	            future: 'iha %s',
 	            past: '%s liuba',
 	            s: 'minutu balun',
+	            ss: 'minutu %d',
 	            m: 'minutu ida',
 	            mm: 'minutus %d',
 	            h: 'horas ida',
@@ -50193,7 +50455,7 @@
 	});
 
 /***/ },
-/* 439 */
+/* 441 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -50205,7 +50467,7 @@
 	//! author : Kridsada Thanabulpong : https://github.com/sirn
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -50248,6 +50510,7 @@
 	            future: 'อีก %s',
 	            past: '%sที่แล้ว',
 	            s: 'ไม่กี่วินาที',
+	            ss: '%d วินาที',
 	            m: '1 นาที',
 	            mm: '%d นาที',
 	            h: '1 ชั่วโมง',
@@ -50265,7 +50528,7 @@
 	});
 
 /***/ },
-/* 440 */
+/* 442 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -50277,7 +50540,7 @@
 	//! author : Dan Hagman : https://github.com/hagmandan
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -50307,6 +50570,7 @@
 	            future: 'sa loob ng %s',
 	            past: '%s ang nakalipas',
 	            s: 'ilang segundo',
+	            ss: '%d segundo',
 	            m: 'isang minuto',
 	            mm: '%d minuto',
 	            h: 'isang oras',
@@ -50332,7 +50596,7 @@
 	});
 
 /***/ },
-/* 441 */
+/* 443 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -50344,7 +50608,7 @@
 	//! author : Dominika Kruk : https://github.com/amaranthrose
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -50365,6 +50629,8 @@
 	    function translate(number, withoutSuffix, string, isFuture) {
 	        var numberNoun = numberAsNoun(number);
 	        switch (string) {
+	            case 'ss':
+	                return numberNoun + ' lup';
 	            case 'mm':
 	                return numberNoun + ' tup';
 	            case 'hh':
@@ -50422,6 +50688,7 @@
 	            future: translateFuture,
 	            past: translatePast,
 	            s: 'puS lup',
+	            ss: translate,
 	            m: 'wa’ tup',
 	            mm: translate,
 	            h: 'wa’ rep',
@@ -50445,7 +50712,7 @@
 	});
 
 /***/ },
-/* 442 */
+/* 444 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -50458,7 +50725,7 @@
 	//!           Burak Yiğit Kaya: https://github.com/BYK
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -50509,6 +50776,7 @@
 	            future: '%s sonra',
 	            past: '%s önce',
 	            s: 'birkaç saniye',
+	            ss: '%d saniye',
 	            m: 'bir dakika',
 	            mm: '%d dakika',
 	            h: 'bir saat',
@@ -50541,7 +50809,7 @@
 	});
 
 /***/ },
-/* 443 */
+/* 445 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -50554,7 +50822,7 @@
 	//! author : Iustì Canun
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -50598,6 +50866,7 @@
 	            future: 'osprei %s',
 	            past: 'ja%s',
 	            s: processRelativeTime,
+	            ss: processRelativeTime,
 	            m: processRelativeTime,
 	            mm: processRelativeTime,
 	            h: processRelativeTime,
@@ -50620,6 +50889,7 @@
 	    function processRelativeTime(number, withoutSuffix, key, isFuture) {
 	        var format = {
 	            's': ['viensas secunds', '\'iensas secunds'],
+	            'ss': [number + ' secunds', '' + number + ' secunds'],
 	            'm': ['\'n míut', '\'iens míut'],
 	            'mm': [number + ' míuts', '' + number + ' míuts'],
 	            'h': ['\'n þora', '\'iensa þora'],
@@ -50638,7 +50908,7 @@
 	});
 
 /***/ },
-/* 444 */
+/* 446 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -50650,7 +50920,7 @@
 	//! author : Abdel Said : https://github.com/abdelsaid
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -50680,6 +50950,7 @@
 	            future: 'ⴷⴰⴷⵅ ⵙ ⵢⴰⵏ %s',
 	            past: 'ⵢⴰⵏ %s',
 	            s: 'ⵉⵎⵉⴽ',
+	            ss: '%d ⵉⵎⵉⴽ',
 	            m: 'ⵎⵉⵏⵓⴺ',
 	            mm: '%d ⵎⵉⵏⵓⴺ',
 	            h: 'ⵙⴰⵄⴰ',
@@ -50701,7 +50972,7 @@
 	});
 
 /***/ },
-/* 445 */
+/* 447 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -50713,7 +50984,7 @@
 	//! author : Abdel Said : https://github.com/abdelsaid
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -50743,6 +51014,7 @@
 	            future: 'dadkh s yan %s',
 	            past: 'yan %s',
 	            s: 'imik',
+	            ss: '%d imik',
 	            m: 'minuḍ',
 	            mm: '%d minuḍ',
 	            h: 'saɛa',
@@ -50764,7 +51036,7 @@
 	});
 
 /***/ },
-/* 446 */
+/* 448 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -50777,7 +51049,7 @@
 	//! Author : Menelion Elensúle : https://github.com/Oire
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -50787,6 +51059,7 @@
 	    }
 	    function relativeTimeWithPlural(number, withoutSuffix, key) {
 	        var format = {
+	            'ss': withoutSuffix ? 'секунда_секунди_секунд' : 'секунду_секунди_секунд',
 	            'mm': withoutSuffix ? 'хвилина_хвилини_хвилин' : 'хвилину_хвилини_хвилин',
 	            'hh': withoutSuffix ? 'година_години_годин' : 'годину_години_годин',
 	            'dd': 'день_дні_днів',
@@ -50862,6 +51135,7 @@
 	            future: 'за %s',
 	            past: '%s тому',
 	            s: 'декілька секунд',
+	            ss: relativeTimeWithPlural,
 	            m: relativeTimeWithPlural,
 	            mm: relativeTimeWithPlural,
 	            h: 'годину',
@@ -50915,7 +51189,7 @@
 	});
 
 /***/ },
-/* 447 */
+/* 449 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -50928,7 +51202,7 @@
 	//! author : Zack : https://github.com/ZackVision
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -50971,6 +51245,7 @@
 	            future: '%s بعد',
 	            past: '%s قبل',
 	            s: 'چند سیکنڈ',
+	            ss: '%d سیکنڈ',
 	            m: 'ایک منٹ',
 	            mm: '%d منٹ',
 	            h: 'ایک گھنٹہ',
@@ -50998,7 +51273,7 @@
 	});
 
 /***/ },
-/* 448 */
+/* 450 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -51010,7 +51285,7 @@
 	//! author : Sardor Muminov : https://github.com/muminoff
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -51040,6 +51315,7 @@
 	            future: 'Якин %s ичида',
 	            past: 'Бир неча %s олдин',
 	            s: 'фурсат',
+	            ss: '%d фурсат',
 	            m: 'бир дакика',
 	            mm: '%d дакика',
 	            h: 'бир соат',
@@ -51061,7 +51337,7 @@
 	});
 
 /***/ },
-/* 449 */
+/* 451 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -51073,7 +51349,7 @@
 	//! author : Rasulbek Mirzayev : github.com/Rasulbeeek
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -51103,6 +51379,7 @@
 	            future: 'Yaqin %s ichida',
 	            past: 'Bir necha %s oldin',
 	            s: 'soniya',
+	            ss: '%d soniya',
 	            m: 'bir daqiqa',
 	            mm: '%d daqiqa',
 	            h: 'bir soat',
@@ -51124,7 +51401,7 @@
 	});
 
 /***/ },
-/* 450 */
+/* 452 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -51136,7 +51413,7 @@
 	//! author : Bang Nguyen : https://github.com/bangnk
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -51184,6 +51461,7 @@
 	            future: '%s tới',
 	            past: '%s trước',
 	            s: 'vài giây',
+	            ss: '%d giây',
 	            m: 'một phút',
 	            mm: '%d phút',
 	            h: 'một giờ',
@@ -51209,7 +51487,7 @@
 	});
 
 /***/ },
-/* 451 */
+/* 453 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -51221,7 +51499,7 @@
 	//! author : Andrew Hood : https://github.com/andrewhood125
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -51252,6 +51530,7 @@
 	            future: 'í~ñ %s',
 	            past: '%s á~gó',
 	            s: 'á ~féw ~sécó~ñds',
+	            ss: '%d s~écóñ~ds',
 	            m: 'á ~míñ~úté',
 	            mm: '%d m~íñú~tés',
 	            h: 'á~ñ hó~úr',
@@ -51279,7 +51558,7 @@
 	});
 
 /***/ },
-/* 452 */
+/* 454 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -51291,7 +51570,7 @@
 	//! author : Atolagbe Abisoye : https://github.com/andela-batolagbe
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -51321,6 +51600,7 @@
 	            future: 'ní %s',
 	            past: '%s kọjá',
 	            s: 'ìsẹjú aayá die',
+	            ss: 'aayá %d',
 	            m: 'ìsẹjú kan',
 	            mm: 'ìsẹjú %d',
 	            h: 'wákati kan',
@@ -51344,7 +51624,7 @@
 	});
 
 /***/ },
-/* 453 */
+/* 455 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -51357,7 +51637,7 @@
 	//! author : Zeno Zeng : https://github.com/zenozeng
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -51370,14 +51650,14 @@
 	        longDateFormat: {
 	            LT: 'HH:mm',
 	            LTS: 'HH:mm:ss',
-	            L: 'YYYY年MMMD日',
-	            LL: 'YYYY年MMMD日',
-	            LLL: 'YYYY年MMMD日Ah点mm分',
-	            LLLL: 'YYYY年MMMD日ddddAh点mm分',
-	            l: 'YYYY年MMMD日',
-	            ll: 'YYYY年MMMD日',
-	            lll: 'YYYY年MMMD日 HH:mm',
-	            llll: 'YYYY年MMMD日dddd HH:mm'
+	            L: 'YYYY/MM/DD',
+	            LL: 'YYYY年M月D日',
+	            LLL: 'YYYY年M月D日Ah点mm分',
+	            LLLL: 'YYYY年M月D日ddddAh点mm分',
+	            l: 'YYYY/M/D',
+	            ll: 'YYYY年M月D日',
+	            lll: 'YYYY年M月D日 HH:mm',
+	            llll: 'YYYY年M月D日dddd HH:mm'
 	        },
 	        meridiemParse: /凌晨|早上|上午|中午|下午|晚上/,
 	        meridiemHour: function meridiemHour(hour, meridiem) {
@@ -51437,6 +51717,7 @@
 	            future: '%s内',
 	            past: '%s前',
 	            s: '几秒',
+	            ss: '%d 秒',
 	            m: '1 分钟',
 	            mm: '%d 分钟',
 	            h: '1 小时',
@@ -51459,7 +51740,7 @@
 	});
 
 /***/ },
-/* 454 */
+/* 456 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -51473,7 +51754,7 @@
 	//! author : Konstantin : https://github.com/skfd
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -51486,14 +51767,14 @@
 	        longDateFormat: {
 	            LT: 'HH:mm',
 	            LTS: 'HH:mm:ss',
-	            L: 'YYYY年MMMD日',
-	            LL: 'YYYY年MMMD日',
-	            LLL: 'YYYY年MMMD日 HH:mm',
-	            LLLL: 'YYYY年MMMD日dddd HH:mm',
-	            l: 'YYYY年MMMD日',
-	            ll: 'YYYY年MMMD日',
-	            lll: 'YYYY年MMMD日 HH:mm',
-	            llll: 'YYYY年MMMD日dddd HH:mm'
+	            L: 'YYYY/MM/DD',
+	            LL: 'YYYY年M月D日',
+	            LLL: 'YYYY年M月D日 HH:mm',
+	            LLLL: 'YYYY年M月D日dddd HH:mm',
+	            l: 'YYYY/M/D',
+	            ll: 'YYYY年M月D日',
+	            lll: 'YYYY年M月D日 HH:mm',
+	            llll: 'YYYY年M月D日dddd HH:mm'
 	        },
 	        meridiemParse: /凌晨|早上|上午|中午|下午|晚上/,
 	        meridiemHour: function meridiemHour(hour, meridiem) {
@@ -51552,6 +51833,7 @@
 	            future: '%s內',
 	            past: '%s前',
 	            s: '幾秒',
+	            ss: '%d 秒',
 	            m: '1 分鐘',
 	            mm: '%d 分鐘',
 	            h: '1 小時',
@@ -51569,7 +51851,7 @@
 	});
 
 /***/ },
-/* 455 */
+/* 457 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -51582,7 +51864,7 @@
 	//! author : Chris Lam : https://github.com/hehachris
 	
 	;(function (global, factory) {
-	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(336)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(336)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
+	    ( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' && "function" === 'function' ? factory(__webpack_require__(337)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : factory(global.moment);
 	})(undefined, function (moment) {
 	    'use strict';
 	
@@ -51595,14 +51877,14 @@
 	        longDateFormat: {
 	            LT: 'HH:mm',
 	            LTS: 'HH:mm:ss',
-	            L: 'YYYY年MMMD日',
-	            LL: 'YYYY年MMMD日',
-	            LLL: 'YYYY年MMMD日 HH:mm',
-	            LLLL: 'YYYY年MMMD日dddd HH:mm',
-	            l: 'YYYY年MMMD日',
-	            ll: 'YYYY年MMMD日',
-	            lll: 'YYYY年MMMD日 HH:mm',
-	            llll: 'YYYY年MMMD日dddd HH:mm'
+	            L: 'YYYY/MM/DD',
+	            LL: 'YYYY年M月D日',
+	            LLL: 'YYYY年M月D日 HH:mm',
+	            LLLL: 'YYYY年M月D日dddd HH:mm',
+	            l: 'YYYY/M/D',
+	            ll: 'YYYY年M月D日',
+	            lll: 'YYYY年M月D日 HH:mm',
+	            llll: 'YYYY年M月D日dddd HH:mm'
 	        },
 	        meridiemParse: /凌晨|早上|上午|中午|下午|晚上/,
 	        meridiemHour: function meridiemHour(hour, meridiem) {
@@ -51661,6 +51943,7 @@
 	            future: '%s內',
 	            past: '%s前',
 	            s: '幾秒',
+	            ss: '%d 秒',
 	            m: '1 分鐘',
 	            mm: '%d 分鐘',
 	            h: '1 小時',
@@ -51678,7 +51961,7 @@
 	});
 
 /***/ },
-/* 456 */
+/* 458 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51687,11 +51970,11 @@
 	  value: true
 	});
 	
-	var _dateSelectorComponent = __webpack_require__(457);
+	var _dateSelectorComponent = __webpack_require__(459);
 	
 	var _dateSelectorComponent2 = _interopRequireDefault(_dateSelectorComponent);
 	
-	var _dateSelector = __webpack_require__(458);
+	var _dateSelector = __webpack_require__(460);
 	
 	var _dateSelector2 = _interopRequireDefault(_dateSelector);
 	
@@ -51708,13 +51991,13 @@
 	exports.default = DateSelectorComponent;
 
 /***/ },
-/* 457 */
+/* 459 */
 /***/ function(module, exports) {
 
 	module.exports = "<input class=\"input is-medium\" type=\"date\" ng-model=\"$ctrl.date\">\n"
 
 /***/ },
-/* 458 */
+/* 460 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -51726,7 +52009,7 @@
 	function DateSelectorController() {}
 
 /***/ },
-/* 459 */
+/* 461 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51735,11 +52018,11 @@
 	  value: true
 	});
 	
-	var _airportComponent = __webpack_require__(460);
+	var _airportComponent = __webpack_require__(462);
 	
 	var _airportComponent2 = _interopRequireDefault(_airportComponent);
 	
-	var _airport = __webpack_require__(461);
+	var _airport = __webpack_require__(463);
 	
 	var _airport2 = _interopRequireDefault(_airport);
 	
@@ -51757,13 +52040,13 @@
 	exports.default = AirportComponent;
 
 /***/ },
-/* 460 */
+/* 462 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"container airport-content\">\n  <label class=\"label\">AirportSelector</label>\n  <div class=\"left-box\">\n    <input-autocomplete\n      name=\"departure\"\n      ng-model=\"$ctrl.search.departure\"\n      input-change=\"$ctrl.inputChange(prop, value)\"\n      call-data-list=\"$ctrl.callDataList()\"\n      placeholder=\"Departure Airport\"\n    >\n    </input-autocomplete>\n  </div>\n  <!-- <div class=\"right-box\">\n    <input-autocomplete\n      name=\"destination\"\n      input-change=\"$ctrl.inputChange(prop, value)\"\n      ng-model=\"$ctrl.search.destination\"\n      placeholder=\"Destination Airport\"\n    >\n    </input-autocomplete> -->\n</div>"
 
 /***/ },
-/* 461 */
+/* 463 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51772,7 +52055,7 @@
 	  value: true
 	});
 	
-	var _airport = __webpack_require__(462);
+	var _airport = __webpack_require__(464);
 	
 	var _airport2 = _interopRequireDefault(_airport);
 	
@@ -51815,7 +52098,7 @@
 	exports.default = AirportController;
 
 /***/ },
-/* 462 */
+/* 464 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -51868,7 +52151,7 @@
 	exports.default = AirportService;
 
 /***/ },
-/* 463 */
+/* 465 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51877,11 +52160,11 @@
 	  value: true
 	});
 	
-	var _inputAutocompleteComponent = __webpack_require__(464);
+	var _inputAutocompleteComponent = __webpack_require__(466);
 	
 	var _inputAutocompleteComponent2 = _interopRequireDefault(_inputAutocompleteComponent);
 	
-	var _inputAutocomplete = __webpack_require__(465);
+	var _inputAutocomplete = __webpack_require__(467);
 	
 	var _inputAutocomplete2 = _interopRequireDefault(_inputAutocomplete);
 	
@@ -51905,13 +52188,13 @@
 	exports.default = InputAutocompleteComponent;
 
 /***/ },
-/* 464 */
+/* 466 */
 /***/ function(module, exports) {
 
 	module.exports = "<input\n  class=\"input is-medium\"\n  type=\"text\"\n  ng-model=\"$ctrl.model\"\n  ng-change=\"$ctrl.valueChange($ctrl.name, $ctrl.model)\"\n  placeholder=\"{{ $ctrl.placeholder }}\"\n>\n<pop-content>\n  <ul ng-repeat=\"item in $ctrl.list\">\n    <li>{{item}}</li>\n  </ul>\n</pop-content>"
 
 /***/ },
-/* 465 */
+/* 467 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -51975,7 +52258,7 @@
 	exports.default = InputAutocompleteController;
 
 /***/ },
-/* 466 */
+/* 468 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51984,11 +52267,11 @@
 	  value: true
 	});
 	
-	var _popContentComponent = __webpack_require__(467);
+	var _popContentComponent = __webpack_require__(469);
 	
 	var _popContentComponent2 = _interopRequireDefault(_popContentComponent);
 	
-	var _popContent = __webpack_require__(468);
+	var _popContent = __webpack_require__(470);
 	
 	var _popContent2 = _interopRequireDefault(_popContent);
 	
@@ -52003,13 +52286,13 @@
 	exports.default = PopContentComponent;
 
 /***/ },
-/* 467 */
+/* 469 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"pop-content\">\n  <ng-transclude></ng-transclude>\n</div>"
 
 /***/ },
-/* 468 */
+/* 470 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -52029,7 +52312,7 @@
 	exports.default = PopContentController;
 
 /***/ },
-/* 469 */
+/* 471 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52038,11 +52321,11 @@
 	  value: true
 	});
 	
-	var _loadingComponent = __webpack_require__(470);
+	var _loadingComponent = __webpack_require__(472);
 	
 	var _loadingComponent2 = _interopRequireDefault(_loadingComponent);
 	
-	var _loading = __webpack_require__(471);
+	var _loading = __webpack_require__(473);
 	
 	var _loading2 = _interopRequireDefault(_loading);
 	
@@ -52059,13 +52342,13 @@
 	exports.default = LoadingComponent;
 
 /***/ },
-/* 470 */
+/* 472 */
 /***/ function(module, exports) {
 
 	module.exports = "<div style=\"position: absolute; top: 0; left: 0; z-index: 999; width: 100%; height: 100%; background-color:rgba(rgb(84, 11, 126), rgb(85, 12, 114), rgb(61, 9, 104), 0.9)\">\n  loading...\n</div>"
 
 /***/ },
-/* 471 */
+/* 473 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -52103,7 +52386,7 @@
 	exports.default = LoadingController;
 
 /***/ },
-/* 472 */
+/* 474 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52112,15 +52395,15 @@
 	  value: true
 	});
 	
-	var _loginComponent = __webpack_require__(473);
+	var _loginComponent = __webpack_require__(475);
 	
 	var _loginComponent2 = _interopRequireDefault(_loginComponent);
 	
-	var _login = __webpack_require__(474);
+	var _login = __webpack_require__(476);
 	
 	var _login2 = _interopRequireDefault(_login);
 	
-	__webpack_require__(477);
+	__webpack_require__(479);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -52132,13 +52415,13 @@
 	exports.default = LoginComponent;
 
 /***/ },
-/* 473 */
+/* 475 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"container login\">\n\n  <!-- MODAL - criar directiva depois -->\n  <div id=\"modal-terms\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <div>\n        <script>\n          function openCity(evt, cityName) {\n            // Declare all variables\n            var i, tabcontent, tablinks;\n\n            // Get all elements with class=\"tabcontent\" and hide them\n            tabcontent = document.getElementsByClassName(\"tabcontent\");\n            for (i = 0; i < tabcontent.length; i++) {\n              tabcontent[i].style.display = \"none\";\n            }\n\n            // Get all elements with class=\"tablinks\" and remove the class \"active\"\n            tablinks = document.getElementsByClassName(\"tablinks\");\n            for (i = 0; i < tablinks.length; i++) {\n              tablinks[i].className = tablinks[i].className.replace(\" active\", \"\");\n            }\n\n            // Show the current tab, and add an \"active\" class to the button that opened the tab\n            document.getElementById(cityName).style.display = \"block\";\n            evt.currentTarget.className += \" active\";\n          }\n        </script>\n        <!-- Tab links -->\n        <div class=\"tab\">\n          <button class=\"tablinks\" onclick=\"openCity(event, 'terms_condition')\" id=\"defaultOpen\">{{'TERMS_CONDITION_TITLE' | translate}}</button>\n          <button class=\"tablinks\" onclick=\"openCity(event, 'representation_condition')\">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>\n        </div>\n        <!-- Tab content -->\n        <div id=\"terms_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsCondition\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n\n        <div id=\"representation_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsRepresentation\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG1\" id=\"checkboxG1\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check1\" ng-change=\"$ctrl.allCheckboxIsChecked()\">\n            <label for=\"checkboxG1\" class=\"css-label radGroup1 clr\"> {{'US_CITIZEN' | translate}} </label>\n          </div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG2\" id=\"checkboxG2\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check2\">\n            <label for=\"checkboxG2\" class=\"css-label radGroup1 clr\"> {{'AGREE_TERM' | translate}} </label>\n          </div>\n          <!--<div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG3\" id=\"checkboxG3\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check3\">\n            <label for=\"checkboxG3\" class=\"css-label radGroup1 clr\"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>\n          </div>-->\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG4\" id=\"checkboxG4\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check4\">\n            <label for=\"checkboxG4\" class=\"css-label radGroup1 clr\"> {{'AGREE_FUTURE_VALUE' | translate}}</label>\n          </div>\n          <div class=\"area-button\">\n            <button ng-show=\"$ctrl.allCheckboxIsChecked()\" class=\"primary-button\" data-ng-click=\"$ctrl.doAccept()\" data-dismiss=\"modal\">{{'AGREE' | translate}}</button>\n            <!--<button ng-show=\"!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()\" class=\"disabled-button\">{{'AGREE' | translate}}</button>-->\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- MODAL - criar directiva change password -->\n  <div id=\"modal-change-password\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\" style=\"height: 100%;\">\n\n      <div ng-show=\"$ctrl.loadingResetPass\" class=\"loadingResetPass\">\n        {{'LOADING' | translate}}\n      </div>\n\n      <div ng-show=\"$ctrl.showMsgEmailSent\" class=\"showEmailSent\">\n        <h3 for=\"change\">{{'EMAIL_SENT' | translate}}</h3>\n        <div style=\"width: 100px;\">\n          <button class=\"icon-close\" data-dismiss=\"modal\">{{'CLOSE' | translate}}</button>\n        </div>\n      </div>\n\n      <form class=\"form-msg-pass\" ng-show=\"!$ctrl.loadingResetPass && !$ctrl.showMsgEmailSent\">\n        <div>\n          <h3 for=\"change\">{{'CHANGE_PASSWORD_INSTRUCTION' | translate}}</h3>\n        </div>\n        <div ng-show=\"$ctrl.showErrorMsgEmailSent\" class=\"showErrorMsg\">\n          <h5 for=\"change\">{{'EMAIL_NOT_SENT' | translate}}</h5>\n          <div style=\"width: 100px;\">\n            <button style=\"border: 0;\n              padding: 5px 20px;\n              border-radius: 20px;\n              cursor: pointer;\" class=\"icon-close\" data-dismiss=\"modal\">{{'CLOSE' | translate}}</button>\n          </div>\n        </div>\n\n        <div>\n          <input type=\"text\" name=\"change-password\" ng-model=\"$ctrl.emailToChangePassword\" style=\"    border: 0;\n          width: 200px;\n          border-bottom: solid 1px #734cb3;\n          background-color: transparent;\n          padding: 20px;\n          color: #fff;\n          margin: 20px;\">\n        </div>\n        <div>\n          <button ng-click=\"$ctrl.doChangePassword()\" style=\"    border: 0;\n          padding: 5px 20px;\n          border-radius: 20px;\n          cursor: pointer;\">{{'CHANGE_PASSWORD' | translate}}</button>\n        </div>\n      </form>\n    </div>\n  </div>\n\n  <!-- HEADER - criar diretiva depois -->\n  <nav class=\"header nav\" style=\"padding: 20px 0;\">\n    <div class=\"col-xs-12 col-sm-4 col-md-4 col-lg-2 logo\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n\n    <div class=\"col-xs-12 col-sm-2 col-md-2 col-lg-2  nav-menu\" style=\"margin-bottom: 20px;\">\n      <!--<ul class=\"menu horizontal\">\n        <li>\n          <a href=\"#!/whitelist\">{{'WHITELIST' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/buy\">{{'BUY' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/dashboard\">{{'DASHBOARD' | translate}}</a>\n        </li>\n      </ul>-->\n    </div>\n\n    <div class=\"col-xs-12 col-sm-6 col-md-2 col-lg-2 txt-right\">\n      <ul class=\"menu horizontal\">\n        <li>\n          <a href=\"https://www.facebook.com/lunesplatform/\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg\" alt=\"facebook\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://t.me/LunesPlatformEN\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg\" alt=\"telegram\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://twitter.com/lunesplatform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg\" alt=\"twitter\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://medium.com/@lunes.platform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg\" alt=\"medium\" />\n          </a>\n        </li>\n      </ul>\n    </div>\n  </nav>\n\n  <!-- AUTHENTICATION FORM -->\n  <section class=\"authentication\">\n    <div>\n      <form name=\"$ctrl.loginForm\">\n        <div class=\"row\">\n\n          <div class=\"col-12 title\">\n            <h4>{{'WELCOME' | translate}}</h4>\n          </div>\n\n          <div class=\"col-12 col-lg-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n          <div class=\"col-lg-6 col-xs-12\">\n            <div class=\"input-form\">\n              <label for=\"input-email\">{{'EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.email\" id=\"input-email\" name=\"email\" required type=\"text\" placeholder=\"{{'EMAIL' | translate}}\">\n            </div>\n            <div class=\"input-form\">\n              <label for=\"input-password\">{{'PASSWORD' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.password\" id=\"input-password\" name=\"password\" minlength=\"8\" required type=\"password\" placeholder=\"{{'PASSWORD' | translate}}\">\n            </div>\n            <div class=\"area-button txt-center\">\n              <button class=\"rounded-button\" data-toggle=\"modal\" ng-click=\"$ctrl.doLogin()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\" />\n              </button>\n            </div>\n            <div class=\"dont-have-account\">\n              <label>{{'DONT_HAVE_ACCOUNT' | translate}}</label>\n              <label class=\"txt-green label-signup\" ng-click=\"$ctrl.goToSignup()\">{{'SIGNUP' | translate}}</label>\n              <!--<p class=\"cursor-pointer\">{{'RESET_PASSWORD' | translate}}</p>-->\n            </div>\n            <div style=\"margin: 5px 0 30px 0;\">\n              <label>{{'DO_YOU_CHANGE_PASSWORD' | translate}}</label>\n              <label class=\"txt-green label-signup\" data-toggle=\"modal\" data-target=\"#modal-change-password\">{{'CHANGE_PASSWORD' | translate}}</label>\n            </div>\n\n          </div>\n\n          <div class=\"col-lg-5 col-xs-12\" style=\"margin: 5px 0 30px 0;\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442473/whitelist-illustration_pclyxv.png\" width=\"100%\"\n              alt=\"next\" />\n          </div>\n\n          <div class=\"col-lg-4 col-xs-12\" ng-show=\"false\">\n            <div id=\"counter\" class=\"\">\n              <span id=\"coin_counter\" ng-show=\"false\">$ 00 000 000</span>\n              <div id=\"loading_bar\">\n                <div id=\"loading_bar_green\" style=\"width:50%;\"></div>\n              </div>\n              <div>\n                <div class=\"row\" style=\"text-align: center;\">\n                  <div class=\"col-xs-6 col-lg-6\">\n                    Pre-Ico\n                  </div>\n                  <div class=\"col-xs-6 col-lg-6\">\n                    Ico\n                  </div>\n                </div>\n\n                <!-- conter -->\n                <div class=\"row\" id=\"number\">\n                  <div class=\"col-xs-12\" id=\"time\">\n                    <div id=\"clockdiv\">\n                      <div>\n                        <span class=\"days\"></span>\n                        <div class=\"smalltext\">Days</div>\n                      </div>\n                      <div>\n                        <span class=\"hours\"></span>\n                        <div class=\"smalltext\">Hours</div>\n                      </div>\n                      <div>\n                        <span class=\"minutes\"></span>\n                        <div class=\"smalltext\">Minutes</div>\n                      </div>\n                      <div>\n                        <span class=\"seconds\"></span>\n                        <div class=\"smalltext\">Seconds</div>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n\n                <!-- hard cap -->\n                <div class=\"row\" id=\"number\">\n                  <div class=\"col-xs-12 col-lg-12\" id=\"hard-cap\">\n                    <p>Hard cap</p>\n                    <p>$ 100 000 000</p>\n                  </div>\n                </div>\n\n              </div>\n            </div>\n\n          </div>\n\n\n\n      </form>\n      </div>\n  </section>\n  </div>"
+	module.exports = "<div class=\"container login\">\n\n  <!-- MODAL - criar directiva depois -->\n  <div id=\"modal-terms\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <div>\n        <script>\n          function openCity(evt, cityName) {\n            // Declare all variables\n            var i, tabcontent, tablinks;\n\n            // Get all elements with class=\"tabcontent\" and hide them\n            tabcontent = document.getElementsByClassName(\"tabcontent\");\n            for (i = 0; i < tabcontent.length; i++) {\n              tabcontent[i].style.display = \"none\";\n            }\n\n            // Get all elements with class=\"tablinks\" and remove the class \"active\"\n            tablinks = document.getElementsByClassName(\"tablinks\");\n            for (i = 0; i < tablinks.length; i++) {\n              tablinks[i].className = tablinks[i].className.replace(\" active\", \"\");\n            }\n\n            // Show the current tab, and add an \"active\" class to the button that opened the tab\n            document.getElementById(cityName).style.display = \"block\";\n            evt.currentTarget.className += \" active\";\n          }\n        </script>\n        <!-- Tab links -->\n        <div class=\"tab\">\n          <button class=\"tablinks\" onclick=\"openCity(event, 'terms_condition')\" id=\"defaultOpen\">{{'TERMS_CONDITION_TITLE' | translate}}</button>\n          <button class=\"tablinks\" onclick=\"openCity(event, 'representation_condition')\">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>\n        </div>\n        <!-- Tab content -->\n        <div id=\"terms_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsCondition\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n\n        <div id=\"representation_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsRepresentation\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG1\" id=\"checkboxG1\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check1\" ng-change=\"$ctrl.allCheckboxIsChecked()\">\n            <label for=\"checkboxG1\" class=\"css-label radGroup1 clr\"> {{'US_CITIZEN' | translate}} </label>\n          </div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG2\" id=\"checkboxG2\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check2\">\n            <label for=\"checkboxG2\" class=\"css-label radGroup1 clr\"> {{'AGREE_TERM' | translate}} </label>\n          </div>\n          <!--<div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG3\" id=\"checkboxG3\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check3\">\n            <label for=\"checkboxG3\" class=\"css-label radGroup1 clr\"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>\n          </div>-->\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG4\" id=\"checkboxG4\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check4\">\n            <label for=\"checkboxG4\" class=\"css-label radGroup1 clr\"> {{'AGREE_FUTURE_VALUE' | translate}}</label>\n          </div>\n          <div class=\"area-button\">\n            <button ng-show=\"$ctrl.allCheckboxIsChecked()\" class=\"primary-button\" data-ng-click=\"$ctrl.doAccept()\" data-dismiss=\"modal\">{{'AGREE' | translate}}</button>\n            <!--<button ng-show=\"!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()\" class=\"disabled-button\">{{'AGREE' | translate}}</button>-->\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- MODAL - criar directiva change password -->\n  <div id=\"modal-change-password\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\" style=\"height: 100%;\">\n\n      <div ng-show=\"$ctrl.loadingResetPass\" class=\"loadingResetPass\">\n        {{'LOADING' | translate}}\n      </div>\n\n      <div ng-show=\"$ctrl.showMsgEmailSent\" class=\"showEmailSent\">\n        <h3 for=\"change\">{{'EMAIL_SENT' | translate}}</h3>\n        <div style=\"width: 100px;\">\n          <button class=\"icon-close\" data-dismiss=\"modal\">{{'CLOSE' | translate}}</button>\n        </div>\n      </div>\n\n      <form class=\"form-msg-pass\" ng-show=\"!$ctrl.loadingResetPass && !$ctrl.showMsgEmailSent\">\n        <div>\n          <h3 for=\"change\">{{'CHANGE_PASSWORD_INSTRUCTION' | translate}}</h3>\n        </div>\n        <div ng-show=\"$ctrl.showErrorMsgEmailSent\" class=\"showErrorMsg\">\n          <h5 for=\"change\">{{'EMAIL_NOT_SENT' | translate}}</h5>\n          <div style=\"width: 100px;\">\n            <button style=\"border: 0;\n              padding: 5px 20px;\n              border-radius: 20px;\n              cursor: pointer;\" class=\"icon-close\" data-dismiss=\"modal\">{{'CLOSE' | translate}}</button>\n          </div>\n        </div>\n\n        <div>\n          <input type=\"text\" name=\"change-password\" ng-model=\"$ctrl.emailToChangePassword\" style=\"    border: 0;\n          width: 200px;\n          border-bottom: solid 1px #734cb3;\n          background-color: transparent;\n          padding: 20px;\n          color: #fff;\n          margin: 20px;\">\n        </div>\n        <div>\n          <button ng-click=\"$ctrl.doChangePassword()\" style=\"    border: 0;\n          padding: 5px 20px;\n          border-radius: 20px;\n          cursor: pointer;\">{{'CHANGE_PASSWORD' | translate}}</button>\n        </div>\n      </form>\n    </div>\n  </div>\n\n  <!-- HEADER - criar diretiva depois -->\n  <nav class=\"header nav\" style=\"padding: 20px 0;\">\n    <div class=\"col-xs-12 col-sm-4 col-md-4 col-lg-2 logo\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n\n    <div class=\"col-xs-12 col-sm-2 col-md-2 col-lg-2  nav-menu\" style=\"margin-bottom: 20px;\">\n      <!--<ul class=\"menu horizontal\">\n        <li>\n          <a href=\"#!/whitelist\">{{'WHITELIST' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/buy\">{{'BUY' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/dashboard\">{{'DASHBOARD' | translate}}</a>\n        </li>\n      </ul>-->\n    </div>\n\n    <div class=\"col-xs-12 col-sm-6 col-md-2 col-lg-2 txt-right\">\n      <ul class=\"menu horizontal\">\n        <li>\n          <a href=\"https://www.facebook.com/lunesplatform/\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg\" alt=\"facebook\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://t.me/LunesPlatformEN\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg\" alt=\"telegram\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://twitter.com/lunesplatform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg\" alt=\"twitter\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://medium.com/@lunes.platform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg\" alt=\"medium\" />\n          </a>\n        </li>\n      </ul>\n    </div>\n  </nav>\n\n  <!-- AUTHENTICATION FORM -->\n  <section class=\"authentication\">\n    <div>\n      <form name=\"$ctrl.loginForm\">\n        <div class=\"row\">\n\n          <div class=\"col-12 title\">\n            <h4>{{'WELCOME' | translate}}</h4>\n          </div>\n\n          <div class=\"col-12 col-lg-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n          <div class=\"col-lg-6 col-xs-12\">\n            <div class=\"input-form\">\n              <label for=\"input-email\">{{'EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.email\" id=\"input-email\" name=\"email\" required type=\"text\" placeholder=\"{{'EMAIL_PLACEHOLDER' | translate}}\">\n            </div>\n            <div class=\"input-form\">\n              <label for=\"input-password\">{{'PASSWORD' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.password\" id=\"input-password\" name=\"password\" minlength=\"8\" required type=\"password\" placeholder=\"{{'PASSWORD_PLACEHOLDER' | translate}}\">\n            </div>\n            <div class=\"area-button txt-center\">\n              <button class=\"rounded-button\" data-toggle=\"modal\" ng-click=\"$ctrl.doLogin()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\" />\n              </button>\n            </div>\n            <div class=\"dont-have-account\">\n              <label>{{'DONT_HAVE_ACCOUNT' | translate}}</label>\n              <label class=\"txt-green label-signup\" ng-click=\"$ctrl.goToSignup()\">{{'SIGNUP' | translate}}</label>\n              <!--<p class=\"cursor-pointer\">{{'RESET_PASSWORD' | translate}}</p>-->\n            </div>\n            <div style=\"margin: 5px 0 30px 0;\">\n              <label>{{'DO_YOU_CHANGE_PASSWORD' | translate}}</label>\n              <label class=\"txt-green label-signup\" data-toggle=\"modal\" data-target=\"#modal-change-password\">{{'CHANGE_PASSWORD' | translate}}</label>\n            </div>\n\n          </div>\n\n          <div class=\"col-lg-5 col-xs-12\" style=\"margin: 5px 0 30px 0;\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442473/whitelist-illustration_pclyxv.png\" width=\"100%\"\n              alt=\"next\" />\n          </div>\n\n          <div class=\"col-lg-4 col-xs-12\" ng-show=\"false\">\n            <div id=\"counter\" class=\"\">\n              <span id=\"coin_counter\" ng-show=\"false\">$ 00 000 000</span>\n              <div id=\"loading_bar\">\n                <div id=\"loading_bar_green\" style=\"width:50%;\"></div>\n              </div>\n              <div>\n                <div class=\"row\" style=\"text-align: center;\">\n                  <div class=\"col-xs-6 col-lg-6\">\n                    Pre-Ico\n                  </div>\n                  <div class=\"col-xs-6 col-lg-6\">\n                    Ico\n                  </div>\n                </div>\n\n                <!-- conter -->\n                <div class=\"row\" id=\"number\">\n                  <div class=\"col-xs-12\" id=\"time\">\n                    <div id=\"clockdiv\">\n                      <div>\n                        <span class=\"days\"></span>\n                        <div class=\"smalltext\">Days</div>\n                      </div>\n                      <div>\n                        <span class=\"hours\"></span>\n                        <div class=\"smalltext\">Hours</div>\n                      </div>\n                      <div>\n                        <span class=\"minutes\"></span>\n                        <div class=\"smalltext\">Minutes</div>\n                      </div>\n                      <div>\n                        <span class=\"seconds\"></span>\n                        <div class=\"smalltext\">Seconds</div>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n\n                <!-- hard cap -->\n                <div class=\"row\" id=\"number\">\n                  <div class=\"col-xs-12 col-lg-12\" id=\"hard-cap\">\n                    <p>Hard cap</p>\n                    <p>$ 100 000 000</p>\n                  </div>\n                </div>\n\n              </div>\n            </div>\n\n          </div>\n\n\n\n      </form>\n      </div>\n  </section>\n  </div>"
 
 /***/ },
-/* 474 */
+/* 476 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52147,9 +52430,9 @@
 	  value: true
 	});
 	
-	var _index = __webpack_require__(475);
+	var _index = __webpack_require__(477);
 	
-	var _countdown = __webpack_require__(476);
+	var _countdown = __webpack_require__(478);
 	
 	var _countdown2 = _interopRequireDefault(_countdown);
 	
@@ -52457,7 +52740,7 @@
 	exports.default = LoginController;
 
 /***/ },
-/* 475 */
+/* 477 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -52484,7 +52767,7 @@
 	};
 
 /***/ },
-/* 476 */
+/* 478 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -52539,16 +52822,16 @@
 	exports.default = start;
 
 /***/ },
-/* 477 */
+/* 479 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(478);
+	var content = __webpack_require__(480);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(480)(content, {});
+	var update = __webpack_require__(482)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -52565,21 +52848,21 @@
 	}
 
 /***/ },
-/* 478 */
+/* 480 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(479)(true);
+	exports = module.exports = __webpack_require__(481)(true);
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".dont-have-account {\n  margin-top: 50px; }\n  .dont-have-account .label-signup {\n    cursor: pointer; }\n\n.modal-backdrop-error {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1040;\n  background-color: #4c2b82;\n  opacity: 0.7;\n  text-align: center; }\n  .modal-backdrop-error .close-error {\n    border: 0;\n    border-radius: 30px;\n    padding: 5px 50px;\n    background-color: #4cd466;\n    color: #fff;\n    cursor: pointer; }\n\n/* counter */\n#counter {\n  font-family: 'Offside', cursive;\n  margin-top: 20px;\n  margin-bottom: 20px; }\n\n#counter #coin_counter {\n  display: block;\n  text-align: right;\n  font-size: 1.3em;\n  margin-bottom: 10px;\n  padding-right: 20px; }\n\n#counter #loading_bar {\n  display: block;\n  background-color: #fff;\n  height: 5px; }\n\n#counter #loading_bar_green {\n  display: block;\n  background-color: #4cd566;\n  height: 5px; }\n\n#counter #base_counter {\n  background-color: #544d8f;\n  padding: 20px;\n  border-radius: 0px 0px 4px 4px; }\n\n#counter #number {\n  margin-top: 30px;\n  display: block;\n  text-align: center; }\n\n#counter #number span {\n  font-size: .2em;\n  color: #fff;\n  display: block;\n  margin-top: 20px; }\n\n#counter #hard-cap {\n  display: block;\n  background-color: #544d8f;\n  max-width: 160px;\n  margin-left: auto;\n  margin-right: auto;\n  color: #4cd566;\n  font-size: .8em;\n  text-align: center;\n  padding: 10px;\n  border-radius: 4px;\n  margin-top: -40px; }\n\n#counter #hard-cap span {\n  display: block;\n  color: #fff;\n  font-size: 1.2em; }\n\n#clockdiv {\n  font-family: sans-serif;\n  color: #fff;\n  display: inline-block;\n  font-weight: 100;\n  text-align: center;\n  font-size: 30px; }\n\n#clockdiv > div {\n  padding: 5px;\n  border-radius: 3px;\n  background: #00BF96;\n  display: inline-block;\n  width: 80px; }\n\n#clockdiv div > span {\n  padding: 15px;\n  border-radius: 3px;\n  background: #00816A;\n  display: inline-block; }\n\n.smalltext {\n  padding-top: 5px;\n  font-size: 16px; }\n\n.login #modal-change-password {\n  box-shadow: #3a2261 1px 0px 5px 4px;\n  margin: 10px;\n  overflow-y: hidden; }\n\n.login .loadingResetPass {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  height: 100%; }\n\n.login .showEmailSent {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  height: 100%; }\n\n.login .showErrorMsg {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  height: 100%; }\n  .login .showErrorMsg h5 {\n    padding: 2px 10px;\n    background-color: #d83636;\n    border-radius: 20px; }\n  .login .showErrorMsg button {\n    border: 0;\n    padding: 5px 20px;\n    border-radius: 20px;\n    cursor: pointer; }\n\n.login .form-msg-pass {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  height: 100%; }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/login/src/login/login.component.scss"],"names":[],"mappings":"AAAA;EACE,iBAAgB,EAIjB;EALD;IAGI,gBAAe,EAChB;;AAGH;EACE,gBAAe;EACf,OAAM;EACN,SAAQ;EACR,UAAS;EACT,QAAO;EACP,cAAa;EACb,0BAAyB;EACzB,aAAY;EACZ,mBAAkB,EASnB;EAlBD;IAWI,UAAS;IACT,oBAAmB;IACnB,kBAAiB;IACjB,0BAAyB;IACzB,YAAW;IACX,gBAAe,EAChB;;AAGH,aAAa;AACb;EACE,gCAA+B;EAC/B,iBAAe;EACf,oBAAkB,EAEnB;;AACD;EACE,eAAc;EACd,kBAAiB;EACjB,iBAAgB;EAChB,oBAAmB;EACnB,oBAAmB,EACpB;;AACD;EACE,eAAa;EACb,uBAAsB;EACtB,YAAW,EACZ;;AACD;EACE,eAAc;EACd,0BAAyB;EACzB,YAAW,EACZ;;AACD;EACE,0BAAyB;EACzB,cAAY;EACZ,+BAA8B,EAC/B;;AACD;EACE,iBAAgB;EAChB,eAAc;EACd,mBAAkB,EACnB;;AACD;EACE,gBAAe;EACf,YAAU;EACV,eAAc;EACd,iBAAgB,EACjB;;AACD;EACE,eAAc;EACd,0BAAyB;EACzB,iBAAgB;EAChB,kBAAiB;EACjB,mBAAkB;EAClB,eAAc;EACd,gBAAe;EACf,mBAAkB;EAClB,cAAa;EACb,mBAAkB;EAClB,kBAAiB,EAClB;;AACD;EACE,eAAc;EACd,YAAW;EACX,iBAAgB,EACjB;;AAED;EACE,wBAAuB;EACvB,YAAW;EACX,sBAAqB;EACrB,iBAAgB;EAChB,mBAAkB;EAClB,gBAAe,EAChB;;AAED;EACE,aAAY;EACZ,mBAAkB;EAClB,oBAAmB;EACnB,sBAAqB;EACrB,YAAW,EACZ;;AAED;EACE,cAAa;EACb,mBAAkB;EAClB,oBAAmB;EACnB,sBAAqB,EACtB;;AAED;EACE,iBAAgB;EAChB,gBAAe,EAChB;;AAED;EAGI,oCAAmC;EACnC,aAAY;EACZ,mBAAkB,EACnB;;AANH;EASI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,6BAAsB;EAAtB,8BAAsB;MAAtB,2BAAsB;UAAtB,uBAAsB;EACtB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,yBAAuB;MAAvB,sBAAuB;UAAvB,wBAAuB;EACvB,aAAY,EACb;;AAdH;EAiBI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,6BAAsB;EAAtB,8BAAsB;MAAtB,2BAAsB;UAAtB,uBAAsB;EACtB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,yBAAuB;MAAvB,sBAAuB;UAAvB,wBAAuB;EACvB,aAAY,EACb;;AAtBH;EAyBI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,6BAAsB;EAAtB,8BAAsB;MAAtB,2BAAsB;UAAtB,uBAAsB;EACtB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,yBAAuB;MAAvB,sBAAuB;UAAvB,wBAAuB;EACvB,aAAY,EAYb;EAzCH;IA+BM,kBAAiB;IACjB,0BAAyB;IACzB,oBAAmB,EACpB;EAlCL;IAoCM,UAAS;IACT,kBAAiB;IACjB,oBAAmB;IACnB,gBAAe,EAChB;;AAxCL;EA4CI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,6BAAsB;EAAtB,8BAAsB;MAAtB,2BAAsB;UAAtB,uBAAsB;EACtB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,yBAAuB;MAAvB,sBAAuB;UAAvB,wBAAuB;EACvB,aAAY,EACb","file":"login.component.scss","sourcesContent":[".dont-have-account {\r\n  margin-top: 50px;\r\n  .label-signup {\r\n    cursor: pointer;\r\n  }\r\n}\r\n\r\n.modal-backdrop-error {\r\n  position: fixed;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  z-index: 1040;\r\n  background-color: #4c2b82;\r\n  opacity: 0.7;\r\n  text-align: center;\r\n  .close-error {\r\n    border: 0;\r\n    border-radius: 30px;\r\n    padding: 5px 50px;\r\n    background-color: #4cd466;\r\n    color: #fff;\r\n    cursor: pointer;\r\n  }\r\n}\r\n\r\n/* counter */\r\n#counter {\r\n  font-family: 'Offside', cursive;\r\n  margin-top:20px;\r\n  margin-bottom:20px;\r\n  \r\n}\r\n#counter #coin_counter {\r\n  display: block;\r\n  text-align: right;\r\n  font-size: 1.3em;\r\n  margin-bottom: 10px;\r\n  padding-right: 20px;\r\n}\r\n#counter #loading_bar {\r\n  display:block;\r\n  background-color: #fff;\r\n  height: 5px;\r\n}\r\n#counter #loading_bar_green {\r\n  display: block;\r\n  background-color: #4cd566;\r\n  height: 5px;\r\n}\r\n#counter #base_counter {\r\n  background-color: #544d8f;\r\n  padding:20px;\r\n  border-radius: 0px 0px 4px 4px;\r\n}\r\n#counter #number {\r\n  margin-top: 30px;\r\n  display: block;\r\n  text-align: center;\r\n}\r\n#counter #number span {\r\n  font-size: .2em;\r\n  color:#fff;\r\n  display: block;\r\n  margin-top: 20px;\r\n}\r\n#counter #hard-cap {\r\n  display: block;\r\n  background-color: #544d8f;\r\n  max-width: 160px;\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  color: #4cd566;\r\n  font-size: .8em;\r\n  text-align: center;\r\n  padding: 10px;\r\n  border-radius: 4px;\r\n  margin-top: -40px;\r\n}\r\n#counter #hard-cap span {\r\n  display: block;\r\n  color: #fff;\r\n  font-size: 1.2em;\r\n}\r\n\r\n#clockdiv{\r\n  font-family: sans-serif;\r\n  color: #fff;\r\n  display: inline-block;\r\n  font-weight: 100;\r\n  text-align: center;\r\n  font-size: 30px;\r\n}\r\n\r\n#clockdiv > div{\r\n  padding: 5px;\r\n  border-radius: 3px;\r\n  background: #00BF96;\r\n  display: inline-block;\r\n  width: 80px;\r\n}\r\n\r\n#clockdiv div > span{\r\n  padding: 15px;\r\n  border-radius: 3px;\r\n  background: #00816A;\r\n  display: inline-block;\r\n}\r\n\r\n.smalltext{\r\n  padding-top: 5px;\r\n  font-size: 16px;\r\n}\r\n\r\n.login {\r\n\r\n  #modal-change-password {\r\n    box-shadow: #3a2261 1px 0px 5px 4px;\r\n    margin: 10px;\r\n    overflow-y: hidden;\r\n  }\r\n\r\n  .loadingResetPass {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n  \r\n  .showEmailSent {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n  \r\n  .showErrorMsg {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n    h5 {\r\n      padding: 2px 10px;\r\n      background-color: #d83636;\r\n      border-radius: 20px;\r\n    }\r\n    button {\r\n      border: 0;\r\n      padding: 5px 20px;\r\n      border-radius: 20px;\r\n      cursor: pointer;\r\n    }\r\n  }\r\n  \r\n  .form-msg-pass {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n\r\n}\r\n\r\n"],"sourceRoot":""}]);
+	exports.push([module.id, ".dont-have-account {\n  margin-top: 50px; }\n  .dont-have-account .label-signup {\n    cursor: pointer; }\n\n.modal-backdrop-error {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1040;\n  background-color: #4c2b82;\n  opacity: 0.7;\n  text-align: center; }\n  .modal-backdrop-error .close-error {\n    border: 0;\n    border-radius: 30px;\n    padding: 5px 50px;\n    background-color: #4cd466;\n    color: #fff;\n    cursor: pointer; }\n\n/* counter */\n#counter {\n  font-family: 'Offside', cursive;\n  margin-top: 20px;\n  margin-bottom: 20px; }\n\n#counter #coin_counter {\n  display: block;\n  text-align: right;\n  font-size: 1.3em;\n  margin-bottom: 10px;\n  padding-right: 20px; }\n\n#counter #loading_bar {\n  display: block;\n  background-color: #fff;\n  height: 5px; }\n\n#counter #loading_bar_green {\n  display: block;\n  background-color: #4cd566;\n  height: 5px; }\n\n#counter #base_counter {\n  background-color: #544d8f;\n  padding: 20px;\n  border-radius: 0px 0px 4px 4px; }\n\n#counter #number {\n  margin-top: 30px;\n  display: block;\n  text-align: center; }\n\n#counter #number span {\n  font-size: .2em;\n  color: #fff;\n  display: block;\n  margin-top: 20px; }\n\n#counter #hard-cap {\n  display: block;\n  background-color: #544d8f;\n  max-width: 160px;\n  margin-left: auto;\n  margin-right: auto;\n  color: #4cd566;\n  font-size: .8em;\n  text-align: center;\n  padding: 10px;\n  border-radius: 4px;\n  margin-top: -40px; }\n\n#counter #hard-cap span {\n  display: block;\n  color: #fff;\n  font-size: 1.2em; }\n\n#clockdiv {\n  font-family: sans-serif;\n  color: #fff;\n  display: inline-block;\n  font-weight: 100;\n  text-align: center;\n  font-size: 30px; }\n\n#clockdiv > div {\n  padding: 5px;\n  border-radius: 3px;\n  background: #00BF96;\n  display: inline-block;\n  width: 80px; }\n\n#clockdiv div > span {\n  padding: 15px;\n  border-radius: 3px;\n  background: #00816A;\n  display: inline-block; }\n\n.smalltext {\n  padding-top: 5px;\n  font-size: 16px; }\n\n.login #modal-change-password {\n  box-shadow: #3a2261 1px 0px 5px 4px;\n  margin: 10px;\n  overflow-y: hidden; }\n\n.login .loadingResetPass {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  height: 100%; }\n\n.login .showEmailSent {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  height: 100%; }\n\n.login .showErrorMsg {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  height: 100%; }\n  .login .showErrorMsg h5 {\n    padding: 2px 10px;\n    background-color: #d83636;\n    border-radius: 20px; }\n  .login .showErrorMsg button {\n    border: 0;\n    padding: 5px 20px;\n    border-radius: 20px;\n    cursor: pointer; }\n\n.login .form-msg-pass {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  height: 100%; }\n", "", {"version":3,"sources":["C:/lunes/2202/lunes-purchase/src/login/src/login/login.component.scss"],"names":[],"mappings":"AAAA;EACE,iBAAgB,EAIjB;EALD;IAGI,gBAAe,EAChB;;AAGH;EACE,gBAAe;EACf,OAAM;EACN,SAAQ;EACR,UAAS;EACT,QAAO;EACP,cAAa;EACb,0BAAyB;EACzB,aAAY;EACZ,mBAAkB,EASnB;EAlBD;IAWI,UAAS;IACT,oBAAmB;IACnB,kBAAiB;IACjB,0BAAyB;IACzB,YAAW;IACX,gBAAe,EAChB;;AAGH,aAAa;AACb;EACE,gCAA+B;EAC/B,iBAAe;EACf,oBAAkB,EAEnB;;AACD;EACE,eAAc;EACd,kBAAiB;EACjB,iBAAgB;EAChB,oBAAmB;EACnB,oBAAmB,EACpB;;AACD;EACE,eAAa;EACb,uBAAsB;EACtB,YAAW,EACZ;;AACD;EACE,eAAc;EACd,0BAAyB;EACzB,YAAW,EACZ;;AACD;EACE,0BAAyB;EACzB,cAAY;EACZ,+BAA8B,EAC/B;;AACD;EACE,iBAAgB;EAChB,eAAc;EACd,mBAAkB,EACnB;;AACD;EACE,gBAAe;EACf,YAAU;EACV,eAAc;EACd,iBAAgB,EACjB;;AACD;EACE,eAAc;EACd,0BAAyB;EACzB,iBAAgB;EAChB,kBAAiB;EACjB,mBAAkB;EAClB,eAAc;EACd,gBAAe;EACf,mBAAkB;EAClB,cAAa;EACb,mBAAkB;EAClB,kBAAiB,EAClB;;AACD;EACE,eAAc;EACd,YAAW;EACX,iBAAgB,EACjB;;AAED;EACE,wBAAuB;EACvB,YAAW;EACX,sBAAqB;EACrB,iBAAgB;EAChB,mBAAkB;EAClB,gBAAe,EAChB;;AAED;EACE,aAAY;EACZ,mBAAkB;EAClB,oBAAmB;EACnB,sBAAqB;EACrB,YAAW,EACZ;;AAED;EACE,cAAa;EACb,mBAAkB;EAClB,oBAAmB;EACnB,sBAAqB,EACtB;;AAED;EACE,iBAAgB;EAChB,gBAAe,EAChB;;AAED;EAGI,oCAAmC;EACnC,aAAY;EACZ,mBAAkB,EACnB;;AANH;EASI,qBAAa;EAAb,cAAa;EACb,2BAAsB;MAAtB,uBAAsB;EACtB,uBAAmB;MAAnB,oBAAmB;EACnB,sBAAuB;MAAvB,wBAAuB;EACvB,aAAY,EACb;;AAdH;EAiBI,qBAAa;EAAb,cAAa;EACb,2BAAsB;MAAtB,uBAAsB;EACtB,uBAAmB;MAAnB,oBAAmB;EACnB,sBAAuB;MAAvB,wBAAuB;EACvB,aAAY,EACb;;AAtBH;EAyBI,qBAAa;EAAb,cAAa;EACb,2BAAsB;MAAtB,uBAAsB;EACtB,uBAAmB;MAAnB,oBAAmB;EACnB,sBAAuB;MAAvB,wBAAuB;EACvB,aAAY,EAYb;EAzCH;IA+BM,kBAAiB;IACjB,0BAAyB;IACzB,oBAAmB,EACpB;EAlCL;IAoCM,UAAS;IACT,kBAAiB;IACjB,oBAAmB;IACnB,gBAAe,EAChB;;AAxCL;EA4CI,qBAAa;EAAb,cAAa;EACb,2BAAsB;MAAtB,uBAAsB;EACtB,uBAAmB;MAAnB,oBAAmB;EACnB,sBAAuB;MAAvB,wBAAuB;EACvB,aAAY,EACb","file":"login.component.scss","sourcesContent":[".dont-have-account {\r\n  margin-top: 50px;\r\n  .label-signup {\r\n    cursor: pointer;\r\n  }\r\n}\r\n\r\n.modal-backdrop-error {\r\n  position: fixed;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  z-index: 1040;\r\n  background-color: #4c2b82;\r\n  opacity: 0.7;\r\n  text-align: center;\r\n  .close-error {\r\n    border: 0;\r\n    border-radius: 30px;\r\n    padding: 5px 50px;\r\n    background-color: #4cd466;\r\n    color: #fff;\r\n    cursor: pointer;\r\n  }\r\n}\r\n\r\n/* counter */\r\n#counter {\r\n  font-family: 'Offside', cursive;\r\n  margin-top:20px;\r\n  margin-bottom:20px;\r\n  \r\n}\r\n#counter #coin_counter {\r\n  display: block;\r\n  text-align: right;\r\n  font-size: 1.3em;\r\n  margin-bottom: 10px;\r\n  padding-right: 20px;\r\n}\r\n#counter #loading_bar {\r\n  display:block;\r\n  background-color: #fff;\r\n  height: 5px;\r\n}\r\n#counter #loading_bar_green {\r\n  display: block;\r\n  background-color: #4cd566;\r\n  height: 5px;\r\n}\r\n#counter #base_counter {\r\n  background-color: #544d8f;\r\n  padding:20px;\r\n  border-radius: 0px 0px 4px 4px;\r\n}\r\n#counter #number {\r\n  margin-top: 30px;\r\n  display: block;\r\n  text-align: center;\r\n}\r\n#counter #number span {\r\n  font-size: .2em;\r\n  color:#fff;\r\n  display: block;\r\n  margin-top: 20px;\r\n}\r\n#counter #hard-cap {\r\n  display: block;\r\n  background-color: #544d8f;\r\n  max-width: 160px;\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  color: #4cd566;\r\n  font-size: .8em;\r\n  text-align: center;\r\n  padding: 10px;\r\n  border-radius: 4px;\r\n  margin-top: -40px;\r\n}\r\n#counter #hard-cap span {\r\n  display: block;\r\n  color: #fff;\r\n  font-size: 1.2em;\r\n}\r\n\r\n#clockdiv{\r\n  font-family: sans-serif;\r\n  color: #fff;\r\n  display: inline-block;\r\n  font-weight: 100;\r\n  text-align: center;\r\n  font-size: 30px;\r\n}\r\n\r\n#clockdiv > div{\r\n  padding: 5px;\r\n  border-radius: 3px;\r\n  background: #00BF96;\r\n  display: inline-block;\r\n  width: 80px;\r\n}\r\n\r\n#clockdiv div > span{\r\n  padding: 15px;\r\n  border-radius: 3px;\r\n  background: #00816A;\r\n  display: inline-block;\r\n}\r\n\r\n.smalltext{\r\n  padding-top: 5px;\r\n  font-size: 16px;\r\n}\r\n\r\n.login {\r\n\r\n  #modal-change-password {\r\n    box-shadow: #3a2261 1px 0px 5px 4px;\r\n    margin: 10px;\r\n    overflow-y: hidden;\r\n  }\r\n\r\n  .loadingResetPass {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n  \r\n  .showEmailSent {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n  \r\n  .showErrorMsg {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n    h5 {\r\n      padding: 2px 10px;\r\n      background-color: #d83636;\r\n      border-radius: 20px;\r\n    }\r\n    button {\r\n      border: 0;\r\n      padding: 5px 20px;\r\n      border-radius: 20px;\r\n      cursor: pointer;\r\n    }\r\n  }\r\n  \r\n  .form-msg-pass {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n\r\n}\r\n\r\n"],"sourceRoot":""}]);
 	
 	// exports
 
 
 /***/ },
-/* 479 */
+/* 481 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -52660,7 +52943,7 @@
 	}
 
 /***/ },
-/* 480 */
+/* 482 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -52697,7 +52980,7 @@
 		singletonElement = null,
 		singletonCounter = 0,
 		styleElementsInsertedAtTop = [],
-		fixUrls = __webpack_require__(481);
+		fixUrls = __webpack_require__(483);
 	
 	module.exports = function(list, options) {
 		if(false) {
@@ -52956,7 +53239,7 @@
 
 
 /***/ },
-/* 481 */
+/* 483 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -53050,7 +53333,7 @@
 	};
 
 /***/ },
-/* 482 */
+/* 484 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53059,15 +53342,15 @@
 	  value: true
 	});
 	
-	var _signupComponent = __webpack_require__(483);
+	var _signupComponent = __webpack_require__(485);
 	
 	var _signupComponent2 = _interopRequireDefault(_signupComponent);
 	
-	var _signup = __webpack_require__(484);
+	var _signup = __webpack_require__(486);
 	
 	var _signup2 = _interopRequireDefault(_signup);
 	
-	__webpack_require__(485);
+	__webpack_require__(487);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -53079,13 +53362,13 @@
 	exports.default = SignupComponent;
 
 /***/ },
-/* 483 */
+/* 485 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"container\">\n\n  <!-- MODAL - criar directiva depois -->\n  <div id=\"modal-terms\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <div>\n        <script>\n          function openCity(evt, cityName) {\n            // Declare all variables\n            var i, tabcontent, tablinks;\n\n            // Get all elements with class=\"tabcontent\" and hide them\n            tabcontent = document.getElementsByClassName(\"tabcontent\");\n            for (i = 0; i < tabcontent.length; i++) {\n              tabcontent[i].style.display = \"none\";\n            }\n\n            // Get all elements with class=\"tablinks\" and remove the class \"active\"\n            tablinks = document.getElementsByClassName(\"tablinks\");\n            for (i = 0; i < tablinks.length; i++) {\n              tablinks[i].className = tablinks[i].className.replace(\" active\", \"\");\n            }\n\n            // Show the current tab, and add an \"active\" class to the button that opened the tab\n            document.getElementById(cityName).style.display = \"block\";\n            evt.currentTarget.className += \" active\";\n          }\n        </script>\n        <!-- Tab links -->\n        <div class=\"tab\">\n          <button class=\"tablinks\" onclick=\"openCity(event, 'terms_condition')\" id=\"defaultOpen\">{{'TERMS_CONDITION_TITLE' | translate}}</button>\n          <button class=\"tablinks\" onclick=\"openCity(event, 'representation_condition')\">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>\n        </div>\n        <!-- Tab content -->\n        <div id=\"terms_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsCondition\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n\n        <div id=\"representation_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsRepresentation\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG1\" id=\"checkboxG1\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check1\" ng-change=\"$ctrl.allCheckboxIsChecked()\">\n            <label for=\"checkboxG1\" class=\"css-label radGroup1 clr\"> {{'US_CITIZEN' | translate}} </label>\n          </div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG2\" id=\"checkboxG2\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check2\">\n            <label for=\"checkboxG2\" class=\"css-label radGroup1 clr\"> {{'AGREE_TERM' | translate}} </label>\n          </div>\n          <!--<div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG3\" id=\"checkboxG3\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check3\">\n            <label for=\"checkboxG3\" class=\"css-label radGroup1 clr\"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>\n          </div>-->\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG4\" id=\"checkboxG4\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check4\">\n            <label for=\"checkboxG4\" class=\"css-label radGroup1 clr\"> {{'AGREE_FUTURE_VALUE' | translate}}</label>\n          </div>\n          <div class=\"area-button\">\n            <button ng-show=\"$ctrl.allCheckboxIsChecked()\" class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\" data-dismiss=\"modal\">{{'AGREE' | translate}}</button>\n            <!--<button ng-show=\"!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()\" class=\"disabled-button\">{{'AGREE' | translate}}</button>-->\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- HEADER - criar diretiva depois -->\n  <nav class=\"header nav\" style=\"padding: 20px 0;\">\n    <div class=\"nav-left logo\" style=\"cursor: pointer;\" ng-click=\"$ctrl.goToLogin()\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n\n    <div class=\"nav-right nav-menu\"></div>\n  </nav>\n\n  <!-- AUTHENTICATION FORM -->\n  <section class=\"authentication\">\n    <div>\n      <form name=\"$ctrl.loginForm\">\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-12 title\">\n            <h4>{{'WELCOME' | translate}}</h4>\n            <h4>{{'BEGIN_YOUR_REGISTRATION' | translate}}</h4>\n          </div>\n          <div class=\"col-xs-12 col-lg-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n          <div class=\"alert alert-danger\" ng-show=\"$ctrl.serverError\" role=\"alert\">\n            <h4 class=\"alert-heading\">{{'AN_ERROR_CREATE_ACCOUNT' | translate}}</h4>\n            <p>{{$ctrl.serverErrorMessage</p>\n          </div>\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-name\">{{'NAME' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.name\" id=\"input-name\" name=\"name\" required type=\"text\" placeholder=\"{{'NAME_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-lastname\">{{'LAST_NAME' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.lastname\" id=\"input-lastname\" name=\"lastname\" required type=\"text\" placeholder=\"{{'LAST_NAME_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-email\">{{'EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.email\" id=\"input-email\" name=\"email\" ng-model-options=\"{ debounce: 500 }\" required type=\"email\"\n                placeholder=\"{{'EMAIL_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-confirm-email\">{{'CONFIRM_EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.confirmEmail\" id=\"input-confirm-email\" email name=\"confirmEmail\" email-match required type=\"email\"\n                placeholder=\"{{'CONFIRM_EMAIL_PLACEHOLDER' | translate}}\">\n            </div>\n\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-password\">{{'PASSWORD' | translate}}</label>\n              <input type=\"password\" data-ng-model=\"$ctrl.user.password\" id=\"input-password\" ng-model-options=\"{ debounce: 500 }\" uppercase\n                lowercase numeric special-character required name=\"password\" ng-minlength=\"8\" placeholder=\"{{'PASSWORD_PLACEHOLDER' | translate}}\">\n            </div>\n\n            <!-- exibit validation -->\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.email.$dirty && $ctrl.loginForm.email.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.email.$error.required\">{{'EMAIL_REQUIRED' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.email.$error.email\">{{'EMAIL_INVALID' | translate}}\n                <br> </span>\n\n            </span>\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.confirmEmail.$dirty && $ctrl.loginForm.confirmEmail.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.confirmEmail.$error.compareEmail || $ctrl.loginForm.email.$error.compareEmail\">{{'EMAIL_MATCH' | translate}}\n                <br> </span>\n            </span>\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.password.$dirty && $ctrl.loginForm.password.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.password.$error.required\">{{'PASSWORD_REQUIRED' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.minlength\">{{'PASSWORD_LENGTH' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.uppercase\">{{'PASSWORD_UPPERCASE' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.lowercase\">{{'PASSWORD_LOWERCASE' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.numeric\">{{'PASSWORD_ALPHANUMERIC' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.specialCharacter\">{{'PASSWORD_SPECIALCHARACTER' | translate}}\n                <br>\n              </span>\n\n            </span>\n\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.confirmPassword.$dirty && $ctrl.loginForm.confirmPassword.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.confirmPassword.$error.comparePassword || $ctrl.loginForm.password.$error.comparePassword\">{{'PASSWORD_MATCH' | translate}}\n                <br> </span>\n            </span>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-confirm-password\">{{'CONFIRM_PASSWORD' | translate}}</label>\n              <input type=\"password\" data-ng-model=\"$ctrl.user.confirmPassword\" id=\"input-confirm-password\" ng-model-options=\"{ debounce: 500 }\"\n                required name=\"confirmPassword\" ng-minlength=\"8\" placeholder=\"{{'CONFIRM_PASSWORD_PLACEHOLDER' | translate}}\">\n\n            </div>\n\n            <div class=\"area-button txt-right\">\n              <button class=\"rounded-button\" data-toggle=\"modal\" data-target=\"#modal-terms\" ng-show=\"$ctrl.loginForm.$valid\" ng-click=\"$ctrl.enableTab()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\" />\n              </button>\n\n              <button class=\"rounded-button\" ng-show=\"!$ctrl.loginForm.$valid\" ng-click=\"$ctrl.showError()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\" />\n              </button>\n            </div>\n\n\n\n\n\n      </form>\n      </div>\n  </section>\n  </div>"
+	module.exports = "<div class=\"container\">\n\n  <!-- MODAL - criar directiva depois -->\n  <div id=\"modal-terms\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <div>\n        <script>\n          function openCity(evt, cityName) {\n            // Declare all variables\n            var i, tabcontent, tablinks;\n\n            // Get all elements with class=\"tabcontent\" and hide them\n            tabcontent = document.getElementsByClassName(\"tabcontent\");\n            for (i = 0; i < tabcontent.length; i++) {\n              tabcontent[i].style.display = \"none\";\n            }\n\n            // Get all elements with class=\"tablinks\" and remove the class \"active\"\n            tablinks = document.getElementsByClassName(\"tablinks\");\n            for (i = 0; i < tablinks.length; i++) {\n              tablinks[i].className = tablinks[i].className.replace(\" active\", \"\");\n            }\n\n            // Show the current tab, and add an \"active\" class to the button that opened the tab\n            document.getElementById(cityName).style.display = \"block\";\n            evt.currentTarget.className += \" active\";\n          }\n        </script>\n        <!-- Tab links -->\n        <div class=\"tab\">\n          <button class=\"tablinks\" onclick=\"openCity(event, 'terms_condition')\" id=\"defaultOpen\">{{'TERMS_CONDITION_TITLE' | translate}}</button>\n          <button class=\"tablinks\" onclick=\"openCity(event, 'representation_condition')\">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>\n        </div>\n        <!-- Tab content -->\n        <div id=\"terms_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsCondition\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n\n        <div id=\"representation_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsRepresentation\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG1\" id=\"checkboxG1\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check1\" ng-change=\"$ctrl.allCheckboxIsChecked()\">\n            <label for=\"checkboxG1\" class=\"css-label radGroup1 clr\"> {{'US_CITIZEN' | translate}} </label>\n          </div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG2\" id=\"checkboxG2\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check2\">\n            <label for=\"checkboxG2\" class=\"css-label radGroup1 clr\"> {{'AGREE_TERM' | translate}} </label>\n          </div>\n          <!--<div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG3\" id=\"checkboxG3\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check3\">\n            <label for=\"checkboxG3\" class=\"css-label radGroup1 clr\"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>\n          </div>-->\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG4\" id=\"checkboxG4\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check4\">\n            <label for=\"checkboxG4\" class=\"css-label radGroup1 clr\"> {{'AGREE_FUTURE_VALUE' | translate}}</label>\n          </div>\n          <div class=\"area-button\">\n            <button ng-show=\"$ctrl.allCheckboxIsChecked()\" class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\" data-dismiss=\"modal\">{{'AGREE' | translate}}</button>\n            <!--<button ng-show=\"!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()\" class=\"disabled-button\">{{'AGREE' | translate}}</button>-->\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- HEADER - criar diretiva depois -->\n  <nav class=\"header nav\" style=\"padding: 20px 0;\">\n    <div class=\"nav-left logo\" style=\"cursor: pointer;\" ng-click=\"$ctrl.goToLogin()\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n\n    <div class=\"nav-right nav-menu\"></div>\n  </nav>\n\n  <!-- AUTHENTICATION FORM -->\n  <section class=\"authentication\">\n    <div>\n      <form name=\"$ctrl.loginForm\">\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-12 title\">\n            <h4>{{'WELCOME' | translate}}</h4>\n            <h4>{{'BEGIN_YOUR_REGISTRATION' | translate}}</h4>\n          </div>\n          <div class=\"col-xs-12 col-lg-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n          <div class=\"alert alert-danger\" ng-show=\"$ctrl.serverError\" role=\"alert\">\n            <h4 class=\"alert-heading\">{{'AN_ERROR_CREATE_ACCOUNT' | translate}}</h4>\n            <p>{{$ctrl.serverErrorMessage</p>\n          </div>\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-name\">{{'NAME' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.name\" id=\"input-name\" name=\"name\" required type=\"text\" placeholder=\"{{'NAME_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-lastname\">{{'LAST_NAME' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.lastname\" id=\"input-lastname\" name=\"lastname\" required type=\"text\" placeholder=\"{{'LAST_NAME_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-email\">{{'EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.email\" id=\"input-email\" name=\"email\" ng-model-options=\"{ debounce: 500 }\" required type=\"email\"\n                placeholder=\"{{'EMAIL_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-confirm-email\">{{'CONFIRM_EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.confirmEmail\" id=\"input-confirm-email\" email name=\"confirmEmail\" email-match required type=\"email\"\n                placeholder=\"{{'CONFIRM_EMAIL_PLACEHOLDER' | translate}}\">\n            </div>\n\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-password\">{{'PASSWORD' | translate}}</label>\n              <input type=\"password\" data-ng-model=\"$ctrl.user.password\" id=\"input-password\" ng-model-options=\"{ debounce: 500 }\" uppercase\n                lowercase numeric special-character required name=\"password\" ng-minlength=\"8\" placeholder=\"{{'PASSWORD_PLACEHOLDER' | translate}}\">\n            </div>\n\n            <!-- exibit validation -->\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.email.$dirty && $ctrl.loginForm.email.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.email.$error.required\">{{'EMAIL_REQUIRED' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.email.$error.email\">{{'EMAIL_INVALID' | translate}}\n                <br> </span>\n\n            </span>\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.confirmEmail.$dirty && $ctrl.loginForm.confirmEmail.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.confirmEmail.$error.compareEmail || $ctrl.loginForm.email.$error.compareEmail\">{{'EMAIL_MATCH' | translate}}\n                <br> </span>\n            </span>\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.password.$dirty && $ctrl.loginForm.password.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.password.$error.required\">{{'PASSWORD_REQUIRED' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.minlength\">{{'PASSWORD_LENGTH' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.uppercase\">{{'PASSWORD_UPPERCASE' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.lowercase\">{{'PASSWORD_LOWERCASE' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.numeric\">{{'PASSWORD_ALPHANUMERIC' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.specialCharacter\">{{'PASSWORD_SPECIALCHARACTER' | translate}}\n                <br>\n              </span>\n\n            </span>\n\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.confirmPassword.$dirty && $ctrl.loginForm.confirmPassword.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.confirmPassword.$error.comparePassword || $ctrl.loginForm.password.$error.comparePassword\">{{'PASSWORD_MATCH' | translate}}\n                <br> </span>\n            </span>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-confirm-password\">{{'CONFIRM_PASSWORD' | translate}}</label>\n              <input type=\"password\" data-ng-model=\"$ctrl.user.confirmPassword\" id=\"input-confirm-password\" ng-model-options=\"{ debounce: 500 }\"\n                required name=\"confirmPassword\" ng-minlength=\"8\" placeholder=\"{{'CONFIRM_PASSWORD_PLACEHOLDER' | translate}}\">\n\n            </div>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-coupon\">{{'COUPON' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.coupon\" id=\"input-coupon\" name=\"coupon\" type=\"text\" placeholder=\"{{'COUPON_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n          <div class=\"col-xs-12 col-lg-6\" style=\"margin-top: 15px;\">\n            <div class=\"area-button txt-right\">\n              <button class=\"rounded-button ng-hide\" data-toggle=\"modal\" data-target=\"#modal-terms\" ng-show=\"$ctrl.loginForm.$valid\" ng-click=\"$ctrl.enableTab()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\">\n              </button>\n\n              <button class=\"rounded-button\" ng-show=\"!$ctrl.loginForm.$valid\" ng-click=\"$ctrl.showError()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\">\n              </button>\n            </div>\n          </div>\n\t\t  \n        </div>\n      </form>\n  </div>\n  </section>\n  </div>"
 
 /***/ },
-/* 484 */
+/* 486 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53094,7 +53377,7 @@
 	  value: true
 	});
 	
-	var _index = __webpack_require__(475);
+	var _index = __webpack_require__(477);
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
@@ -53120,6 +53403,7 @@
 	      confirmEmail: '',
 	      password: '',
 	      confirmPassword: '',
+	      coupon: '',
 	      check1: false,
 	      check2: false,
 	      check3: false,
@@ -53136,6 +53420,7 @@
 	        while (1) {
 	          switch (_context.prev = _context.next) {
 	            case 0:
+	              console.log(this.user.coupon);
 	              this.showLoading(true);
 	              obj = {
 	                name: this.user.name,
@@ -53144,18 +53429,18 @@
 	                password: this.user.password,
 	                testnet: true
 	              };
-	              _context.next = 4;
+	              _context.next = 5;
 	              return this.HttpService.signup(obj).catch(function (error) {
 	                //this.serverError = true
 	                //this.serverErrorMessage = error.message
 	                _this.notificationError(true, error);
 	              });
 	
-	            case 4:
+	            case 5:
 	              a = _context.sent;
 	
 	              if (!(a && a.accessToken)) {
-	                _context.next = 25;
+	                _context.next = 26;
 	                break;
 	              }
 	
@@ -53163,22 +53448,22 @@
 	              this.serverErrorMessage = '';
 	              localStorage.setItem('lunes.accessToken', JSON.stringify(a));
 	              this.showLoading(false);
-	              _context.next = 12;
+	              _context.next = 13;
 	              return this.HttpService.confirmterm(a).catch(function (error) {
 	                _this.serverError = true;
 	                _this.serverErrorMessage = error.message;
 	                console.log(error);
 	              });
 	
-	            case 12:
+	            case 13:
 	              b = _context.sent;
 	
 	              if (!(!a.depositWallet || !a.depositWallet.BTC)) {
-	                _context.next = 22;
+	                _context.next = 23;
 	                break;
 	              }
 	
-	              _context.next = 16;
+	              _context.next = 17;
 	              return this.HttpService.createDepositWallet(a).catch(function (error) {
 	                if (error && error.response && error.response.data) {
 	                  alert(error.response.data.message);
@@ -53186,21 +53471,21 @@
 	                console.log(error);
 	              });
 	
-	            case 16:
+	            case 17:
 	              depositWallet = _context.sent;
 	
 	              a.depositWallet = depositWallet;
 	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
 	              this.$state.go('buy');
-	              _context.next = 25;
+	              _context.next = 26;
 	              break;
 	
-	            case 22:
+	            case 23:
 	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
 	              this.$state.go('buy');
 	              console.log(a);
 	
-	            case 25:
+	            case 26:
 	            case 'end':
 	              return _context.stop();
 	          }
@@ -53281,16 +53566,16 @@
 	exports.default = SignupController;
 
 /***/ },
-/* 485 */
+/* 487 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(486);
+	var content = __webpack_require__(488);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(480)(content, {});
+	var update = __webpack_require__(482)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -53307,53 +53592,18 @@
 	}
 
 /***/ },
-/* 486 */
+/* 488 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(479)(true);
+	exports = module.exports = __webpack_require__(481)(true);
 	// imports
 	
 	
 	// module
-	exports.push([module.id, "/* Style the tab */\n.tab {\n  overflow: hidden;\n  padding: 0 22px; }\n\n/* Style the buttons that are used to open the tab content */\n.tab button {\n  border: 0;\n  border-radius: 20px;\n  padding: 5px 20px;\n  background-color: #f9f9f9;\n  float: left;\n  outline: none;\n  cursor: pointer;\n  transition: 0.3s;\n  margin-right: 10px; }\n\n/* Change background color of buttons on hover */\n.tab button:hover {\n  background-color: #4cd466; }\n\n/* Create an active/current tablink class */\n.tab button.active {\n  background-color: #4cd466;\n  color: #fff; }\n\n/* Style the tab content */\n.tabcontent {\n  display: none;\n  padding: 6px 12px;\n  border-top: none; }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/signup/src/signup/signup.component.scss","D:/workspaces/lunes/lunes-purchase/src/signup/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA,mBAAmB;AACnB;EACE,iBAAgB;EAChB,gBAAe,EAChB;;AAED,6DAA6D;AAC7D;EACE,UAAS;EACT,oBAAmB;EACnB,kBAAiB;EACjB,0BAAyB;EACzB,YAAW;EACX,cAAa;EACb,gBAAe;EACf,iBAAgB;EAChB,mBAAkB,EACnB;;AAED,iDAAiD;AACjD;EACE,0BClBa,EDmBd;;AAED,4CAA4C;AAC5C;EACE,0BCvBa;EDwBb,YAAW,EACZ;;AAED,2BAA2B;AAC3B;EACE,cAAa;EACb,kBAAiB;EACjB,iBAAgB,EACjB","file":"signup.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n/* Style the tab */\r\n.tab {\r\n  overflow: hidden;\r\n  padding: 0 22px;\r\n}\r\n\r\n/* Style the buttons that are used to open the tab content */\r\n.tab button {\r\n  border: 0;\r\n  border-radius: 20px;\r\n  padding: 5px 20px;\r\n  background-color: #f9f9f9;\r\n  float: left;\r\n  outline: none;\r\n  cursor: pointer;\r\n  transition: 0.3s;\r\n  margin-right: 10px;\r\n}\r\n\r\n/* Change background color of buttons on hover */\r\n.tab button:hover {\r\n  background-color: $green;\r\n}\r\n\r\n/* Create an active/current tablink class */\r\n.tab button.active {\r\n  background-color: $green;\r\n  color: #fff;\r\n}\r\n\r\n/* Style the tab content */\r\n.tabcontent {\r\n  display: none;\r\n  padding: 6px 12px;\r\n  border-top: none;\r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #4cd466;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
+	exports.push([module.id, "/* Style the tab */\n.tab {\n  overflow: hidden;\n  padding: 0 22px; }\n\n/* Style the buttons that are used to open the tab content */\n.tab button {\n  border: 0;\n  border-radius: 20px;\n  padding: 5px 20px;\n  background-color: #f9f9f9;\n  float: left;\n  outline: none;\n  cursor: pointer;\n  transition: 0.3s;\n  margin-right: 10px; }\n\n/* Change background color of buttons on hover */\n.tab button:hover {\n  background-color: #4cd466; }\n\n/* Create an active/current tablink class */\n.tab button.active {\n  background-color: #4cd466;\n  color: #fff; }\n\n/* Style the tab content */\n.tabcontent {\n  display: none;\n  padding: 6px 12px;\n  border-top: none; }\n", "", {"version":3,"sources":["C:/lunes/2202/lunes-purchase/src/signup/src/signup/signup.component.scss","C:/lunes/2202/lunes-purchase/src/signup/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA,mBAAmB;AACnB;EACE,iBAAgB;EAChB,gBAAe,EAChB;;AAED,6DAA6D;AAC7D;EACE,UAAS;EACT,oBAAmB;EACnB,kBAAiB;EACjB,0BAAyB;EACzB,YAAW;EACX,cAAa;EACb,gBAAe;EACf,iBAAgB;EAChB,mBAAkB,EACnB;;AAED,iDAAiD;AACjD;EACE,0BClBa,EDmBd;;AAED,4CAA4C;AAC5C;EACE,0BCvBa;EDwBb,YAAW,EACZ;;AAED,2BAA2B;AAC3B;EACE,cAAa;EACb,kBAAiB;EACjB,iBAAgB,EACjB","file":"signup.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n/* Style the tab */\r\n.tab {\r\n  overflow: hidden;\r\n  padding: 0 22px;\r\n}\r\n\r\n/* Style the buttons that are used to open the tab content */\r\n.tab button {\r\n  border: 0;\r\n  border-radius: 20px;\r\n  padding: 5px 20px;\r\n  background-color: #f9f9f9;\r\n  float: left;\r\n  outline: none;\r\n  cursor: pointer;\r\n  transition: 0.3s;\r\n  margin-right: 10px;\r\n}\r\n\r\n/* Change background color of buttons on hover */\r\n.tab button:hover {\r\n  background-color: $green;\r\n}\r\n\r\n/* Create an active/current tablink class */\r\n.tab button.active {\r\n  background-color: $green;\r\n  color: #fff;\r\n}\r\n\r\n/* Style the tab content */\r\n.tabcontent {\r\n  display: none;\r\n  padding: 6px 12px;\r\n  border-top: none;\r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #4cd466;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
 	
 	// exports
 
-
-/***/ },
-/* 487 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _buyComponent = __webpack_require__(488);
-	
-	var _buyComponent2 = _interopRequireDefault(_buyComponent);
-	
-	var _buy = __webpack_require__(489);
-	
-	var _buy2 = _interopRequireDefault(_buy);
-	
-	__webpack_require__(698);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var BuyComponent = {
-	  template: _buyComponent2.default,
-	  controller: _buy2.default
-	};
-	
-	exports.default = BuyComponent;
-
-/***/ },
-/* 488 */
-/***/ function(module, exports) {
-
-	module.exports = "<!--<loading show=\"$ctrl.loading\"></loading>-->\n<div class=\"container\">\n\n  <!-- HEADER - criar diretiva depois -->\n  <nav class=\"header nav\">\n    <div class=\"col-sm-12 col-md-2 col-lg-2 logo\" ng-click=\"$ctrl.goToHome()\" style=\"cursor: pointer;margin: 13px 0;\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n\n    <div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6 nav-menu\">\n      <!--<ul class=\"menu horizontal\">\n        <li>\n          <a href=\"#!/whitelist\">{{'WHITELIST' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/buy\">{{'BUY' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/dashboard\">{{'DASHBOARD' | translate}}</a>\n        </li>\n      </ul>-->\n    </div>\n\n    <div class=\"col-xs-12 col-lg-4 txt-right\" style=\"margin-top: 10px;\">\n      <ul class=\"menu horizontal\">\n        <li>\n          <a href=\"https://www.facebook.com/lunesplatform/\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg\" alt=\"facebook\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://t.me/LunesPlatformEN\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg\" alt=\"telegram\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://twitter.com/lunesplatform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg\" alt=\"twitter\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://medium.com/@lunes.platform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg\" alt=\"medium\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"#!/login\" class=\"round-menu\" ng-click=\"$ctrl.logout()\">\n            {{'LOGOUT' | translate}}\n          </a>\n        </li>\n      </ul>\n    </div>\n  </nav>\n\n  <!-- BUY -->\n  <section class=\"buy\">\n    <div>\n      <div class=\"row\">\n\n        <div class=\"col-12 title\">\n          <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>\n          <div>{{'OWN_COUPON' | translate}}\n            <span style=\"font-weight: bold;color: #3bbe6e;\">{{$ctrl.currentUser.ownCoupon}}</span>\n          </div>\n        </div>\n\n        <div class=\"col-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n        <div class=\"col-sm-12 col-md-7 col-lg-7\">\n\n          <!-- ERROR LIMIT -->\n          <div class=\"row\">\n            <div ng-show=\"$ctrl.showErrorLimit\" class=\"col-xs-12 col-lg-12\" style=\"padding: 10px;\n            background-color: #df3535;\n            text-align: center;\n            margin: 10px;\">{{$ctrl.showErrorLimit}}</div>\n          </div>\n\n          <!-- CALCULATOR -->\n          <div class=\"row calculator\">\n            <div class=\"col-lg-6 no-padding\" style=\"margin: 5px 0 20px 0;\">\n              <div class=\"valueCripto row\">\n                <div class=\"select-coin col-xs-12 col-lg-7\">\n                  <ul>\n                    <li ng-repeat=\"coin in $ctrl.coins\" ng-click=\"$ctrl.selectCoin(coin)\" ng-class=\"coin.selected ? 'selected': ''\">\n                      <img ng-src=\"{{coin.img}}\" alt=\"coin.label\">\n                    </li>\n                  </ul>\n                </div>\n                <div class=\"col-xs-12 col-lg-5\">\n                  <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToDeposit\" ng-change=\"$ctrl.calcValue()\" />\n                </div>\n              </div>\n              <div class=\"col-lg-12\">\n                USD / {{$ctrl.currentCoinSelected.name}} - {{$ctrl.showQuotation()}}\n              </div>\n            </div>\n\n            <div class=\"col-lg-1 equal\" style=\"margin: 5px 0 20px 0;\">=</div>\n\n            <div class=\"col-lg-5 no-padding\" style=\"margin: 5px 0 20px 0;\">\n              <div class=\"lunesAmount\">\n                <div class=\"flag-lns\">\n                  <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\">\n                </div>\n                <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToReceive\" ng-change=\"$ctrl.calcValue('LNS')\"\n                  style=\"padding-top: 10px;\" />\n              </div>\n\n              <div class=\"col-lg-12\" style=\"text-align: right;\">\n                <label for=\"#\">\n                  <small>{{'PRICE_LUNES' | translate}}</small> = USD {{$ctrl.priceValueLunes}}\n                </label>\n              </div>\n            </div>\n          </div>\n\n          <!-- SHOW TOTAL -->\n          <div class=\"amountBalance row\">\n            <div class=\"col-sm-12 col-lg-12 total\">\n              <div class=\"result\" style=\"margin-top: 15px;\">\n                <div>{{'AMOUNT_LUNES' | translate}}</div>\n                <div>{{$ctrl.valueToReceive}}</div>\n              </div>\n              <div class=\"result\">\n                <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>\n                <div>{{$ctrl.bonusAmountFinal}}</div>\n              </div>\n              <div class=\"result\">\n                <div>{{'COUPON' | translate}}</div>\n                <div>\n                  <input type=\"text\" placeholder=\"{{'TYPE_COUPON' | translate}}\" name=\"coupon\" ng-model=\"$ctrl.currentUser.coupon\" style=\"background-color: transparent;\n                  border: 0;\n                  border-bottom: solid 1px #52318a;\n                  outline: none;\n                  color: #fff;\n                  text-align: right;\">\n                </div>\n              </div>\n              <div class=\"line-break\">\n                <hr />\n              </div>\n              <div class=\"result\">\n                <div>Total</div>\n                <div>{{$ctrl.getTotal()}}</div>\n              </div>\n            </div>\n          </div>\n\n          <!-- ADVICE -->\n          <div class=\"row\">\n            <div class=\"col-lg-12 no-padding\">\n              <div class=\"area-button\" ng-show=\"false\">\n                <button class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\">{{'BUY' | translate}}</button>\n              </div>\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\">\n              * {{'MSG_BALANCE_DEPOSITED' | translate}}\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\">\n              * {{'BUY_LIMIT_PHASE' | translate}}\n              <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n            </div>\n          </div>\n\n        </div>\n\n        <div class=\"col-xs-12 col-lg-5 container-qr-code\" style=\"text-align: center;\">\n          <div style=\"margin-bottom: 10px;\">\n            <span class=\"selected-label\">{{'COIN_SELECTED' | translate}}</span>\n            <span>{{$ctrl.currentCoinSelected.name}}</span>\n          </div>\n          <img ng-src=\"{{$ctrl.currentQRCode.img}}\" class=\"qr-code img-thumbnail img-responsive\" />\n          <p class=\"address\">{{$ctrl.currentQRCode.address}}</p>\n          <div> {{'BALANCE' | translate}}: {{$ctrl.balanceUser.confirmed_balance}} {{$ctrl.currentCoinSelected.name}} </div>\n        </div>\n\n      </div>\n    </div>\n  </section>\n\n</div>"
 
 /***/ },
 /* 489 */
@@ -53365,9 +53615,44 @@
 	  value: true
 	});
 	
-	var _index = __webpack_require__(475);
+	var _buyComponent = __webpack_require__(490);
 	
-	var _lunesLib = __webpack_require__(490);
+	var _buyComponent2 = _interopRequireDefault(_buyComponent);
+	
+	var _buy = __webpack_require__(491);
+	
+	var _buy2 = _interopRequireDefault(_buy);
+	
+	__webpack_require__(700);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var BuyComponent = {
+	  template: _buyComponent2.default,
+	  controller: _buy2.default
+	};
+	
+	exports.default = BuyComponent;
+
+/***/ },
+/* 490 */
+/***/ function(module, exports) {
+
+	module.exports = "<!--<loading show=\"$ctrl.loading\"></loading>-->\n<div class=\"container\">\n\n  <!-- HEADER - criar diretiva depois -->\n  <nav class=\"header nav\">\n    <div class=\"col-sm-12 col-md-2 col-lg-2 logo\" ng-click=\"$ctrl.goToHome()\" style=\"cursor: pointer;margin: 13px 0;\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n\n    <div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6 nav-menu\">\n      <!--<ul class=\"menu horizontal\">\n        <li>\n          <a href=\"#!/whitelist\">{{'WHITELIST' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/buy\">{{'BUY' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/dashboard\">{{'DASHBOARD' | translate}}</a>\n        </li>\n      </ul>-->\n    </div>\n\n    <div class=\"col-xs-12 col-lg-4 txt-right\" style=\"margin-top: 10px;\">\n      <ul class=\"menu horizontal\">\n        <li>\n          <a href=\"https://www.facebook.com/lunesplatform/\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg\" alt=\"facebook\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://t.me/LunesPlatformEN\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg\" alt=\"telegram\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://twitter.com/lunesplatform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg\" alt=\"twitter\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://medium.com/@lunes.platform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg\" alt=\"medium\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"#!/login\" class=\"round-menu\" ng-click=\"$ctrl.logout()\">\n            {{'LOGOUT' | translate}}\n          </a>\n        </li>\n      </ul>\n    </div>\n  </nav>\n\n  <!-- BUY -->\n  <section class=\"buy\">\n    <div>\n      <div class=\"row\">\n\n        <div class=\"col-12 title\">\n          <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>\n          <div>{{'OWN_COUPON' | translate}}\n            <span style=\"font-weight: bold;color: #3bbe6e;\">{{$ctrl.currentUser.ownCoupon}}</span>\n          </div>\n        </div>\n\n        <div class=\"col-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n        <div class=\"col-sm-12 col-md-7 col-lg-7\">\n\n          <!-- ERROR LIMIT -->\n          <div class=\"row\">\n            <div ng-show=\"$ctrl.showErrorLimit\" class=\"col-xs-12 col-lg-12\" style=\"padding: 10px;\n            background-color: #df3535;\n            text-align: center;\n            margin: 10px;\">{{$ctrl.showErrorLimit}}</div>\n          </div>\n\n          <!-- CALCULATOR -->\n          <div class=\"row calculator\">\n            <div class=\"col-lg-6 no-padding\" style=\"margin: 5px 0 20px 0;\">\n              <div class=\"valueCripto row\">\n                <div class=\"select-coin col-xs-12 col-lg-7\">\n                  <ul>\n                    <li ng-repeat=\"coin in $ctrl.coins\" ng-click=\"$ctrl.selectCoin(coin)\" ng-class=\"coin.selected ? 'selected': ''\">\n                      <img ng-src=\"{{coin.img}}\" alt=\"coin.label\">\n                    </li>\n                  </ul>\n                </div>\n                <div class=\"col-xs-12 col-lg-5\">\n                  <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToDeposit\" ng-change=\"$ctrl.calcValue()\" />\n                </div>\n              </div>\n              <div class=\"col-lg-12\">\n                USD / {{$ctrl.currentCoinSelected.name}} - {{$ctrl.showQuotation()}}\n              </div>\n            </div>\n\n            <div class=\"col-lg-1 equal\" style=\"margin: 5px 0 20px 0;\">=</div>\n\n            <div class=\"col-lg-5 no-padding\" style=\"margin: 5px 0 20px 0;\">\n              <div class=\"lunesAmount\">\n                <div class=\"flag-lns\">\n                  <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\">\n                </div>\n                <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToReceive\" ng-change=\"$ctrl.calcValue('LNS')\"\n                  style=\"padding-top: 10px;\" />\n              </div>\n\n              <div class=\"col-lg-12\" style=\"text-align: right;\">\n                <label for=\"#\">\n                  <small>{{'PRICE_LUNES' | translate}}</small> = USD {{$ctrl.priceValueLunes}}\n                </label>\n              </div>\n            </div>\n          </div>\n\n          <!-- SHOW TOTAL -->\n          <div class=\"amountBalance row\">\n            <div class=\"col-sm-12 col-lg-12 total\">\n              <div class=\"result\" style=\"margin-top: 15px;\">\n                <div>{{'AMOUNT_LUNES' | translate}}</div>\n                <div>{{$ctrl.valueToReceive}}</div>\n              </div>\n              <div class=\"result\">\n                <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>\n                <div>{{$ctrl.bonusAmountFinal}}</div>\n              </div>\n              <div class=\"result\">\n                <div>{{'COUPON' | translate}}</div>\n                <div>\n                  <input type=\"text\" placeholder=\"{{'TYPE_COUPON' | translate}}\" name=\"coupon\" ng-model=\"$ctrl.currentUser.coupon\" style=\"background-color: transparent;\n                  border: 0;\n                  border-bottom: solid 1px #52318a;\n                  outline: none;\n                  color: #fff;\n                  text-align: right;\">\n                </div>\n              </div>\n              <div class=\"line-break\">\n                <hr />\n              </div>\n              <div class=\"result\">\n                <div>Total</div>\n                <div>{{$ctrl.getTotal()}}</div>\n              </div>\n            </div>\n          </div>\n\n          <!-- ADVICE -->\n          <div class=\"row\">\n            <div class=\"col-lg-12 no-padding\">\n              <div class=\"area-button\" ng-show=\"false\">\n                <button class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\">{{'BUY' | translate}}</button>\n              </div>\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\">\n              * {{'MSG_BALANCE_DEPOSITED' | translate}}\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\">\n              * {{'BUY_LIMIT_PHASE' | translate}}\n              <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n            </div>\n          </div>\n\n        </div>\n\n        <div class=\"col-xs-12 col-lg-5 container-qr-code\" style=\"text-align: center;\">\n          <div style=\"margin-bottom: 10px;\">\n            <span class=\"selected-label\">{{'COIN_SELECTED' | translate}}</span>\n            <span>{{$ctrl.currentCoinSelected.name}}</span>\n          </div>\n          <img ng-src=\"{{$ctrl.currentQRCode.img}}\" class=\"qr-code img-thumbnail img-responsive\" />\n          <p class=\"address\">{{$ctrl.currentQRCode.address}}</p>\n          <div> {{'BALANCE' | translate}}: {{$ctrl.balanceUser.confirmed_balance}} {{$ctrl.currentCoinSelected.name}} </div>\n        </div>\n\n      </div>\n    </div>\n  </section>\n\n</div>"
+
+/***/ },
+/* 491 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _index = __webpack_require__(477);
+	
+	var _lunesLib = __webpack_require__(492);
 	
 	var _lunesLib2 = _interopRequireDefault(_lunesLib);
 	
@@ -53902,22 +54187,22 @@
 	exports.default = BuyController;
 
 /***/ },
-/* 490 */
+/* 492 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(491);
+	module.exports = __webpack_require__(493);
 
 /***/ },
-/* 491 */
+/* 493 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var users = __webpack_require__(492);
-	var coins = __webpack_require__(603);
-	var ico = __webpack_require__(690);
+	var users = __webpack_require__(494);
+	var coins = __webpack_require__(605);
+	var ico = __webpack_require__(692);
 	module.exports = {
 	  users: users,
 	  coins: coins,
@@ -53925,20 +54210,20 @@
 	};
 
 /***/ },
-/* 492 */
+/* 494 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var create = __webpack_require__(493);
-	var login = __webpack_require__(595);
-	var resetPassword = __webpack_require__(596);
-	var obtain = __webpack_require__(597);
-	var createPin = __webpack_require__(598);
-	var confirmPin = __webpack_require__(599);
-	var confirmPhone = __webpack_require__(600);
-	var logout = __webpack_require__(601);
-	var update = __webpack_require__(602);
+	var create = __webpack_require__(495);
+	var login = __webpack_require__(597);
+	var resetPassword = __webpack_require__(598);
+	var obtain = __webpack_require__(599);
+	var createPin = __webpack_require__(600);
+	var confirmPin = __webpack_require__(601);
+	var confirmPhone = __webpack_require__(602);
+	var logout = __webpack_require__(603);
+	var update = __webpack_require__(604);
 	
 	module.exports = {
 	  create: create,
@@ -53953,18 +54238,18 @@
 	};
 
 /***/ },
-/* 493 */
+/* 495 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var validator = __webpack_require__(494);
+	var validator = __webpack_require__(496);
 	
-	var axios = __webpack_require__(567);
+	var axios = __webpack_require__(569);
 	
-	var BASE_URL = __webpack_require__(594);
+	var BASE_URL = __webpack_require__(596);
 	
 	var endpoint = BASE_URL + '/users/create';
 	
@@ -54033,16 +54318,16 @@
 	}();
 
 /***/ },
-/* 494 */
+/* 496 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var Validator = __webpack_require__(495);
+	var Validator = __webpack_require__(497);
 	
-	var _require = __webpack_require__(566),
+	var _require = __webpack_require__(568),
 	    PASSWORD_LENGTH = _require.PASSWORD_LENGTH,
 	    MAX_PIN_VALUE = _require.MAX_PIN_VALUE;
 	
@@ -54073,7 +54358,7 @@
 	};
 
 /***/ },
-/* 495 */
+/* 497 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54082,271 +54367,271 @@
 	  value: true
 	});
 	
-	var _toDate = __webpack_require__(496);
+	var _toDate = __webpack_require__(498);
 	
 	var _toDate2 = _interopRequireDefault(_toDate);
 	
-	var _toFloat = __webpack_require__(498);
+	var _toFloat = __webpack_require__(500);
 	
 	var _toFloat2 = _interopRequireDefault(_toFloat);
 	
-	var _toInt = __webpack_require__(499);
+	var _toInt = __webpack_require__(501);
 	
 	var _toInt2 = _interopRequireDefault(_toInt);
 	
-	var _toBoolean = __webpack_require__(500);
+	var _toBoolean = __webpack_require__(502);
 	
 	var _toBoolean2 = _interopRequireDefault(_toBoolean);
 	
-	var _equals = __webpack_require__(501);
+	var _equals = __webpack_require__(503);
 	
 	var _equals2 = _interopRequireDefault(_equals);
 	
-	var _contains = __webpack_require__(502);
+	var _contains = __webpack_require__(504);
 	
 	var _contains2 = _interopRequireDefault(_contains);
 	
-	var _matches = __webpack_require__(504);
+	var _matches = __webpack_require__(506);
 	
 	var _matches2 = _interopRequireDefault(_matches);
 	
-	var _isEmail = __webpack_require__(505);
+	var _isEmail = __webpack_require__(507);
 	
 	var _isEmail2 = _interopRequireDefault(_isEmail);
 	
-	var _isURL = __webpack_require__(509);
+	var _isURL = __webpack_require__(511);
 	
 	var _isURL2 = _interopRequireDefault(_isURL);
 	
-	var _isMACAddress = __webpack_require__(511);
+	var _isMACAddress = __webpack_require__(513);
 	
 	var _isMACAddress2 = _interopRequireDefault(_isMACAddress);
 	
-	var _isIP = __webpack_require__(510);
+	var _isIP = __webpack_require__(512);
 	
 	var _isIP2 = _interopRequireDefault(_isIP);
 	
-	var _isFQDN = __webpack_require__(508);
+	var _isFQDN = __webpack_require__(510);
 	
 	var _isFQDN2 = _interopRequireDefault(_isFQDN);
 	
-	var _isBoolean = __webpack_require__(512);
+	var _isBoolean = __webpack_require__(514);
 	
 	var _isBoolean2 = _interopRequireDefault(_isBoolean);
 	
-	var _isAlpha = __webpack_require__(513);
+	var _isAlpha = __webpack_require__(515);
 	
 	var _isAlpha2 = _interopRequireDefault(_isAlpha);
 	
-	var _isAlphanumeric = __webpack_require__(515);
+	var _isAlphanumeric = __webpack_require__(517);
 	
 	var _isAlphanumeric2 = _interopRequireDefault(_isAlphanumeric);
 	
-	var _isNumeric = __webpack_require__(516);
+	var _isNumeric = __webpack_require__(518);
 	
 	var _isNumeric2 = _interopRequireDefault(_isNumeric);
 	
-	var _isPort = __webpack_require__(517);
+	var _isPort = __webpack_require__(519);
 	
 	var _isPort2 = _interopRequireDefault(_isPort);
 	
-	var _isLowercase = __webpack_require__(519);
+	var _isLowercase = __webpack_require__(521);
 	
 	var _isLowercase2 = _interopRequireDefault(_isLowercase);
 	
-	var _isUppercase = __webpack_require__(520);
+	var _isUppercase = __webpack_require__(522);
 	
 	var _isUppercase2 = _interopRequireDefault(_isUppercase);
 	
-	var _isAscii = __webpack_require__(521);
+	var _isAscii = __webpack_require__(523);
 	
 	var _isAscii2 = _interopRequireDefault(_isAscii);
 	
-	var _isFullWidth = __webpack_require__(522);
+	var _isFullWidth = __webpack_require__(524);
 	
 	var _isFullWidth2 = _interopRequireDefault(_isFullWidth);
 	
-	var _isHalfWidth = __webpack_require__(523);
+	var _isHalfWidth = __webpack_require__(525);
 	
 	var _isHalfWidth2 = _interopRequireDefault(_isHalfWidth);
 	
-	var _isVariableWidth = __webpack_require__(524);
+	var _isVariableWidth = __webpack_require__(526);
 	
 	var _isVariableWidth2 = _interopRequireDefault(_isVariableWidth);
 	
-	var _isMultibyte = __webpack_require__(525);
+	var _isMultibyte = __webpack_require__(527);
 	
 	var _isMultibyte2 = _interopRequireDefault(_isMultibyte);
 	
-	var _isSurrogatePair = __webpack_require__(526);
+	var _isSurrogatePair = __webpack_require__(528);
 	
 	var _isSurrogatePair2 = _interopRequireDefault(_isSurrogatePair);
 	
-	var _isInt = __webpack_require__(518);
+	var _isInt = __webpack_require__(520);
 	
 	var _isInt2 = _interopRequireDefault(_isInt);
 	
-	var _isFloat = __webpack_require__(527);
+	var _isFloat = __webpack_require__(529);
 	
 	var _isFloat2 = _interopRequireDefault(_isFloat);
 	
-	var _isDecimal = __webpack_require__(528);
+	var _isDecimal = __webpack_require__(530);
 	
 	var _isDecimal2 = _interopRequireDefault(_isDecimal);
 	
-	var _isHexadecimal = __webpack_require__(529);
+	var _isHexadecimal = __webpack_require__(531);
 	
 	var _isHexadecimal2 = _interopRequireDefault(_isHexadecimal);
 	
-	var _isDivisibleBy = __webpack_require__(530);
+	var _isDivisibleBy = __webpack_require__(532);
 	
 	var _isDivisibleBy2 = _interopRequireDefault(_isDivisibleBy);
 	
-	var _isHexColor = __webpack_require__(531);
+	var _isHexColor = __webpack_require__(533);
 	
 	var _isHexColor2 = _interopRequireDefault(_isHexColor);
 	
-	var _isISRC = __webpack_require__(532);
+	var _isISRC = __webpack_require__(534);
 	
 	var _isISRC2 = _interopRequireDefault(_isISRC);
 	
-	var _isMD = __webpack_require__(533);
+	var _isMD = __webpack_require__(535);
 	
 	var _isMD2 = _interopRequireDefault(_isMD);
 	
-	var _isHash = __webpack_require__(534);
+	var _isHash = __webpack_require__(536);
 	
 	var _isHash2 = _interopRequireDefault(_isHash);
 	
-	var _isJSON = __webpack_require__(535);
+	var _isJSON = __webpack_require__(537);
 	
 	var _isJSON2 = _interopRequireDefault(_isJSON);
 	
-	var _isEmpty = __webpack_require__(536);
+	var _isEmpty = __webpack_require__(538);
 	
 	var _isEmpty2 = _interopRequireDefault(_isEmpty);
 	
-	var _isLength = __webpack_require__(537);
+	var _isLength = __webpack_require__(539);
 	
 	var _isLength2 = _interopRequireDefault(_isLength);
 	
-	var _isByteLength = __webpack_require__(507);
+	var _isByteLength = __webpack_require__(509);
 	
 	var _isByteLength2 = _interopRequireDefault(_isByteLength);
 	
-	var _isUUID = __webpack_require__(538);
+	var _isUUID = __webpack_require__(540);
 	
 	var _isUUID2 = _interopRequireDefault(_isUUID);
 	
-	var _isMongoId = __webpack_require__(539);
+	var _isMongoId = __webpack_require__(541);
 	
 	var _isMongoId2 = _interopRequireDefault(_isMongoId);
 	
-	var _isAfter = __webpack_require__(540);
+	var _isAfter = __webpack_require__(542);
 	
 	var _isAfter2 = _interopRequireDefault(_isAfter);
 	
-	var _isBefore = __webpack_require__(541);
+	var _isBefore = __webpack_require__(543);
 	
 	var _isBefore2 = _interopRequireDefault(_isBefore);
 	
-	var _isIn = __webpack_require__(542);
+	var _isIn = __webpack_require__(544);
 	
 	var _isIn2 = _interopRequireDefault(_isIn);
 	
-	var _isCreditCard = __webpack_require__(543);
+	var _isCreditCard = __webpack_require__(545);
 	
 	var _isCreditCard2 = _interopRequireDefault(_isCreditCard);
 	
-	var _isISIN = __webpack_require__(544);
+	var _isISIN = __webpack_require__(546);
 	
 	var _isISIN2 = _interopRequireDefault(_isISIN);
 	
-	var _isISBN = __webpack_require__(545);
+	var _isISBN = __webpack_require__(547);
 	
 	var _isISBN2 = _interopRequireDefault(_isISBN);
 	
-	var _isISSN = __webpack_require__(546);
+	var _isISSN = __webpack_require__(548);
 	
 	var _isISSN2 = _interopRequireDefault(_isISSN);
 	
-	var _isMobilePhone = __webpack_require__(547);
+	var _isMobilePhone = __webpack_require__(549);
 	
 	var _isMobilePhone2 = _interopRequireDefault(_isMobilePhone);
 	
-	var _isCurrency = __webpack_require__(548);
+	var _isCurrency = __webpack_require__(550);
 	
 	var _isCurrency2 = _interopRequireDefault(_isCurrency);
 	
-	var _isISO = __webpack_require__(549);
+	var _isISO = __webpack_require__(551);
 	
 	var _isISO2 = _interopRequireDefault(_isISO);
 	
-	var _isISO31661Alpha = __webpack_require__(550);
+	var _isISO31661Alpha = __webpack_require__(552);
 	
 	var _isISO31661Alpha2 = _interopRequireDefault(_isISO31661Alpha);
 	
-	var _isBase = __webpack_require__(551);
+	var _isBase = __webpack_require__(553);
 	
 	var _isBase2 = _interopRequireDefault(_isBase);
 	
-	var _isDataURI = __webpack_require__(552);
+	var _isDataURI = __webpack_require__(554);
 	
 	var _isDataURI2 = _interopRequireDefault(_isDataURI);
 	
-	var _isMimeType = __webpack_require__(553);
+	var _isMimeType = __webpack_require__(555);
 	
 	var _isMimeType2 = _interopRequireDefault(_isMimeType);
 	
-	var _isLatLong = __webpack_require__(554);
+	var _isLatLong = __webpack_require__(556);
 	
 	var _isLatLong2 = _interopRequireDefault(_isLatLong);
 	
-	var _isPostalCode = __webpack_require__(555);
+	var _isPostalCode = __webpack_require__(557);
 	
 	var _isPostalCode2 = _interopRequireDefault(_isPostalCode);
 	
-	var _ltrim = __webpack_require__(556);
+	var _ltrim = __webpack_require__(558);
 	
 	var _ltrim2 = _interopRequireDefault(_ltrim);
 	
-	var _rtrim = __webpack_require__(557);
+	var _rtrim = __webpack_require__(559);
 	
 	var _rtrim2 = _interopRequireDefault(_rtrim);
 	
-	var _trim = __webpack_require__(558);
+	var _trim = __webpack_require__(560);
 	
 	var _trim2 = _interopRequireDefault(_trim);
 	
-	var _escape = __webpack_require__(559);
+	var _escape = __webpack_require__(561);
 	
 	var _escape2 = _interopRequireDefault(_escape);
 	
-	var _unescape = __webpack_require__(560);
+	var _unescape = __webpack_require__(562);
 	
 	var _unescape2 = _interopRequireDefault(_unescape);
 	
-	var _stripLow = __webpack_require__(561);
+	var _stripLow = __webpack_require__(563);
 	
 	var _stripLow2 = _interopRequireDefault(_stripLow);
 	
-	var _whitelist = __webpack_require__(563);
+	var _whitelist = __webpack_require__(565);
 	
 	var _whitelist2 = _interopRequireDefault(_whitelist);
 	
-	var _blacklist = __webpack_require__(562);
+	var _blacklist = __webpack_require__(564);
 	
 	var _blacklist2 = _interopRequireDefault(_blacklist);
 	
-	var _isWhitelisted = __webpack_require__(564);
+	var _isWhitelisted = __webpack_require__(566);
 	
 	var _isWhitelisted2 = _interopRequireDefault(_isWhitelisted);
 	
-	var _normalizeEmail = __webpack_require__(565);
+	var _normalizeEmail = __webpack_require__(567);
 	
 	var _normalizeEmail2 = _interopRequireDefault(_normalizeEmail);
 	
-	var _toString = __webpack_require__(503);
+	var _toString = __webpack_require__(505);
 	
 	var _toString2 = _interopRequireDefault(_toString);
 	
@@ -54431,7 +54716,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 496 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54441,7 +54726,7 @@
 	});
 	exports.default = toDate;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54457,7 +54742,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 497 */
+/* 499 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54476,7 +54761,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 498 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54486,7 +54771,7 @@
 	});
 	exports.default = toFloat;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54501,7 +54786,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 499 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54511,7 +54796,7 @@
 	});
 	exports.default = toInt;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54526,7 +54811,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 500 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54536,7 +54821,7 @@
 	});
 	exports.default = toBoolean;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54554,7 +54839,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 501 */
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54564,7 +54849,7 @@
 	});
 	exports.default = equals;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54579,7 +54864,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 502 */
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54589,11 +54874,11 @@
 	});
 	exports.default = contains;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _toString = __webpack_require__(503);
+	var _toString = __webpack_require__(505);
 	
 	var _toString2 = _interopRequireDefault(_toString);
 	
@@ -54608,7 +54893,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 503 */
+/* 505 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54641,7 +54926,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 504 */
+/* 506 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54651,7 +54936,7 @@
 	});
 	exports.default = matches;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54669,7 +54954,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 505 */
+/* 507 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54679,19 +54964,19 @@
 	});
 	exports.default = isEmail;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _merge = __webpack_require__(506);
+	var _merge = __webpack_require__(508);
 	
 	var _merge2 = _interopRequireDefault(_merge);
 	
-	var _isByteLength = __webpack_require__(507);
+	var _isByteLength = __webpack_require__(509);
 	
 	var _isByteLength2 = _interopRequireDefault(_isByteLength);
 	
-	var _isFQDN = __webpack_require__(508);
+	var _isFQDN = __webpack_require__(510);
 	
 	var _isFQDN2 = _interopRequireDefault(_isFQDN);
 	
@@ -54765,7 +55050,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 506 */
+/* 508 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54788,7 +55073,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 507 */
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54807,7 +55092,7 @@
 	
 	exports.default = isByteLength;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54834,7 +55119,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 508 */
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54844,11 +55129,11 @@
 	});
 	exports.default = isFQDN;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _merge = __webpack_require__(506);
+	var _merge = __webpack_require__(508);
 	
 	var _merge2 = _interopRequireDefault(_merge);
 	
@@ -54902,7 +55187,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 509 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54912,19 +55197,19 @@
 	});
 	exports.default = isURL;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _isFQDN = __webpack_require__(508);
+	var _isFQDN = __webpack_require__(510);
 	
 	var _isFQDN2 = _interopRequireDefault(_isFQDN);
 	
-	var _isIP = __webpack_require__(510);
+	var _isIP = __webpack_require__(512);
 	
 	var _isIP2 = _interopRequireDefault(_isIP);
 	
-	var _merge = __webpack_require__(506);
+	var _merge = __webpack_require__(508);
 	
 	var _merge2 = _interopRequireDefault(_merge);
 	
@@ -55056,7 +55341,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 510 */
+/* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55066,7 +55351,7 @@
 	});
 	exports.default = isIP;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55144,7 +55429,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 511 */
+/* 513 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55154,7 +55439,7 @@
 	});
 	exports.default = isMACAddress;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55171,7 +55456,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 512 */
+/* 514 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55181,7 +55466,7 @@
 	});
 	exports.default = isBoolean;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55196,7 +55481,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 513 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55206,11 +55491,11 @@
 	});
 	exports.default = isAlpha;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _alpha = __webpack_require__(514);
+	var _alpha = __webpack_require__(516);
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -55228,7 +55513,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 514 */
+/* 516 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -55329,7 +55614,7 @@
 	decimal['pt-BR'] = decimal['pt-PT'];
 
 /***/ },
-/* 515 */
+/* 517 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55339,11 +55624,11 @@
 	});
 	exports.default = isAlphanumeric;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _alpha = __webpack_require__(514);
+	var _alpha = __webpack_require__(516);
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -55361,7 +55646,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 516 */
+/* 518 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55371,7 +55656,7 @@
 	});
 	exports.default = isNumeric;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55388,7 +55673,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 517 */
+/* 519 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55398,7 +55683,7 @@
 	});
 	exports.default = isPort;
 	
-	var _isInt = __webpack_require__(518);
+	var _isInt = __webpack_require__(520);
 	
 	var _isInt2 = _interopRequireDefault(_isInt);
 	
@@ -55412,7 +55697,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 518 */
+/* 520 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55422,7 +55707,7 @@
 	});
 	exports.default = isInt;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55452,7 +55737,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 519 */
+/* 521 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55462,7 +55747,7 @@
 	});
 	exports.default = isLowercase;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55477,7 +55762,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 520 */
+/* 522 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55487,7 +55772,7 @@
 	});
 	exports.default = isUppercase;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55502,7 +55787,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 521 */
+/* 523 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55512,7 +55797,7 @@
 	});
 	exports.default = isAscii;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55531,7 +55816,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 522 */
+/* 524 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55542,7 +55827,7 @@
 	exports.fullWidth = undefined;
 	exports.default = isFullWidth;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55558,7 +55843,7 @@
 	}
 
 /***/ },
-/* 523 */
+/* 525 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55569,7 +55854,7 @@
 	exports.halfWidth = undefined;
 	exports.default = isHalfWidth;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55585,7 +55870,7 @@
 	}
 
 /***/ },
-/* 524 */
+/* 526 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55595,13 +55880,13 @@
 	});
 	exports.default = isVariableWidth;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _isFullWidth = __webpack_require__(522);
+	var _isFullWidth = __webpack_require__(524);
 	
-	var _isHalfWidth = __webpack_require__(523);
+	var _isHalfWidth = __webpack_require__(525);
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -55614,7 +55899,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 525 */
+/* 527 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55624,7 +55909,7 @@
 	});
 	exports.default = isMultibyte;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55643,7 +55928,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 526 */
+/* 528 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55653,7 +55938,7 @@
 	});
 	exports.default = isSurrogatePair;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55670,7 +55955,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 527 */
+/* 529 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55680,11 +55965,11 @@
 	});
 	exports.default = isFloat;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _alpha = __webpack_require__(514);
+	var _alpha = __webpack_require__(516);
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -55702,7 +55987,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 528 */
+/* 530 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55712,15 +55997,15 @@
 	});
 	exports.default = isDecimal;
 	
-	var _merge = __webpack_require__(506);
+	var _merge = __webpack_require__(508);
 	
 	var _merge2 = _interopRequireDefault(_merge);
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _alpha = __webpack_require__(514);
+	var _alpha = __webpack_require__(516);
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -55750,7 +56035,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 529 */
+/* 531 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55760,7 +56045,7 @@
 	});
 	exports.default = isHexadecimal;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55777,7 +56062,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 530 */
+/* 532 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55787,11 +56072,11 @@
 	});
 	exports.default = isDivisibleBy;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _toFloat = __webpack_require__(498);
+	var _toFloat = __webpack_require__(500);
 	
 	var _toFloat2 = _interopRequireDefault(_toFloat);
 	
@@ -55806,7 +56091,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 531 */
+/* 533 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55816,7 +56101,7 @@
 	});
 	exports.default = isHexColor;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55833,7 +56118,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 532 */
+/* 534 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55843,7 +56128,7 @@
 	});
 	exports.default = isISRC;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55861,7 +56146,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 533 */
+/* 535 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55871,7 +56156,7 @@
 	});
 	exports.default = isMD5;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55888,7 +56173,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 534 */
+/* 536 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55898,7 +56183,7 @@
 	});
 	exports.default = isHash;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55930,7 +56215,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 535 */
+/* 537 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55949,7 +56234,7 @@
 	
 	exports.default = isJSON;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55968,7 +56253,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 536 */
+/* 538 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55978,7 +56263,7 @@
 	});
 	exports.default = isEmpty;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55993,7 +56278,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 537 */
+/* 539 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56012,7 +56297,7 @@
 	
 	exports.default = isLength;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56040,7 +56325,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 538 */
+/* 540 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56050,7 +56335,7 @@
 	});
 	exports.default = isUUID;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56075,7 +56360,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 539 */
+/* 541 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56085,11 +56370,11 @@
 	});
 	exports.default = isMongoId;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _isHexadecimal = __webpack_require__(529);
+	var _isHexadecimal = __webpack_require__(531);
 	
 	var _isHexadecimal2 = _interopRequireDefault(_isHexadecimal);
 	
@@ -56104,7 +56389,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 540 */
+/* 542 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56114,11 +56399,11 @@
 	});
 	exports.default = isAfter;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _toDate = __webpack_require__(496);
+	var _toDate = __webpack_require__(498);
 	
 	var _toDate2 = _interopRequireDefault(_toDate);
 	
@@ -56137,7 +56422,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 541 */
+/* 543 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56147,11 +56432,11 @@
 	});
 	exports.default = isBefore;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _toDate = __webpack_require__(496);
+	var _toDate = __webpack_require__(498);
 	
 	var _toDate2 = _interopRequireDefault(_toDate);
 	
@@ -56170,7 +56455,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 542 */
+/* 544 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56189,11 +56474,11 @@
 	
 	exports.default = isIn;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _toString = __webpack_require__(503);
+	var _toString = __webpack_require__(505);
 	
 	var _toString2 = _interopRequireDefault(_toString);
 	
@@ -56222,7 +56507,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 543 */
+/* 545 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56232,7 +56517,7 @@
 	});
 	exports.default = isCreditCard;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56274,7 +56559,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 544 */
+/* 546 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56284,7 +56569,7 @@
 	});
 	exports.default = isISIN;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56329,7 +56614,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 545 */
+/* 547 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56339,7 +56624,7 @@
 	});
 	exports.default = isISBN;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56393,7 +56678,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 546 */
+/* 548 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56403,7 +56688,7 @@
 	});
 	exports.default = isISSN;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56458,7 +56743,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 547 */
+/* 549 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56468,7 +56753,7 @@
 	});
 	exports.default = isMobilePhone;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56568,7 +56853,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 548 */
+/* 550 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56578,11 +56863,11 @@
 	});
 	exports.default = isCurrency;
 	
-	var _merge = __webpack_require__(506);
+	var _merge = __webpack_require__(508);
 	
 	var _merge2 = _interopRequireDefault(_merge);
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56667,7 +56952,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 549 */
+/* 551 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56677,7 +56962,7 @@
 	});
 	exports.default = isISO8601;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56697,7 +56982,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 550 */
+/* 552 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56707,7 +56992,7 @@
 	});
 	exports.default = isISO31661Alpha2;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56725,7 +57010,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 551 */
+/* 553 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56735,7 +57020,7 @@
 	});
 	exports.default = isBase64;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56757,7 +57042,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 552 */
+/* 554 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56767,7 +57052,7 @@
 	});
 	exports.default = isDataURI;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56813,7 +57098,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 553 */
+/* 555 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56823,7 +57108,7 @@
 	});
 	exports.default = isMimeType;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56872,7 +57157,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 554 */
+/* 556 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56888,7 +57173,7 @@
 	  return lat.test(pair[0]) && long.test(pair[1]);
 	};
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56902,7 +57187,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 555 */
+/* 557 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56930,7 +57215,7 @@
 	  throw new Error('Invalid locale \'' + locale + '\'');
 	};
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56985,7 +57270,7 @@
 	var locales = exports.locales = Object.keys(patterns);
 
 /***/ },
-/* 556 */
+/* 558 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56995,7 +57280,7 @@
 	});
 	exports.default = ltrim;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -57011,7 +57296,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 557 */
+/* 559 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57021,7 +57306,7 @@
 	});
 	exports.default = rtrim;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -57043,7 +57328,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 558 */
+/* 560 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57053,11 +57338,11 @@
 	});
 	exports.default = trim;
 	
-	var _rtrim = __webpack_require__(557);
+	var _rtrim = __webpack_require__(559);
 	
 	var _rtrim2 = _interopRequireDefault(_rtrim);
 	
-	var _ltrim = __webpack_require__(556);
+	var _ltrim = __webpack_require__(558);
 	
 	var _ltrim2 = _interopRequireDefault(_ltrim);
 	
@@ -57071,7 +57356,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 559 */
+/* 561 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57081,7 +57366,7 @@
 	});
 	exports.default = escape;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -57096,7 +57381,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 560 */
+/* 562 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57106,7 +57391,7 @@
 	});
 	exports.default = unescape;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -57121,7 +57406,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 561 */
+/* 563 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57131,11 +57416,11 @@
 	});
 	exports.default = stripLow;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _blacklist = __webpack_require__(562);
+	var _blacklist = __webpack_require__(564);
 	
 	var _blacklist2 = _interopRequireDefault(_blacklist);
 	
@@ -57151,7 +57436,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 562 */
+/* 564 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57161,7 +57446,7 @@
 	});
 	exports.default = blacklist;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -57176,7 +57461,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 563 */
+/* 565 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57186,7 +57471,7 @@
 	});
 	exports.default = whitelist;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -57201,7 +57486,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 564 */
+/* 566 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57211,7 +57496,7 @@
 	});
 	exports.default = isWhitelisted;
 	
-	var _assertString = __webpack_require__(497);
+	var _assertString = __webpack_require__(499);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -57231,7 +57516,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 565 */
+/* 567 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57241,7 +57526,7 @@
 	});
 	exports.default = normalizeEmail;
 	
-	var _merge = __webpack_require__(506);
+	var _merge = __webpack_require__(508);
 	
 	var _merge2 = _interopRequireDefault(_merge);
 	
@@ -57367,7 +57652,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 566 */
+/* 568 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -57379,23 +57664,23 @@
 	};
 
 /***/ },
-/* 567 */
+/* 569 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(568);
+	module.exports = __webpack_require__(570);
 
 /***/ },
-/* 568 */
+/* 570 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(569);
-	var bind = __webpack_require__(570);
-	var Axios = __webpack_require__(572);
-	var defaults = __webpack_require__(573);
+	var utils = __webpack_require__(571);
+	var bind = __webpack_require__(572);
+	var Axios = __webpack_require__(574);
+	var defaults = __webpack_require__(575);
 	
 	/**
 	 * Create an instance of Axios
@@ -57428,15 +57713,15 @@
 	};
 	
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(591);
-	axios.CancelToken = __webpack_require__(592);
-	axios.isCancel = __webpack_require__(588);
+	axios.Cancel = __webpack_require__(593);
+	axios.CancelToken = __webpack_require__(594);
+	axios.isCancel = __webpack_require__(590);
 	
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(593);
+	axios.spread = __webpack_require__(595);
 	
 	module.exports = axios;
 	
@@ -57444,15 +57729,15 @@
 	module.exports.default = axios;
 
 /***/ },
-/* 569 */
+/* 571 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var bind = __webpack_require__(570);
-	var isBuffer = __webpack_require__(571);
+	var bind = __webpack_require__(572);
+	var isBuffer = __webpack_require__(573);
 	
 	/*global toString:true*/
 	
@@ -57751,7 +58036,7 @@
 	};
 
 /***/ },
-/* 570 */
+/* 572 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57767,7 +58052,7 @@
 	};
 
 /***/ },
-/* 571 */
+/* 573 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57795,15 +58080,15 @@
 	}
 
 /***/ },
-/* 572 */
+/* 574 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var defaults = __webpack_require__(573);
-	var utils = __webpack_require__(569);
-	var InterceptorManager = __webpack_require__(585);
-	var dispatchRequest = __webpack_require__(586);
+	var defaults = __webpack_require__(575);
+	var utils = __webpack_require__(571);
+	var InterceptorManager = __webpack_require__(587);
+	var dispatchRequest = __webpack_require__(588);
 	
 	/**
 	 * Create a new instance of Axios
@@ -57879,13 +58164,13 @@
 	module.exports = Axios;
 
 /***/ },
-/* 573 */
+/* 575 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(569);
-	var normalizeHeaderName = __webpack_require__(575);
+	var utils = __webpack_require__(571);
+	var normalizeHeaderName = __webpack_require__(577);
 	
 	var DEFAULT_CONTENT_TYPE = {
 	  'Content-Type': 'application/x-www-form-urlencoded'
@@ -57901,10 +58186,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(576);
+	    adapter = __webpack_require__(578);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(576);
+	    adapter = __webpack_require__(578);
 	  }
 	  return adapter;
 	}
@@ -57968,10 +58253,10 @@
 	});
 	
 	module.exports = defaults;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(574)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(576)))
 
 /***/ },
-/* 574 */
+/* 576 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58163,12 +58448,12 @@
 	};
 
 /***/ },
-/* 575 */
+/* 577 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(569);
+	var utils = __webpack_require__(571);
 	
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -58180,18 +58465,18 @@
 	};
 
 /***/ },
-/* 576 */
+/* 578 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(569);
-	var settle = __webpack_require__(577);
-	var buildURL = __webpack_require__(580);
-	var parseHeaders = __webpack_require__(581);
-	var isURLSameOrigin = __webpack_require__(582);
-	var createError = __webpack_require__(578);
-	var btoa = typeof window !== 'undefined' && window.btoa && window.btoa.bind(window) || __webpack_require__(583);
+	var utils = __webpack_require__(571);
+	var settle = __webpack_require__(579);
+	var buildURL = __webpack_require__(582);
+	var parseHeaders = __webpack_require__(583);
+	var isURLSameOrigin = __webpack_require__(584);
+	var createError = __webpack_require__(580);
+	var btoa = typeof window !== 'undefined' && window.btoa && window.btoa.bind(window) || __webpack_require__(585);
 	
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -58284,7 +58569,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(584);
+	      var cookies = __webpack_require__(586);
 	
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ? cookies.read(config.xsrfCookieName) : undefined;
@@ -58357,15 +58642,15 @@
 	    request.send(requestData);
 	  });
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(574)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(576)))
 
 /***/ },
-/* 577 */
+/* 579 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var createError = __webpack_require__(578);
+	var createError = __webpack_require__(580);
 	
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -58385,12 +58670,12 @@
 	};
 
 /***/ },
-/* 578 */
+/* 580 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var enhanceError = __webpack_require__(579);
+	var enhanceError = __webpack_require__(581);
 	
 	/**
 	 * Create an Error with the specified message, config, error code, request and response.
@@ -58408,7 +58693,7 @@
 	};
 
 /***/ },
-/* 579 */
+/* 581 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58435,12 +58720,12 @@
 	};
 
 /***/ },
-/* 580 */
+/* 582 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(569);
+	var utils = __webpack_require__(571);
 	
 	function encode(val) {
 	  return encodeURIComponent(val).replace(/%40/gi, '@').replace(/%3A/gi, ':').replace(/%24/g, '$').replace(/%2C/gi, ',').replace(/%20/g, '+').replace(/%5B/gi, '[').replace(/%5D/gi, ']');
@@ -58501,12 +58786,12 @@
 	};
 
 /***/ },
-/* 581 */
+/* 583 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(569);
+	var utils = __webpack_require__(571);
 	
 	// Headers whose duplicates are ignored by node
 	// c.f. https://nodejs.org/api/http.html#http_message_headers
@@ -58556,12 +58841,12 @@
 	};
 
 /***/ },
-/* 582 */
+/* 584 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(569);
+	var utils = __webpack_require__(571);
 	
 	module.exports = utils.isStandardBrowserEnv() ?
 	
@@ -58624,7 +58909,7 @@
 	}();
 
 /***/ },
-/* 583 */
+/* 585 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58664,12 +58949,12 @@
 	module.exports = btoa;
 
 /***/ },
-/* 584 */
+/* 586 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(569);
+	var utils = __webpack_require__(571);
 	
 	module.exports = utils.isStandardBrowserEnv() ?
 	
@@ -58722,12 +59007,12 @@
 	}();
 
 /***/ },
-/* 585 */
+/* 587 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(569);
+	var utils = __webpack_require__(571);
 	
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -58779,17 +59064,17 @@
 	module.exports = InterceptorManager;
 
 /***/ },
-/* 586 */
+/* 588 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(569);
-	var transformData = __webpack_require__(587);
-	var isCancel = __webpack_require__(588);
-	var defaults = __webpack_require__(573);
-	var isAbsoluteURL = __webpack_require__(589);
-	var combineURLs = __webpack_require__(590);
+	var utils = __webpack_require__(571);
+	var transformData = __webpack_require__(589);
+	var isCancel = __webpack_require__(590);
+	var defaults = __webpack_require__(575);
+	var isAbsoluteURL = __webpack_require__(591);
+	var combineURLs = __webpack_require__(592);
 	
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -58851,12 +59136,12 @@
 	};
 
 /***/ },
-/* 587 */
+/* 589 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(569);
+	var utils = __webpack_require__(571);
 	
 	/**
 	 * Transform the data for a request or a response
@@ -58876,7 +59161,7 @@
 	};
 
 /***/ },
-/* 588 */
+/* 590 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58886,7 +59171,7 @@
 	};
 
 /***/ },
-/* 589 */
+/* 591 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58907,7 +59192,7 @@
 	};
 
 /***/ },
-/* 590 */
+/* 592 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58925,7 +59210,7 @@
 	};
 
 /***/ },
-/* 591 */
+/* 593 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58950,12 +59235,12 @@
 	module.exports = Cancel;
 
 /***/ },
-/* 592 */
+/* 594 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var Cancel = __webpack_require__(591);
+	var Cancel = __webpack_require__(593);
 	
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -59012,7 +59297,7 @@
 	module.exports = CancelToken;
 
 /***/ },
-/* 593 */
+/* 595 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59045,26 +59330,26 @@
 	};
 
 /***/ },
-/* 594 */
+/* 596 */
 /***/ function(module, exports) {
 
 	'use strict';
 	
-	module.exports = 'https://apiw.lunes.io/api';
+	module.exports = 'http://localhost:6001/api';
 
 /***/ },
-/* 595 */
+/* 597 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var validator = __webpack_require__(494);
+	var validator = __webpack_require__(496);
 	
-	var axios = __webpack_require__(567);
+	var axios = __webpack_require__(569);
 	
-	var BASE_URL = __webpack_require__(594);
+	var BASE_URL = __webpack_require__(596);
 	
 	var endpoint = BASE_URL + '/users/login';
 	
@@ -59112,18 +59397,18 @@
 	}();
 
 /***/ },
-/* 596 */
+/* 598 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var validator = __webpack_require__(494);
+	var validator = __webpack_require__(496);
 	
-	var axios = __webpack_require__(567);
+	var axios = __webpack_require__(569);
 	
-	var BASE_URL = __webpack_require__(594);
+	var BASE_URL = __webpack_require__(596);
 	
 	var endpoint = BASE_URL + '/users/reset-password';
 	
@@ -59171,16 +59456,16 @@
 	}();
 
 /***/ },
-/* 597 */
+/* 599 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(567);
+	var axios = __webpack_require__(569);
 	
-	var BASE_URL = __webpack_require__(594);
+	var BASE_URL = __webpack_require__(596);
 	
 	var endpoint = BASE_URL + '/users/obtain/';
 	
@@ -59220,18 +59505,18 @@
 	}();
 
 /***/ },
-/* 598 */
+/* 600 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(567);
+	var axios = __webpack_require__(569);
 	
-	var validator = __webpack_require__(494);
+	var validator = __webpack_require__(496);
 	
-	var BASE_URL = __webpack_require__(594);
+	var BASE_URL = __webpack_require__(596);
 	
 	var endpoint = BASE_URL + '/users/security-check/create-pin';
 	
@@ -59280,18 +59565,18 @@
 	}();
 
 /***/ },
-/* 599 */
+/* 601 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var validator = __webpack_require__(494);
+	var validator = __webpack_require__(496);
 	
-	var axios = __webpack_require__(567);
+	var axios = __webpack_require__(569);
 	
-	var BASE_URL = __webpack_require__(594);
+	var BASE_URL = __webpack_require__(596);
 	
 	var endpoint = BASE_URL + '/users/confirm-pin';
 	
@@ -59340,16 +59625,16 @@
 	}();
 
 /***/ },
-/* 600 */
+/* 602 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(567);
+	var axios = __webpack_require__(569);
 	
-	var BASE_URL = __webpack_require__(594);
+	var BASE_URL = __webpack_require__(596);
 	
 	var endpoint = BASE_URL + '/users/security-check/confirm-phone';
 	
@@ -59398,16 +59683,16 @@
 	}();
 
 /***/ },
-/* 601 */
+/* 603 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(567);
+	var axios = __webpack_require__(569);
 	
-	var BASE_URL = __webpack_require__(594);
+	var BASE_URL = __webpack_require__(596);
 	
 	var endpoint = BASE_URL + '/users/logout';
 	
@@ -59446,16 +59731,16 @@
 	}();
 
 /***/ },
-/* 602 */
+/* 604 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(567);
+	var axios = __webpack_require__(569);
 	
-	var BASE_URL = __webpack_require__(594);
+	var BASE_URL = __webpack_require__(596);
 	
 	var endpoint = BASE_URL + '/users/update/';
 	
@@ -59495,18 +59780,18 @@
 	}();
 
 /***/ },
-/* 603 */
+/* 605 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var bitcoin = __webpack_require__(604);
-	var getPrice = __webpack_require__(608);
-	var getHistory = __webpack_require__(610);
-	var obtainWallet = __webpack_require__(649);
-	var getFees = __webpack_require__(685);
-	var createDepositWallet = __webpack_require__(688);
-	var getBalance = __webpack_require__(689);
+	var bitcoin = __webpack_require__(606);
+	var getPrice = __webpack_require__(610);
+	var getHistory = __webpack_require__(612);
+	var obtainWallet = __webpack_require__(651);
+	var getFees = __webpack_require__(687);
+	var createDepositWallet = __webpack_require__(690);
+	var getBalance = __webpack_require__(691);
 	
 	module.exports = {
 	  bitcoin: bitcoin,
@@ -59519,14 +59804,14 @@
 	};
 
 /***/ },
-/* 604 */
+/* 606 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var getBalance = __webpack_require__(605);
-	var getHistory = __webpack_require__(606);
-	var createTransaction = __webpack_require__(607);
+	var getBalance = __webpack_require__(607);
+	var getHistory = __webpack_require__(608);
+	var createTransaction = __webpack_require__(609);
 	
 	module.exports = {
 	  getBalance: getBalance,
@@ -59535,16 +59820,16 @@
 	};
 
 /***/ },
-/* 605 */
+/* 607 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(567);
+	var axios = __webpack_require__(569);
 	
-	var endpoint = __webpack_require__(594) + '/coins/balance';
+	var endpoint = __webpack_require__(596) + '/coins/balance';
 	
 	module.exports = function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(params, accessToken) {
@@ -59591,16 +59876,16 @@
 	}();
 
 /***/ },
-/* 606 */
+/* 608 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(567);
+	var axios = __webpack_require__(569);
 	
-	var endpoint = __webpack_require__(594) + '/coins/history';
+	var endpoint = __webpack_require__(596) + '/coins/history';
 	
 	module.exports = function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(params, accessToken) {
@@ -59638,16 +59923,16 @@
 	}();
 
 /***/ },
-/* 607 */
+/* 609 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(567);
+	var axios = __webpack_require__(569);
 	
-	var createEndpoint = __webpack_require__(594) + '/coins/tx/create/btc';
+	var createEndpoint = __webpack_require__(596) + '/coins/tx/create/btc';
 	
 	/**
 	 *
@@ -59722,17 +60007,17 @@
 	}();
 
 /***/ },
-/* 608 */
+/* 610 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(567);
-	var validator = __webpack_require__(494);
+	var axios = __webpack_require__(569);
+	var validator = __webpack_require__(496);
 	
-	var endpoint = __webpack_require__(609) + '/price';
+	var endpoint = __webpack_require__(611) + '/price';
 	
 	module.exports = function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(params) {
@@ -59773,7 +60058,7 @@
 	}();
 
 /***/ },
-/* 609 */
+/* 611 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59781,17 +60066,17 @@
 	module.exports = 'https://min-api.cryptocompare.com/data';
 
 /***/ },
-/* 610 */
+/* 612 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(567);
-	var Promise = __webpack_require__(611);
+	var axios = __webpack_require__(569);
+	var Promise = __webpack_require__(613);
 	
-	var apiUrl = '' + __webpack_require__(609);
+	var apiUrl = '' + __webpack_require__(611);
 	
 	module.exports = function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(params) {
@@ -59895,7 +60180,7 @@
 	};
 
 /***/ },
-/* 611 */
+/* 613 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -59908,12 +60193,12 @@
 	    } catch (e) {}
 	    return bluebird;
 	}
-	var bluebird = __webpack_require__(612)();
+	var bluebird = __webpack_require__(614)();
 	bluebird.noConflict = noConflict;
 	module.exports = bluebird;
 
 /***/ },
-/* 612 */
+/* 614 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -59930,7 +60215,7 @@
 	    };
 	    function Proxyable() {}
 	    var UNDEFINED_BINDING = {};
-	    var util = __webpack_require__(613);
+	    var util = __webpack_require__(615);
 	
 	    var getDomain;
 	    if (util.isNode) {
@@ -59946,11 +60231,11 @@
 	    }
 	    util.notEnumerableProp(Promise, "_getDomain", getDomain);
 	
-	    var es5 = __webpack_require__(614);
-	    var Async = __webpack_require__(615);
+	    var es5 = __webpack_require__(616);
+	    var Async = __webpack_require__(617);
 	    var async = new Async();
 	    es5.defineProperty(Promise, "_async", { value: async });
-	    var errors = __webpack_require__(620);
+	    var errors = __webpack_require__(622);
 	    var TypeError = Promise.TypeError = errors.TypeError;
 	    Promise.RangeError = errors.RangeError;
 	    var CancellationError = Promise.CancellationError = errors.CancellationError;
@@ -59961,16 +60246,16 @@
 	    var INTERNAL = function INTERNAL() {};
 	    var APPLY = {};
 	    var NEXT_FILTER = {};
-	    var tryConvertToPromise = __webpack_require__(621)(Promise, INTERNAL);
-	    var PromiseArray = __webpack_require__(622)(Promise, INTERNAL, tryConvertToPromise, apiRejection, Proxyable);
-	    var Context = __webpack_require__(623)(Promise);
+	    var tryConvertToPromise = __webpack_require__(623)(Promise, INTERNAL);
+	    var PromiseArray = __webpack_require__(624)(Promise, INTERNAL, tryConvertToPromise, apiRejection, Proxyable);
+	    var Context = __webpack_require__(625)(Promise);
 	    /*jshint unused:false*/
 	    var createContext = Context.create;
-	    var debug = __webpack_require__(624)(Promise, Context);
+	    var debug = __webpack_require__(626)(Promise, Context);
 	    var CapturedTrace = debug.CapturedTrace;
-	    var PassThroughHandlerContext = __webpack_require__(625)(Promise, tryConvertToPromise, NEXT_FILTER);
-	    var catchFilter = __webpack_require__(626)(NEXT_FILTER);
-	    var nodebackForPromise = __webpack_require__(627);
+	    var PassThroughHandlerContext = __webpack_require__(627)(Promise, tryConvertToPromise, NEXT_FILTER);
+	    var catchFilter = __webpack_require__(628)(NEXT_FILTER);
+	    var nodebackForPromise = __webpack_require__(629);
 	    var errorObj = util.errorObj;
 	    var tryCatch = util.tryCatch;
 	    function check(self, executor) {
@@ -60605,29 +60890,29 @@
 	
 	    util.notEnumerableProp(Promise, "_makeSelfResolutionError", makeSelfResolutionError);
 	
-	    __webpack_require__(628)(Promise, INTERNAL, tryConvertToPromise, apiRejection, debug);
-	    __webpack_require__(629)(Promise, INTERNAL, tryConvertToPromise, debug);
-	    __webpack_require__(630)(Promise, PromiseArray, apiRejection, debug);
-	    __webpack_require__(631)(Promise);
-	    __webpack_require__(632)(Promise);
-	    __webpack_require__(633)(Promise, PromiseArray, tryConvertToPromise, INTERNAL, async, getDomain);
+	    __webpack_require__(630)(Promise, INTERNAL, tryConvertToPromise, apiRejection, debug);
+	    __webpack_require__(631)(Promise, INTERNAL, tryConvertToPromise, debug);
+	    __webpack_require__(632)(Promise, PromiseArray, apiRejection, debug);
+	    __webpack_require__(633)(Promise);
+	    __webpack_require__(634)(Promise);
+	    __webpack_require__(635)(Promise, PromiseArray, tryConvertToPromise, INTERNAL, async, getDomain);
 	    Promise.Promise = Promise;
 	    Promise.version = "3.5.1";
-	    __webpack_require__(634)(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
-	    __webpack_require__(635)(Promise);
-	    __webpack_require__(636)(Promise, apiRejection, tryConvertToPromise, createContext, INTERNAL, debug);
-	    __webpack_require__(637)(Promise, INTERNAL, debug);
-	    __webpack_require__(638)(Promise, apiRejection, INTERNAL, tryConvertToPromise, Proxyable, debug);
-	    __webpack_require__(639)(Promise);
-	    __webpack_require__(640)(Promise, INTERNAL);
-	    __webpack_require__(641)(Promise, PromiseArray, tryConvertToPromise, apiRejection);
-	    __webpack_require__(642)(Promise, INTERNAL, tryConvertToPromise, apiRejection);
-	    __webpack_require__(643)(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
-	    __webpack_require__(644)(Promise, PromiseArray, debug);
-	    __webpack_require__(645)(Promise, PromiseArray, apiRejection);
-	    __webpack_require__(646)(Promise, INTERNAL);
-	    __webpack_require__(647)(Promise, INTERNAL);
-	    __webpack_require__(648)(Promise);
+	    __webpack_require__(636)(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
+	    __webpack_require__(637)(Promise);
+	    __webpack_require__(638)(Promise, apiRejection, tryConvertToPromise, createContext, INTERNAL, debug);
+	    __webpack_require__(639)(Promise, INTERNAL, debug);
+	    __webpack_require__(640)(Promise, apiRejection, INTERNAL, tryConvertToPromise, Proxyable, debug);
+	    __webpack_require__(641)(Promise);
+	    __webpack_require__(642)(Promise, INTERNAL);
+	    __webpack_require__(643)(Promise, PromiseArray, tryConvertToPromise, apiRejection);
+	    __webpack_require__(644)(Promise, INTERNAL, tryConvertToPromise, apiRejection);
+	    __webpack_require__(645)(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
+	    __webpack_require__(646)(Promise, PromiseArray, debug);
+	    __webpack_require__(647)(Promise, PromiseArray, apiRejection);
+	    __webpack_require__(648)(Promise, INTERNAL);
+	    __webpack_require__(649)(Promise, INTERNAL);
+	    __webpack_require__(650)(Promise);
 	
 	    util.toFastProperties(Promise);
 	    util.toFastProperties(Promise.prototype);
@@ -60651,17 +60936,17 @@
 	    debug.setBounds(Async.firstLineError, util.lastLineError);
 	    return Promise;
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(574)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(576)))
 
 /***/ },
-/* 613 */
+/* 615 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {"use strict";
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var es5 = __webpack_require__(614);
+	var es5 = __webpack_require__(616);
 	var canEvaluate = typeof navigator == "undefined";
 	
 	var errorObj = { e: {} };
@@ -61020,10 +61305,10 @@
 	    ret.lastLineError = e;
 	}
 	module.exports = ret;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(574)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(576)))
 
 /***/ },
-/* 614 */
+/* 616 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -61109,7 +61394,7 @@
 	}
 
 /***/ },
-/* 615 */
+/* 617 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -61120,9 +61405,9 @@
 	} catch (e) {
 	    firstLineError = e;
 	}
-	var schedule = __webpack_require__(616);
-	var Queue = __webpack_require__(619);
-	var util = __webpack_require__(613);
+	var schedule = __webpack_require__(618);
+	var Queue = __webpack_require__(621);
+	var util = __webpack_require__(615);
 	
 	function Async() {
 	    this._customScheduler = false;
@@ -61278,15 +61563,15 @@
 	
 	module.exports = Async;
 	module.exports.firstLineError = firstLineError;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(574)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(576)))
 
 /***/ },
-/* 616 */
+/* 618 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process, setImmediate) {"use strict";
 	
-	var util = __webpack_require__(613);
+	var util = __webpack_require__(615);
 	var schedule;
 	var noAsyncScheduler = function noAsyncScheduler() {
 	    throw new Error("No async scheduler available\n\n    See http://goo.gl/MqrFmX\n");
@@ -61344,13 +61629,13 @@
 	    schedule = noAsyncScheduler;
 	}
 	module.exports = schedule;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(574), __webpack_require__(617).setImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(576), __webpack_require__(619).setImmediate))
 
 /***/ },
-/* 617 */
+/* 619 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
 	
 	var apply = Function.prototype.apply;
 	
@@ -61400,12 +61685,16 @@
 	};
 	
 	// setimmediate attaches itself to the global object
-	__webpack_require__(618);
-	exports.setImmediate = setImmediate;
-	exports.clearImmediate = clearImmediate;
+	__webpack_require__(620);
+	// On some exotic environments, it's not clear which object `setimmeidate` was
+	// able to install onto.  Search each possibility in the same order as the
+	// `setimmediate` library.
+	exports.setImmediate = typeof self !== "undefined" && self.setImmediate || typeof global !== "undefined" && global.setImmediate || undefined && undefined.setImmediate;
+	exports.clearImmediate = typeof self !== "undefined" && self.clearImmediate || typeof global !== "undefined" && global.clearImmediate || undefined && undefined.clearImmediate;
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 618 */
+/* 620 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {"use strict";
@@ -61592,10 +61881,10 @@
 	    attachTo.setImmediate = setImmediate;
 	    attachTo.clearImmediate = clearImmediate;
 	})(typeof self === "undefined" ? typeof global === "undefined" ? undefined : global : self);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(574)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(576)))
 
 /***/ },
-/* 619 */
+/* 621 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -61674,14 +61963,14 @@
 	module.exports = Queue;
 
 /***/ },
-/* 620 */
+/* 622 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var es5 = __webpack_require__(614);
+	var es5 = __webpack_require__(616);
 	var Objectfreeze = es5.freeze;
-	var util = __webpack_require__(613);
+	var util = __webpack_require__(615);
 	var inherits = util.inherits;
 	var notEnumerableProp = util.notEnumerableProp;
 	
@@ -61792,13 +62081,13 @@
 	};
 
 /***/ },
-/* 621 */
+/* 623 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, INTERNAL) {
-	    var util = __webpack_require__(613);
+	    var util = __webpack_require__(615);
 	    var errorObj = util.errorObj;
 	    var isObject = util.isObject;
 	
@@ -61878,13 +62167,13 @@
 	};
 
 /***/ },
-/* 622 */
+/* 624 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, INTERNAL, tryConvertToPromise, apiRejection, Proxyable) {
-	    var util = __webpack_require__(613);
+	    var util = __webpack_require__(615);
 	    var isArray = util.isArray;
 	
 	    function toResolutionValue(val) {
@@ -62063,7 +62352,7 @@
 	};
 
 /***/ },
-/* 623 */
+/* 625 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -62140,7 +62429,7 @@
 	};
 
 /***/ },
-/* 624 */
+/* 626 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -62150,8 +62439,8 @@
 	module.exports = function (Promise, Context) {
 	    var getDomain = Promise._getDomain;
 	    var async = Promise._async;
-	    var Warning = __webpack_require__(620).Warning;
-	    var util = __webpack_require__(613);
+	    var Warning = __webpack_require__(622).Warning;
+	    var util = __webpack_require__(615);
 	    var canAttachTrace = util.canAttachTrace;
 	    var unhandledRejectionHandled;
 	    var possiblyUnhandledRejection;
@@ -63022,19 +63311,19 @@
 	        fireGlobalEvent: fireGlobalEvent
 	    };
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(574)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(576)))
 
 /***/ },
-/* 625 */
+/* 627 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, tryConvertToPromise, NEXT_FILTER) {
-	    var util = __webpack_require__(613);
+	    var util = __webpack_require__(615);
 	    var CancellationError = Promise.CancellationError;
 	    var errorObj = util.errorObj;
-	    var catchFilter = __webpack_require__(626)(NEXT_FILTER);
+	    var catchFilter = __webpack_require__(628)(NEXT_FILTER);
 	
 	    function PassThroughHandlerContext(promise, type, handler) {
 	        this.promise = promise;
@@ -63154,14 +63443,14 @@
 	};
 
 /***/ },
-/* 626 */
+/* 628 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (NEXT_FILTER) {
-	    var util = __webpack_require__(613);
-	    var getKeys = __webpack_require__(614).keys;
+	    var util = __webpack_require__(615);
+	    var getKeys = __webpack_require__(616).keys;
 	    var tryCatch = util.tryCatch;
 	    var errorObj = util.errorObj;
 	
@@ -63201,16 +63490,16 @@
 	};
 
 /***/ },
-/* 627 */
+/* 629 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var util = __webpack_require__(613);
+	var util = __webpack_require__(615);
 	var maybeWrapAsError = util.maybeWrapAsError;
-	var errors = __webpack_require__(620);
+	var errors = __webpack_require__(622);
 	var OperationalError = errors.OperationalError;
-	var es5 = __webpack_require__(614);
+	var es5 = __webpack_require__(616);
 	
 	function isUntypedError(obj) {
 	    return obj instanceof Error && es5.getPrototypeOf(obj) === Error.prototype;
@@ -63259,13 +63548,13 @@
 	module.exports = nodebackForPromise;
 
 /***/ },
-/* 628 */
+/* 630 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, INTERNAL, tryConvertToPromise, apiRejection, debug) {
-	    var util = __webpack_require__(613);
+	    var util = __webpack_require__(615);
 	    var tryCatch = util.tryCatch;
 	
 	    Promise.method = function (fn) {
@@ -63316,7 +63605,7 @@
 	};
 
 /***/ },
-/* 629 */
+/* 631 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -63388,13 +63677,13 @@
 	};
 
 /***/ },
-/* 630 */
+/* 632 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, apiRejection, debug) {
-	    var util = __webpack_require__(613);
+	    var util = __webpack_require__(615);
 	    var tryCatch = util.tryCatch;
 	    var errorObj = util.errorObj;
 	    var async = Promise._async;
@@ -63521,7 +63810,7 @@
 	};
 
 /***/ },
-/* 631 */
+/* 633 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -63571,7 +63860,7 @@
 	};
 
 /***/ },
-/* 632 */
+/* 634 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -63677,13 +63966,13 @@
 	};
 
 /***/ },
-/* 633 */
+/* 635 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, tryConvertToPromise, INTERNAL, async, getDomain) {
-	    var util = __webpack_require__(613);
+	    var util = __webpack_require__(615);
 	    var canEvaluate = util.canEvaluate;
 	    var tryCatch = util.tryCatch;
 	    var errorObj = util.errorObj;
@@ -63843,7 +64132,7 @@
 	};
 
 /***/ },
-/* 634 */
+/* 636 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63852,7 +64141,7 @@
 	
 	module.exports = function (Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug) {
 	    var getDomain = Promise._getDomain;
-	    var util = __webpack_require__(613);
+	    var util = __webpack_require__(615);
 	    var tryCatch = util.tryCatch;
 	    var errorObj = util.errorObj;
 	    var async = Promise._async;
@@ -64000,7 +64289,7 @@
 	};
 
 /***/ },
-/* 635 */
+/* 637 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64013,7 +64302,7 @@
 	}
 	
 	module.exports = function (Promise) {
-	    var util = __webpack_require__(613);
+	    var util = __webpack_require__(615);
 	    var canEvaluate = util.canEvaluate;
 	    var isIdentifier = util.isIdentifier;
 	
@@ -64130,15 +64419,15 @@
 	};
 
 /***/ },
-/* 636 */
+/* 638 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, apiRejection, tryConvertToPromise, createContext, INTERNAL, debug) {
-	    var util = __webpack_require__(613);
-	    var TypeError = __webpack_require__(620).TypeError;
-	    var inherits = __webpack_require__(613).inherits;
+	    var util = __webpack_require__(615);
+	    var TypeError = __webpack_require__(622).TypeError;
+	    var inherits = __webpack_require__(615).inherits;
 	    var errorObj = util.errorObj;
 	    var tryCatch = util.tryCatch;
 	    var NULL = {};
@@ -64347,13 +64636,13 @@
 	};
 
 /***/ },
-/* 637 */
+/* 639 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, INTERNAL, debug) {
-	    var util = __webpack_require__(613);
+	    var util = __webpack_require__(615);
 	    var TimeoutError = Promise.TimeoutError;
 	
 	    function HandleWrapper(handle) {
@@ -64446,15 +64735,15 @@
 	};
 
 /***/ },
-/* 638 */
+/* 640 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, apiRejection, INTERNAL, tryConvertToPromise, Proxyable, debug) {
-	    var errors = __webpack_require__(620);
+	    var errors = __webpack_require__(622);
 	    var TypeError = errors.TypeError;
-	    var util = __webpack_require__(613);
+	    var util = __webpack_require__(615);
 	    var errorObj = util.errorObj;
 	    var tryCatch = util.tryCatch;
 	    var yieldHandlers = [];
@@ -64649,13 +64938,13 @@
 	};
 
 /***/ },
-/* 639 */
+/* 641 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise) {
-	    var util = __webpack_require__(613);
+	    var util = __webpack_require__(615);
 	    var async = Promise._async;
 	    var tryCatch = util.tryCatch;
 	    var errorObj = util.errorObj;
@@ -64703,7 +64992,7 @@
 	};
 
 /***/ },
-/* 640 */
+/* 642 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64712,12 +65001,12 @@
 	
 	module.exports = function (Promise, INTERNAL) {
 	    var THIS = {};
-	    var util = __webpack_require__(613);
-	    var nodebackForPromise = __webpack_require__(627);
+	    var util = __webpack_require__(615);
+	    var nodebackForPromise = __webpack_require__(629);
 	    var withAppended = util.withAppended;
 	    var maybeWrapAsError = util.maybeWrapAsError;
 	    var canEvaluate = util.canEvaluate;
-	    var TypeError = __webpack_require__(620).TypeError;
+	    var TypeError = __webpack_require__(622).TypeError;
 	    var defaultSuffix = "Async";
 	    var defaultPromisified = { __isPromisified__: true };
 	    var noCopyProps = ["arity", "length", "name", "arguments", "caller", "callee", "prototype", "__isPromisified__"];
@@ -64970,15 +65259,15 @@
 	};
 
 /***/ },
-/* 641 */
+/* 643 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, tryConvertToPromise, apiRejection) {
-	    var util = __webpack_require__(613);
+	    var util = __webpack_require__(615);
 	    var isObject = util.isObject;
-	    var es5 = __webpack_require__(614);
+	    var es5 = __webpack_require__(616);
 	    var Es6Map;
 	    if (typeof Map === "function") Es6Map = Map;
 	
@@ -65092,13 +65381,13 @@
 	};
 
 /***/ },
-/* 642 */
+/* 644 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, INTERNAL, tryConvertToPromise, apiRejection) {
-	    var util = __webpack_require__(613);
+	    var util = __webpack_require__(615);
 	
 	    var raceLater = function raceLater(promise) {
 	        return promise.then(function (array) {
@@ -65144,14 +65433,14 @@
 	};
 
 /***/ },
-/* 643 */
+/* 645 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug) {
 	    var getDomain = Promise._getDomain;
-	    var util = __webpack_require__(613);
+	    var util = __webpack_require__(615);
 	    var tryCatch = util.tryCatch;
 	
 	    function ReductionPromiseArray(promises, fn, initialValue, _each) {
@@ -65307,14 +65596,14 @@
 	};
 
 /***/ },
-/* 644 */
+/* 646 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, debug) {
 	    var PromiseInspection = Promise.PromiseInspection;
-	    var util = __webpack_require__(613);
+	    var util = __webpack_require__(615);
 	
 	    function SettledPromiseArray(values) {
 	        this.constructor$(values);
@@ -65355,15 +65644,15 @@
 	};
 
 /***/ },
-/* 645 */
+/* 647 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, apiRejection) {
-	    var util = __webpack_require__(613);
-	    var RangeError = __webpack_require__(620).RangeError;
-	    var AggregateError = __webpack_require__(620).AggregateError;
+	    var util = __webpack_require__(615);
+	    var RangeError = __webpack_require__(622).RangeError;
+	    var AggregateError = __webpack_require__(622).AggregateError;
 	    var isArray = util.isArray;
 	    var CANCELLATION = {};
 	
@@ -65503,7 +65792,7 @@
 	};
 
 /***/ },
-/* 646 */
+/* 648 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -65521,7 +65810,7 @@
 	};
 
 /***/ },
-/* 647 */
+/* 649 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -65554,7 +65843,7 @@
 	};
 
 /***/ },
-/* 648 */
+/* 650 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -65580,12 +65869,12 @@
 	};
 
 /***/ },
-/* 649 */
+/* 651 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var Mnemonic = __webpack_require__(650);
+	var Mnemonic = __webpack_require__(652);
 	
 	module.exports = function (encryptedWallet, password) {
 	  try {
@@ -65600,12 +65889,12 @@
 	};
 
 /***/ },
-/* 650 */
+/* 652 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var CryptoJS = __webpack_require__(651);
+	var CryptoJS = __webpack_require__(653);
 	
 	var encryptMnemonic = function encryptMnemonic(mnemonic, passphrase) {
 	  var ciphertext = CryptoJS.AES.encrypt(mnemonic, passphrase);
@@ -65624,7 +65913,7 @@
 	};
 
 /***/ },
-/* 651 */
+/* 653 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -65634,10 +65923,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(653), __webpack_require__(654), __webpack_require__(655), __webpack_require__(656), __webpack_require__(657), __webpack_require__(658), __webpack_require__(659), __webpack_require__(660), __webpack_require__(661), __webpack_require__(662), __webpack_require__(663), __webpack_require__(664), __webpack_require__(665), __webpack_require__(666), __webpack_require__(667), __webpack_require__(668), __webpack_require__(669), __webpack_require__(670), __webpack_require__(671), __webpack_require__(672), __webpack_require__(673), __webpack_require__(674), __webpack_require__(675), __webpack_require__(676), __webpack_require__(677), __webpack_require__(678), __webpack_require__(679), __webpack_require__(680), __webpack_require__(681), __webpack_require__(682), __webpack_require__(683), __webpack_require__(684));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(655), __webpack_require__(656), __webpack_require__(657), __webpack_require__(658), __webpack_require__(659), __webpack_require__(660), __webpack_require__(661), __webpack_require__(662), __webpack_require__(663), __webpack_require__(664), __webpack_require__(665), __webpack_require__(666), __webpack_require__(667), __webpack_require__(668), __webpack_require__(669), __webpack_require__(670), __webpack_require__(671), __webpack_require__(672), __webpack_require__(673), __webpack_require__(674), __webpack_require__(675), __webpack_require__(676), __webpack_require__(677), __webpack_require__(678), __webpack_require__(679), __webpack_require__(680), __webpack_require__(681), __webpack_require__(682), __webpack_require__(683), __webpack_require__(684), __webpack_require__(685), __webpack_require__(686));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(653), __webpack_require__(654), __webpack_require__(655), __webpack_require__(656), __webpack_require__(657), __webpack_require__(658), __webpack_require__(659), __webpack_require__(660), __webpack_require__(661), __webpack_require__(662), __webpack_require__(663), __webpack_require__(664), __webpack_require__(665), __webpack_require__(666), __webpack_require__(667), __webpack_require__(668), __webpack_require__(669), __webpack_require__(670), __webpack_require__(671), __webpack_require__(672), __webpack_require__(673), __webpack_require__(674), __webpack_require__(675), __webpack_require__(676), __webpack_require__(677), __webpack_require__(678), __webpack_require__(679), __webpack_require__(680), __webpack_require__(681), __webpack_require__(682), __webpack_require__(683), __webpack_require__(684)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(655), __webpack_require__(656), __webpack_require__(657), __webpack_require__(658), __webpack_require__(659), __webpack_require__(660), __webpack_require__(661), __webpack_require__(662), __webpack_require__(663), __webpack_require__(664), __webpack_require__(665), __webpack_require__(666), __webpack_require__(667), __webpack_require__(668), __webpack_require__(669), __webpack_require__(670), __webpack_require__(671), __webpack_require__(672), __webpack_require__(673), __webpack_require__(674), __webpack_require__(675), __webpack_require__(676), __webpack_require__(677), __webpack_require__(678), __webpack_require__(679), __webpack_require__(680), __webpack_require__(681), __webpack_require__(682), __webpack_require__(683), __webpack_require__(684), __webpack_require__(685), __webpack_require__(686)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			root.CryptoJS = factory(root.CryptoJS);
@@ -65648,7 +65937,7 @@
 	});
 
 /***/ },
-/* 652 */
+/* 654 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66411,7 +66700,7 @@
 	});
 
 /***/ },
-/* 653 */
+/* 655 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66421,10 +66710,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652));
+			module.exports = exports = factory(__webpack_require__(654));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -66720,7 +67009,7 @@
 	});
 
 /***/ },
-/* 654 */
+/* 656 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66730,10 +67019,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652));
+			module.exports = exports = factory(__webpack_require__(654));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -66792,7 +67081,7 @@
 	});
 
 /***/ },
-/* 655 */
+/* 657 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66802,10 +67091,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652));
+			module.exports = exports = factory(__webpack_require__(654));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -66946,7 +67235,7 @@
 	});
 
 /***/ },
-/* 656 */
+/* 658 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66956,10 +67245,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652));
+			module.exports = exports = factory(__webpack_require__(654));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67085,7 +67374,7 @@
 	});
 
 /***/ },
-/* 657 */
+/* 659 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67095,10 +67384,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652));
+			module.exports = exports = factory(__webpack_require__(654));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67345,7 +67634,7 @@
 	});
 
 /***/ },
-/* 658 */
+/* 660 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67355,10 +67644,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652));
+			module.exports = exports = factory(__webpack_require__(654));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67496,7 +67785,7 @@
 	});
 
 /***/ },
-/* 659 */
+/* 661 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67506,10 +67795,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652));
+			module.exports = exports = factory(__webpack_require__(654));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67696,7 +67985,7 @@
 	});
 
 /***/ },
-/* 660 */
+/* 662 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67706,10 +67995,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(659));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(661));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(659)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(661)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67778,7 +68067,7 @@
 	});
 
 /***/ },
-/* 661 */
+/* 663 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67788,10 +68077,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(653));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(655));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(653)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(655)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -68060,7 +68349,7 @@
 	});
 
 /***/ },
-/* 662 */
+/* 664 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -68070,10 +68359,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(653), __webpack_require__(661));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(655), __webpack_require__(663));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(653), __webpack_require__(661)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(655), __webpack_require__(663)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -68143,7 +68432,7 @@
 	});
 
 /***/ },
-/* 663 */
+/* 665 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -68153,10 +68442,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(653));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(655));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(653)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(655)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -68461,7 +68750,7 @@
 	});
 
 /***/ },
-/* 664 */
+/* 666 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -68471,10 +68760,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652));
+			module.exports = exports = factory(__webpack_require__(654));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -68701,7 +68990,7 @@
 	});
 
 /***/ },
-/* 665 */
+/* 667 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -68711,10 +69000,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652));
+			module.exports = exports = factory(__webpack_require__(654));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -68849,7 +69138,7 @@
 	});
 
 /***/ },
-/* 666 */
+/* 668 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -68859,10 +69148,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(658), __webpack_require__(665));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(660), __webpack_require__(667));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(658), __webpack_require__(665)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(660), __webpack_require__(667)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -68999,7 +69288,7 @@
 	});
 
 /***/ },
-/* 667 */
+/* 669 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -69009,10 +69298,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(658), __webpack_require__(665));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(660), __webpack_require__(667));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(658), __webpack_require__(665)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(660), __webpack_require__(667)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -69136,7 +69425,7 @@
 	});
 
 /***/ },
-/* 668 */
+/* 670 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -69146,10 +69435,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(667));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(669));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(667)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(669)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70021,7 +70310,7 @@
 	});
 
 /***/ },
-/* 669 */
+/* 671 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70031,10 +70320,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(670));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(670)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70104,7 +70393,7 @@
 	});
 
 /***/ },
-/* 670 */
+/* 672 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70114,10 +70403,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(670));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(670)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70167,7 +70456,7 @@
 	});
 
 /***/ },
-/* 671 */
+/* 673 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70177,10 +70466,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(670));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(670)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70274,7 +70563,7 @@
 	});
 
 /***/ },
-/* 672 */
+/* 674 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70284,10 +70573,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(670));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(670)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70333,7 +70622,7 @@
 	});
 
 /***/ },
-/* 673 */
+/* 675 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70343,10 +70632,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(670));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(670)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70378,7 +70667,7 @@
 	});
 
 /***/ },
-/* 674 */
+/* 676 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70388,10 +70677,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(670));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(670)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70432,7 +70721,7 @@
 	});
 
 /***/ },
-/* 675 */
+/* 677 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70442,10 +70731,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(670));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(670)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70480,7 +70769,7 @@
 	});
 
 /***/ },
-/* 676 */
+/* 678 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70490,10 +70779,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(670));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(670)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70525,7 +70814,7 @@
 	});
 
 /***/ },
-/* 677 */
+/* 679 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70535,10 +70824,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(670));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(670)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70575,7 +70864,7 @@
 	});
 
 /***/ },
-/* 678 */
+/* 680 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70585,10 +70874,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(670));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(670)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70608,7 +70897,7 @@
 	});
 
 /***/ },
-/* 679 */
+/* 681 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70618,10 +70907,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(668));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(670));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(670)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70679,7 +70968,7 @@
 	});
 
 /***/ },
-/* 680 */
+/* 682 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70689,10 +70978,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(656), __webpack_require__(657), __webpack_require__(667), __webpack_require__(668));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(658), __webpack_require__(659), __webpack_require__(669), __webpack_require__(670));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(656), __webpack_require__(657), __webpack_require__(667), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(658), __webpack_require__(659), __webpack_require__(669), __webpack_require__(670)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70915,7 +71204,7 @@
 	});
 
 /***/ },
-/* 681 */
+/* 683 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70925,10 +71214,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(656), __webpack_require__(657), __webpack_require__(667), __webpack_require__(668));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(658), __webpack_require__(659), __webpack_require__(669), __webpack_require__(670));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(656), __webpack_require__(657), __webpack_require__(667), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(658), __webpack_require__(659), __webpack_require__(669), __webpack_require__(670)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -71661,7 +71950,7 @@
 	});
 
 /***/ },
-/* 682 */
+/* 684 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -71671,10 +71960,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(656), __webpack_require__(657), __webpack_require__(667), __webpack_require__(668));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(658), __webpack_require__(659), __webpack_require__(669), __webpack_require__(670));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(656), __webpack_require__(657), __webpack_require__(667), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(658), __webpack_require__(659), __webpack_require__(669), __webpack_require__(670)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -71805,7 +72094,7 @@
 	});
 
 /***/ },
-/* 683 */
+/* 685 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -71815,10 +72104,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(656), __webpack_require__(657), __webpack_require__(667), __webpack_require__(668));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(658), __webpack_require__(659), __webpack_require__(669), __webpack_require__(670));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(656), __webpack_require__(657), __webpack_require__(667), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(658), __webpack_require__(659), __webpack_require__(669), __webpack_require__(670)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -71990,7 +72279,7 @@
 	});
 
 /***/ },
-/* 684 */
+/* 686 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -72000,10 +72289,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(652), __webpack_require__(656), __webpack_require__(657), __webpack_require__(667), __webpack_require__(668));
+			module.exports = exports = factory(__webpack_require__(654), __webpack_require__(658), __webpack_require__(659), __webpack_require__(669), __webpack_require__(670));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(652), __webpack_require__(656), __webpack_require__(657), __webpack_require__(667), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(654), __webpack_require__(658), __webpack_require__(659), __webpack_require__(669), __webpack_require__(670)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -72174,15 +72463,15 @@
 	});
 
 /***/ },
-/* 685 */
+/* 687 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(567);
-	var _ = __webpack_require__(686);
+	var axios = __webpack_require__(569);
+	var _ = __webpack_require__(688);
 	
 	var feeURL = 'https://bitaps.com/api/fee';
 	
@@ -72229,7 +72518,7 @@
 	};
 
 /***/ },
-/* 686 */
+/* 688 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {'use strict';var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};/**
@@ -81640,7 +81929,7 @@
 	lodash.prototype.at=wrapperAt;lodash.prototype.chain=wrapperChain;lodash.prototype.commit=wrapperCommit;lodash.prototype.next=wrapperNext;lodash.prototype.plant=wrapperPlant;lodash.prototype.reverse=wrapperReverse;lodash.prototype.toJSON=lodash.prototype.valueOf=lodash.prototype.value=wrapperValue;// Add lazy aliases.
 	lodash.prototype.first=lodash.prototype.head;if(symIterator){lodash.prototype[symIterator]=wrapperToIterator;}return lodash;};/*--------------------------------------------------------------------------*/// Export lodash.
 	var _=runInContext();// Some AMD build optimizers, like r.js, check for condition patterns like:
-	if("function"=='function'&&_typeof(__webpack_require__(687))=='object'&&__webpack_require__(687)){// Expose Lodash on the global object to prevent errors when Lodash is
+	if("function"=='function'&&_typeof(__webpack_require__(689))=='object'&&__webpack_require__(689)){// Expose Lodash on the global object to prevent errors when Lodash is
 	// loaded by a script tag in the presence of an AMD loader.
 	// See http://requirejs.org/docs/errors.html#mismatch for more details.
 	// Use `_.noConflict` to remove Lodash from the global object.
@@ -81651,10 +81940,10 @@
 	(freeModule.exports=_)._=_;// Export for CommonJS support.
 	freeExports._=_;}else{// Export to the global object.
 	root._=_;}}).call(undefined);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(323)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(324)(module)))
 
 /***/ },
-/* 687 */
+/* 689 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
@@ -81662,16 +81951,16 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
-/* 688 */
+/* 690 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(567);
+	var axios = __webpack_require__(569);
 	
-	var createDepositWalletEndpoint = __webpack_require__(594) + '/deposit/wallet/create';
+	var createDepositWalletEndpoint = __webpack_require__(596) + '/deposit/wallet/create';
 	
 	/**
 	 *
@@ -81756,16 +82045,16 @@
 	}();
 
 /***/ },
-/* 689 */
+/* 691 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(567);
+	var axios = __webpack_require__(569);
 	
-	var endpoint = __webpack_require__(594) + '/coins/balance';
+	var endpoint = __webpack_require__(596) + '/coins/balance';
 	
 	module.exports = function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(params, accessToken) {
@@ -81812,18 +82101,18 @@
 	}();
 
 /***/ },
-/* 690 */
+/* 692 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var buyCoin = __webpack_require__(691);
-	var buyConversion = __webpack_require__(692);
-	var buyBalance = __webpack_require__(693);
-	var buyHistory = __webpack_require__(694);
-	var coinAmount = __webpack_require__(695);
-	var confirmTerm = __webpack_require__(696);
-	var obtainPhase = __webpack_require__(697);
+	var buyCoin = __webpack_require__(693);
+	var buyConversion = __webpack_require__(694);
+	var buyBalance = __webpack_require__(695);
+	var buyHistory = __webpack_require__(696);
+	var coinAmount = __webpack_require__(697);
+	var confirmTerm = __webpack_require__(698);
+	var obtainPhase = __webpack_require__(699);
 	
 	module.exports = {
 	  buyCoin: buyCoin,
@@ -81836,16 +82125,16 @@
 	};
 
 /***/ },
-/* 691 */
+/* 693 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(567);
+	var axios = __webpack_require__(569);
 	
-	var buyEndpoint = __webpack_require__(594) + '/ico/buy';
+	var buyEndpoint = __webpack_require__(596) + '/ico/buy';
 	
 	/**
 	 *
@@ -81920,7 +82209,7 @@
 	}();
 
 /***/ },
-/* 692 */
+/* 694 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -81999,16 +82288,16 @@
 	};
 
 /***/ },
-/* 693 */
+/* 695 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(567);
+	var axios = __webpack_require__(569);
 	
-	var buyBalanceEndpoint = __webpack_require__(594) + '/ico/buy-balance';
+	var buyBalanceEndpoint = __webpack_require__(596) + '/ico/buy-balance';
 	
 	/**
 	 *
@@ -82083,16 +82372,16 @@
 	}();
 
 /***/ },
-/* 694 */
+/* 696 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(567);
+	var axios = __webpack_require__(569);
 	
-	var buyHistoryEndpoint = __webpack_require__(594) + '/ico/buy-history';
+	var buyHistoryEndpoint = __webpack_require__(596) + '/ico/buy-history';
 	
 	/**
 	 *
@@ -82142,7 +82431,7 @@
 	          case 0:
 	            _context2.prev = 0;
 	            _context2.next = 3;
-	            return axios.post(buyHistoryEndpoint, email, { headers: headers });
+	            return axios.post(buyHistoryEndpoint, { email: email }, { headers: headers });
 	
 	          case 3:
 	            res = _context2.sent;
@@ -82167,22 +82456,22 @@
 	}();
 
 /***/ },
-/* 695 */
+/* 697 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 /***/ },
-/* 696 */
+/* 698 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(567);
+	var axios = __webpack_require__(569);
 	
-	var confirmTermEndpoint = __webpack_require__(594) + '/ico/confirm-term';
+	var confirmTermEndpoint = __webpack_require__(596) + '/ico/confirm-term';
 	
 	/**
 	 *
@@ -82257,16 +82546,16 @@
 	}();
 
 /***/ },
-/* 697 */
+/* 699 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(567);
+	var axios = __webpack_require__(569);
 	
-	var BASE_URL = __webpack_require__(594);
+	var BASE_URL = __webpack_require__(596);
 	
 	var endpoint = BASE_URL + '/ico/phase';
 	
@@ -82298,16 +82587,16 @@
 	}));
 
 /***/ },
-/* 698 */
+/* 700 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(699);
+	var content = __webpack_require__(701);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(480)(content, {});
+	var update = __webpack_require__(482)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -82324,53 +82613,18 @@
 	}
 
 /***/ },
-/* 699 */
+/* 701 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(479)(true);
+	exports = module.exports = __webpack_require__(481)(true);
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".input-transparent {\n  border: 0;\n  margin: 0;\n  padding: 0 5px 0 5px;\n  text-align: right;\n  width: 100%;\n  background-color: transparent;\n  color: #fff;\n  font-size: 18px; }\n\n.calculator .equal {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  font-size: 30px; }\n\n.calculator .valueCripto {\n  min-height: 80px;\n  background-color: rgba(65, 37, 111, 0.8);\n  color: #fff;\n  padding: 10px;\n  border-radius: 5px;\n  text-align: right;\n  font-size: 18px;\n  line-height: 60px; }\n\n.calculator .valueMoney {\n  height: 80px;\n  background-color: rgba(65, 37, 111, 0.8);\n  color: #fff;\n  padding: 20px;\n  border-radius: 5px;\n  text-align: right;\n  font-size: 18px; }\n  .calculator .valueMoney .currency {\n    width: 100%;\n    text-align: right;\n    font-size: 10px;\n    padding-right: 9px;\n    padding-top: 3px; }\n\n.lunesAmount {\n  width: 100%;\n  background-color: rgba(65, 37, 111, 0.8);\n  height: 80px;\n  line-height: 60px;\n  text-align: right;\n  padding-right: 10px;\n  border-radius: 5px; }\n  .lunesAmount label {\n    font-size: 18px; }\n  .lunesAmount .flag-lns {\n    left: 0;\n    position: absolute;\n    background-color: #fff;\n    padding: 10px 30px;\n    border-radius: 5px 0 5px 5px;\n    box-shadow: #41266f 1px 0px 0px 2px; }\n\n.amountBalance {\n  margin-top: 20px;\n  border-radius: 5px; }\n  .amountBalance .total {\n    border-radius: 5px;\n    background-color: rgba(65, 37, 111, 0.8); }\n    .amountBalance .total .line-break {\n      margin-top: 22px;\n      padding: 10px; }\n      .amountBalance .total .line-break hr {\n        border-top: solid 2px #4cd466; }\n  .amountBalance .result {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    margin-bottom: 15px;\n    padding: 0 10px; }\n\n.select-coin {\n  position: relative; }\n  .select-coin ul {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin: 0;\n    padding: 0;\n    float: left;\n    text-align: center; }\n    .select-coin ul li {\n      list-style: none;\n      cursor: pointer;\n      padding: 0px 5px;\n      margin: 0 5px;\n      width: 40px;\n      border-radius: 5px; }\n      .select-coin ul li:hover, .select-coin ul li.selected {\n        background-color: #32bc57;\n        opacity: 0.9; }\n\n.container-coins {\n  width: 70px;\n  height: 210px;\n  position: absolute;\n  border-radius: 5px;\n  background-color: #e4e4e5;\n  top: 50px;\n  z-index: 99;\n  text-align: center; }\n  .container-coins ul {\n    margin: 0;\n    padding: 0; }\n    .container-coins ul li {\n      list-style: none;\n      text-align: center;\n      padding: 5px 10px;\n      cursor: pointer; }\n      .container-coins ul li.selected, .container-coins ul li:hover {\n        background-color: #c7c7c7;\n        border-radius: 5px; }\n\n.container-qr-code .selected-label {\n  border-radius: 10px;\n  padding: 2px 20px;\n  background-color: #432773;\n  color: #fdfdfd;\n  font-size: 12px; }\n\n.container-qr-code .address {\n  margin-top: 10px;\n  color: #4cd466; }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/buy/src/buy/buy.component.scss","D:/workspaces/lunes/lunes-purchase/src/buy/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA;EACE,UAAS;EACT,UAAS;EACT,qBAAoB;EACpB,kBAAiB;EACjB,YAAW;EACX,8BAA6B;EAC7B,YAAW;EACX,gBAAe,EAChB;;AAED;EAEI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,yBAAuB;MAAvB,sBAAuB;UAAvB,wBAAuB;EACvB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,gBAAe,EAChB;;AANH;EAQI,iBAAgB;EAChB,yCCnBiB;EDoBjB,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,kBAAiB;EACjB,gBAAe;EACf,kBAAiB,EAClB;;AAhBH;EAkBI,aAAY;EACZ,yCC7BiB;ED8BjB,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,kBAAiB;EACjB,gBAAe,EAQhB;EAhCH;IA0BM,YAAW;IACX,kBAAiB;IACjB,gBAAe;IACf,mBAAkB;IAClB,iBAAgB,EACjB;;AAIL;EACE,YAAW;EACX,yCC/CmB;EDgDnB,aAAY;EACZ,kBAAiB;EACjB,kBAAiB;EACjB,oBAAmB;EACnB,mBAAkB,EAYnB;EAnBD;IASI,gBAAe,EAChB;EAVH;IAYI,QAAO;IACP,mBAAkB;IAClB,uBAAsB;IACtB,mBAAkB;IAClB,6BAA4B;IAC5B,oCAAmC,EACpC;;AAGH;EACE,iBAAgB;EAChB,mBAAkB,EAqBnB;EAvBD;IAII,mBAAkB;IAClB,yCCvEiB,ED+ElB;IAbH;MAOM,iBAAgB;MAChB,cAAa,EAId;MAZL;QAUQ,8BC1EO,ED2ER;EAXP;IAgBI,qBAAa;IAAb,qBAAa;IAAb,cAAa;IACb,+BAAmB;IAAnB,8BAAmB;QAAnB,wBAAmB;YAAnB,oBAAmB;IACnB,0BAA8B;QAA9B,uBAA8B;YAA9B,+BAA8B;IAC9B,0BAAmB;QAAnB,uBAAmB;YAAnB,oBAAmB;IACnB,oBAAmB;IACnB,gBAAe,EAChB;;AAGH;EACE,mBAAkB,EAoBnB;EArBD;IAGI,qBAAa;IAAb,qBAAa;IAAb,cAAa;IACb,UAAS;IACT,WAAU;IACV,YAAW;IACX,mBAAkB,EAanB;IApBH;MASM,iBAAgB;MAChB,gBAAe;MACf,iBAAgB;MAChB,cAAa;MACb,YAAW;MACX,mBAAkB,EAKnB;MAnBL;QAgBQ,0BAAyB;QACzB,aAAY,EACb;;AAKP;EACE,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,mBAAkB;EAClB,0BAAyB;EACzB,UAAS;EACT,YAAW;EACX,mBAAkB,EAenB;EAvBD;IAUI,UAAS;IACT,WAAU,EAWX;IAtBH;MAaM,iBAAgB;MAChB,mBAAkB;MAClB,kBAAiB;MACjB,gBAAe,EAKhB;MArBL;QAkBQ,0BAAyB;QACzB,mBAAkB,EACnB;;AAKP;EAEI,oBAAmB;EACnB,kBAAiB;EACjB,0BAAyB;EACzB,eAAc;EACd,gBAAe,EAChB;;AAPH;EASI,iBAAgB;EAChB,eCnJW,EDoJZ","file":"buy.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n.input-transparent {\r\n  border: 0;\r\n  margin: 0;\r\n  padding: 0 5px 0 5px;\r\n  text-align: right;\r\n  width: 100%;\r\n  background-color: transparent;\r\n  color: #fff;\r\n  font-size: 18px;\r\n}\r\n\r\n.calculator {\r\n  .equal {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    font-size: 30px;\r\n  }\r\n  .valueCripto {\r\n    min-height: 80px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    color: #fff;\r\n    padding: 10px;\r\n    border-radius: 5px;\r\n    text-align: right;\r\n    font-size: 18px;\r\n    line-height: 60px;\r\n  }\r\n  .valueMoney {\r\n    height: 80px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    color: #fff;\r\n    padding: 20px;\r\n    border-radius: 5px;\r\n    text-align: right;\r\n    font-size: 18px;\r\n    .currency {\r\n      width: 100%;\r\n      text-align: right;\r\n      font-size: 10px;\r\n      padding-right: 9px;\r\n      padding-top: 3px;\r\n    }\r\n  }\r\n}\r\n\r\n.lunesAmount {\r\n  width: 100%;\r\n  background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n  height: 80px;\r\n  line-height: 60px;\r\n  text-align: right;\r\n  padding-right: 10px;\r\n  border-radius: 5px;\r\n  label {\r\n    font-size: 18px;\r\n  }\r\n  .flag-lns {\r\n    left: 0;\r\n    position: absolute;\r\n    background-color: #fff;\r\n    padding: 10px 30px;\r\n    border-radius: 5px 0 5px 5px;\r\n    box-shadow: #41266f 1px 0px 0px 2px;\r\n  }\r\n}\r\n\r\n.amountBalance {\r\n  margin-top: 20px;\r\n  border-radius: 5px;\r\n  .total {\r\n    border-radius: 5px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    .line-break {\r\n      margin-top: 22px;\r\n      padding: 10px;\r\n      hr {\r\n        border-top: solid 2px $green;\r\n      }\r\n    }\r\n  }\r\n\r\n  .result {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    margin-bottom: 15px;\r\n    padding: 0 10px;\r\n  }\r\n}\r\n\r\n.select-coin {\r\n  position: relative;\r\n  ul {\r\n    display: flex;\r\n    margin: 0;\r\n    padding: 0;\r\n    float: left;\r\n    text-align: center;\r\n    li {\r\n      list-style: none;\r\n      cursor: pointer;\r\n      padding: 0px 5px;\r\n      margin: 0 5px;\r\n      width: 40px;\r\n      border-radius: 5px;\r\n      &:hover, &.selected {\r\n        background-color: #32bc57;\r\n        opacity: 0.9;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.container-coins {\r\n  width: 70px;\r\n  height: 210px;\r\n  position: absolute;\r\n  border-radius: 5px;\r\n  background-color: #e4e4e5;\r\n  top: 50px;\r\n  z-index: 99;\r\n  text-align: center;\r\n  ul {\r\n    margin: 0;\r\n    padding: 0;\r\n    li {\r\n      list-style: none;\r\n      text-align: center;\r\n      padding: 5px 10px;\r\n      cursor: pointer;\r\n      &.selected, &:hover {\r\n        background-color: #c7c7c7;\r\n        border-radius: 5px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.container-qr-code {\r\n  .selected-label {\r\n    border-radius: 10px;\r\n    padding: 2px 20px;\r\n    background-color: #432773;\r\n    color: #fdfdfd;\r\n    font-size: 12px;\r\n  }\r\n  .address {\r\n    margin-top: 10px;\r\n    color: $green;\r\n  }\r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #4cd466;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
+	exports.push([module.id, ".input-transparent {\n  border: 0;\n  margin: 0;\n  padding: 0 5px 0 5px;\n  text-align: right;\n  width: 100%;\n  background-color: transparent;\n  color: #fff;\n  font-size: 18px; }\n\n.calculator .equal {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n      justify-content: center;\n  -ms-flex-align: center;\n      align-items: center;\n  font-size: 30px; }\n\n.calculator .valueCripto {\n  min-height: 80px;\n  background-color: rgba(65, 37, 111, 0.8);\n  color: #fff;\n  padding: 10px;\n  border-radius: 5px;\n  text-align: right;\n  font-size: 18px;\n  line-height: 60px; }\n\n.calculator .valueMoney {\n  height: 80px;\n  background-color: rgba(65, 37, 111, 0.8);\n  color: #fff;\n  padding: 20px;\n  border-radius: 5px;\n  text-align: right;\n  font-size: 18px; }\n  .calculator .valueMoney .currency {\n    width: 100%;\n    text-align: right;\n    font-size: 10px;\n    padding-right: 9px;\n    padding-top: 3px; }\n\n.lunesAmount {\n  width: 100%;\n  background-color: rgba(65, 37, 111, 0.8);\n  height: 80px;\n  line-height: 60px;\n  text-align: right;\n  padding-right: 10px;\n  border-radius: 5px; }\n  .lunesAmount label {\n    font-size: 18px; }\n  .lunesAmount .flag-lns {\n    left: 0;\n    position: absolute;\n    background-color: #fff;\n    padding: 10px 30px;\n    border-radius: 5px 0 5px 5px;\n    box-shadow: #41266f 1px 0px 0px 2px; }\n\n.amountBalance {\n  margin-top: 20px;\n  border-radius: 5px; }\n  .amountBalance .total {\n    border-radius: 5px;\n    background-color: rgba(65, 37, 111, 0.8); }\n    .amountBalance .total .line-break {\n      margin-top: 22px;\n      padding: 10px; }\n      .amountBalance .total .line-break hr {\n        border-top: solid 2px #4cd466; }\n  .amountBalance .result {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-direction: row;\n        flex-direction: row;\n    -ms-flex-pack: justify;\n        justify-content: space-between;\n    -ms-flex-align: center;\n        align-items: center;\n    margin-bottom: 15px;\n    padding: 0 10px; }\n\n.select-coin {\n  position: relative; }\n  .select-coin ul {\n    display: -ms-flexbox;\n    display: flex;\n    margin: 0;\n    padding: 0;\n    float: left;\n    text-align: center; }\n    .select-coin ul li {\n      list-style: none;\n      cursor: pointer;\n      padding: 0px 5px;\n      margin: 0 5px;\n      width: 40px;\n      border-radius: 5px; }\n      .select-coin ul li:hover, .select-coin ul li.selected {\n        background-color: #32bc57;\n        opacity: 0.9; }\n\n.container-coins {\n  width: 70px;\n  height: 210px;\n  position: absolute;\n  border-radius: 5px;\n  background-color: #e4e4e5;\n  top: 50px;\n  z-index: 99;\n  text-align: center; }\n  .container-coins ul {\n    margin: 0;\n    padding: 0; }\n    .container-coins ul li {\n      list-style: none;\n      text-align: center;\n      padding: 5px 10px;\n      cursor: pointer; }\n      .container-coins ul li.selected, .container-coins ul li:hover {\n        background-color: #c7c7c7;\n        border-radius: 5px; }\n\n.container-qr-code .selected-label {\n  border-radius: 10px;\n  padding: 2px 20px;\n  background-color: #432773;\n  color: #fdfdfd;\n  font-size: 12px; }\n\n.container-qr-code .address {\n  margin-top: 10px;\n  color: #4cd466; }\n", "", {"version":3,"sources":["C:/lunes/2202/lunes-purchase/src/buy/src/buy/buy.component.scss","C:/lunes/2202/lunes-purchase/src/buy/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA;EACE,UAAS;EACT,UAAS;EACT,qBAAoB;EACpB,kBAAiB;EACjB,YAAW;EACX,8BAA6B;EAC7B,YAAW;EACX,gBAAe,EAChB;;AAED;EAEI,qBAAa;EAAb,cAAa;EACb,sBAAuB;MAAvB,wBAAuB;EACvB,uBAAmB;MAAnB,oBAAmB;EACnB,gBAAe,EAChB;;AANH;EAQI,iBAAgB;EAChB,yCCnBiB;EDoBjB,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,kBAAiB;EACjB,gBAAe;EACf,kBAAiB,EAClB;;AAhBH;EAkBI,aAAY;EACZ,yCC7BiB;ED8BjB,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,kBAAiB;EACjB,gBAAe,EAQhB;EAhCH;IA0BM,YAAW;IACX,kBAAiB;IACjB,gBAAe;IACf,mBAAkB;IAClB,iBAAgB,EACjB;;AAIL;EACE,YAAW;EACX,yCC/CmB;EDgDnB,aAAY;EACZ,kBAAiB;EACjB,kBAAiB;EACjB,oBAAmB;EACnB,mBAAkB,EAYnB;EAnBD;IASI,gBAAe,EAChB;EAVH;IAYI,QAAO;IACP,mBAAkB;IAClB,uBAAsB;IACtB,mBAAkB;IAClB,6BAA4B;IAC5B,oCAAmC,EACpC;;AAGH;EACE,iBAAgB;EAChB,mBAAkB,EAqBnB;EAvBD;IAII,mBAAkB;IAClB,yCCvEiB,ED+ElB;IAbH;MAOM,iBAAgB;MAChB,cAAa,EAId;MAZL;QAUQ,8BC1EO,ED2ER;EAXP;IAgBI,qBAAa;IAAb,cAAa;IACb,wBAAmB;QAAnB,oBAAmB;IACnB,uBAA8B;QAA9B,+BAA8B;IAC9B,uBAAmB;QAAnB,oBAAmB;IACnB,oBAAmB;IACnB,gBAAe,EAChB;;AAGH;EACE,mBAAkB,EAoBnB;EArBD;IAGI,qBAAa;IAAb,cAAa;IACb,UAAS;IACT,WAAU;IACV,YAAW;IACX,mBAAkB,EAanB;IApBH;MASM,iBAAgB;MAChB,gBAAe;MACf,iBAAgB;MAChB,cAAa;MACb,YAAW;MACX,mBAAkB,EAKnB;MAnBL;QAgBQ,0BAAyB;QACzB,aAAY,EACb;;AAKP;EACE,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,mBAAkB;EAClB,0BAAyB;EACzB,UAAS;EACT,YAAW;EACX,mBAAkB,EAenB;EAvBD;IAUI,UAAS;IACT,WAAU,EAWX;IAtBH;MAaM,iBAAgB;MAChB,mBAAkB;MAClB,kBAAiB;MACjB,gBAAe,EAKhB;MArBL;QAkBQ,0BAAyB;QACzB,mBAAkB,EACnB;;AAKP;EAEI,oBAAmB;EACnB,kBAAiB;EACjB,0BAAyB;EACzB,eAAc;EACd,gBAAe,EAChB;;AAPH;EASI,iBAAgB;EAChB,eCnJW,EDoJZ","file":"buy.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n.input-transparent {\r\n  border: 0;\r\n  margin: 0;\r\n  padding: 0 5px 0 5px;\r\n  text-align: right;\r\n  width: 100%;\r\n  background-color: transparent;\r\n  color: #fff;\r\n  font-size: 18px;\r\n}\r\n\r\n.calculator {\r\n  .equal {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    font-size: 30px;\r\n  }\r\n  .valueCripto {\r\n    min-height: 80px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    color: #fff;\r\n    padding: 10px;\r\n    border-radius: 5px;\r\n    text-align: right;\r\n    font-size: 18px;\r\n    line-height: 60px;\r\n  }\r\n  .valueMoney {\r\n    height: 80px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    color: #fff;\r\n    padding: 20px;\r\n    border-radius: 5px;\r\n    text-align: right;\r\n    font-size: 18px;\r\n    .currency {\r\n      width: 100%;\r\n      text-align: right;\r\n      font-size: 10px;\r\n      padding-right: 9px;\r\n      padding-top: 3px;\r\n    }\r\n  }\r\n}\r\n\r\n.lunesAmount {\r\n  width: 100%;\r\n  background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n  height: 80px;\r\n  line-height: 60px;\r\n  text-align: right;\r\n  padding-right: 10px;\r\n  border-radius: 5px;\r\n  label {\r\n    font-size: 18px;\r\n  }\r\n  .flag-lns {\r\n    left: 0;\r\n    position: absolute;\r\n    background-color: #fff;\r\n    padding: 10px 30px;\r\n    border-radius: 5px 0 5px 5px;\r\n    box-shadow: #41266f 1px 0px 0px 2px;\r\n  }\r\n}\r\n\r\n.amountBalance {\r\n  margin-top: 20px;\r\n  border-radius: 5px;\r\n  .total {\r\n    border-radius: 5px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    .line-break {\r\n      margin-top: 22px;\r\n      padding: 10px;\r\n      hr {\r\n        border-top: solid 2px $green;\r\n      }\r\n    }\r\n  }\r\n\r\n  .result {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    margin-bottom: 15px;\r\n    padding: 0 10px;\r\n  }\r\n}\r\n\r\n.select-coin {\r\n  position: relative;\r\n  ul {\r\n    display: flex;\r\n    margin: 0;\r\n    padding: 0;\r\n    float: left;\r\n    text-align: center;\r\n    li {\r\n      list-style: none;\r\n      cursor: pointer;\r\n      padding: 0px 5px;\r\n      margin: 0 5px;\r\n      width: 40px;\r\n      border-radius: 5px;\r\n      &:hover, &.selected {\r\n        background-color: #32bc57;\r\n        opacity: 0.9;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.container-coins {\r\n  width: 70px;\r\n  height: 210px;\r\n  position: absolute;\r\n  border-radius: 5px;\r\n  background-color: #e4e4e5;\r\n  top: 50px;\r\n  z-index: 99;\r\n  text-align: center;\r\n  ul {\r\n    margin: 0;\r\n    padding: 0;\r\n    li {\r\n      list-style: none;\r\n      text-align: center;\r\n      padding: 5px 10px;\r\n      cursor: pointer;\r\n      &.selected, &:hover {\r\n        background-color: #c7c7c7;\r\n        border-radius: 5px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.container-qr-code {\r\n  .selected-label {\r\n    border-radius: 10px;\r\n    padding: 2px 20px;\r\n    background-color: #432773;\r\n    color: #fdfdfd;\r\n    font-size: 12px;\r\n  }\r\n  .address {\r\n    margin-top: 10px;\r\n    color: $green;\r\n  }\r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #4cd466;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
 	
 	// exports
 
-
-/***/ },
-/* 700 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _dashboardComponent = __webpack_require__(701);
-	
-	var _dashboardComponent2 = _interopRequireDefault(_dashboardComponent);
-	
-	var _dashboard = __webpack_require__(702);
-	
-	var _dashboard2 = _interopRequireDefault(_dashboard);
-	
-	__webpack_require__(703);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var DashboardComponent = {
-	  template: _dashboardComponent2.default,
-	  controller: _dashboard2.default
-	};
-	
-	exports.default = DashboardComponent;
-
-/***/ },
-/* 701 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"container\">\n\n  <!-- HEADER - criar diretiva depois -->\n  <nav class=\"header nav\" style=\"padding: 20px 0;\">\n    <div class=\"col-sm-12 col-md-2 col-lg-2 logo\" ng-click=\"$ctrl.goToHome()\" style=\"cursor: pointer;\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n\n    <div class=\"col-sm-12 col-md-6 col-lg-6 nav-menu\">\n      <ul class=\"menu horizontal\">\n        <li>\n          <a href=\"#!/whitelist\">{{'WHITELIST' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/buy\">{{'BUY' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/dashboard\">{{'DASHBOARD' | translate}}</a>\n        </li>\n      </ul>\n    </div>\n\n    <div class=\"col-4 txt-right\">\n      <ul class=\"menu horizontal\">\n        <li>\n          <a href=\"https://www.facebook.com/lunesplatform/\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"../assets/facebook.png\" alt=\"facebook\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://t.me/LunesPlatformEN\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"../assets/telegram.png\" alt=\"telegram\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://twitter.com/lunesplatform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"../assets/twitter.png\" alt=\"twitter\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://medium.com/@lunes.platform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"../assets/medium.png\" alt=\"medium\" />\n          </a>\n        </li>\n      </ul>\n    </div>\n  </nav>\n\n  <!-- DASHBOARD -->\n  <section class=\"dashboard\">\n    <div class=\"row\">\n      <div class=\"col-12 title mb-2-rem\">\n        <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>\n      </div>\n      <div class=\"col-12 history\">\n        <table class=\"lunes-table\">\n          <thead>\n            <tr>\n              <td>{{ 'DASHBOARD.DATE' | translate }}</td>\n              <td>{{ 'DASHBOARD.PHASE' | translate }}</td>\n              <td>{{ 'DASHBOARD.DEPOSIT' | translate }}</td>\n              <td>Lunes</td>\n              <td>{{ 'DASHBOARD.BONUS' | translate }}</td>\n              <td>Total</td>\n            </tr>\n          </thead>\n          <tbody data-ng-if=\"$ctrl.history.length > 0\">\n            <tr data-ng-repeat=\"history in $ctrl.history\">\n              <td>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</td>\n              <td>{{ history.phase || 1 }}</td>\n              <td>{{ history.deposit_value }} {{ history.deposit_coin }}</td>\n              <td>{{ history.credit_value }} LNS</td>\n              <td>{{ history.bonus_value }} LNS </td>\n              <td>{{ history.total }} LNS</td>\n            </tr>\n          </tbody>\n          <tfoot data-ng-if=\"$ctrl.history.length === 0\">\n            <tr>\n              <td colspan=\"6\" style=\"text-align: center;\">{{ 'DASHBOARD.NO_HISTORY' | translate }}</td>\n            </tr>\n          </tfoot>\n        </table>\n      </div>\n      <div class=\"col-12 balance\">\n        <span>Meu saldo:</span>\n        <span class=\"monetary\">{{ $ctrl.totalLns }}</span>\n        <span class=\"coin\">LNS</span>\n      </div>\n    </div>\n  </section>\n</div>"
 
 /***/ },
 /* 702 */
@@ -82382,11 +82636,46 @@
 	  value: true
 	});
 	
-	var _lunesLib = __webpack_require__(490);
+	var _dashboardComponent = __webpack_require__(703);
+	
+	var _dashboardComponent2 = _interopRequireDefault(_dashboardComponent);
+	
+	var _dashboard = __webpack_require__(704);
+	
+	var _dashboard2 = _interopRequireDefault(_dashboard);
+	
+	__webpack_require__(705);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var DashboardComponent = {
+	  template: _dashboardComponent2.default,
+	  controller: _dashboard2.default
+	};
+	
+	exports.default = DashboardComponent;
+
+/***/ },
+/* 703 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"container\">\n\n  <!-- HEADER - criar diretiva depois -->\n  <nav class=\"header nav\" style=\"padding: 20px 0;\">\n    <div class=\"col-sm-12 col-md-2 col-lg-2 logo\" ng-click=\"$ctrl.goToHome()\" style=\"cursor: pointer;\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n\n    <div class=\"col-sm-12 col-md-6 col-lg-6 nav-menu\">\n      <ul class=\"menu horizontal\">\n        <li>\n          <a href=\"#!/whitelist\">{{'WHITELIST' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/buy\">{{'BUY' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/dashboard\">{{'DASHBOARD' | translate}}</a>\n        </li>\n      </ul>\n    </div>\n\n    <div class=\"col-4 txt-right\">\n      <ul class=\"menu horizontal\">\n        <li>\n          <a href=\"https://www.facebook.com/lunesplatform/\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"../assets/facebook.png\" alt=\"facebook\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://t.me/LunesPlatformEN\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"../assets/telegram.png\" alt=\"telegram\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://twitter.com/lunesplatform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"../assets/twitter.png\" alt=\"twitter\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://medium.com/@lunes.platform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"../assets/medium.png\" alt=\"medium\" />\n          </a>\n        </li>\n      </ul>\n    </div>\n  </nav>\n\n  <!-- DASHBOARD -->\n  <section class=\"dashboard\">\n    <div class=\"row\">\n      <div class=\"col-12 title mb-2-rem\">\n        <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>\n      </div>\n      <div class=\"col-12 history\">\n        <table class=\"lunes-table\">\n          <thead>\n            <tr>\n              <td>{{ 'DASHBOARD.DATE' | translate }}</td>\n              <td>{{ 'DASHBOARD.PHASE' | translate }}</td>\n              <td>{{ 'DASHBOARD.DEPOSIT' | translate }}</td>\n              <td>Lunes</td>\n              <td>{{ 'DASHBOARD.BONUS' | translate }}</td>\n              <td>Total</td>\n            </tr>\n          </thead>\n          <tbody data-ng-if=\"$ctrl.history.length > 0\">\n            <tr data-ng-repeat=\"history in $ctrl.history\">\n              <td>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</td>\n              <td>{{ history.phase || 1 }}</td>\n              <td>{{ history.deposit_value }} {{ history.deposit_coin }}</td>\n              <td>{{ history.credit_value }} LNS</td>\n              <td>{{ history.bonus_value }} LNS </td>\n              <td>{{ history.total }} LNS</td>\n            </tr>\n          </tbody>\n          <tfoot data-ng-if=\"$ctrl.history.length === 0\">\n            <tr>\n              <td colspan=\"6\" style=\"text-align: center;\">{{ 'DASHBOARD.NO_HISTORY' | translate }}</td>\n            </tr>\n          </tfoot>\n        </table>\n      </div>\n      <div class=\"col-12 balance\">\n        <span>Meu saldo:</span>\n        <span class=\"monetary\">{{ $ctrl.totalLns }}</span>\n        <span class=\"coin\">LNS</span>\n      </div>\n    </div>\n  </section>\n</div>"
+
+/***/ },
+/* 704 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _lunesLib = __webpack_require__(492);
 	
 	var _lunesLib2 = _interopRequireDefault(_lunesLib);
 	
-	var _index = __webpack_require__(475);
+	var _index = __webpack_require__(477);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -82574,16 +82863,16 @@
 	exports.default = DashboardController;
 
 /***/ },
-/* 703 */
+/* 705 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(704);
+	var content = __webpack_require__(706);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(480)(content, {});
+	var update = __webpack_require__(482)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -82600,21 +82889,21 @@
 	}
 
 /***/ },
-/* 704 */
+/* 706 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(479)(true);
+	exports = module.exports = __webpack_require__(481)(true);
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".green {\n  color: #4cd466; }\n\n.mb-1-rem {\n  margin-bottom: 1rem; }\n\n.mb-2-rem {\n  margin-bottom: 2rem; }\n\n.history {\n  margin-bottom: 2rem; }\n\n.balance {\n  font-family: 'Offside', cursive;\n  text-align: right; }\n\n.monetary {\n  font-size: 2rem;\n  margin-left: 10px; }\n\n.coin {\n  font-size: 2.5rem;\n  color: #4cd466; }\n\n.lunes-table {\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n  font-weight: lighter;\n  font-size: 12px;\n  overflow: hidden;\n  text-align: center;\n  width: 100%; }\n  .lunes-table td {\n    padding: 0.75rem; }\n  .lunes-table thead {\n    background: linear-gradient(to right, #654fa4, #876fc6, #654fa4); }\n  .lunes-table tbody {\n    background-color: #41256f; }\n    .lunes-table tbody tr:hover {\n      background-color: #3f2569; }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/dashboard/src/dashboard/dashboard.component.scss","D:/workspaces/lunes/lunes-purchase/src/dashboard/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA;EACI,eCEW,EDDd;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,gCAA+B;EAC/B,kBAAiB,EACpB;;AAED;EACI,gBAAe;EACf,kBAAiB,EACpB;;AAED;EACI,kBAAiB;EACjB,eCzBW,ED0Bd;;AAED;EAEI,4BAA2B;EAC3B,6BAA4B;EAC5B,qBAAoB;EACpB,gBAAe;EACf,iBAAgB;EAChB,mBAAkB;EAClB,YAAW,EAiBd;EAzBD;IAWQ,iBAAgB,EACnB;EAZL;IAeQ,iEAAwF,EAC3F;EAhBL;IAmBQ,0BCjDa,EDsDhB;IAxBL;MAsBY,0BCnDc,EDoDjB","file":"dashboard.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n.green {\r\n    color: $green;\r\n}\r\n\r\n.mb-1-rem {\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n.mb-2-rem {\r\n    margin-bottom: 2rem;\r\n}\r\n\r\n.history {\r\n    margin-bottom: 2rem;\r\n}\r\n\r\n.balance {\r\n    font-family: 'Offside', cursive;\r\n    text-align: right;\r\n}\r\n\r\n.monetary {\r\n    font-size: 2rem;\r\n    margin-left: 10px;\r\n}\r\n\r\n.coin {\r\n    font-size: 2.5rem;\r\n    color: $green;\r\n}\r\n\r\n.lunes-table {\r\n    // background: transparent;\r\n    border-top-left-radius: 5px;\r\n    border-top-right-radius: 5px;\r\n    font-weight: lighter;\r\n    font-size: 12px;\r\n    overflow: hidden;\r\n    text-align: center;\r\n    width: 100%;\r\n\r\n    td {\r\n        padding: 0.75rem;\r\n    }\r\n\r\n    thead {\r\n        background: linear-gradient(to right , $lightPrimary, $extraLightPrimary, $lightPrimary);\r\n    }\r\n\r\n    tbody {\r\n        background-color: $darkPrimary;\r\n        \r\n        tr:hover {\r\n            background-color: $extraDarkPrimary;\r\n        }\r\n    }\r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #4cd466;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
+	exports.push([module.id, ".green {\n  color: #4cd466; }\n\n.mb-1-rem {\n  margin-bottom: 1rem; }\n\n.mb-2-rem {\n  margin-bottom: 2rem; }\n\n.history {\n  margin-bottom: 2rem; }\n\n.balance {\n  font-family: 'Offside', cursive;\n  text-align: right; }\n\n.monetary {\n  font-size: 2rem;\n  margin-left: 10px; }\n\n.coin {\n  font-size: 2.5rem;\n  color: #4cd466; }\n\n.lunes-table {\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n  font-weight: lighter;\n  font-size: 12px;\n  overflow: hidden;\n  text-align: center;\n  width: 100%; }\n  .lunes-table td {\n    padding: 0.75rem; }\n  .lunes-table thead {\n    background: linear-gradient(to right, #654fa4, #876fc6, #654fa4); }\n  .lunes-table tbody {\n    background-color: #41256f; }\n    .lunes-table tbody tr:hover {\n      background-color: #3f2569; }\n", "", {"version":3,"sources":["C:/lunes/2202/lunes-purchase/src/dashboard/src/dashboard/dashboard.component.scss","C:/lunes/2202/lunes-purchase/src/dashboard/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA;EACI,eCEW,EDDd;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,gCAA+B;EAC/B,kBAAiB,EACpB;;AAED;EACI,gBAAe;EACf,kBAAiB,EACpB;;AAED;EACI,kBAAiB;EACjB,eCzBW,ED0Bd;;AAED;EAEI,4BAA2B;EAC3B,6BAA4B;EAC5B,qBAAoB;EACpB,gBAAe;EACf,iBAAgB;EAChB,mBAAkB;EAClB,YAAW,EAiBd;EAzBD;IAWQ,iBAAgB,EACnB;EAZL;IAeQ,iEAAwF,EAC3F;EAhBL;IAmBQ,0BCjDa,EDsDhB;IAxBL;MAsBY,0BCnDc,EDoDjB","file":"dashboard.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n.green {\r\n    color: $green;\r\n}\r\n\r\n.mb-1-rem {\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n.mb-2-rem {\r\n    margin-bottom: 2rem;\r\n}\r\n\r\n.history {\r\n    margin-bottom: 2rem;\r\n}\r\n\r\n.balance {\r\n    font-family: 'Offside', cursive;\r\n    text-align: right;\r\n}\r\n\r\n.monetary {\r\n    font-size: 2rem;\r\n    margin-left: 10px;\r\n}\r\n\r\n.coin {\r\n    font-size: 2.5rem;\r\n    color: $green;\r\n}\r\n\r\n.lunes-table {\r\n    // background: transparent;\r\n    border-top-left-radius: 5px;\r\n    border-top-right-radius: 5px;\r\n    font-weight: lighter;\r\n    font-size: 12px;\r\n    overflow: hidden;\r\n    text-align: center;\r\n    width: 100%;\r\n\r\n    td {\r\n        padding: 0.75rem;\r\n    }\r\n\r\n    thead {\r\n        background: linear-gradient(to right , $lightPrimary, $extraLightPrimary, $lightPrimary);\r\n    }\r\n\r\n    tbody {\r\n        background-color: $darkPrimary;\r\n        \r\n        tr:hover {\r\n            background-color: $extraDarkPrimary;\r\n        }\r\n    }\r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #4cd466;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
 	
 	// exports
 
 
 /***/ },
-/* 705 */
+/* 707 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -82623,15 +82912,15 @@
 	  value: true
 	});
 	
-	var _fixComponent = __webpack_require__(706);
+	var _fixComponent = __webpack_require__(708);
 	
 	var _fixComponent2 = _interopRequireDefault(_fixComponent);
 	
-	var _fix = __webpack_require__(707);
+	var _fix = __webpack_require__(709);
 	
 	var _fix2 = _interopRequireDefault(_fix);
 	
-	__webpack_require__(708);
+	__webpack_require__(710);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -82643,13 +82932,13 @@
 	exports.default = FixComponent;
 
 /***/ },
-/* 706 */
+/* 708 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"container\">\r\n  <div style=\"display: flex; align-items: center; justify-content: center; flex-direction: column; height: 100vh;\">\r\n    <div class=\"col-xs-12 col-lg-2 logo\">\r\n      <!-- eslint-disable -->\r\n      <span>L</span>\r\n      <span>u</span>\r\n      <span>n</span>\r\n      <span class=\"txt-green\">e</span>\r\n      <span>s</span>\r\n      <!-- eslint-disable -->\r\n    </div>\r\n    <h2>{{'PAGE_FIX' | translate}}</h2>\r\n  </div>\r\n</div>"
+	module.exports = "<div class=\"container\">\n  <div style=\"display: flex; align-items: center; justify-content: center; flex-direction: column; height: 100vh;\">\n    <div class=\"col-xs-12 col-lg-2 logo\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n    <h2>{{'PAGE_FIX' | translate}}</h2>\n  </div>\n</div>"
 
 /***/ },
-/* 707 */
+/* 709 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -82671,16 +82960,16 @@
 	exports.default = FixController;
 
 /***/ },
-/* 708 */
+/* 710 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(709);
+	var content = __webpack_require__(711);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(480)(content, {});
+	var update = __webpack_require__(482)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -82697,10 +82986,10 @@
 	}
 
 /***/ },
-/* 709 */
+/* 711 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(479)(true);
+	exports = module.exports = __webpack_require__(481)(true);
 	// imports
 	
 	
@@ -82711,7 +83000,7 @@
 
 
 /***/ },
-/* 710 */
+/* 712 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -82720,7 +83009,7 @@
 	    value: true
 	});
 	
-	var _constants = __webpack_require__(475);
+	var _constants = __webpack_require__(477);
 	
 	var _constants2 = _interopRequireDefault(_constants);
 	
@@ -82734,7 +83023,7 @@
 	};
 
 /***/ },
-/* 711 */
+/* 713 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -82762,6 +83051,8 @@
 	  ALL_FIELDS_REQUIRED: 'All fields are required',
 	  CONFIRM_PASSWORD: 'Confirm Password',
 	  CONFIRM_PASSWORD_PLACEHOLDER: 'Type your password again',
+	  COUPON: 'Do you have any coupon code?',
+	  COUPON_PLACEHOLDER: 'Type your coupon code here',
 	  WELCOME: 'Welcome',
 	  BEGIN_YOUR_REGISTRATION: 'Begin your registration',
 	  AGREE: 'Agree',
@@ -82811,7 +83102,7 @@
 	}), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_ALREADY', 'The email address already exists'), _defineProperty(_USER$PASSWORD$PASSWO, 'TERMS_CONDITION_TITLE', 'Terms and Conditions'), _defineProperty(_USER$PASSWORD$PASSWO, 'REPRESENTATION_TERM_TITLE', 'Representation and Warranties'), _defineProperty(_USER$PASSWORD$PASSWO, 'ERROR_SERVER', 'Error on server'), _defineProperty(_USER$PASSWORD$PASSWO, 'COUPON', 'Coupon'), _defineProperty(_USER$PASSWORD$PASSWO, 'OWN_COUPON', 'My Coupon'), _defineProperty(_USER$PASSWORD$PASSWO, 'TYPE_COUPON', 'Type your coupon bonus'), _defineProperty(_USER$PASSWORD$PASSWO, 'CHANGE_PASSWORD', 'Change Password'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_SENT', 'Email sent successfully'), _defineProperty(_USER$PASSWORD$PASSWO, 'CLOSE', 'Close'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_NOT_SENT', 'Email not sent or not exists'), _defineProperty(_USER$PASSWORD$PASSWO, 'DO_YOU_CHANGE_PASSWORD', 'Do you want change you password?'), _defineProperty(_USER$PASSWORD$PASSWO, 'CHANGE_PASSWORD_INSTRUCTION', 'Type your email for us send for you the instructions to change password'), _defineProperty(_USER$PASSWORD$PASSWO, 'REPRESENTATION_TERM', '\n      <h3>Representation and Warranties</h3>\n      <p>By participating in the Initial Coin Offering, the User agrees to the T&C and in particular, they represent and warrant that they:</p>\n      <br>1. are authorized and have full power to purchase LNS according to the laws that apply in their jurisdiction of domicile;\n      <br>2. live in a jurisdiction which allows Lunes to sell the Lunes tokens through a Initial Coin Offering without requiring any local authorization;\n      <br>3. are familiar with all related regulations in the specific jurisdiction in which they are based and that purchasing cryptographic tokens in that jurisdiction is not prohibited, restricted or subject to additional conditions of any kind;\n      <br>4. are not a U.S., or Canadian, or Chinese, or South Korean, or Singaporean citizen, resident or entity (a \u201CU.S., or Canadian, or Chinese, or South Korean, or Singaporean Person\u201D) nor are they purchasing Lunes Tokens or signing on behalf of a U.S., or Canadian, or Chinese, or South Korean, or Singaporean Person. Are not acting for the purpose of speculative investment; will not use the Token Sale for any illegal activity, including but not limited to money laundering and the financing of terrorism;\n      <br>5. are solely responsible for determining whether the acquisition of LNS is appropriate for them; are acquiring LNS for future use of the Lunes Platform; understand the risks associated with the Initial Coin Offering (incl. the risks related to the non-development of Lunes Platform and operations);\n      <br>6. understand the use of cryptocurrencies and the associated risks\n    '), _defineProperty(_USER$PASSWORD$PASSWO, 'TERMS_CONDITIONS', '\n      <h3>Terms and Conditions</h3>\n      <p>The Terms and Conditions (the \u201CT&C\u201D) apply to the buyer of the Lunes token\n      (\u201CLNS\u201D) and future user of the Lunes Platform. You should carefully read the T&C, as well as the white paper of the Lunes project before participating in the Initial Coin Offering.</p>\n\n      <h5>Applicability</h5>\n      <p>The following T&C constitute the agreement (the \u201CAgreement\u201D) between Lunes Platform (hereinafter \u201CLunes\u201D or the \u201CCompany\u201D), and you (the \u201CUser\u201D) with respect to\n      the purchase of the Lunes Token and the future services offered through the Lunes Platform. By using our services, you are agreeing to be bound by the T&C in\n      its latest version. You are aware that Lunes may change this T&C at any time. Your continued use of the Lunes Platform means that you accept any new or modified\n      terms.</p>\n\n      <h5>Services</h5>\n      <p>Lunes is a platform which provides a set of decentralized solutions through blockchain.\n      In an uncomplicated and affordable way, we will pulverize our technologies into the population. With real solutions for daily life, we deliver services and\n      products ranging from payment processes and fundraising, to authenticity records.</p>\n\n      <h5>The Lunes Token (LNS)</h5>\n      <p>LNS does not have the legal qualification as a security. LNS is final and non-refundable. LNS is not a share and does not give any right to participate in the\n      general meetings of Lunes. LNS will not have a particular usage outside the Lunes Platform. The purchase of LNS shall therefore not be done for speculative usage.</p>\n\n      <p>LNS can be purchased during the Initial Coin Offering directly from the Company or after the ICO at the Company or exchanger.</p>\n\n      <p>Any future User purchasing LNS expressly acknowledges and represents that she/he has carefully reviewed the T&C and fully understands the risks, costs and\n      benefits associated with the purchase of this token as indicated in the T&C.</p>\n\n      <h5>Knowledge required<h5>\n      <p>A future User undertaking to purchase LNS in relation to the token sale,  should ensure that she/he understands and has significant experience of cryptocurrencies,\n      blockchain systems and services, and that she/he fully understands the risks associated with the token sale as well as the mechanism related to the use of\n      cryptocurrencies (incl. storage).</p>\n\n      <p>Lunes shall not be responsible for any loss of LNS or situations making it impossible to access to LNS, which may result in any actions or omissions of the future\n      User or any person undertaking to acquire LNS.</p>\n\n      <h5>Risks</h5>\n      <p>Acquiring LNS involves various risks, in particular that Lunes may not be able to launch its operations and develop its platform. Therefore, and prior to\n      acquiring\n      LNS, any future user should carefully consider the risks, costs, and benefits of acquiring LNS within the Initial Coin Offering, and, if necessary, obtain\n      independent advice in this regard. Any interested person who is not in the position to accept or to understand the risks associated with the Initial Coin\n      Offering (incl. the risks related to the non- development of Lunes Platform and operations) or any other risks as indicated in the T&C, should not acquire\n      LNS, at this stage or later.</p>\n\n      <h5>Self-Acquisition</h5>\n      <p>Lunes is allowed to acquire LNS from the market at market price as value disbursement method. The acquisition must be authorized by the Board of Directors,\n      under\n      the condition that no conflict of interests is identified. Through acquisition of LNS, Lunes is not allowed to perform operations such as manipulation of LNS\n      market.</p>\n\n      <h5>Important Disclaimer</h5>\n      <p>The T&C shall not and cannot be considered as an invitation to enter into an investment. They do not constitute or relate in any way nor should they be\n      considered\n      as an offering of securities in any jurisdiction. The T&C do not include or contain any information or indication that might be considered as a recommendation\n      or that might be used to base any investment decision. LNS is a utility token and is not intended to be used as an investment.</p>\n\n      <p>Lunes will be an operative entity managing a platform and LNS is only a utility token. Therefore, Lunes is not a financial intermediary and is not\n      required to obtain any authorization for anti-money laundering purposes.</p>\n\n      <p>Acquiring LNS shall not grant any right or influence over Lunes\u2019 organization and governance to the purchasers.</p>\n\n      <p>Employees of Lunes are allowed to operate with LNS at market price if they are in knowledge of information that may modify the price of the token.</p>\n\n      <p>Regulatory authorities are carefully scrutinizing businesses and operations associated to cryptocurrencies in the world. In that respect, regulatory measures,\n      investigations or actions may impact Lunes\u2019 business and even limit or prevent it from developing its operations in the future. Any person undertaking to acquire\n      LNS must be aware that the Lunes business model and the T&C may change or need to be modified because of new regulatory and compliance requirements from any\n      applicable laws in any jurisdictions. In such case, purchasers and any person undertaking to acquire LNS acknowledge and understand that neither Lunes nor any\n      of its affiliates shall be held liable for any direct or indirect loss or damages caused by such changes.</p>\n\n      <p>Lunes will do its best to launch its operations and develop the Lunes Platform. Any person undertaking to acquire LNS acknowledges and understands that Lunes does\n      not provide any guarantee that it will manage to establish an operative platform and therefore it cannot guarantee that the LNS can be used for social trading on\n      the platform. They acknowledge and understand therefore that Lunes (incl. its bodies and employees) assumes no liability or responsibility for any loss or damage\n      that would result from or relate to the incapacity to use LNS, except in the case of intentional misconduct or gross negligence.</p>\n\n      <h5>Intellectual Property Rights</h5>\n      <p>To the extent that copyright or other intellectual property rights exist in the Lunes Platform, such as software, know-how, analysis or programs, those copyrights\n      and other intellectual and industrial rights belong to Lunes.</p>\n\n      <h5>Limitation of Liability</h5>\n      <p>Lunes, as well as its officers, directors, agents, joint ventures, employees and suppliers, assumes no liability or responsibility for any loss arising out of or\n      related to the use of the Lunes Platform or any technical, interruption or malfunction of the platform.</p>\n\n      <p>The limitation of liability set out above shall not be applicable in the event that Lunes, or a Lunes-employee, has caused the damage by intentional misconduct or\n      by gross negligence.</p>\n\n      <h5>Severability</h5>\n      <p>If any of the provisions of the T&C or of the Agreement are deemed to be invalid, void or unenforceable, the remaining provisions shall continue in full force and\n      effect.</p>\n    '), _USER$PASSWORD$PASSWO);
 
 /***/ },
-/* 712 */
+/* 714 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -82839,6 +83130,8 @@
 	  CONFIRM_EMAIL_PLACEHOLDER: 'Digite seu email novamente',
 	  CONFIRM_PASSWORD: 'Confirmar Senha',
 	  CONFIRM_PASSWORD_PLACEHOLDER: 'Digite sua senha novamente',
+	  COUPON: 'Você tem algum cupom de desconto?',
+	  COUPON_PLACEHOLDER: 'Digite seu cupom aqui',
 	  ALL_FIELDS_REQUIRED: 'Todos os campos são obrigatórios',
 	  BEGIN_YOUR_REGISTRATION: 'Comece seu cadastro',
 	  AGREE: 'Concordo',
@@ -82886,7 +83179,7 @@
 	}), _defineProperty(_USER$PASSWORD$PASSWO, 'BALANCE', 'Saldo'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_ALREADY', 'Email já cadastrado'), _defineProperty(_USER$PASSWORD$PASSWO, 'ERROR_SERVER', 'Erro interno no servidor'), _defineProperty(_USER$PASSWORD$PASSWO, 'COUPON', 'Cupom'), _defineProperty(_USER$PASSWORD$PASSWO, 'OWN_COUPON', 'Meu Cupom'), _defineProperty(_USER$PASSWORD$PASSWO, 'TYPE_COUPON', 'Insira seu cupom de bônus'), _defineProperty(_USER$PASSWORD$PASSWO, 'TERMS_CONDITION_TITLE', 'Termos e Condições'), _defineProperty(_USER$PASSWORD$PASSWO, 'REPRESENTATION_TERM_TITLE', 'Representações e Garantias'), _defineProperty(_USER$PASSWORD$PASSWO, 'CHANGE_PASSWORD', 'Alterar Senha'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_SENT', 'Email enviado com sucesso'), _defineProperty(_USER$PASSWORD$PASSWO, 'CLOSE', 'Fechar'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_NOT_SENT', 'Email não enviado ou não existe'), _defineProperty(_USER$PASSWORD$PASSWO, 'PAGE_FIX', 'Página em manutenção'), _defineProperty(_USER$PASSWORD$PASSWO, 'DO_YOU_CHANGE_PASSWORD', 'Você deseja alterar a senha?'), _defineProperty(_USER$PASSWORD$PASSWO, 'CHANGE_PASSWORD_INSTRUCTION', 'Digite seu email para enviarmos as instruções de alteração de sua senha'), _defineProperty(_USER$PASSWORD$PASSWO, 'REPRESENTATION_TERM', '\n      <h3>Representa\xE7\xE3o e Garantias</h3>\n      <p>Ao participar da ICO o usu\xE1rio concorda com o T&C e, em particular, eles representam e garantem que:</p>\n      <br>1. S\xE3o autorizados e t\xEAm poder completo para comprar LNS de acordo com as leis que se aplicam em sua jurisdi\xE7\xE3o do domic\xEDlio;\n      <br>2. vivem em uma jurisdi\xE7\xE3o que permite que Lunes venda tokens atrav\xE9s de uma ICO sem exigir qualquer autoriza\xE7\xE3o local;\n      <br>3. est\xE3o familiarizados com todos os regulamentos relacionados na jurisdi\xE7\xE3o espec\xEDficas em que eles vivem e que a compra de tokens criptografados na jurisdi\xE7\xE3o n\xE3o \xE9 proibida, restrita ou sujeitas a qualquer tipo de condi\xE7\xF5es adicionais;\n      <br>4. N\xE3o s\xE3o um cidad\xE3o dos Estados Unidos, do Canad\xE1, de Singapura, da China ou da Cor\xE9ia do Sul ou residente ou entidade e nem est\xE3o comprando tokens Lunes ou assinando em nome de um cidad\xE3o americano, ou canadense, ou singapurense, ou sul coreano, ou chin\xEAs. N\xE3o est\xE3o agindo para fins de investimento especulativo; n\xE3o utilizar\xE1 a venda simb\xF3lica para qualquer actividade ilegal, incluindo, mas n\xE3o se limitando \xE0 lavagem de dinheiro e ao financiamento do terrorismo;\n      <br>5. s\xE3o os \xFAnicos respons\xE1veis por determinar se a aquisi\xE7\xE3o de LNS \xE9 adequada para eles; est\xE3o adquirindo LNS para uso futuro da plataforma Lunes; compreender os riscos associados \xE0 ICO (incl. os riscos relacionados com o n\xE3o desenvolvimento da plataforma e opera\xE7\xF5es da Lunes); e\n      <br>6. compreender o uso de criptomoedas e os riscos associados.\n    '), _defineProperty(_USER$PASSWORD$PASSWO, 'TERMS_CONDITIONS', '\n    <h3>Termos e condi\xE7\xF5es</h3>\n    <p>Os termos e condi\xE7\xF5es aplicam-se ao comprador do token Lunes ("LNS") e ao usu\xE1rio futuro da plataforma Lunes. Voc\xEA deve ler atentamente os termos e condi\xE7\xF5es,\n    bem como o Whitepaper do projeto Lunes antes de participar na ICO.</p>\n\n    <h5>Aplicabilidade</h5>\n    <p>Os seguintes termos e condi\xE7\xF5es constituem o acordo entre a plataforma Lunes (doravante "Lunes" ou a "empresa"), e voc\xEA (o "usu\xE1rio") no que diz respeito \xE0 compra dos tokens Lunes e aos servi\xE7os futuros oferecidos atrav\xE9s da Lunes Plataforma. Ao utilizar os nossos servi\xE7os, voc\xEA est\xE1 concordando em ser vinculado pelos termos e condi\xE7\xF5es em sua vers\xE3o mais recente. Voc\xEA est\xE1 ciente de que a Lunes pode mudar estes termos e condi\xE7\xF5es a qualquer momento. O uso continuado da plataforma Lunes significa que voc\xEA aceita quaisquer termos novos ou modificados.\n    Servi\xE7os\n    Lunes \xE9 uma plataforma que fornece um conjunto de solu\xE7\xF5es descentralizadas atrav\xE9s blockchain.\n    De uma forma descomplicada e acess\xEDvel, vamos pulverizar as nossas tecnologias para a  popula\xE7\xE3o. Com solu\xE7\xF5es reais para a vida cotidiana, entregamos servi\xE7os e\n    produtos que v\xE3o desde processos de pagamento e capta\xE7\xE3o de recursos, at\xE9 registros de autenticidade.</p>\n\n    <h5>O token Lunes (LNS)</h5>\n\n    <p>LNS n\xE3o tem a qualifica\xE7\xE3o legal de um cau\xE7\xE3o. Uma vez comprado o LNS n\xE3o \xE9 reembols\xE1vel. LNS n\xE3o \xE9 uma participa\xE7\xE3o da Lunes e n\xE3o d\xE1 qualquer direito de intera\xE7\xE3o nas reuni\xF5es gerais da Lunes. Os LNS podem ser adquiridos durante a fase de ICO diretamente da empresa ou ap\xF3s a ICO na empresa ou em certas exchanges.\n    Qualquer futuro usu\xE1rio que comprar LNS, expressamente reconhece que reviu cuidadosamente os termos e condi\xE7\xF5es e compreende plenamente os riscos, custos e benef\xEDcios associados com a compra deste token, como indicado nos termos e condi\xE7\xF5es.\n    Um futuro usu\xE1rio comprador de LNS tokens deve assegurar que compreenda e tenha uma experi\xEAncia significativa com crypto moedas, sistemas e servi\xE7os blockchain, e que compreenda plenamente os riscos associados a venda de tokens, bem como o mecanismo relacionado ao uso de crypto moedas.\n    A Lunes n\xE3o ser\xE1 respons\xE1vel por qualquer perda de LNS ou situa\xE7\xF5es que impossibilitam o acesso \xE0 LNS, o que pode resultar em quaisquer a\xE7\xF5es ou omiss\xF5es do futuro\n    usu\xE1rio ou de qualquer pessoa que se comprometa a adquirir ins.</p>\n\n    <h5>Os riscos</h5>\n\n    <p>A aquisi\xE7\xE3o de LNS envolve v\xE1rios riscos, em particular que a Lunes pode n\xE3o ser capaz de lan\xE7ar suas opera\xE7\xF5es e desenvolver sua plataforma. Portanto, e\n    antes de adquirir LNS, qualquer futuro usu\xE1rio deve considerar cuidadosamente os riscos, custos e benef\xEDcios da aquisi\xE7\xE3o de LNS dentro da ICO, e, se necess\xE1rio,\n    obter aconselhamento independente a este respeito. Qualquer pessoa interessada que n\xE3o esteja em posi\xE7\xE3o de aceitar ou de compreender os riscos associados \xE0\n    ICO (incl. os riscos relacionados com o n\xE3o desenvolvimento da plataforma e opera\xE7\xF5es da Lunes) ou quaisquer outros riscos conforme indicado nos termos e condi\xE7\xF5es,\n    n\xE3o devem adquirir LNS, nesta fase ou mais tarde.</p>\n\n    <h5>Auto-aquisi\xE7\xE3o</h5>\n\n    <p>\xC9 permitido a Lunes adquirir LNS do mercado a pre\xE7o de mercado como o m\xE9todo do desembolso do valor. A aquisi\xE7\xE3o deve ser autorizada pelo Conselho de\n    administra\xE7\xE3o, a condi\xE7\xE3o de n\xE3o se identificar nenhum conflito de interesses. Atrav\xE9s da aquisi\xE7\xE3o de LNS, Lunes n\xE3o tem permiss\xE3o para realizar opera\xE7\xF5es\n    como a manipula\xE7\xE3o do mercado de LNS.</p>\n\n    <h5>Importante Aviso De Isen\xE7\xE3o</h5>\n\n    <p>Os termos e condi\xE7\xF5es n\xE3o devem e n\xE3o podem ser considerados como um convite para entrar em um investimento. Eles n\xE3o constituem ou se relacionam de forma alguma, nem devem ser considerados como uma oferta de t\xEDtulos em qualquer jurisdi\xE7\xE3o. Os termos e condi\xE7\xF5es n\xE3o incluem nem cont\xE9m qualquer informa\xE7\xE3o ou indica\xE7\xE3o que possa ser considerada como uma recomenda\xE7\xE3o ou que possa ser usada para basear qualquer decis\xE3o de investimento. LNS \xE9 um token utilit\xE1rio e n\xE3o se destina a ser usado como um investimento.\n    A Lunes ser\xE1 uma entidade operativa gerenciando uma plataforma e LNS \xE9 apenas um token utilit\xE1rio. Portanto, Lunes n\xE3o \xE9 um intermedi\xE1rio financeiro, portanto n\xE3o \xE9 obrigado a obter qualquer autoriza\xE7\xE3o para fins anti-lavagem de dinheiro.\n    A aquisi\xE7\xE3o de LNS n\xE3o conceder\xE1 qualquer direito ou influ\xEAncia sobre a organiza\xE7\xE3o e governan\xE7a sobre a Lunes aos compradores.\n    Os funcion\xE1rios de Lunes est\xE3o autorizados a operar com o LNS a pre\xE7o de mercado, caso conhe\xE7am informa\xE7\xF5es que possam modificar o pre\xE7o do token.\n    As autoridades reguladoras est\xE3o examinando cuidadosamente as empresas e opera\xE7\xF5es associadas \xE0 crypto moedas no mundo. Nesse sentido, as medidas regulat\xF3rias, investiga\xE7\xF5es ou a\xE7\xF5es podem impactar os neg\xF3cios da Lunes e at\xE9 mesmo limit\xE1-la ou impedi-la de desenvolver suas opera\xE7\xF5es no futuro. Qualquer pessoa que se comprometa a adquirir o LNS deve estar ciente de que o modelo de neg\xF3cios Lunes e o T&C podem mudar ou precisar ser modificados devido a novos requisitos regulat\xF3rios e de conformidade de quaisquer leis aplic\xE1veis em qualquer jurisdi\xE7\xE3o. Nesse caso, os compradores e qualquer pessoa que se comprometa a adquirir LNS reconhecem e compreendem que a Lunes e suas filiais n\xE3o ser\xE3o responsabilizadas por quaisquer perdas ou danos diretos ou indiretos causados por tais altera\xE7\xF5es.\n    Lunes far\xE1 o seu melhor para lan\xE7ar suas opera\xE7\xF5es e desenvolver a plataforma Lunes. Qualquer pessoa que empreender na aquisi\xE7\xE3o de LNS reconhece e entende que\n    Lunes n\xE3o fornece qualquer garantia de que vai conseguir estabelecer uma plataforma operativa e, portanto, n\xE3o pode garantir que os LNS podem ser utilizados\n    para o com\xE9rcio social na plataforma. Reconhecem e compreendem conseq\xFCentemente que Lunes (incl. seus empregados) n\xE3o assume nenhuma responsabilidade por qualquer\n    perda ou dano que resulte ou se relacione com a incapacidade de usar o LNS, exceto no caso de m\xE1 conduta intencional ou bruta neglig\xEAncia.</p>\n\n    <h5>Direitos de propriedade intelectual</h5>\n\n    <p>Na medida em que o copyright ou outros direitos de propriedade intelectual existem na plataforma Lunes, tais como software, know-how, an\xE1lise ou programas,\n    os direitos autorais e outros direitos intelectuais e industriais pertencem a Lunes.</p>\n\n    <h5>Limita\xE7\xE3o da responsabilidade</h5>\n\n    <p>Lunes, bem como seus oficiais, diretores, agentes, joint-ventures, funcion\xE1rios e fornecedores, n\xE3o assume qualquer responsabilidade por qualquer perda resultante, ou relacionada ao uso, da plataforma Lunes ou qualquer t\xE9cnica, interrup\xE7\xE3o ou avaria da plataforma.\n    A limita\xE7\xE3o da responsabilidade acima referida n\xE3o \xE9 aplic\xE1vel no caso de Lunes, ou de um trabalhador Lunes, ter causado o dano por m\xE1 conduta intencional ou por\n    neglig\xEAncia grosseira.</p>\n\n    <h5>Separa\xE7\xE3o</h5>\n\n    <p>Se qualquer das disposi\xE7\xF5es do T&C ou do acordo for considerada inv\xE1lida, nula ou inexequ\xEDvel, as restantes disposi\xE7\xF5es continuar\xE3o em pleno vigor e efeito.</p>\n'), _USER$PASSWORD$PASSWO);
 
 /***/ },
-/* 713 */
+/* 715 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -82895,7 +83188,7 @@
 	  value: true
 	});
 	
-	var _http = __webpack_require__(714);
+	var _http = __webpack_require__(716);
 	
 	Object.defineProperty(exports, 'HttpService', {
 	  enumerable: true,
@@ -82904,7 +83197,7 @@
 	  }
 	});
 	
-	var _cheapflights = __webpack_require__(716);
+	var _cheapflights = __webpack_require__(718);
 	
 	Object.defineProperty(exports, 'CheapFlightService', {
 	  enumerable: true,
@@ -82913,7 +83206,7 @@
 	  }
 	});
 	
-	var _errormessagesService = __webpack_require__(717);
+	var _errormessagesService = __webpack_require__(719);
 	
 	Object.defineProperty(exports, 'ErrorMessagesService', {
 	  enumerable: true,
@@ -82925,7 +83218,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 714 */
+/* 716 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -82934,17 +83227,17 @@
 	  value: true
 	});
 	
-	var _lunesLib = __webpack_require__(490);
+	var _lunesLib = __webpack_require__(492);
 	
 	var _lunesLib2 = _interopRequireDefault(_lunesLib);
 	
-	var _axios = __webpack_require__(567);
+	var _axios = __webpack_require__(569);
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
-	var _constants = __webpack_require__(475);
+	var _constants = __webpack_require__(477);
 	
-	var _cccStreamerUtilities = __webpack_require__(715);
+	var _cccStreamerUtilities = __webpack_require__(717);
 	
 	var _cccStreamerUtilities2 = _interopRequireDefault(_cccStreamerUtilities);
 	
@@ -83401,7 +83694,7 @@
 	exports.default = HttpService;
 
 /***/ },
-/* 715 */
+/* 717 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -83891,7 +84184,7 @@
 	exports.default = CCC;
 
 /***/ },
-/* 716 */
+/* 718 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -83911,7 +84204,7 @@
 	exports.default = CheapFlightService;
 
 /***/ },
-/* 717 */
+/* 719 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -83920,7 +84213,7 @@
 	  value: true
 	});
 	
-	var _constants = __webpack_require__(475);
+	var _constants = __webpack_require__(477);
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -83959,16 +84252,16 @@
 	exports.default = ErrorMessagesService;
 
 /***/ },
-/* 718 */
+/* 720 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(719);
+	var content = __webpack_require__(721);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(480)(content, {});
+	var update = __webpack_require__(482)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -83985,15 +84278,15 @@
 	}
 
 /***/ },
-/* 719 */
+/* 721 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(479)(true);
+	exports = module.exports = __webpack_require__(481)(true);
 	// imports
 	
 	
 	// module
-	exports.push([module.id, "body {\n  background-color: #4c2b82;\n  font-family: 'Roboto', sans-serif;\n  color: #fff;\n  font-size: 14px;\n  line-height: 20px;\n  font-weight: 100; }\n\n*, *:before, *:after {\n  box-sizing: border-box;\n  position: relative;\n  -webkit-box-sizing: border-box; }\n\n.center {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  height: 100%;\n  overflow: auto;\n  overflow-y: auto; }\n  @media (min-width: 768px) {\n    .center {\n      max-height: 780px; } }\n\nh1, h2, h3, h4 {\n  font-family: 'Offside', cursive;\n  line-height: 1.4em; }\n\nh2 {\n  font-size: 4em;\n  line-height: 1em; }\n\nh3 {\n  font-size: 2em;\n  line-height: 1.3em; }\n\n.txt-green {\n  color: #4cd466; }\n\n.txt-center {\n  text-align: center !important; }\n\n.txt-left {\n  text-align: left !important; }\n\n.txt-right {\n  text-align: right !important; }\n\n.no-padding {\n  padding: 0; }\n\n.cursor-pointer {\n  cursor: pointer; }\n\n.round-menu {\n  text-decoration: none;\n  padding: 10px; }\n  .round-menu img {\n    width: 25px;\n    vertical-align: middle; }\n\n.modal-backdrop {\n  background-color: #4c2b82;\n  opacity: 0.7;\n  text-align: center; }\n\n/* Logo */\n.logo {\n  font-size: 40px;\n  font-family: 'Offside', cursive;\n  letter-spacing: -7px; }\n\n/* Header */\n.header {\n  margin: 20px 0; }\n\n/* MENU horizontal */\nul.menu.horizontal {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -ms-flex-pack: distribute;\n      justify-content: space-around; }\n  ul.menu.horizontal li {\n    list-style: none; }\n    ul.menu.horizontal li a {\n      text-transform: uppercase;\n      text-decoration: none;\n      color: #fff; }\n      ul.menu.horizontal li a:hover {\n        color: #4cd466; }\n\n/* authentication */\n.authentication {\n  margin-top: 50px; }\n  .authentication .title {\n    margin: 20px 0; }\n\n.error-fields {\n  padding: 10px;\n  background-color: #f9d660;\n  color: #9b853b;\n  border-radius: 5px;\n  margin-left: 10px;\n  margin-bottom: 20px; }\n\n/* Modal Customized */\n.modal {\n  margin: 20px;\n  background-color: #4c2b82;\n  border-radius: 5px;\n  box-shadow: #4c2b82 1px 1px 17px 5px; }\n  .modal .icon-close {\n    text-align: center;\n    position: absolute;\n    right: 30px;\n    padding: 0 10px;\n    cursor: pointer;\n    font-weight: bold; }\n  .modal .modal-title {\n    margin-left: 2em;\n    font-weight: bold; }\n  .modal .modal-header {\n    border: 0; }\n  .modal .modal-content {\n    background-color: transparent;\n    padding: 10px;\n    border: 0;\n    /*\r\n    *  SCROLL BAR\r\n    */ }\n    .modal .modal-content .content {\n      background-color: #4c2b82;\n      border-radius: 5px;\n      box-shadow: #311d53 1px 1px 32px 0px;\n      color: #fff;\n      padding: 20px;\n      margin: 20px;\n      max-height: 100%;\n      overflow-y: overlay;\n      border: solid 8px #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar-track {\n      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n      background-color: #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar {\n      width: 6px;\n      background-color: #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar-thumb {\n      background-color: #4f2f85; }\n    .modal .modal-content .footer {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      text-align: left;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; }\n\n/* container button */\n.area-button {\n  text-align: center;\n  padding: 10px;\n  /* primary-button */\n  /* disabled button */ }\n  .area-button .primary-button {\n    border: 0;\n    border-radius: 22px;\n    padding: 11px 80px;\n    text-align: center;\n    background-color: #4cd566;\n    color: #fff;\n    font-size: 16px; }\n  .area-button .disabled-button {\n    padding: 10px 80px;\n    border: 0px solid #4e1f85;\n    border-radius: 25px;\n    font-size: 16px;\n    text-decoration: none;\n    display: inline-block;\n    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);\n    color: #FFFFFF;\n    background-color: #6929B3;\n    background-image: linear-gradient(to bottom, #6929B3, #6622B3);\n    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6929B3, endColorstr=#6622B3); }\n  .area-button .rounded-button {\n    border: 0;\n    border-radius: 100%;\n    width: 40px;\n    height: 40px;\n    background-color: #fff;\n    color: #4cd466;\n    box-shadow: #444343 0px 1px 6px 0px; }\n\n/* Input customized */\n.input-form label {\n  display: block; }\n\n.input-form input {\n  width: 90%;\n  border: 0;\n  border-bottom: solid 1px #9c9c9c;\n  background-color: transparent;\n  padding: 10px 0;\n  margin-bottom: 15px;\n  color: #fff;\n  outline: none; }\n  .input-form input::-webkit-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input:-ms-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input::placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input:-ms-input-placeholder {\n    /* Internet Explorer 10-11 */\n    color: #adadad; }\n  .input-form input::-ms-input-placeholder {\n    /* Microsoft Edge */\n    color: #adadad; }\n\n/* Custom Checkbox */\ninput[type=checkbox].css-checkbox {\n  height: 1px;\n  width: 1px;\n  margin: -1px;\n  padding: 0;\n  border: 0; }\n\ninput[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {\n  padding-left: 23px;\n  height: 18px;\n  display: inline-block;\n  line-height: 18px;\n  background-repeat: no-repeat;\n  background-position: 0 0;\n  font-size: 12px;\n  vertical-align: middle;\n  cursor: pointer; }\n\ninput[type=checkbox].css-checkbox:checked + label.css-label, input[type=checkbox].css-checkbox + label.css-label.chk {\n  background-position: 0 -18px; }\n\nlabel.css-label {\n  background-image: url(https://res.cloudinary.com/luneswallet/image/upload/v1519425382/check.png);\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\nbutton:focus {\n  outline: none !important; }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/scss/src/scss/base/_reset.scss","D:/workspaces/lunes/lunes-purchase/src/scss/src/scss/base/_color.scss"],"names":[],"mappings":"AAKA;EACE,0BCNe;EDOf,kCAAiC;EACjC,YAAW;EACX,gBAAe;EACf,kBAAiB;EACjB,iBAAgB,EACjB;;AAED;EACE,uBAAsB;EACtB,mBAAkB;EAClB,+BAA8B,EAC/B;;AAED;EACE,gBAAe;EACf,SAAQ;EACR,UAAS;EACT,yCAAgC;UAAhC,iCAAgC;EAChC,aAAY;EACZ,eAAc;EACd,iBAAgB,EAIjB;EAHC;IARF;MASI,kBAAiB,EAEpB,EAAA;;AAED;EACE,gCAA+B;EAC/B,mBAAkB,EACnB;;AAED;EACE,eAAc;EACd,iBAAgB,EACjB;;AACD;EACE,eAAc;EACd,mBAAkB,EACnB;;AAED;EACE,eC3Ca,ED4Cd;;AAED;EACE,8BAA4B,EAC7B;;AAED;EACE,4BAA0B,EAC3B;;AAED;EACE,6BAA2B,EAC5B;;AACD;EACE,WAAU,EACX;;AACD;EACE,gBAAe,EAChB;;AAED;EACE,sBAAqB;EACrB,cAAa,EAKd;EAPD;IAII,YAAW;IACX,uBAAsB,EACvB;;AAGH;EACE,0BC/Ee;EDgFf,aAAY;EACZ,mBAAkB,EACnB;;AACD,UAAU;AACV;EACE,gBAAe;EACf,gCAA+B;EAC/B,qBAAoB,EACrB;;AAED,YAAY;AACZ;EACE,eAAc,EACf;;AAED,qBAAqB;AACrB;EAEI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,+BAAmB;EAAnB,8BAAmB;MAAnB,wBAAmB;UAAnB,oBAAmB;EACnB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,0BAA6B;MAA7B,8BAA6B,EAY9B;EAjBH;IAOM,iBAAgB,EASjB;IAhBL;MASQ,0BAAyB;MACzB,sBAAqB;MACrB,YAAW,EAIZ;MAfP;QAaU,eCxGK,EDyGN;;AAMT,oBAAoB;AACpB;EACE,iBAAgB,EAIjB;EALD;IAGI,eAAc,EACf;;AAGH;EACE,cAAa;EACb,0BCxHc;EDyHd,eAAc;EACd,mBAAkB;EAClB,kBAAiB;EACjB,oBAAmB,EACpB;;AAED,sBAAsB;AACtB;EACE,aAAY;EACZ,0BCxIe;EDyIf,mBAAkB;EAClB,qCAAqC,EAiEtC;EArED;IAOI,mBAAkB;IAClB,mBAAkB;IAClB,YAAW;IACX,gBAAe;IACf,gBAAe;IACf,kBAAiB,EAClB;EAbH;IAgBI,iBAAe;IACf,kBAAgB,EACjB;EAlBH;IAqBI,UAAS,EACV;EAtBH;IAyBI,8BAA6B;IAC7B,cAAa;IACb,UAAS;IAeT;;MAEE,EAuBH;IAnEH;MA8BM,0BCpKW;MDqKX,mBAAkB;MAClB,qCAAoC;MACpC,YAAW;MACX,cAAa;MACb,aAAY;MACZ,iBAAgB;MAEhB,oBAAmB;MACnB,0BAAyB,EAC1B;IAxCL;MA+CM,qDAAiD;MACjD,0BAAyB,EAC1B;IAjDL;MAoDM,WAAU;MACV,0BAAyB,EAC1B;IAtDL;MAyDM,0BAAyB,EAC1B;IA1DL;MA6DM,qBAAa;MAAb,qBAAa;MAAb,cAAa;MACb,iBAAgB;MAChB,0BAAmB;UAAnB,uBAAmB;cAAnB,oBAAmB;MACnB,6BAAsB;MAAtB,8BAAsB;UAAtB,2BAAsB;cAAtB,uBAAsB,EACvB;;AAML,sBAAsB;AACtB;EACE,mBAAkB;EAClB,cAAa;EAEb,oBAAoB;EAWpB,qBAAqB,EA+BtB;EA9CD;IAMI,UAAS;IACT,oBAAmB;IACnB,mBAAkB;IAClB,mBAAkB;IAClB,0BAAyB;IACzB,YAAW;IACX,gBAAe,EAChB;EAbH;IAiBI,mBAAkB;IAClB,0BAAyB;IAGzB,oBAAmB;IACnB,gBAAe;IACf,sBAAoB;IACpB,sBAAoB;IACpB,4CAAwC;IACxC,eAAc;IACd,0BAAyB;IAMzB,+DAA8D;IAAC,8GAA4G,EAC5K;EAlCH;IAqCI,UAAS;IACT,oBAAmB;IACnB,YAAW;IACX,aAAY;IACZ,uBAAsB;IACtB,eCnPW;IDoPX,oCAAmC,EACpC;;AAIH,sBAAsB;AACtB;EACE,eAAc,EACf;;AACD;EACE,WAAU;EACV,UAAS;EACT,iCAAgC;EAChC,8BAA6B;EAC7B,gBAAe;EACf,oBAAmB;EACnB,YAAW;EACX,cAAa,EAad;EArBD;IASmB,0CAA0C;IACvD,eAAc;IACd,WAAU;IAAG,aAAa,EAC7B;EAZH;IASmB,0CAA0C;IACvD,eAAc;IACd,WAAU;IAAG,aAAa,EAC7B;EAZH;IASmB,0CAA0C;IACvD,eAAc;IACd,WAAU;IAAG,aAAa,EAC7B;EAZH;IAc4B,6BAA6B;IACnD,eAAc,EACjB;EAhBH;IAkB6B,oBAAoB;IAC3C,eAAc,EACjB;;AAGH,qBAAqB;AACrB;EACC,YAAU;EAAG,WAAS;EAAG,aAAW;EAAG,WAAS;EAAG,UAAQ,EAC3D;;AAED;EACC,mBAAiB;EAChB,aAAW;EACZ,sBAAoB;EACpB,kBAAgB;EAChB,6BAA2B;EAC3B,yBAAwB;EACxB,gBAAc;EACd,uBAAqB;EACrB,gBAAc,EAEd;;AAED;EACC,6BAA4B,EAC5B;;AACD;EACC,iGAA+F;EAC/F,4BAA2B;EAC3B,0BAAyB;EAEzB,uBAAsB;EACtB,sBAAqB;EACrB,kBAAiB,EACjB;;AAED;EACI,yBAAwB,EAC3B","file":"main.scss","sourcesContent":["@import 'color';\r\n\r\n$break-small: 320px;\r\n$break-large: 1200px;\r\n\r\nbody {\r\n  background-color: $primary;\r\n  font-family: 'Roboto', sans-serif;\r\n  color: #fff;\r\n  font-size: 14px;\r\n  line-height: 20px;\r\n  font-weight: 100;\r\n};\r\n\r\n*, *:before, *:after {\r\n  box-sizing: border-box;\r\n  position: relative;\r\n  -webkit-box-sizing: border-box;\r\n}\r\n\r\n.center {\r\n  position: fixed;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n  height: 100%;\r\n  overflow: auto;\r\n  overflow-y: auto;\r\n  @media (min-width: 768px) {\r\n    max-height: 780px;\r\n  }\r\n}\r\n\r\nh1, h2, h3, h4 {\r\n  font-family: 'Offside', cursive;\r\n  line-height: 1.4em;\r\n}\r\n\r\nh2 {\r\n  font-size: 4em;\r\n  line-height: 1em;\r\n}\r\nh3 {\r\n  font-size: 2em;\r\n  line-height: 1.3em;\r\n}\r\n\r\n.txt-green {\r\n  color: $green;\r\n}\r\n\r\n.txt-center {\r\n  text-align: center!important;\r\n}\r\n\r\n.txt-left {\r\n  text-align: left!important;\r\n}\r\n\r\n.txt-right {\r\n  text-align: right!important;\r\n}\r\n.no-padding {\r\n  padding: 0;\r\n}\r\n.cursor-pointer {\r\n  cursor: pointer;\r\n}\r\n\r\n.round-menu {\r\n  text-decoration: none;\r\n  padding: 10px;\r\n  img {\r\n    width: 25px;\r\n    vertical-align: middle; \r\n  }\r\n}\r\n\r\n.modal-backdrop {\r\n  background-color: $primary;\r\n  opacity: 0.7;\r\n  text-align: center;\r\n}\r\n/* Logo */\r\n.logo {\r\n  font-size: 40px;\r\n  font-family: 'Offside', cursive;\r\n  letter-spacing: -7px;\r\n}\r\n\r\n/* Header */\r\n.header {\r\n  margin: 20px 0;\r\n}\r\n\r\n/* MENU horizontal */\r\nul.menu {\r\n  &.horizontal {\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    justify-content: space-around;\r\n    li {\r\n      list-style: none;\r\n      a {\r\n        text-transform: uppercase;\r\n        text-decoration: none;\r\n        color: #fff;\r\n        &:hover {\r\n          color: $green;\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n/* authentication */\r\n.authentication {\r\n  margin-top: 50px;\r\n  .title {\r\n    margin: 20px 0;\r\n  }\r\n}\r\n\r\n.error-fields {\r\n  padding: 10px;\r\n  background-color: $yellow;\r\n  color: #9b853b;\r\n  border-radius: 5px;\r\n  margin-left: 10px;\r\n  margin-bottom: 20px;\r\n}\r\n \r\n/* Modal Customized */\r\n.modal {\r\n  margin: 20px;\r\n  background-color: $primary;\r\n  border-radius: 5px;\r\n  box-shadow: $primary 1px 1px 17px 5px;\r\n\r\n  .icon-close {\r\n    text-align: center;\r\n    position: absolute;\r\n    right: 30px;\r\n    padding: 0 10px;\r\n    cursor: pointer;\r\n    font-weight: bold;\r\n  }\r\n  \r\n  .modal-title{\r\n    margin-left:2em;\r\n    font-weight:bold;\r\n  }\r\n\r\n  .modal-header {\r\n    border: 0;\r\n  }\r\n  \r\n  .modal-content {\r\n    background-color: transparent;\r\n    padding: 10px;\r\n    border: 0;\r\n\r\n    .content {\r\n      background-color: $primary;\r\n      border-radius: 5px;\r\n      box-shadow: #311d53 1px 1px 32px 0px;\r\n      color: #fff;\r\n      padding: 20px;\r\n      margin: 20px;\r\n      max-height: 100%;\r\n      \r\n      overflow-y: overlay;\r\n      border: solid 8px #4c2b82;\r\n    }\r\n\r\n    /*\r\n    *  SCROLL BAR\r\n    */\r\n    .content::-webkit-scrollbar-track\r\n    {\r\n      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);\r\n      background-color: #4c2b82;\r\n    }\r\n    .content::-webkit-scrollbar\r\n    {\r\n      width: 6px;\r\n      background-color: #4c2b82;\r\n    }\r\n    .content::-webkit-scrollbar-thumb\r\n    {\r\n      background-color: #4f2f85;\r\n    }\r\n\r\n    .footer {\r\n      display: flex;\r\n      text-align: left;\r\n      align-items: center;\r\n      flex-direction: column;\r\n    }\r\n\r\n  }\r\n\r\n}\r\n\r\n/* container button */\r\n.area-button {\r\n  text-align: center;\r\n  padding: 10px;\r\n  \r\n  /* primary-button */\r\n  .primary-button {\r\n    border: 0;\r\n    border-radius: 22px;\r\n    padding: 11px 80px;\r\n    text-align: center;\r\n    background-color: #4cd566;\r\n    color: #fff;\r\n    font-size: 16px;\r\n  }\r\n\r\n  /* disabled button */\r\n  .disabled-button {\r\n    padding: 10px 80px;\r\n    border: 0px solid #4e1f85;\r\n    -webkit-border-radius: 25px; \r\n    -moz-border-radius: 25px;\r\n    border-radius: 25px;\r\n    font-size: 16px;\r\n    text-decoration:none; \r\n    display:inline-block;\r\n    text-shadow: -1px -1px 0 rgba(0,0,0,0.3); \r\n    color: #FFFFFF;\r\n    background-color: #6929B3; \r\n    background-image: -webkit-gradient(linear, left top, left bottom, from(#6929B3), to(#6622B3));\r\n    background-image: -webkit-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -moz-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -ms-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -o-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: linear-gradient(to bottom, #6929B3, #6622B3);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6929B3, endColorstr=#6622B3);\r\n  }\r\n\r\n  .rounded-button {\r\n    border: 0;\r\n    border-radius: 100%;\r\n    width: 40px;\r\n    height: 40px;\r\n    background-color: #fff;\r\n    color: $green;\r\n    box-shadow: #444343 0px 1px 6px 0px;\r\n  }\r\n\r\n}\r\n\r\n/* Input customized */\r\n.input-form label {\r\n  display: block;\r\n}\r\n.input-form input {\r\n  width: 90%;\r\n  border: 0;\r\n  border-bottom: solid 1px #9c9c9c;\r\n  background-color: transparent;\r\n  padding: 10px 0;\r\n  margin-bottom: 15px;\r\n  color: #fff;\r\n  outline: none;\r\n  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */\r\n      color: #adadad;\r\n      opacity: 1; /* Firefox */\r\n  }\r\n\r\n  &:-ms-input-placeholder { /* Internet Explorer 10-11 */\r\n      color: #adadad;\r\n  }\r\n\r\n  &::-ms-input-placeholder { /* Microsoft Edge */\r\n      color: #adadad;\r\n  }\r\n}\r\n\r\n/* Custom Checkbox */\r\ninput[type=checkbox].css-checkbox {\r\n\theight:1px; width:1px; margin:-1px; padding:0; border:0;\r\n}\r\n\r\ninput[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {\r\n\tpadding-left:23px;\r\n  height:18px; \r\n\tdisplay:inline-block;\r\n\tline-height:18px;\r\n\tbackground-repeat:no-repeat;\r\n\tbackground-position: 0 0;\r\n\tfont-size:12px;\r\n\tvertical-align:middle;\r\n\tcursor:pointer;\r\n\r\n}\r\n\r\ninput[type=checkbox].css-checkbox:checked + label.css-label, input[type=checkbox].css-checkbox + label.css-label.chk {\r\n\tbackground-position: 0 -18px;\r\n}\r\nlabel.css-label {\r\n\tbackground-image:url(https://res.cloudinary.com/luneswallet/image/upload/v1519425382/check.png);\r\n\t-webkit-touch-callout: none;\r\n\t-webkit-user-select: none;\r\n\t-khtml-user-select: none;\r\n\t-moz-user-select: none;\r\n\t-ms-user-select: none;\r\n\tuser-select: none;\r\n}\r\n\r\nbutton:focus {\r\n    outline: none !important;\r\n}\r\n","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #4cd466;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
+	exports.push([module.id, "body {\n  background-color: #4c2b82;\n  font-family: 'Roboto', sans-serif;\n  color: #fff;\n  font-size: 14px;\n  line-height: 20px;\n  font-weight: 100; }\n\n*, *:before, *:after {\n  box-sizing: border-box;\n  position: relative;\n  -webkit-box-sizing: border-box; }\n\n.center {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  height: 100%;\n  overflow: auto;\n  overflow-y: auto; }\n  @media (min-width: 768px) {\n    .center {\n      max-height: 780px; } }\n\nh1, h2, h3, h4 {\n  font-family: 'Offside', cursive;\n  line-height: 1.4em; }\n\nh2 {\n  font-size: 4em;\n  line-height: 1em; }\n\nh3 {\n  font-size: 2em;\n  line-height: 1.3em; }\n\n.txt-green {\n  color: #4cd466; }\n\n.txt-center {\n  text-align: center !important; }\n\n.txt-left {\n  text-align: left !important; }\n\n.txt-right {\n  text-align: right !important; }\n\n.no-padding {\n  padding: 0; }\n\n.cursor-pointer {\n  cursor: pointer; }\n\n.round-menu {\n  text-decoration: none;\n  padding: 10px; }\n  .round-menu img {\n    width: 25px;\n    vertical-align: middle; }\n\n.modal-backdrop {\n  background-color: #4c2b82;\n  opacity: 0.7;\n  text-align: center; }\n\n/* Logo */\n.logo {\n  font-size: 40px;\n  font-family: 'Offside', cursive;\n  letter-spacing: -7px; }\n\n/* Header */\n.header {\n  margin: 20px 0; }\n\n/* MENU horizontal */\nul.menu.horizontal {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: row;\n      flex-direction: row;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: distribute;\n      justify-content: space-around; }\n  ul.menu.horizontal li {\n    list-style: none; }\n    ul.menu.horizontal li a {\n      text-transform: uppercase;\n      text-decoration: none;\n      color: #fff; }\n      ul.menu.horizontal li a:hover {\n        color: #4cd466; }\n\n/* authentication */\n.authentication {\n  margin-top: 50px; }\n  .authentication .title {\n    margin: 20px 0; }\n\n.error-fields {\n  padding: 10px;\n  background-color: #f9d660;\n  color: #9b853b;\n  border-radius: 5px;\n  margin-left: 10px;\n  margin-bottom: 20px; }\n\n/* Modal Customized */\n.modal {\n  margin: 20px;\n  background-color: #4c2b82;\n  border-radius: 5px;\n  box-shadow: #4c2b82 1px 1px 17px 5px; }\n  .modal .icon-close {\n    text-align: center;\n    position: absolute;\n    right: 30px;\n    padding: 0 10px;\n    cursor: pointer;\n    font-weight: bold; }\n  .modal .modal-title {\n    margin-left: 2em;\n    font-weight: bold; }\n  .modal .modal-header {\n    border: 0; }\n  .modal .modal-content {\n    background-color: transparent;\n    padding: 10px;\n    border: 0;\n    /*\r\n    *  SCROLL BAR\r\n    */ }\n    .modal .modal-content .content {\n      background-color: #4c2b82;\n      border-radius: 5px;\n      box-shadow: #311d53 1px 1px 32px 0px;\n      color: #fff;\n      padding: 20px;\n      margin: 20px;\n      max-height: 100%;\n      overflow-y: overlay;\n      border: solid 8px #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar-track {\n      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n      background-color: #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar {\n      width: 6px;\n      background-color: #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar-thumb {\n      background-color: #4f2f85; }\n    .modal .modal-content .footer {\n      display: -ms-flexbox;\n      display: flex;\n      text-align: left;\n      -ms-flex-align: center;\n          align-items: center;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n\n/* container button */\n.area-button {\n  text-align: center;\n  padding: 10px;\n  /* primary-button */\n  /* disabled button */ }\n  .area-button .primary-button {\n    border: 0;\n    border-radius: 22px;\n    padding: 11px 80px;\n    text-align: center;\n    background-color: #4cd566;\n    color: #fff;\n    font-size: 16px; }\n  .area-button .disabled-button {\n    padding: 10px 80px;\n    border: 0px solid #4e1f85;\n    border-radius: 25px;\n    font-size: 16px;\n    text-decoration: none;\n    display: inline-block;\n    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);\n    color: #FFFFFF;\n    background-color: #6929B3;\n    background-image: linear-gradient(to bottom, #6929B3, #6622B3);\n    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6929B3, endColorstr=#6622B3); }\n  .area-button .rounded-button {\n    border: 0;\n    border-radius: 100%;\n    width: 40px;\n    height: 40px;\n    background-color: #fff;\n    color: #4cd466;\n    box-shadow: #444343 0px 1px 6px 0px; }\n\n/* Input customized */\n.input-form label {\n  display: block; }\n\n.input-form input {\n  width: 90%;\n  border: 0;\n  border-bottom: solid 1px #9c9c9c;\n  background-color: transparent;\n  padding: 10px 0;\n  margin-bottom: 15px;\n  color: #fff;\n  outline: none; }\n  .input-form input::-webkit-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input:-ms-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input::placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input:-ms-input-placeholder {\n    /* Internet Explorer 10-11 */\n    color: #adadad; }\n  .input-form input::-ms-input-placeholder {\n    /* Microsoft Edge */\n    color: #adadad; }\n\n/* Custom Checkbox */\ninput[type=checkbox].css-checkbox {\n  height: 1px;\n  width: 1px;\n  margin: -1px;\n  padding: 0;\n  border: 0; }\n\ninput[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {\n  padding-left: 23px;\n  height: 18px;\n  display: inline-block;\n  line-height: 18px;\n  background-repeat: no-repeat;\n  background-position: 0 0;\n  font-size: 12px;\n  vertical-align: middle;\n  cursor: pointer; }\n\ninput[type=checkbox].css-checkbox:checked + label.css-label, input[type=checkbox].css-checkbox + label.css-label.chk {\n  background-position: 0 -18px; }\n\nlabel.css-label {\n  background-image: url(https://res.cloudinary.com/luneswallet/image/upload/v1519425382/check.png);\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\nbutton:focus {\n  outline: none !important; }\n", "", {"version":3,"sources":["C:/lunes/2202/lunes-purchase/src/scss/src/scss/base/_reset.scss","C:/lunes/2202/lunes-purchase/src/scss/src/scss/base/_color.scss"],"names":[],"mappings":"AAKA;EACE,0BCNe;EDOf,kCAAiC;EACjC,YAAW;EACX,gBAAe;EACf,kBAAiB;EACjB,iBAAgB,EACjB;;AAED;EACE,uBAAsB;EACtB,mBAAkB;EAClB,+BAA8B,EAC/B;;AAED;EACE,gBAAe;EACf,SAAQ;EACR,UAAS;EACT,iCAAgC;EAChC,aAAY;EACZ,eAAc;EACd,iBAAgB,EAIjB;EAHC;IARF;MASI,kBAAiB,EAEpB,EAAA;;AAED;EACE,gCAA+B;EAC/B,mBAAkB,EACnB;;AAED;EACE,eAAc;EACd,iBAAgB,EACjB;;AACD;EACE,eAAc;EACd,mBAAkB,EACnB;;AAED;EACE,eC3Ca,ED4Cd;;AAED;EACE,8BAA4B,EAC7B;;AAED;EACE,4BAA0B,EAC3B;;AAED;EACE,6BAA2B,EAC5B;;AACD;EACE,WAAU,EACX;;AACD;EACE,gBAAe,EAChB;;AAED;EACE,sBAAqB;EACrB,cAAa,EAKd;EAPD;IAII,YAAW;IACX,uBAAsB,EACvB;;AAGH;EACE,0BC/Ee;EDgFf,aAAY;EACZ,mBAAkB,EACnB;;AACD,UAAU;AACV;EACE,gBAAe;EACf,gCAA+B;EAC/B,qBAAoB,EACrB;;AAED,YAAY;AACZ;EACE,eAAc,EACf;;AAED,qBAAqB;AACrB;EAEI,qBAAa;EAAb,cAAa;EACb,wBAAmB;MAAnB,oBAAmB;EACnB,uBAAmB;MAAnB,oBAAmB;EACnB,0BAA6B;MAA7B,8BAA6B,EAY9B;EAjBH;IAOM,iBAAgB,EASjB;IAhBL;MASQ,0BAAyB;MACzB,sBAAqB;MACrB,YAAW,EAIZ;MAfP;QAaU,eCxGK,EDyGN;;AAMT,oBAAoB;AACpB;EACE,iBAAgB,EAIjB;EALD;IAGI,eAAc,EACf;;AAGH;EACE,cAAa;EACb,0BCxHc;EDyHd,eAAc;EACd,mBAAkB;EAClB,kBAAiB;EACjB,oBAAmB,EACpB;;AAED,sBAAsB;AACtB;EACE,aAAY;EACZ,0BCxIe;EDyIf,mBAAkB;EAClB,qCAAqC,EAiEtC;EArED;IAOI,mBAAkB;IAClB,mBAAkB;IAClB,YAAW;IACX,gBAAe;IACf,gBAAe;IACf,kBAAiB,EAClB;EAbH;IAgBI,iBAAe;IACf,kBAAgB,EACjB;EAlBH;IAqBI,UAAS,EACV;EAtBH;IAyBI,8BAA6B;IAC7B,cAAa;IACb,UAAS;IAeT;;MAEE,EAuBH;IAnEH;MA8BM,0BCpKW;MDqKX,mBAAkB;MAClB,qCAAoC;MACpC,YAAW;MACX,cAAa;MACb,aAAY;MACZ,iBAAgB;MAEhB,oBAAmB;MACnB,0BAAyB,EAC1B;IAxCL;MA+CM,qDAAiD;MACjD,0BAAyB,EAC1B;IAjDL;MAoDM,WAAU;MACV,0BAAyB,EAC1B;IAtDL;MAyDM,0BAAyB,EAC1B;IA1DL;MA6DM,qBAAa;MAAb,cAAa;MACb,iBAAgB;MAChB,uBAAmB;UAAnB,oBAAmB;MACnB,2BAAsB;UAAtB,uBAAsB,EACvB;;AAML,sBAAsB;AACtB;EACE,mBAAkB;EAClB,cAAa;EAEb,oBAAoB;EAWpB,qBAAqB,EA+BtB;EA9CD;IAMI,UAAS;IACT,oBAAmB;IACnB,mBAAkB;IAClB,mBAAkB;IAClB,0BAAyB;IACzB,YAAW;IACX,gBAAe,EAChB;EAbH;IAiBI,mBAAkB;IAClB,0BAAyB;IAGzB,oBAAmB;IACnB,gBAAe;IACf,sBAAoB;IACpB,sBAAoB;IACpB,4CAAwC;IACxC,eAAc;IACd,0BAAyB;IAMzB,+DAA8D;IAAC,8GAA4G,EAC5K;EAlCH;IAqCI,UAAS;IACT,oBAAmB;IACnB,YAAW;IACX,aAAY;IACZ,uBAAsB;IACtB,eCnPW;IDoPX,oCAAmC,EACpC;;AAIH,sBAAsB;AACtB;EACE,eAAc,EACf;;AACD;EACE,WAAU;EACV,UAAS;EACT,iCAAgC;EAChC,8BAA6B;EAC7B,gBAAe;EACf,oBAAmB;EACnB,YAAW;EACX,cAAa,EAad;EArBD;IASmB,0CAA0C;IACvD,eAAc;IACd,WAAU;IAAG,aAAa,EAC7B;EAZH;IASmB,0CAA0C;IACvD,eAAc;IACd,WAAU;IAAG,aAAa,EAC7B;EAZH;IASmB,0CAA0C;IACvD,eAAc;IACd,WAAU;IAAG,aAAa,EAC7B;EAZH;IAc4B,6BAA6B;IACnD,eAAc,EACjB;EAhBH;IAkB6B,oBAAoB;IAC3C,eAAc,EACjB;;AAGH,qBAAqB;AACrB;EACC,YAAU;EAAG,WAAS;EAAG,aAAW;EAAG,WAAS;EAAG,UAAQ,EAC3D;;AAED;EACC,mBAAiB;EAChB,aAAW;EACZ,sBAAoB;EACpB,kBAAgB;EAChB,6BAA2B;EAC3B,yBAAwB;EACxB,gBAAc;EACd,uBAAqB;EACrB,gBAAc,EAEd;;AAED;EACC,6BAA4B,EAC5B;;AACD;EACC,iGAA+F;EAC/F,4BAA2B;EAC3B,0BAAyB;EAEzB,uBAAsB;EACtB,sBAAqB;EACrB,kBAAiB,EACjB;;AAED;EACI,yBAAwB,EAC3B","file":"main.scss","sourcesContent":["@import 'color';\r\n\r\n$break-small: 320px;\r\n$break-large: 1200px;\r\n\r\nbody {\r\n  background-color: $primary;\r\n  font-family: 'Roboto', sans-serif;\r\n  color: #fff;\r\n  font-size: 14px;\r\n  line-height: 20px;\r\n  font-weight: 100;\r\n};\r\n\r\n*, *:before, *:after {\r\n  box-sizing: border-box;\r\n  position: relative;\r\n  -webkit-box-sizing: border-box;\r\n}\r\n\r\n.center {\r\n  position: fixed;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n  height: 100%;\r\n  overflow: auto;\r\n  overflow-y: auto;\r\n  @media (min-width: 768px) {\r\n    max-height: 780px;\r\n  }\r\n}\r\n\r\nh1, h2, h3, h4 {\r\n  font-family: 'Offside', cursive;\r\n  line-height: 1.4em;\r\n}\r\n\r\nh2 {\r\n  font-size: 4em;\r\n  line-height: 1em;\r\n}\r\nh3 {\r\n  font-size: 2em;\r\n  line-height: 1.3em;\r\n}\r\n\r\n.txt-green {\r\n  color: $green;\r\n}\r\n\r\n.txt-center {\r\n  text-align: center!important;\r\n}\r\n\r\n.txt-left {\r\n  text-align: left!important;\r\n}\r\n\r\n.txt-right {\r\n  text-align: right!important;\r\n}\r\n.no-padding {\r\n  padding: 0;\r\n}\r\n.cursor-pointer {\r\n  cursor: pointer;\r\n}\r\n\r\n.round-menu {\r\n  text-decoration: none;\r\n  padding: 10px;\r\n  img {\r\n    width: 25px;\r\n    vertical-align: middle; \r\n  }\r\n}\r\n\r\n.modal-backdrop {\r\n  background-color: $primary;\r\n  opacity: 0.7;\r\n  text-align: center;\r\n}\r\n/* Logo */\r\n.logo {\r\n  font-size: 40px;\r\n  font-family: 'Offside', cursive;\r\n  letter-spacing: -7px;\r\n}\r\n\r\n/* Header */\r\n.header {\r\n  margin: 20px 0;\r\n}\r\n\r\n/* MENU horizontal */\r\nul.menu {\r\n  &.horizontal {\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    justify-content: space-around;\r\n    li {\r\n      list-style: none;\r\n      a {\r\n        text-transform: uppercase;\r\n        text-decoration: none;\r\n        color: #fff;\r\n        &:hover {\r\n          color: $green;\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n/* authentication */\r\n.authentication {\r\n  margin-top: 50px;\r\n  .title {\r\n    margin: 20px 0;\r\n  }\r\n}\r\n\r\n.error-fields {\r\n  padding: 10px;\r\n  background-color: $yellow;\r\n  color: #9b853b;\r\n  border-radius: 5px;\r\n  margin-left: 10px;\r\n  margin-bottom: 20px;\r\n}\r\n \r\n/* Modal Customized */\r\n.modal {\r\n  margin: 20px;\r\n  background-color: $primary;\r\n  border-radius: 5px;\r\n  box-shadow: $primary 1px 1px 17px 5px;\r\n\r\n  .icon-close {\r\n    text-align: center;\r\n    position: absolute;\r\n    right: 30px;\r\n    padding: 0 10px;\r\n    cursor: pointer;\r\n    font-weight: bold;\r\n  }\r\n  \r\n  .modal-title{\r\n    margin-left:2em;\r\n    font-weight:bold;\r\n  }\r\n\r\n  .modal-header {\r\n    border: 0;\r\n  }\r\n  \r\n  .modal-content {\r\n    background-color: transparent;\r\n    padding: 10px;\r\n    border: 0;\r\n\r\n    .content {\r\n      background-color: $primary;\r\n      border-radius: 5px;\r\n      box-shadow: #311d53 1px 1px 32px 0px;\r\n      color: #fff;\r\n      padding: 20px;\r\n      margin: 20px;\r\n      max-height: 100%;\r\n      \r\n      overflow-y: overlay;\r\n      border: solid 8px #4c2b82;\r\n    }\r\n\r\n    /*\r\n    *  SCROLL BAR\r\n    */\r\n    .content::-webkit-scrollbar-track\r\n    {\r\n      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);\r\n      background-color: #4c2b82;\r\n    }\r\n    .content::-webkit-scrollbar\r\n    {\r\n      width: 6px;\r\n      background-color: #4c2b82;\r\n    }\r\n    .content::-webkit-scrollbar-thumb\r\n    {\r\n      background-color: #4f2f85;\r\n    }\r\n\r\n    .footer {\r\n      display: flex;\r\n      text-align: left;\r\n      align-items: center;\r\n      flex-direction: column;\r\n    }\r\n\r\n  }\r\n\r\n}\r\n\r\n/* container button */\r\n.area-button {\r\n  text-align: center;\r\n  padding: 10px;\r\n  \r\n  /* primary-button */\r\n  .primary-button {\r\n    border: 0;\r\n    border-radius: 22px;\r\n    padding: 11px 80px;\r\n    text-align: center;\r\n    background-color: #4cd566;\r\n    color: #fff;\r\n    font-size: 16px;\r\n  }\r\n\r\n  /* disabled button */\r\n  .disabled-button {\r\n    padding: 10px 80px;\r\n    border: 0px solid #4e1f85;\r\n    -webkit-border-radius: 25px; \r\n    -moz-border-radius: 25px;\r\n    border-radius: 25px;\r\n    font-size: 16px;\r\n    text-decoration:none; \r\n    display:inline-block;\r\n    text-shadow: -1px -1px 0 rgba(0,0,0,0.3); \r\n    color: #FFFFFF;\r\n    background-color: #6929B3; \r\n    background-image: -webkit-gradient(linear, left top, left bottom, from(#6929B3), to(#6622B3));\r\n    background-image: -webkit-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -moz-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -ms-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -o-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: linear-gradient(to bottom, #6929B3, #6622B3);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6929B3, endColorstr=#6622B3);\r\n  }\r\n\r\n  .rounded-button {\r\n    border: 0;\r\n    border-radius: 100%;\r\n    width: 40px;\r\n    height: 40px;\r\n    background-color: #fff;\r\n    color: $green;\r\n    box-shadow: #444343 0px 1px 6px 0px;\r\n  }\r\n\r\n}\r\n\r\n/* Input customized */\r\n.input-form label {\r\n  display: block;\r\n}\r\n.input-form input {\r\n  width: 90%;\r\n  border: 0;\r\n  border-bottom: solid 1px #9c9c9c;\r\n  background-color: transparent;\r\n  padding: 10px 0;\r\n  margin-bottom: 15px;\r\n  color: #fff;\r\n  outline: none;\r\n  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */\r\n      color: #adadad;\r\n      opacity: 1; /* Firefox */\r\n  }\r\n\r\n  &:-ms-input-placeholder { /* Internet Explorer 10-11 */\r\n      color: #adadad;\r\n  }\r\n\r\n  &::-ms-input-placeholder { /* Microsoft Edge */\r\n      color: #adadad;\r\n  }\r\n}\r\n\r\n/* Custom Checkbox */\r\ninput[type=checkbox].css-checkbox {\r\n\theight:1px; width:1px; margin:-1px; padding:0; border:0;\r\n}\r\n\r\ninput[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {\r\n\tpadding-left:23px;\r\n  height:18px; \r\n\tdisplay:inline-block;\r\n\tline-height:18px;\r\n\tbackground-repeat:no-repeat;\r\n\tbackground-position: 0 0;\r\n\tfont-size:12px;\r\n\tvertical-align:middle;\r\n\tcursor:pointer;\r\n\r\n}\r\n\r\ninput[type=checkbox].css-checkbox:checked + label.css-label, input[type=checkbox].css-checkbox + label.css-label.chk {\r\n\tbackground-position: 0 -18px;\r\n}\r\nlabel.css-label {\r\n\tbackground-image:url(https://res.cloudinary.com/luneswallet/image/upload/v1519425382/check.png);\r\n\t-webkit-touch-callout: none;\r\n\t-webkit-user-select: none;\r\n\t-khtml-user-select: none;\r\n\t-moz-user-select: none;\r\n\t-ms-user-select: none;\r\n\tuser-select: none;\r\n}\r\n\r\nbutton:focus {\r\n    outline: none !important;\r\n}\r\n","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #4cd466;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
 	
 	// exports
 

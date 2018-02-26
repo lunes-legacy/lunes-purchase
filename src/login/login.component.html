@@ -193,11 +193,11 @@
           <div class="col-lg-6 col-xs-12">
             <div class="input-form">
               <label for="input-email">{{'EMAIL' | translate}}</label>
-              <input data-ng-model="$ctrl.user.email" id="input-email" name="email" required type="text" placeholder="{{'EMAIL' | translate}}">
+              <input data-ng-model="$ctrl.user.email" id="input-email" name="email" required type="text" placeholder="{{'EMAIL_PLACEHOLDER' | translate}}">
             </div>
             <div class="input-form">
               <label for="input-password">{{'PASSWORD' | translate}}</label>
-              <input data-ng-model="$ctrl.user.password" id="input-password" name="password" minlength="8" required type="password" placeholder="{{'PASSWORD' | translate}}">
+              <input data-ng-model="$ctrl.user.password" id="input-password" name="password" minlength="8" required type="password" placeholder="{{'PASSWORD_PLACEHOLDER' | translate}}">
             </div>
             <div class="area-button txt-center">
               <button class="rounded-button" data-toggle="modal" ng-click="$ctrl.doLogin()">

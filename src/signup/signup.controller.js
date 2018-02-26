@@ -17,6 +17,7 @@ class SignupController {
             confirmEmail: '',
             password: '',
             confirmPassword: '',
+			coupon: '',
             check1: false,
             check2: false,
             check3: false,
@@ -25,6 +26,7 @@ class SignupController {
     }
 
     async doSignup() {
+		console.log(this.user.coupon);
         this.showLoading(true);
         const obj = { 
             name: this.user.name, 
