@@ -12,6 +12,7 @@ class BuyController {
     this.showContainerCoins = false;
     this.balanceCoins = {};
     this.currentPhase = [];
+    this.buyHistoryUser = {};
     this.valueToDeposit = '0.00000000';
     this.valueToReceive = '0.00000000';
     this.bonusAmountFinal = '0.00000000';
@@ -47,17 +48,27 @@ class BuyController {
     /*this.getBalanceLunes('LNS', this.currentUser).catch(error => {
       console.log(error);
     });*/
-    this.showDepositWalletAddressQRCode();
+    this.showDepositWalletAddressQRCode(this.currentUser, this.currentCoinSelected);
     this.obtainPhase().catch(error => {
+      console.log(error);
+    });
+    this.getBuyHistory().catch(error => {
       console.log(error);
     });
     this.showLoading(true);
   }
 
-  async showDepositWalletAddressQRCode() {
+  async getBuyHistory() {
+    const buyHistory = await this.HttpService.buyHistory(this.currentUser.email, this.currentUser.accessToken);
+    this.buyHistoryUser = buyHistory; 
+  }
+
+  async showDepositWalletAddressQRCode(currentUser, coin) {
     const a = await this.HttpService.showDepositWalletAddressQRCode(this.currentUser, this.currentCoinSelected);
     this.currentQRCode = JSON.parse(JSON.stringify(a));
-    //this.balance = this.HttpService.getBalance(this.currentCoinSelected.name, this.currentQRCode.address, this.currentUser);
+    if (coin) {
+      this.getCurrentBalanceUser(coin.name, this.currentQRCode.address, this.currentUser);
+    }
   }
 
   async doBuy() {
@@ -251,6 +262,20 @@ class BuyController {
 
   logout() {
     localStorage.removeItem(STORAGE_KEY);
+  }
+
+  async getCurrentBalanceUser(coin, address, currentUser) {
+    console.log("");
+    const balance = await this.HttpService.getBalance(coin, address, currentUser);
+    this.$timeout(() => {
+      if (balance && balance.network === 'ETH') {
+        this.balanceUser = {
+          confirmed_balance: balance.balance
+        };
+      } else {
+        this.balanceUser = balance;
+      }
+    }, 200);
   }
 
   selectCoin(coinSelected) {

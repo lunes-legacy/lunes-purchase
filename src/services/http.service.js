@@ -26,6 +26,22 @@ class HttpService {
     return data;
   }
 
+  async changePassword(email, accessToken) {
+    const a = await LunesLib.users.resetPassword({ email });
+    return a;
+  }
+  
+  async confirmterm(currentUser) {
+    try {
+      console.log("");
+      /* TODO - remove true value to production */
+      let confirmTerm = await LunesLib.ico.confirmTerm(currentUser.email, currentUser.accessToken);
+      return confirmTerm;
+    } catch (error) {
+      throw new Error(error);
+    }  
+  }
+
   async obtainPhase() {
     const phase = await LunesLib.ico.obtainPhase();
     return phase;
@@ -88,11 +104,16 @@ class HttpService {
     };  
   }
 
+  async buyHistory(email, accessToken) {
+    const a = await LunesLib.ico.buyHistory(email, accessToken);
+    console.log(a);
+    return a; 
+  }
+
   async getBalance(coin, address, currentUser) {
-    
-    console.log(coin);
-    console.log(address);
-    return LunesLib.coins.getBalance({ address, coin, testnet: false }, currentUser.accessToken);
+    let underCoin = coin.toLowerCase();
+    let balance = await LunesLib.coins.getBalance({ address, coin: underCoin, testnet: false }, currentUser.accessToken);
+    return (balance && balance.data) ? balance.data : {};
   }
 
   async getBitcoinBalance(coin) {
