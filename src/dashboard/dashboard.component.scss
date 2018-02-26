@@ -1,0 +1,31 @@
+@import '../scss/base/_color';
+
+.green {
+    color: $green;
+}
+
+.mb-1-rem {
+    margin-bottom: 1rem;
+}
+
+.mb-2-rem {
+    margin-bottom: 2rem;
+}
+
+.history {
+    margin-bottom: 2rem;
+}
+
+.balance {
+    font-family: 'Offside', cursive;
+    text-align: right;
+}
+
+.monetary {
+    font-size: 2rem;
+}
+
+.coin {
+    font-size: 2.5rem;
+    color: $green;
+}
