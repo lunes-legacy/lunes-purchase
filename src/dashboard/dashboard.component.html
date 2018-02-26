@@ -59,14 +59,16 @@
         <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>
       </div>
       <div class="col-12 history">
-        <table class="table table-striped">
+        <table class="lunes-table">
           <thead>
-            <th>{{ 'DASHBOARD.DATE' | translate }}</th>
-            <th>{{ 'DASHBOARD.PHASE' | translate }}</th>
-            <th>{{ 'DASHBOARD.DEPOSIT' | translate }}</th>
-            <th>Lunes</th>
-            <th>{{ 'DASHBOARD.BONUS' | translate }}</th>
-            <th>Total</th>
+            <tr>
+              <td>{{ 'DASHBOARD.DATE' | translate }}</td>
+              <td>{{ 'DASHBOARD.PHASE' | translate }}</td>
+              <td>{{ 'DASHBOARD.DEPOSIT' | translate }}</td>
+              <td>Lunes</td>
+              <td>{{ 'DASHBOARD.BONUS' | translate }}</td>
+              <td>Total</td>
+            </tr>
           </thead>
           <tbody data-ng-if="$ctrl.history.length > 0">
             <tr data-ng-repeat="history in $ctrl.history">
