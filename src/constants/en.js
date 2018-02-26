@@ -50,6 +50,15 @@ export default {
     TERMS_CONDITION_TITLE: 'Terms and Conditions',
     REPRESENTATION_TERM_TITLE: 'Representation and Warranties',
     ERROR_SERVER: 'Error on server',
+    COUPON: 'Coupon',
+    OWN_COUPON: 'My Coupon',
+    TYPE_COUPON: 'Type your coupon bonus',
+    CHANGE_PASSWORD: 'Change Password',
+    EMAIL_SENT: 'Email sent successfully',
+    CLOSE: 'Close',
+    EMAIL_NOT_SENT: 'Email not sent or not exists',
+    DO_YOU_CHANGE_PASSWORD: 'Do you want change you password?',
+    CHANGE_PASSWORD_INSTRUCTION: 'Type your email for us send for you the instructions to change password',
     REPRESENTATION_TERM: `
       <h3>Representation and Warranties</h3>
       <p>By participating in the Initial Coin Offering, the User agrees to the T&C and in particular, they represent and warrant that they:</p>

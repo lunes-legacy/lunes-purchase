@@ -52120,7 +52120,7 @@
 /* 473 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"container\">\n\n  <!-- MODAL - criar directiva depois -->\n  <div id=\"modal-terms\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <div>\n        <script>\n          function openCity(evt, cityName) {\n            // Declare all variables\n            var i, tabcontent, tablinks;\n\n            // Get all elements with class=\"tabcontent\" and hide them\n            tabcontent = document.getElementsByClassName(\"tabcontent\");\n            for (i = 0; i < tabcontent.length; i++) {\n              tabcontent[i].style.display = \"none\";\n            }\n\n            // Get all elements with class=\"tablinks\" and remove the class \"active\"\n            tablinks = document.getElementsByClassName(\"tablinks\");\n            for (i = 0; i < tablinks.length; i++) {\n              tablinks[i].className = tablinks[i].className.replace(\" active\", \"\");\n            }\n\n            // Show the current tab, and add an \"active\" class to the button that opened the tab\n            document.getElementById(cityName).style.display = \"block\";\n            evt.currentTarget.className += \" active\";\n          }\n        </script>\n        <!-- Tab links -->\n        <div class=\"tab\">\n          <button class=\"tablinks\" onclick=\"openCity(event, 'terms_condition')\" id=\"defaultOpen\">{{'TERMS_CONDITION_TITLE' | translate}}</button>\n          <button class=\"tablinks\" onclick=\"openCity(event, 'representation_condition')\">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>\n        </div>\n        <!-- Tab content -->\n        <div id=\"terms_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsCondition\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n\n        <div id=\"representation_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsRepresentation\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG1\" id=\"checkboxG1\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check1\" ng-change=\"$ctrl.allCheckboxIsChecked()\">\n            <label for=\"checkboxG1\" class=\"css-label radGroup1 clr\"> {{'US_CITIZEN' | translate}} </label>\n          </div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG2\" id=\"checkboxG2\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check2\">\n            <label for=\"checkboxG2\" class=\"css-label radGroup1 clr\"> {{'AGREE_TERM' | translate}} </label>\n          </div>\n          <!--<div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG3\" id=\"checkboxG3\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check3\">\n            <label for=\"checkboxG3\" class=\"css-label radGroup1 clr\"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>\n          </div>-->\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG4\" id=\"checkboxG4\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check4\">\n            <label for=\"checkboxG4\" class=\"css-label radGroup1 clr\"> {{'AGREE_FUTURE_VALUE' | translate}}</label>\n          </div>\n          <div class=\"area-button\">\n            <button ng-show=\"$ctrl.allCheckboxIsChecked()\" class=\"primary-button\" data-ng-click=\"$ctrl.doAccept()\" data-dismiss=\"modal\">{{'AGREE' | translate}}</button>\n            <!--<button ng-show=\"!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()\" class=\"disabled-button\">{{'AGREE' | translate}}</button>-->\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- HEADER - criar diretiva depois -->\n  <nav class=\"header nav\" style=\"padding: 20px 0;\">\n    <div class=\"col-xs-12 col-lg-2 logo\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n\n    <div class=\"col-xs-12 col-lg-6  nav-menu\" style=\"margin-bottom: 20px;\">\n      <!--<ul class=\"menu horizontal\">\n        <li>\n          <a href=\"#!/whitelist\">{{'WHITELIST' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/buy\">{{'BUY' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/dashboard\">{{'DASHBOARD' | translate}}</a>\n        </li>\n      </ul>-->\n    </div>\n\n    <div class=\"col-xs-12 col-lg-4 txt-right\">\n      <ul class=\"menu horizontal\">\n        <li>\n          <a href=\"https://www.facebook.com/lunesplatform/\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg\" alt=\"facebook\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://t.me/LunesPlatformEN\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg\" alt=\"telegram\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://twitter.com/lunesplatform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg\" alt=\"twitter\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://medium.com/@lunes.platform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg\" alt=\"medium\" />\n          </a>\n        </li>\n      </ul>\n    </div>\n  </nav>\n\n  <!-- AUTHENTICATION FORM -->\n  <section class=\"authentication\">\n    <div>\n      <form name=\"$ctrl.loginForm\">\n        <div class=\"row\">\n\n          <div class=\"col-12 title\">\n            <h4>{{'WELCOME' | translate}}</h4>\n          </div>\n\n          <div class=\"col-12 col-lg-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n          <div class=\"col-lg-6 col-xs-12\">\n            <div class=\"input-form\">\n              <label for=\"input-email\">{{'EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.email\" id=\"input-email\" name=\"email\" required type=\"text\" placeholder=\"{{'EMAIL' | translate}}\">\n            </div>\n            <div class=\"input-form\">\n              <label for=\"input-password\">{{'PASSWORD' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.password\" id=\"input-password\" name=\"password\" minlength=\"8\" required type=\"password\" placeholder=\"{{'PASSWORD' | translate}}\">\n            </div>\n            <div class=\"area-button txt-center\">\n              <button class=\"rounded-button\" data-toggle=\"modal\" ng-click=\"$ctrl.doLogin()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\" />\n              </button>\n            </div>\n            <div class=\"dont-have-account\">\n              <label>{{'DONT_HAVE_ACCOUNT' | translate}}</label>\n              <label class=\"txt-green label-signup\" ng-click=\"$ctrl.goToSignup()\">{{'SIGNUP' | translate}}</label>\n              <!--<p class=\"cursor-pointer\">{{'RESET_PASSWORD' | translate}}</p>-->\n            </div>\n\n          </div>\n\n          <div class=\"col-lg-5 col-xs-12\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442473/whitelist-illustration_pclyxv.png\" width=\"100%\"\n              alt=\"next\" />\n          </div>\n\n          <div class=\"col-lg-4 col-xs-12\" ng-show=\"false\">\n            <div id=\"counter\" class=\"\">\n              <span id=\"coin_counter\" ng-show=\"false\">$ 00 000 000</span>\n              <div id=\"loading_bar\">\n                <div id=\"loading_bar_green\" style=\"width:50%;\"></div>\n              </div>\n              <div>\n                <div class=\"row\" style=\"text-align: center;\">\n                  <div class=\"col-xs-6 col-lg-6\">\n                    Pre-Ico\n                  </div>\n                  <div class=\"col-xs-6 col-lg-6\">\n                    Ico\n                  </div>\n                </div>\n\n                <!-- conter -->\n                <div class=\"row\" id=\"number\">\n                  <div class=\"col-xs-12\" id=\"time\">\n                    <div id=\"clockdiv\">\n                      <div>\n                        <span class=\"days\"></span>\n                        <div class=\"smalltext\">Days</div>\n                      </div>\n                      <div>\n                        <span class=\"hours\"></span>\n                        <div class=\"smalltext\">Hours</div>\n                      </div>\n                      <div>\n                        <span class=\"minutes\"></span>\n                        <div class=\"smalltext\">Minutes</div>\n                      </div>\n                      <div>\n                        <span class=\"seconds\"></span>\n                        <div class=\"smalltext\">Seconds</div>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n\n                <!-- hard cap -->\n                <div class=\"row\" id=\"number\">\n                  <div class=\"col-xs-12 col-lg-12\" id=\"hard-cap\">\n                    <p>Hard cap</p>\n                    <p>$ 100 000 000</p>\n                  </div>\n                </div>\n\n              </div>\n            </div>\n\n          </div>\n\n\n\n      </form>\n      </div>\n  </section>\n  </div>"
+	module.exports = "<div class=\"container\">\n\n  <!-- MODAL - criar directiva depois -->\n  <div id=\"modal-terms\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <div>\n        <script>\n          function openCity(evt, cityName) {\n            // Declare all variables\n            var i, tabcontent, tablinks;\n\n            // Get all elements with class=\"tabcontent\" and hide them\n            tabcontent = document.getElementsByClassName(\"tabcontent\");\n            for (i = 0; i < tabcontent.length; i++) {\n              tabcontent[i].style.display = \"none\";\n            }\n\n            // Get all elements with class=\"tablinks\" and remove the class \"active\"\n            tablinks = document.getElementsByClassName(\"tablinks\");\n            for (i = 0; i < tablinks.length; i++) {\n              tablinks[i].className = tablinks[i].className.replace(\" active\", \"\");\n            }\n\n            // Show the current tab, and add an \"active\" class to the button that opened the tab\n            document.getElementById(cityName).style.display = \"block\";\n            evt.currentTarget.className += \" active\";\n          }\n        </script>\n        <!-- Tab links -->\n        <div class=\"tab\">\n          <button class=\"tablinks\" onclick=\"openCity(event, 'terms_condition')\" id=\"defaultOpen\">{{'TERMS_CONDITION_TITLE' | translate}}</button>\n          <button class=\"tablinks\" onclick=\"openCity(event, 'representation_condition')\">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>\n        </div>\n        <!-- Tab content -->\n        <div id=\"terms_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsCondition\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n\n        <div id=\"representation_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsRepresentation\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG1\" id=\"checkboxG1\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check1\" ng-change=\"$ctrl.allCheckboxIsChecked()\">\n            <label for=\"checkboxG1\" class=\"css-label radGroup1 clr\"> {{'US_CITIZEN' | translate}} </label>\n          </div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG2\" id=\"checkboxG2\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check2\">\n            <label for=\"checkboxG2\" class=\"css-label radGroup1 clr\"> {{'AGREE_TERM' | translate}} </label>\n          </div>\n          <!--<div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG3\" id=\"checkboxG3\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check3\">\n            <label for=\"checkboxG3\" class=\"css-label radGroup1 clr\"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>\n          </div>-->\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG4\" id=\"checkboxG4\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check4\">\n            <label for=\"checkboxG4\" class=\"css-label radGroup1 clr\"> {{'AGREE_FUTURE_VALUE' | translate}}</label>\n          </div>\n          <div class=\"area-button\">\n            <button ng-show=\"$ctrl.allCheckboxIsChecked()\" class=\"primary-button\" data-ng-click=\"$ctrl.doAccept()\" data-dismiss=\"modal\">{{'AGREE' | translate}}</button>\n            <!--<button ng-show=\"!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()\" class=\"disabled-button\">{{'AGREE' | translate}}</button>-->\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- MODAL - criar directiva change password -->\n  <div id=\"modal-change-password\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\" style=\"height: 100%;\">\n\n      <div ng-show=\"$ctrl.loadingResetPass\" style=\"display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n      height: 100%;\">\n        {{'LOADING' | translate}}\n      </div>\n\n      <div ng-show=\"$ctrl.showMsgEmailSent\" style=\"display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n        height: 100%;\">\n        <h3 for=\"change\">{{'EMAIL_SENT' | translate}}</h3>\n        <div style=\"width: 100px;\">\n          <button style=\"border: 0;\n            padding: 5px 20px;\n            border-radius: 20px;\n            cursor: pointer;\" class=\"icon-close\" data-dismiss=\"modal\">{{'CLOSE' | translate}}</button>\n        </div>\n      </div>\n\n      <form style=\"display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n      height: 100%;\" ng-show=\"!$ctrl.loadingResetPass && !$ctrl.showMsgEmailSent\">\n        <div>\n          <h3 for=\"change\">{{'CHANGE_PASSWORD_INSTRUCTION' | translate}}</h3>\n        </div>\n        <div ng-show=\"$ctrl.showErrorMsgEmailSent\" style=\"display: flex;\n          flex-direction: column;\n          align-items: center;\n          justify-content: center;\n          height: 100%;\">\n          <h5 for=\"change\" style=\"padding: 2px 10px;\n          background-color: #d83636;\n          border-radius: 20px;\">{{'EMAIL_NOT_SENT' | translate}}</h5>\n          <div style=\"width: 100px;\">\n            <button style=\"border: 0;\n              padding: 5px 20px;\n              border-radius: 20px;\n              cursor: pointer;\" class=\"icon-close\" data-dismiss=\"modal\">{{'CLOSE' | translate}}</button>\n          </div>\n        </div>\n\n        <div>\n          <input type=\"text\" name=\"change-password\" ng-model=\"$ctrl.emailToChangePassword\" style=\"    border: 0;\n          width: 200px;\n          border-bottom: solid 1px #734cb3;\n          background-color: transparent;\n          padding: 20px;\n          color: #fff;\n          margin: 20px;\">\n        </div>\n        <div>\n          <button ng-click=\"$ctrl.doChangePassword()\" style=\"    border: 0;\n          padding: 5px 20px;\n          border-radius: 20px;\n          cursor: pointer;\">{{'CHANGE_PASSWORD' | translate}}</button>\n        </div>\n      </form>\n    </div>\n  </div>\n\n  <!-- HEADER - criar diretiva depois -->\n  <nav class=\"header nav\" style=\"padding: 20px 0;\">\n    <div class=\"col-xs-12 col-lg-2 logo\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n\n    <div class=\"col-xs-12 col-lg-6  nav-menu\" style=\"margin-bottom: 20px;\">\n      <!--<ul class=\"menu horizontal\">\n        <li>\n          <a href=\"#!/whitelist\">{{'WHITELIST' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/buy\">{{'BUY' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/dashboard\">{{'DASHBOARD' | translate}}</a>\n        </li>\n      </ul>-->\n    </div>\n\n    <div class=\"col-xs-12 col-lg-4 txt-right\">\n      <ul class=\"menu horizontal\">\n        <li>\n          <a href=\"https://www.facebook.com/lunesplatform/\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg\" alt=\"facebook\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://t.me/LunesPlatformEN\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg\" alt=\"telegram\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://twitter.com/lunesplatform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg\" alt=\"twitter\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://medium.com/@lunes.platform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg\" alt=\"medium\" />\n          </a>\n        </li>\n      </ul>\n    </div>\n  </nav>\n\n  <!-- AUTHENTICATION FORM -->\n  <section class=\"authentication\">\n    <div>\n      <form name=\"$ctrl.loginForm\">\n        <div class=\"row\">\n\n          <div class=\"col-12 title\">\n            <h4>{{'WELCOME' | translate}}</h4>\n          </div>\n\n          <div class=\"col-12 col-lg-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n          <div class=\"col-lg-6 col-xs-12\">\n            <div class=\"input-form\">\n              <label for=\"input-email\">{{'EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.email\" id=\"input-email\" name=\"email\" required type=\"text\" placeholder=\"{{'EMAIL' | translate}}\">\n            </div>\n            <div class=\"input-form\">\n              <label for=\"input-password\">{{'PASSWORD' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.password\" id=\"input-password\" name=\"password\" minlength=\"8\" required type=\"password\" placeholder=\"{{'PASSWORD' | translate}}\">\n            </div>\n            <div class=\"area-button txt-center\">\n              <button class=\"rounded-button\" data-toggle=\"modal\" ng-click=\"$ctrl.doLogin()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\" />\n              </button>\n            </div>\n            <div class=\"dont-have-account\">\n              <label>{{'DONT_HAVE_ACCOUNT' | translate}}</label>\n              <label class=\"txt-green label-signup\" ng-click=\"$ctrl.goToSignup()\">{{'SIGNUP' | translate}}</label>\n              <!--<p class=\"cursor-pointer\">{{'RESET_PASSWORD' | translate}}</p>-->\n            </div>\n            <div>\n              <label>{{'DO_YOU_CHANGE_PASSWORD' | translate}}</label>\n              <label class=\"txt-green label-signup\" data-toggle=\"modal\" data-target=\"#modal-change-password\">{{'CHANGE_PASSWORD' | translate}}</label>\n            </div>\n\n          </div>\n\n          <div class=\"col-lg-5 col-xs-12\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442473/whitelist-illustration_pclyxv.png\" width=\"100%\"\n              alt=\"next\" />\n          </div>\n\n          <div class=\"col-lg-4 col-xs-12\" ng-show=\"false\">\n            <div id=\"counter\" class=\"\">\n              <span id=\"coin_counter\" ng-show=\"false\">$ 00 000 000</span>\n              <div id=\"loading_bar\">\n                <div id=\"loading_bar_green\" style=\"width:50%;\"></div>\n              </div>\n              <div>\n                <div class=\"row\" style=\"text-align: center;\">\n                  <div class=\"col-xs-6 col-lg-6\">\n                    Pre-Ico\n                  </div>\n                  <div class=\"col-xs-6 col-lg-6\">\n                    Ico\n                  </div>\n                </div>\n\n                <!-- conter -->\n                <div class=\"row\" id=\"number\">\n                  <div class=\"col-xs-12\" id=\"time\">\n                    <div id=\"clockdiv\">\n                      <div>\n                        <span class=\"days\"></span>\n                        <div class=\"smalltext\">Days</div>\n                      </div>\n                      <div>\n                        <span class=\"hours\"></span>\n                        <div class=\"smalltext\">Hours</div>\n                      </div>\n                      <div>\n                        <span class=\"minutes\"></span>\n                        <div class=\"smalltext\">Minutes</div>\n                      </div>\n                      <div>\n                        <span class=\"seconds\"></span>\n                        <div class=\"smalltext\">Seconds</div>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n\n                <!-- hard cap -->\n                <div class=\"row\" id=\"number\">\n                  <div class=\"col-xs-12 col-lg-12\" id=\"hard-cap\">\n                    <p>Hard cap</p>\n                    <p>$ 100 000 000</p>\n                  </div>\n                </div>\n\n              </div>\n            </div>\n\n          </div>\n\n\n\n      </form>\n      </div>\n  </section>\n  </div>"
 
 /***/ },
 /* 474 */
@@ -52155,6 +52155,7 @@
 	    this.termsCondition = $sce.trustAsHtml($filter('translate')('TERMS_CONDITIONS'));
 	    this.termsRepresentation = $sce.trustAsHtml($filter('translate')('REPRESENTATION_TERM'));
 	    this.ErrorMessagesService = ErrorMessagesService;
+	    this.loadingResetPass = false;
 	    this.user = {
 	      email: '',
 	      password: '',
@@ -52251,6 +52252,50 @@
 	    return doLogin;
 	  }();
 	
+	  LoginController.prototype.doChangePassword = function () {
+	    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+	      var _this2 = this;
+	
+	      var a;
+	      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+	        while (1) {
+	          switch (_context2.prev = _context2.next) {
+	            case 0:
+	              this.loadingResetPass = true;
+	              _context2.next = 3;
+	              return this.HttpService.changePassword(this.emailToChangePassword).catch(function (error) {
+	                _this2.loadingResetPass = false;
+	                _this2.$timeout(function () {
+	                  _this2.showErrorMsgEmailSent = true;
+	                }, 200);
+	              });
+	
+	            case 3:
+	              a = _context2.sent;
+	
+	
+	              if (a && a.emailSent) {
+	                this.$timeout(function () {
+	                  _this2.loadingResetPass = false;
+	                  _this2.showMsgEmailSent = true;
+	                }, 200);
+	              }
+	
+	            case 5:
+	            case 'end':
+	              return _context2.stop();
+	          }
+	        }
+	      }, _callee2, this);
+	    }));
+	
+	    function doChangePassword() {
+	      return _ref2.apply(this, arguments);
+	    }
+	
+	    return doChangePassword;
+	  }();
+	
 	  LoginController.prototype.goToSignup = function goToSignup() {
 	    this.$state.go('signup');
 	  };
@@ -52260,32 +52305,32 @@
 	  };
 	
 	  LoginController.prototype.doAccept = function () {
-	    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-	      var _this2 = this;
+	    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+	      var _this3 = this;
 	
 	      var a, depositWallet;
-	      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+	      return regeneratorRuntime.wrap(function _callee3$(_context3) {
 	        while (1) {
-	          switch (_context2.prev = _context2.next) {
+	          switch (_context3.prev = _context3.next) {
 	            case 0:
 	              this.showLoading(true);
 	              this.currentUser = JSON.parse(localStorage.getItem(_index.STORAGE_KEY));
-	              _context2.next = 4;
+	              _context3.next = 4;
 	              return this.HttpService.confirmterm(this.currentUser).catch(function (error) {
-	                _this2.serverError = true;
-	                _this2.serverErrorMessage = error.message;
+	                _this3.serverError = true;
+	                _this3.serverErrorMessage = error.message;
 	                console.log(error);
 	              });
 	
 	            case 4:
-	              a = _context2.sent;
+	              a = _context3.sent;
 	
 	              if (!(!this.currentUser.depositWallet || !this.currentUser.depositWallet.BTC)) {
-	                _context2.next = 14;
+	                _context3.next = 14;
 	                break;
 	              }
 	
-	              _context2.next = 8;
+	              _context3.next = 8;
 	              return this.HttpService.createDepositWallet(this.currentUser).catch(function (error) {
 	                if (error && error.response && error.response.data) {
 	                  alert(error.response.data.message);
@@ -52294,12 +52339,12 @@
 	              });
 	
 	            case 8:
-	              depositWallet = _context2.sent;
+	              depositWallet = _context3.sent;
 	
 	              this.currentUser.depositWallet = depositWallet;
 	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(this.currentUser));
 	              this.$state.go('buy');
-	              _context2.next = 17;
+	              _context3.next = 17;
 	              break;
 	
 	            case 14:
@@ -52309,14 +52354,14 @@
 	
 	            case 17:
 	            case 'end':
-	              return _context2.stop();
+	              return _context3.stop();
 	          }
 	        }
-	      }, _callee2, this);
+	      }, _callee3, this);
 	    }));
 	
 	    function doAccept() {
-	      return _ref2.apply(this, arguments);
+	      return _ref3.apply(this, arguments);
 	    }
 	
 	    return doAccept;
@@ -52333,47 +52378,47 @@
 	  };
 	
 	  LoginController.prototype.obtainPhase = function () {
-	    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-	      return regeneratorRuntime.wrap(function _callee3$(_context3) {
+	    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+	      return regeneratorRuntime.wrap(function _callee4$(_context4) {
 	        while (1) {
-	          switch (_context3.prev = _context3.next) {
+	          switch (_context4.prev = _context4.next) {
 	            case 0:
-	              _context3.prev = 0;
+	              _context4.prev = 0;
 	
 	              console.log("");
-	              _context3.next = 4;
+	              _context4.next = 4;
 	              return this.HttpService.obtainPhase().catch(function (error) {
 	                console.log(error);
 	                alert('Erro ao tentar recuperar dados da fase da ICO');
 	              });
 	
 	            case 4:
-	              this.currentPhase = _context3.sent;
+	              this.currentPhase = _context4.sent;
 	
 	              console.log(this.currentPhase);
 	              if (this.currentPhase) {
 	                localStorage.setItem('lunes.phase', JSON.stringify(this.currentPhase));
 	              }
 	              this.showLoading(false);
-	              _context3.next = 13;
+	              _context4.next = 13;
 	              break;
 	
 	            case 10:
-	              _context3.prev = 10;
-	              _context3.t0 = _context3['catch'](0);
+	              _context4.prev = 10;
+	              _context4.t0 = _context4['catch'](0);
 	
-	              console.log(_context3.t0);
+	              console.log(_context4.t0);
 	
 	            case 13:
 	            case 'end':
-	              return _context3.stop();
+	              return _context4.stop();
 	          }
 	        }
-	      }, _callee3, this, [[0, 10]]);
+	      }, _callee4, this, [[0, 10]]);
 	    }));
 	
 	    function obtainPhase() {
-	      return _ref3.apply(this, arguments);
+	      return _ref4.apply(this, arguments);
 	    }
 	
 	    return obtainPhase;
@@ -53293,7 +53338,7 @@
 /* 488 */
 /***/ function(module, exports) {
 
-	module.exports = "<!--<loading show=\"$ctrl.loading\"></loading>-->\n<div class=\"container\">\n\n  <!-- HEADER - criar diretiva depois -->\n  <nav class=\"header nav\">\n    <div class=\"col-sm-12 col-md-2 col-lg-2 logo\" ng-click=\"$ctrl.goToHome()\" style=\"cursor: pointer;margin: 13px 0;\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n\n    <div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6 nav-menu\">\n      <!--<ul class=\"menu horizontal\">\n        <li>\n          <a href=\"#!/whitelist\">{{'WHITELIST' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/buy\">{{'BUY' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/dashboard\">{{'DASHBOARD' | translate}}</a>\n        </li>\n      </ul>-->\n    </div>\n\n    <div class=\"col-xs-12 col-lg-4 txt-right\" style=\"margin-top: 10px;\">\n      <ul class=\"menu horizontal\">\n        <li>\n          <a href=\"https://www.facebook.com/lunesplatform/\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg\" alt=\"facebook\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://t.me/LunesPlatformEN\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg\" alt=\"telegram\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://twitter.com/lunesplatform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg\" alt=\"twitter\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://medium.com/@lunes.platform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg\" alt=\"medium\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"#!/login\" class=\"round-menu\" ng-click=\"$ctrl.logout()\">\n            {{'LOGOUT' | translate}}\n          </a>\n        </li>\n      </ul>\n    </div>\n  </nav>\n\n  <!-- BUY -->\n  <section class=\"buy\">\n    <div>\n      <div class=\"row\">\n\n        <div class=\"col-12 title\">\n          <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>\n        </div>\n\n        <div class=\"col-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n        <div class=\"col-sm-12 col-md-7 col-lg-7\">\n          <div class=\"row calculator\">\n            <div class=\"col-lg-6 no-padding\" style=\"margin: 5px 0 20px 0;\">\n              <div class=\"valueCripto row\">\n                <div class=\"select-coin col-xs-12 col-lg-7\">\n                  <ul>\n                    <li ng-repeat=\"coin in $ctrl.coins\" ng-click=\"$ctrl.selectCoin(coin)\" ng-class=\"coin.selected ? 'selected': ''\">\n                      <img ng-src=\"{{coin.img}}\" alt=\"coin.label\">\n                    </li>\n                  </ul>\n                </div>\n                <div class=\"col-xs-12 col-lg-5\">\n                  <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToDeposit\" ng-change=\"$ctrl.calcValue()\" />\n                </div>\n              </div>\n              <div class=\"col-lg-12\">\n                USD / {{$ctrl.currentCoinSelected.name}} - {{$ctrl.showQuotation()}}\n              </div>\n            </div>\n\n            <div class=\"col-lg-1 equal\" style=\"margin: 5px 0 20px 0;\">=</div>\n\n            <div class=\"col-lg-5 no-padding\" style=\"margin: 5px 0 20px 0;\">\n              <div class=\"lunesAmount\">\n                <div class=\"flag-lns\">\n                  <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\">\n                </div>\n                <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToReceive\" ng-change=\"$ctrl.calcValue('LNS')\"\n                  style=\"padding-top: 10px;\" />\n              </div>\n\n              <div class=\"col-lg-12\" style=\"text-align: right;\">\n                <label for=\"#\">\n                  <small>{{'PRICE_LUNES' | translate}}</small> = USD {{$ctrl.priceValueLunes}}\n                </label>\n              </div>\n            </div>\n\n          </div>\n\n          <div class=\"amountBalance row\">\n            <div class=\"col-sm-12 col-lg-12 total\">\n              <div class=\"result\" style=\"margin-top: 15px;\">\n                <div>{{'AMOUNT_LUNES' | translate}}</div>\n                <div>{{$ctrl.valueToReceive}}</div>\n              </div>\n              <div class=\"result\">\n                <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>\n                <div>{{$ctrl.bonusAmountFinal}}</div>\n              </div>\n              <div class=\"line-break\">\n                <hr />\n              </div>\n              <div class=\"result\">\n                <div>Total</div>\n                <div>{{$ctrl.getTotal()}}</div>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"col-lg-12 no-padding\">\n              <div class=\"area-button\" ng-show=\"false\">\n                <button class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\">{{'BUY' | translate}}</button>\n              </div>\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\">\n              * {{'MSG_BALANCE_DEPOSITED' | translate}}\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\">\n              * {{'BUY_LIMIT_PHASE' | translate}}\n              <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n            </div>\n          </div>\n\n        </div>\n\n        <div class=\"col-xs-12 col-lg-5 container-qr-code\" style=\"text-align: center;\">\n          <div style=\"margin-bottom: 10px;\">\n            <span class=\"selected-label\">{{'COIN_SELECTED' | translate}}</span>\n            <span>{{$ctrl.currentCoinSelected.name}}</span>\n          </div>\n          <img ng-src=\"{{$ctrl.currentQRCode.img}}\" class=\"qr-code img-thumbnail img-responsive\" />\n          <p class=\"address\">{{$ctrl.currentQRCode.address}}</p>\n          <div> {{'BALANCE' | translate}}: {{$ctrl.balanceUser.confirmed_balance}} {{$ctrl.currentCoinSelected.name}} </div>\n        </div>\n\n      </div>\n    </div>\n  </section>\n\n</div>"
+	module.exports = "<!--<loading show=\"$ctrl.loading\"></loading>-->\n<div class=\"container\">\n\n  <!-- HEADER - criar diretiva depois -->\n  <nav class=\"header nav\">\n    <div class=\"col-sm-12 col-md-2 col-lg-2 logo\" ng-click=\"$ctrl.goToHome()\" style=\"cursor: pointer;margin: 13px 0;\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n\n    <div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6 nav-menu\">\n      <!--<ul class=\"menu horizontal\">\n        <li>\n          <a href=\"#!/whitelist\">{{'WHITELIST' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/buy\">{{'BUY' | translate}}</a>\n        </li>\n        <li>\n          <a href=\"#!/dashboard\">{{'DASHBOARD' | translate}}</a>\n        </li>\n      </ul>-->\n    </div>\n\n    <div class=\"col-xs-12 col-lg-4 txt-right\" style=\"margin-top: 10px;\">\n      <ul class=\"menu horizontal\">\n        <li>\n          <a href=\"https://www.facebook.com/lunesplatform/\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg\" alt=\"facebook\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://t.me/LunesPlatformEN\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg\" alt=\"telegram\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://twitter.com/lunesplatform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg\" alt=\"twitter\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://medium.com/@lunes.platform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg\" alt=\"medium\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"#!/login\" class=\"round-menu\" ng-click=\"$ctrl.logout()\">\n            {{'LOGOUT' | translate}}\n          </a>\n        </li>\n      </ul>\n    </div>\n  </nav>\n\n  <!-- BUY -->\n  <section class=\"buy\">\n    <div>\n      <div class=\"row\">\n\n        <div class=\"col-12 title\">\n          <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>\n          <div>{{'OWN_COUPON' | translate}}\n            <span style=\"font-weight: bold;color: #3bbe6e;\">{{$ctrl.currentUser.ownCoupon}}</span>\n          </div>\n        </div>\n\n        <div class=\"col-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n        <div class=\"col-sm-12 col-md-7 col-lg-7\">\n          <div class=\"row calculator\">\n            <div class=\"col-lg-6 no-padding\" style=\"margin: 5px 0 20px 0;\">\n              <div class=\"valueCripto row\">\n                <div class=\"select-coin col-xs-12 col-lg-7\">\n                  <ul>\n                    <li ng-repeat=\"coin in $ctrl.coins\" ng-click=\"$ctrl.selectCoin(coin)\" ng-class=\"coin.selected ? 'selected': ''\">\n                      <img ng-src=\"{{coin.img}}\" alt=\"coin.label\">\n                    </li>\n                  </ul>\n                </div>\n                <div class=\"col-xs-12 col-lg-5\">\n                  <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToDeposit\" ng-change=\"$ctrl.calcValue()\" />\n                </div>\n              </div>\n              <div class=\"col-lg-12\">\n                USD / {{$ctrl.currentCoinSelected.name}} - {{$ctrl.showQuotation()}}\n              </div>\n            </div>\n\n            <div class=\"col-lg-1 equal\" style=\"margin: 5px 0 20px 0;\">=</div>\n\n            <div class=\"col-lg-5 no-padding\" style=\"margin: 5px 0 20px 0;\">\n              <div class=\"lunesAmount\">\n                <div class=\"flag-lns\">\n                  <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\">\n                </div>\n                <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToReceive\" ng-change=\"$ctrl.calcValue('LNS')\"\n                  style=\"padding-top: 10px;\" />\n              </div>\n\n              <div class=\"col-lg-12\" style=\"text-align: right;\">\n                <label for=\"#\">\n                  <small>{{'PRICE_LUNES' | translate}}</small> = USD {{$ctrl.priceValueLunes}}\n                </label>\n              </div>\n            </div>\n\n          </div>\n\n          <div class=\"amountBalance row\">\n            <div class=\"col-sm-12 col-lg-12 total\">\n              <div class=\"result\" style=\"margin-top: 15px;\">\n                <div>{{'AMOUNT_LUNES' | translate}}</div>\n                <div>{{$ctrl.valueToReceive}}</div>\n              </div>\n              <div class=\"result\">\n                <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>\n                <div>{{$ctrl.bonusAmountFinal}}</div>\n              </div>\n              <div class=\"result\">\n                <div>{{'COUPON' | translate}}</div>\n                <div>\n                  <input type=\"text\" placeholder=\"{{'TYPE_COUPON' | translate}}\" name=\"coupon\" ng-model=\"$ctrl.currentUser.coupon\" style=\"background-color: transparent;\n                  border: 0;\n                  border-bottom: solid 1px #52318a;\n                  outline: none;\n                  color: #fff;\n                  text-align: right;\">\n                </div>\n              </div>\n              <div class=\"line-break\">\n                <hr />\n              </div>\n              <div class=\"result\">\n                <div>Total</div>\n                <div>{{$ctrl.getTotal()}}</div>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"col-lg-12 no-padding\">\n              <div class=\"area-button\" ng-show=\"false\">\n                <button class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\">{{'BUY' | translate}}</button>\n              </div>\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\">\n              * {{'MSG_BALANCE_DEPOSITED' | translate}}\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\">\n              * {{'BUY_LIMIT_PHASE' | translate}}\n              <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n            </div>\n          </div>\n\n        </div>\n\n        <div class=\"col-xs-12 col-lg-5 container-qr-code\" style=\"text-align: center;\">\n          <div style=\"margin-bottom: 10px;\">\n            <span class=\"selected-label\">{{'COIN_SELECTED' | translate}}</span>\n            <span>{{$ctrl.currentCoinSelected.name}}</span>\n          </div>\n          <img ng-src=\"{{$ctrl.currentQRCode.img}}\" class=\"qr-code img-thumbnail img-responsive\" />\n          <p class=\"address\">{{$ctrl.currentQRCode.address}}</p>\n          <div> {{'BALANCE' | translate}}: {{$ctrl.balanceUser.confirmed_balance}} {{$ctrl.currentCoinSelected.name}} </div>\n        </div>\n\n      </div>\n    </div>\n  </section>\n\n</div>"
 
 /***/ },
 /* 489 */
@@ -82265,6 +82310,15 @@
 	  TERMS_CONDITION_TITLE: 'Terms and Conditions',
 	  REPRESENTATION_TERM_TITLE: 'Representation and Warranties',
 	  ERROR_SERVER: 'Error on server',
+	  COUPON: 'Coupon',
+	  OWN_COUPON: 'My Coupon',
+	  TYPE_COUPON: 'Type your coupon bonus',
+	  CHANGE_PASSWORD: 'Change Password',
+	  EMAIL_SENT: 'Email sent successfully',
+	  CLOSE: 'Close',
+	  EMAIL_NOT_SENT: 'Email not sent or not exists',
+	  DO_YOU_CHANGE_PASSWORD: 'Do you want change you password?',
+	  CHANGE_PASSWORD_INSTRUCTION: 'Type your email for us send for you the instructions to change password',
 	  REPRESENTATION_TERM: '\n      <h3>Representation and Warranties</h3>\n      <p>By participating in the Initial Coin Offering, the User agrees to the T&C and in particular, they represent and warrant that they:</p>\n      <br>1. are authorized and have full power to purchase LNS according to the laws that apply in their jurisdiction of domicile;\n      <br>2. live in a jurisdiction which allows Lunes to sell the Lunes tokens through a Initial Coin Offering without requiring any local authorization;\n      <br>3. are familiar with all related regulations in the specific jurisdiction in which they are based and that purchasing cryptographic tokens in that jurisdiction is not prohibited, restricted or subject to additional conditions of any kind;\n      <br>4. are not a U.S., or Canadian, or Chinese, or South Korean, or Singaporean citizen, resident or entity (a \u201CU.S., or Canadian, or Chinese, or South Korean, or Singaporean Person\u201D) nor are they purchasing Lunes Tokens or signing on behalf of a U.S., or Canadian, or Chinese, or South Korean, or Singaporean Person. Are not acting for the purpose of speculative investment; will not use the Token Sale for any illegal activity, including but not limited to money laundering and the financing of terrorism;\n      <br>5. are solely responsible for determining whether the acquisition of LNS is appropriate for them; are acquiring LNS for future use of the Lunes Platform; understand the risks associated with the Initial Coin Offering (incl. the risks related to the non-development of Lunes Platform and operations);\n      <br>6. understand the use of cryptocurrencies and the associated risks\n    ',
 	  TERMS_CONDITIONS: '\n      <h3>Terms and Conditions</h3>\n      <p>The Terms and Conditions (the \u201CT&C\u201D) apply to the buyer of the Lunes token\n      (\u201CLNS\u201D) and future user of the Lunes Platform. You should carefully read the T&C, as well as the white paper of the Lunes project before participating in the Initial Coin Offering.</p>\n      \n      <h5>Applicability</h5>\n      <p>The following T&C constitute the agreement (the \u201CAgreement\u201D) between Lunes Platform (hereinafter \u201CLunes\u201D or the \u201CCompany\u201D), and you (the \u201CUser\u201D) with respect to \n      the purchase of the Lunes Token and the future services offered through the Lunes Platform. By using our services, you are agreeing to be bound by the T&C in \n      its latest version. You are aware that Lunes may change this T&C at any time. Your continued use of the Lunes Platform means that you accept any new or modified \n      terms.</p>\n      \n      <h5>Services</h5>\n      <p>Lunes is a platform which provides a set of decentralized solutions through blockchain.\n      In an uncomplicated and affordable way, we will pulverize our technologies into the population. With real solutions for daily life, we deliver services and \n      products ranging from payment processes and fundraising, to authenticity records.</p>\n      \n      <h5>The Lunes Token (LNS)</h5>\n      <p>LNS does not have the legal qualification as a security. LNS is final and non-refundable. LNS is not a share and does not give any right to participate in the \n      general meetings of Lunes. LNS will not have a particular usage outside the Lunes Platform. The purchase of LNS shall therefore not be done for speculative usage.</p>\n      \n      <p>LNS can be purchased during the Initial Coin Offering directly from the Company or after the ICO at the Company or exchanger.</p>\n      \n      <p>Any future User purchasing LNS expressly acknowledges and represents that she/he has carefully reviewed the T&C and fully understands the risks, costs and \n      benefits associated with the purchase of this token as indicated in the T&C.</p>\n      \n      <h5>Knowledge required<h5>\n      <p>A future User undertaking to purchase LNS in relation to the token sale,  should ensure that she/he understands and has significant experience of cryptocurrencies, \n      blockchain systems and services, and that she/he fully understands the risks associated with the token sale as well as the mechanism related to the use of \n      cryptocurrencies (incl. storage).</p>\n      \n      <p>Lunes shall not be responsible for any loss of LNS or situations making it impossible to access to LNS, which may result in any actions or omissions of the future \n      User or any person undertaking to acquire LNS.</p>\n      \n      <h5>Risks</h5>\n      <p>Acquiring LNS involves various risks, in particular that Lunes may not be able to launch its operations and develop its platform. Therefore, and prior to \n      acquiring \n      LNS, any future user should carefully consider the risks, costs, and benefits of acquiring LNS within the Initial Coin Offering, and, if necessary, obtain \n      independent advice in this regard. Any interested person who is not in the position to accept or to understand the risks associated with the Initial Coin \n      Offering (incl. the risks related to the non- development of Lunes Platform and operations) or any other risks as indicated in the T&C, should not acquire \n      LNS, at this stage or later.</p>\n      \n      <h5>Self-Acquisition</h5>\n      <p>Lunes is allowed to acquire LNS from the market at market price as value disbursement method. The acquisition must be authorized by the Board of Directors, \n      under \n      the condition that no conflict of interests is identified. Through acquisition of LNS, Lunes is not allowed to perform operations such as manipulation of LNS \n      market.</p>\n      \n      <h5>Important Disclaimer</h5>\n      <p>The T&C shall not and cannot be considered as an invitation to enter into an investment. They do not constitute or relate in any way nor should they be \n      considered \n      as an offering of securities in any jurisdiction. The T&C do not include or contain any information or indication that might be considered as a recommendation \n      or that might be used to base any investment decision. LNS is a utility token and is not intended to be used as an investment.</p>\n      \n      <p>Lunes will be an operative entity managing a platform and LNS is only a utility token. Therefore, Lunes is not a financial intermediary and is not \n      required to obtain any authorization for anti-money laundering purposes.</p>\n      \n      <p>Acquiring LNS shall not grant any right or influence over Lunes\u2019 organization and governance to the purchasers.</p>\n      \n      <p>Employees of Lunes are allowed to operate with LNS at market price if they are in knowledge of information that may modify the price of the token.</p>\n      \n      <p>Regulatory authorities are carefully scrutinizing businesses and operations associated to cryptocurrencies in the world. In that respect, regulatory measures, \n      investigations or actions may impact Lunes\u2019 business and even limit or prevent it from developing its operations in the future. Any person undertaking to acquire \n      LNS must be aware that the Lunes business model and the T&C may change or need to be modified because of new regulatory and compliance requirements from any \n      applicable laws in any jurisdictions. In such case, purchasers and any person undertaking to acquire LNS acknowledge and understand that neither Lunes nor any \n      of its affiliates shall be held liable for any direct or indirect loss or damages caused by such changes.</p>\n      \n      <p>Lunes will do its best to launch its operations and develop the Lunes Platform. Any person undertaking to acquire LNS acknowledges and understands that Lunes does \n      not provide any guarantee that it will manage to establish an operative platform and therefore it cannot guarantee that the LNS can be used for social trading on \n      the platform. They acknowledge and understand therefore that Lunes (incl. its bodies and employees) assumes no liability or responsibility for any loss or damage \n      that would result from or relate to the incapacity to use LNS, except in the case of intentional misconduct or gross negligence.</p>\n      \n      <h5>Intellectual Property Rights</h5>\n      <p>To the extent that copyright or other intellectual property rights exist in the Lunes Platform, such as software, know-how, analysis or programs, those copyrights \n      and other intellectual and industrial rights belong to Lunes.</p>\n      \n      <h5>Limitation of Liability</h5>\n      <p>Lunes, as well as its officers, directors, agents, joint ventures, employees and suppliers, assumes no liability or responsibility for any loss arising out of or \n      related to the use of the Lunes Platform or any technical, interruption or malfunction of the platform.</p>\n      \n      <p>The limitation of liability set out above shall not be applicable in the event that Lunes, or a Lunes-employee, has caused the damage by intentional misconduct or \n      by gross negligence.</p>\n      \n      <h5>Severability</h5>\n      <p>If any of the provisions of the T&C or of the Agreement are deemed to be invalid, void or unenforceable, the remaining provisions shall continue in full force and \n      effect.</p>\n    '
 	};
@@ -82328,8 +82382,17 @@
 	  BALANCE: 'Saldo',
 	  EMAIL_ALREADY: 'Email já cadastrado',
 	  ERROR_SERVER: 'Erro interno no servidor',
+	  COUPON: 'Cupom',
+	  OWN_COUPON: 'Meu Cupom',
+	  TYPE_COUPON: 'Insira seu cupom de bônus',
 	  TERMS_CONDITION_TITLE: 'Termos e Condições',
 	  REPRESENTATION_TERM_TITLE: 'Representações e Garantias',
+	  CHANGE_PASSWORD: 'Alterar Senha',
+	  EMAIL_SENT: 'Email enviado com sucesso',
+	  CLOSE: 'Fechar',
+	  EMAIL_NOT_SENT: 'Email não enviado ou não existe',
+	  DO_YOU_CHANGE_PASSWORD: 'Você deseja alterar a senha?',
+	  CHANGE_PASSWORD_INSTRUCTION: 'Digite seu email para enviarmos as instruções de alteração de sua senha',
 	  REPRESENTATION_TERM: '\n      <h3>Representa\xE7\xE3o e Garantias</h3>\n      <p>Ao participar da ICO o usu\xE1rio concorda com o T&C e, em particular, eles representam e garantem que:</p>\n      <br>1. S\xE3o autorizados e t\xEAm poder completo para comprar LNS de acordo com as leis que se aplicam em sua jurisdi\xE7\xE3o do domic\xEDlio;\n      <br>2. vivem em uma jurisdi\xE7\xE3o que permite que Lunes venda tokens atrav\xE9s de uma ICO sem exigir qualquer autoriza\xE7\xE3o local;\n      <br>3. est\xE3o familiarizados com todos os regulamentos relacionados na jurisdi\xE7\xE3o espec\xEDficas em que eles vivem e que a compra de tokens criptografados na jurisdi\xE7\xE3o n\xE3o \xE9 proibida, restrita ou sujeitas a qualquer tipo de condi\xE7\xF5es adicionais;\n      <br>4. N\xE3o s\xE3o um cidad\xE3o dos Estados Unidos, do Canad\xE1, de Singapura, da China ou da Cor\xE9ia do Sul ou residente ou entidade e nem est\xE3o comprando tokens Lunes ou assinando em nome de um cidad\xE3o americano, ou canadense, ou singapurense, ou sul coreano, ou chin\xEAs. N\xE3o est\xE3o agindo para fins de investimento especulativo; n\xE3o utilizar\xE1 a venda simb\xF3lica para qualquer actividade ilegal, incluindo, mas n\xE3o se limitando \xE0 lavagem de dinheiro e ao financiamento do terrorismo;\n      <br>5. s\xE3o os \xFAnicos respons\xE1veis por determinar se a aquisi\xE7\xE3o de LNS \xE9 adequada para eles; est\xE3o adquirindo LNS para uso futuro da plataforma Lunes; compreender os riscos associados \xE0 ICO (incl. os riscos relacionados com o n\xE3o desenvolvimento da plataforma e opera\xE7\xF5es da Lunes); e\n      <br>6. compreender o uso de criptomoedas e os riscos associados.\n    ',
 	  TERMS_CONDITIONS: '\n    <h3>Termos e condi\xE7\xF5es</h3>\n    <p>Os termos e condi\xE7\xF5es aplicam-se ao comprador do token Lunes ("LNS") e ao usu\xE1rio futuro da plataforma Lunes. Voc\xEA deve ler atentamente os termos e condi\xE7\xF5es, \n    bem como o Whitepaper do projeto Lunes antes de participar na ICO.</p>\n\n    <h5>Aplicabilidade</h5>\n    <p>Os seguintes termos e condi\xE7\xF5es constituem o acordo entre a plataforma Lunes (doravante "Lunes" ou a "empresa"), e voc\xEA (o "usu\xE1rio") no que diz respeito \xE0 compra dos tokens Lunes e aos servi\xE7os futuros oferecidos atrav\xE9s da Lunes Plataforma. Ao utilizar os nossos servi\xE7os, voc\xEA est\xE1 concordando em ser vinculado pelos termos e condi\xE7\xF5es em sua vers\xE3o mais recente. Voc\xEA est\xE1 ciente de que a Lunes pode mudar estes termos e condi\xE7\xF5es a qualquer momento. O uso continuado da plataforma Lunes significa que voc\xEA aceita quaisquer termos novos ou modificados.\n    Servi\xE7os\n    Lunes \xE9 uma plataforma que fornece um conjunto de solu\xE7\xF5es descentralizadas atrav\xE9s blockchain.\n    De uma forma descomplicada e acess\xEDvel, vamos pulverizar as nossas tecnologias para a  popula\xE7\xE3o. Com solu\xE7\xF5es reais para a vida cotidiana, entregamos servi\xE7os e \n    produtos que v\xE3o desde processos de pagamento e capta\xE7\xE3o de recursos, at\xE9 registros de autenticidade.</p>\n\n    <h5>O token Lunes (LNS)</h5>\n\n    <p>LNS n\xE3o tem a qualifica\xE7\xE3o legal de um cau\xE7\xE3o. Uma vez comprado o LNS n\xE3o \xE9 reembols\xE1vel. LNS n\xE3o \xE9 uma participa\xE7\xE3o da Lunes e n\xE3o d\xE1 qualquer direito de intera\xE7\xE3o nas reuni\xF5es gerais da Lunes. Os LNS podem ser adquiridos durante a fase de ICO diretamente da empresa ou ap\xF3s a ICO na empresa ou em certas exchanges.\n    Qualquer futuro usu\xE1rio que comprar LNS, expressamente reconhece que reviu cuidadosamente os termos e condi\xE7\xF5es e compreende plenamente os riscos, custos e benef\xEDcios associados com a compra deste token, como indicado nos termos e condi\xE7\xF5es.\n    Um futuro usu\xE1rio comprador de LNS tokens deve assegurar que compreenda e tenha uma experi\xEAncia significativa com crypto moedas, sistemas e servi\xE7os blockchain, e que compreenda plenamente os riscos associados a venda de tokens, bem como o mecanismo relacionado ao uso de crypto moedas.\n    A Lunes n\xE3o ser\xE1 respons\xE1vel por qualquer perda de LNS ou situa\xE7\xF5es que impossibilitam o acesso \xE0 LNS, o que pode resultar em quaisquer a\xE7\xF5es ou omiss\xF5es do futuro \n    usu\xE1rio ou de qualquer pessoa que se comprometa a adquirir ins.</p>\n\n    <h5>Os riscos</h5>\n\n    <p>A aquisi\xE7\xE3o de LNS envolve v\xE1rios riscos, em particular que a Lunes pode n\xE3o ser capaz de lan\xE7ar suas opera\xE7\xF5es e desenvolver sua plataforma. Portanto, e \n    antes de adquirir LNS, qualquer futuro usu\xE1rio deve considerar cuidadosamente os riscos, custos e benef\xEDcios da aquisi\xE7\xE3o de LNS dentro da ICO, e, se necess\xE1rio, \n    obter aconselhamento independente a este respeito. Qualquer pessoa interessada que n\xE3o esteja em posi\xE7\xE3o de aceitar ou de compreender os riscos associados \xE0 \n    ICO (incl. os riscos relacionados com o n\xE3o desenvolvimento da plataforma e opera\xE7\xF5es da Lunes) ou quaisquer outros riscos conforme indicado nos termos e condi\xE7\xF5es, \n    n\xE3o devem adquirir LNS, nesta fase ou mais tarde.</p>\n\n    <h5>Auto-aquisi\xE7\xE3o</h5>\n\n    <p>\xC9 permitido a Lunes adquirir LNS do mercado a pre\xE7o de mercado como o m\xE9todo do desembolso do valor. A aquisi\xE7\xE3o deve ser autorizada pelo Conselho de \n    administra\xE7\xE3o, a condi\xE7\xE3o de n\xE3o se identificar nenhum conflito de interesses. Atrav\xE9s da aquisi\xE7\xE3o de LNS, Lunes n\xE3o tem permiss\xE3o para realizar opera\xE7\xF5es \n    como a manipula\xE7\xE3o do mercado de LNS.</p>\n\n    <h5>Importante Aviso De Isen\xE7\xE3o</h5>\n\n    <p>Os termos e condi\xE7\xF5es n\xE3o devem e n\xE3o podem ser considerados como um convite para entrar em um investimento. Eles n\xE3o constituem ou se relacionam de forma alguma, nem devem ser considerados como uma oferta de t\xEDtulos em qualquer jurisdi\xE7\xE3o. Os termos e condi\xE7\xF5es n\xE3o incluem nem cont\xE9m qualquer informa\xE7\xE3o ou indica\xE7\xE3o que possa ser considerada como uma recomenda\xE7\xE3o ou que possa ser usada para basear qualquer decis\xE3o de investimento. LNS \xE9 um token utilit\xE1rio e n\xE3o se destina a ser usado como um investimento.\n    A Lunes ser\xE1 uma entidade operativa gerenciando uma plataforma e LNS \xE9 apenas um token utilit\xE1rio. Portanto, Lunes n\xE3o \xE9 um intermedi\xE1rio financeiro, portanto n\xE3o \xE9 obrigado a obter qualquer autoriza\xE7\xE3o para fins anti-lavagem de dinheiro.\n    A aquisi\xE7\xE3o de LNS n\xE3o conceder\xE1 qualquer direito ou influ\xEAncia sobre a organiza\xE7\xE3o e governan\xE7a sobre a Lunes aos compradores.\n    Os funcion\xE1rios de Lunes est\xE3o autorizados a operar com o LNS a pre\xE7o de mercado, caso conhe\xE7am informa\xE7\xF5es que possam modificar o pre\xE7o do token.\n    As autoridades reguladoras est\xE3o examinando cuidadosamente as empresas e opera\xE7\xF5es associadas \xE0 crypto moedas no mundo. Nesse sentido, as medidas regulat\xF3rias, investiga\xE7\xF5es ou a\xE7\xF5es podem impactar os neg\xF3cios da Lunes e at\xE9 mesmo limit\xE1-la ou impedi-la de desenvolver suas opera\xE7\xF5es no futuro. Qualquer pessoa que se comprometa a adquirir o LNS deve estar ciente de que o modelo de neg\xF3cios Lunes e o T&C podem mudar ou precisar ser modificados devido a novos requisitos regulat\xF3rios e de conformidade de quaisquer leis aplic\xE1veis em qualquer jurisdi\xE7\xE3o. Nesse caso, os compradores e qualquer pessoa que se comprometa a adquirir LNS reconhecem e compreendem que a Lunes e suas filiais n\xE3o ser\xE3o responsabilizadas por quaisquer perdas ou danos diretos ou indiretos causados por tais altera\xE7\xF5es.\n    Lunes far\xE1 o seu melhor para lan\xE7ar suas opera\xE7\xF5es e desenvolver a plataforma Lunes. Qualquer pessoa que empreender na aquisi\xE7\xE3o de LNS reconhece e entende que \n    Lunes n\xE3o fornece qualquer garantia de que vai conseguir estabelecer uma plataforma operativa e, portanto, n\xE3o pode garantir que os LNS podem ser utilizados \n    para o com\xE9rcio social na plataforma. Reconhecem e compreendem conseq\xFCentemente que Lunes (incl. seus empregados) n\xE3o assume nenhuma responsabilidade por qualquer \n    perda ou dano que resulte ou se relacione com a incapacidade de usar o LNS, exceto no caso de m\xE1 conduta intencional ou bruta neglig\xEAncia.</p>\n\n    <h5>Direitos de propriedade intelectual</h5>\n\n    <p>Na medida em que o copyright ou outros direitos de propriedade intelectual existem na plataforma Lunes, tais como software, know-how, an\xE1lise ou programas, \n    os direitos autorais e outros direitos intelectuais e industriais pertencem a Lunes.</p>\n\n    <h5>Limita\xE7\xE3o da responsabilidade</h5>\n\n    <p>Lunes, bem como seus oficiais, diretores, agentes, joint-ventures, funcion\xE1rios e fornecedores, n\xE3o assume qualquer responsabilidade por qualquer perda resultante, ou relacionada ao uso, da plataforma Lunes ou qualquer t\xE9cnica, interrup\xE7\xE3o ou avaria da plataforma.\n    A limita\xE7\xE3o da responsabilidade acima referida n\xE3o \xE9 aplic\xE1vel no caso de Lunes, ou de um trabalhador Lunes, ter causado o dano por m\xE1 conduta intencional ou por \n    neglig\xEAncia grosseira.</p>\n\n    <h5>Separa\xE7\xE3o</h5>\n\n    <p>Se qualquer das disposi\xE7\xF5es do T&C ou do acordo for considerada inv\xE1lida, nula ou inexequ\xEDvel, as restantes disposi\xE7\xF5es continuar\xE3o em pleno vigor e efeito.</p>\n'
 	};
@@ -82478,68 +82541,97 @@
 	    return signup;
 	  }();
 	
-	  HttpService.prototype.confirmterm = function () {
-	    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(currentUser) {
-	      var confirmTerm;
+	  HttpService.prototype.changePassword = function () {
+	    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(email, accessToken) {
+	      var a;
 	      return regeneratorRuntime.wrap(function _callee3$(_context3) {
 	        while (1) {
 	          switch (_context3.prev = _context3.next) {
 	            case 0:
-	              _context3.prev = 0;
+	              _context3.next = 2;
+	              return _lunesLib2.default.users.resetPassword({ email: email });
 	
-	              console.log("");
-	              /* TODO - remove true value to production */
-	              _context3.next = 4;
-	              return _lunesLib2.default.ico.confirmTerm(currentUser.email, currentUser.accessToken);
+	            case 2:
+	              a = _context3.sent;
+	              return _context3.abrupt('return', a);
 	
 	            case 4:
-	              confirmTerm = _context3.sent;
-	              return _context3.abrupt('return', confirmTerm);
-	
-	            case 8:
-	              _context3.prev = 8;
-	              _context3.t0 = _context3['catch'](0);
-	              throw new Error(_context3.t0);
-	
-	            case 11:
 	            case 'end':
 	              return _context3.stop();
 	          }
 	        }
-	      }, _callee3, this, [[0, 8]]);
+	      }, _callee3, this);
 	    }));
 	
-	    function confirmterm(_x3) {
+	    function changePassword(_x3, _x4) {
 	      return _ref3.apply(this, arguments);
+	    }
+	
+	    return changePassword;
+	  }();
+	
+	  HttpService.prototype.confirmterm = function () {
+	    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(currentUser) {
+	      var confirmTerm;
+	      return regeneratorRuntime.wrap(function _callee4$(_context4) {
+	        while (1) {
+	          switch (_context4.prev = _context4.next) {
+	            case 0:
+	              _context4.prev = 0;
+	
+	              console.log("");
+	              /* TODO - remove true value to production */
+	              _context4.next = 4;
+	              return _lunesLib2.default.ico.confirmTerm(currentUser.email, currentUser.accessToken);
+	
+	            case 4:
+	              confirmTerm = _context4.sent;
+	              return _context4.abrupt('return', confirmTerm);
+	
+	            case 8:
+	              _context4.prev = 8;
+	              _context4.t0 = _context4['catch'](0);
+	              throw new Error(_context4.t0);
+	
+	            case 11:
+	            case 'end':
+	              return _context4.stop();
+	          }
+	        }
+	      }, _callee4, this, [[0, 8]]);
+	    }));
+	
+	    function confirmterm(_x5) {
+	      return _ref4.apply(this, arguments);
 	    }
 	
 	    return confirmterm;
 	  }();
 	
 	  HttpService.prototype.obtainPhase = function () {
-	    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+	    var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
 	      var phase;
-	      return regeneratorRuntime.wrap(function _callee4$(_context4) {
+	      return regeneratorRuntime.wrap(function _callee5$(_context5) {
 	        while (1) {
-	          switch (_context4.prev = _context4.next) {
+	          switch (_context5.prev = _context5.next) {
 	            case 0:
-	              _context4.next = 2;
+	              _context5.next = 2;
 	              return _lunesLib2.default.ico.obtainPhase();
 	
 	            case 2:
-	              phase = _context4.sent;
-	              return _context4.abrupt('return', phase);
+	              phase = _context5.sent;
+	              return _context5.abrupt('return', phase);
 	
 	            case 4:
 	            case 'end':
-	              return _context4.stop();
+	              return _context5.stop();
 	          }
 	        }
-	      }, _callee4, this);
+	      }, _callee5, this);
 	    }));
 	
 	    function obtainPhase() {
-	      return _ref4.apply(this, arguments);
+	      return _ref5.apply(this, arguments);
 	    }
 	
 	    return obtainPhase;
@@ -82552,49 +82644,8 @@
 	
 	
 	  HttpService.prototype.showDepositWalletAddressQRCode = function () {
-	    var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(currentUser, currentCoinSelected) {
+	    var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(currentUser, currentCoinSelected) {
 	      var address;
-	      return regeneratorRuntime.wrap(function _callee5$(_context5) {
-	        while (1) {
-	          switch (_context5.prev = _context5.next) {
-	            case 0:
-	              _context5.prev = 0;
-	
-	              console.log("");
-	              address = JSON.parse(JSON.stringify(currentUser.depositWallet[currentCoinSelected.name].address));
-	
-	              console.log("");
-	              return _context5.abrupt('return', {
-	                address: address,
-	                img: 'https://chart.googleapis.com/chart?cht=qr&chl=' + address + '&chs=200x200&chld=L|0")'
-	              });
-	
-	            case 7:
-	              _context5.prev = 7;
-	              _context5.t0 = _context5['catch'](0);
-	              return _context5.abrupt('return', {
-	                address: 'error',
-	                img: 'https://www.computerhope.com/jargon/e/error.gif'
-	              });
-	
-	            case 10:
-	            case 'end':
-	              return _context5.stop();
-	          }
-	        }
-	      }, _callee5, this, [[0, 7]]);
-	    }));
-	
-	    function showDepositWalletAddressQRCode(_x4, _x5) {
-	      return _ref5.apply(this, arguments);
-	    }
-	
-	    return showDepositWalletAddressQRCode;
-	  }();
-	
-	  HttpService.prototype.createDepositWallet = function () {
-	    var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(currentUser) {
-	      var depositWalletAddresses;
 	      return regeneratorRuntime.wrap(function _callee6$(_context6) {
 	        while (1) {
 	          switch (_context6.prev = _context6.next) {
@@ -82602,52 +82653,54 @@
 	              _context6.prev = 0;
 	
 	              console.log("");
-	              /* TODO - remove true value to production */
-	              _context6.next = 4;
-	              return _lunesLib2.default.coins.createDepositWallet(currentUser.email, currentUser.accessToken, false);
+	              address = JSON.parse(JSON.stringify(currentUser.depositWallet[currentCoinSelected.name].address));
 	
-	            case 4:
-	              depositWalletAddresses = _context6.sent;
-	              return _context6.abrupt('return', depositWalletAddresses);
+	              console.log("");
+	              return _context6.abrupt('return', {
+	                address: address,
+	                img: 'https://chart.googleapis.com/chart?cht=qr&chl=' + address + '&chs=200x200&chld=L|0")'
+	              });
 	
-	            case 8:
-	              _context6.prev = 8;
+	            case 7:
+	              _context6.prev = 7;
 	              _context6.t0 = _context6['catch'](0);
-	              throw new Error(_context6.t0);
+	              return _context6.abrupt('return', {
+	                address: 'error',
+	                img: 'https://www.computerhope.com/jargon/e/error.gif'
+	              });
 	
-	            case 11:
+	            case 10:
 	            case 'end':
 	              return _context6.stop();
 	          }
 	        }
-	      }, _callee6, this, [[0, 8]]);
+	      }, _callee6, this, [[0, 7]]);
 	    }));
 	
-	    function createDepositWallet(_x6) {
+	    function showDepositWalletAddressQRCode(_x6, _x7) {
 	      return _ref6.apply(this, arguments);
 	    }
 	
-	    return createDepositWallet;
+	    return showDepositWalletAddressQRCode;
 	  }();
 	
-	  HttpService.prototype.getBalanceLunes = function () {
-	    var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(coin, currentUser) {
-	      var address, balance;
+	  HttpService.prototype.createDepositWallet = function () {
+	    var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(currentUser) {
+	      var depositWalletAddresses;
 	      return regeneratorRuntime.wrap(function _callee7$(_context7) {
 	        while (1) {
 	          switch (_context7.prev = _context7.next) {
 	            case 0:
 	              _context7.prev = 0;
-	              address = currentUser.wallet.coins[0].addresses[0].address;
+	
+	              console.log("");
+	              /* TODO - remove true value to production */
 	              _context7.next = 4;
-	              return _lunesLib2.default.coins.bitcoin.getBalance({ address: address }, currentUser.accessToken);
+	              return _lunesLib2.default.coins.createDepositWallet(currentUser.email, currentUser.accessToken, false);
 	
 	            case 4:
-	              balance = _context7.sent;
-	              return _context7.abrupt('return', {
-	                COIN: 'LNS',
-	                CURRENTPRICE: balance
-	              });
+	              depositWalletAddresses = _context7.sent;
+	              return _context7.abrupt('return', depositWalletAddresses);
 	
 	            case 8:
 	              _context7.prev = 8;
@@ -82662,29 +82715,68 @@
 	      }, _callee7, this, [[0, 8]]);
 	    }));
 	
-	    function getBalanceLunes(_x7, _x8) {
+	    function createDepositWallet(_x8) {
 	      return _ref7.apply(this, arguments);
+	    }
+	
+	    return createDepositWallet;
+	  }();
+	
+	  HttpService.prototype.getBalanceLunes = function () {
+	    var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(coin, currentUser) {
+	      var address, balance;
+	      return regeneratorRuntime.wrap(function _callee8$(_context8) {
+	        while (1) {
+	          switch (_context8.prev = _context8.next) {
+	            case 0:
+	              _context8.prev = 0;
+	              address = currentUser.wallet.coins[0].addresses[0].address;
+	              _context8.next = 4;
+	              return _lunesLib2.default.coins.bitcoin.getBalance({ address: address }, currentUser.accessToken);
+	
+	            case 4:
+	              balance = _context8.sent;
+	              return _context8.abrupt('return', {
+	                COIN: 'LNS',
+	                CURRENTPRICE: balance
+	              });
+	
+	            case 8:
+	              _context8.prev = 8;
+	              _context8.t0 = _context8['catch'](0);
+	              throw new Error(_context8.t0);
+	
+	            case 11:
+	            case 'end':
+	              return _context8.stop();
+	          }
+	        }
+	      }, _callee8, this, [[0, 8]]);
+	    }));
+	
+	    function getBalanceLunes(_x9, _x10) {
+	      return _ref8.apply(this, arguments);
 	    }
 	
 	    return getBalanceLunes;
 	  }();
 	
 	  HttpService.prototype.getBalanceCoinETH = function () {
-	    var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(coin) {
+	    var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(coin) {
 	      var toSymbol, currencySymbol, priceData, price;
-	      return regeneratorRuntime.wrap(function _callee8$(_context8) {
+	      return regeneratorRuntime.wrap(function _callee9$(_context9) {
 	        while (1) {
-	          switch (_context8.prev = _context8.next) {
+	          switch (_context9.prev = _context9.next) {
 	            case 0:
 	              toSymbol = this.$translate.instant('CURRENCY_USER');
 	              currencySymbol = this.$translate.instant('CURRENCY_SYMBOL');
-	              _context8.next = 4;
+	              _context9.next = 4;
 	              return _axios2.default.get('https://braziliex.com/api/v1/public/ticker/eth_usd', {});
 	
 	            case 4:
-	              priceData = _context8.sent;
+	              priceData = _context9.sent;
 	              price = parseFloat(priceData.data.last).toFixed(2);
-	              return _context8.abrupt('return', {
+	              return _context9.abrupt('return', {
 	                COIN: 'ETH',
 	                CURRENTPRICE: currencySymbol + ' ' + price,
 	                DISPLAYPRICE: '1 ETH | ' + price
@@ -82692,64 +82784,34 @@
 	
 	            case 7:
 	            case 'end':
-	              return _context8.stop();
-	          }
-	        }
-	      }, _callee8, this);
-	    }));
-	
-	    function getBalanceCoinETH(_x9) {
-	      return _ref8.apply(this, arguments);
-	    }
-	
-	    return getBalanceCoinETH;
-	  }();
-	
-	  HttpService.prototype.buyHistory = function () {
-	    var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(email, accessToken) {
-	      var a;
-	      return regeneratorRuntime.wrap(function _callee9$(_context9) {
-	        while (1) {
-	          switch (_context9.prev = _context9.next) {
-	            case 0:
-	              _context9.next = 2;
-	              return _lunesLib2.default.ico.buyHistory(email, accessToken);
-	
-	            case 2:
-	              a = _context9.sent;
-	
-	              console.log(a);
-	              return _context9.abrupt('return', a);
-	
-	            case 5:
-	            case 'end':
 	              return _context9.stop();
 	          }
 	        }
 	      }, _callee9, this);
 	    }));
 	
-	    function buyHistory(_x10, _x11) {
+	    function getBalanceCoinETH(_x11) {
 	      return _ref9.apply(this, arguments);
 	    }
 	
-	    return buyHistory;
+	    return getBalanceCoinETH;
 	  }();
 	
-	  HttpService.prototype.getBalance = function () {
-	    var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(coin, address, currentUser) {
-	      var underCoin, balance;
+	  HttpService.prototype.buyHistory = function () {
+	    var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(email, accessToken) {
+	      var a;
 	      return regeneratorRuntime.wrap(function _callee10$(_context10) {
 	        while (1) {
 	          switch (_context10.prev = _context10.next) {
 	            case 0:
-	              underCoin = coin.toLowerCase();
-	              _context10.next = 3;
-	              return _lunesLib2.default.coins.getBalance({ address: address, coin: underCoin, testnet: false }, currentUser.accessToken);
+	              _context10.next = 2;
+	              return _lunesLib2.default.ico.buyHistory(email, accessToken);
 	
-	            case 3:
-	              balance = _context10.sent;
-	              return _context10.abrupt('return', balance && balance.data ? balance.data : {});
+	            case 2:
+	              a = _context10.sent;
+	
+	              console.log(a);
+	              return _context10.abrupt('return', a);
 	
 	            case 5:
 	            case 'end':
@@ -82759,19 +82821,49 @@
 	      }, _callee10, this);
 	    }));
 	
-	    function getBalance(_x12, _x13, _x14) {
+	    function buyHistory(_x12, _x13) {
 	      return _ref10.apply(this, arguments);
+	    }
+	
+	    return buyHistory;
+	  }();
+	
+	  HttpService.prototype.getBalance = function () {
+	    var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(coin, address, currentUser) {
+	      var underCoin, balance;
+	      return regeneratorRuntime.wrap(function _callee11$(_context11) {
+	        while (1) {
+	          switch (_context11.prev = _context11.next) {
+	            case 0:
+	              underCoin = coin.toLowerCase();
+	              _context11.next = 3;
+	              return _lunesLib2.default.coins.getBalance({ address: address, coin: underCoin, testnet: false }, currentUser.accessToken);
+	
+	            case 3:
+	              balance = _context11.sent;
+	              return _context11.abrupt('return', balance && balance.data ? balance.data : {});
+	
+	            case 5:
+	            case 'end':
+	              return _context11.stop();
+	          }
+	        }
+	      }, _callee11, this);
+	    }));
+	
+	    function getBalance(_x14, _x15, _x16) {
+	      return _ref11.apply(this, arguments);
 	    }
 	
 	    return getBalance;
 	  }();
 	
 	  HttpService.prototype.getBitcoinBalance = function () {
-	    var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(coin) {
+	    var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(coin) {
 	      var toSymbol, queryObj, tsym, priceData, currentPrice, displayPrice, ticker;
-	      return regeneratorRuntime.wrap(function _callee11$(_context11) {
+	      return regeneratorRuntime.wrap(function _callee12$(_context12) {
 	        while (1) {
-	          switch (_context11.prev = _context11.next) {
+	          switch (_context12.prev = _context12.next) {
 	            case 0:
 	              toSymbol = 'USD';
 	              queryObj = {
@@ -82780,11 +82872,11 @@
 	                exchange: this.$translate.instant('CURRENCY_EXCHANGE')
 	              };
 	              tsym = _cccStreamerUtilities2.default.STATIC.CURRENCY.getSymbol(toSymbol);
-	              _context11.next = 5;
+	              _context12.next = 5;
 	              return _lunesLib2.default.coins.getPrice(queryObj);
 	
 	            case 5:
-	              priceData = _context11.sent;
+	              priceData = _context12.sent;
 	              currentPrice = _cccStreamerUtilities2.default.convertValueToDisplay(tsym, priceData[toSymbol]);
 	              displayPrice = '1 ' + coin + ' | ' + currentPrice;
 	              ticker = {
@@ -82796,18 +82888,18 @@
 	                CHANGE: 'up',
 	                COIN: coin
 	              };
-	              return _context11.abrupt('return', ticker);
+	              return _context12.abrupt('return', ticker);
 	
 	            case 10:
 	            case 'end':
-	              return _context11.stop();
+	              return _context12.stop();
 	          }
 	        }
-	      }, _callee11, this);
+	      }, _callee12, this);
 	    }));
 	
-	    function getBitcoinBalance(_x15) {
-	      return _ref11.apply(this, arguments);
+	    function getBitcoinBalance(_x17) {
+	      return _ref12.apply(this, arguments);
 	    }
 	
 	    return getBitcoinBalance;

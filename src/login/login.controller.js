@@ -10,6 +10,7 @@ class LoginController {
       this.termsCondition = $sce.trustAsHtml($filter('translate')('TERMS_CONDITIONS'));
       this.termsRepresentation = $sce.trustAsHtml($filter('translate')('REPRESENTATION_TERM'));
       this.ErrorMessagesService = ErrorMessagesService;
+      this.loadingResetPass = false;
       this.user = {
           email: '',
           password: '',
@@ -52,6 +53,23 @@ class LoginController {
             document.getElementById("defaultOpen").click();
           }, 200);
         }
+      }
+    }
+
+    async doChangePassword() {
+      this.loadingResetPass = true;
+      const a = await this.HttpService.changePassword(this.emailToChangePassword).catch(error => {
+        this.loadingResetPass = false;
+        this.$timeout(() => {
+          this.showErrorMsgEmailSent = true;
+        }, 200);
+      });
+
+      if (a && a.emailSent) {
+        this.$timeout(() => {
+          this.loadingResetPass = false;
+          this.showMsgEmailSent = true;
+        }, 200);
       }
     }
 

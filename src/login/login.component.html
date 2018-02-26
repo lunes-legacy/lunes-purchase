@@ -73,6 +73,80 @@
     </div>
   </div>
 
+  <!-- MODAL - criar directiva change password -->
+  <div id="modal-change-password" class="modal">
+    <div class="modal-header">
+      <p class="icon-close" data-dismiss="modal">
+        &times;
+      </p>
+    </div>
+    <div class="modal-content" style="height: 100%;">
+
+      <div ng-show="$ctrl.loadingResetPass" style="display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;">
+        {{'LOADING' | translate}}
+      </div>
+
+      <div ng-show="$ctrl.showMsgEmailSent" style="display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;">
+        <h3 for="change">{{'EMAIL_SENT' | translate}}</h3>
+        <div style="width: 100px;">
+          <button style="border: 0;
+            padding: 5px 20px;
+            border-radius: 20px;
+            cursor: pointer;" class="icon-close" data-dismiss="modal">{{'CLOSE' | translate}}</button>
+        </div>
+      </div>
+
+      <form style="display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;" ng-show="!$ctrl.loadingResetPass && !$ctrl.showMsgEmailSent">
+        <div>
+          <h3 for="change">{{'CHANGE_PASSWORD_INSTRUCTION' | translate}}</h3>
+        </div>
+        <div ng-show="$ctrl.showErrorMsgEmailSent" style="display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100%;">
+          <h5 for="change" style="padding: 2px 10px;
+          background-color: #d83636;
+          border-radius: 20px;">{{'EMAIL_NOT_SENT' | translate}}</h5>
+          <div style="width: 100px;">
+            <button style="border: 0;
+              padding: 5px 20px;
+              border-radius: 20px;
+              cursor: pointer;" class="icon-close" data-dismiss="modal">{{'CLOSE' | translate}}</button>
+          </div>
+        </div>
+
+        <div>
+          <input type="text" name="change-password" ng-model="$ctrl.emailToChangePassword" style="    border: 0;
+          width: 200px;
+          border-bottom: solid 1px #734cb3;
+          background-color: transparent;
+          padding: 20px;
+          color: #fff;
+          margin: 20px;">
+        </div>
+        <div>
+          <button ng-click="$ctrl.doChangePassword()" style="    border: 0;
+          padding: 5px 20px;
+          border-radius: 20px;
+          cursor: pointer;">{{'CHANGE_PASSWORD' | translate}}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- HEADER - criar diretiva depois -->
   <nav class="header nav" style="padding: 20px 0;">
     <div class="col-xs-12 col-lg-2 logo">
@@ -155,6 +229,10 @@
               <label>{{'DONT_HAVE_ACCOUNT' | translate}}</label>
               <label class="txt-green label-signup" ng-click="$ctrl.goToSignup()">{{'SIGNUP' | translate}}</label>
               <!--<p class="cursor-pointer">{{'RESET_PASSWORD' | translate}}</p>-->
+            </div>
+            <div>
+              <label>{{'DO_YOU_CHANGE_PASSWORD' | translate}}</label>
+              <label class="txt-green label-signup" data-toggle="modal" data-target="#modal-change-password">{{'CHANGE_PASSWORD' | translate}}</label>
             </div>
 
           </div>

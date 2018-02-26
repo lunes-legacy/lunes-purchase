@@ -25,6 +25,11 @@ class HttpService {
     const data = await LunesLib.users.create(obj);
     return data;
   }
+
+  async changePassword(email, accessToken) {
+    const a = await LunesLib.users.resetPassword({ email });
+    return a;
+  }
   
   async confirmterm(currentUser) {
     try {

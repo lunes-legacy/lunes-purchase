@@ -48,8 +48,17 @@ export default {
     BALANCE: 'Saldo',
     EMAIL_ALREADY: 'Email já cadastrado',
     ERROR_SERVER: 'Erro interno no servidor',
+    COUPON: 'Cupom',
+    OWN_COUPON: 'Meu Cupom',
+    TYPE_COUPON: 'Insira seu cupom de bônus',
     TERMS_CONDITION_TITLE: 'Termos e Condições',
     REPRESENTATION_TERM_TITLE: 'Representações e Garantias',
+    CHANGE_PASSWORD: 'Alterar Senha',
+    EMAIL_SENT: 'Email enviado com sucesso',
+    CLOSE: 'Fechar',
+    EMAIL_NOT_SENT: 'Email não enviado ou não existe',
+    DO_YOU_CHANGE_PASSWORD: 'Você deseja alterar a senha?',
+    CHANGE_PASSWORD_INSTRUCTION: 'Digite seu email para enviarmos as instruções de alteração de sua senha',
     REPRESENTATION_TERM: `
       <h3>Representação e Garantias</h3>
       <p>Ao participar da ICO o usuário concorda com o T&C e, em particular, eles representam e garantem que:</p>
