@@ -310,3 +310,6 @@ label.css-label {
 	user-select: none;
 }
 
+button:focus {
+    outline: none !important;
+}
