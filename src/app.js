@@ -5,6 +5,7 @@ import Components from './components/components';
 import LoginComponent from './login/login.component';
 import SignupComponent from './signup/signup.component';
 import BuyComponent from './buy/buy.component';
+import DashboardComponent from './dashboard/dashboard.component';
 import languageUtil from './utils/language';
 import en from './constants/en';
 import pt from './constants/pt';
@@ -27,21 +28,22 @@ angular.module('myApp', [
 .component('loginPage', LoginComponent)
 .component('signupPage', SignupComponent)
 .component('buyPage', BuyComponent)
+.component('dashboardPage', DashboardComponent)
 .directive('uppercase', function() {
   return {
     require: 'ngModel',
     link: function(scope, elm, attrs, ctrl) {
       ctrl.$validators.uppercase = function(modelValue, viewValue) {
         var regexUppercase = new RegExp(/[A-Z]+/);
-        
+
         if (ctrl.$isEmpty(modelValue)) {
           // consider empty models to be valid
           return true;
         }
-        
+
         if (regexUppercase.test(viewValue)) {
           // it is valid
-          
+
           return true;
         }
 
@@ -55,9 +57,9 @@ angular.module('myApp', [
   return {
     require: 'ngModel',
     link: function(scope, elm, attrs, ctrl) {
-      
+
       ctrl.$validators.lowercase = function(modelValue, viewValue) {
-        
+
         var regexLowercase = new RegExp(/[a-z]+/);
         if (ctrl.$isEmpty(modelValue)) {
           // consider empty models to be valid
@@ -120,18 +122,17 @@ angular.module('myApp', [
   };
 })
 .directive('comparePassword', function () {
-  
         return {
             require: "ngModel",
             link: function(scope, element, attributes, ngModel) {
 
                 ngModel.$validators.comparePassword = function(modelValue) {
-                
+
                 if (ngModel.$isEmpty(modelValue) || ngModel.$$parentForm.confirmPassword.$viewValue === '') {
                   // consider empty models to be valid
                   return true;
                 }
-                  
+
                     return ngModel.$$parentForm.password.$viewValue === ngModel.$$parentForm.confirmPassword.$viewValue;
                 };
 
@@ -141,7 +142,7 @@ angular.module('myApp', [
     }
 )
 .directive('compareEmail', function () {
-  
+
   return {
       require: "ngModel",
       link: function(scope, element, attributes, ngModel) {
@@ -151,9 +152,10 @@ angular.module('myApp', [
               // consider empty models to be valid
               return true;
             }
-              return ngModel.$$parentForm.email.$viewValue === ngModel.$$parentForm.confirmEmail.$viewValue;
+
+            return ngModel.$$parentForm.email.$viewValue === ngModel.$$parentForm.confirmEmail.$viewValue;
           };
-          ngModel.$validate()
+          ngModel.$validate();
       }
   };
 }
@@ -178,6 +180,10 @@ angular.module('myApp', [
     .state('buy', {
       url: '/buy',
       template: '<buy-page></buy-page>',
+    })
+    .state('dashboard', {
+      url: '/dashboard',
+      template: '<dashboard-page></dashboard-page>',
     })
     .state('home', {
       url: '/',
