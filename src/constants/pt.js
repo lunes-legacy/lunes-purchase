@@ -13,6 +13,8 @@ export default {
     CONFIRM_EMAIL_PLACEHOLDER: 'Digite seu email novamente',
     CONFIRM_PASSWORD: 'Confirmar Senha',
     CONFIRM_PASSWORD_PLACEHOLDER: 'Digite sua senha novamente',
+    COUPON: 'Você tem algum cupom de desconto?',
+    COUPON_PLACEHOLDER: 'Digite seu cupom aqui',
     ALL_FIELDS_REQUIRED: 'Todos os campos são obrigatórios',
     BEGIN_YOUR_REGISTRATION: 'Comece seu cadastro',
     AGREE: 'Concordo',
