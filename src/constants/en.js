@@ -36,6 +36,7 @@ export default {
     AGREE_TERM: 'I agree with the above terms of use.',
     AGREE_FUTURE_VALUE: 'I agree the price of the lunes cryptocurrency is not guaranteed in the future.',
     TERM_TITLE: 'Terms and conditions',
+    PAGE_FIX: 'Page under maintenance',
     EMAIL_REQUIRED: 'Email is required',
     EMAIL_INVALID: 'Invalid email address',
     PASSWORD_REQUIRED: 'Password is required',

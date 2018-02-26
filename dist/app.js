@@ -9213,25 +9213,29 @@
 	
 	var _buy2 = _interopRequireDefault(_buy);
 	
-	var _language = __webpack_require__(699);
+	var _fix = __webpack_require__(700);
+	
+	var _fix2 = _interopRequireDefault(_fix);
+	
+	var _language = __webpack_require__(705);
 	
 	var _language2 = _interopRequireDefault(_language);
 	
-	var _en = __webpack_require__(700);
+	var _en = __webpack_require__(706);
 	
 	var _en2 = _interopRequireDefault(_en);
 	
-	var _pt = __webpack_require__(701);
+	var _pt = __webpack_require__(707);
 	
 	var _pt2 = _interopRequireDefault(_pt);
 	
-	var _services = __webpack_require__(702);
+	var _services = __webpack_require__(708);
 	
-	__webpack_require__(707);
+	__webpack_require__(713);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	_angular2.default.module('myApp', [_angularUiRouter2.default, _components2.default, _angularTranslate2.default]).service('HttpService', _services.HttpService).service('ErrorMessagesService', _services.ErrorMessagesService).service('CheapFlightService', _services.CheapFlightService).component('loginPage', _login2.default).component('signupPage', _signup2.default).component('buyPage', _buy2.default).directive('uppercase', function () {
+	_angular2.default.module('myApp', [_angularUiRouter2.default, _components2.default, _angularTranslate2.default]).service('HttpService', _services.HttpService).service('ErrorMessagesService', _services.ErrorMessagesService).service('CheapFlightService', _services.CheapFlightService).component('loginPage', _login2.default).component('signupPage', _signup2.default).component('buyPage', _buy2.default).component('fixPage', _fix2.default).directive('uppercase', function () {
 	  return {
 	    require: 'ngModel',
 	    link: function link(scope, elm, attrs, ctrl) {
@@ -9365,18 +9369,26 @@
 	  $translateProvider.preferredLanguage((0, _language2.default)());
 	  $urlRouterProvider.otherwise('/');
 	
-	  $stateProvider.state('signup', {
+	  $stateProvider
+	  /*.state('signup', {
 	    url: '/signup',
-	    template: '<signup-page></signup-page>'
-	  }).state('login', {
+	    template: '<signup-page></signup-page>',
+	  })
+	  .state('login', {
 	    url: '/login',
-	    template: '<login-page></login-page>'
-	  }).state('buy', {
+	    template: '<login-page></login-page>',
+	  })
+	  .state('buy', {
 	    url: '/buy',
-	    template: '<buy-page></buy-page>'
-	  }).state('home', {
+	    template: '<buy-page></buy-page>',
+	  })
+	  .state('home', {
 	    url: '/',
-	    template: '<login-page></login-page>'
+	    template: '<login-page></login-page>',
+	  })*/
+	  .state('fix', {
+	    url: '/',
+	    template: '<fix-page></fix-page>'
 	  });
 	}]);
 
@@ -53323,7 +53335,7 @@
 	
 	var _buy2 = _interopRequireDefault(_buy);
 	
-	__webpack_require__(697);
+	__webpack_require__(698);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -81794,10 +81806,11 @@
 	
 	var buyCoin = __webpack_require__(691);
 	var buyConversion = __webpack_require__(692);
-	var buyHistory = __webpack_require__(693);
-	var coinAmount = __webpack_require__(694);
-	var confirmTerm = __webpack_require__(695);
-	var obtainPhase = __webpack_require__(696);
+	var buyBalance = __webpack_require__(693);
+	var buyHistory = __webpack_require__(694);
+	var coinAmount = __webpack_require__(695);
+	var confirmTerm = __webpack_require__(696);
+	var obtainPhase = __webpack_require__(697);
 	
 	module.exports = {
 	  buyCoin: buyCoin,
@@ -81805,7 +81818,8 @@
 	  buyHistory: buyHistory,
 	  coinAmount: coinAmount,
 	  confirmTerm: confirmTerm,
-	  obtainPhase: obtainPhase
+	  obtainPhase: obtainPhase,
+	  buyBalance: buyBalance
 	};
 
 /***/ },
@@ -81981,6 +81995,90 @@
 	
 	var axios = __webpack_require__(567);
 	
+	var buyBalanceEndpoint = __webpack_require__(594) + '/ico/buy-balance';
+	
+	/**
+	 *
+	 * @param {*} transactionData - email, pin, receivingAddress, amount, fee, testnet
+	 * @param {*} accessToken .
+	 */
+	module.exports = function () {
+	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(email, accessToken, salePhase) {
+	    var headers, buyBalance;
+	    return regeneratorRuntime.wrap(function _callee$(_context) {
+	      while (1) {
+	        switch (_context.prev = _context.next) {
+	          case 0:
+	            headers = { Authorization: 'Bearer ' + accessToken };
+	            _context.prev = 1;
+	            _context.next = 4;
+	            return create(headers, email, salePhase);
+	
+	          case 4:
+	            buyBalance = _context.sent;
+	            return _context.abrupt('return', buyBalance);
+	
+	          case 8:
+	            _context.prev = 8;
+	            _context.t0 = _context['catch'](1);
+	            throw _context.t0;
+	
+	          case 11:
+	          case 'end':
+	            return _context.stop();
+	        }
+	      }
+	    }, _callee, undefined, [[1, 8]]);
+	  }));
+	
+	  return function (_x, _x2, _x3) {
+	    return _ref.apply(this, arguments);
+	  };
+	}();
+	
+	var create = function () {
+	  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(headers, email, salePhase) {
+	    var res;
+	    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+	      while (1) {
+	        switch (_context2.prev = _context2.next) {
+	          case 0:
+	            _context2.prev = 0;
+	            _context2.next = 3;
+	            return axios.post(buyBalanceEndpoint, { email: email, salePhase: salePhase }, { headers: headers });
+	
+	          case 3:
+	            res = _context2.sent;
+	            return _context2.abrupt('return', res.data);
+	
+	          case 7:
+	            _context2.prev = 7;
+	            _context2.t0 = _context2['catch'](0);
+	            throw _context2.t0.response ? _context2.t0.response.data : new Error(_context2.t0);
+	
+	          case 10:
+	          case 'end':
+	            return _context2.stop();
+	        }
+	      }
+	    }, _callee2, undefined, [[0, 7]]);
+	  }));
+	
+	  return function create(_x4, _x5, _x6) {
+	    return _ref2.apply(this, arguments);
+	  };
+	}();
+
+/***/ },
+/* 694 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+	
+	var axios = __webpack_require__(567);
+	
 	var buyHistoryEndpoint = __webpack_require__(594) + '/ico/buy-history';
 	
 	/**
@@ -82056,13 +82154,13 @@
 	}();
 
 /***/ },
-/* 694 */
+/* 695 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 /***/ },
-/* 695 */
+/* 696 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -82146,7 +82244,7 @@
 	}();
 
 /***/ },
-/* 696 */
+/* 697 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -82187,13 +82285,13 @@
 	}));
 
 /***/ },
-/* 697 */
+/* 698 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(698);
+	var content = __webpack_require__(699);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(480)(content, {});
@@ -82213,7 +82311,7 @@
 	}
 
 /***/ },
-/* 698 */
+/* 699 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(479)(true);
@@ -82227,7 +82325,104 @@
 
 
 /***/ },
-/* 699 */
+/* 700 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _fixComponent = __webpack_require__(701);
+	
+	var _fixComponent2 = _interopRequireDefault(_fixComponent);
+	
+	var _fix = __webpack_require__(702);
+	
+	var _fix2 = _interopRequireDefault(_fix);
+	
+	__webpack_require__(703);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var FixComponent = {
+	  template: _fixComponent2.default,
+	  controller: _fix2.default
+	};
+	
+	exports.default = FixComponent;
+
+/***/ },
+/* 701 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"container\">\r\n  <div style=\"display: flex; align-items: center; justify-content: center; flex-direction: column; height: 100vh;\">\r\n    <div class=\"col-xs-12 col-lg-2 logo\">\r\n      <!-- eslint-disable -->\r\n      <span>L</span>\r\n      <span>u</span>\r\n      <span>n</span>\r\n      <span class=\"txt-green\">e</span>\r\n      <span>s</span>\r\n      <!-- eslint-disable -->\r\n    </div>\r\n    <h2>{{'PAGE_FIX' | translate}}</h2>\r\n  </div>\r\n</div>"
+
+/***/ },
+/* 702 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var FixController = function FixController($scope) {
+	  _classCallCheck(this, FixController);
+	
+	  this.$scope = $scope;
+	};
+	
+	FixController.$inject = ['$scope'];
+	
+	exports.default = FixController;
+
+/***/ },
+/* 703 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(704);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(480)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../node_modules/css-loader/index.js?sourceMap!../../node_modules/postcss-loader/index.js!../../node_modules/sass-loader/index.js?config=sassLoader!./fix.component.scss", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js?sourceMap!../../node_modules/postcss-loader/index.js!../../node_modules/sass-loader/index.js?config=sassLoader!./fix.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 704 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(479)(true);
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"fix.component.scss","sourceRoot":""}]);
+	
+	// exports
+
+
+/***/ },
+/* 705 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -82250,7 +82445,7 @@
 	};
 
 /***/ },
-/* 700 */
+/* 706 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -82296,6 +82491,7 @@
 	  AGREE_TERM: 'I agree with the above terms of use.',
 	  AGREE_FUTURE_VALUE: 'I agree the price of the lunes cryptocurrency is not guaranteed in the future.',
 	  TERM_TITLE: 'Terms and conditions',
+	  PAGE_FIX: 'Page under maintenance',
 	  EMAIL_REQUIRED: 'Email is required',
 	  EMAIL_INVALID: 'Invalid email address',
 	  PASSWORD_REQUIRED: 'Password is required',
@@ -82324,7 +82520,7 @@
 	};
 
 /***/ },
-/* 701 */
+/* 707 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -82391,6 +82587,7 @@
 	  EMAIL_SENT: 'Email enviado com sucesso',
 	  CLOSE: 'Fechar',
 	  EMAIL_NOT_SENT: 'Email não enviado ou não existe',
+	  PAGE_FIX: 'Página em manutenção',
 	  DO_YOU_CHANGE_PASSWORD: 'Você deseja alterar a senha?',
 	  CHANGE_PASSWORD_INSTRUCTION: 'Digite seu email para enviarmos as instruções de alteração de sua senha',
 	  REPRESENTATION_TERM: '\n      <h3>Representa\xE7\xE3o e Garantias</h3>\n      <p>Ao participar da ICO o usu\xE1rio concorda com o T&C e, em particular, eles representam e garantem que:</p>\n      <br>1. S\xE3o autorizados e t\xEAm poder completo para comprar LNS de acordo com as leis que se aplicam em sua jurisdi\xE7\xE3o do domic\xEDlio;\n      <br>2. vivem em uma jurisdi\xE7\xE3o que permite que Lunes venda tokens atrav\xE9s de uma ICO sem exigir qualquer autoriza\xE7\xE3o local;\n      <br>3. est\xE3o familiarizados com todos os regulamentos relacionados na jurisdi\xE7\xE3o espec\xEDficas em que eles vivem e que a compra de tokens criptografados na jurisdi\xE7\xE3o n\xE3o \xE9 proibida, restrita ou sujeitas a qualquer tipo de condi\xE7\xF5es adicionais;\n      <br>4. N\xE3o s\xE3o um cidad\xE3o dos Estados Unidos, do Canad\xE1, de Singapura, da China ou da Cor\xE9ia do Sul ou residente ou entidade e nem est\xE3o comprando tokens Lunes ou assinando em nome de um cidad\xE3o americano, ou canadense, ou singapurense, ou sul coreano, ou chin\xEAs. N\xE3o est\xE3o agindo para fins de investimento especulativo; n\xE3o utilizar\xE1 a venda simb\xF3lica para qualquer actividade ilegal, incluindo, mas n\xE3o se limitando \xE0 lavagem de dinheiro e ao financiamento do terrorismo;\n      <br>5. s\xE3o os \xFAnicos respons\xE1veis por determinar se a aquisi\xE7\xE3o de LNS \xE9 adequada para eles; est\xE3o adquirindo LNS para uso futuro da plataforma Lunes; compreender os riscos associados \xE0 ICO (incl. os riscos relacionados com o n\xE3o desenvolvimento da plataforma e opera\xE7\xF5es da Lunes); e\n      <br>6. compreender o uso de criptomoedas e os riscos associados.\n    ',
@@ -82398,7 +82595,7 @@
 	};
 
 /***/ },
-/* 702 */
+/* 708 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -82407,7 +82604,7 @@
 	  value: true
 	});
 	
-	var _http = __webpack_require__(703);
+	var _http = __webpack_require__(709);
 	
 	Object.defineProperty(exports, 'HttpService', {
 	  enumerable: true,
@@ -82416,7 +82613,7 @@
 	  }
 	});
 	
-	var _cheapflights = __webpack_require__(705);
+	var _cheapflights = __webpack_require__(711);
 	
 	Object.defineProperty(exports, 'CheapFlightService', {
 	  enumerable: true,
@@ -82425,7 +82622,7 @@
 	  }
 	});
 	
-	var _errormessagesService = __webpack_require__(706);
+	var _errormessagesService = __webpack_require__(712);
 	
 	Object.defineProperty(exports, 'ErrorMessagesService', {
 	  enumerable: true,
@@ -82437,7 +82634,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 703 */
+/* 709 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -82456,7 +82653,7 @@
 	
 	var _constants = __webpack_require__(475);
 	
-	var _cccStreamerUtilities = __webpack_require__(704);
+	var _cccStreamerUtilities = __webpack_require__(710);
 	
 	var _cccStreamerUtilities2 = _interopRequireDefault(_cccStreamerUtilities);
 	
@@ -82913,7 +83110,7 @@
 	exports.default = HttpService;
 
 /***/ },
-/* 704 */
+/* 710 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -83403,7 +83600,7 @@
 	exports.default = CCC;
 
 /***/ },
-/* 705 */
+/* 711 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -83423,7 +83620,7 @@
 	exports.default = CheapFlightService;
 
 /***/ },
-/* 706 */
+/* 712 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -83471,13 +83668,13 @@
 	exports.default = ErrorMessagesService;
 
 /***/ },
-/* 707 */
+/* 713 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(708);
+	var content = __webpack_require__(714);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(480)(content, {});
@@ -83497,7 +83694,7 @@
 	}
 
 /***/ },
-/* 708 */
+/* 714 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(479)(true);

@@ -5,6 +5,7 @@ import Components from './components/components';
 import LoginComponent from './login/login.component';
 import SignupComponent from './signup/signup.component';
 import BuyComponent from './buy/buy.component';
+import FixComponent from './fix/fix.component';
 import languageUtil from './utils/language';
 import en from './constants/en';
 import pt from './constants/pt';
@@ -27,6 +28,7 @@ angular.module('myApp', [
 .component('loginPage', LoginComponent)
 .component('signupPage', SignupComponent)
 .component('buyPage', BuyComponent)
+.component('fixPage', FixComponent)
 .directive('uppercase', function() {
   return {
     require: 'ngModel',
@@ -170,7 +172,7 @@ angular.module('myApp', [
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('signup', {
+    /*.state('signup', {
       url: '/signup',
       template: '<signup-page></signup-page>',
     })
@@ -185,6 +187,10 @@ angular.module('myApp', [
     .state('home', {
       url: '/',
       template: '<login-page></login-page>',
+    })*/
+    .state('fix', {
+      url: '/',
+      template: '<fix-page></fix-page>',
     });
 })
 ;
