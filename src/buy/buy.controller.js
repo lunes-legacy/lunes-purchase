@@ -185,8 +185,12 @@ class BuyController {
     const currentPrice = this.balanceCoins[this.currentCoinSelected.name].balance.PRICE;
     const coupon = this.currentUser.coupon;
 
-
+    this.valueToReceive = parseFloat(this.valueToReceive)
+    this.valueToDeposit = parseFloat(this.valueToDeposit)
+    this.buyLimit = parseFloat(this.buyLimit)
+    
     let coinAmount = (LNS) ? this.valueToReceive : this.valueToDeposit;
+    coinAmount = parseFloat(coinAmount)
     if (isNaN(coinAmount)) {
       coinAmount = 0;
     }
@@ -211,7 +215,10 @@ class BuyController {
     this.bonusAmountFinal = calculateFinal.bonusAmount;
 
     if (this.valueToReceive > this.buyLimit) {
-      this.showErrorLimit = 'Você não pode comprar pois ultrapassou o limite';
+	  this.showErrorLimit = 'Você ultrapassou o limite de compra!';
+      coinAmount = this.buyLimit;
+      this.valueToReceive = this.buyLimit;
+	  this.bonusAmountFinal = (parseFloat(phase.bonus) * this.buyLimit).toString();
       return;
       calculateFinal = LunesLib.ico.buyConversion.fromLNS(bonusRate, this.buyLimit, currentPrice, unitPrice, coupon);
       this.valueToReceive = this.buyLimit.toString();
