@@ -211,6 +211,8 @@ class BuyController {
     this.bonusAmountFinal = calculateFinal.bonusAmount;
 
     if (this.valueToReceive > this.buyLimit) {
+      this.showErrorLimit = 'Você não pode comprar pois ultrapassou o limite';
+      return;
       calculateFinal = LunesLib.ico.buyConversion.fromLNS(bonusRate, this.buyLimit, currentPrice, unitPrice, coupon);
       this.valueToReceive = this.buyLimit.toString();
       this.valueToDeposit = calculateFinal.buyAmount;

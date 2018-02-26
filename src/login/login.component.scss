@@ -112,3 +112,57 @@
   padding-top: 5px;
   font-size: 16px;
 }
+
+.login {
+
+  #modal-change-password {
+    box-shadow: #3a2261 1px 0px 5px 4px;
+    margin: 10px;
+    overflow-y: hidden;
+  }
+
+  .loadingResetPass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .showEmailSent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .showErrorMsg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    h5 {
+      padding: 2px 10px;
+      background-color: #d83636;
+      border-radius: 20px;
+    }
+    button {
+      border: 0;
+      padding: 5px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+  }
+  
+  .form-msg-pass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+}
+

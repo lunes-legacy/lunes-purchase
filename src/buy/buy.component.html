@@ -73,6 +73,16 @@
         <div class="col-12 error-fields" ng-show="$ctrl.showErrorForm">{{'ALL_FIELDS_REQUIRED' | translate}}</div>
 
         <div class="col-sm-12 col-md-7 col-lg-7">
+
+          <!-- ERROR LIMIT -->
+          <div class="row">
+            <div ng-show="$ctrl.showErrorLimit" class="col-xs-12 col-lg-12" style="padding: 10px;
+            background-color: #df3535;
+            text-align: center;
+            margin: 10px;">{{$ctrl.showErrorLimit}}</div>
+          </div>
+
+          <!-- CALCULATOR -->
           <div class="row calculator">
             <div class="col-lg-6 no-padding" style="margin: 5px 0 20px 0;">
               <div class="valueCripto row">
@@ -109,9 +119,9 @@
                 </label>
               </div>
             </div>
-
           </div>
 
+          <!-- SHOW TOTAL -->
           <div class="amountBalance row">
             <div class="col-sm-12 col-lg-12 total">
               <div class="result" style="margin-top: 15px;">
@@ -143,6 +153,7 @@
             </div>
           </div>
 
+          <!-- ADVICE -->
           <div class="row">
             <div class="col-lg-12 no-padding">
               <div class="area-button" ng-show="false">
