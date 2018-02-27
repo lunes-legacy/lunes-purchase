@@ -5,6 +5,7 @@ import AirportComponent from './airport-selector/airport.component';
 import InputAutocomplete from './input-autocomplete/input-autocomplete.component';
 import PopContent from './pop-content/pop-content.component';
 import Loading from './loading/loading.component';
+import LunesHeaderComponent from './header/header.component';
 
 export default angular.module('app.components', [])
 .component('dateWrapper', DateWrapperComponent)
@@ -13,4 +14,5 @@ export default angular.module('app.components', [])
 .component('inputAutocomplete', InputAutocomplete)
 .component('popContent', PopContent)
 .component('loading', Loading)
+.component('lunesheader', LunesHeaderComponent)
 .name;

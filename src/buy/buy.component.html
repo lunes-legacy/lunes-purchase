@@ -1,62 +1,7 @@
 <!--<loading show="$ctrl.loading"></loading>-->
 <div class="container">
 
-  <!-- HEADER - criar diretiva depois -->
-  <nav class="header nav">
-    <div class="col-sm-4 col-md-3 col-lg-3 logo" ng-click="$ctrl.goToHome()" style="cursor: pointer;margin: 10px 0 30px 0;">
-      <!-- eslint-disable -->
-      <span>L</span>
-      <span>u</span>
-      <span>n</span>
-      <span class="txt-green">e</span>
-      <span>s</span>
-      <!-- eslint-disable -->
-    </div>
-
-    <div class="col-sm-6 col-md-5 col-lg-5 nav-menu" style="margin: 5px 0 10px 0;">
-      <ul class="menu horizontal">
-        <!-- <li>
-          <a href="#!/whitelist">{{'WHITELIST' | translate}}</a>
-        </li> -->
-        <li>
-          <a href="#!/buy">{{'BUY' | translate}}</a>
-        </li>
-        <li>
-          <a href="#!/dashboard">{{'DASHBOARD' | translate}}</a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 txt-right" style="margin-top: 10px;">
-      <ul class="menu horizontal">
-        <li>
-          <a href="https://www.facebook.com/lunesplatform/" target="_blank" class="round-menu">
-            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg" alt="facebook" />
-          </a>
-        </li>
-        <li>
-          <a href="https://t.me/LunesPlatformEN" target="_blank" class="round-menu">
-            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg" alt="telegram" />
-          </a>
-        </li>
-        <li>
-          <a href="https://twitter.com/lunesplatform" target="_blank" class="round-menu">
-            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg" alt="twitter" />
-          </a>
-        </li>
-        <li>
-          <a href="https://medium.com/@lunes.platform" target="_blank" class="round-menu">
-            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg" alt="medium" />
-          </a>
-        </li>
-        <li>
-          <a href="#!/login" class="round-menu" ng-click="$ctrl.logout()">
-            {{'LOGOUT' | translate}}
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <lunesheader coin='$ctrl.currentCoinSelected' price='$ctrl.showQuotation()'></lunesheader>
 
   <!-- BUY -->
   <section class="buy">
@@ -96,9 +41,6 @@
                 <div class="col-xs-12 col-lg-5">
                   <input type="text" class="input-transparent" name="value" ng-model="$ctrl.valueToDeposit" ng-change="$ctrl.calcValue()" />
                 </div>
-              </div>
-              <div class="col-lg-12">
-                USD / {{$ctrl.currentCoinSelected.name}} - {{$ctrl.showQuotation()}}
               </div>
             </div>
 
@@ -149,7 +91,7 @@
                 <button class="primary-button" data-ng-click="$ctrl.doSignup()">{{'BUY' | translate}}</button>
               </div>
             </div>
-            <div class="col-lg-12" style="text-align: left; margin: 10px 0;">
+            <div class="col-lg-12" style="text-align: left; margin: 10px 0;" ng-show="false">
               * {{'MSG_BALANCE_DEPOSITED' | translate}}
             </div>
             <div class="col-lg-12" style="text-align: left; margin: 10px 0;">

@@ -17,6 +17,10 @@ class DashboardController {
     this.getHistory();
   }
 
+  logout() {
+    localStorage.removeItem(STORAGE_KEY);
+  }
+
   async getHistory() {
     await LunesLib.ico.buyHistory(this.currentUser.email, this.currentUser.accessToken, 1)
       .then((history) => {

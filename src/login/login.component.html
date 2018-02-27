@@ -94,7 +94,7 @@
       </div>
 
       <form class="form-msg-pass" ng-show="!$ctrl.loadingResetPass && !$ctrl.showMsgEmailSent">
-        <div>
+        <div style="text-align: center;">
           <h3 for="change">{{'CHANGE_PASSWORD_INSTRUCTION' | translate}}</h3>
         </div>
         <div ng-show="$ctrl.showErrorMsgEmailSent" class="showErrorMsg">
@@ -126,57 +126,7 @@
     </div>
   </div>
 
-  <!-- HEADER - criar diretiva depois -->
-  <nav class="header nav" style="padding: 20px 0;">
-    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 logo">
-      <!-- eslint-disable -->
-      <span>L</span>
-      <span>u</span>
-      <span>n</span>
-      <span class="txt-green">e</span>
-      <span>s</span>
-      <!-- eslint-disable -->
-    </div>
-
-    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-4  nav-menu" style="margin-bottom: 20px;">
-      <!--<ul class="menu horizontal">
-        <li>
-          <a href="#!/whitelist">{{'WHITELIST' | translate}}</a>
-        </li>
-        <li>
-          <a href="#!/buy">{{'BUY' | translate}}</a>
-        </li>
-        <li>
-          <a href="#!/dashboard">{{'DASHBOARD' | translate}}</a>
-        </li>
-      </ul>-->
-    </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-6 txt-right">
-      <ul class="menu horizontal">
-        <li>
-          <a href="https://www.facebook.com/lunesplatform/" target="_blank" class="round-menu">
-            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg" alt="facebook" />
-          </a>
-        </li>
-        <li>
-          <a href="https://t.me/LunesPlatformEN" target="_blank" class="round-menu">
-            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg" alt="telegram" />
-          </a>
-        </li>
-        <li>
-          <a href="https://twitter.com/lunesplatform" target="_blank" class="round-menu">
-            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg" alt="twitter" />
-          </a>
-        </li>
-        <li>
-          <a href="https://medium.com/@lunes.platform" target="_blank" class="round-menu">
-            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg" alt="medium" />
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <lunesheader></lunesheader>
 
   <!-- AUTHENTICATION FORM -->
   <section class="authentication">
@@ -217,8 +167,7 @@
           </div>
 
           <div class="col-lg-5 col-xs-12" style="margin: 5px 0 30px 0;">
-            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442473/whitelist-illustration_pclyxv.png" width="100%"
-              alt="next" />
+            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519751608/pre_ico_img.png" width="100%" alt="next" />
           </div>
 
           <div class="col-lg-4 col-xs-12" ng-show="false">

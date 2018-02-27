@@ -4,7 +4,13 @@ import LunesLib from 'lunes-lib';
 const initialValue = '0.00000000';
 
 class BuyController {
-  constructor($scope, HttpService, $translate, $timeout, $state) {
+  constructor($rootScope, $scope, HttpService, $translate, $timeout, $state) {
+    $rootScope.$on('unauthorized', () => {
+      $state.go('login');
+    });
+    if (!localStorage.getItem(STORAGE_KEY)) {
+      $state.go('login');
+    }
     this.$scope = $scope;
     this.HttpService = HttpService;
     this.$translate = $translate;
@@ -321,6 +327,6 @@ class BuyController {
   }
 }
 
-BuyController.$inject = ['$scope', 'HttpService', '$translate', '$timeout', '$state'];
+BuyController.$inject = ['$rootScope', '$scope', 'HttpService', '$translate', '$timeout', '$state'];
 
 export default BuyController;

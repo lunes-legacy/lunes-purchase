@@ -10,11 +10,13 @@ import FixComponent from './fix/fix.component';
 import languageUtil from './utils/language';
 import en from './constants/en';
 import pt from './constants/pt';
+import { STORAGE_KEY } from './constants/index';
 
 import {
   CheapFlightService,
   HttpService,
-  ErrorMessagesService
+  ErrorMessagesService,
+  APIInterceptorService
 } from './services';
 import './scss/main.scss';
 
@@ -26,6 +28,7 @@ angular.module('myApp', [
 .service('HttpService', HttpService)
 .service('ErrorMessagesService', ErrorMessagesService)
 .service('CheapFlightService', CheapFlightService)
+.service('APIInterceptor', APIInterceptorService)
 .component('loginPage', LoginComponent)
 .component('signupPage', SignupComponent)
 .component('buyPage', BuyComponent)
@@ -162,12 +165,12 @@ angular.module('myApp', [
   };
 }
 )
-.config(($stateProvider, $translateProvider, $urlRouterProvider) => {
+.config(($stateProvider, $translateProvider, $urlRouterProvider, $httpProvider) => {
   'ngInject';
 
   $translateProvider.useSanitizeValueStrategy('escape');
   $translateProvider.useSanitizeValueStrategy('escapeParameters');
-  //$translateProvider.useSanitizeValueStrategy('sce');
+  $httpProvider.interceptors.push('APIInterceptor');
   $translateProvider.translations('en', en);
   $translateProvider.translations('pt', pt);
   $translateProvider.preferredLanguage(languageUtil());

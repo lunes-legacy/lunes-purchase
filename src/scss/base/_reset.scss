@@ -71,7 +71,6 @@ h3 {
   text-decoration: none;
   padding: 10px;
   img {
-    width: 25px;
     vertical-align: middle; 
   }
 }
@@ -91,6 +90,11 @@ h3 {
 /* Header */
 .header {
   margin: 20px 0;
+  background-color: #432478;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
 }
 
 /* MENU horizontal */
