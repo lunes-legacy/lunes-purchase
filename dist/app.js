@@ -82478,7 +82478,7 @@
 /* 704 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"container\">\n\n  <lunesheader showlogout='true' showlinks='true'></lunesheader>\n\n  <!-- DASHBOARD -->\n  <section class=\"dashboard\">\n    <div class=\"row\">\n      <div class=\"col-12 title mb-2-rem\">\n        <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>\n      </div>\n      <div class=\"col-12 history\">\n        <table class=\"lunes-table\">\n          <thead>\n            <tr>\n              <td>{{ 'DASHBOARD.DATE' | translate }}</td>\n              <td>{{ 'DASHBOARD.PHASE' | translate }}</td>\n              <td>{{ 'DASHBOARD.DEPOSIT' | translate }}</td>\n              <td>Lunes</td>\n              <td>{{ 'DASHBOARD.BONUS' | translate }}</td>\n              <td>Total</td>\n            </tr>\n          </thead>\n          <tbody data-ng-if=\"$ctrl.history.length > 0\">\n            <tr data-ng-repeat=\"history in $ctrl.history\">\n              <td>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</td>\n              <td>{{ history.phase || 1 }}</td>\n              <td>{{ history.deposit_value }} {{ history.deposit_coin }}</td>\n              <td>{{ history.credit_value }} LNS</td>\n              <td>{{ history.bonus_value }} LNS </td>\n              <td>{{ history.total }} LNS</td>\n            </tr>\n          </tbody>\n          <tfoot data-ng-if=\"$ctrl.history.length === 0\">\n            <tr>\n              <td colspan=\"6\" style=\"text-align: center;\">{{ 'DASHBOARD.NO_HISTORY' | translate }}</td>\n            </tr>\n          </tfoot>\n        </table>\n      </div>\n      <div class=\"col-12 balance\">\n        <span>Meu saldo:</span>\n        <span class=\"monetary\">{{ $ctrl.totalLns }}</span>\n        <span class=\"coin\">LNS</span>\n      </div>\n    </div>\n  </section>\n</div>"
+	module.exports = "<div class=\"container\">\n\n  <lunesheader showlogout='true' showlinks='true'></lunesheader>\n\n  <!-- DASHBOARD -->\n  <section class=\"dashboard\">\n    <div class=\"row\">\n      <div class=\"col-12 title mb-2-rem\">\n        <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>\n      </div>\n      <div class=\"col-12 history\">\n        <table class=\"lunes-table\" ng-if=\"$ctrl.checkWidthScreenDesktop()\">\n          <thead>\n            <tr>\n              <td>{{ 'DASHBOARD.DATE' | translate }}</td>\n              <td>{{ 'DASHBOARD.PHASE' | translate }}</td>\n              <td>{{ 'DASHBOARD.DEPOSIT' | translate }}</td>\n              <td>Lunes</td>\n              <td>{{ 'DASHBOARD.BONUS' | translate }}</td>\n              <td>Total</td>\n            </tr>\n          </thead>\n          <tbody data-ng-if=\"$ctrl.history.length > 0\">\n            <tr data-ng-repeat=\"history in $ctrl.history\" ng-class-odd=\"'odd'\" ng-class-even=\"'even'\">\n              <td>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</td>\n              <td>{{ history.phase || 1 }}</td>\n              <td>{{ history.deposit_value }} {{ history.deposit_coin }}</td>\n              <td>{{ history.credit_value }} LNS</td>\n              <td>{{ history.bonus_value }} LNS </td>\n              <td>{{ history.total }} LNS</td>\n            </tr>\n          </tbody>\n          <tfoot data-ng-if=\"$ctrl.history.length === 0\">\n            <tr>\n              <td colspan=\"6\" style=\"text-align: center;\">{{ 'DASHBOARD.NO_HISTORY' | translate }}</td>\n            </tr>\n          </tfoot>\n        </table>\n\n        <div ng-if=\"$ctrl.checkWidthScreenMobile()\">\n          <div data-ng-repeat=\"history in $ctrl.history\" ng-class-odd=\"'odd'\" ng-class-even=\"'even'\" style=\"border-radius: 5px;\">\n            <h6 style=\"text-align: center; padding: 10px; color: #4cd468;\">Transação {{$index+1}}</h6>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.DATE' | translate }}</div>\n              <div>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.PHASE' | translate }}</div>\n              <div>{{ history.phase || 1 }}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.DEPOSIT' | translate }}</div>\n              <div>{{ history.deposit_value }} LNS</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>Lunes</div>\n              <div>{{ history.credit_value }} LNS</div>\n            </div>\n            <div class=\"responsive-table-card total-footer\">\n              <div>Total</div>\n              <div>{{ history.total }} LNS</div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"col-12 balance\">\n        <span>Meu saldo:</span>\n        <span class=\"monetary\">{{ $ctrl.totalLns }}</span>\n        <span class=\"coin\">LNS</span>\n      </div>\n    </div>\n  </section>\n</div>"
 
 /***/ },
 /* 705 */
@@ -82520,45 +82520,68 @@
 	    this.getHistory();
 	  }
 	
+	  DashboardController.prototype.showLoading = function showLoading(isShow) {
+	    if (isShow) {
+	      $('<div class="modal-backdrop"><img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442469/loading_y9ob8i.svg" /></div>').appendTo(document.body);
+	    } else {
+	      this.$timeout(function () {
+	        $(".modal-backdrop").remove();
+	      }, 1000);
+	    }
+	  };
+	
 	  DashboardController.prototype.logout = function logout() {
 	    localStorage.removeItem(_index.STORAGE_KEY);
+	  };
+	
+	  DashboardController.prototype.checkWidthScreenDesktop = function checkWidthScreenDesktop() {
+	    return window.innerWidth >= 768;
+	  };
+	
+	  DashboardController.prototype.checkWidthScreenMobile = function checkWidthScreenMobile() {
+	    return window.innerWidth < 768;
 	  };
 	
 	  DashboardController.prototype.getHistory = function () {
 	    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
 	      var _this = this;
 	
+	      var history;
 	      return regeneratorRuntime.wrap(function _callee$(_context) {
 	        while (1) {
 	          switch (_context.prev = _context.next) {
 	            case 0:
-	              _context.next = 2;
-	              return _lunesLib2.default.ico.buyHistory(this.currentUser.email, this.currentUser.accessToken, 1).then(function (history) {
-	                _this.getPhases();
-	
-	                _this.$timeout(function () {
-	                  _this.history = history.map(function (item) {
-	                    var total = parseFloat(item.credit_value) + parseFloat(item.bonus_value);
-	                    _this.getHistoryPhase(item.sale_phase_id);
-	
-	                    return {
-	                      total: total,
-	                      created: item.created,
-	                      phase: _this.phaseName,
-	                      deposit_value: parseFloat(item.deposit_value),
-	                      deposit_coin: item.deposit_coin,
-	                      credit_value: parseFloat(item.credit_value),
-	                      bonus_value: parseFloat(item.bonus_value)
-	                    };
-	                  });
-	
-	                  _this.getTotalLns();
-	                }, 100);
-	              }).catch(function (err) {
-	                console.log(err);
+	              this.showLoading(true);
+	              _context.next = 3;
+	              return _lunesLib2.default.ico.buyHistory(this.currentUser.email, this.currentUser.accessToken, 1).catch(function (err) {
+	                return console.log(err);
 	              });
 	
-	            case 2:
+	            case 3:
+	              history = _context.sent;
+	
+	              this.getPhases();
+	              this.$timeout(function () {
+	                _this.showLoading(false);
+	                _this.history = history.map(function (item) {
+	                  var total = parseFloat(item.credit_value) + parseFloat(item.bonus_value);
+	                  _this.getHistoryPhase(item.sale_phase_id);
+	
+	                  return {
+	                    total: total,
+	                    created: item.created,
+	                    phase: _this.phaseName,
+	                    deposit_value: parseFloat(item.deposit_value),
+	                    deposit_coin: item.deposit_coin,
+	                    credit_value: parseFloat(item.credit_value),
+	                    bonus_value: parseFloat(item.bonus_value)
+	                  };
+	                });
+	
+	                _this.getTotalLns();
+	              }, 100);
+	
+	            case 6:
 	            case 'end':
 	              return _context.stop();
 	          }
@@ -82720,7 +82743,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".green {\n  color: #4cd466; }\n\n.mb-1-rem {\n  margin-bottom: 1rem; }\n\n.mb-2-rem {\n  margin-bottom: 2rem; }\n\n.history {\n  margin-bottom: 2rem; }\n\n.balance {\n  font-family: 'Offside', cursive;\n  text-align: right; }\n\n.monetary {\n  font-size: 2rem;\n  margin-left: 10px; }\n\n.coin {\n  font-size: 2.5rem;\n  color: #4cd466; }\n\n.lunes-table {\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n  font-weight: lighter;\n  font-size: 12px;\n  overflow: hidden;\n  text-align: center;\n  width: 100%; }\n  .lunes-table td {\n    padding: 0.75rem; }\n  .lunes-table thead {\n    background: linear-gradient(to right, #654fa4, #876fc6, #654fa4); }\n  .lunes-table tbody {\n    background-color: #41256f; }\n    .lunes-table tbody tr:hover {\n      background-color: #3f2569; }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/dashboard/src/dashboard/dashboard.component.scss","D:/workspaces/lunes/lunes-purchase/src/dashboard/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA;EACI,eCEW,EDDd;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,gCAA+B;EAC/B,kBAAiB,EACpB;;AAED;EACI,gBAAe;EACf,kBAAiB,EACpB;;AAED;EACI,kBAAiB;EACjB,eCzBW,ED0Bd;;AAED;EAEI,4BAA2B;EAC3B,6BAA4B;EAC5B,qBAAoB;EACpB,gBAAe;EACf,iBAAgB;EAChB,mBAAkB;EAClB,YAAW,EAiBd;EAzBD;IAWQ,iBAAgB,EACnB;EAZL;IAeQ,iEAAwF,EAC3F;EAhBL;IAmBQ,0BCjDa,EDsDhB;IAxBL;MAsBY,0BCnDc,EDoDjB","file":"dashboard.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n.green {\r\n    color: $green;\r\n}\r\n\r\n.mb-1-rem {\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n.mb-2-rem {\r\n    margin-bottom: 2rem;\r\n}\r\n\r\n.history {\r\n    margin-bottom: 2rem;\r\n}\r\n\r\n.balance {\r\n    font-family: 'Offside', cursive;\r\n    text-align: right;\r\n}\r\n\r\n.monetary {\r\n    font-size: 2rem;\r\n    margin-left: 10px;\r\n}\r\n\r\n.coin {\r\n    font-size: 2.5rem;\r\n    color: $green;\r\n}\r\n\r\n.lunes-table {\r\n    // background: transparent;\r\n    border-top-left-radius: 5px;\r\n    border-top-right-radius: 5px;\r\n    font-weight: lighter;\r\n    font-size: 12px;\r\n    overflow: hidden;\r\n    text-align: center;\r\n    width: 100%;\r\n\r\n    td {\r\n        padding: 0.75rem;\r\n    }\r\n\r\n    thead {\r\n        background: linear-gradient(to right , $lightPrimary, $extraLightPrimary, $lightPrimary);\r\n    }\r\n\r\n    tbody {\r\n        background-color: $darkPrimary;\r\n        \r\n        tr:hover {\r\n            background-color: $extraDarkPrimary;\r\n        }\r\n    }\r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #4cd466;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
+	exports.push([module.id, ".green {\n  color: #4cd466; }\n\n.mb-1-rem {\n  margin-bottom: 1rem; }\n\n.mb-2-rem {\n  margin-bottom: 2rem; }\n\n.history {\n  margin-bottom: 2rem; }\n\n.balance {\n  font-family: 'Offside', cursive;\n  text-align: right; }\n\n.monetary {\n  font-size: 2rem;\n  margin-left: 10px; }\n\n.coin {\n  font-size: 2.5rem;\n  color: #4cd466; }\n\n.lunes-table {\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n  font-weight: lighter;\n  font-size: 12px;\n  overflow: hidden;\n  text-align: center;\n  width: 100%; }\n  .lunes-table td {\n    padding: 0.75rem; }\n  .lunes-table thead {\n    background: linear-gradient(to right, #654fa4, #876fc6, #654fa4); }\n  .lunes-table tbody {\n    background-color: #41256f; }\n    .lunes-table tbody tr:hover {\n      background-color: #3f2569; }\n\n/* \r\nMax width before this PARTICULAR table gets nasty\r\nThis query will take effect for any screen smaller than 760px\r\nand also iPads specifically.\r\n*/\n@media only screen and (max-width: 699px) {\n  /* Force table to not be like tables anymore */\n  table, thead, tbody, th, td, tr {\n    display: block; }\n  /* Hide table headers (but not display: none;, for accessibility) */\n  thead tr {\n    position: absolute;\n    top: -9999px;\n    left: -9999px; }\n  tr {\n    border: 1px solid #3f2669; }\n  td {\n    /* Behave  like a \"row\" */\n    border: none;\n    border-bottom: 1px solid #4b2d7d;\n    position: relative;\n    padding-left: 50%; }\n  td:before {\n    /* Now like a table header */\n    position: absolute;\n    /* Top/left values mimic padding */\n    top: 6px;\n    left: 6px;\n    width: 45%;\n    padding-right: 10px;\n    white-space: nowrap; }\n  .monetary {\n    font-size: 1rem;\n    margin-left: 10px; }\n  .coin {\n    font-size: 1.5rem;\n    color: #4cd466; } }\n\n@media only screen and (min-width: 700px) and (max-width: 768px) {\n  .lunes-table {\n    table-layout: fixed; }\n    .lunes-table tbody {\n      max-height: 400px;\n      overflow-y: auto;\n      display: block;\n      width: 690px; } }\n\n.odd {\n  background-color: #41256f; }\n\n.even {\n  background-color: #351e5a; }\n\n.responsive-table-card {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  padding: 10px;\n  margin-bottom: 10px;\n  border-bottom: solid 1px #4c2c7f; }\n  .responsive-table-card div {\n    font-size: 12px; }\n  .responsive-table-card.total-footer {\n    background-color: #4cd468;\n    border-radius: 0 0 5px 5px; }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/dashboard/src/dashboard/dashboard.component.scss","D:/workspaces/lunes/lunes-purchase/src/dashboard/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA;EACI,eCEW,EDDd;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,gCAA+B;EAC/B,kBAAiB,EACpB;;AAED;EACI,gBAAe;EACf,kBAAiB,EACpB;;AAED;EACI,kBAAiB;EACjB,eCzBW,ED0Bd;;AAED;EAEI,4BAA2B;EAC3B,6BAA4B;EAC5B,qBAAoB;EACpB,gBAAe;EACf,iBAAgB;EAChB,mBAAkB;EAClB,YAAW,EAiBd;EAzBD;IAWQ,iBAAgB,EACnB;EAZL;IAeQ,iEAAwF,EAC3F;EAhBL;IAmBQ,0BCjDa,EDsDhB;IAxBL;MAsBY,0BCnDc,EDoDjB;;AAIT;;;;EAIE;AACF;EAGC,+CAA+C;EAC/C;IACC,eAAc,EACd;EAED,oEAAoE;EACpE;IACC,mBAAkB;IAClB,aAAY;IACZ,cAAa,EACb;EAED;IAAK,0BAAyB,EAAK;EAEnC;IACC,0BAA0B;IAC1B,aAAY;IACZ,iCAAgC;IAChC,mBAAkB;IAClB,kBAAiB,EACjB;EAED;IACC,6BAA6B;IAC7B,mBAAkB;IAClB,mCAAmC;IACnC,SAAQ;IACR,UAAS;IACT,WAAU;IACV,oBAAmB;IACnB,oBAAmB,EAChB;EAED;IACI,gBAAe;IACf,kBAAiB,EACpB;EAED;IACI,kBAAiB;IACjB,eAAc,EACjB,EAAA;;AAGL;EAEI;IACI,oBAAmB,EAOtB;IARD;MAGQ,kBAAiB;MACjB,iBAAgB;MAChB,eAAc;MACd,aAAY,EACf,EAAA;;AAIT;EACI,0BAAyB,EAC5B;;AACD;EACI,0BAAyB,EAC5B;;AAED;EACI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,+BAAmB;EAAnB,8BAAmB;MAAnB,wBAAmB;UAAnB,oBAAmB;EACnB,0BAA8B;MAA9B,uBAA8B;UAA9B,+BAA8B;EAC9B,cAAa;EACb,oBAAmB;EACnB,iCAAgC,EAQnC;EAdD;IAQQ,gBAAe,EAClB;EATL;IAWQ,0BAAyB;IACzB,2BAA0B,EAC7B","file":"dashboard.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n.green {\r\n    color: $green;\r\n}\r\n\r\n.mb-1-rem {\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n.mb-2-rem {\r\n    margin-bottom: 2rem;\r\n}\r\n\r\n.history {\r\n    margin-bottom: 2rem;\r\n}\r\n\r\n.balance {\r\n    font-family: 'Offside', cursive;\r\n    text-align: right;\r\n}\r\n\r\n.monetary {\r\n    font-size: 2rem;\r\n    margin-left: 10px;\r\n}\r\n\r\n.coin {\r\n    font-size: 2.5rem;\r\n    color: $green;\r\n}\r\n\r\n.lunes-table {\r\n    // background: transparent;\r\n    border-top-left-radius: 5px;\r\n    border-top-right-radius: 5px;\r\n    font-weight: lighter;\r\n    font-size: 12px;\r\n    overflow: hidden;\r\n    text-align: center;\r\n    width: 100%;\r\n\r\n    td {\r\n        padding: 0.75rem;\r\n    }\r\n\r\n    thead {\r\n        background: linear-gradient(to right , $lightPrimary, $extraLightPrimary, $lightPrimary);\r\n    }\r\n\r\n    tbody {\r\n        background-color: $darkPrimary;\r\n        \r\n        tr:hover {\r\n            background-color: $extraDarkPrimary;\r\n        }\r\n    }\r\n}\r\n\r\n/* \r\nMax width before this PARTICULAR table gets nasty\r\nThis query will take effect for any screen smaller than 760px\r\nand also iPads specifically.\r\n*/\r\n@media \r\nonly screen and (max-width: 699px)  {\r\n\r\n\t/* Force table to not be like tables anymore */\r\n\ttable, thead, tbody, th, td, tr { \r\n\t\tdisplay: block; \r\n\t}\r\n\t\r\n\t/* Hide table headers (but not display: none;, for accessibility) */\r\n\tthead tr { \r\n\t\tposition: absolute;\r\n\t\ttop: -9999px;\r\n\t\tleft: -9999px;\r\n\t}\r\n\t\r\n\ttr { border: 1px solid #3f2669; }\r\n\t\r\n\ttd { \r\n\t\t/* Behave  like a \"row\" */\r\n\t\tborder: none;\r\n\t\tborder-bottom: 1px solid #4b2d7d; \r\n\t\tposition: relative;\r\n\t\tpadding-left: 50%; \r\n\t}\r\n\t\r\n\ttd:before { \r\n\t\t/* Now like a table header */\r\n\t\tposition: absolute;\r\n\t\t/* Top/left values mimic padding */\r\n\t\ttop: 6px;\r\n\t\tleft: 6px;\r\n\t\twidth: 45%; \r\n\t\tpadding-right: 10px; \r\n\t\twhite-space: nowrap;\r\n    }\r\n\r\n    .monetary {\r\n        font-size: 1rem;\r\n        margin-left: 10px;\r\n    }\r\n    \r\n    .coin {\r\n        font-size: 1.5rem;\r\n        color: #4cd466;\r\n    }\r\n}\r\n\r\n@media\r\nonly screen and (min-width: 700px) and (max-width: 768px) {\r\n    .lunes-table {\r\n        table-layout: fixed;\r\n        tbody {\r\n            max-height: 400px;\r\n            overflow-y: auto;\r\n            display: block;\r\n            width: 690px;\r\n        }\r\n    }\r\n}\r\n\r\n.odd {\r\n    background-color: #41256f;\r\n}\r\n.even {\r\n    background-color: #351e5a;\r\n}\r\n\r\n.responsive-table-card {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n    padding: 10px;\r\n    margin-bottom: 10px;\r\n    border-bottom: solid 1px #4c2c7f;\r\n    div {\r\n        font-size: 12px;\r\n    }\r\n    &.total-footer {\r\n        background-color: #4cd468;\r\n        border-radius: 0 0 5px 5px;\r\n    }\r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #4cd466;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
 	
 	// exports
 
@@ -84177,4 +84200,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?1519756639824
+//# sourceMappingURL=app.js.map?1519765991591
