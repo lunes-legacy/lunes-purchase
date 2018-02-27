@@ -81,7 +81,7 @@
     "karma-mocha-reporter": "^2.2.3",
     "karma-sourcemap-loader": "^0.3.4",
     "karma-webpack": "^2.0.3",
-    "lunes-lib": "0.0.25",
+    "lunes-lib": "0.0.26",
     "mocha": "^3.2.0",
     "moment": "^2.15.1",
     "ng-annotate-loader": "^0.2.0",

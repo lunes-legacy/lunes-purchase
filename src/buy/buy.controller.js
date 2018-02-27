@@ -32,7 +32,7 @@ class BuyController {
     }, {
       label: 'Ethereum',
       name: 'ETH',
-      img: 'http://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_eth.svg',
+      img: 'https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_eth.svg',
       selected: false
     }];
     this.currentCoinSelected = JSON.parse(JSON.stringify(this.coins[0]));
