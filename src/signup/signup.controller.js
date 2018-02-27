@@ -32,7 +32,7 @@ class SignupController {
             lastname: this.user.lastname, 
             email: this.user.email,
             password: this.user.password,
-        	coupon: this.user.coupon,
+            coupon: this.user.coupon,
             testnet: true
         };
         const a = await this.HttpService.signup(obj).catch(error => {
