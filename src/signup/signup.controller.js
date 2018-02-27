@@ -17,6 +17,7 @@ class SignupController {
             confirmEmail: '',
             password: '',
             confirmPassword: '',
+            coupon: '',
             check1: false,
             check2: false,
             check3: false,
@@ -31,7 +32,8 @@ class SignupController {
             lastname: this.user.lastname, 
             email: this.user.email,
             password: this.user.password,
-            testnet: true 
+            coupon: this.user.coupon,
+            testnet: true
         };
         const a = await this.HttpService.signup(obj).catch(error => {
             //this.serverError = true
@@ -56,11 +58,11 @@ class SignupController {
                     console.log(error);
                 });
                 a.depositWallet = depositWallet;
-			    localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
-			    this.$state.go('buy');
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
+                this.$state.go('buy');
             } else {
-			    localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
-			    this.$state.go('buy');
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
+                this.$state.go('buy');
                 console.log(a);
             }
         }

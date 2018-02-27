@@ -153,3 +153,24 @@
     color: $green;
   }
 }
+
+.show-balance {
+  
+  $coins: (
+    btc: #e0972f,
+    ltc: #9f9aa4,
+    eth: #b4d0cd
+  );
+
+  @each $coin, $color in $coins {
+    .show-balance-#{$coin} {
+      margin-top: 1rem;
+      font-size: 2rem;
+
+      .coin-name {
+        color: $color;
+      }
+    }
+  }
+}
+  
