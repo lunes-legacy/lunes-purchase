@@ -20,6 +20,7 @@ class HttpService {
       email: userData.email,
       password: userData.password,
       fullname: `${userData.name} ${userData.lastname}`,
+	  coupon: userData.coupon,
       testnet: userData.testnet || false
     };
     const data = await LunesLib.users.create(obj);

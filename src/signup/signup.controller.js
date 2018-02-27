@@ -26,14 +26,14 @@ class SignupController {
     }
 
     async doSignup() {
-        console.log(this.user.coupon);
         this.showLoading(true);
         const obj = { 
             name: this.user.name, 
             lastname: this.user.lastname, 
             email: this.user.email,
             password: this.user.password,
-            testnet: true 
+			coupon: this.user.coupon,
+            testnet: true
         };
         const a = await this.HttpService.signup(obj).catch(error => {
             //this.serverError = true
