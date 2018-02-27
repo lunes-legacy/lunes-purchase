@@ -80,7 +80,7 @@ class LoginController {
     allCheckboxIsChecked() {
         return this.user.check1 && this.user.check2 && this.user.check4;
     }
-    
+
     async doAccept() {
         this.showLoading(true);
         this.currentUser = JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -105,7 +105,7 @@ class LoginController {
             console.log(this.currentUser);
           }
     }
-    
+
     showLoading(isShow) {
       if (isShow) {
         $(`<div class="modal-backdrop"><img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442469/loading_y9ob8i.svg" /></div>`).appendTo(document.body);
@@ -115,15 +115,14 @@ class LoginController {
         }, 1000);
       }
     }
-    
+
     async obtainPhase() {
       try {
         console.log("");
         this.currentPhase = await this.HttpService.obtainPhase().catch(error => {
           console.log(error);
-          alert('Erro ao tentar recuperar dados da fase da ICO');  
+          alert('Erro ao tentar recuperar dados da fase da ICO');
         });
-        console.log(this.currentPhase);
         if (this.currentPhase) {
           localStorage.setItem('lunes.phase', JSON.stringify(this.currentPhase));
         }
@@ -138,14 +137,13 @@ class LoginController {
           let self = this;
         $(`<div class="modal-backdrop-error"><h4 style="margin-top: 10%;">${this.ErrorMessagesService.get(msg)}</h4><button class="close-error">ok</button></div>`).appendTo(document.body);
         $('.close-error').on('click', function() {
-          $(".modal-backdrop-error").remove();   
+          $(".modal-backdrop-error").remove();
         });
       }
     }
 
   }
-  
+
   LoginController.$inject = ['$state', 'HttpService', '$filter', '$sce', '$timeout', 'ErrorMessagesService'];
-  
+
   export default LoginController;
-  

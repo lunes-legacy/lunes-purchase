@@ -31,7 +31,7 @@ class HttpService {
     const a = await LunesLib.users.resetPassword({ email });
     return a;
   }
-  
+
   async confirmterm(currentUser) {
     try {
       console.log("");
@@ -40,7 +40,7 @@ class HttpService {
       return confirmTerm;
     } catch (error) {
       throw new Error(error);
-    }  
+    }
   }
 
   async obtainPhase() {
@@ -77,7 +77,7 @@ class HttpService {
       return depositWalletAddresses;
     } catch (error) {
       throw new Error(error);
-    }  
+    }
   }
 
   async getBalanceLunes(coin, currentUser) {
@@ -102,13 +102,12 @@ class HttpService {
       COIN: 'ETH',
       CURRENTPRICE: `${currencySymbol} ${price}`,
       DISPLAYPRICE: `1 ETH | ${price}`
-    };  
+    };
   }
 
   async buyHistory(email, accessToken) {
     const a = await LunesLib.ico.buyBalance(email, accessToken, 1);
-    console.log(a);
-    return a; 
+    return a;
   }
 
   async getBalance(coin, address, currentUser) {
