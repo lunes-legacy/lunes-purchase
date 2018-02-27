@@ -5,7 +5,8 @@ const LunesHeaderComponent = {
   bindings: {
     coin: '=',
     price: '=',
-    hidelinks: '='
+    showlinks: '=',
+    showlogout: '='
   },
   template,
   controller,

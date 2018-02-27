@@ -22,7 +22,7 @@
     </span>
   </div>
 
-  <div class="col-xs-8 col-md-9 col-lg-9 quotation" ng-show="!$ctrl.coin">
+  <div class="col-xs-8 col-md-9 col-lg-9 quotation" ng-show="$ctrl.showlogout">
     <span class="container-quotation" style="display: flex;align-items: center;">
       <span class="logout">
         <a href="#!/login" class="round-menu" ng-click="$ctrl.logout()">
@@ -34,7 +34,7 @@
 </div>
 
 <!-- MENU and SOCIAL MEDIA links -->
-<nav class="header" ng-show="!$ctrl.hidelinks || $ctrl.hidelinks === false">
+<nav class="header" ng-show="$ctrl.showlinks">
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 nav-menu" style="margin: 5px 0 10px 0;">
     <ul class="menu menu-top" style="padding: 0;margin: 0;">
       <li>

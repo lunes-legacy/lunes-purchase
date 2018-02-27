@@ -6,7 +6,8 @@ class HeaderController {
     this.$state = $state;
     this.coin = {};
     this.price = '';
-    this.hidelinks = false;
+    this.showlinks = true;
+    this.showlogout = true;
   }
   logout() {
     localStorage.removeItem(STORAGE_KEY);
