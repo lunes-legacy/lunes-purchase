@@ -4851,9 +4851,9 @@
       }
     },
     "lunes-lib": {
-      "version": "0.0.25",
-      "resolved": "https://registry.npmjs.org/lunes-lib/-/lunes-lib-0.0.25.tgz",
-      "integrity": "sha512-d37NBV5ifRTxf9G9jaLK16hhxPWH/gz9WVUfK6AT+CcNubaVbQxoIrFuOR+Bao0JF9Y+HKj8TOYGIKU1089tDA==",
+      "version": "0.0.26",
+      "resolved": "https://registry.npmjs.org/lunes-lib/-/lunes-lib-0.0.26.tgz",
+      "integrity": "sha512-WvcjC9QaVOE5AkoAhyt3yiIE+QsamF3bMf8ZhjW7AwDEolY83q/FCWkUdRIIqWX17FB6cNYar7KVCLEhKwcwHw==",
       "requires": {
         "axios": "0.17.1",
         "bluebird": "3.5.1",
