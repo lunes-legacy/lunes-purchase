@@ -178,7 +178,16 @@
           </div>
           <img ng-src="{{$ctrl.currentQRCode.img}}" class="qr-code img-thumbnail img-responsive" />
           <p class="address">{{$ctrl.currentQRCode.address}}</p>
-          <div> {{'BALANCE' | translate}}: {{$ctrl.balanceUser.confirmed_balance}} {{$ctrl.currentCoinSelected.name}} </div>
+          <div class="show-balance">
+            <img ng-src="{{$ctrl.currentCoinSelected.img}}" alt="{{$ctrl.currentCoinSelected.label}}">
+            <p>{{$ctrl.currentCoinSelected.label}}</p>
+            <div class="show-balance-{{$ctrl.currentCoinSelected.name | lowercase}}">
+              <span>{{$ctrl.balanceUser.confirmed_balance}}</span>
+              <span class="coin-name">
+                {{$ctrl.currentCoinSelected.name}}
+              </span>
+            </div>
+          </div>
         </div>
 
       </div>
