@@ -189,8 +189,8 @@ angular.module('myApp', [
       url: '/buy',
       template: '<buy-page></buy-page>',
     })
-    .state('dashboard', {
-      url: '/dashboard',
+    .state('historic', {
+      url: '/historic',
       template: '<dashboard-page></dashboard-page>',
     })
     .state('home', {

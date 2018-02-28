@@ -9384,8 +9384,8 @@
 	  }).state('buy', {
 	    url: '/buy',
 	    template: '<buy-page></buy-page>'
-	  }).state('dashboard', {
-	    url: '/dashboard',
+	  }).state('historic', {
+	    url: '/historic',
 	    template: '<dashboard-page></dashboard-page>'
 	  }).state('home', {
 	    url: '/',
@@ -52145,7 +52145,7 @@
 /* 473 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"row container-logo-header\" style=\"padding: 10px 0;\">\r\n\r\n  <!-- LOGO -->\r\n  <div class=\"col-sm-4 col-md-3 col-lg-3 logo\" ng-click=\"$ctrl.goToHome()\">\r\n    <span>L</span>\r\n    <span>u</span>\r\n    <span>n</span>\r\n    <span class=\"txt-green\">e</span>\r\n    <span>s</span>\r\n  </div>\r\n\r\n  <!-- PRICE CURRENT COIN and LOGOUT -->\r\n  <div class=\"col-xs-8 col-md-9 col-lg-9 quotation\" ng-show=\"$ctrl.coin && $ctrl.coin.img\">\r\n    <span class=\"container-quotation\">\r\n      {{'QUOTATION' | translate}}\r\n      <img ng-src=\"{{$ctrl.coin.img}}\" alt=\"{{$ctrl.coin.label}}\"> em USD - {{$ctrl.price}} |\r\n      <span class=\"logout\">\r\n        <a href=\"#!/login\" class=\"round-menu\" ng-click=\"$ctrl.logout()\">\r\n          {{'LOGOUT' | translate}}\r\n        </a>\r\n      </span>\r\n    </span>\r\n  </div>\r\n\r\n  <div class=\"col-xs-8 col-md-9 col-lg-9 quotation\" ng-show=\"$ctrl.showlogout\">\r\n    <span class=\"container-quotation\" style=\"display: flex;align-items: center;\">\r\n      <span class=\"logout\">\r\n        <a href=\"#!/login\" class=\"round-menu\" ng-click=\"$ctrl.logout()\">\r\n          {{'LOGOUT' | translate}}\r\n        </a>\r\n      </span>\r\n    </span>\r\n  </div>\r\n</div>\r\n\r\n<!-- MENU and SOCIAL MEDIA links -->\r\n<nav class=\"header\" ng-show=\"$ctrl.showlinks\">\r\n  <div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6 nav-menu\" style=\"margin: 5px 0 10px 0;\">\r\n    <ul class=\"menu menu-top\" style=\"padding: 0;margin: 0;\">\r\n      <li>\r\n        <a href=\"#!/buy\">{{'BUY' | translate}}</a>\r\n      </li>\r\n      <li>\r\n        |\r\n      </li>\r\n      <li>\r\n        <a href=\"#!/dashboard\">{{'DASHBOARD' | translate}}</a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n\r\n  <div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6 flex-right\">\r\n    <ul class=\"menu menu-top\" style=\"padding: 0;margin: 0;\">\r\n      <li>\r\n        <a href=\"https://www.facebook.com/lunesplatform/\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg\" alt=\"facebook\" />\r\n        </a>\r\n      </li>\r\n      <li>\r\n        <a href=\"https://t.me/LunesPlatformEN\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg\" alt=\"telegram\" />\r\n        </a>\r\n      </li>\r\n      <li>\r\n        <a href=\"https://twitter.com/lunesplatform\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg\" alt=\"twitter\" />\r\n        </a>\r\n      </li>\r\n      <li>\r\n        <a href=\"https://medium.com/@lunes.platform\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg\" alt=\"medium\" />\r\n        </a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</nav>"
+	module.exports = "<div class=\"row container-logo-header\" style=\"padding: 10px 0;\">\r\n\r\n  <!-- LOGO -->\r\n  <div class=\"col-sm-4 col-md-3 col-lg-3 logo\" ng-click=\"$ctrl.goToHome()\">\r\n    <span>L</span>\r\n    <span>u</span>\r\n    <span>n</span>\r\n    <span class=\"txt-green\">e</span>\r\n    <span>s</span>\r\n  </div>\r\n\r\n  <!-- PRICE CURRENT COIN and LOGOUT -->\r\n  <div class=\"col-xs-8 col-md-9 col-lg-9 quotation\" ng-show=\"$ctrl.coin && $ctrl.coin.img\">\r\n    <span class=\"container-quotation\">\r\n      {{'QUOTATION' | translate}}\r\n      <img ng-src=\"{{$ctrl.coin.img}}\" alt=\"{{$ctrl.coin.label}}\"> em USD - {{$ctrl.price}} |\r\n      <span class=\"logout\">\r\n        <a href=\"#!/login\" class=\"round-menu\" ng-click=\"$ctrl.logout()\">\r\n          {{'LOGOUT' | translate}}\r\n        </a>\r\n      </span>\r\n    </span>\r\n  </div>\r\n\r\n  <div class=\"col-xs-8 col-md-9 col-lg-9 quotation\" ng-show=\"$ctrl.showlogout\">\r\n    <span class=\"container-quotation\" style=\"display: flex;align-items: center;\">\r\n      <span class=\"logout\">\r\n        <a href=\"#!/login\" class=\"round-menu\" ng-click=\"$ctrl.logout()\">\r\n          {{'LOGOUT' | translate}}\r\n        </a>\r\n      </span>\r\n    </span>\r\n  </div>\r\n</div>\r\n\r\n<!-- MENU and SOCIAL MEDIA links -->\r\n<nav class=\"header\" ng-show=\"$ctrl.showlinks\">\r\n  <div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6 nav-menu\" style=\"margin: 5px 0 10px 0;\">\r\n    <ul class=\"menu menu-top\" style=\"padding: 0;margin: 0;\">\r\n      <li>\r\n        <a href=\"#!/historic\">{{'PURCHASE_HISTORY' | translate}}</a>\r\n      </li>\r\n      <li>\r\n        |\r\n      </li>\r\n      <li>\r\n        <a href=\"#!/buy\">{{'BUY' | translate}}</a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n\r\n  <div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6 flex-right\">\r\n    <ul class=\"menu menu-top\" style=\"padding: 0;margin: 0;\">\r\n      <li>\r\n        <a href=\"https://www.facebook.com/lunesplatform/\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg\" alt=\"facebook\" />\r\n        </a>\r\n      </li>\r\n      <li>\r\n        <a href=\"https://t.me/LunesPlatformEN\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg\" alt=\"telegram\" />\r\n        </a>\r\n      </li>\r\n      <li>\r\n        <a href=\"https://twitter.com/lunesplatform\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg\" alt=\"twitter\" />\r\n        </a>\r\n      </li>\r\n      <li>\r\n        <a href=\"https://medium.com/@lunes.platform\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg\" alt=\"medium\" />\r\n        </a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</nav>"
 
 /***/ },
 /* 474 */
@@ -52349,13 +52349,13 @@
 	
 	              a.depositWallet = depositWallet;
 	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
-	              this.$state.go('buy');
+	              this.$state.go('historic');
 	              _context.next = 19;
 	              break;
 	
 	            case 17:
 	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
-	              this.$state.go('buy');
+	              this.$state.go('historic');
 	
 	            case 19:
 	              _context.next = 23;
@@ -52473,13 +52473,13 @@
 	
 	              this.currentUser.depositWallet = depositWallet;
 	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(this.currentUser));
-	              this.$state.go('buy');
+	              this.$state.go('historic');
 	              _context3.next = 17;
 	              break;
 	
 	            case 14:
 	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(this.currentUser));
-	              this.$state.go('buy');
+	              this.$state.go('historic');
 	              console.log(this.currentUser);
 	
 	            case 17:
@@ -53280,13 +53280,13 @@
 	
 	              a.depositWallet = depositWallet;
 	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
-	              this.$state.go('buy');
+	              this.$state.go('historic');
 	              _context.next = 25;
 	              break;
 	
 	            case 22:
 	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
-	              this.$state.go('buy');
+	              this.$state.go('historic');
 	              console.log(a);
 	
 	            case 25:
@@ -82909,6 +82909,7 @@
 	  WHITELIST: 'Whitelist',
 	  BUY: 'Buy',
 	  DASHBOARD: 'Dashboard',
+	  PURCHASE_HISTORY: 'Purchase History',
 	  CURRENCY_SYMBOL: 'U$',
 	  CURRENCY_USER: 'USD',
 	  CURRENCY_EXCHANGE: 'bitstamp',
@@ -82991,6 +82992,7 @@
 	  WHITELIST: 'Whitelist',
 	  BUY: 'Comprar',
 	  DASHBOARD: 'Dashboard',
+	  PURCHASE_HISTORY: 'Histórico de Compras',
 	  CURRENCY_SYMBOL: 'R$',
 	  CURRENCY_USER: 'BRL',
 	  CURRENCY_EXCHANGE: 'bitstamp',
@@ -84200,4 +84202,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?1519765991591
+//# sourceMappingURL=app.js.map?1519777395330

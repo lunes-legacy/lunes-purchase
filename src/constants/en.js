@@ -25,6 +25,7 @@ export default {
     WHITELIST: 'Whitelist',
     BUY: 'Buy',
     DASHBOARD: 'Dashboard',
+    PURCHASE_HISTORY: 'Purchase History',
     CURRENCY_SYMBOL: 'U$',
     CURRENCY_USER: 'USD',
     CURRENCY_EXCHANGE: 'bitstamp',
