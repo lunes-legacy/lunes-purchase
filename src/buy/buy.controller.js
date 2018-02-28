@@ -1,5 +1,5 @@
-import { STORAGE_KEY } from '../constants/index';
 import LunesLib from 'lunes-lib';
+import { STORAGE_KEY, COINS_CONSTANT } from '../constants/index';
 
 const initialValue = '0.00000000';
 
@@ -25,22 +25,7 @@ class BuyController {
     this.valueToReceive = initialValue;
     this.bonusAmountFinal = initialValue;
     this.buyLimit = '0';
-    this.coins = [{
-      label: 'Bitcoin',
-      name: 'BTC',
-      img: 'https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_btc.svg',
-      selected: true
-    }, {
-      label: 'Litecoin',
-      name: 'LTC',
-      img: 'https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon_ltc.svg',
-      selected: false
-    }, {
-      label: 'Ethereum',
-      name: 'ETH',
-      img: 'https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_eth.svg',
-      selected: false
-    }];
+    this.coins = COINS_CONSTANT;
     this.currentCoinSelected = JSON.parse(JSON.stringify(this.coins[0]));
     this.currentQRCode = { address: '', img: '' };
     this.getBalanceCoin('BTC').catch(error => {
@@ -263,6 +248,9 @@ class BuyController {
   }
 
   checkMaxLength() {
+    if (typeof this.valueToDeposit === 'number') {
+      this.valueToDeposit = this.valueToDeposit.toString();  
+    }
     const numberMax = 10;
     if (!isNaN(this.valueToDeposit) && this.valueToDeposit.indexOf(',') !== -1) {
       this.valueToDeposit = this.valueToDeposit.replace(",", ".");

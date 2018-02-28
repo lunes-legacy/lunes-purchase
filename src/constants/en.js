@@ -63,6 +63,8 @@ export default {
     PASSWORD_ALPHANUMERIC: 'At least one character in the password must be a number',
     EMAIL_MATCH: 'E-mail must match',
     PASSWORD_MATCH: 'Password must match',
+    SEND_TO_THIS_ADDRESS: 'Send to this address',
+    UNCONFIRMED_BALANCE: 'Unconfirmed',
     DASHBOARD: {
       NO_HISTORY: 'You have no history yet',
       DATE: 'Date',

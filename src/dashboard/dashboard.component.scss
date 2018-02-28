@@ -145,3 +145,29 @@ only screen and (min-width: 700px) and (max-width: 768px) {
         border-radius: 0 0 5px 5px;
     }
 }
+
+.transaction-coins {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.balance.lns {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+@media only screen and (max-width: 426px) {
+    .transaction-coins {
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    
+    .balance.lns {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-bottom: 20px;
+    }    
+}

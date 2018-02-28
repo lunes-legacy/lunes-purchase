@@ -117,9 +117,12 @@ class HttpService {
   }
 
   async getBalance(coin, address, currentUser) {
-    let underCoin = coin.toLowerCase();
-    let balance = await LunesLib.coins.getBalance({ address, coin: underCoin, testnet: false }, currentUser.accessToken);
-    return (balance && balance.data) ? balance.data : {};
+    if (coin && address && currentUser) {
+      let underCoin = coin.toLowerCase();
+      let balance = await LunesLib.coins.getBalance({ address, coin: underCoin, testnet: false }, currentUser.accessToken);
+      return (balance && balance.data) ? balance.data : {};
+    }
+    return {};
   }
 
   async getBitcoinBalance(coin) {

@@ -11,15 +11,17 @@
   font-size: 18px;
 }
 
+.equal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  text-align: center;
+}
+
 .calculator {
-  .equal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-  }
   .valueCripto {
-    min-height: 80px;
+    min-height: 60px;
     background-color: rgba($color: $darkPrimary, $alpha: 0.8);
     color: #fff;
     padding: 10px;
@@ -27,6 +29,14 @@
     text-align: right;
     font-size: 18px;
     line-height: 60px;
+    .select-coin {
+      min-height: 60px;
+      display: flex;
+      justify-content: center;
+    }
+    .area-field input {
+      text-align: center;
+    }
   }
   .valueMoney {
     height: 80px;
@@ -70,7 +80,8 @@
 .amountBalance {
   margin-top: 20px;
   border-radius: 5px;
-  .total {
+  &.total {
+    padding: 10px;
     border-radius: 5px;
     background-color: rgba($color: $darkPrimary, $alpha: 0.8);
     .line-break {
@@ -142,10 +153,10 @@
 
 .container-qr-code {
   .selected-label {
-    border-radius: 10px;
-    padding: 2px 20px;
+    border-radius: 5px;
+    padding: 5px 28px;
     background-color: #432773;
-    color: #fdfdfd;
+    color: #e5c523;
     font-size: 12px;
   }
   .address {
@@ -257,6 +268,26 @@
       img {
         width: 25px;
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .container-logo-header {
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  }
+  .valueCripto {
+    .select-coin {
+      clear: both;
+      min-height: 60px;
+      display: flex;
+      justify-content: center;
+    }
+    .area-field input {
+      text-align: center;
     }
   }
 }

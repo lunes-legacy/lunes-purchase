@@ -79,16 +79,21 @@
   <section class="authentication">
     <div>
       <form name="$ctrl.loginForm">
+
         <div class="row">
           <div class="col-xs-12 col-lg-12 title">
             <h4>{{'WELCOME' | translate}}</h4>
             <h4>{{'BEGIN_YOUR_REGISTRATION' | translate}}</h4>
           </div>
+
           <div class="col-xs-12 col-lg-12 error-fields" ng-show="$ctrl.showErrorForm">{{'ALL_FIELDS_REQUIRED' | translate}}</div>
+
           <div class="alert alert-danger" ng-show="$ctrl.serverError" role="alert">
             <h4 class="alert-heading">{{'AN_ERROR_CREATE_ACCOUNT' | translate}}</h4>
             <p>{{$ctrl.serverErrorMessage</p>
           </div>
+
+          <!-- USER INFO -->
           <div class="col-xs-12 col-lg-6">
             <div class="input-form">
               <label for="input-name">* {{'NAME' | translate}}</label>
@@ -104,11 +109,12 @@
           </div>
         </div>
 
+        <!-- EMAIL INFO -->
         <div class="row">
           <div class="col-xs-12 col-lg-6">
             <div class="input-form">
               <label for="input-email">* {{'EMAIL' | translate}}</label>
-              <input data-ng-model="$ctrl.user.email" id="input-email" name="email" ng-model-options="{ debounce: 500 }" required type="email"
+              <input data-ng-model="$ctrl.user.email" id="input-email" name="email" ng-model-options="{ debounce: 3000 }" required type="email"
                 placeholder="{{'EMAIL_PLACEHOLDER' | translate}}">
             </div>
           </div>
@@ -120,9 +126,24 @@
                 placeholder="{{'CONFIRM_EMAIL_PLACEHOLDER' | translate}}">
             </div>
 
+            <!-- VALIDATION EMAIL -->
+            <span style="color:#f8b61c;" ng-show="$ctrl.loginForm.email.$dirty && $ctrl.loginForm.email.$invalid">
+              <span ng-show="$ctrl.loginForm.email.$error.required">{{'EMAIL_REQUIRED' | translate}}
+                <br>
+              </span>
+              <span ng-show="$ctrl.loginForm.email.$error.email">{{'EMAIL_INVALID' | translate}}
+                <br>
+              </span>
+            </span>
+            <span style="color:#f8b61c;" ng-show="$ctrl.loginForm.confirmEmail.$dirty && $ctrl.loginForm.confirmEmail.$invalid">
+              <span ng-show="$ctrl.user.email !== $ctrl.user.confirmEmail">{{'EMAIL_MATCH' | translate}}
+                <br> </span>
+            </span>
+
           </div>
         </div>
 
+        <!-- PASSWORD INFO -->
         <div class="row">
           <div class="col-xs-12 col-lg-6">
             <div class="input-form">
@@ -130,46 +151,6 @@
               <input type="password" data-ng-model="$ctrl.user.password" id="input-password" ng-model-options="{ debounce: 500 }" uppercase
                 lowercase numeric special-character required name="password" ng-minlength="8" placeholder="{{'PASSWORD_PLACEHOLDER' | translate}}">
             </div>
-
-            <!-- exibit validation -->
-            <span style="color:#f8e71c;" ng-show="$ctrl.loginForm.email.$dirty && $ctrl.loginForm.email.$invalid">
-              <span ng-show="$ctrl.loginForm.email.$error.required">{{'EMAIL_REQUIRED' | translate}}
-                <br>
-              </span>
-              <span ng-show="$ctrl.loginForm.email.$error.email">{{'EMAIL_INVALID' | translate}}
-                <br> </span>
-
-            </span>
-            <span style="color:#f8e71c;" ng-show="$ctrl.loginForm.confirmEmail.$dirty && $ctrl.loginForm.confirmEmail.$invalid">
-              <span ng-show="$ctrl.loginForm.confirmEmail.$error.compareEmail || $ctrl.loginForm.email.$error.compareEmail">{{'EMAIL_MATCH' | translate}}
-                <br> </span>
-            </span>
-            <span style="color:#f8e71c;" ng-show="$ctrl.loginForm.password.$dirty && $ctrl.loginForm.password.$invalid">
-              <span ng-show="$ctrl.loginForm.password.$error.required">{{'PASSWORD_REQUIRED' | translate}}
-                <br>
-              </span>
-              <span ng-show="$ctrl.loginForm.password.$error.minlength">{{'PASSWORD_LENGTH' | translate}}
-                <br>
-              </span>
-              <span ng-show="$ctrl.loginForm.password.$error.uppercase">{{'PASSWORD_UPPERCASE' | translate}}
-                <br>
-              </span>
-              <span ng-show="$ctrl.loginForm.password.$error.lowercase">{{'PASSWORD_LOWERCASE' | translate}}
-                <br>
-              </span>
-              <span ng-show="$ctrl.loginForm.password.$error.numeric">{{'PASSWORD_ALPHANUMERIC' | translate}}
-                <br>
-              </span>
-              <span ng-show="$ctrl.loginForm.password.$error.specialCharacter">{{'PASSWORD_SPECIALCHARACTER' | translate}}
-                <br>
-              </span>
-
-            </span>
-
-            <span style="color:#f8e71c;" ng-show="$ctrl.loginForm.confirmPassword.$dirty && $ctrl.loginForm.confirmPassword.$invalid">
-              <span ng-show="$ctrl.loginForm.confirmPassword.$error.comparePassword || $ctrl.loginForm.password.$error.comparePassword">{{'PASSWORD_MATCH' | translate}}
-                <br> </span>
-            </span>
           </div>
 
           <div class="col-xs-12 col-lg-6">
@@ -177,10 +158,26 @@
               <label for="input-confirm-password">* {{'CONFIRM_PASSWORD' | translate}}</label>
               <input type="password" data-ng-model="$ctrl.user.confirmPassword" id="input-confirm-password" ng-model-options="{ debounce: 500 }"
                 required name="confirmPassword" ng-minlength="8" placeholder="{{'CONFIRM_PASSWORD_PLACEHOLDER' | translate}}">
-
             </div>
+            <!-- VALIDATION PASSWORD -->
+            <span style="color:#f8b61c;" ng-show="$ctrl.loginForm.password.$dirty && $ctrl.loginForm.password.$invalid">
+              <span ng-show="$ctrl.loginForm.password.$error.required">{{'PASSWORD_REQUIRED' | translate}}
+                <br>
+              </span>
+              <span ng-show="$ctrl.loginForm.password.$error.minlength">{{'PASSWORD_LENGTH' | translate}}
+                <br>
+              </span>
+            </span>
+            <span style="color:#f8b61c;" ng-show="$ctrl.loginForm.confirmPassword.$dirty && $ctrl.loginForm.confirmPassword.$invalid">
+              <span ng-show="$ctrl.user.confirmPassword !== $ctrl.user.password">{{'PASSWORD_MATCH' | translate}}
+                <br>
+              </span>
+            </span>
           </div>
+
         </div>
+
+        <!-- CUPOM -->
         <div class="row">
           <div class="col-xs-12 col-lg-6">
             <div class="input-form">
@@ -204,6 +201,7 @@
           </div>
 
         </div>
+
       </form>
     </div>
   </section>

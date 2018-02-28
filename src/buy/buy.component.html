@@ -1,7 +1,7 @@
 <!--<loading show="$ctrl.loading"></loading>-->
 <div class="container">
 
-  <lunesheader coin='$ctrl.currentCoinSelected' price='$ctrl.showQuotation()' showlinks='true'></lunesheader>
+  <lunesheader coin='$ctrl.currentCoinSelected' price='$ctrl.showQuotation()' showlinks='true' balanceuser='$ctrl.balanceUser.confirmed_balance'></lunesheader>
 
   <!-- BUY -->
   <section class="buy">
@@ -28,25 +28,26 @@
           </div>
 
           <!-- CALCULATOR -->
-          <div class="row calculator">
-            <div class="col-lg-6 no-padding" style="margin: 5px 0 20px 0;">
-              <div class="valueCripto row">
-                <div class="select-coin col-xs-12 col-lg-7">
+          <div class="row">
+
+            <div class="calculator col-xs-12 col-sm-12 col-lg-6">
+              <div class="valueCripto">
+                <div class="select-coin col-xs-12 col-lg-12">
                   <ul>
                     <li ng-repeat="coin in $ctrl.coins" ng-click="$ctrl.selectCoin(coin)" ng-class="coin.selected ? 'selected': ''">
                       <img ng-src="{{coin.img}}" alt="coin.label">
                     </li>
                   </ul>
                 </div>
-                <div class="col-xs-12 col-lg-5">
+                <div class="col-xs-12 col-lg-12 area-field">
                   <input type="text" class="input-transparent" name="value" ng-model="$ctrl.valueToDeposit" ng-change="$ctrl.calcValue()" />
                 </div>
               </div>
             </div>
 
-            <div class="col-lg-1 equal" style="margin: 5px 0 20px 0;">=</div>
+            <div class="col-lg-1 equal">=</div>
 
-            <div class="col-lg-5 no-padding" style="margin: 5px 0 20px 0;">
+            <div class="col-lg-5">
               <div class="lunesAmount">
                 <div class="flag-lns">
                   <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png" alt="Icon Lunes">
@@ -61,25 +62,28 @@
                 </label>
               </div>
             </div>
+
           </div>
 
           <!-- SHOW TOTAL -->
-          <div class="amountBalance row">
-            <div class="col-sm-12 col-lg-12 total">
-              <div class="result" style="margin-top: 15px;">
-                <div>{{'AMOUNT_LUNES' | translate}}</div>
-                <div>{{$ctrl.valueToReceive}}</div>
-              </div>
-              <div class="result">
-                <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>
-                <div>{{$ctrl.bonusAmountFinal}}</div>
-              </div>
-              <div class="line-break">
-                <hr />
-              </div>
-              <div class="result">
-                <div>Total</div>
-                <div>{{$ctrl.getTotal()}}</div>
+          <div class="row">
+            <div class="col-sm-12 col-lg-12">
+              <div class="amountBalance total">
+                <div class="result" style="margin-top: 15px;">
+                  <div>{{'AMOUNT_LUNES' | translate}}</div>
+                  <div>{{$ctrl.valueToReceive}}</div>
+                </div>
+                <div class="result">
+                  <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>
+                  <div>{{$ctrl.bonusAmountFinal}}</div>
+                </div>
+                <div class="line-break">
+                  <hr />
+                </div>
+                <div class="result">
+                  <div>Total</div>
+                  <div>{{$ctrl.getTotal()}}</div>
+                </div>
               </div>
             </div>
           </div>
@@ -94,7 +98,7 @@
             <div class="col-lg-12" style="text-align: left; margin: 10px 0;" ng-show="false">
               * {{'MSG_BALANCE_DEPOSITED' | translate}}
             </div>
-            <div class="col-lg-12" style="text-align: left; margin: 10px 0;">
+            <div class="col-lg-12" style="text-align: left; margin: 10px 0 30px 0;">
               * {{'BUY_LIMIT_PHASE' | translate}}
               <span style="font-size:15px;font-weight:bold">{{$ctrl.getBuyLimit();}} LNS </span>
             </div>
@@ -102,23 +106,17 @@
 
         </div>
 
-        <div class="col-xs-12 col-lg-5 container-qr-code" style="text-align: center;">
+        <!-- QR CODE -->
+        <div class="col-xs-12 col-md-5 col-lg-5 container-qr-code" style="text-align: center;">
+
           <div style="margin-bottom: 10px;">
-            <span class="selected-label">{{'COIN_SELECTED' | translate}}</span>
-            <span>{{$ctrl.currentCoinSelected.name}}</span>
+            <span class="selected-label">{{'SEND_TO_THIS_ADDRESS' | translate}}</span>
           </div>
+
           <img ng-src="{{$ctrl.currentQRCode.img}}" class="qr-code img-thumbnail img-responsive" />
+
           <p class="address">{{$ctrl.currentQRCode.address}}</p>
-          <div class="show-balance">
-            <img ng-src="{{$ctrl.currentCoinSelected.img}}" alt="{{$ctrl.currentCoinSelected.label}}">
-            <p>{{$ctrl.currentCoinSelected.label}}</p>
-            <div class="show-balance-{{$ctrl.currentCoinSelected.name | lowercase}}">
-              <span>{{$ctrl.balanceUser.confirmed_balance}}</span>
-              <span class="coin-name">
-                {{$ctrl.currentCoinSelected.name}}
-              </span>
-            </div>
-          </div>
+
         </div>
 
       </div>

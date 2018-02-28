@@ -5,9 +5,29 @@
   <!-- DASHBOARD -->
   <section class="dashboard">
     <div class="row">
-      <div class="col-12 title mb-2-rem">
+      <div class="col-xs-12 col-md-12 col-lg-12 title mb-2-rem">
         <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>
       </div>
+
+      <!-- BALANCE FOR EACH COIN -->
+      <div class="col-xs-12 col-md-6 col-lg-6 transaction-coins">
+        <div class="show-balance" ng-repeat="coin in $ctrl.coins" style="margin-right: 15px;text-align: center;">
+          <img ng-src="{{coin.img}}" alt="{{coin.label}}">
+          <p style="font-size: 10px;margin: 0;">{{coin.label}}</p>
+          <small ng-show="false" style="font-size: 8px;color: #ce3e3e;">{{'UNCONFIRMED_BALANCE' | translate}}</small>
+          <p ng-show="false" style="font-size: 10px;margin: 0;">{{$ctrl.balanceProcessed[coin.name].unconfirmed_balance}}</p>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-6 col-lg-6 balance lns">
+        <span>{{'MY_BALANCE' | translate}}:</span>
+        <span class="monetary">{{ $ctrl.totalLns }}</span>
+        <span class="coin">LNS</span>
+      </div>
+
+      <!-- end -->
+
+      <!-- TABLE RESUME HISTORIC PURCHASE -->
       <div class="col-12 history">
         <table class="lunes-table" ng-if="$ctrl.checkWidthScreenDesktop()">
           <thead>
@@ -63,11 +83,7 @@
           </div>
         </div>
       </div>
-      <div class="col-12 balance">
-        <span>{{'MY_BALANCE' | translate}}:</span>
-        <span class="monetary">{{ $ctrl.totalLns }}</span>
-        <span class="coin">LNS</span>
-      </div>
+
     </div>
   </section>
 </div>

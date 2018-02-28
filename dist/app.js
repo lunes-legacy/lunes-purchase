@@ -9201,15 +9201,15 @@
 	
 	var _components2 = _interopRequireDefault(_components);
 	
-	var _login = __webpack_require__(476);
+	var _login = __webpack_require__(684);
 	
 	var _login2 = _interopRequireDefault(_login);
 	
-	var _signup = __webpack_require__(485);
+	var _signup = __webpack_require__(693);
 	
 	var _signup2 = _interopRequireDefault(_signup);
 	
-	var _buy = __webpack_require__(490);
+	var _buy = __webpack_require__(698);
 	
 	var _buy2 = _interopRequireDefault(_buy);
 	
@@ -9233,7 +9233,7 @@
 	
 	var _pt2 = _interopRequireDefault(_pt);
 	
-	var _index = __webpack_require__(475);
+	var _index = __webpack_require__(683);
 	
 	var _services = __webpack_require__(716);
 	
@@ -9241,95 +9241,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	_angular2.default.module('myApp', [_angularUiRouter2.default, _components2.default, _angularTranslate2.default]).service('HttpService', _services.HttpService).service('ErrorMessagesService', _services.ErrorMessagesService).service('CheapFlightService', _services.CheapFlightService).service('APIInterceptor', _services.APIInterceptorService).component('loginPage', _login2.default).component('signupPage', _signup2.default).component('buyPage', _buy2.default).component('dashboardPage', _dashboard2.default).component('fixPage', _fix2.default).directive('uppercase', function () {
-	  return {
-	    require: 'ngModel',
-	    link: function link(scope, elm, attrs, ctrl) {
-	      ctrl.$validators.uppercase = function (modelValue, viewValue) {
-	        var regexUppercase = new RegExp(/[A-Z]+/);
-	
-	        if (ctrl.$isEmpty(modelValue)) {
-	          // consider empty models to be valid
-	          return true;
-	        }
-	
-	        if (regexUppercase.test(viewValue)) {
-	          // it is valid
-	
-	          return true;
-	        }
-	
-	        // it is invalid
-	        return false;
-	      };
-	    }
-	  };
-	}).directive('lowercase', function () {
-	  return {
-	    require: 'ngModel',
-	    link: function link(scope, elm, attrs, ctrl) {
-	
-	      ctrl.$validators.lowercase = function (modelValue, viewValue) {
-	
-	        var regexLowercase = new RegExp(/[a-z]+/);
-	        if (ctrl.$isEmpty(modelValue)) {
-	          // consider empty models to be valid
-	          return true;
-	        }
-	
-	        if (regexLowercase.test(viewValue)) {
-	          // it is valid
-	          return true;
-	        }
-	
-	        // it is invalid
-	        return false;
-	      };
-	    }
-	  };
-	}).directive('specialCharacter', function () {
-	  return {
-	    require: 'ngModel',
-	    link: function link(scope, elm, attrs, ctrl) {
-	      ctrl.$validators.specialCharacter = function (modelValue, viewValue) {
-	        var regexSpecialCharacter = new RegExp(/[*&%$#@]+/);
-	        if (ctrl.$isEmpty(modelValue)) {
-	          // consider empty models to be valid
-	          return true;
-	        }
-	
-	        if (regexSpecialCharacter.test(viewValue)) {
-	          // it is valid
-	          return true;
-	        }
-	
-	        // it is invalid
-	        return false;
-	      };
-	    }
-	  };
-	}).directive('numeric', function () {
-	  return {
-	    require: 'ngModel',
-	    link: function link(scope, elm, attrs, ctrl) {
-	      ctrl.$validators.numeric = function (modelValue, viewValue) {
-	        var regexNumeric = new RegExp(/[\d]+/);
-	        if (ctrl.$isEmpty(modelValue)) {
-	          // consider empty models to be valid
-	          return true;
-	        }
-	
-	        if (regexNumeric.test(viewValue)) {
-	          // it is valid
-	          return true;
-	        }
-	
-	        // it is invalid
-	        return false;
-	      };
-	    }
-	  };
-	}).directive('comparePassword', function () {
+	_angular2.default.module('myApp', [_angularUiRouter2.default, _components2.default, _angularTranslate2.default]).service('HttpService', _services.HttpService).service('ErrorMessagesService', _services.ErrorMessagesService).service('CheapFlightService', _services.CheapFlightService).service('APIInterceptor', _services.APIInterceptorService).component('loginPage', _login2.default).component('signupPage', _signup2.default).component('buyPage', _buy2.default).component('dashboardPage', _dashboard2.default).component('fixPage', _fix2.default).directive('comparePassword', function () {
 	  return {
 	    require: "ngModel",
 	    link: function link(scope, element, attributes, ngModel) {
@@ -52133,7 +52045,8 @@
 	    coin: '=',
 	    price: '=',
 	    showlinks: '=',
-	    showlogout: '='
+	    showlogout: '=',
+	    balanceuser: '='
 	  },
 	  template: _headerComponent2.default,
 	  controller: _header2.default
@@ -52145,7 +52058,7 @@
 /* 473 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"row container-logo-header\" style=\"padding: 10px 0;\">\r\n\r\n  <!-- LOGO -->\r\n  <div class=\"col-sm-4 col-md-3 col-lg-3 logo\" ng-click=\"$ctrl.goToHome()\">\r\n    <span>L</span>\r\n    <span>u</span>\r\n    <span>n</span>\r\n    <span class=\"txt-green\">e</span>\r\n    <span>s</span>\r\n  </div>\r\n\r\n  <!-- PRICE CURRENT COIN and LOGOUT -->\r\n  <div class=\"col-xs-8 col-md-9 col-lg-9 quotation\" ng-show=\"$ctrl.coin && $ctrl.coin.img\">\r\n    <span class=\"container-quotation\">\r\n      {{'QUOTATION' | translate}}\r\n      <img ng-src=\"{{$ctrl.coin.img}}\" alt=\"{{$ctrl.coin.label}}\"> {{'IN' | translate}} USD - {{$ctrl.price}} |\r\n      <span class=\"logout\">\r\n        <a href=\"#!/login\" class=\"round-menu\" ng-click=\"$ctrl.logout()\">\r\n          {{'LOGOUT' | translate}}\r\n        </a>\r\n      </span>\r\n    </span>\r\n  </div>\r\n\r\n  <div class=\"col-xs-8 col-md-9 col-lg-9 quotation\" ng-show=\"$ctrl.showlogout\">\r\n    <span class=\"container-quotation\" style=\"display: flex;align-items: center;\">\r\n      <span class=\"logout\">\r\n        <a href=\"#!/login\" class=\"round-menu\" ng-click=\"$ctrl.logout()\">\r\n          {{'LOGOUT' | translate}}\r\n        </a>\r\n      </span>\r\n    </span>\r\n  </div>\r\n</div>\r\n\r\n<!-- MENU and SOCIAL MEDIA links -->\r\n<nav class=\"header\" ng-show=\"$ctrl.showlinks\">\r\n  <div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6 nav-menu\" style=\"margin: 5px 0 10px 0;\">\r\n    <ul class=\"menu menu-top\" style=\"padding: 0;margin: 0;\">\r\n      <li>\r\n        <a href=\"#!/historic\">{{'PURCHASE_HISTORY' | translate}}</a>\r\n      </li>\r\n      <li>\r\n        |\r\n      </li>\r\n      <li>\r\n        <a href=\"#!/buy\">{{'BUY' | translate}}</a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n\r\n  <div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6 flex-right\">\r\n    <ul class=\"menu menu-top\" style=\"padding: 0;margin: 0;\">\r\n      <li>\r\n        <a href=\"https://www.facebook.com/lunesplatform/\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg\" alt=\"facebook\" />\r\n        </a>\r\n      </li>\r\n      <li>\r\n        <a href=\"https://t.me/LunesPlatformEN\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg\" alt=\"telegram\" />\r\n        </a>\r\n      </li>\r\n      <li>\r\n        <a href=\"https://twitter.com/lunesplatform\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg\" alt=\"twitter\" />\r\n        </a>\r\n      </li>\r\n      <li>\r\n        <a href=\"https://medium.com/@lunes.platform\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg\" alt=\"medium\" />\r\n        </a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</nav>"
+	module.exports = "<div class=\"row container-logo-header\" style=\"padding: 10px 0;\">\r\n\r\n  <!-- LOGO -->\r\n  <div class=\"col-sm-4 col-md-3 col-lg-3 logo\" ng-click=\"$ctrl.goToHome()\">\r\n    <span>L</span>\r\n    <span>u</span>\r\n    <span>n</span>\r\n    <span class=\"txt-green\">e</span>\r\n    <span>s</span>\r\n  </div>\r\n\r\n  <!-- PRICE CURRENT COIN and LOGOUT -->\r\n  <div class=\"col-xs-8 col-md-9 col-lg-9 quotation\" ng-show=\"$ctrl.coin && $ctrl.coin.img\">\r\n    <span class=\"container-quotation\">\r\n      {{'QUOTATION' | translate}}\r\n      <img ng-src=\"{{$ctrl.coin.img}}\" alt=\"{{$ctrl.coin.label}}\"> {{'IN' | translate}} USD - {{$ctrl.price}}\r\n    </span>\r\n    <span>&nbsp;</span>\r\n    <span class=\"container-quotation\">\r\n      {{'MY_BALANCE' | translate}} LNS\r\n      <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\"> {{$ctrl.totalLns}} |\r\n      <span class=\"logout\">\r\n        <a href=\"#!/login\" class=\"round-menu\" ng-click=\"$ctrl.logout()\">\r\n          {{'LOGOUT' | translate}}\r\n        </a>\r\n      </span>\r\n    </span>\r\n  </div>\r\n\r\n  <div class=\"col-xs-8 col-md-9 col-lg-9 quotation\" ng-show=\"$ctrl.showlogout\">\r\n    <span class=\"container-quotation\" style=\"display: flex;align-items: center;\">\r\n      <span class=\"logout\">\r\n        <a href=\"#!/login\" class=\"round-menu\" ng-click=\"$ctrl.logout()\">\r\n          {{'LOGOUT' | translate}}\r\n        </a>\r\n      </span>\r\n    </span>\r\n  </div>\r\n</div>\r\n\r\n<!-- MENU and SOCIAL MEDIA links -->\r\n<nav class=\"header\" ng-show=\"$ctrl.showlinks\">\r\n  <div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6 nav-menu\" style=\"margin: 5px 0 10px 0;\">\r\n    <ul class=\"menu menu-top\" style=\"padding: 0;margin: 0;\">\r\n      <li>\r\n        <a href=\"#!/historic\">{{'PURCHASE_HISTORY' | translate}}</a>\r\n      </li>\r\n      <li>\r\n        |\r\n      </li>\r\n      <li>\r\n        <a href=\"#!/buy\">{{'BUY' | translate}}</a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n\r\n  <div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6 flex-right\">\r\n    <ul class=\"menu menu-top\" style=\"padding: 0;margin: 0;\">\r\n      <li>\r\n        <a href=\"https://www.facebook.com/lunesplatform/\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg\" alt=\"facebook\" />\r\n        </a>\r\n      </li>\r\n      <li>\r\n        <a href=\"https://t.me/LunesPlatformEN\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg\" alt=\"telegram\" />\r\n        </a>\r\n      </li>\r\n      <li>\r\n        <a href=\"https://twitter.com/lunesplatform\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg\" alt=\"twitter\" />\r\n        </a>\r\n      </li>\r\n      <li>\r\n        <a href=\"https://medium.com/@lunes.platform\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg\" alt=\"medium\" />\r\n        </a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</nav>"
 
 /***/ },
 /* 474 */
@@ -52157,23 +52070,122 @@
 	  value: true
 	});
 	
-	var _index = __webpack_require__(475);
+	var _lunesLib = __webpack_require__(475);
+	
+	var _lunesLib2 = _interopRequireDefault(_lunesLib);
+	
+	var _index = __webpack_require__(683);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	var HeaderController = function () {
-	  HeaderController.$inject = ["$state"];
-	  function HeaderController($state) {
+	  HeaderController.$inject = ["$state", "$timeout"];
+	  function HeaderController($state, $timeout) {
 	    'ngInject';
 	
 	    _classCallCheck(this, HeaderController);
 	
 	    this.$state = $state;
+	    this.$timeout = $timeout;
 	    this.coin = {};
 	    this.price = '';
 	    this.showlinks = true;
 	    this.showlogout = true;
+	    this.history = [];
+	    this.currentUser = JSON.parse(localStorage.getItem(_index.STORAGE_KEY));
+	    this.getHistory().catch(function (err) {
+	      console.log(err);
+	    });
 	  }
+	
+	  HeaderController.prototype.getHistory = function () {
+	    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+	      var _this = this;
+	
+	      var history;
+	      return regeneratorRuntime.wrap(function _callee$(_context) {
+	        while (1) {
+	          switch (_context.prev = _context.next) {
+	            case 0:
+	              if (this.currentUser) {
+	                _context.next = 2;
+	                break;
+	              }
+	
+	              return _context.abrupt('return');
+	
+	            case 2:
+	              _context.next = 4;
+	              return _lunesLib2.default.ico.buyHistory(this.currentUser.email, this.currentUser.accessToken, 1).catch(function (err) {
+	                return console.log(err);
+	              });
+	
+	            case 4:
+	              history = _context.sent;
+	
+	              this.$timeout(function () {
+	                _this.history = history.map(function (item) {
+	                  var total = parseFloat(item.credit_value) + parseFloat(item.bonus_value);
+	
+	                  return {
+	                    total: total,
+	                    deposit_value: parseFloat(item.deposit_value),
+	                    deposit_coin: item.deposit_coin,
+	                    credit_value: parseFloat(item.credit_value),
+	                    bonus_value: parseFloat(item.bonus_value)
+	                  };
+	                });
+	
+	                _this.getTotalLns();
+	              }, 100);
+	
+	            case 6:
+	            case 'end':
+	              return _context.stop();
+	          }
+	        }
+	      }, _callee, this);
+	    }));
+	
+	    function getHistory() {
+	      return _ref.apply(this, arguments);
+	    }
+	
+	    return getHistory;
+	  }();
+	
+	  HeaderController.prototype.getTotalLns = function () {
+	    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+	      var totalLns;
+	      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+	        while (1) {
+	          switch (_context2.prev = _context2.next) {
+	            case 0:
+	              totalLns = this.history.reduce(function (total, item) {
+	                return total + parseFloat(item.credit_value) + parseFloat(item.bonus_value);
+	              }, 0);
+	
+	
+	              this.totalLns = totalLns;
+	
+	            case 2:
+	            case 'end':
+	              return _context2.stop();
+	          }
+	        }
+	      }, _callee2, this);
+	    }));
+	
+	    function getTotalLns() {
+	      return _ref2.apply(this, arguments);
+	    }
+	
+	    return getTotalLns;
+	  }();
 	
 	  HeaderController.prototype.logout = function logout() {
 	    localStorage.removeItem(_index.STORAGE_KEY);
@@ -52186,36 +52198,17 @@
 	  return HeaderController;
 	}();
 	
-	HeaderController.$inject = ['$state'];
+	HeaderController.$inject = ['$state', '$timeout'];
 	
 	exports.default = HeaderController;
 
 /***/ },
 /* 475 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.default = {
-	    'en': 'en',
-	    'en-US': 'en',
-	    'pt': 'pt',
-	    'pt-BR': 'pt'
-	};
-	
-	
-	exports.STORAGE_KEY = 'lunes.accessToken';
-	
-	exports.PERIOD = {
-	    RANGE_1D: 'RANGE_1D',
-	    RANGE_1W: 'RANGE_1W',
-	    RANGE_1M: 'RANGE_1M',
-	    RANGE_1Y: 'RANGE_1Y',
-	    RANGE_MAX: 'RANGE_MAX'
-	};
+	module.exports = __webpack_require__(476);
 
 /***/ },
 /* 476 */
@@ -52223,1808 +52216,9 @@
 
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _loginComponent = __webpack_require__(477);
-	
-	var _loginComponent2 = _interopRequireDefault(_loginComponent);
-	
-	var _login = __webpack_require__(478);
-	
-	var _login2 = _interopRequireDefault(_login);
-	
-	__webpack_require__(480);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var LoginComponent = {
-	  template: _loginComponent2.default,
-	  controller: _login2.default
-	};
-	
-	exports.default = LoginComponent;
-
-/***/ },
-/* 477 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"container login\">\n\n  <!-- MODAL - criar directiva depois -->\n  <div id=\"modal-terms\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <div>\n        <script>\n          function openCity(evt, cityName) {\n            // Declare all variables\n            var i, tabcontent, tablinks;\n\n            // Get all elements with class=\"tabcontent\" and hide them\n            tabcontent = document.getElementsByClassName(\"tabcontent\");\n            for (i = 0; i < tabcontent.length; i++) {\n              tabcontent[i].style.display = \"none\";\n            }\n\n            // Get all elements with class=\"tablinks\" and remove the class \"active\"\n            tablinks = document.getElementsByClassName(\"tablinks\");\n            for (i = 0; i < tablinks.length; i++) {\n              tablinks[i].className = tablinks[i].className.replace(\" active\", \"\");\n            }\n\n            // Show the current tab, and add an \"active\" class to the button that opened the tab\n            document.getElementById(cityName).style.display = \"block\";\n            evt.currentTarget.className += \" active\";\n          }\n        </script>\n        <!-- Tab links -->\n        <div class=\"tab\">\n          <button class=\"tablinks\" onclick=\"openCity(event, 'terms_condition')\" id=\"defaultOpen\">{{'TERMS_CONDITION_TITLE' | translate}}</button>\n          <button class=\"tablinks\" onclick=\"openCity(event, 'representation_condition')\">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>\n        </div>\n        <!-- Tab content -->\n        <div id=\"terms_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsCondition\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n\n        <div id=\"representation_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsRepresentation\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG1\" id=\"checkboxG1\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check1\" ng-change=\"$ctrl.allCheckboxIsChecked()\">\n            <label for=\"checkboxG1\" class=\"css-label radGroup1 clr\"> {{'US_CITIZEN' | translate}} </label>\n          </div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG2\" id=\"checkboxG2\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check2\">\n            <label for=\"checkboxG2\" class=\"css-label radGroup1 clr\"> {{'AGREE_TERM' | translate}} </label>\n          </div>\n          <!--<div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG3\" id=\"checkboxG3\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check3\">\n            <label for=\"checkboxG3\" class=\"css-label radGroup1 clr\"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>\n          </div>-->\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG4\" id=\"checkboxG4\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check4\">\n            <label for=\"checkboxG4\" class=\"css-label radGroup1 clr\"> {{'AGREE_FUTURE_VALUE' | translate}}</label>\n          </div>\n          <div class=\"area-button\">\n            <button ng-show=\"$ctrl.allCheckboxIsChecked()\" class=\"primary-button\" data-ng-click=\"$ctrl.doAccept()\" data-dismiss=\"modal\">{{'AGREE' | translate}}</button>\n            <!--<button ng-show=\"!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()\" class=\"disabled-button\">{{'AGREE' | translate}}</button>-->\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- MODAL - criar directiva change password -->\n  <div id=\"modal-change-password\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\" style=\"height: 100%;\">\n\n      <div ng-show=\"$ctrl.loadingResetPass\" class=\"loadingResetPass\">\n        {{'LOADING' | translate}}\n      </div>\n\n      <div ng-show=\"$ctrl.showMsgEmailSent\" class=\"showEmailSent\">\n        <h3 for=\"change\">{{'EMAIL_SENT' | translate}}</h3>\n        <div style=\"width: 100px;\">\n          <button class=\"icon-close\" data-dismiss=\"modal\">{{'CLOSE' | translate}}</button>\n        </div>\n      </div>\n\n      <form class=\"form-msg-pass\" ng-show=\"!$ctrl.loadingResetPass && !$ctrl.showMsgEmailSent\">\n        <div style=\"text-align: center;\">\n          <h3 for=\"change\">{{'CHANGE_PASSWORD_INSTRUCTION' | translate}}</h3>\n        </div>\n        <div ng-show=\"$ctrl.showErrorMsgEmailSent\" class=\"showErrorMsg\">\n          <h5 for=\"change\">{{'EMAIL_NOT_SENT' | translate}}</h5>\n          <div style=\"width: 100px;\">\n            <button style=\"border: 0;\n              padding: 5px 20px;\n              border-radius: 20px;\n              cursor: pointer;\" class=\"icon-close\" data-dismiss=\"modal\">{{'CLOSE' | translate}}</button>\n          </div>\n        </div>\n\n        <div>\n          <input type=\"text\" name=\"change-password\" ng-model=\"$ctrl.emailToChangePassword\" style=\"    border: 0;\n          width: 200px;\n          border-bottom: solid 1px #734cb3;\n          background-color: transparent;\n          padding: 20px;\n          color: #fff;\n          margin: 20px;\">\n        </div>\n        <div>\n          <button ng-click=\"$ctrl.doChangePassword()\" style=\"    border: 0;\n          padding: 5px 20px;\n          border-radius: 20px;\n          cursor: pointer;\">{{'CHANGE_PASSWORD' | translate}}</button>\n        </div>\n      </form>\n    </div>\n  </div>\n\n  <lunesheader showlogout='false' showlinks='false'></lunesheader>\n\n  <!-- AUTHENTICATION FORM -->\n  <section class=\"authentication\">\n    <div>\n      <form name=\"$ctrl.loginForm\">\n        <div class=\"row\">\n\n          <div class=\"col-12 title\">\n            <h4>{{'WELCOME' | translate}}</h4>\n          </div>\n\n          <div class=\"col-12 col-lg-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n          <div class=\"col-lg-6 col-xs-12\">\n            <div class=\"input-form\">\n              <label for=\"input-email\">{{'EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.email\" id=\"input-email\" name=\"email\" required type=\"text\" placeholder=\"{{'EMAIL_PLACEHOLDER' | translate}}\">\n            </div>\n            <div class=\"input-form\">\n              <label for=\"input-password\">{{'PASSWORD' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.password\" id=\"input-password\" name=\"password\" minlength=\"8\" required type=\"password\" placeholder=\"{{'PASSWORD_PLACEHOLDER' | translate}}\">\n            </div>\n            <div class=\"area-button txt-center\">\n              <button class=\"rounded-button\" data-toggle=\"modal\" ng-click=\"$ctrl.doLogin()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\" />\n              </button>\n            </div>\n            <div class=\"dont-have-account\">\n              <label>{{'DONT_HAVE_ACCOUNT' | translate}}</label>\n              <label class=\"txt-green label-signup\" ng-click=\"$ctrl.goToSignup()\">{{'SIGNUP' | translate}}</label>\n              <!--<p class=\"cursor-pointer\">{{'RESET_PASSWORD' | translate}}</p>-->\n            </div>\n            <div style=\"margin: 5px 0 30px 0;\">\n              <label>{{'DO_YOU_CHANGE_PASSWORD' | translate}}</label>\n              <label class=\"txt-green label-signup\" data-toggle=\"modal\" data-target=\"#modal-change-password\">{{'CHANGE_PASSWORD' | translate}}</label>\n            </div>\n\n          </div>\n\n          <div class=\"col-lg-5 col-xs-12\" style=\"margin: 5px 0 30px 0;\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519751608/pre_ico_img.png\" width=\"100%\" alt=\"next\" />\n          </div>\n\n          <div class=\"col-lg-4 col-xs-12\" ng-show=\"false\">\n            <div id=\"counter\" class=\"\">\n              <span id=\"coin_counter\" ng-show=\"false\">$ 00 000 000</span>\n              <div id=\"loading_bar\">\n                <div id=\"loading_bar_green\" style=\"width:50%;\"></div>\n              </div>\n              <div>\n                <div class=\"row\" style=\"text-align: center;\">\n                  <div class=\"col-xs-6 col-lg-6\">\n                    Pre-Ico\n                  </div>\n                  <div class=\"col-xs-6 col-lg-6\">\n                    Ico\n                  </div>\n                </div>\n\n                <!-- conter -->\n                <div class=\"row\" id=\"number\">\n                  <div class=\"col-xs-12\" id=\"time\">\n                    <div id=\"clockdiv\">\n                      <div>\n                        <span class=\"days\"></span>\n                        <div class=\"smalltext\">Days</div>\n                      </div>\n                      <div>\n                        <span class=\"hours\"></span>\n                        <div class=\"smalltext\">Hours</div>\n                      </div>\n                      <div>\n                        <span class=\"minutes\"></span>\n                        <div class=\"smalltext\">Minutes</div>\n                      </div>\n                      <div>\n                        <span class=\"seconds\"></span>\n                        <div class=\"smalltext\">Seconds</div>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n\n                <!-- hard cap -->\n                <div class=\"row\" id=\"number\">\n                  <div class=\"col-xs-12 col-lg-12\" id=\"hard-cap\">\n                    <p>Hard cap</p>\n                    <p>$ 100 000 000</p>\n                  </div>\n                </div>\n\n              </div>\n            </div>\n\n          </div>\n\n\n\n      </form>\n      </div>\n  </section>\n  </div>"
-
-/***/ },
-/* 478 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _index = __webpack_require__(475);
-	
-	var _countdown = __webpack_require__(479);
-	
-	var _countdown2 = _interopRequireDefault(_countdown);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	var LoginController = function () {
-	  function LoginController($state, HttpService, $filter, $sce, $timeout, ErrorMessagesService) {
-	    _classCallCheck(this, LoginController);
-	
-	    this.$state = $state;
-	    this.$timeout = $timeout;
-	    this.currentPhase = [];
-	    this.HttpService = HttpService;
-	    this.termsCondition = $sce.trustAsHtml($filter('translate')('TERMS_CONDITIONS'));
-	    this.termsRepresentation = $sce.trustAsHtml($filter('translate')('REPRESENTATION_TERM'));
-	    this.ErrorMessagesService = ErrorMessagesService;
-	    this.loadingResetPass = false;
-	    this.user = {
-	      email: '',
-	      password: '',
-	      check1: false,
-	      check2: false,
-	      check3: false,
-	      check4: false
-	    };
-	    this.obtainPhase().catch(function (error) {
-	      console.log(error);
-	    });
-	    (0, _countdown2.default)();
-	  }
-	
-	  LoginController.prototype.doLogin = function () {
-	    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-	      var _this = this;
-	
-	      var a, depositWallet;
-	      return regeneratorRuntime.wrap(function _callee$(_context) {
-	        while (1) {
-	          switch (_context.prev = _context.next) {
-	            case 0:
-	              this.showLoading(true);
-	              _context.next = 3;
-	              return this.HttpService.login(this.user).catch(function (error) {
-	                _this.notification(true, error);
-	              });
-	
-	            case 3:
-	              a = _context.sent;
-	
-	              this.showLoading(false);
-	
-	              if (!(a && a.accessToken)) {
-	                _context.next = 23;
-	                break;
-	              }
-	
-	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
-	
-	              if (!a.confirmIcoTerm) {
-	                _context.next = 21;
-	                break;
-	              }
-	
-	              if (!(!a.depositWallet || !a.depositWallet.BTC)) {
-	                _context.next = 17;
-	                break;
-	              }
-	
-	              _context.next = 11;
-	              return this.HttpService.createDepositWallet(a).catch(function (error) {
-	                if (error && error.response && error.response.data) {
-	                  console.log(error);
-	                }
-	              });
-	
-	            case 11:
-	              depositWallet = _context.sent;
-	
-	              a.depositWallet = depositWallet;
-	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
-	              this.$state.go('historic');
-	              _context.next = 19;
-	              break;
-	
-	            case 17:
-	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
-	              this.$state.go('historic');
-	
-	            case 19:
-	              _context.next = 23;
-	              break;
-	
-	            case 21:
-	              $('#modal-terms').modal('show');
-	              setTimeout(function () {
-	                document.getElementById("defaultOpen").click();
-	              }, 200);
-	
-	            case 23:
-	            case 'end':
-	              return _context.stop();
-	          }
-	        }
-	      }, _callee, this);
-	    }));
-	
-	    function doLogin() {
-	      return _ref.apply(this, arguments);
-	    }
-	
-	    return doLogin;
-	  }();
-	
-	  LoginController.prototype.doChangePassword = function () {
-	    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-	      var _this2 = this;
-	
-	      var a;
-	      return regeneratorRuntime.wrap(function _callee2$(_context2) {
-	        while (1) {
-	          switch (_context2.prev = _context2.next) {
-	            case 0:
-	              this.loadingResetPass = true;
-	              _context2.next = 3;
-	              return this.HttpService.changePassword(this.emailToChangePassword).catch(function (error) {
-	                _this2.loadingResetPass = false;
-	                _this2.$timeout(function () {
-	                  _this2.showErrorMsgEmailSent = true;
-	                }, 200);
-	              });
-	
-	            case 3:
-	              a = _context2.sent;
-	
-	
-	              if (a && a.emailSent) {
-	                this.$timeout(function () {
-	                  _this2.loadingResetPass = false;
-	                  _this2.showMsgEmailSent = true;
-	                }, 200);
-	              }
-	
-	            case 5:
-	            case 'end':
-	              return _context2.stop();
-	          }
-	        }
-	      }, _callee2, this);
-	    }));
-	
-	    function doChangePassword() {
-	      return _ref2.apply(this, arguments);
-	    }
-	
-	    return doChangePassword;
-	  }();
-	
-	  LoginController.prototype.goToSignup = function goToSignup() {
-	    this.$state.go('signup');
-	  };
-	
-	  LoginController.prototype.allCheckboxIsChecked = function allCheckboxIsChecked() {
-	    return this.user.check1 && this.user.check2 && this.user.check4;
-	  };
-	
-	  LoginController.prototype.doAccept = function () {
-	    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-	      var _this3 = this;
-	
-	      var a, depositWallet;
-	      return regeneratorRuntime.wrap(function _callee3$(_context3) {
-	        while (1) {
-	          switch (_context3.prev = _context3.next) {
-	            case 0:
-	              this.showLoading(true);
-	              this.currentUser = JSON.parse(localStorage.getItem(_index.STORAGE_KEY));
-	              _context3.next = 4;
-	              return this.HttpService.confirmterm(this.currentUser).catch(function (error) {
-	                _this3.serverError = true;
-	                _this3.serverErrorMessage = error.message;
-	                console.log(error);
-	              });
-	
-	            case 4:
-	              a = _context3.sent;
-	
-	              if (!(!this.currentUser.depositWallet || !this.currentUser.depositWallet.BTC)) {
-	                _context3.next = 14;
-	                break;
-	              }
-	
-	              _context3.next = 8;
-	              return this.HttpService.createDepositWallet(this.currentUser).catch(function (error) {
-	                if (error && error.response && error.response.data) {
-	                  alert(error.response.data.message);
-	                }
-	                console.log(error);
-	              });
-	
-	            case 8:
-	              depositWallet = _context3.sent;
-	
-	              this.currentUser.depositWallet = depositWallet;
-	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(this.currentUser));
-	              this.$state.go('historic');
-	              _context3.next = 17;
-	              break;
-	
-	            case 14:
-	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(this.currentUser));
-	              this.$state.go('historic');
-	              console.log(this.currentUser);
-	
-	            case 17:
-	            case 'end':
-	              return _context3.stop();
-	          }
-	        }
-	      }, _callee3, this);
-	    }));
-	
-	    function doAccept() {
-	      return _ref3.apply(this, arguments);
-	    }
-	
-	    return doAccept;
-	  }();
-	
-	  LoginController.prototype.showLoading = function showLoading(isShow) {
-	    if (isShow) {
-	      $('<div class="modal-backdrop"><img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442469/loading_y9ob8i.svg" /></div>').appendTo(document.body);
-	    } else {
-	      this.$timeout(function () {
-	        $(".modal-backdrop").remove();
-	      }, 1000);
-	    }
-	  };
-	
-	  LoginController.prototype.obtainPhase = function () {
-	    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-	      return regeneratorRuntime.wrap(function _callee4$(_context4) {
-	        while (1) {
-	          switch (_context4.prev = _context4.next) {
-	            case 0:
-	              _context4.prev = 0;
-	
-	              console.log("");
-	              _context4.next = 4;
-	              return this.HttpService.obtainPhase().catch(function (error) {
-	                console.log(error);
-	                alert('Erro ao tentar recuperar dados da fase da ICO');
-	              });
-	
-	            case 4:
-	              this.currentPhase = _context4.sent;
-	
-	              if (this.currentPhase) {
-	                localStorage.setItem('lunes.phase', JSON.stringify(this.currentPhase));
-	              }
-	              this.showLoading(false);
-	              _context4.next = 12;
-	              break;
-	
-	            case 9:
-	              _context4.prev = 9;
-	              _context4.t0 = _context4['catch'](0);
-	
-	              console.log(_context4.t0);
-	
-	            case 12:
-	            case 'end':
-	              return _context4.stop();
-	          }
-	        }
-	      }, _callee4, this, [[0, 9]]);
-	    }));
-	
-	    function obtainPhase() {
-	      return _ref4.apply(this, arguments);
-	    }
-	
-	    return obtainPhase;
-	  }();
-	
-	  LoginController.prototype.notification = function notification(isShow, msg) {
-	    if (isShow) {
-	      var self = this;
-	      $('<div class="modal-backdrop-error"><h4 style="margin-top: 10%;">' + this.ErrorMessagesService.get(msg) + '</h4><button class="close-error">ok</button></div>').appendTo(document.body);
-	      $('.close-error').on('click', function () {
-	        $(".modal-backdrop-error").remove();
-	      });
-	    }
-	  };
-	
-	  return LoginController;
-	}();
-	
-	LoginController.$inject = ['$state', 'HttpService', '$filter', '$sce', '$timeout', 'ErrorMessagesService'];
-	
-	exports.default = LoginController;
-
-/***/ },
-/* 479 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var getTimeRemaining = function getTimeRemaining(endtime) {
-	  var t = Date.parse(endtime) - Date.parse(new Date());
-	  var seconds = Math.floor(t / 1000 % 60);
-	  var minutes = Math.floor(t / 1000 / 60 % 60);
-	  var hours = Math.floor(t / (1000 * 60 * 60) % 24);
-	  var days = Math.floor(t / (1000 * 60 * 60 * 24));
-	  return {
-	    total: t,
-	    days: days,
-	    hours: hours,
-	    minutes: minutes,
-	    seconds: seconds
-	  };
-	};
-	
-	var initializeClock = function initializeClock(id, endtime) {
-	  var clock = document.getElementById(id);
-	  var daysSpan = clock.querySelector('.days');
-	  var hoursSpan = clock.querySelector('.hours');
-	  var minutesSpan = clock.querySelector('.minutes');
-	  var secondsSpan = clock.querySelector('.seconds');
-	
-	  var updateClock = function updateClock() {
-	    var t = getTimeRemaining(endtime);
-	
-	    daysSpan.innerHTML = t.days;
-	    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-	    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-	    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-	
-	    if (t.total <= 0) {
-	      clearInterval(timeinterval);
-	    }
-	  };
-	
-	  updateClock();
-	  var timeinterval = setInterval(updateClock, 1000);
-	};
-	
-	var start = function start() {
-	  var deadline = new Date(Date.parse(new Date()) + 25 * 24 * 60 * 60 * 1000);
-	  initializeClock('time', deadline);
-	};
-	
-	exports.default = start;
-
-/***/ },
-/* 480 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(481);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(483)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js?sourceMap!../../node_modules/postcss-loader/index.js!../../node_modules/sass-loader/index.js?config=sassLoader!./login.component.scss", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js?sourceMap!../../node_modules/postcss-loader/index.js!../../node_modules/sass-loader/index.js?config=sassLoader!./login.component.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 481 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(482)(true);
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".dont-have-account {\n  margin-top: 50px; }\n  .dont-have-account .label-signup {\n    cursor: pointer; }\n\n.modal-backdrop-error {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1040;\n  background-color: #4c2b82;\n  opacity: 0.7;\n  text-align: center; }\n  .modal-backdrop-error .close-error {\n    border: 0;\n    border-radius: 30px;\n    padding: 5px 50px;\n    background-color: #4cd466;\n    color: #fff;\n    cursor: pointer; }\n\n/* counter */\n#counter {\n  font-family: 'Offside', cursive;\n  margin-top: 20px;\n  margin-bottom: 20px; }\n\n#counter #coin_counter {\n  display: block;\n  text-align: right;\n  font-size: 1.3em;\n  margin-bottom: 10px;\n  padding-right: 20px; }\n\n#counter #loading_bar {\n  display: block;\n  background-color: #fff;\n  height: 5px; }\n\n#counter #loading_bar_green {\n  display: block;\n  background-color: #4cd566;\n  height: 5px; }\n\n#counter #base_counter {\n  background-color: #544d8f;\n  padding: 20px;\n  border-radius: 0px 0px 4px 4px; }\n\n#counter #number {\n  margin-top: 30px;\n  display: block;\n  text-align: center; }\n\n#counter #number span {\n  font-size: .2em;\n  color: #fff;\n  display: block;\n  margin-top: 20px; }\n\n#counter #hard-cap {\n  display: block;\n  background-color: #544d8f;\n  max-width: 160px;\n  margin-left: auto;\n  margin-right: auto;\n  color: #4cd566;\n  font-size: .8em;\n  text-align: center;\n  padding: 10px;\n  border-radius: 4px;\n  margin-top: -40px; }\n\n#counter #hard-cap span {\n  display: block;\n  color: #fff;\n  font-size: 1.2em; }\n\n#clockdiv {\n  font-family: sans-serif;\n  color: #fff;\n  display: inline-block;\n  font-weight: 100;\n  text-align: center;\n  font-size: 30px; }\n\n#clockdiv > div {\n  padding: 5px;\n  border-radius: 3px;\n  background: #00BF96;\n  display: inline-block;\n  width: 80px; }\n\n#clockdiv div > span {\n  padding: 15px;\n  border-radius: 3px;\n  background: #00816A;\n  display: inline-block; }\n\n.smalltext {\n  padding-top: 5px;\n  font-size: 16px; }\n\n.login #modal-change-password {\n  box-shadow: #3a2261 1px 0px 5px 4px;\n  margin: 10px;\n  overflow-y: hidden; }\n\n.login .loadingResetPass {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  height: 100%; }\n\n.login .showEmailSent {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  height: 100%; }\n\n.login .showErrorMsg {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  height: 100%; }\n  .login .showErrorMsg h5 {\n    padding: 2px 10px;\n    background-color: #d83636;\n    border-radius: 20px; }\n  .login .showErrorMsg button {\n    border: 0;\n    padding: 5px 20px;\n    border-radius: 20px;\n    cursor: pointer; }\n\n.login .form-msg-pass {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  height: 100%; }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/login/src/login/login.component.scss"],"names":[],"mappings":"AAAA;EACE,iBAAgB,EAIjB;EALD;IAGI,gBAAe,EAChB;;AAGH;EACE,gBAAe;EACf,OAAM;EACN,SAAQ;EACR,UAAS;EACT,QAAO;EACP,cAAa;EACb,0BAAyB;EACzB,aAAY;EACZ,mBAAkB,EASnB;EAlBD;IAWI,UAAS;IACT,oBAAmB;IACnB,kBAAiB;IACjB,0BAAyB;IACzB,YAAW;IACX,gBAAe,EAChB;;AAGH,aAAa;AACb;EACE,gCAA+B;EAC/B,iBAAe;EACf,oBAAkB,EAEnB;;AACD;EACE,eAAc;EACd,kBAAiB;EACjB,iBAAgB;EAChB,oBAAmB;EACnB,oBAAmB,EACpB;;AACD;EACE,eAAa;EACb,uBAAsB;EACtB,YAAW,EACZ;;AACD;EACE,eAAc;EACd,0BAAyB;EACzB,YAAW,EACZ;;AACD;EACE,0BAAyB;EACzB,cAAY;EACZ,+BAA8B,EAC/B;;AACD;EACE,iBAAgB;EAChB,eAAc;EACd,mBAAkB,EACnB;;AACD;EACE,gBAAe;EACf,YAAU;EACV,eAAc;EACd,iBAAgB,EACjB;;AACD;EACE,eAAc;EACd,0BAAyB;EACzB,iBAAgB;EAChB,kBAAiB;EACjB,mBAAkB;EAClB,eAAc;EACd,gBAAe;EACf,mBAAkB;EAClB,cAAa;EACb,mBAAkB;EAClB,kBAAiB,EAClB;;AACD;EACE,eAAc;EACd,YAAW;EACX,iBAAgB,EACjB;;AAED;EACE,wBAAuB;EACvB,YAAW;EACX,sBAAqB;EACrB,iBAAgB;EAChB,mBAAkB;EAClB,gBAAe,EAChB;;AAED;EACE,aAAY;EACZ,mBAAkB;EAClB,oBAAmB;EACnB,sBAAqB;EACrB,YAAW,EACZ;;AAED;EACE,cAAa;EACb,mBAAkB;EAClB,oBAAmB;EACnB,sBAAqB,EACtB;;AAED;EACE,iBAAgB;EAChB,gBAAe,EAChB;;AAED;EAGI,oCAAmC;EACnC,aAAY;EACZ,mBAAkB,EACnB;;AANH;EASI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,6BAAsB;EAAtB,8BAAsB;MAAtB,2BAAsB;UAAtB,uBAAsB;EACtB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,yBAAuB;MAAvB,sBAAuB;UAAvB,wBAAuB;EACvB,aAAY,EACb;;AAdH;EAiBI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,6BAAsB;EAAtB,8BAAsB;MAAtB,2BAAsB;UAAtB,uBAAsB;EACtB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,yBAAuB;MAAvB,sBAAuB;UAAvB,wBAAuB;EACvB,aAAY,EACb;;AAtBH;EAyBI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,6BAAsB;EAAtB,8BAAsB;MAAtB,2BAAsB;UAAtB,uBAAsB;EACtB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,yBAAuB;MAAvB,sBAAuB;UAAvB,wBAAuB;EACvB,aAAY,EAYb;EAzCH;IA+BM,kBAAiB;IACjB,0BAAyB;IACzB,oBAAmB,EACpB;EAlCL;IAoCM,UAAS;IACT,kBAAiB;IACjB,oBAAmB;IACnB,gBAAe,EAChB;;AAxCL;EA4CI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,6BAAsB;EAAtB,8BAAsB;MAAtB,2BAAsB;UAAtB,uBAAsB;EACtB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,yBAAuB;MAAvB,sBAAuB;UAAvB,wBAAuB;EACvB,aAAY,EACb","file":"login.component.scss","sourcesContent":[".dont-have-account {\r\n  margin-top: 50px;\r\n  .label-signup {\r\n    cursor: pointer;\r\n  }\r\n}\r\n\r\n.modal-backdrop-error {\r\n  position: fixed;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  z-index: 1040;\r\n  background-color: #4c2b82;\r\n  opacity: 0.7;\r\n  text-align: center;\r\n  .close-error {\r\n    border: 0;\r\n    border-radius: 30px;\r\n    padding: 5px 50px;\r\n    background-color: #4cd466;\r\n    color: #fff;\r\n    cursor: pointer;\r\n  }\r\n}\r\n\r\n/* counter */\r\n#counter {\r\n  font-family: 'Offside', cursive;\r\n  margin-top:20px;\r\n  margin-bottom:20px;\r\n  \r\n}\r\n#counter #coin_counter {\r\n  display: block;\r\n  text-align: right;\r\n  font-size: 1.3em;\r\n  margin-bottom: 10px;\r\n  padding-right: 20px;\r\n}\r\n#counter #loading_bar {\r\n  display:block;\r\n  background-color: #fff;\r\n  height: 5px;\r\n}\r\n#counter #loading_bar_green {\r\n  display: block;\r\n  background-color: #4cd566;\r\n  height: 5px;\r\n}\r\n#counter #base_counter {\r\n  background-color: #544d8f;\r\n  padding:20px;\r\n  border-radius: 0px 0px 4px 4px;\r\n}\r\n#counter #number {\r\n  margin-top: 30px;\r\n  display: block;\r\n  text-align: center;\r\n}\r\n#counter #number span {\r\n  font-size: .2em;\r\n  color:#fff;\r\n  display: block;\r\n  margin-top: 20px;\r\n}\r\n#counter #hard-cap {\r\n  display: block;\r\n  background-color: #544d8f;\r\n  max-width: 160px;\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  color: #4cd566;\r\n  font-size: .8em;\r\n  text-align: center;\r\n  padding: 10px;\r\n  border-radius: 4px;\r\n  margin-top: -40px;\r\n}\r\n#counter #hard-cap span {\r\n  display: block;\r\n  color: #fff;\r\n  font-size: 1.2em;\r\n}\r\n\r\n#clockdiv{\r\n  font-family: sans-serif;\r\n  color: #fff;\r\n  display: inline-block;\r\n  font-weight: 100;\r\n  text-align: center;\r\n  font-size: 30px;\r\n}\r\n\r\n#clockdiv > div{\r\n  padding: 5px;\r\n  border-radius: 3px;\r\n  background: #00BF96;\r\n  display: inline-block;\r\n  width: 80px;\r\n}\r\n\r\n#clockdiv div > span{\r\n  padding: 15px;\r\n  border-radius: 3px;\r\n  background: #00816A;\r\n  display: inline-block;\r\n}\r\n\r\n.smalltext{\r\n  padding-top: 5px;\r\n  font-size: 16px;\r\n}\r\n\r\n.login {\r\n\r\n  #modal-change-password {\r\n    box-shadow: #3a2261 1px 0px 5px 4px;\r\n    margin: 10px;\r\n    overflow-y: hidden;\r\n  }\r\n\r\n  .loadingResetPass {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n  \r\n  .showEmailSent {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n  \r\n  .showErrorMsg {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n    h5 {\r\n      padding: 2px 10px;\r\n      background-color: #d83636;\r\n      border-radius: 20px;\r\n    }\r\n    button {\r\n      border: 0;\r\n      padding: 5px 20px;\r\n      border-radius: 20px;\r\n      cursor: pointer;\r\n    }\r\n  }\r\n  \r\n  .form-msg-pass {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n\r\n}\r\n\r\n"],"sourceRoot":""}]);
-	
-	// exports
-
-
-/***/ },
-/* 482 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	module.exports = function (useSourceMap) {
-		var list = [];
-	
-		// return the list of modules as css string
-		list.toString = function toString() {
-			return this.map(function (item) {
-				var content = cssWithMappingToString(item, useSourceMap);
-				if (item[2]) {
-					return "@media " + item[2] + "{" + content + "}";
-				} else {
-					return content;
-				}
-			}).join("");
-		};
-	
-		// import a list of modules into the list
-		list.i = function (modules, mediaQuery) {
-			if (typeof modules === "string") modules = [[null, modules, ""]];
-			var alreadyImportedModules = {};
-			for (var i = 0; i < this.length; i++) {
-				var id = this[i][0];
-				if (typeof id === "number") alreadyImportedModules[id] = true;
-			}
-			for (i = 0; i < modules.length; i++) {
-				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if (typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if (mediaQuery && !item[2]) {
-						item[2] = mediaQuery;
-					} else if (mediaQuery) {
-						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-					}
-					list.push(item);
-				}
-			}
-		};
-		return list;
-	};
-	
-	function cssWithMappingToString(item, useSourceMap) {
-		var content = item[1] || '';
-		var cssMapping = item[3];
-		if (!cssMapping) {
-			return content;
-		}
-	
-		if (useSourceMap && typeof btoa === 'function') {
-			var sourceMapping = toComment(cssMapping);
-			var sourceURLs = cssMapping.sources.map(function (source) {
-				return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */';
-			});
-	
-			return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-		}
-	
-		return [content].join('\n');
-	}
-	
-	// Adapted from convert-source-map (MIT)
-	function toComment(sourceMap) {
-		// eslint-disable-next-line no-undef
-		var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-		var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-	
-		return '/*# ' + data + ' */';
-	}
-
-/***/ },
-/* 483 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	var stylesInDom = {},
-		memoize = function(fn) {
-			var memo;
-			return function () {
-				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-				return memo;
-			};
-		},
-		isOldIE = memoize(function() {
-			// Test for IE <= 9 as proposed by Browserhacks
-			// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
-			// Tests for existence of standard globals is to allow style-loader 
-			// to operate correctly into non-standard environments
-			// @see https://github.com/webpack-contrib/style-loader/issues/177
-			return window && document && document.all && !window.atob;
-		}),
-		getElement = (function(fn) {
-			var memo = {};
-			return function(selector) {
-				if (typeof memo[selector] === "undefined") {
-					memo[selector] = fn.call(this, selector);
-				}
-				return memo[selector]
-			};
-		})(function (styleTarget) {
-			return document.querySelector(styleTarget)
-		}),
-		singletonElement = null,
-		singletonCounter = 0,
-		styleElementsInsertedAtTop = [],
-		fixUrls = __webpack_require__(484);
-	
-	module.exports = function(list, options) {
-		if(false) {
-			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-		}
-	
-		options = options || {};
-		options.attrs = typeof options.attrs === "object" ? options.attrs : {};
-	
-		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-		// tags it will allow on a page
-		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
-	
-		// By default, add <style> tags to the <head> element
-		if (typeof options.insertInto === "undefined") options.insertInto = "head";
-	
-		// By default, add <style> tags to the bottom of the target
-		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
-	
-		var styles = listToStyles(list);
-		addStylesToDom(styles, options);
-	
-		return function update(newList) {
-			var mayRemove = [];
-			for(var i = 0; i < styles.length; i++) {
-				var item = styles[i];
-				var domStyle = stylesInDom[item.id];
-				domStyle.refs--;
-				mayRemove.push(domStyle);
-			}
-			if(newList) {
-				var newStyles = listToStyles(newList);
-				addStylesToDom(newStyles, options);
-			}
-			for(var i = 0; i < mayRemove.length; i++) {
-				var domStyle = mayRemove[i];
-				if(domStyle.refs === 0) {
-					for(var j = 0; j < domStyle.parts.length; j++)
-						domStyle.parts[j]();
-					delete stylesInDom[domStyle.id];
-				}
-			}
-		};
-	};
-	
-	function addStylesToDom(styles, options) {
-		for(var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-			if(domStyle) {
-				domStyle.refs++;
-				for(var j = 0; j < domStyle.parts.length; j++) {
-					domStyle.parts[j](item.parts[j]);
-				}
-				for(; j < item.parts.length; j++) {
-					domStyle.parts.push(addStyle(item.parts[j], options));
-				}
-			} else {
-				var parts = [];
-				for(var j = 0; j < item.parts.length; j++) {
-					parts.push(addStyle(item.parts[j], options));
-				}
-				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-			}
-		}
-	}
-	
-	function listToStyles(list) {
-		var styles = [];
-		var newStyles = {};
-		for(var i = 0; i < list.length; i++) {
-			var item = list[i];
-			var id = item[0];
-			var css = item[1];
-			var media = item[2];
-			var sourceMap = item[3];
-			var part = {css: css, media: media, sourceMap: sourceMap};
-			if(!newStyles[id])
-				styles.push(newStyles[id] = {id: id, parts: [part]});
-			else
-				newStyles[id].parts.push(part);
-		}
-		return styles;
-	}
-	
-	function insertStyleElement(options, styleElement) {
-		var styleTarget = getElement(options.insertInto)
-		if (!styleTarget) {
-			throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
-		}
-		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
-		if (options.insertAt === "top") {
-			if(!lastStyleElementInsertedAtTop) {
-				styleTarget.insertBefore(styleElement, styleTarget.firstChild);
-			} else if(lastStyleElementInsertedAtTop.nextSibling) {
-				styleTarget.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
-			} else {
-				styleTarget.appendChild(styleElement);
-			}
-			styleElementsInsertedAtTop.push(styleElement);
-		} else if (options.insertAt === "bottom") {
-			styleTarget.appendChild(styleElement);
-		} else {
-			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
-		}
-	}
-	
-	function removeStyleElement(styleElement) {
-		styleElement.parentNode.removeChild(styleElement);
-		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
-		if(idx >= 0) {
-			styleElementsInsertedAtTop.splice(idx, 1);
-		}
-	}
-	
-	function createStyleElement(options) {
-		var styleElement = document.createElement("style");
-		options.attrs.type = "text/css";
-	
-		attachTagAttrs(styleElement, options.attrs);
-		insertStyleElement(options, styleElement);
-		return styleElement;
-	}
-	
-	function createLinkElement(options) {
-		var linkElement = document.createElement("link");
-		options.attrs.type = "text/css";
-		options.attrs.rel = "stylesheet";
-	
-		attachTagAttrs(linkElement, options.attrs);
-		insertStyleElement(options, linkElement);
-		return linkElement;
-	}
-	
-	function attachTagAttrs(element, attrs) {
-		Object.keys(attrs).forEach(function (key) {
-			element.setAttribute(key, attrs[key]);
-		});
-	}
-	
-	function addStyle(obj, options) {
-		var styleElement, update, remove;
-	
-		if (options.singleton) {
-			var styleIndex = singletonCounter++;
-			styleElement = singletonElement || (singletonElement = createStyleElement(options));
-			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
-			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
-		} else if(obj.sourceMap &&
-			typeof URL === "function" &&
-			typeof URL.createObjectURL === "function" &&
-			typeof URL.revokeObjectURL === "function" &&
-			typeof Blob === "function" &&
-			typeof btoa === "function") {
-			styleElement = createLinkElement(options);
-			update = updateLink.bind(null, styleElement, options);
-			remove = function() {
-				removeStyleElement(styleElement);
-				if(styleElement.href)
-					URL.revokeObjectURL(styleElement.href);
-			};
-		} else {
-			styleElement = createStyleElement(options);
-			update = applyToTag.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-			};
-		}
-	
-		update(obj);
-	
-		return function updateStyle(newObj) {
-			if(newObj) {
-				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
-					return;
-				update(obj = newObj);
-			} else {
-				remove();
-			}
-		};
-	}
-	
-	var replaceText = (function () {
-		var textStore = [];
-	
-		return function (index, replacement) {
-			textStore[index] = replacement;
-			return textStore.filter(Boolean).join('\n');
-		};
-	})();
-	
-	function applyToSingletonTag(styleElement, index, remove, obj) {
-		var css = remove ? "" : obj.css;
-	
-		if (styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = replaceText(index, css);
-		} else {
-			var cssNode = document.createTextNode(css);
-			var childNodes = styleElement.childNodes;
-			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
-			if (childNodes.length) {
-				styleElement.insertBefore(cssNode, childNodes[index]);
-			} else {
-				styleElement.appendChild(cssNode);
-			}
-		}
-	}
-	
-	function applyToTag(styleElement, obj) {
-		var css = obj.css;
-		var media = obj.media;
-	
-		if(media) {
-			styleElement.setAttribute("media", media)
-		}
-	
-		if(styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = css;
-		} else {
-			while(styleElement.firstChild) {
-				styleElement.removeChild(styleElement.firstChild);
-			}
-			styleElement.appendChild(document.createTextNode(css));
-		}
-	}
-	
-	function updateLink(linkElement, options, obj) {
-		var css = obj.css;
-		var sourceMap = obj.sourceMap;
-	
-		/* If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
-		and there is no publicPath defined then lets turn convertToAbsoluteUrls
-		on by default.  Otherwise default to the convertToAbsoluteUrls option
-		directly
-		*/
-		var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
-	
-		if (options.convertToAbsoluteUrls || autoFixUrls){
-			css = fixUrls(css);
-		}
-	
-		if(sourceMap) {
-			// http://stackoverflow.com/a/26603875
-			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-		}
-	
-		var blob = new Blob([css], { type: "text/css" });
-	
-		var oldSrc = linkElement.href;
-	
-		linkElement.href = URL.createObjectURL(blob);
-	
-		if(oldSrc)
-			URL.revokeObjectURL(oldSrc);
-	}
-
-
-/***/ },
-/* 484 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	/**
-	 * When source maps are enabled, `style-loader` uses a link element with a data-uri to
-	 * embed the css on the page. This breaks all relative urls because now they are relative to a
-	 * bundle instead of the current page.
-	 *
-	 * One solution is to only use full urls, but that may be impossible.
-	 *
-	 * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
-	 *
-	 * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
-	 *
-	 */
-	
-	module.exports = function (css) {
-		// get current location
-		var location = typeof window !== "undefined" && window.location;
-	
-		if (!location) {
-			throw new Error("fixUrls requires window.location");
-		}
-	
-		// blank or null?
-		if (!css || typeof css !== "string") {
-			return css;
-		}
-	
-		var baseUrl = location.protocol + "//" + location.host;
-		var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
-	
-		// convert each url(...)
-		/*
-	 This regular expression is just a way to recursively match brackets within
-	 a string.
-	 	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
-	    (  = Start a capturing group
-	      (?:  = Start a non-capturing group
-	          [^)(]  = Match anything that isn't a parentheses
-	          |  = OR
-	          \(  = Match a start parentheses
-	              (?:  = Start another non-capturing groups
-	                  [^)(]+  = Match anything that isn't a parentheses
-	                  |  = OR
-	                  \(  = Match a start parentheses
-	                      [^)(]*  = Match anything that isn't a parentheses
-	                  \)  = Match a end parentheses
-	              )  = End Group
-	              *\) = Match anything and then a close parens
-	          )  = Close non-capturing group
-	          *  = Match anything
-	       )  = Close capturing group
-	  \)  = Match a close parens
-	 	 /gi  = Get all matches, not the first.  Be case insensitive.
-	  */
-		var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function (fullMatch, origUrl) {
-			// strip quotes (if they exist)
-			var unquotedOrigUrl = origUrl.trim().replace(/^"(.*)"$/, function (o, $1) {
-				return $1;
-			}).replace(/^'(.*)'$/, function (o, $1) {
-				return $1;
-			});
-	
-			// already a full url? no change
-			if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/)/i.test(unquotedOrigUrl)) {
-				return fullMatch;
-			}
-	
-			// convert the url to a full url
-			var newUrl;
-	
-			if (unquotedOrigUrl.indexOf("//") === 0) {
-				//TODO: should we add protocol?
-				newUrl = unquotedOrigUrl;
-			} else if (unquotedOrigUrl.indexOf("/") === 0) {
-				// path should be relative to the base url
-				newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
-			} else {
-				// path should be relative to current directory
-				newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
-			}
-	
-			// send back the fixed url(...)
-			return "url(" + JSON.stringify(newUrl) + ")";
-		});
-	
-		// send back the fixed css
-		return fixedCss;
-	};
-
-/***/ },
-/* 485 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _signupComponent = __webpack_require__(486);
-	
-	var _signupComponent2 = _interopRequireDefault(_signupComponent);
-	
-	var _signup = __webpack_require__(487);
-	
-	var _signup2 = _interopRequireDefault(_signup);
-	
-	__webpack_require__(488);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var SignupComponent = {
-	  template: _signupComponent2.default,
-	  controller: _signup2.default
-	};
-	
-	exports.default = SignupComponent;
-
-/***/ },
-/* 486 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"container\">\n\n  <!-- MODAL - criar directiva depois -->\n  <div id=\"modal-terms\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <div>\n        <script>\n          function openCity(evt, cityName) {\n            // Declare all variables\n            var i, tabcontent, tablinks;\n\n            // Get all elements with class=\"tabcontent\" and hide them\n            tabcontent = document.getElementsByClassName(\"tabcontent\");\n            for (i = 0; i < tabcontent.length; i++) {\n              tabcontent[i].style.display = \"none\";\n            }\n\n            // Get all elements with class=\"tablinks\" and remove the class \"active\"\n            tablinks = document.getElementsByClassName(\"tablinks\");\n            for (i = 0; i < tablinks.length; i++) {\n              tablinks[i].className = tablinks[i].className.replace(\" active\", \"\");\n            }\n\n            // Show the current tab, and add an \"active\" class to the button that opened the tab\n            document.getElementById(cityName).style.display = \"block\";\n            evt.currentTarget.className += \" active\";\n          }\n        </script>\n        <!-- Tab links -->\n        <div class=\"tab\">\n          <button class=\"tablinks\" onclick=\"openCity(event, 'terms_condition')\" id=\"defaultOpen\">{{'TERMS_CONDITION_TITLE' | translate}}</button>\n          <button class=\"tablinks\" onclick=\"openCity(event, 'representation_condition')\">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>\n        </div>\n        <!-- Tab content -->\n        <div id=\"terms_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsCondition\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n\n        <div id=\"representation_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsRepresentation\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG1\" id=\"checkboxG1\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check1\" ng-change=\"$ctrl.allCheckboxIsChecked()\">\n            <label for=\"checkboxG1\" class=\"css-label radGroup1 clr\"> {{'US_CITIZEN' | translate}} </label>\n          </div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG2\" id=\"checkboxG2\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check2\">\n            <label for=\"checkboxG2\" class=\"css-label radGroup1 clr\"> {{'AGREE_TERM' | translate}} </label>\n          </div>\n          <!--<div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG3\" id=\"checkboxG3\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check3\">\n            <label for=\"checkboxG3\" class=\"css-label radGroup1 clr\"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>\n          </div>-->\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG4\" id=\"checkboxG4\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check4\">\n            <label for=\"checkboxG4\" class=\"css-label radGroup1 clr\"> {{'AGREE_FUTURE_VALUE' | translate}}</label>\n          </div>\n          <div class=\"area-button\">\n            <button ng-show=\"$ctrl.allCheckboxIsChecked()\" class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\" data-dismiss=\"modal\">{{'AGREE' | translate}}</button>\n            <!--<button ng-show=\"!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()\" class=\"disabled-button\">{{'AGREE' | translate}}</button>-->\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <lunesheader showlogout='false' showlinks='false'></lunesheader>\n\n  <!-- AUTHENTICATION FORM -->\n  <section class=\"authentication\">\n    <div>\n      <form name=\"$ctrl.loginForm\">\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-12 title\">\n            <h4>{{'WELCOME' | translate}}</h4>\n            <h4>{{'BEGIN_YOUR_REGISTRATION' | translate}}</h4>\n          </div>\n          <div class=\"col-xs-12 col-lg-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n          <div class=\"alert alert-danger\" ng-show=\"$ctrl.serverError\" role=\"alert\">\n            <h4 class=\"alert-heading\">{{'AN_ERROR_CREATE_ACCOUNT' | translate}}</h4>\n            <p>{{$ctrl.serverErrorMessage</p>\n          </div>\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-name\">* {{'NAME' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.name\" id=\"input-name\" name=\"name\" required type=\"text\" placeholder=\"{{'NAME_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-lastname\">* {{'LAST_NAME' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.lastname\" id=\"input-lastname\" name=\"lastname\" required type=\"text\" placeholder=\"{{'LAST_NAME_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-email\">* {{'EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.email\" id=\"input-email\" name=\"email\" ng-model-options=\"{ debounce: 500 }\" required type=\"email\"\n                placeholder=\"{{'EMAIL_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-confirm-email\">* {{'CONFIRM_EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.confirmEmail\" id=\"input-confirm-email\" email name=\"confirmEmail\" email-match required type=\"email\"\n                placeholder=\"{{'CONFIRM_EMAIL_PLACEHOLDER' | translate}}\">\n            </div>\n\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-password\">* {{'PASSWORD' | translate}}</label>\n              <input type=\"password\" data-ng-model=\"$ctrl.user.password\" id=\"input-password\" ng-model-options=\"{ debounce: 500 }\" uppercase\n                lowercase numeric special-character required name=\"password\" ng-minlength=\"8\" placeholder=\"{{'PASSWORD_PLACEHOLDER' | translate}}\">\n            </div>\n\n            <!-- exibit validation -->\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.email.$dirty && $ctrl.loginForm.email.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.email.$error.required\">{{'EMAIL_REQUIRED' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.email.$error.email\">{{'EMAIL_INVALID' | translate}}\n                <br> </span>\n\n            </span>\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.confirmEmail.$dirty && $ctrl.loginForm.confirmEmail.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.confirmEmail.$error.compareEmail || $ctrl.loginForm.email.$error.compareEmail\">{{'EMAIL_MATCH' | translate}}\n                <br> </span>\n            </span>\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.password.$dirty && $ctrl.loginForm.password.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.password.$error.required\">{{'PASSWORD_REQUIRED' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.minlength\">{{'PASSWORD_LENGTH' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.uppercase\">{{'PASSWORD_UPPERCASE' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.lowercase\">{{'PASSWORD_LOWERCASE' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.numeric\">{{'PASSWORD_ALPHANUMERIC' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.specialCharacter\">{{'PASSWORD_SPECIALCHARACTER' | translate}}\n                <br>\n              </span>\n\n            </span>\n\n            <span style=\"color:#f8e71c;\" ng-show=\"$ctrl.loginForm.confirmPassword.$dirty && $ctrl.loginForm.confirmPassword.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.confirmPassword.$error.comparePassword || $ctrl.loginForm.password.$error.comparePassword\">{{'PASSWORD_MATCH' | translate}}\n                <br> </span>\n            </span>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-confirm-password\">* {{'CONFIRM_PASSWORD' | translate}}</label>\n              <input type=\"password\" data-ng-model=\"$ctrl.user.confirmPassword\" id=\"input-confirm-password\" ng-model-options=\"{ debounce: 500 }\"\n                required name=\"confirmPassword\" ng-minlength=\"8\" placeholder=\"{{'CONFIRM_PASSWORD_PLACEHOLDER' | translate}}\">\n\n            </div>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-coupon\">{{'DO_YOU_HAVE_A_COUPON' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.coupon\" id=\"input-coupon\" name=\"coupon\" type=\"text\" placeholder=\"{{'COUPON_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n          <div class=\"col-xs-12 col-lg-6\" style=\"margin-top: 15px;\">\n            <div class=\"area-button txt-right\" style=\"display: flex;justify-content: center;\">\n              <button class=\"rounded-button ng-hide\" data-toggle=\"modal\" data-target=\"#modal-terms\" ng-show=\"$ctrl.loginForm.$valid\" ng-click=\"$ctrl.enableTab()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\">\n              </button>\n\n              <button class=\"rounded-button\" ng-show=\"!$ctrl.loginForm.$valid\" ng-click=\"$ctrl.showError()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\">\n              </button>\n            </div>\n            <div style=\"display: flex;justify-content: center;\" ng-show=\"false\">\n              <a href=\"#!/login\" style=\"font-size: 10px;color: #fff;\">{{'BACK' | translate}}</p>\n            </div>\n          </div>\n\n        </div>\n      </form>\n    </div>\n  </section>\n</div>"
-
-/***/ },
-/* 487 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _index = __webpack_require__(475);
-	
-	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	var SignupController = function () {
-	  function SignupController($state, HttpService, $filter, $sce, $injector, $timeout, $translate, ErrorMessagesService) {
-	    _classCallCheck(this, SignupController);
-	
-	    this.$state = $state;
-	    this.$timeout = $timeout;
-	    this.HttpService = HttpService;
-	    this.$translate = $translate;
-	    this.ErrorMessagesService = ErrorMessagesService;
-	    this.showErrorForm = false;
-	    this.termsCondition = $sce.trustAsHtml($filter('translate')('TERMS_CONDITIONS'));
-	    this.termsRepresentation = $sce.trustAsHtml($filter('translate')('REPRESENTATION_TERM'));
-	    this.serverError = false;
-	    this.user = {
-	      name: '',
-	      lastname: '',
-	      email: '',
-	      confirmEmail: '',
-	      password: '',
-	      confirmPassword: '',
-	      coupon: '',
-	      check1: false,
-	      check2: false,
-	      check3: false,
-	      check4: false
-	    };
-	  }
-	
-	  SignupController.prototype.doSignup = function () {
-	    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-	      var _this = this;
-	
-	      var obj, a, b, depositWallet;
-	      return regeneratorRuntime.wrap(function _callee$(_context) {
-	        while (1) {
-	          switch (_context.prev = _context.next) {
-	            case 0:
-	              this.showLoading(true);
-	              obj = {
-	                name: this.user.name,
-	                lastname: this.user.lastname,
-	                email: this.user.email,
-	                password: this.user.password,
-	                coupon: this.user.coupon,
-	                testnet: true
-	              };
-	              _context.next = 4;
-	              return this.HttpService.signup(obj).catch(function (error) {
-	                //this.serverError = true
-	                //this.serverErrorMessage = error.message
-	                _this.notificationError(true, error);
-	              });
-	
-	            case 4:
-	              a = _context.sent;
-	
-	              if (!(a && a.accessToken)) {
-	                _context.next = 25;
-	                break;
-	              }
-	
-	              this.serverError = false;
-	              this.serverErrorMessage = '';
-	              localStorage.setItem('lunes.accessToken', JSON.stringify(a));
-	              this.showLoading(false);
-	              _context.next = 12;
-	              return this.HttpService.confirmterm(a).catch(function (error) {
-	                _this.serverError = true;
-	                _this.serverErrorMessage = error.message;
-	                console.log(error);
-	              });
-	
-	            case 12:
-	              b = _context.sent;
-	
-	              if (!(!a.depositWallet || !a.depositWallet.BTC)) {
-	                _context.next = 22;
-	                break;
-	              }
-	
-	              _context.next = 16;
-	              return this.HttpService.createDepositWallet(a).catch(function (error) {
-	                if (error && error.response && error.response.data) {
-	                  alert(error.response.data.message);
-	                }
-	                console.log(error);
-	              });
-	
-	            case 16:
-	              depositWallet = _context.sent;
-	
-	              a.depositWallet = depositWallet;
-	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
-	              this.$state.go('historic');
-	              _context.next = 25;
-	              break;
-	
-	            case 22:
-	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
-	              this.$state.go('historic');
-	              console.log(a);
-	
-	            case 25:
-	            case 'end':
-	              return _context.stop();
-	          }
-	        }
-	      }, _callee, this);
-	    }));
-	
-	    function doSignup() {
-	      return _ref.apply(this, arguments);
-	    }
-	
-	    return doSignup;
-	  }();
-	
-	  SignupController.prototype.userIsValidToSignup = function userIsValidToSignup() {
-	    return this.user.name && this.user.email && this.user.password && this.user.lastname && this.user.confirmEmail && this.user.confirmPassword;
-	  };
-	
-	  SignupController.prototype.enableTab = function enableTab() {
-	    setTimeout(function () {
-	      document.getElementById("defaultOpen").click();
-	    }, 200);
-	  };
-	
-	  SignupController.prototype.allCheckboxIsChecked = function allCheckboxIsChecked() {
-	    return this.user.check1 && this.user.check2 && this.user.check4;
-	  };
-	
-	  SignupController.prototype.showError = function showError() {
-	    this.showErrorForm = true;
-	  };
-	
-	  SignupController.prototype.goToLogin = function goToLogin() {
-	    this.$state.go('login');
-	  };
-	
-	  SignupController.prototype.showLoading = function showLoading(isShow) {
-	    if (isShow) {
-	      this.notification(false);
-	      $('<div class="modal-backdrop"><img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442469/loading_y9ob8i.svg" /></div>').appendTo(document.body);
-	    } else {
-	      this.$timeout(function () {
-	        $(".modal-backdrop").remove();
-	      }, 1000);
-	    }
-	  };
-	
-	  SignupController.prototype.notificationError = function notificationError(isShow, msg) {
-	    if (isShow) {
-	      var self = this;
-	      $('<div class="modal-backdrop-error"><h4 style="margin-top: 10%;">' + this.ErrorMessagesService.get(msg) + '</h4><button class="close-error">ok</button></div>').appendTo(document.body);
-	      $('.close-error').on('click', function () {
-	        $(".modal-backdrop-error").remove();
-	      });
-	    }
-	  };
-	
-	  SignupController.prototype.notification = function notification(isShow) {
-	    if (isShow) {
-	      var self = this;
-	      $('<div class="modal-backdrop"><h4>' + this.$translate.instant('SIGNUP_SUCCESSFULY') + '</h4><br /><p>' + this.$translate.instant('REDIRECTING') + '</p></div>').appendTo(document.body);
-	      this.$timeout(function () {
-	        self.notification(false);
-	        self.$state.go('login');
-	      }, 5000);
-	    } else {
-	      this.$timeout(function () {
-	        $(".modal-backdrop").remove();
-	      }, 1000);
-	    }
-	  };
-	
-	  return SignupController;
-	}();
-	
-	SignupController.$inject = ['$state', 'HttpService', '$filter', '$sce', '$injector', '$timeout', '$translate', 'ErrorMessagesService'];
-	
-	exports.default = SignupController;
-
-/***/ },
-/* 488 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(489);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(483)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js?sourceMap!../../node_modules/postcss-loader/index.js!../../node_modules/sass-loader/index.js?config=sassLoader!./signup.component.scss", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js?sourceMap!../../node_modules/postcss-loader/index.js!../../node_modules/sass-loader/index.js?config=sassLoader!./signup.component.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 489 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(482)(true);
-	// imports
-	
-	
-	// module
-	exports.push([module.id, "/* Style the tab */\n.tab {\n  overflow: hidden;\n  padding: 0 22px; }\n\n/* Style the buttons that are used to open the tab content */\n.tab button {\n  border: 0;\n  border-radius: 20px;\n  padding: 5px 20px;\n  background-color: #f9f9f9;\n  float: left;\n  outline: none;\n  cursor: pointer;\n  transition: 0.3s;\n  margin-right: 10px; }\n\n/* Change background color of buttons on hover */\n.tab button:hover {\n  background-color: #4cd466; }\n\n/* Create an active/current tablink class */\n.tab button.active {\n  background-color: #4cd466;\n  color: #fff; }\n\n/* Style the tab content */\n.tabcontent {\n  display: none;\n  padding: 6px 12px;\n  border-top: none; }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/signup/src/signup/signup.component.scss","D:/workspaces/lunes/lunes-purchase/src/signup/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA,mBAAmB;AACnB;EACE,iBAAgB;EAChB,gBAAe,EAChB;;AAED,6DAA6D;AAC7D;EACE,UAAS;EACT,oBAAmB;EACnB,kBAAiB;EACjB,0BAAyB;EACzB,YAAW;EACX,cAAa;EACb,gBAAe;EACf,iBAAgB;EAChB,mBAAkB,EACnB;;AAED,iDAAiD;AACjD;EACE,0BClBa,EDmBd;;AAED,4CAA4C;AAC5C;EACE,0BCvBa;EDwBb,YAAW,EACZ;;AAED,2BAA2B;AAC3B;EACE,cAAa;EACb,kBAAiB;EACjB,iBAAgB,EACjB","file":"signup.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n/* Style the tab */\r\n.tab {\r\n  overflow: hidden;\r\n  padding: 0 22px;\r\n}\r\n\r\n/* Style the buttons that are used to open the tab content */\r\n.tab button {\r\n  border: 0;\r\n  border-radius: 20px;\r\n  padding: 5px 20px;\r\n  background-color: #f9f9f9;\r\n  float: left;\r\n  outline: none;\r\n  cursor: pointer;\r\n  transition: 0.3s;\r\n  margin-right: 10px;\r\n}\r\n\r\n/* Change background color of buttons on hover */\r\n.tab button:hover {\r\n  background-color: $green;\r\n}\r\n\r\n/* Create an active/current tablink class */\r\n.tab button.active {\r\n  background-color: $green;\r\n  color: #fff;\r\n}\r\n\r\n/* Style the tab content */\r\n.tabcontent {\r\n  display: none;\r\n  padding: 6px 12px;\r\n  border-top: none;\r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #4cd466;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
-	
-	// exports
-
-
-/***/ },
-/* 490 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _buyComponent = __webpack_require__(491);
-	
-	var _buyComponent2 = _interopRequireDefault(_buyComponent);
-	
-	var _buy = __webpack_require__(492);
-	
-	var _buy2 = _interopRequireDefault(_buy);
-	
-	__webpack_require__(701);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var BuyComponent = {
-	  template: _buyComponent2.default,
-	  controller: _buy2.default
-	};
-	
-	exports.default = BuyComponent;
-
-/***/ },
-/* 491 */
-/***/ function(module, exports) {
-
-	module.exports = "<!--<loading show=\"$ctrl.loading\"></loading>-->\n<div class=\"container\">\n\n  <lunesheader coin='$ctrl.currentCoinSelected' price='$ctrl.showQuotation()' showlinks='true'></lunesheader>\n\n  <!-- BUY -->\n  <section class=\"buy\">\n    <div>\n      <div class=\"row\">\n\n        <div class=\"col-12 title\">\n          <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>\n          <div>{{'OWN_COUPON' | translate}}\n            <span style=\"font-weight: bold;color: #3bbe6e;\">{{$ctrl.currentUser.ownCoupon}}</span>\n          </div>\n        </div>\n\n        <div class=\"col-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n        <div class=\"col-sm-12 col-md-7 col-lg-7\">\n\n          <!-- ERROR LIMIT -->\n          <div class=\"row\">\n            <div ng-show=\"$ctrl.showErrorLimit\" class=\"col-xs-12 col-lg-12\" style=\"padding: 10px;\n            background-color: #df3535;\n            text-align: center;\n            margin: 10px;\">{{$ctrl.showErrorLimit}}</div>\n          </div>\n\n          <!-- CALCULATOR -->\n          <div class=\"row calculator\">\n            <div class=\"col-lg-6 no-padding\" style=\"margin: 5px 0 20px 0;\">\n              <div class=\"valueCripto row\">\n                <div class=\"select-coin col-xs-12 col-lg-7\">\n                  <ul>\n                    <li ng-repeat=\"coin in $ctrl.coins\" ng-click=\"$ctrl.selectCoin(coin)\" ng-class=\"coin.selected ? 'selected': ''\">\n                      <img ng-src=\"{{coin.img}}\" alt=\"coin.label\">\n                    </li>\n                  </ul>\n                </div>\n                <div class=\"col-xs-12 col-lg-5\">\n                  <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToDeposit\" ng-change=\"$ctrl.calcValue()\" />\n                </div>\n              </div>\n            </div>\n\n            <div class=\"col-lg-1 equal\" style=\"margin: 5px 0 20px 0;\">=</div>\n\n            <div class=\"col-lg-5 no-padding\" style=\"margin: 5px 0 20px 0;\">\n              <div class=\"lunesAmount\">\n                <div class=\"flag-lns\">\n                  <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\">\n                </div>\n                <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToReceive\" ng-change=\"$ctrl.calcValue('LNS')\"\n                  style=\"padding-top: 10px;\" />\n              </div>\n\n              <div class=\"col-lg-12\" style=\"text-align: right;\">\n                <label for=\"#\">\n                  <small>{{'PRICE_LUNES' | translate}}</small> = USD {{$ctrl.priceValueLunes}}\n                </label>\n              </div>\n            </div>\n          </div>\n\n          <!-- SHOW TOTAL -->\n          <div class=\"amountBalance row\">\n            <div class=\"col-sm-12 col-lg-12 total\">\n              <div class=\"result\" style=\"margin-top: 15px;\">\n                <div>{{'AMOUNT_LUNES' | translate}}</div>\n                <div>{{$ctrl.valueToReceive}}</div>\n              </div>\n              <div class=\"result\">\n                <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>\n                <div>{{$ctrl.bonusAmountFinal}}</div>\n              </div>\n              <div class=\"line-break\">\n                <hr />\n              </div>\n              <div class=\"result\">\n                <div>Total</div>\n                <div>{{$ctrl.getTotal()}}</div>\n              </div>\n            </div>\n          </div>\n\n          <!-- ADVICE -->\n          <div class=\"row\">\n            <div class=\"col-lg-12 no-padding\">\n              <div class=\"area-button\" ng-show=\"false\">\n                <button class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\">{{'BUY' | translate}}</button>\n              </div>\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\" ng-show=\"false\">\n              * {{'MSG_BALANCE_DEPOSITED' | translate}}\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\">\n              * {{'BUY_LIMIT_PHASE' | translate}}\n              <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n            </div>\n          </div>\n\n        </div>\n\n        <div class=\"col-xs-12 col-lg-5 container-qr-code\" style=\"text-align: center;\">\n          <div style=\"margin-bottom: 10px;\">\n            <span class=\"selected-label\">{{'COIN_SELECTED' | translate}}</span>\n            <span>{{$ctrl.currentCoinSelected.name}}</span>\n          </div>\n          <img ng-src=\"{{$ctrl.currentQRCode.img}}\" class=\"qr-code img-thumbnail img-responsive\" />\n          <p class=\"address\">{{$ctrl.currentQRCode.address}}</p>\n          <div class=\"show-balance\">\n            <img ng-src=\"{{$ctrl.currentCoinSelected.img}}\" alt=\"{{$ctrl.currentCoinSelected.label}}\">\n            <p>{{$ctrl.currentCoinSelected.label}}</p>\n            <div class=\"show-balance-{{$ctrl.currentCoinSelected.name | lowercase}}\">\n              <span>{{$ctrl.balanceUser.confirmed_balance}}</span>\n              <span class=\"coin-name\">\n                {{$ctrl.currentCoinSelected.name}}\n              </span>\n            </div>\n          </div>\n        </div>\n\n      </div>\n    </div>\n  </section>\n\n</div>"
-
-/***/ },
-/* 492 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _index = __webpack_require__(475);
-	
-	var _lunesLib = __webpack_require__(493);
-	
-	var _lunesLib2 = _interopRequireDefault(_lunesLib);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	var initialValue = '0.00000000';
-	
-	var BuyController = function () {
-	  function BuyController($rootScope, $scope, HttpService, $translate, $timeout, $state) {
-	    _classCallCheck(this, BuyController);
-	
-	    $rootScope.$on('unauthorized', function () {
-	      $state.go('login');
-	    });
-	    if (!localStorage.getItem(_index.STORAGE_KEY)) {
-	      $state.go('login');
-	    }
-	    this.$scope = $scope;
-	    this.HttpService = HttpService;
-	    this.$translate = $translate;
-	    this.$timeout = $timeout;
-	    this.$state = $state;
-	    this.currentUser = JSON.parse(localStorage.getItem(_index.STORAGE_KEY));
-	    this.showContainerCoins = false;
-	    this.balanceCoins = {};
-	    this.currentPhase = [];
-	    this.buyHistoryUser = {};
-	    this.valueToDeposit = initialValue;
-	    this.valueToReceive = initialValue;
-	    this.bonusAmountFinal = initialValue;
-	    this.buyLimit = '0';
-	    this.coins = [{
-	      label: 'Bitcoin',
-	      name: 'BTC',
-	      img: 'https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_btc.svg',
-	      selected: true
-	    }, {
-	      label: 'Litecoin',
-	      name: 'LTC',
-	      img: 'https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon_ltc.svg',
-	      selected: false
-	    }, {
-	      label: 'Ethereum',
-	      name: 'ETH',
-	      img: 'https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_eth.svg',
-	      selected: false
-	    }];
-	    this.currentCoinSelected = JSON.parse(JSON.stringify(this.coins[0]));
-	    this.currentQRCode = { address: '', img: '' };
-	    this.getBalanceCoin('BTC').catch(function (error) {
-	      console.log(error);
-	    });
-	    this.getBalanceCoin('LTC').catch(function (error) {
-	      console.log(error);
-	    });
-	    this.getBalanceCoin('ETH').catch(function (error) {
-	      console.log(error);
-	    });
-	    /*this.getBalanceLunes('LNS', this.currentUser).catch(error => {
-	      console.log(error);
-	    });*/
-	    this.showDepositWalletAddressQRCode(this.currentUser, this.currentCoinSelected);
-	    this.obtainPhase().catch(function (error) {
-	      console.log(error);
-	    });
-	    this.getBuyHistory().catch(function (error) {
-	      console.log(error);
-	    });
-	    this.showLoading(true);
-	  }
-	
-	  BuyController.prototype.getBuyHistory = function () {
-	    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-	      var buyHistory;
-	      return regeneratorRuntime.wrap(function _callee$(_context) {
-	        while (1) {
-	          switch (_context.prev = _context.next) {
-	            case 0:
-	              _context.next = 2;
-	              return this.HttpService.buyHistory(this.currentUser.email, this.currentUser.accessToken);
-	
-	            case 2:
-	              buyHistory = _context.sent;
-	
-	              this.buyHistoryUser = buyHistory;
-	
-	            case 4:
-	            case 'end':
-	              return _context.stop();
-	          }
-	        }
-	      }, _callee, this);
-	    }));
-	
-	    function getBuyHistory() {
-	      return _ref.apply(this, arguments);
-	    }
-	
-	    return getBuyHistory;
-	  }();
-	
-	  BuyController.prototype.showDepositWalletAddressQRCode = function () {
-	    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(currentUser, coin) {
-	      var a;
-	      return regeneratorRuntime.wrap(function _callee2$(_context2) {
-	        while (1) {
-	          switch (_context2.prev = _context2.next) {
-	            case 0:
-	              _context2.next = 2;
-	              return this.HttpService.showDepositWalletAddressQRCode(this.currentUser, this.currentCoinSelected);
-	
-	            case 2:
-	              a = _context2.sent;
-	
-	              this.currentQRCode = JSON.parse(JSON.stringify(a));
-	              if (coin) {
-	                this.getCurrentBalanceUser(coin.name, this.currentQRCode.address, this.currentUser);
-	              }
-	
-	            case 5:
-	            case 'end':
-	              return _context2.stop();
-	          }
-	        }
-	      }, _callee2, this);
-	    }));
-	
-	    function showDepositWalletAddressQRCode(_x, _x2) {
-	      return _ref2.apply(this, arguments);
-	    }
-	
-	    return showDepositWalletAddressQRCode;
-	  }();
-	
-	  BuyController.prototype.doBuy = function () {
-	    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-	      return regeneratorRuntime.wrap(function _callee3$(_context3) {
-	        while (1) {
-	          switch (_context3.prev = _context3.next) {
-	            case 0:
-	            case 'end':
-	              return _context3.stop();
-	          }
-	        }
-	      }, _callee3, this);
-	    }));
-	
-	    function doBuy() {
-	      return _ref3.apply(this, arguments);
-	    }
-	
-	    return doBuy;
-	  }();
-	
-	  BuyController.prototype.getPhaseActive = function getPhaseActive() {
-	    var phase = this.currentPhase.filter(function (f) {
-	      return f.sale_status === 'active';
-	    });
-	    if (phase && phase.length) {
-	      return phase[0];
-	    }
-	    return {};
-	  };
-	
-	  BuyController.prototype.obtainPhase = function () {
-	    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-	      var phase;
-	      return regeneratorRuntime.wrap(function _callee4$(_context4) {
-	        while (1) {
-	          switch (_context4.prev = _context4.next) {
-	            case 0:
-	              _context4.prev = 0;
-	              phase = void 0;
-	
-	              if (!localStorage.getItem('lunes.phase')) {
-	                _context4.next = 10;
-	                break;
-	              }
-	
-	              this.currentPhase = JSON.parse(localStorage.getItem('lunes.phase'));
-	              phase = this.getPhaseActive();
-	
-	              this.percentBonus = phase.bonus * 100;
-	              this.priceValueLunes = parseFloat(phase.price_value);
-	
-	              if (this.currentUser.whitelist && phase.name === 'Whitelist') {
-	                this.buyLimit = 1000000;
-	              } else {
-	                this.buyLimit = phase.maximum_individual_limit;
-	              }
-	
-	              this.showLoading(false);
-	              return _context4.abrupt('return');
-	
-	            case 10:
-	              _context4.next = 12;
-	              return this.HttpService.obtainPhase().catch(function (error) {
-	                alert('Erro ao tentar recuperar dados da fase da ICO');
-	              });
-	
-	            case 12:
-	              this.currentPhase = _context4.sent;
-	
-	
-	              phase = this.getPhaseActive();
-	
-	              this.percentBonus = phase.bonus * 100;
-	              this.priceValueLunes = parseFloat(phase.price_value);
-	
-	              if (this.currentUser.whitelist && phase.name === 'Whitelist') {
-	                this.buyLimit = 1000000;
-	              } else {
-	                this.buyLimit = phase.maximum_individual_limit;
-	              }
-	
-	              if (this.currentPhase) {
-	                localStorage.setItem('lunes.phase', JSON.stringify(this.currentPhase));
-	              }
-	              this.showLoading(false);
-	              _context4.next = 24;
-	              break;
-	
-	            case 21:
-	              _context4.prev = 21;
-	              _context4.t0 = _context4['catch'](0);
-	
-	              console.log(_context4.t0);
-	
-	            case 24:
-	            case 'end':
-	              return _context4.stop();
-	          }
-	        }
-	      }, _callee4, this, [[0, 21]]);
-	    }));
-	
-	    function obtainPhase() {
-	      return _ref4.apply(this, arguments);
-	    }
-	
-	    return obtainPhase;
-	  }();
-	
-	  BuyController.prototype.getBalanceCoin = function () {
-	    var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(coin) {
-	      var balance;
-	      return regeneratorRuntime.wrap(function _callee5$(_context5) {
-	        while (1) {
-	          switch (_context5.prev = _context5.next) {
-	            case 0:
-	              _context5.next = 2;
-	              return this.HttpService.getBitcoinBalance(coin);
-	
-	            case 2:
-	              balance = _context5.sent;
-	
-	              this.balanceCoins[coin] = { balance: balance };
-	
-	            case 4:
-	            case 'end':
-	              return _context5.stop();
-	          }
-	        }
-	      }, _callee5, this);
-	    }));
-	
-	    function getBalanceCoin(_x3) {
-	      return _ref5.apply(this, arguments);
-	    }
-	
-	    return getBalanceCoin;
-	  }();
-	
-	  BuyController.prototype.getBalanceCoinETH = function () {
-	    var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(coin) {
-	      var balance;
-	      return regeneratorRuntime.wrap(function _callee6$(_context6) {
-	        while (1) {
-	          switch (_context6.prev = _context6.next) {
-	            case 0:
-	              _context6.next = 2;
-	              return this.HttpService.getBalanceCoinETH(coin);
-	
-	            case 2:
-	              balance = _context6.sent;
-	
-	              this.balanceCoins[coin] = { balance: balance };
-	
-	            case 4:
-	            case 'end':
-	              return _context6.stop();
-	          }
-	        }
-	      }, _callee6, this);
-	    }));
-	
-	    function getBalanceCoinETH(_x4) {
-	      return _ref6.apply(this, arguments);
-	    }
-	
-	    return getBalanceCoinETH;
-	  }();
-	
-	  BuyController.prototype.getBalanceLunes = function () {
-	    var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(coin, currentUser) {
-	      var balance;
-	      return regeneratorRuntime.wrap(function _callee7$(_context7) {
-	        while (1) {
-	          switch (_context7.prev = _context7.next) {
-	            case 0:
-	              _context7.next = 2;
-	              return this.HttpService.getBalanceLunes(coin, currentUser);
-	
-	            case 2:
-	              balance = _context7.sent;
-	
-	              this.balanceCoins[coin] = { balance: balance };
-	
-	            case 4:
-	            case 'end':
-	              return _context7.stop();
-	          }
-	        }
-	      }, _callee7, this);
-	    }));
-	
-	    function getBalanceLunes(_x5, _x6) {
-	      return _ref7.apply(this, arguments);
-	    }
-	
-	    return getBalanceLunes;
-	  }();
-	
-	  BuyController.prototype.goToHome = function goToHome() {
-	    this.$state.go('buy');
-	  };
-	
-	  BuyController.prototype.showLoading = function showLoading(isShow) {
-	    if (isShow) {
-	      $('<div class="modal-backdrop"><img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442469/loading_y9ob8i.svg" /></div>').appendTo(document.body);
-	    } else {
-	      this.$timeout(function () {
-	        $(".modal-backdrop").remove();
-	      }, 1000);
-	    }
-	  };
-	
-	  /**
-	   * coinDestination, bonusRate, coinAmount, exchangeRate, unitPrice, coupon
-	   * coinDestination  - eh o simbolo da moeda,
-	   * bonusRate        - eh a taxa de bonus da fase atual da ico,
-	   * coinAmount       - eh a quantidade de criptomoeda,
-	   * exchangeRate     - o preco em dolar,
-	   * unitPrice        - o preco atual da lunes em dolar e
-	   * coupon           - eh o cupom de bonus do usuario se houver
-	  */
-	
-	
-	  BuyController.prototype.calcValue = function calcValue(LNS) {
-	    if (!this.valueToReceive) {
-	      this.valueToReceive = initialValue;
-	    }
-	
-	    if (!this.valueToDeposit) {
-	      this.valueToDeposit = initialValue;
-	    }
-	
-	    var valueToReceive = parseFloat(this.valueToReceive);
-	    var valueToDeposit = parseFloat(this.valueToDeposit);
-	
-	    if (isNaN(valueToReceive) || isNaN(valueToDeposit)) {
-	      this.valueToDeposit = initialValue;
-	      this.valueToReceive = initialValue;
-	    }
-	
-	    if (LNS) {
-	      if (this.valueToReceive.indexOf(',') !== -1) {
-	        this.valueToReceive = this.valueToReceive.replace(/[, ]+/g, "0").trim();
-	      }
-	    } else {
-	      if (this.valueToDeposit.indexOf(',') !== -1) {
-	        this.valueToDeposit = this.valueToDeposit.replace(/[,]+/g, '').trim();
-	      }
-	    }
-	    this.checkMaxLength();
-	    var phase = this.getPhaseActive();
-	    var bonusRate = phase.bonus;
-	    var currentPrice = this.balanceCoins[this.currentCoinSelected.name].balance.PRICE;
-	    var coupon = this.currentUser.coupon;
-	
-	    this.valueToReceive = parseFloat(this.valueToReceive);
-	    this.valueToDeposit = parseFloat(this.valueToDeposit);
-	    this.buyLimit = parseFloat(this.buyLimit);
-	
-	    var coinAmount = LNS ? this.valueToReceive : this.valueToDeposit;
-	    coinAmount = parseFloat(coinAmount);
-	    if (isNaN(coinAmount)) {
-	      coinAmount = 0;
-	    }
-	    var unitPrice = phase.price_value;
-	    var calculateFinal = 0;
-	
-	    if (LNS) {
-	      if (coinAmount > this.buyLimit) {
-	        coinAmount = this.buyLimit;
-	        this.valueToReceive = this.buyLimit;
-	      }
-	
-	      calculateFinal = _lunesLib2.default.ico.buyConversion.fromLNS(bonusRate, coinAmount, currentPrice, unitPrice, coupon);
-	      this.valueToDeposit = calculateFinal.buyAmount;
-	      this.bonusAmountFinal = (parseFloat(phase.bonus) * this.valueToReceive).toString();
-	      return;
-	    }
-	
-	    calculateFinal = _lunesLib2.default.ico.buyConversion.toLNS(bonusRate, coinAmount, currentPrice, unitPrice, coupon);
-	
-	    this.valueToReceive = calculateFinal.buyAmount.toString();
-	    this.bonusAmountFinal = calculateFinal.bonusAmount;
-	
-	    if (this.valueToReceive > this.buyLimit) {
-	      this.showErrorLimit = 'Você ultrapassou o limite de compra!';
-	      coinAmount = this.buyLimit;
-	      this.valueToReceive = this.buyLimit;
-	      this.bonusAmountFinal = (parseFloat(phase.bonus) * this.buyLimit).toString();
-	    } else {
-	      this.showErrorLimit = '';
-	    }
-	  };
-	
-	  BuyController.prototype.getBuyLimit = function getBuyLimit() {
-	    return parseFloat(this.buyLimit);
-	  };
-	
-	  /**
-	   * Quantidade de Lunes (qtd) = resultado da calculadora
-	   * 30% Bônus (bonus) = 30% de qtd
-	   * Total = qtd + bonus
-	  */
-	
-	
-	  BuyController.prototype.getTotal = function getTotal() {
-	    var amountLNS = parseFloat(this.valueToReceive);
-	    var bonus = parseFloat(this.getPhaseActive().bonus) * amountLNS;
-	    var total = amountLNS + bonus;
-	    return total.toFixed(8);
-	  };
-	
-	  BuyController.prototype.checkMaxLength = function checkMaxLength() {
-	    var numberMax = 10;
-	    if (!isNaN(this.valueToDeposit) && this.valueToDeposit.indexOf(',') !== -1) {
-	      this.valueToDeposit = this.valueToDeposit.replace(",", ".");
-	    }
-	    if (this.valueToDeposit.length > numberMax) {
-	      this.valueToDeposit = this.valueToDeposit.substring(0, numberMax);
-	    }
-	  };
-	
-	  BuyController.prototype.showQuotation = function showQuotation() {
-	    if (Object.keys(this.balanceCoins).length) {
-	      return this.balanceCoins[this.currentCoinSelected.name].balance.PRICE;
-	    } else {
-	      return this.$translate.instant('LOADING');
-	    }
-	  };
-	
-	  BuyController.prototype.getFlag = function getFlag() {
-	    var flagUS = 'https://res.cloudinary.com/luneswallet/image/upload/v1519442468/flag-us_jxifyu.png';
-	    var flagBR = 'https://res.cloudinary.com/luneswallet/image/upload/v1519442467/flag-br_ksncrn.png';
-	    return this.$translate.instant('CURRENCY_USER') === 'USD' ? flagUS : flagBR;
-	  };
-	
-	  BuyController.prototype.logout = function logout() {
-	    localStorage.removeItem(_index.STORAGE_KEY);
-	  };
-	
-	  BuyController.prototype.getCurrentBalanceUser = function () {
-	    var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(coin, address, currentUser) {
-	      var _this = this;
-	
-	      var balance;
-	      return regeneratorRuntime.wrap(function _callee8$(_context8) {
-	        while (1) {
-	          switch (_context8.prev = _context8.next) {
-	            case 0:
-	              _context8.next = 2;
-	              return this.HttpService.getBalance(coin, address, currentUser);
-	
-	            case 2:
-	              balance = _context8.sent;
-	
-	              this.$timeout(function () {
-	                if (balance && balance.network === 'ETH') {
-	                  _this.balanceUser = {
-	                    confirmed_balance: balance.balance
-	                  };
-	                } else {
-	                  _this.balanceUser = balance;
-	                }
-	              }, 200);
-	
-	            case 4:
-	            case 'end':
-	              return _context8.stop();
-	          }
-	        }
-	      }, _callee8, this);
-	    }));
-	
-	    function getCurrentBalanceUser(_x7, _x8, _x9) {
-	      return _ref8.apply(this, arguments);
-	    }
-	
-	    return getCurrentBalanceUser;
-	  }();
-	
-	  BuyController.prototype.selectCoin = function selectCoin(coinSelected) {
-	    var _this2 = this;
-	
-	    this.valueToDeposit = initialValue;
-	    this.valueToReceive = initialValue;
-	    var self = this;
-	    this.coins = this.coins.filter(function (coin) {
-	      coin.selected = false;
-	      if (coin.label === coinSelected.label) {
-	        self.currentCoinSelected = JSON.parse(JSON.stringify(coin));
-	        self.showDepositWalletAddressQRCode(self.currentUser, coin);
-	        coin.selected = true;
-	      }
-	      return coin;
-	    });
-	    this.$timeout(function () {
-	      _this2.$scope.$apply();
-	    }, 200);
-	    //this.openCoinSelect();
-	  };
-	
-	  BuyController.prototype.openCoinSelect = function openCoinSelect() {
-	    this.showContainerCoins = !this.showContainerCoins;
-	  };
-	
-	  return BuyController;
-	}();
-	
-	BuyController.$inject = ['$rootScope', '$scope', 'HttpService', '$translate', '$timeout', '$state'];
-	
-	exports.default = BuyController;
-
-/***/ },
-/* 493 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	module.exports = __webpack_require__(494);
-
-/***/ },
-/* 494 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var users = __webpack_require__(495);
-	var coins = __webpack_require__(606);
-	var ico = __webpack_require__(693);
+	var users = __webpack_require__(477);
+	var coins = __webpack_require__(588);
+	var ico = __webpack_require__(675);
 	module.exports = {
 	  users: users,
 	  coins: coins,
@@ -54032,20 +52226,20 @@
 	};
 
 /***/ },
-/* 495 */
+/* 477 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var create = __webpack_require__(496);
-	var login = __webpack_require__(598);
-	var resetPassword = __webpack_require__(599);
-	var obtain = __webpack_require__(600);
-	var createPin = __webpack_require__(601);
-	var confirmPin = __webpack_require__(602);
-	var confirmPhone = __webpack_require__(603);
-	var logout = __webpack_require__(604);
-	var update = __webpack_require__(605);
+	var create = __webpack_require__(478);
+	var login = __webpack_require__(580);
+	var resetPassword = __webpack_require__(581);
+	var obtain = __webpack_require__(582);
+	var createPin = __webpack_require__(583);
+	var confirmPin = __webpack_require__(584);
+	var confirmPhone = __webpack_require__(585);
+	var logout = __webpack_require__(586);
+	var update = __webpack_require__(587);
 	
 	module.exports = {
 	  create: create,
@@ -54060,18 +52254,18 @@
 	};
 
 /***/ },
-/* 496 */
+/* 478 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var validator = __webpack_require__(497);
+	var validator = __webpack_require__(479);
 	
-	var axios = __webpack_require__(570);
+	var axios = __webpack_require__(552);
 	
-	var BASE_URL = __webpack_require__(597);
+	var BASE_URL = __webpack_require__(579);
 	
 	var endpoint = BASE_URL + '/users/create';
 	
@@ -54141,16 +52335,16 @@
 	}();
 
 /***/ },
-/* 497 */
+/* 479 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var Validator = __webpack_require__(498);
+	var Validator = __webpack_require__(480);
 	
-	var _require = __webpack_require__(569),
+	var _require = __webpack_require__(551),
 	    PASSWORD_LENGTH = _require.PASSWORD_LENGTH,
 	    MAX_PIN_VALUE = _require.MAX_PIN_VALUE;
 	
@@ -54181,7 +52375,7 @@
 	};
 
 /***/ },
-/* 498 */
+/* 480 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54190,271 +52384,271 @@
 	  value: true
 	});
 	
-	var _toDate = __webpack_require__(499);
+	var _toDate = __webpack_require__(481);
 	
 	var _toDate2 = _interopRequireDefault(_toDate);
 	
-	var _toFloat = __webpack_require__(501);
+	var _toFloat = __webpack_require__(483);
 	
 	var _toFloat2 = _interopRequireDefault(_toFloat);
 	
-	var _toInt = __webpack_require__(502);
+	var _toInt = __webpack_require__(484);
 	
 	var _toInt2 = _interopRequireDefault(_toInt);
 	
-	var _toBoolean = __webpack_require__(503);
+	var _toBoolean = __webpack_require__(485);
 	
 	var _toBoolean2 = _interopRequireDefault(_toBoolean);
 	
-	var _equals = __webpack_require__(504);
+	var _equals = __webpack_require__(486);
 	
 	var _equals2 = _interopRequireDefault(_equals);
 	
-	var _contains = __webpack_require__(505);
+	var _contains = __webpack_require__(487);
 	
 	var _contains2 = _interopRequireDefault(_contains);
 	
-	var _matches = __webpack_require__(507);
+	var _matches = __webpack_require__(489);
 	
 	var _matches2 = _interopRequireDefault(_matches);
 	
-	var _isEmail = __webpack_require__(508);
+	var _isEmail = __webpack_require__(490);
 	
 	var _isEmail2 = _interopRequireDefault(_isEmail);
 	
-	var _isURL = __webpack_require__(512);
+	var _isURL = __webpack_require__(494);
 	
 	var _isURL2 = _interopRequireDefault(_isURL);
 	
-	var _isMACAddress = __webpack_require__(514);
+	var _isMACAddress = __webpack_require__(496);
 	
 	var _isMACAddress2 = _interopRequireDefault(_isMACAddress);
 	
-	var _isIP = __webpack_require__(513);
+	var _isIP = __webpack_require__(495);
 	
 	var _isIP2 = _interopRequireDefault(_isIP);
 	
-	var _isFQDN = __webpack_require__(511);
+	var _isFQDN = __webpack_require__(493);
 	
 	var _isFQDN2 = _interopRequireDefault(_isFQDN);
 	
-	var _isBoolean = __webpack_require__(515);
+	var _isBoolean = __webpack_require__(497);
 	
 	var _isBoolean2 = _interopRequireDefault(_isBoolean);
 	
-	var _isAlpha = __webpack_require__(516);
+	var _isAlpha = __webpack_require__(498);
 	
 	var _isAlpha2 = _interopRequireDefault(_isAlpha);
 	
-	var _isAlphanumeric = __webpack_require__(518);
+	var _isAlphanumeric = __webpack_require__(500);
 	
 	var _isAlphanumeric2 = _interopRequireDefault(_isAlphanumeric);
 	
-	var _isNumeric = __webpack_require__(519);
+	var _isNumeric = __webpack_require__(501);
 	
 	var _isNumeric2 = _interopRequireDefault(_isNumeric);
 	
-	var _isPort = __webpack_require__(520);
+	var _isPort = __webpack_require__(502);
 	
 	var _isPort2 = _interopRequireDefault(_isPort);
 	
-	var _isLowercase = __webpack_require__(522);
+	var _isLowercase = __webpack_require__(504);
 	
 	var _isLowercase2 = _interopRequireDefault(_isLowercase);
 	
-	var _isUppercase = __webpack_require__(523);
+	var _isUppercase = __webpack_require__(505);
 	
 	var _isUppercase2 = _interopRequireDefault(_isUppercase);
 	
-	var _isAscii = __webpack_require__(524);
+	var _isAscii = __webpack_require__(506);
 	
 	var _isAscii2 = _interopRequireDefault(_isAscii);
 	
-	var _isFullWidth = __webpack_require__(525);
+	var _isFullWidth = __webpack_require__(507);
 	
 	var _isFullWidth2 = _interopRequireDefault(_isFullWidth);
 	
-	var _isHalfWidth = __webpack_require__(526);
+	var _isHalfWidth = __webpack_require__(508);
 	
 	var _isHalfWidth2 = _interopRequireDefault(_isHalfWidth);
 	
-	var _isVariableWidth = __webpack_require__(527);
+	var _isVariableWidth = __webpack_require__(509);
 	
 	var _isVariableWidth2 = _interopRequireDefault(_isVariableWidth);
 	
-	var _isMultibyte = __webpack_require__(528);
+	var _isMultibyte = __webpack_require__(510);
 	
 	var _isMultibyte2 = _interopRequireDefault(_isMultibyte);
 	
-	var _isSurrogatePair = __webpack_require__(529);
+	var _isSurrogatePair = __webpack_require__(511);
 	
 	var _isSurrogatePair2 = _interopRequireDefault(_isSurrogatePair);
 	
-	var _isInt = __webpack_require__(521);
+	var _isInt = __webpack_require__(503);
 	
 	var _isInt2 = _interopRequireDefault(_isInt);
 	
-	var _isFloat = __webpack_require__(530);
+	var _isFloat = __webpack_require__(512);
 	
 	var _isFloat2 = _interopRequireDefault(_isFloat);
 	
-	var _isDecimal = __webpack_require__(531);
+	var _isDecimal = __webpack_require__(513);
 	
 	var _isDecimal2 = _interopRequireDefault(_isDecimal);
 	
-	var _isHexadecimal = __webpack_require__(532);
+	var _isHexadecimal = __webpack_require__(514);
 	
 	var _isHexadecimal2 = _interopRequireDefault(_isHexadecimal);
 	
-	var _isDivisibleBy = __webpack_require__(533);
+	var _isDivisibleBy = __webpack_require__(515);
 	
 	var _isDivisibleBy2 = _interopRequireDefault(_isDivisibleBy);
 	
-	var _isHexColor = __webpack_require__(534);
+	var _isHexColor = __webpack_require__(516);
 	
 	var _isHexColor2 = _interopRequireDefault(_isHexColor);
 	
-	var _isISRC = __webpack_require__(535);
+	var _isISRC = __webpack_require__(517);
 	
 	var _isISRC2 = _interopRequireDefault(_isISRC);
 	
-	var _isMD = __webpack_require__(536);
+	var _isMD = __webpack_require__(518);
 	
 	var _isMD2 = _interopRequireDefault(_isMD);
 	
-	var _isHash = __webpack_require__(537);
+	var _isHash = __webpack_require__(519);
 	
 	var _isHash2 = _interopRequireDefault(_isHash);
 	
-	var _isJSON = __webpack_require__(538);
+	var _isJSON = __webpack_require__(520);
 	
 	var _isJSON2 = _interopRequireDefault(_isJSON);
 	
-	var _isEmpty = __webpack_require__(539);
+	var _isEmpty = __webpack_require__(521);
 	
 	var _isEmpty2 = _interopRequireDefault(_isEmpty);
 	
-	var _isLength = __webpack_require__(540);
+	var _isLength = __webpack_require__(522);
 	
 	var _isLength2 = _interopRequireDefault(_isLength);
 	
-	var _isByteLength = __webpack_require__(510);
+	var _isByteLength = __webpack_require__(492);
 	
 	var _isByteLength2 = _interopRequireDefault(_isByteLength);
 	
-	var _isUUID = __webpack_require__(541);
+	var _isUUID = __webpack_require__(523);
 	
 	var _isUUID2 = _interopRequireDefault(_isUUID);
 	
-	var _isMongoId = __webpack_require__(542);
+	var _isMongoId = __webpack_require__(524);
 	
 	var _isMongoId2 = _interopRequireDefault(_isMongoId);
 	
-	var _isAfter = __webpack_require__(543);
+	var _isAfter = __webpack_require__(525);
 	
 	var _isAfter2 = _interopRequireDefault(_isAfter);
 	
-	var _isBefore = __webpack_require__(544);
+	var _isBefore = __webpack_require__(526);
 	
 	var _isBefore2 = _interopRequireDefault(_isBefore);
 	
-	var _isIn = __webpack_require__(545);
+	var _isIn = __webpack_require__(527);
 	
 	var _isIn2 = _interopRequireDefault(_isIn);
 	
-	var _isCreditCard = __webpack_require__(546);
+	var _isCreditCard = __webpack_require__(528);
 	
 	var _isCreditCard2 = _interopRequireDefault(_isCreditCard);
 	
-	var _isISIN = __webpack_require__(547);
+	var _isISIN = __webpack_require__(529);
 	
 	var _isISIN2 = _interopRequireDefault(_isISIN);
 	
-	var _isISBN = __webpack_require__(548);
+	var _isISBN = __webpack_require__(530);
 	
 	var _isISBN2 = _interopRequireDefault(_isISBN);
 	
-	var _isISSN = __webpack_require__(549);
+	var _isISSN = __webpack_require__(531);
 	
 	var _isISSN2 = _interopRequireDefault(_isISSN);
 	
-	var _isMobilePhone = __webpack_require__(550);
+	var _isMobilePhone = __webpack_require__(532);
 	
 	var _isMobilePhone2 = _interopRequireDefault(_isMobilePhone);
 	
-	var _isCurrency = __webpack_require__(551);
+	var _isCurrency = __webpack_require__(533);
 	
 	var _isCurrency2 = _interopRequireDefault(_isCurrency);
 	
-	var _isISO = __webpack_require__(552);
+	var _isISO = __webpack_require__(534);
 	
 	var _isISO2 = _interopRequireDefault(_isISO);
 	
-	var _isISO31661Alpha = __webpack_require__(553);
+	var _isISO31661Alpha = __webpack_require__(535);
 	
 	var _isISO31661Alpha2 = _interopRequireDefault(_isISO31661Alpha);
 	
-	var _isBase = __webpack_require__(554);
+	var _isBase = __webpack_require__(536);
 	
 	var _isBase2 = _interopRequireDefault(_isBase);
 	
-	var _isDataURI = __webpack_require__(555);
+	var _isDataURI = __webpack_require__(537);
 	
 	var _isDataURI2 = _interopRequireDefault(_isDataURI);
 	
-	var _isMimeType = __webpack_require__(556);
+	var _isMimeType = __webpack_require__(538);
 	
 	var _isMimeType2 = _interopRequireDefault(_isMimeType);
 	
-	var _isLatLong = __webpack_require__(557);
+	var _isLatLong = __webpack_require__(539);
 	
 	var _isLatLong2 = _interopRequireDefault(_isLatLong);
 	
-	var _isPostalCode = __webpack_require__(558);
+	var _isPostalCode = __webpack_require__(540);
 	
 	var _isPostalCode2 = _interopRequireDefault(_isPostalCode);
 	
-	var _ltrim = __webpack_require__(559);
+	var _ltrim = __webpack_require__(541);
 	
 	var _ltrim2 = _interopRequireDefault(_ltrim);
 	
-	var _rtrim = __webpack_require__(560);
+	var _rtrim = __webpack_require__(542);
 	
 	var _rtrim2 = _interopRequireDefault(_rtrim);
 	
-	var _trim = __webpack_require__(561);
+	var _trim = __webpack_require__(543);
 	
 	var _trim2 = _interopRequireDefault(_trim);
 	
-	var _escape = __webpack_require__(562);
+	var _escape = __webpack_require__(544);
 	
 	var _escape2 = _interopRequireDefault(_escape);
 	
-	var _unescape = __webpack_require__(563);
+	var _unescape = __webpack_require__(545);
 	
 	var _unescape2 = _interopRequireDefault(_unescape);
 	
-	var _stripLow = __webpack_require__(564);
+	var _stripLow = __webpack_require__(546);
 	
 	var _stripLow2 = _interopRequireDefault(_stripLow);
 	
-	var _whitelist = __webpack_require__(566);
+	var _whitelist = __webpack_require__(548);
 	
 	var _whitelist2 = _interopRequireDefault(_whitelist);
 	
-	var _blacklist = __webpack_require__(565);
+	var _blacklist = __webpack_require__(547);
 	
 	var _blacklist2 = _interopRequireDefault(_blacklist);
 	
-	var _isWhitelisted = __webpack_require__(567);
+	var _isWhitelisted = __webpack_require__(549);
 	
 	var _isWhitelisted2 = _interopRequireDefault(_isWhitelisted);
 	
-	var _normalizeEmail = __webpack_require__(568);
+	var _normalizeEmail = __webpack_require__(550);
 	
 	var _normalizeEmail2 = _interopRequireDefault(_normalizeEmail);
 	
-	var _toString = __webpack_require__(506);
+	var _toString = __webpack_require__(488);
 	
 	var _toString2 = _interopRequireDefault(_toString);
 	
@@ -54539,7 +52733,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 499 */
+/* 481 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54549,7 +52743,7 @@
 	});
 	exports.default = toDate;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54565,7 +52759,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 500 */
+/* 482 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54584,7 +52778,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 501 */
+/* 483 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54594,7 +52788,7 @@
 	});
 	exports.default = toFloat;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54609,7 +52803,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 502 */
+/* 484 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54619,7 +52813,7 @@
 	});
 	exports.default = toInt;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54634,7 +52828,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 503 */
+/* 485 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54644,7 +52838,7 @@
 	});
 	exports.default = toBoolean;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54662,7 +52856,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 504 */
+/* 486 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54672,7 +52866,7 @@
 	});
 	exports.default = equals;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54687,7 +52881,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 505 */
+/* 487 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54697,11 +52891,11 @@
 	});
 	exports.default = contains;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _toString = __webpack_require__(506);
+	var _toString = __webpack_require__(488);
 	
 	var _toString2 = _interopRequireDefault(_toString);
 	
@@ -54716,7 +52910,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 506 */
+/* 488 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54749,7 +52943,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 507 */
+/* 489 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54759,7 +52953,7 @@
 	});
 	exports.default = matches;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54777,7 +52971,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 508 */
+/* 490 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54787,19 +52981,19 @@
 	});
 	exports.default = isEmail;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _merge = __webpack_require__(509);
+	var _merge = __webpack_require__(491);
 	
 	var _merge2 = _interopRequireDefault(_merge);
 	
-	var _isByteLength = __webpack_require__(510);
+	var _isByteLength = __webpack_require__(492);
 	
 	var _isByteLength2 = _interopRequireDefault(_isByteLength);
 	
-	var _isFQDN = __webpack_require__(511);
+	var _isFQDN = __webpack_require__(493);
 	
 	var _isFQDN2 = _interopRequireDefault(_isFQDN);
 	
@@ -54873,7 +53067,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 509 */
+/* 491 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54896,7 +53090,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 510 */
+/* 492 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54915,7 +53109,7 @@
 	
 	exports.default = isByteLength;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -54942,7 +53136,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 511 */
+/* 493 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54952,11 +53146,11 @@
 	});
 	exports.default = isFQDN;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _merge = __webpack_require__(509);
+	var _merge = __webpack_require__(491);
 	
 	var _merge2 = _interopRequireDefault(_merge);
 	
@@ -55010,7 +53204,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 512 */
+/* 494 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55020,19 +53214,19 @@
 	});
 	exports.default = isURL;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _isFQDN = __webpack_require__(511);
+	var _isFQDN = __webpack_require__(493);
 	
 	var _isFQDN2 = _interopRequireDefault(_isFQDN);
 	
-	var _isIP = __webpack_require__(513);
+	var _isIP = __webpack_require__(495);
 	
 	var _isIP2 = _interopRequireDefault(_isIP);
 	
-	var _merge = __webpack_require__(509);
+	var _merge = __webpack_require__(491);
 	
 	var _merge2 = _interopRequireDefault(_merge);
 	
@@ -55164,7 +53358,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 513 */
+/* 495 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55174,7 +53368,7 @@
 	});
 	exports.default = isIP;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55252,7 +53446,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 514 */
+/* 496 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55262,7 +53456,7 @@
 	});
 	exports.default = isMACAddress;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55279,7 +53473,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 515 */
+/* 497 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55289,7 +53483,7 @@
 	});
 	exports.default = isBoolean;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55304,7 +53498,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 516 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55314,11 +53508,11 @@
 	});
 	exports.default = isAlpha;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _alpha = __webpack_require__(517);
+	var _alpha = __webpack_require__(499);
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -55336,7 +53530,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 517 */
+/* 499 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -55437,7 +53631,7 @@
 	decimal['pt-BR'] = decimal['pt-PT'];
 
 /***/ },
-/* 518 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55447,11 +53641,11 @@
 	});
 	exports.default = isAlphanumeric;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _alpha = __webpack_require__(517);
+	var _alpha = __webpack_require__(499);
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -55469,7 +53663,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 519 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55479,7 +53673,7 @@
 	});
 	exports.default = isNumeric;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55496,7 +53690,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 520 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55506,7 +53700,7 @@
 	});
 	exports.default = isPort;
 	
-	var _isInt = __webpack_require__(521);
+	var _isInt = __webpack_require__(503);
 	
 	var _isInt2 = _interopRequireDefault(_isInt);
 	
@@ -55520,7 +53714,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 521 */
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55530,7 +53724,7 @@
 	});
 	exports.default = isInt;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55560,7 +53754,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 522 */
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55570,7 +53764,7 @@
 	});
 	exports.default = isLowercase;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55585,7 +53779,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 523 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55595,7 +53789,7 @@
 	});
 	exports.default = isUppercase;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55610,7 +53804,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 524 */
+/* 506 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55620,7 +53814,7 @@
 	});
 	exports.default = isAscii;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55639,7 +53833,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 525 */
+/* 507 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55650,7 +53844,7 @@
 	exports.fullWidth = undefined;
 	exports.default = isFullWidth;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55666,7 +53860,7 @@
 	}
 
 /***/ },
-/* 526 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55677,7 +53871,7 @@
 	exports.halfWidth = undefined;
 	exports.default = isHalfWidth;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55693,7 +53887,7 @@
 	}
 
 /***/ },
-/* 527 */
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55703,13 +53897,13 @@
 	});
 	exports.default = isVariableWidth;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _isFullWidth = __webpack_require__(525);
+	var _isFullWidth = __webpack_require__(507);
 	
-	var _isHalfWidth = __webpack_require__(526);
+	var _isHalfWidth = __webpack_require__(508);
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -55722,7 +53916,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 528 */
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55732,7 +53926,7 @@
 	});
 	exports.default = isMultibyte;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55751,7 +53945,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 529 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55761,7 +53955,7 @@
 	});
 	exports.default = isSurrogatePair;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55778,7 +53972,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 530 */
+/* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55788,11 +53982,11 @@
 	});
 	exports.default = isFloat;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _alpha = __webpack_require__(517);
+	var _alpha = __webpack_require__(499);
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -55810,7 +54004,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 531 */
+/* 513 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55820,15 +54014,15 @@
 	});
 	exports.default = isDecimal;
 	
-	var _merge = __webpack_require__(509);
+	var _merge = __webpack_require__(491);
 	
 	var _merge2 = _interopRequireDefault(_merge);
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _alpha = __webpack_require__(517);
+	var _alpha = __webpack_require__(499);
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -55858,7 +54052,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 532 */
+/* 514 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55868,7 +54062,7 @@
 	});
 	exports.default = isHexadecimal;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55885,7 +54079,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 533 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55895,11 +54089,11 @@
 	});
 	exports.default = isDivisibleBy;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _toFloat = __webpack_require__(501);
+	var _toFloat = __webpack_require__(483);
 	
 	var _toFloat2 = _interopRequireDefault(_toFloat);
 	
@@ -55914,7 +54108,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 534 */
+/* 516 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55924,7 +54118,7 @@
 	});
 	exports.default = isHexColor;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55941,7 +54135,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 535 */
+/* 517 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55951,7 +54145,7 @@
 	});
 	exports.default = isISRC;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55969,7 +54163,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 536 */
+/* 518 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55979,7 +54173,7 @@
 	});
 	exports.default = isMD5;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -55996,7 +54190,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 537 */
+/* 519 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56006,7 +54200,7 @@
 	});
 	exports.default = isHash;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56038,7 +54232,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 538 */
+/* 520 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56057,7 +54251,7 @@
 	
 	exports.default = isJSON;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56076,7 +54270,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 539 */
+/* 521 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56086,7 +54280,7 @@
 	});
 	exports.default = isEmpty;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56101,7 +54295,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 540 */
+/* 522 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56120,7 +54314,7 @@
 	
 	exports.default = isLength;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56148,7 +54342,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 541 */
+/* 523 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56158,7 +54352,7 @@
 	});
 	exports.default = isUUID;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56183,7 +54377,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 542 */
+/* 524 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56193,11 +54387,11 @@
 	});
 	exports.default = isMongoId;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _isHexadecimal = __webpack_require__(532);
+	var _isHexadecimal = __webpack_require__(514);
 	
 	var _isHexadecimal2 = _interopRequireDefault(_isHexadecimal);
 	
@@ -56212,7 +54406,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 543 */
+/* 525 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56222,11 +54416,11 @@
 	});
 	exports.default = isAfter;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _toDate = __webpack_require__(499);
+	var _toDate = __webpack_require__(481);
 	
 	var _toDate2 = _interopRequireDefault(_toDate);
 	
@@ -56245,7 +54439,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 544 */
+/* 526 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56255,11 +54449,11 @@
 	});
 	exports.default = isBefore;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _toDate = __webpack_require__(499);
+	var _toDate = __webpack_require__(481);
 	
 	var _toDate2 = _interopRequireDefault(_toDate);
 	
@@ -56278,7 +54472,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 545 */
+/* 527 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56297,11 +54491,11 @@
 	
 	exports.default = isIn;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _toString = __webpack_require__(506);
+	var _toString = __webpack_require__(488);
 	
 	var _toString2 = _interopRequireDefault(_toString);
 	
@@ -56330,7 +54524,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 546 */
+/* 528 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56340,7 +54534,7 @@
 	});
 	exports.default = isCreditCard;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56382,7 +54576,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 547 */
+/* 529 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56392,7 +54586,7 @@
 	});
 	exports.default = isISIN;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56437,7 +54631,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 548 */
+/* 530 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56447,7 +54641,7 @@
 	});
 	exports.default = isISBN;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56501,7 +54695,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 549 */
+/* 531 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56511,7 +54705,7 @@
 	});
 	exports.default = isISSN;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56566,7 +54760,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 550 */
+/* 532 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56576,7 +54770,7 @@
 	});
 	exports.default = isMobilePhone;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56676,7 +54870,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 551 */
+/* 533 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56686,11 +54880,11 @@
 	});
 	exports.default = isCurrency;
 	
-	var _merge = __webpack_require__(509);
+	var _merge = __webpack_require__(491);
 	
 	var _merge2 = _interopRequireDefault(_merge);
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56775,7 +54969,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 552 */
+/* 534 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56785,7 +54979,7 @@
 	});
 	exports.default = isISO8601;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56805,7 +54999,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 553 */
+/* 535 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56815,7 +55009,7 @@
 	});
 	exports.default = isISO31661Alpha2;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56833,7 +55027,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 554 */
+/* 536 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56843,7 +55037,7 @@
 	});
 	exports.default = isBase64;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56865,7 +55059,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 555 */
+/* 537 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56875,7 +55069,7 @@
 	});
 	exports.default = isDataURI;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56921,7 +55115,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 556 */
+/* 538 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56931,7 +55125,7 @@
 	});
 	exports.default = isMimeType;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -56980,7 +55174,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 557 */
+/* 539 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56996,7 +55190,7 @@
 	  return lat.test(pair[0]) && long.test(pair[1]);
 	};
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -57010,7 +55204,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 558 */
+/* 540 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57038,7 +55232,7 @@
 	  throw new Error('Invalid locale \'' + locale + '\'');
 	};
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -57093,7 +55287,7 @@
 	var locales = exports.locales = Object.keys(patterns);
 
 /***/ },
-/* 559 */
+/* 541 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57103,7 +55297,7 @@
 	});
 	exports.default = ltrim;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -57119,7 +55313,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 560 */
+/* 542 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57129,7 +55323,7 @@
 	});
 	exports.default = rtrim;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -57151,7 +55345,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 561 */
+/* 543 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57161,11 +55355,11 @@
 	});
 	exports.default = trim;
 	
-	var _rtrim = __webpack_require__(560);
+	var _rtrim = __webpack_require__(542);
 	
 	var _rtrim2 = _interopRequireDefault(_rtrim);
 	
-	var _ltrim = __webpack_require__(559);
+	var _ltrim = __webpack_require__(541);
 	
 	var _ltrim2 = _interopRequireDefault(_ltrim);
 	
@@ -57179,7 +55373,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 562 */
+/* 544 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57189,7 +55383,7 @@
 	});
 	exports.default = escape;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -57204,7 +55398,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 563 */
+/* 545 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57214,7 +55408,7 @@
 	});
 	exports.default = unescape;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -57229,7 +55423,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 564 */
+/* 546 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57239,11 +55433,11 @@
 	});
 	exports.default = stripLow;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
-	var _blacklist = __webpack_require__(565);
+	var _blacklist = __webpack_require__(547);
 	
 	var _blacklist2 = _interopRequireDefault(_blacklist);
 	
@@ -57259,7 +55453,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 565 */
+/* 547 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57269,7 +55463,7 @@
 	});
 	exports.default = blacklist;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -57284,7 +55478,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 566 */
+/* 548 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57294,7 +55488,7 @@
 	});
 	exports.default = whitelist;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -57309,7 +55503,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 567 */
+/* 549 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57319,7 +55513,7 @@
 	});
 	exports.default = isWhitelisted;
 	
-	var _assertString = __webpack_require__(500);
+	var _assertString = __webpack_require__(482);
 	
 	var _assertString2 = _interopRequireDefault(_assertString);
 	
@@ -57339,7 +55533,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 568 */
+/* 550 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57349,7 +55543,7 @@
 	});
 	exports.default = normalizeEmail;
 	
-	var _merge = __webpack_require__(509);
+	var _merge = __webpack_require__(491);
 	
 	var _merge2 = _interopRequireDefault(_merge);
 	
@@ -57475,7 +55669,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 569 */
+/* 551 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -57487,23 +55681,23 @@
 	};
 
 /***/ },
-/* 570 */
+/* 552 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(571);
+	module.exports = __webpack_require__(553);
 
 /***/ },
-/* 571 */
+/* 553 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(572);
-	var bind = __webpack_require__(573);
-	var Axios = __webpack_require__(575);
-	var defaults = __webpack_require__(576);
+	var utils = __webpack_require__(554);
+	var bind = __webpack_require__(555);
+	var Axios = __webpack_require__(557);
+	var defaults = __webpack_require__(558);
 	
 	/**
 	 * Create an instance of Axios
@@ -57536,15 +55730,15 @@
 	};
 	
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(594);
-	axios.CancelToken = __webpack_require__(595);
-	axios.isCancel = __webpack_require__(591);
+	axios.Cancel = __webpack_require__(576);
+	axios.CancelToken = __webpack_require__(577);
+	axios.isCancel = __webpack_require__(573);
 	
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(596);
+	axios.spread = __webpack_require__(578);
 	
 	module.exports = axios;
 	
@@ -57552,15 +55746,15 @@
 	module.exports.default = axios;
 
 /***/ },
-/* 572 */
+/* 554 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var bind = __webpack_require__(573);
-	var isBuffer = __webpack_require__(574);
+	var bind = __webpack_require__(555);
+	var isBuffer = __webpack_require__(556);
 	
 	/*global toString:true*/
 	
@@ -57859,7 +56053,7 @@
 	};
 
 /***/ },
-/* 573 */
+/* 555 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57875,7 +56069,7 @@
 	};
 
 /***/ },
-/* 574 */
+/* 556 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57903,15 +56097,15 @@
 	}
 
 /***/ },
-/* 575 */
+/* 557 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var defaults = __webpack_require__(576);
-	var utils = __webpack_require__(572);
-	var InterceptorManager = __webpack_require__(588);
-	var dispatchRequest = __webpack_require__(589);
+	var defaults = __webpack_require__(558);
+	var utils = __webpack_require__(554);
+	var InterceptorManager = __webpack_require__(570);
+	var dispatchRequest = __webpack_require__(571);
 	
 	/**
 	 * Create a new instance of Axios
@@ -57987,13 +56181,13 @@
 	module.exports = Axios;
 
 /***/ },
-/* 576 */
+/* 558 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(572);
-	var normalizeHeaderName = __webpack_require__(578);
+	var utils = __webpack_require__(554);
+	var normalizeHeaderName = __webpack_require__(560);
 	
 	var DEFAULT_CONTENT_TYPE = {
 	  'Content-Type': 'application/x-www-form-urlencoded'
@@ -58009,10 +56203,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(579);
+	    adapter = __webpack_require__(561);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(579);
+	    adapter = __webpack_require__(561);
 	  }
 	  return adapter;
 	}
@@ -58076,10 +56270,10 @@
 	});
 	
 	module.exports = defaults;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(577)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(559)))
 
 /***/ },
-/* 577 */
+/* 559 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58271,12 +56465,12 @@
 	};
 
 /***/ },
-/* 578 */
+/* 560 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(572);
+	var utils = __webpack_require__(554);
 	
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -58288,18 +56482,18 @@
 	};
 
 /***/ },
-/* 579 */
+/* 561 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(572);
-	var settle = __webpack_require__(580);
-	var buildURL = __webpack_require__(583);
-	var parseHeaders = __webpack_require__(584);
-	var isURLSameOrigin = __webpack_require__(585);
-	var createError = __webpack_require__(581);
-	var btoa = typeof window !== 'undefined' && window.btoa && window.btoa.bind(window) || __webpack_require__(586);
+	var utils = __webpack_require__(554);
+	var settle = __webpack_require__(562);
+	var buildURL = __webpack_require__(565);
+	var parseHeaders = __webpack_require__(566);
+	var isURLSameOrigin = __webpack_require__(567);
+	var createError = __webpack_require__(563);
+	var btoa = typeof window !== 'undefined' && window.btoa && window.btoa.bind(window) || __webpack_require__(568);
 	
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -58392,7 +56586,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(587);
+	      var cookies = __webpack_require__(569);
 	
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ? cookies.read(config.xsrfCookieName) : undefined;
@@ -58465,15 +56659,15 @@
 	    request.send(requestData);
 	  });
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(577)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(559)))
 
 /***/ },
-/* 580 */
+/* 562 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var createError = __webpack_require__(581);
+	var createError = __webpack_require__(563);
 	
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -58493,12 +56687,12 @@
 	};
 
 /***/ },
-/* 581 */
+/* 563 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var enhanceError = __webpack_require__(582);
+	var enhanceError = __webpack_require__(564);
 	
 	/**
 	 * Create an Error with the specified message, config, error code, request and response.
@@ -58516,7 +56710,7 @@
 	};
 
 /***/ },
-/* 582 */
+/* 564 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58543,12 +56737,12 @@
 	};
 
 /***/ },
-/* 583 */
+/* 565 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(572);
+	var utils = __webpack_require__(554);
 	
 	function encode(val) {
 	  return encodeURIComponent(val).replace(/%40/gi, '@').replace(/%3A/gi, ':').replace(/%24/g, '$').replace(/%2C/gi, ',').replace(/%20/g, '+').replace(/%5B/gi, '[').replace(/%5D/gi, ']');
@@ -58609,12 +56803,12 @@
 	};
 
 /***/ },
-/* 584 */
+/* 566 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(572);
+	var utils = __webpack_require__(554);
 	
 	// Headers whose duplicates are ignored by node
 	// c.f. https://nodejs.org/api/http.html#http_message_headers
@@ -58664,12 +56858,12 @@
 	};
 
 /***/ },
-/* 585 */
+/* 567 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(572);
+	var utils = __webpack_require__(554);
 	
 	module.exports = utils.isStandardBrowserEnv() ?
 	
@@ -58732,7 +56926,7 @@
 	}();
 
 /***/ },
-/* 586 */
+/* 568 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58772,12 +56966,12 @@
 	module.exports = btoa;
 
 /***/ },
-/* 587 */
+/* 569 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(572);
+	var utils = __webpack_require__(554);
 	
 	module.exports = utils.isStandardBrowserEnv() ?
 	
@@ -58830,12 +57024,12 @@
 	}();
 
 /***/ },
-/* 588 */
+/* 570 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(572);
+	var utils = __webpack_require__(554);
 	
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -58887,17 +57081,17 @@
 	module.exports = InterceptorManager;
 
 /***/ },
-/* 589 */
+/* 571 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(572);
-	var transformData = __webpack_require__(590);
-	var isCancel = __webpack_require__(591);
-	var defaults = __webpack_require__(576);
-	var isAbsoluteURL = __webpack_require__(592);
-	var combineURLs = __webpack_require__(593);
+	var utils = __webpack_require__(554);
+	var transformData = __webpack_require__(572);
+	var isCancel = __webpack_require__(573);
+	var defaults = __webpack_require__(558);
+	var isAbsoluteURL = __webpack_require__(574);
+	var combineURLs = __webpack_require__(575);
 	
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -58959,12 +57153,12 @@
 	};
 
 /***/ },
-/* 590 */
+/* 572 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(572);
+	var utils = __webpack_require__(554);
 	
 	/**
 	 * Transform the data for a request or a response
@@ -58984,7 +57178,7 @@
 	};
 
 /***/ },
-/* 591 */
+/* 573 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58994,7 +57188,7 @@
 	};
 
 /***/ },
-/* 592 */
+/* 574 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59015,7 +57209,7 @@
 	};
 
 /***/ },
-/* 593 */
+/* 575 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59033,7 +57227,7 @@
 	};
 
 /***/ },
-/* 594 */
+/* 576 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59058,12 +57252,12 @@
 	module.exports = Cancel;
 
 /***/ },
-/* 595 */
+/* 577 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var Cancel = __webpack_require__(594);
+	var Cancel = __webpack_require__(576);
 	
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -59120,7 +57314,7 @@
 	module.exports = CancelToken;
 
 /***/ },
-/* 596 */
+/* 578 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59153,7 +57347,7 @@
 	};
 
 /***/ },
-/* 597 */
+/* 579 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59161,18 +57355,18 @@
 	module.exports = 'https://apiw.lunes.io/api';
 
 /***/ },
-/* 598 */
+/* 580 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var validator = __webpack_require__(497);
+	var validator = __webpack_require__(479);
 	
-	var axios = __webpack_require__(570);
+	var axios = __webpack_require__(552);
 	
-	var BASE_URL = __webpack_require__(597);
+	var BASE_URL = __webpack_require__(579);
 	
 	var endpoint = BASE_URL + '/users/login';
 	
@@ -59220,18 +57414,18 @@
 	}();
 
 /***/ },
-/* 599 */
+/* 581 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var validator = __webpack_require__(497);
+	var validator = __webpack_require__(479);
 	
-	var axios = __webpack_require__(570);
+	var axios = __webpack_require__(552);
 	
-	var BASE_URL = __webpack_require__(597);
+	var BASE_URL = __webpack_require__(579);
 	
 	var endpoint = BASE_URL + '/users/reset-password';
 	
@@ -59279,16 +57473,16 @@
 	}();
 
 /***/ },
-/* 600 */
+/* 582 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(570);
+	var axios = __webpack_require__(552);
 	
-	var BASE_URL = __webpack_require__(597);
+	var BASE_URL = __webpack_require__(579);
 	
 	var endpoint = BASE_URL + '/users/obtain/';
 	
@@ -59328,18 +57522,18 @@
 	}();
 
 /***/ },
-/* 601 */
+/* 583 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(570);
+	var axios = __webpack_require__(552);
 	
-	var validator = __webpack_require__(497);
+	var validator = __webpack_require__(479);
 	
-	var BASE_URL = __webpack_require__(597);
+	var BASE_URL = __webpack_require__(579);
 	
 	var endpoint = BASE_URL + '/users/security-check/create-pin';
 	
@@ -59388,18 +57582,18 @@
 	}();
 
 /***/ },
-/* 602 */
+/* 584 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var validator = __webpack_require__(497);
+	var validator = __webpack_require__(479);
 	
-	var axios = __webpack_require__(570);
+	var axios = __webpack_require__(552);
 	
-	var BASE_URL = __webpack_require__(597);
+	var BASE_URL = __webpack_require__(579);
 	
 	var endpoint = BASE_URL + '/users/confirm-pin';
 	
@@ -59448,16 +57642,16 @@
 	}();
 
 /***/ },
-/* 603 */
+/* 585 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(570);
+	var axios = __webpack_require__(552);
 	
-	var BASE_URL = __webpack_require__(597);
+	var BASE_URL = __webpack_require__(579);
 	
 	var endpoint = BASE_URL + '/users/security-check/confirm-phone';
 	
@@ -59506,16 +57700,16 @@
 	}();
 
 /***/ },
-/* 604 */
+/* 586 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(570);
+	var axios = __webpack_require__(552);
 	
-	var BASE_URL = __webpack_require__(597);
+	var BASE_URL = __webpack_require__(579);
 	
 	var endpoint = BASE_URL + '/users/logout';
 	
@@ -59554,16 +57748,16 @@
 	}();
 
 /***/ },
-/* 605 */
+/* 587 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(570);
+	var axios = __webpack_require__(552);
 	
-	var BASE_URL = __webpack_require__(597);
+	var BASE_URL = __webpack_require__(579);
 	
 	var endpoint = BASE_URL + '/users/update/';
 	
@@ -59603,18 +57797,18 @@
 	}();
 
 /***/ },
-/* 606 */
+/* 588 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var bitcoin = __webpack_require__(607);
-	var getPrice = __webpack_require__(611);
-	var getHistory = __webpack_require__(613);
-	var obtainWallet = __webpack_require__(652);
-	var getFees = __webpack_require__(688);
-	var createDepositWallet = __webpack_require__(691);
-	var getBalance = __webpack_require__(692);
+	var bitcoin = __webpack_require__(589);
+	var getPrice = __webpack_require__(593);
+	var getHistory = __webpack_require__(595);
+	var obtainWallet = __webpack_require__(634);
+	var getFees = __webpack_require__(670);
+	var createDepositWallet = __webpack_require__(673);
+	var getBalance = __webpack_require__(674);
 	
 	module.exports = {
 	  bitcoin: bitcoin,
@@ -59627,14 +57821,14 @@
 	};
 
 /***/ },
-/* 607 */
+/* 589 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var getBalance = __webpack_require__(608);
-	var getHistory = __webpack_require__(609);
-	var createTransaction = __webpack_require__(610);
+	var getBalance = __webpack_require__(590);
+	var getHistory = __webpack_require__(591);
+	var createTransaction = __webpack_require__(592);
 	
 	module.exports = {
 	  getBalance: getBalance,
@@ -59643,16 +57837,16 @@
 	};
 
 /***/ },
-/* 608 */
+/* 590 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(570);
+	var axios = __webpack_require__(552);
 	
-	var endpoint = __webpack_require__(597) + '/coins/balance';
+	var endpoint = __webpack_require__(579) + '/coins/balance';
 	
 	module.exports = function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(params, accessToken) {
@@ -59699,16 +57893,16 @@
 	}();
 
 /***/ },
-/* 609 */
+/* 591 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(570);
+	var axios = __webpack_require__(552);
 	
-	var endpoint = __webpack_require__(597) + '/coins/history';
+	var endpoint = __webpack_require__(579) + '/coins/history';
 	
 	module.exports = function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(params, accessToken) {
@@ -59746,16 +57940,16 @@
 	}();
 
 /***/ },
-/* 610 */
+/* 592 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(570);
+	var axios = __webpack_require__(552);
 	
-	var createEndpoint = __webpack_require__(597) + '/coins/tx/create/btc';
+	var createEndpoint = __webpack_require__(579) + '/coins/tx/create/btc';
 	
 	/**
 	 *
@@ -59830,17 +58024,17 @@
 	}();
 
 /***/ },
-/* 611 */
+/* 593 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(570);
-	var validator = __webpack_require__(497);
+	var axios = __webpack_require__(552);
+	var validator = __webpack_require__(479);
 	
-	var endpoint = __webpack_require__(612) + '/price';
+	var endpoint = __webpack_require__(594) + '/price';
 	
 	module.exports = function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(params) {
@@ -59881,7 +58075,7 @@
 	}();
 
 /***/ },
-/* 612 */
+/* 594 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59889,17 +58083,17 @@
 	module.exports = 'https://min-api.cryptocompare.com/data';
 
 /***/ },
-/* 613 */
+/* 595 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(570);
-	var Promise = __webpack_require__(614);
+	var axios = __webpack_require__(552);
+	var Promise = __webpack_require__(596);
 	
-	var apiUrl = '' + __webpack_require__(612);
+	var apiUrl = '' + __webpack_require__(594);
 	
 	module.exports = function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(params) {
@@ -60003,7 +58197,7 @@
 	};
 
 /***/ },
-/* 614 */
+/* 596 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -60016,12 +58210,12 @@
 	    } catch (e) {}
 	    return bluebird;
 	}
-	var bluebird = __webpack_require__(615)();
+	var bluebird = __webpack_require__(597)();
 	bluebird.noConflict = noConflict;
 	module.exports = bluebird;
 
 /***/ },
-/* 615 */
+/* 597 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -60038,7 +58232,7 @@
 	    };
 	    function Proxyable() {}
 	    var UNDEFINED_BINDING = {};
-	    var util = __webpack_require__(616);
+	    var util = __webpack_require__(598);
 	
 	    var getDomain;
 	    if (util.isNode) {
@@ -60054,11 +58248,11 @@
 	    }
 	    util.notEnumerableProp(Promise, "_getDomain", getDomain);
 	
-	    var es5 = __webpack_require__(617);
-	    var Async = __webpack_require__(618);
+	    var es5 = __webpack_require__(599);
+	    var Async = __webpack_require__(600);
 	    var async = new Async();
 	    es5.defineProperty(Promise, "_async", { value: async });
-	    var errors = __webpack_require__(623);
+	    var errors = __webpack_require__(605);
 	    var TypeError = Promise.TypeError = errors.TypeError;
 	    Promise.RangeError = errors.RangeError;
 	    var CancellationError = Promise.CancellationError = errors.CancellationError;
@@ -60069,16 +58263,16 @@
 	    var INTERNAL = function INTERNAL() {};
 	    var APPLY = {};
 	    var NEXT_FILTER = {};
-	    var tryConvertToPromise = __webpack_require__(624)(Promise, INTERNAL);
-	    var PromiseArray = __webpack_require__(625)(Promise, INTERNAL, tryConvertToPromise, apiRejection, Proxyable);
-	    var Context = __webpack_require__(626)(Promise);
+	    var tryConvertToPromise = __webpack_require__(606)(Promise, INTERNAL);
+	    var PromiseArray = __webpack_require__(607)(Promise, INTERNAL, tryConvertToPromise, apiRejection, Proxyable);
+	    var Context = __webpack_require__(608)(Promise);
 	    /*jshint unused:false*/
 	    var createContext = Context.create;
-	    var debug = __webpack_require__(627)(Promise, Context);
+	    var debug = __webpack_require__(609)(Promise, Context);
 	    var CapturedTrace = debug.CapturedTrace;
-	    var PassThroughHandlerContext = __webpack_require__(628)(Promise, tryConvertToPromise, NEXT_FILTER);
-	    var catchFilter = __webpack_require__(629)(NEXT_FILTER);
-	    var nodebackForPromise = __webpack_require__(630);
+	    var PassThroughHandlerContext = __webpack_require__(610)(Promise, tryConvertToPromise, NEXT_FILTER);
+	    var catchFilter = __webpack_require__(611)(NEXT_FILTER);
+	    var nodebackForPromise = __webpack_require__(612);
 	    var errorObj = util.errorObj;
 	    var tryCatch = util.tryCatch;
 	    function check(self, executor) {
@@ -60713,29 +58907,29 @@
 	
 	    util.notEnumerableProp(Promise, "_makeSelfResolutionError", makeSelfResolutionError);
 	
-	    __webpack_require__(631)(Promise, INTERNAL, tryConvertToPromise, apiRejection, debug);
-	    __webpack_require__(632)(Promise, INTERNAL, tryConvertToPromise, debug);
-	    __webpack_require__(633)(Promise, PromiseArray, apiRejection, debug);
-	    __webpack_require__(634)(Promise);
-	    __webpack_require__(635)(Promise);
-	    __webpack_require__(636)(Promise, PromiseArray, tryConvertToPromise, INTERNAL, async, getDomain);
+	    __webpack_require__(613)(Promise, INTERNAL, tryConvertToPromise, apiRejection, debug);
+	    __webpack_require__(614)(Promise, INTERNAL, tryConvertToPromise, debug);
+	    __webpack_require__(615)(Promise, PromiseArray, apiRejection, debug);
+	    __webpack_require__(616)(Promise);
+	    __webpack_require__(617)(Promise);
+	    __webpack_require__(618)(Promise, PromiseArray, tryConvertToPromise, INTERNAL, async, getDomain);
 	    Promise.Promise = Promise;
 	    Promise.version = "3.5.1";
-	    __webpack_require__(637)(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
-	    __webpack_require__(638)(Promise);
-	    __webpack_require__(639)(Promise, apiRejection, tryConvertToPromise, createContext, INTERNAL, debug);
-	    __webpack_require__(640)(Promise, INTERNAL, debug);
-	    __webpack_require__(641)(Promise, apiRejection, INTERNAL, tryConvertToPromise, Proxyable, debug);
-	    __webpack_require__(642)(Promise);
-	    __webpack_require__(643)(Promise, INTERNAL);
-	    __webpack_require__(644)(Promise, PromiseArray, tryConvertToPromise, apiRejection);
-	    __webpack_require__(645)(Promise, INTERNAL, tryConvertToPromise, apiRejection);
-	    __webpack_require__(646)(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
-	    __webpack_require__(647)(Promise, PromiseArray, debug);
-	    __webpack_require__(648)(Promise, PromiseArray, apiRejection);
-	    __webpack_require__(649)(Promise, INTERNAL);
-	    __webpack_require__(650)(Promise, INTERNAL);
-	    __webpack_require__(651)(Promise);
+	    __webpack_require__(619)(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
+	    __webpack_require__(620)(Promise);
+	    __webpack_require__(621)(Promise, apiRejection, tryConvertToPromise, createContext, INTERNAL, debug);
+	    __webpack_require__(622)(Promise, INTERNAL, debug);
+	    __webpack_require__(623)(Promise, apiRejection, INTERNAL, tryConvertToPromise, Proxyable, debug);
+	    __webpack_require__(624)(Promise);
+	    __webpack_require__(625)(Promise, INTERNAL);
+	    __webpack_require__(626)(Promise, PromiseArray, tryConvertToPromise, apiRejection);
+	    __webpack_require__(627)(Promise, INTERNAL, tryConvertToPromise, apiRejection);
+	    __webpack_require__(628)(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
+	    __webpack_require__(629)(Promise, PromiseArray, debug);
+	    __webpack_require__(630)(Promise, PromiseArray, apiRejection);
+	    __webpack_require__(631)(Promise, INTERNAL);
+	    __webpack_require__(632)(Promise, INTERNAL);
+	    __webpack_require__(633)(Promise);
 	
 	    util.toFastProperties(Promise);
 	    util.toFastProperties(Promise.prototype);
@@ -60759,17 +58953,17 @@
 	    debug.setBounds(Async.firstLineError, util.lastLineError);
 	    return Promise;
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(577)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(559)))
 
 /***/ },
-/* 616 */
+/* 598 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {"use strict";
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var es5 = __webpack_require__(617);
+	var es5 = __webpack_require__(599);
 	var canEvaluate = typeof navigator == "undefined";
 	
 	var errorObj = { e: {} };
@@ -61128,10 +59322,10 @@
 	    ret.lastLineError = e;
 	}
 	module.exports = ret;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(577)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(559)))
 
 /***/ },
-/* 617 */
+/* 599 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -61217,7 +59411,7 @@
 	}
 
 /***/ },
-/* 618 */
+/* 600 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -61228,9 +59422,9 @@
 	} catch (e) {
 	    firstLineError = e;
 	}
-	var schedule = __webpack_require__(619);
-	var Queue = __webpack_require__(622);
-	var util = __webpack_require__(616);
+	var schedule = __webpack_require__(601);
+	var Queue = __webpack_require__(604);
+	var util = __webpack_require__(598);
 	
 	function Async() {
 	    this._customScheduler = false;
@@ -61386,15 +59580,15 @@
 	
 	module.exports = Async;
 	module.exports.firstLineError = firstLineError;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(577)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(559)))
 
 /***/ },
-/* 619 */
+/* 601 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process, setImmediate) {"use strict";
 	
-	var util = __webpack_require__(616);
+	var util = __webpack_require__(598);
 	var schedule;
 	var noAsyncScheduler = function noAsyncScheduler() {
 	    throw new Error("No async scheduler available\n\n    See http://goo.gl/MqrFmX\n");
@@ -61452,10 +59646,10 @@
 	    schedule = noAsyncScheduler;
 	}
 	module.exports = schedule;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(577), __webpack_require__(620).setImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(559), __webpack_require__(602).setImmediate))
 
 /***/ },
-/* 620 */
+/* 602 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -61508,12 +59702,12 @@
 	};
 	
 	// setimmediate attaches itself to the global object
-	__webpack_require__(621);
+	__webpack_require__(603);
 	exports.setImmediate = setImmediate;
 	exports.clearImmediate = clearImmediate;
 
 /***/ },
-/* 621 */
+/* 603 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {"use strict";
@@ -61700,10 +59894,10 @@
 	    attachTo.setImmediate = setImmediate;
 	    attachTo.clearImmediate = clearImmediate;
 	})(typeof self === "undefined" ? typeof global === "undefined" ? undefined : global : self);
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(577)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(559)))
 
 /***/ },
-/* 622 */
+/* 604 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -61782,14 +59976,14 @@
 	module.exports = Queue;
 
 /***/ },
-/* 623 */
+/* 605 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var es5 = __webpack_require__(617);
+	var es5 = __webpack_require__(599);
 	var Objectfreeze = es5.freeze;
-	var util = __webpack_require__(616);
+	var util = __webpack_require__(598);
 	var inherits = util.inherits;
 	var notEnumerableProp = util.notEnumerableProp;
 	
@@ -61900,13 +60094,13 @@
 	};
 
 /***/ },
-/* 624 */
+/* 606 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, INTERNAL) {
-	    var util = __webpack_require__(616);
+	    var util = __webpack_require__(598);
 	    var errorObj = util.errorObj;
 	    var isObject = util.isObject;
 	
@@ -61986,13 +60180,13 @@
 	};
 
 /***/ },
-/* 625 */
+/* 607 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, INTERNAL, tryConvertToPromise, apiRejection, Proxyable) {
-	    var util = __webpack_require__(616);
+	    var util = __webpack_require__(598);
 	    var isArray = util.isArray;
 	
 	    function toResolutionValue(val) {
@@ -62171,7 +60365,7 @@
 	};
 
 /***/ },
-/* 626 */
+/* 608 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -62248,7 +60442,7 @@
 	};
 
 /***/ },
-/* 627 */
+/* 609 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -62258,8 +60452,8 @@
 	module.exports = function (Promise, Context) {
 	    var getDomain = Promise._getDomain;
 	    var async = Promise._async;
-	    var Warning = __webpack_require__(623).Warning;
-	    var util = __webpack_require__(616);
+	    var Warning = __webpack_require__(605).Warning;
+	    var util = __webpack_require__(598);
 	    var canAttachTrace = util.canAttachTrace;
 	    var unhandledRejectionHandled;
 	    var possiblyUnhandledRejection;
@@ -63130,19 +61324,19 @@
 	        fireGlobalEvent: fireGlobalEvent
 	    };
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(577)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(559)))
 
 /***/ },
-/* 628 */
+/* 610 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, tryConvertToPromise, NEXT_FILTER) {
-	    var util = __webpack_require__(616);
+	    var util = __webpack_require__(598);
 	    var CancellationError = Promise.CancellationError;
 	    var errorObj = util.errorObj;
-	    var catchFilter = __webpack_require__(629)(NEXT_FILTER);
+	    var catchFilter = __webpack_require__(611)(NEXT_FILTER);
 	
 	    function PassThroughHandlerContext(promise, type, handler) {
 	        this.promise = promise;
@@ -63262,14 +61456,14 @@
 	};
 
 /***/ },
-/* 629 */
+/* 611 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (NEXT_FILTER) {
-	    var util = __webpack_require__(616);
-	    var getKeys = __webpack_require__(617).keys;
+	    var util = __webpack_require__(598);
+	    var getKeys = __webpack_require__(599).keys;
 	    var tryCatch = util.tryCatch;
 	    var errorObj = util.errorObj;
 	
@@ -63309,16 +61503,16 @@
 	};
 
 /***/ },
-/* 630 */
+/* 612 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var util = __webpack_require__(616);
+	var util = __webpack_require__(598);
 	var maybeWrapAsError = util.maybeWrapAsError;
-	var errors = __webpack_require__(623);
+	var errors = __webpack_require__(605);
 	var OperationalError = errors.OperationalError;
-	var es5 = __webpack_require__(617);
+	var es5 = __webpack_require__(599);
 	
 	function isUntypedError(obj) {
 	    return obj instanceof Error && es5.getPrototypeOf(obj) === Error.prototype;
@@ -63367,13 +61561,13 @@
 	module.exports = nodebackForPromise;
 
 /***/ },
-/* 631 */
+/* 613 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, INTERNAL, tryConvertToPromise, apiRejection, debug) {
-	    var util = __webpack_require__(616);
+	    var util = __webpack_require__(598);
 	    var tryCatch = util.tryCatch;
 	
 	    Promise.method = function (fn) {
@@ -63424,7 +61618,7 @@
 	};
 
 /***/ },
-/* 632 */
+/* 614 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -63496,13 +61690,13 @@
 	};
 
 /***/ },
-/* 633 */
+/* 615 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, apiRejection, debug) {
-	    var util = __webpack_require__(616);
+	    var util = __webpack_require__(598);
 	    var tryCatch = util.tryCatch;
 	    var errorObj = util.errorObj;
 	    var async = Promise._async;
@@ -63629,7 +61823,7 @@
 	};
 
 /***/ },
-/* 634 */
+/* 616 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -63679,7 +61873,7 @@
 	};
 
 /***/ },
-/* 635 */
+/* 617 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -63785,13 +61979,13 @@
 	};
 
 /***/ },
-/* 636 */
+/* 618 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, tryConvertToPromise, INTERNAL, async, getDomain) {
-	    var util = __webpack_require__(616);
+	    var util = __webpack_require__(598);
 	    var canEvaluate = util.canEvaluate;
 	    var tryCatch = util.tryCatch;
 	    var errorObj = util.errorObj;
@@ -63951,7 +62145,7 @@
 	};
 
 /***/ },
-/* 637 */
+/* 619 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63960,7 +62154,7 @@
 	
 	module.exports = function (Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug) {
 	    var getDomain = Promise._getDomain;
-	    var util = __webpack_require__(616);
+	    var util = __webpack_require__(598);
 	    var tryCatch = util.tryCatch;
 	    var errorObj = util.errorObj;
 	    var async = Promise._async;
@@ -64108,7 +62302,7 @@
 	};
 
 /***/ },
-/* 638 */
+/* 620 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64121,7 +62315,7 @@
 	}
 	
 	module.exports = function (Promise) {
-	    var util = __webpack_require__(616);
+	    var util = __webpack_require__(598);
 	    var canEvaluate = util.canEvaluate;
 	    var isIdentifier = util.isIdentifier;
 	
@@ -64238,15 +62432,15 @@
 	};
 
 /***/ },
-/* 639 */
+/* 621 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, apiRejection, tryConvertToPromise, createContext, INTERNAL, debug) {
-	    var util = __webpack_require__(616);
-	    var TypeError = __webpack_require__(623).TypeError;
-	    var inherits = __webpack_require__(616).inherits;
+	    var util = __webpack_require__(598);
+	    var TypeError = __webpack_require__(605).TypeError;
+	    var inherits = __webpack_require__(598).inherits;
 	    var errorObj = util.errorObj;
 	    var tryCatch = util.tryCatch;
 	    var NULL = {};
@@ -64455,13 +62649,13 @@
 	};
 
 /***/ },
-/* 640 */
+/* 622 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, INTERNAL, debug) {
-	    var util = __webpack_require__(616);
+	    var util = __webpack_require__(598);
 	    var TimeoutError = Promise.TimeoutError;
 	
 	    function HandleWrapper(handle) {
@@ -64554,15 +62748,15 @@
 	};
 
 /***/ },
-/* 641 */
+/* 623 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, apiRejection, INTERNAL, tryConvertToPromise, Proxyable, debug) {
-	    var errors = __webpack_require__(623);
+	    var errors = __webpack_require__(605);
 	    var TypeError = errors.TypeError;
-	    var util = __webpack_require__(616);
+	    var util = __webpack_require__(598);
 	    var errorObj = util.errorObj;
 	    var tryCatch = util.tryCatch;
 	    var yieldHandlers = [];
@@ -64757,13 +62951,13 @@
 	};
 
 /***/ },
-/* 642 */
+/* 624 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise) {
-	    var util = __webpack_require__(616);
+	    var util = __webpack_require__(598);
 	    var async = Promise._async;
 	    var tryCatch = util.tryCatch;
 	    var errorObj = util.errorObj;
@@ -64811,7 +63005,7 @@
 	};
 
 /***/ },
-/* 643 */
+/* 625 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64820,12 +63014,12 @@
 	
 	module.exports = function (Promise, INTERNAL) {
 	    var THIS = {};
-	    var util = __webpack_require__(616);
-	    var nodebackForPromise = __webpack_require__(630);
+	    var util = __webpack_require__(598);
+	    var nodebackForPromise = __webpack_require__(612);
 	    var withAppended = util.withAppended;
 	    var maybeWrapAsError = util.maybeWrapAsError;
 	    var canEvaluate = util.canEvaluate;
-	    var TypeError = __webpack_require__(623).TypeError;
+	    var TypeError = __webpack_require__(605).TypeError;
 	    var defaultSuffix = "Async";
 	    var defaultPromisified = { __isPromisified__: true };
 	    var noCopyProps = ["arity", "length", "name", "arguments", "caller", "callee", "prototype", "__isPromisified__"];
@@ -65078,15 +63272,15 @@
 	};
 
 /***/ },
-/* 644 */
+/* 626 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, tryConvertToPromise, apiRejection) {
-	    var util = __webpack_require__(616);
+	    var util = __webpack_require__(598);
 	    var isObject = util.isObject;
-	    var es5 = __webpack_require__(617);
+	    var es5 = __webpack_require__(599);
 	    var Es6Map;
 	    if (typeof Map === "function") Es6Map = Map;
 	
@@ -65200,13 +63394,13 @@
 	};
 
 /***/ },
-/* 645 */
+/* 627 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, INTERNAL, tryConvertToPromise, apiRejection) {
-	    var util = __webpack_require__(616);
+	    var util = __webpack_require__(598);
 	
 	    var raceLater = function raceLater(promise) {
 	        return promise.then(function (array) {
@@ -65252,14 +63446,14 @@
 	};
 
 /***/ },
-/* 646 */
+/* 628 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug) {
 	    var getDomain = Promise._getDomain;
-	    var util = __webpack_require__(616);
+	    var util = __webpack_require__(598);
 	    var tryCatch = util.tryCatch;
 	
 	    function ReductionPromiseArray(promises, fn, initialValue, _each) {
@@ -65415,14 +63609,14 @@
 	};
 
 /***/ },
-/* 647 */
+/* 629 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, debug) {
 	    var PromiseInspection = Promise.PromiseInspection;
-	    var util = __webpack_require__(616);
+	    var util = __webpack_require__(598);
 	
 	    function SettledPromiseArray(values) {
 	        this.constructor$(values);
@@ -65463,15 +63657,15 @@
 	};
 
 /***/ },
-/* 648 */
+/* 630 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, apiRejection) {
-	    var util = __webpack_require__(616);
-	    var RangeError = __webpack_require__(623).RangeError;
-	    var AggregateError = __webpack_require__(623).AggregateError;
+	    var util = __webpack_require__(598);
+	    var RangeError = __webpack_require__(605).RangeError;
+	    var AggregateError = __webpack_require__(605).AggregateError;
 	    var isArray = util.isArray;
 	    var CANCELLATION = {};
 	
@@ -65611,7 +63805,7 @@
 	};
 
 /***/ },
-/* 649 */
+/* 631 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -65629,7 +63823,7 @@
 	};
 
 /***/ },
-/* 650 */
+/* 632 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -65662,7 +63856,7 @@
 	};
 
 /***/ },
-/* 651 */
+/* 633 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -65688,12 +63882,12 @@
 	};
 
 /***/ },
-/* 652 */
+/* 634 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var Mnemonic = __webpack_require__(653);
+	var Mnemonic = __webpack_require__(635);
 	
 	module.exports = function (encryptedWallet, password) {
 	  try {
@@ -65708,12 +63902,12 @@
 	};
 
 /***/ },
-/* 653 */
+/* 635 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var CryptoJS = __webpack_require__(654);
+	var CryptoJS = __webpack_require__(636);
 	
 	var encryptMnemonic = function encryptMnemonic(mnemonic, passphrase) {
 	  var ciphertext = CryptoJS.AES.encrypt(mnemonic, passphrase);
@@ -65732,7 +63926,7 @@
 	};
 
 /***/ },
-/* 654 */
+/* 636 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -65742,10 +63936,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(656), __webpack_require__(657), __webpack_require__(658), __webpack_require__(659), __webpack_require__(660), __webpack_require__(661), __webpack_require__(662), __webpack_require__(663), __webpack_require__(664), __webpack_require__(665), __webpack_require__(666), __webpack_require__(667), __webpack_require__(668), __webpack_require__(669), __webpack_require__(670), __webpack_require__(671), __webpack_require__(672), __webpack_require__(673), __webpack_require__(674), __webpack_require__(675), __webpack_require__(676), __webpack_require__(677), __webpack_require__(678), __webpack_require__(679), __webpack_require__(680), __webpack_require__(681), __webpack_require__(682), __webpack_require__(683), __webpack_require__(684), __webpack_require__(685), __webpack_require__(686), __webpack_require__(687));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(638), __webpack_require__(639), __webpack_require__(640), __webpack_require__(641), __webpack_require__(642), __webpack_require__(643), __webpack_require__(644), __webpack_require__(645), __webpack_require__(646), __webpack_require__(647), __webpack_require__(648), __webpack_require__(649), __webpack_require__(650), __webpack_require__(651), __webpack_require__(652), __webpack_require__(653), __webpack_require__(654), __webpack_require__(655), __webpack_require__(656), __webpack_require__(657), __webpack_require__(658), __webpack_require__(659), __webpack_require__(660), __webpack_require__(661), __webpack_require__(662), __webpack_require__(663), __webpack_require__(664), __webpack_require__(665), __webpack_require__(666), __webpack_require__(667), __webpack_require__(668), __webpack_require__(669));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(656), __webpack_require__(657), __webpack_require__(658), __webpack_require__(659), __webpack_require__(660), __webpack_require__(661), __webpack_require__(662), __webpack_require__(663), __webpack_require__(664), __webpack_require__(665), __webpack_require__(666), __webpack_require__(667), __webpack_require__(668), __webpack_require__(669), __webpack_require__(670), __webpack_require__(671), __webpack_require__(672), __webpack_require__(673), __webpack_require__(674), __webpack_require__(675), __webpack_require__(676), __webpack_require__(677), __webpack_require__(678), __webpack_require__(679), __webpack_require__(680), __webpack_require__(681), __webpack_require__(682), __webpack_require__(683), __webpack_require__(684), __webpack_require__(685), __webpack_require__(686), __webpack_require__(687)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(638), __webpack_require__(639), __webpack_require__(640), __webpack_require__(641), __webpack_require__(642), __webpack_require__(643), __webpack_require__(644), __webpack_require__(645), __webpack_require__(646), __webpack_require__(647), __webpack_require__(648), __webpack_require__(649), __webpack_require__(650), __webpack_require__(651), __webpack_require__(652), __webpack_require__(653), __webpack_require__(654), __webpack_require__(655), __webpack_require__(656), __webpack_require__(657), __webpack_require__(658), __webpack_require__(659), __webpack_require__(660), __webpack_require__(661), __webpack_require__(662), __webpack_require__(663), __webpack_require__(664), __webpack_require__(665), __webpack_require__(666), __webpack_require__(667), __webpack_require__(668), __webpack_require__(669)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			root.CryptoJS = factory(root.CryptoJS);
@@ -65756,7 +63950,7 @@
 	});
 
 /***/ },
-/* 655 */
+/* 637 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66519,7 +64713,7 @@
 	});
 
 /***/ },
-/* 656 */
+/* 638 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66529,10 +64723,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655));
+			module.exports = exports = factory(__webpack_require__(637));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -66828,7 +65022,7 @@
 	});
 
 /***/ },
-/* 657 */
+/* 639 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66838,10 +65032,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655));
+			module.exports = exports = factory(__webpack_require__(637));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -66900,7 +65094,7 @@
 	});
 
 /***/ },
-/* 658 */
+/* 640 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66910,10 +65104,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655));
+			module.exports = exports = factory(__webpack_require__(637));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67054,7 +65248,7 @@
 	});
 
 /***/ },
-/* 659 */
+/* 641 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67064,10 +65258,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655));
+			module.exports = exports = factory(__webpack_require__(637));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67193,7 +65387,7 @@
 	});
 
 /***/ },
-/* 660 */
+/* 642 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67203,10 +65397,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655));
+			module.exports = exports = factory(__webpack_require__(637));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67453,7 +65647,7 @@
 	});
 
 /***/ },
-/* 661 */
+/* 643 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67463,10 +65657,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655));
+			module.exports = exports = factory(__webpack_require__(637));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67604,7 +65798,7 @@
 	});
 
 /***/ },
-/* 662 */
+/* 644 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67614,10 +65808,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655));
+			module.exports = exports = factory(__webpack_require__(637));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67804,7 +65998,7 @@
 	});
 
 /***/ },
-/* 663 */
+/* 645 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67814,10 +66008,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(662));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(644));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(662)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(644)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67886,7 +66080,7 @@
 	});
 
 /***/ },
-/* 664 */
+/* 646 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67896,10 +66090,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(656));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(638));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(656)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(638)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -68168,7 +66362,7 @@
 	});
 
 /***/ },
-/* 665 */
+/* 647 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -68178,10 +66372,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(656), __webpack_require__(664));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(638), __webpack_require__(646));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(656), __webpack_require__(664)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(638), __webpack_require__(646)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -68251,7 +66445,7 @@
 	});
 
 /***/ },
-/* 666 */
+/* 648 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -68261,10 +66455,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(656));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(638));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(656)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(638)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -68569,7 +66763,7 @@
 	});
 
 /***/ },
-/* 667 */
+/* 649 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -68579,10 +66773,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655));
+			module.exports = exports = factory(__webpack_require__(637));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -68809,7 +67003,7 @@
 	});
 
 /***/ },
-/* 668 */
+/* 650 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -68819,10 +67013,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655));
+			module.exports = exports = factory(__webpack_require__(637));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -68957,7 +67151,7 @@
 	});
 
 /***/ },
-/* 669 */
+/* 651 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -68967,10 +67161,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(661), __webpack_require__(668));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(643), __webpack_require__(650));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(661), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(643), __webpack_require__(650)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -69107,7 +67301,7 @@
 	});
 
 /***/ },
-/* 670 */
+/* 652 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -69117,10 +67311,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(661), __webpack_require__(668));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(643), __webpack_require__(650));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(661), __webpack_require__(668)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(643), __webpack_require__(650)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -69244,7 +67438,7 @@
 	});
 
 /***/ },
-/* 671 */
+/* 653 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -69254,10 +67448,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(670));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(652));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(670)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(652)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70129,7 +68323,7 @@
 	});
 
 /***/ },
-/* 672 */
+/* 654 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70139,10 +68333,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(671));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(653));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(671)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(653)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70212,7 +68406,7 @@
 	});
 
 /***/ },
-/* 673 */
+/* 655 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70222,10 +68416,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(671));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(653));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(671)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(653)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70275,7 +68469,7 @@
 	});
 
 /***/ },
-/* 674 */
+/* 656 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70285,10 +68479,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(671));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(653));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(671)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(653)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70382,7 +68576,7 @@
 	});
 
 /***/ },
-/* 675 */
+/* 657 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70392,10 +68586,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(671));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(653));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(671)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(653)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70441,7 +68635,7 @@
 	});
 
 /***/ },
-/* 676 */
+/* 658 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70451,10 +68645,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(671));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(653));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(671)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(653)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70486,7 +68680,7 @@
 	});
 
 /***/ },
-/* 677 */
+/* 659 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70496,10 +68690,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(671));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(653));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(671)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(653)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70540,7 +68734,7 @@
 	});
 
 /***/ },
-/* 678 */
+/* 660 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70550,10 +68744,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(671));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(653));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(671)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(653)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70588,7 +68782,7 @@
 	});
 
 /***/ },
-/* 679 */
+/* 661 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70598,10 +68792,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(671));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(653));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(671)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(653)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70633,7 +68827,7 @@
 	});
 
 /***/ },
-/* 680 */
+/* 662 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70643,10 +68837,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(671));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(653));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(671)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(653)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70683,7 +68877,7 @@
 	});
 
 /***/ },
-/* 681 */
+/* 663 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70693,10 +68887,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(671));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(653));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(671)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(653)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70716,7 +68910,7 @@
 	});
 
 /***/ },
-/* 682 */
+/* 664 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70726,10 +68920,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(671));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(653));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(671)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(653)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70787,7 +68981,7 @@
 	});
 
 /***/ },
-/* 683 */
+/* 665 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70797,10 +68991,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(659), __webpack_require__(660), __webpack_require__(670), __webpack_require__(671));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(641), __webpack_require__(642), __webpack_require__(652), __webpack_require__(653));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(659), __webpack_require__(660), __webpack_require__(670), __webpack_require__(671)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(641), __webpack_require__(642), __webpack_require__(652), __webpack_require__(653)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -71023,7 +69217,7 @@
 	});
 
 /***/ },
-/* 684 */
+/* 666 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -71033,10 +69227,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(659), __webpack_require__(660), __webpack_require__(670), __webpack_require__(671));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(641), __webpack_require__(642), __webpack_require__(652), __webpack_require__(653));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(659), __webpack_require__(660), __webpack_require__(670), __webpack_require__(671)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(641), __webpack_require__(642), __webpack_require__(652), __webpack_require__(653)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -71769,7 +69963,7 @@
 	});
 
 /***/ },
-/* 685 */
+/* 667 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -71779,10 +69973,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(659), __webpack_require__(660), __webpack_require__(670), __webpack_require__(671));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(641), __webpack_require__(642), __webpack_require__(652), __webpack_require__(653));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(659), __webpack_require__(660), __webpack_require__(670), __webpack_require__(671)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(641), __webpack_require__(642), __webpack_require__(652), __webpack_require__(653)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -71913,7 +70107,7 @@
 	});
 
 /***/ },
-/* 686 */
+/* 668 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -71923,10 +70117,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(659), __webpack_require__(660), __webpack_require__(670), __webpack_require__(671));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(641), __webpack_require__(642), __webpack_require__(652), __webpack_require__(653));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(659), __webpack_require__(660), __webpack_require__(670), __webpack_require__(671)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(641), __webpack_require__(642), __webpack_require__(652), __webpack_require__(653)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -72098,7 +70292,7 @@
 	});
 
 /***/ },
-/* 687 */
+/* 669 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -72108,10 +70302,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(655), __webpack_require__(659), __webpack_require__(660), __webpack_require__(670), __webpack_require__(671));
+			module.exports = exports = factory(__webpack_require__(637), __webpack_require__(641), __webpack_require__(642), __webpack_require__(652), __webpack_require__(653));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(655), __webpack_require__(659), __webpack_require__(660), __webpack_require__(670), __webpack_require__(671)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(637), __webpack_require__(641), __webpack_require__(642), __webpack_require__(652), __webpack_require__(653)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -72282,15 +70476,15 @@
 	});
 
 /***/ },
-/* 688 */
+/* 670 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(570);
-	var _ = __webpack_require__(689);
+	var axios = __webpack_require__(552);
+	var _ = __webpack_require__(671);
 	
 	var feeURL = 'https://bitaps.com/api/fee';
 	
@@ -72337,7 +70531,7 @@
 	};
 
 /***/ },
-/* 689 */
+/* 671 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {'use strict';var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};/**
@@ -81748,7 +79942,7 @@
 	lodash.prototype.at=wrapperAt;lodash.prototype.chain=wrapperChain;lodash.prototype.commit=wrapperCommit;lodash.prototype.next=wrapperNext;lodash.prototype.plant=wrapperPlant;lodash.prototype.reverse=wrapperReverse;lodash.prototype.toJSON=lodash.prototype.valueOf=lodash.prototype.value=wrapperValue;// Add lazy aliases.
 	lodash.prototype.first=lodash.prototype.head;if(symIterator){lodash.prototype[symIterator]=wrapperToIterator;}return lodash;};/*--------------------------------------------------------------------------*/// Export lodash.
 	var _=runInContext();// Some AMD build optimizers, like r.js, check for condition patterns like:
-	if("function"=='function'&&_typeof(__webpack_require__(690))=='object'&&__webpack_require__(690)){// Expose Lodash on the global object to prevent errors when Lodash is
+	if("function"=='function'&&_typeof(__webpack_require__(672))=='object'&&__webpack_require__(672)){// Expose Lodash on the global object to prevent errors when Lodash is
 	// loaded by a script tag in the presence of an AMD loader.
 	// See http://requirejs.org/docs/errors.html#mismatch for more details.
 	// Use `_.noConflict` to remove Lodash from the global object.
@@ -81762,7 +79956,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(323)(module)))
 
 /***/ },
-/* 690 */
+/* 672 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
@@ -81770,16 +79964,16 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
-/* 691 */
+/* 673 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(570);
+	var axios = __webpack_require__(552);
 	
-	var createDepositWalletEndpoint = __webpack_require__(597) + '/deposit/wallet/create';
+	var createDepositWalletEndpoint = __webpack_require__(579) + '/deposit/wallet/create';
 	
 	/**
 	 *
@@ -81864,16 +80058,16 @@
 	}();
 
 /***/ },
-/* 692 */
+/* 674 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(570);
+	var axios = __webpack_require__(552);
 	
-	var endpoint = __webpack_require__(597) + '/coins/balance';
+	var endpoint = __webpack_require__(579) + '/coins/balance';
 	
 	module.exports = function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(params, accessToken) {
@@ -81920,18 +80114,18 @@
 	}();
 
 /***/ },
-/* 693 */
+/* 675 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var buyCoin = __webpack_require__(694);
-	var buyConversion = __webpack_require__(695);
-	var buyBalance = __webpack_require__(696);
-	var buyHistory = __webpack_require__(697);
-	var coinAmount = __webpack_require__(698);
-	var confirmTerm = __webpack_require__(699);
-	var obtainPhase = __webpack_require__(700);
+	var buyCoin = __webpack_require__(676);
+	var buyConversion = __webpack_require__(677);
+	var buyBalance = __webpack_require__(678);
+	var buyHistory = __webpack_require__(679);
+	var coinAmount = __webpack_require__(680);
+	var confirmTerm = __webpack_require__(681);
+	var obtainPhase = __webpack_require__(682);
 	
 	module.exports = {
 	  buyCoin: buyCoin,
@@ -81944,16 +80138,16 @@
 	};
 
 /***/ },
-/* 694 */
+/* 676 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(570);
+	var axios = __webpack_require__(552);
 	
-	var buyEndpoint = __webpack_require__(597) + '/ico/buy';
+	var buyEndpoint = __webpack_require__(579) + '/ico/buy';
 	
 	/**
 	 *
@@ -82028,7 +80222,7 @@
 	}();
 
 /***/ },
-/* 695 */
+/* 677 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -82107,16 +80301,16 @@
 	};
 
 /***/ },
-/* 696 */
+/* 678 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(570);
+	var axios = __webpack_require__(552);
 	
-	var buyBalanceEndpoint = __webpack_require__(597) + '/ico/buy-balance';
+	var buyBalanceEndpoint = __webpack_require__(579) + '/ico/buy-balance';
 	
 	/**
 	 *
@@ -82191,16 +80385,16 @@
 	}();
 
 /***/ },
-/* 697 */
+/* 679 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(570);
+	var axios = __webpack_require__(552);
 	
-	var buyHistoryEndpoint = __webpack_require__(597) + '/ico/buy-history';
+	var buyHistoryEndpoint = __webpack_require__(579) + '/ico/buy-history';
 	
 	/**
 	 *
@@ -82275,22 +80469,22 @@
 	}();
 
 /***/ },
-/* 698 */
+/* 680 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 /***/ },
-/* 699 */
+/* 681 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(570);
+	var axios = __webpack_require__(552);
 	
-	var confirmTermEndpoint = __webpack_require__(597) + '/ico/confirm-term';
+	var confirmTermEndpoint = __webpack_require__(579) + '/ico/confirm-term';
 	
 	/**
 	 *
@@ -82365,16 +80559,16 @@
 	}();
 
 /***/ },
-/* 700 */
+/* 682 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	var axios = __webpack_require__(570);
+	var axios = __webpack_require__(552);
 	
-	var BASE_URL = __webpack_require__(597);
+	var BASE_URL = __webpack_require__(579);
 	
 	var endpoint = BASE_URL + '/ico/phase';
 	
@@ -82406,6 +80600,1829 @@
 	}));
 
 /***/ },
+/* 683 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = {
+	  'en': 'en',
+	  'en-US': 'en',
+	  'pt': 'pt',
+	  'pt-BR': 'pt'
+	};
+	
+	
+	exports.STORAGE_KEY = 'lunes.accessToken';
+	
+	exports.PERIOD = {
+	  RANGE_1D: 'RANGE_1D',
+	  RANGE_1W: 'RANGE_1W',
+	  RANGE_1M: 'RANGE_1M',
+	  RANGE_1Y: 'RANGE_1Y',
+	  RANGE_MAX: 'RANGE_MAX'
+	};
+	
+	exports.COINS_CONSTANT = [{
+	  label: 'Bitcoin',
+	  name: 'BTC',
+	  img: 'https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_btc.svg',
+	  selected: true
+	}, {
+	  label: 'Litecoin',
+	  name: 'LTC',
+	  img: 'https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon_ltc.svg',
+	  selected: false
+	}, {
+	  label: 'Ethereum',
+	  name: 'ETH',
+	  img: 'https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_eth.svg',
+	  selected: false
+	}];
+
+/***/ },
+/* 684 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _loginComponent = __webpack_require__(685);
+	
+	var _loginComponent2 = _interopRequireDefault(_loginComponent);
+	
+	var _login = __webpack_require__(686);
+	
+	var _login2 = _interopRequireDefault(_login);
+	
+	__webpack_require__(688);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var LoginComponent = {
+	  template: _loginComponent2.default,
+	  controller: _login2.default
+	};
+	
+	exports.default = LoginComponent;
+
+/***/ },
+/* 685 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"container login\">\n\n  <!-- MODAL - criar directiva depois -->\n  <div id=\"modal-terms\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <div>\n        <script>\n          function openCity(evt, cityName) {\n            // Declare all variables\n            var i, tabcontent, tablinks;\n\n            // Get all elements with class=\"tabcontent\" and hide them\n            tabcontent = document.getElementsByClassName(\"tabcontent\");\n            for (i = 0; i < tabcontent.length; i++) {\n              tabcontent[i].style.display = \"none\";\n            }\n\n            // Get all elements with class=\"tablinks\" and remove the class \"active\"\n            tablinks = document.getElementsByClassName(\"tablinks\");\n            for (i = 0; i < tablinks.length; i++) {\n              tablinks[i].className = tablinks[i].className.replace(\" active\", \"\");\n            }\n\n            // Show the current tab, and add an \"active\" class to the button that opened the tab\n            document.getElementById(cityName).style.display = \"block\";\n            evt.currentTarget.className += \" active\";\n          }\n        </script>\n        <!-- Tab links -->\n        <div class=\"tab\">\n          <button class=\"tablinks\" onclick=\"openCity(event, 'terms_condition')\" id=\"defaultOpen\">{{'TERMS_CONDITION_TITLE' | translate}}</button>\n          <button class=\"tablinks\" onclick=\"openCity(event, 'representation_condition')\">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>\n        </div>\n        <!-- Tab content -->\n        <div id=\"terms_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsCondition\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n\n        <div id=\"representation_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsRepresentation\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG1\" id=\"checkboxG1\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check1\" ng-change=\"$ctrl.allCheckboxIsChecked()\">\n            <label for=\"checkboxG1\" class=\"css-label radGroup1 clr\"> {{'US_CITIZEN' | translate}} </label>\n          </div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG2\" id=\"checkboxG2\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check2\">\n            <label for=\"checkboxG2\" class=\"css-label radGroup1 clr\"> {{'AGREE_TERM' | translate}} </label>\n          </div>\n          <!--<div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG3\" id=\"checkboxG3\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check3\">\n            <label for=\"checkboxG3\" class=\"css-label radGroup1 clr\"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>\n          </div>-->\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG4\" id=\"checkboxG4\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check4\">\n            <label for=\"checkboxG4\" class=\"css-label radGroup1 clr\"> {{'AGREE_FUTURE_VALUE' | translate}}</label>\n          </div>\n          <div class=\"area-button\">\n            <button ng-show=\"$ctrl.allCheckboxIsChecked()\" class=\"primary-button\" data-ng-click=\"$ctrl.doAccept()\" data-dismiss=\"modal\">{{'AGREE' | translate}}</button>\n            <!--<button ng-show=\"!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()\" class=\"disabled-button\">{{'AGREE' | translate}}</button>-->\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- MODAL - criar directiva change password -->\n  <div id=\"modal-change-password\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\" style=\"height: 100%;\">\n\n      <div ng-show=\"$ctrl.loadingResetPass\" class=\"loadingResetPass\">\n        {{'LOADING' | translate}}\n      </div>\n\n      <div ng-show=\"$ctrl.showMsgEmailSent\" class=\"showEmailSent\">\n        <h3 for=\"change\">{{'EMAIL_SENT' | translate}}</h3>\n        <div style=\"width: 100px;\">\n          <button class=\"icon-close\" data-dismiss=\"modal\">{{'CLOSE' | translate}}</button>\n        </div>\n      </div>\n\n      <form class=\"form-msg-pass\" ng-show=\"!$ctrl.loadingResetPass && !$ctrl.showMsgEmailSent\">\n        <div style=\"text-align: center;\">\n          <h3 for=\"change\">{{'CHANGE_PASSWORD_INSTRUCTION' | translate}}</h3>\n        </div>\n        <div ng-show=\"$ctrl.showErrorMsgEmailSent\" class=\"showErrorMsg\">\n          <h5 for=\"change\">{{'EMAIL_NOT_SENT' | translate}}</h5>\n          <div style=\"width: 100px;\">\n            <button style=\"border: 0;\n              padding: 5px 20px;\n              border-radius: 20px;\n              cursor: pointer;\" class=\"icon-close\" data-dismiss=\"modal\">{{'CLOSE' | translate}}</button>\n          </div>\n        </div>\n\n        <div>\n          <input type=\"text\" name=\"change-password\" ng-model=\"$ctrl.emailToChangePassword\" style=\"    border: 0;\n          width: 200px;\n          border-bottom: solid 1px #734cb3;\n          background-color: transparent;\n          padding: 20px;\n          color: #fff;\n          margin: 20px;\">\n        </div>\n        <div>\n          <button ng-click=\"$ctrl.doChangePassword()\" style=\"    border: 0;\n          padding: 5px 20px;\n          border-radius: 20px;\n          cursor: pointer;\">{{'CHANGE_PASSWORD' | translate}}</button>\n        </div>\n      </form>\n    </div>\n  </div>\n\n  <lunesheader showlogout='false' showlinks='false'></lunesheader>\n\n  <!-- AUTHENTICATION FORM -->\n  <section class=\"authentication\">\n    <div>\n      <form name=\"$ctrl.loginForm\">\n        <div class=\"row\">\n\n          <div class=\"col-12 title\">\n            <h4>{{'WELCOME' | translate}}</h4>\n          </div>\n\n          <div class=\"col-12 col-lg-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n          <div class=\"col-lg-6 col-xs-12\">\n            <div class=\"input-form\">\n              <label for=\"input-email\">{{'EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.email\" id=\"input-email\" name=\"email\" required type=\"text\" placeholder=\"{{'EMAIL_PLACEHOLDER' | translate}}\">\n            </div>\n            <div class=\"input-form\">\n              <label for=\"input-password\">{{'PASSWORD' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.password\" id=\"input-password\" name=\"password\" minlength=\"8\" required type=\"password\" placeholder=\"{{'PASSWORD_PLACEHOLDER' | translate}}\">\n            </div>\n            <div class=\"area-button txt-center\">\n              <button class=\"rounded-button\" data-toggle=\"modal\" ng-click=\"$ctrl.doLogin()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\" />\n              </button>\n            </div>\n            <div class=\"dont-have-account\">\n              <label>{{'DONT_HAVE_ACCOUNT' | translate}}</label>\n              <label class=\"txt-green label-signup\" ng-click=\"$ctrl.goToSignup()\">{{'SIGNUP' | translate}}</label>\n              <!--<p class=\"cursor-pointer\">{{'RESET_PASSWORD' | translate}}</p>-->\n            </div>\n            <div style=\"margin: 5px 0 30px 0;\">\n              <label>{{'DO_YOU_CHANGE_PASSWORD' | translate}}</label>\n              <label class=\"txt-green label-signup\" data-toggle=\"modal\" data-target=\"#modal-change-password\">{{'CHANGE_PASSWORD' | translate}}</label>\n            </div>\n\n          </div>\n\n          <div class=\"col-lg-5 col-xs-12\" style=\"margin: 5px 0 30px 0;\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519751608/pre_ico_img.png\" width=\"100%\" alt=\"next\" />\n          </div>\n\n          <div class=\"col-lg-4 col-xs-12\" ng-show=\"false\">\n            <div id=\"counter\" class=\"\">\n              <span id=\"coin_counter\" ng-show=\"false\">$ 00 000 000</span>\n              <div id=\"loading_bar\">\n                <div id=\"loading_bar_green\" style=\"width:50%;\"></div>\n              </div>\n              <div>\n                <div class=\"row\" style=\"text-align: center;\">\n                  <div class=\"col-xs-6 col-lg-6\">\n                    Pre-Ico\n                  </div>\n                  <div class=\"col-xs-6 col-lg-6\">\n                    Ico\n                  </div>\n                </div>\n\n                <!-- conter -->\n                <div class=\"row\" id=\"number\">\n                  <div class=\"col-xs-12\" id=\"time\">\n                    <div id=\"clockdiv\">\n                      <div>\n                        <span class=\"days\"></span>\n                        <div class=\"smalltext\">Days</div>\n                      </div>\n                      <div>\n                        <span class=\"hours\"></span>\n                        <div class=\"smalltext\">Hours</div>\n                      </div>\n                      <div>\n                        <span class=\"minutes\"></span>\n                        <div class=\"smalltext\">Minutes</div>\n                      </div>\n                      <div>\n                        <span class=\"seconds\"></span>\n                        <div class=\"smalltext\">Seconds</div>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n\n                <!-- hard cap -->\n                <div class=\"row\" id=\"number\">\n                  <div class=\"col-xs-12 col-lg-12\" id=\"hard-cap\">\n                    <p>Hard cap</p>\n                    <p>$ 100 000 000</p>\n                  </div>\n                </div>\n\n              </div>\n            </div>\n\n          </div>\n\n\n\n      </form>\n      </div>\n  </section>\n  </div>"
+
+/***/ },
+/* 686 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _index = __webpack_require__(683);
+	
+	var _countdown = __webpack_require__(687);
+	
+	var _countdown2 = _interopRequireDefault(_countdown);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var LoginController = function () {
+	  function LoginController($state, HttpService, $filter, $sce, $timeout, ErrorMessagesService) {
+	    _classCallCheck(this, LoginController);
+	
+	    this.$state = $state;
+	    this.$timeout = $timeout;
+	    this.currentPhase = [];
+	    this.HttpService = HttpService;
+	    this.termsCondition = $sce.trustAsHtml($filter('translate')('TERMS_CONDITIONS'));
+	    this.termsRepresentation = $sce.trustAsHtml($filter('translate')('REPRESENTATION_TERM'));
+	    this.ErrorMessagesService = ErrorMessagesService;
+	    this.loadingResetPass = false;
+	    this.user = {
+	      email: '',
+	      password: '',
+	      check1: false,
+	      check2: false,
+	      check3: false,
+	      check4: false
+	    };
+	    this.obtainPhase().catch(function (error) {
+	      console.log(error);
+	    });
+	    (0, _countdown2.default)();
+	  }
+	
+	  LoginController.prototype.doLogin = function () {
+	    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+	      var _this = this;
+	
+	      var a, depositWallet;
+	      return regeneratorRuntime.wrap(function _callee$(_context) {
+	        while (1) {
+	          switch (_context.prev = _context.next) {
+	            case 0:
+	              this.showLoading(true);
+	              _context.next = 3;
+	              return this.HttpService.login(this.user).catch(function (error) {
+	                _this.notification(true, error);
+	              });
+	
+	            case 3:
+	              a = _context.sent;
+	
+	              this.showLoading(false);
+	
+	              if (!(a && a.accessToken)) {
+	                _context.next = 23;
+	                break;
+	              }
+	
+	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
+	
+	              if (!a.confirmIcoTerm) {
+	                _context.next = 21;
+	                break;
+	              }
+	
+	              if (!(!a.depositWallet || !a.depositWallet.BTC)) {
+	                _context.next = 17;
+	                break;
+	              }
+	
+	              _context.next = 11;
+	              return this.HttpService.createDepositWallet(a).catch(function (error) {
+	                if (error && error.response && error.response.data) {
+	                  console.log(error);
+	                }
+	              });
+	
+	            case 11:
+	              depositWallet = _context.sent;
+	
+	              a.depositWallet = depositWallet;
+	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
+	              this.$state.go('historic');
+	              _context.next = 19;
+	              break;
+	
+	            case 17:
+	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
+	              this.$state.go('historic');
+	
+	            case 19:
+	              _context.next = 23;
+	              break;
+	
+	            case 21:
+	              $('#modal-terms').modal('show');
+	              setTimeout(function () {
+	                document.getElementById("defaultOpen").click();
+	              }, 200);
+	
+	            case 23:
+	            case 'end':
+	              return _context.stop();
+	          }
+	        }
+	      }, _callee, this);
+	    }));
+	
+	    function doLogin() {
+	      return _ref.apply(this, arguments);
+	    }
+	
+	    return doLogin;
+	  }();
+	
+	  LoginController.prototype.doChangePassword = function () {
+	    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+	      var _this2 = this;
+	
+	      var a;
+	      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+	        while (1) {
+	          switch (_context2.prev = _context2.next) {
+	            case 0:
+	              this.loadingResetPass = true;
+	              _context2.next = 3;
+	              return this.HttpService.changePassword(this.emailToChangePassword).catch(function (error) {
+	                _this2.loadingResetPass = false;
+	                _this2.$timeout(function () {
+	                  _this2.showErrorMsgEmailSent = true;
+	                }, 200);
+	              });
+	
+	            case 3:
+	              a = _context2.sent;
+	
+	
+	              if (a && a.emailSent) {
+	                this.$timeout(function () {
+	                  _this2.loadingResetPass = false;
+	                  _this2.showMsgEmailSent = true;
+	                }, 200);
+	              }
+	
+	            case 5:
+	            case 'end':
+	              return _context2.stop();
+	          }
+	        }
+	      }, _callee2, this);
+	    }));
+	
+	    function doChangePassword() {
+	      return _ref2.apply(this, arguments);
+	    }
+	
+	    return doChangePassword;
+	  }();
+	
+	  LoginController.prototype.goToSignup = function goToSignup() {
+	    this.$state.go('signup');
+	  };
+	
+	  LoginController.prototype.allCheckboxIsChecked = function allCheckboxIsChecked() {
+	    return this.user.check1 && this.user.check2 && this.user.check4;
+	  };
+	
+	  LoginController.prototype.doAccept = function () {
+	    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+	      var _this3 = this;
+	
+	      var a, depositWallet;
+	      return regeneratorRuntime.wrap(function _callee3$(_context3) {
+	        while (1) {
+	          switch (_context3.prev = _context3.next) {
+	            case 0:
+	              this.showLoading(true);
+	              this.currentUser = JSON.parse(localStorage.getItem(_index.STORAGE_KEY));
+	              _context3.next = 4;
+	              return this.HttpService.confirmterm(this.currentUser).catch(function (error) {
+	                _this3.serverError = true;
+	                _this3.serverErrorMessage = error.message;
+	                console.log(error);
+	              });
+	
+	            case 4:
+	              a = _context3.sent;
+	
+	              if (!(!this.currentUser.depositWallet || !this.currentUser.depositWallet.BTC)) {
+	                _context3.next = 14;
+	                break;
+	              }
+	
+	              _context3.next = 8;
+	              return this.HttpService.createDepositWallet(this.currentUser).catch(function (error) {
+	                if (error && error.response && error.response.data) {
+	                  alert(error.response.data.message);
+	                }
+	                console.log(error);
+	              });
+	
+	            case 8:
+	              depositWallet = _context3.sent;
+	
+	              this.currentUser.depositWallet = depositWallet;
+	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(this.currentUser));
+	              this.$state.go('historic');
+	              _context3.next = 17;
+	              break;
+	
+	            case 14:
+	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(this.currentUser));
+	              this.$state.go('historic');
+	              console.log(this.currentUser);
+	
+	            case 17:
+	            case 'end':
+	              return _context3.stop();
+	          }
+	        }
+	      }, _callee3, this);
+	    }));
+	
+	    function doAccept() {
+	      return _ref3.apply(this, arguments);
+	    }
+	
+	    return doAccept;
+	  }();
+	
+	  LoginController.prototype.showLoading = function showLoading(isShow) {
+	    if (isShow) {
+	      $('<div class="modal-backdrop"><img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442469/loading_y9ob8i.svg" /></div>').appendTo(document.body);
+	    } else {
+	      this.$timeout(function () {
+	        $(".modal-backdrop").remove();
+	      }, 1000);
+	    }
+	  };
+	
+	  LoginController.prototype.obtainPhase = function () {
+	    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+	      return regeneratorRuntime.wrap(function _callee4$(_context4) {
+	        while (1) {
+	          switch (_context4.prev = _context4.next) {
+	            case 0:
+	              _context4.prev = 0;
+	
+	              console.log("");
+	              _context4.next = 4;
+	              return this.HttpService.obtainPhase().catch(function (error) {
+	                console.log(error);
+	                alert('Erro ao tentar recuperar dados da fase da ICO');
+	              });
+	
+	            case 4:
+	              this.currentPhase = _context4.sent;
+	
+	              if (this.currentPhase) {
+	                localStorage.setItem('lunes.phase', JSON.stringify(this.currentPhase));
+	              }
+	              this.showLoading(false);
+	              _context4.next = 12;
+	              break;
+	
+	            case 9:
+	              _context4.prev = 9;
+	              _context4.t0 = _context4['catch'](0);
+	
+	              console.log(_context4.t0);
+	
+	            case 12:
+	            case 'end':
+	              return _context4.stop();
+	          }
+	        }
+	      }, _callee4, this, [[0, 9]]);
+	    }));
+	
+	    function obtainPhase() {
+	      return _ref4.apply(this, arguments);
+	    }
+	
+	    return obtainPhase;
+	  }();
+	
+	  LoginController.prototype.notification = function notification(isShow, msg) {
+	    if (isShow) {
+	      var self = this;
+	      $('<div class="modal-backdrop-error"><h4 style="margin-top: 10%;">' + this.ErrorMessagesService.get(msg) + '</h4><button class="close-error">ok</button></div>').appendTo(document.body);
+	      $('.close-error').on('click', function () {
+	        $(".modal-backdrop-error").remove();
+	      });
+	    }
+	  };
+	
+	  return LoginController;
+	}();
+	
+	LoginController.$inject = ['$state', 'HttpService', '$filter', '$sce', '$timeout', 'ErrorMessagesService'];
+	
+	exports.default = LoginController;
+
+/***/ },
+/* 687 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var getTimeRemaining = function getTimeRemaining(endtime) {
+	  var t = Date.parse(endtime) - Date.parse(new Date());
+	  var seconds = Math.floor(t / 1000 % 60);
+	  var minutes = Math.floor(t / 1000 / 60 % 60);
+	  var hours = Math.floor(t / (1000 * 60 * 60) % 24);
+	  var days = Math.floor(t / (1000 * 60 * 60 * 24));
+	  return {
+	    total: t,
+	    days: days,
+	    hours: hours,
+	    minutes: minutes,
+	    seconds: seconds
+	  };
+	};
+	
+	var initializeClock = function initializeClock(id, endtime) {
+	  var clock = document.getElementById(id);
+	  var daysSpan = clock.querySelector('.days');
+	  var hoursSpan = clock.querySelector('.hours');
+	  var minutesSpan = clock.querySelector('.minutes');
+	  var secondsSpan = clock.querySelector('.seconds');
+	
+	  var updateClock = function updateClock() {
+	    var t = getTimeRemaining(endtime);
+	
+	    daysSpan.innerHTML = t.days;
+	    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+	    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+	    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+	
+	    if (t.total <= 0) {
+	      clearInterval(timeinterval);
+	    }
+	  };
+	
+	  updateClock();
+	  var timeinterval = setInterval(updateClock, 1000);
+	};
+	
+	var start = function start() {
+	  var deadline = new Date(Date.parse(new Date()) + 25 * 24 * 60 * 60 * 1000);
+	  initializeClock('time', deadline);
+	};
+	
+	exports.default = start;
+
+/***/ },
+/* 688 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(689);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(691)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../node_modules/css-loader/index.js?sourceMap!../../node_modules/postcss-loader/index.js!../../node_modules/sass-loader/index.js?config=sassLoader!./login.component.scss", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js?sourceMap!../../node_modules/postcss-loader/index.js!../../node_modules/sass-loader/index.js?config=sassLoader!./login.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 689 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(690)(true);
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".dont-have-account {\n  margin-top: 50px; }\n  .dont-have-account .label-signup {\n    cursor: pointer; }\n\n.modal-backdrop-error {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1040;\n  background-color: #4c2b82;\n  opacity: 0.7;\n  text-align: center; }\n  .modal-backdrop-error .close-error {\n    border: 0;\n    border-radius: 30px;\n    padding: 5px 50px;\n    background-color: #4cd466;\n    color: #fff;\n    cursor: pointer; }\n\n/* counter */\n#counter {\n  font-family: 'Offside', cursive;\n  margin-top: 20px;\n  margin-bottom: 20px; }\n\n#counter #coin_counter {\n  display: block;\n  text-align: right;\n  font-size: 1.3em;\n  margin-bottom: 10px;\n  padding-right: 20px; }\n\n#counter #loading_bar {\n  display: block;\n  background-color: #fff;\n  height: 5px; }\n\n#counter #loading_bar_green {\n  display: block;\n  background-color: #4cd566;\n  height: 5px; }\n\n#counter #base_counter {\n  background-color: #544d8f;\n  padding: 20px;\n  border-radius: 0px 0px 4px 4px; }\n\n#counter #number {\n  margin-top: 30px;\n  display: block;\n  text-align: center; }\n\n#counter #number span {\n  font-size: .2em;\n  color: #fff;\n  display: block;\n  margin-top: 20px; }\n\n#counter #hard-cap {\n  display: block;\n  background-color: #544d8f;\n  max-width: 160px;\n  margin-left: auto;\n  margin-right: auto;\n  color: #4cd566;\n  font-size: .8em;\n  text-align: center;\n  padding: 10px;\n  border-radius: 4px;\n  margin-top: -40px; }\n\n#counter #hard-cap span {\n  display: block;\n  color: #fff;\n  font-size: 1.2em; }\n\n#clockdiv {\n  font-family: sans-serif;\n  color: #fff;\n  display: inline-block;\n  font-weight: 100;\n  text-align: center;\n  font-size: 30px; }\n\n#clockdiv > div {\n  padding: 5px;\n  border-radius: 3px;\n  background: #00BF96;\n  display: inline-block;\n  width: 80px; }\n\n#clockdiv div > span {\n  padding: 15px;\n  border-radius: 3px;\n  background: #00816A;\n  display: inline-block; }\n\n.smalltext {\n  padding-top: 5px;\n  font-size: 16px; }\n\n.login #modal-change-password {\n  box-shadow: #3a2261 1px 0px 5px 4px;\n  margin: 10px;\n  overflow-y: hidden; }\n\n.login .loadingResetPass {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  height: 100%; }\n\n.login .showEmailSent {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  height: 100%; }\n\n.login .showErrorMsg {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  height: 100%; }\n  .login .showErrorMsg h5 {\n    padding: 2px 10px;\n    background-color: #d83636;\n    border-radius: 20px; }\n  .login .showErrorMsg button {\n    border: 0;\n    padding: 5px 20px;\n    border-radius: 20px;\n    cursor: pointer; }\n\n.login .form-msg-pass {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  height: 100%; }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/login/src/login/login.component.scss"],"names":[],"mappings":"AAAA;EACE,iBAAgB,EAIjB;EALD;IAGI,gBAAe,EAChB;;AAGH;EACE,gBAAe;EACf,OAAM;EACN,SAAQ;EACR,UAAS;EACT,QAAO;EACP,cAAa;EACb,0BAAyB;EACzB,aAAY;EACZ,mBAAkB,EASnB;EAlBD;IAWI,UAAS;IACT,oBAAmB;IACnB,kBAAiB;IACjB,0BAAyB;IACzB,YAAW;IACX,gBAAe,EAChB;;AAGH,aAAa;AACb;EACE,gCAA+B;EAC/B,iBAAe;EACf,oBAAkB,EAEnB;;AACD;EACE,eAAc;EACd,kBAAiB;EACjB,iBAAgB;EAChB,oBAAmB;EACnB,oBAAmB,EACpB;;AACD;EACE,eAAa;EACb,uBAAsB;EACtB,YAAW,EACZ;;AACD;EACE,eAAc;EACd,0BAAyB;EACzB,YAAW,EACZ;;AACD;EACE,0BAAyB;EACzB,cAAY;EACZ,+BAA8B,EAC/B;;AACD;EACE,iBAAgB;EAChB,eAAc;EACd,mBAAkB,EACnB;;AACD;EACE,gBAAe;EACf,YAAU;EACV,eAAc;EACd,iBAAgB,EACjB;;AACD;EACE,eAAc;EACd,0BAAyB;EACzB,iBAAgB;EAChB,kBAAiB;EACjB,mBAAkB;EAClB,eAAc;EACd,gBAAe;EACf,mBAAkB;EAClB,cAAa;EACb,mBAAkB;EAClB,kBAAiB,EAClB;;AACD;EACE,eAAc;EACd,YAAW;EACX,iBAAgB,EACjB;;AAED;EACE,wBAAuB;EACvB,YAAW;EACX,sBAAqB;EACrB,iBAAgB;EAChB,mBAAkB;EAClB,gBAAe,EAChB;;AAED;EACE,aAAY;EACZ,mBAAkB;EAClB,oBAAmB;EACnB,sBAAqB;EACrB,YAAW,EACZ;;AAED;EACE,cAAa;EACb,mBAAkB;EAClB,oBAAmB;EACnB,sBAAqB,EACtB;;AAED;EACE,iBAAgB;EAChB,gBAAe,EAChB;;AAED;EAGI,oCAAmC;EACnC,aAAY;EACZ,mBAAkB,EACnB;;AANH;EASI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,6BAAsB;EAAtB,8BAAsB;MAAtB,2BAAsB;UAAtB,uBAAsB;EACtB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,yBAAuB;MAAvB,sBAAuB;UAAvB,wBAAuB;EACvB,aAAY,EACb;;AAdH;EAiBI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,6BAAsB;EAAtB,8BAAsB;MAAtB,2BAAsB;UAAtB,uBAAsB;EACtB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,yBAAuB;MAAvB,sBAAuB;UAAvB,wBAAuB;EACvB,aAAY,EACb;;AAtBH;EAyBI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,6BAAsB;EAAtB,8BAAsB;MAAtB,2BAAsB;UAAtB,uBAAsB;EACtB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,yBAAuB;MAAvB,sBAAuB;UAAvB,wBAAuB;EACvB,aAAY,EAYb;EAzCH;IA+BM,kBAAiB;IACjB,0BAAyB;IACzB,oBAAmB,EACpB;EAlCL;IAoCM,UAAS;IACT,kBAAiB;IACjB,oBAAmB;IACnB,gBAAe,EAChB;;AAxCL;EA4CI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,6BAAsB;EAAtB,8BAAsB;MAAtB,2BAAsB;UAAtB,uBAAsB;EACtB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,yBAAuB;MAAvB,sBAAuB;UAAvB,wBAAuB;EACvB,aAAY,EACb","file":"login.component.scss","sourcesContent":[".dont-have-account {\r\n  margin-top: 50px;\r\n  .label-signup {\r\n    cursor: pointer;\r\n  }\r\n}\r\n\r\n.modal-backdrop-error {\r\n  position: fixed;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  z-index: 1040;\r\n  background-color: #4c2b82;\r\n  opacity: 0.7;\r\n  text-align: center;\r\n  .close-error {\r\n    border: 0;\r\n    border-radius: 30px;\r\n    padding: 5px 50px;\r\n    background-color: #4cd466;\r\n    color: #fff;\r\n    cursor: pointer;\r\n  }\r\n}\r\n\r\n/* counter */\r\n#counter {\r\n  font-family: 'Offside', cursive;\r\n  margin-top:20px;\r\n  margin-bottom:20px;\r\n  \r\n}\r\n#counter #coin_counter {\r\n  display: block;\r\n  text-align: right;\r\n  font-size: 1.3em;\r\n  margin-bottom: 10px;\r\n  padding-right: 20px;\r\n}\r\n#counter #loading_bar {\r\n  display:block;\r\n  background-color: #fff;\r\n  height: 5px;\r\n}\r\n#counter #loading_bar_green {\r\n  display: block;\r\n  background-color: #4cd566;\r\n  height: 5px;\r\n}\r\n#counter #base_counter {\r\n  background-color: #544d8f;\r\n  padding:20px;\r\n  border-radius: 0px 0px 4px 4px;\r\n}\r\n#counter #number {\r\n  margin-top: 30px;\r\n  display: block;\r\n  text-align: center;\r\n}\r\n#counter #number span {\r\n  font-size: .2em;\r\n  color:#fff;\r\n  display: block;\r\n  margin-top: 20px;\r\n}\r\n#counter #hard-cap {\r\n  display: block;\r\n  background-color: #544d8f;\r\n  max-width: 160px;\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  color: #4cd566;\r\n  font-size: .8em;\r\n  text-align: center;\r\n  padding: 10px;\r\n  border-radius: 4px;\r\n  margin-top: -40px;\r\n}\r\n#counter #hard-cap span {\r\n  display: block;\r\n  color: #fff;\r\n  font-size: 1.2em;\r\n}\r\n\r\n#clockdiv{\r\n  font-family: sans-serif;\r\n  color: #fff;\r\n  display: inline-block;\r\n  font-weight: 100;\r\n  text-align: center;\r\n  font-size: 30px;\r\n}\r\n\r\n#clockdiv > div{\r\n  padding: 5px;\r\n  border-radius: 3px;\r\n  background: #00BF96;\r\n  display: inline-block;\r\n  width: 80px;\r\n}\r\n\r\n#clockdiv div > span{\r\n  padding: 15px;\r\n  border-radius: 3px;\r\n  background: #00816A;\r\n  display: inline-block;\r\n}\r\n\r\n.smalltext{\r\n  padding-top: 5px;\r\n  font-size: 16px;\r\n}\r\n\r\n.login {\r\n\r\n  #modal-change-password {\r\n    box-shadow: #3a2261 1px 0px 5px 4px;\r\n    margin: 10px;\r\n    overflow-y: hidden;\r\n  }\r\n\r\n  .loadingResetPass {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n  \r\n  .showEmailSent {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n  \r\n  .showErrorMsg {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n    h5 {\r\n      padding: 2px 10px;\r\n      background-color: #d83636;\r\n      border-radius: 20px;\r\n    }\r\n    button {\r\n      border: 0;\r\n      padding: 5px 20px;\r\n      border-radius: 20px;\r\n      cursor: pointer;\r\n    }\r\n  }\r\n  \r\n  .form-msg-pass {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n\r\n}\r\n\r\n"],"sourceRoot":""}]);
+	
+	// exports
+
+
+/***/ },
+/* 690 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function (useSourceMap) {
+		var list = [];
+	
+		// return the list of modules as css string
+		list.toString = function toString() {
+			return this.map(function (item) {
+				var content = cssWithMappingToString(item, useSourceMap);
+				if (item[2]) {
+					return "@media " + item[2] + "{" + content + "}";
+				} else {
+					return content;
+				}
+			}).join("");
+		};
+	
+		// import a list of modules into the list
+		list.i = function (modules, mediaQuery) {
+			if (typeof modules === "string") modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for (var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if (typeof id === "number") alreadyImportedModules[id] = true;
+			}
+			for (i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if (typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if (mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if (mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+	
+	function cssWithMappingToString(item, useSourceMap) {
+		var content = item[1] || '';
+		var cssMapping = item[3];
+		if (!cssMapping) {
+			return content;
+		}
+	
+		if (useSourceMap && typeof btoa === 'function') {
+			var sourceMapping = toComment(cssMapping);
+			var sourceURLs = cssMapping.sources.map(function (source) {
+				return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */';
+			});
+	
+			return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+		}
+	
+		return [content].join('\n');
+	}
+	
+	// Adapted from convert-source-map (MIT)
+	function toComment(sourceMap) {
+		// eslint-disable-next-line no-undef
+		var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+		var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+	
+		return '/*# ' + data + ' */';
+	}
+
+/***/ },
+/* 691 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			// Test for IE <= 9 as proposed by Browserhacks
+			// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+			// Tests for existence of standard globals is to allow style-loader 
+			// to operate correctly into non-standard environments
+			// @see https://github.com/webpack-contrib/style-loader/issues/177
+			return window && document && document.all && !window.atob;
+		}),
+		getElement = (function(fn) {
+			var memo = {};
+			return function(selector) {
+				if (typeof memo[selector] === "undefined") {
+					memo[selector] = fn.call(this, selector);
+				}
+				return memo[selector]
+			};
+		})(function (styleTarget) {
+			return document.querySelector(styleTarget)
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [],
+		fixUrls = __webpack_require__(692);
+	
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+	
+		options = options || {};
+		options.attrs = typeof options.attrs === "object" ? options.attrs : {};
+	
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+	
+		// By default, add <style> tags to the <head> element
+		if (typeof options.insertInto === "undefined") options.insertInto = "head";
+	
+		// By default, add <style> tags to the bottom of the target
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+	
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+	
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	};
+	
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+	
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+	
+	function insertStyleElement(options, styleElement) {
+		var styleTarget = getElement(options.insertInto)
+		if (!styleTarget) {
+			throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
+		}
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				styleTarget.insertBefore(styleElement, styleTarget.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				styleTarget.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				styleTarget.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			styleTarget.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+	
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+	
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		options.attrs.type = "text/css";
+	
+		attachTagAttrs(styleElement, options.attrs);
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+	
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		options.attrs.type = "text/css";
+		options.attrs.rel = "stylesheet";
+	
+		attachTagAttrs(linkElement, options.attrs);
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+	
+	function attachTagAttrs(element, attrs) {
+		Object.keys(attrs).forEach(function (key) {
+			element.setAttribute(key, attrs[key]);
+		});
+	}
+	
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+	
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement, options);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+	
+		update(obj);
+	
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+	
+	var replaceText = (function () {
+		var textStore = [];
+	
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+	
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+	
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+	
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+	
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+	
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+	
+	function updateLink(linkElement, options, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+	
+		/* If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
+		and there is no publicPath defined then lets turn convertToAbsoluteUrls
+		on by default.  Otherwise default to the convertToAbsoluteUrls option
+		directly
+		*/
+		var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
+	
+		if (options.convertToAbsoluteUrls || autoFixUrls){
+			css = fixUrls(css);
+		}
+	
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+	
+		var blob = new Blob([css], { type: "text/css" });
+	
+		var oldSrc = linkElement.href;
+	
+		linkElement.href = URL.createObjectURL(blob);
+	
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
+
+/***/ },
+/* 692 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	/**
+	 * When source maps are enabled, `style-loader` uses a link element with a data-uri to
+	 * embed the css on the page. This breaks all relative urls because now they are relative to a
+	 * bundle instead of the current page.
+	 *
+	 * One solution is to only use full urls, but that may be impossible.
+	 *
+	 * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
+	 *
+	 * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
+	 *
+	 */
+	
+	module.exports = function (css) {
+		// get current location
+		var location = typeof window !== "undefined" && window.location;
+	
+		if (!location) {
+			throw new Error("fixUrls requires window.location");
+		}
+	
+		// blank or null?
+		if (!css || typeof css !== "string") {
+			return css;
+		}
+	
+		var baseUrl = location.protocol + "//" + location.host;
+		var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
+	
+		// convert each url(...)
+		/*
+	 This regular expression is just a way to recursively match brackets within
+	 a string.
+	 	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
+	    (  = Start a capturing group
+	      (?:  = Start a non-capturing group
+	          [^)(]  = Match anything that isn't a parentheses
+	          |  = OR
+	          \(  = Match a start parentheses
+	              (?:  = Start another non-capturing groups
+	                  [^)(]+  = Match anything that isn't a parentheses
+	                  |  = OR
+	                  \(  = Match a start parentheses
+	                      [^)(]*  = Match anything that isn't a parentheses
+	                  \)  = Match a end parentheses
+	              )  = End Group
+	              *\) = Match anything and then a close parens
+	          )  = Close non-capturing group
+	          *  = Match anything
+	       )  = Close capturing group
+	  \)  = Match a close parens
+	 	 /gi  = Get all matches, not the first.  Be case insensitive.
+	  */
+		var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function (fullMatch, origUrl) {
+			// strip quotes (if they exist)
+			var unquotedOrigUrl = origUrl.trim().replace(/^"(.*)"$/, function (o, $1) {
+				return $1;
+			}).replace(/^'(.*)'$/, function (o, $1) {
+				return $1;
+			});
+	
+			// already a full url? no change
+			if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/)/i.test(unquotedOrigUrl)) {
+				return fullMatch;
+			}
+	
+			// convert the url to a full url
+			var newUrl;
+	
+			if (unquotedOrigUrl.indexOf("//") === 0) {
+				//TODO: should we add protocol?
+				newUrl = unquotedOrigUrl;
+			} else if (unquotedOrigUrl.indexOf("/") === 0) {
+				// path should be relative to the base url
+				newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
+			} else {
+				// path should be relative to current directory
+				newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
+			}
+	
+			// send back the fixed url(...)
+			return "url(" + JSON.stringify(newUrl) + ")";
+		});
+	
+		// send back the fixed css
+		return fixedCss;
+	};
+
+/***/ },
+/* 693 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _signupComponent = __webpack_require__(694);
+	
+	var _signupComponent2 = _interopRequireDefault(_signupComponent);
+	
+	var _signup = __webpack_require__(695);
+	
+	var _signup2 = _interopRequireDefault(_signup);
+	
+	__webpack_require__(696);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var SignupComponent = {
+	  template: _signupComponent2.default,
+	  controller: _signup2.default
+	};
+	
+	exports.default = SignupComponent;
+
+/***/ },
+/* 694 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"container\">\n\n  <!-- MODAL - criar directiva depois -->\n  <div id=\"modal-terms\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <div>\n        <script>\n          function openCity(evt, cityName) {\n            // Declare all variables\n            var i, tabcontent, tablinks;\n\n            // Get all elements with class=\"tabcontent\" and hide them\n            tabcontent = document.getElementsByClassName(\"tabcontent\");\n            for (i = 0; i < tabcontent.length; i++) {\n              tabcontent[i].style.display = \"none\";\n            }\n\n            // Get all elements with class=\"tablinks\" and remove the class \"active\"\n            tablinks = document.getElementsByClassName(\"tablinks\");\n            for (i = 0; i < tablinks.length; i++) {\n              tablinks[i].className = tablinks[i].className.replace(\" active\", \"\");\n            }\n\n            // Show the current tab, and add an \"active\" class to the button that opened the tab\n            document.getElementById(cityName).style.display = \"block\";\n            evt.currentTarget.className += \" active\";\n          }\n        </script>\n        <!-- Tab links -->\n        <div class=\"tab\">\n          <button class=\"tablinks\" onclick=\"openCity(event, 'terms_condition')\" id=\"defaultOpen\">{{'TERMS_CONDITION_TITLE' | translate}}</button>\n          <button class=\"tablinks\" onclick=\"openCity(event, 'representation_condition')\">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>\n        </div>\n        <!-- Tab content -->\n        <div id=\"terms_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsCondition\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n\n        <div id=\"representation_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsRepresentation\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG1\" id=\"checkboxG1\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check1\" ng-change=\"$ctrl.allCheckboxIsChecked()\">\n            <label for=\"checkboxG1\" class=\"css-label radGroup1 clr\"> {{'US_CITIZEN' | translate}} </label>\n          </div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG2\" id=\"checkboxG2\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check2\">\n            <label for=\"checkboxG2\" class=\"css-label radGroup1 clr\"> {{'AGREE_TERM' | translate}} </label>\n          </div>\n          <!--<div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG3\" id=\"checkboxG3\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check3\">\n            <label for=\"checkboxG3\" class=\"css-label radGroup1 clr\"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>\n          </div>-->\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG4\" id=\"checkboxG4\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check4\">\n            <label for=\"checkboxG4\" class=\"css-label radGroup1 clr\"> {{'AGREE_FUTURE_VALUE' | translate}}</label>\n          </div>\n          <div class=\"area-button\">\n            <button ng-show=\"$ctrl.allCheckboxIsChecked()\" class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\" data-dismiss=\"modal\">{{'AGREE' | translate}}</button>\n            <!--<button ng-show=\"!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()\" class=\"disabled-button\">{{'AGREE' | translate}}</button>-->\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <lunesheader showlogout='false' showlinks='false'></lunesheader>\n\n  <!-- AUTHENTICATION FORM -->\n  <section class=\"authentication\">\n    <div>\n      <form name=\"$ctrl.loginForm\">\n\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-12 title\">\n            <h4>{{'WELCOME' | translate}}</h4>\n            <h4>{{'BEGIN_YOUR_REGISTRATION' | translate}}</h4>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n          <div class=\"alert alert-danger\" ng-show=\"$ctrl.serverError\" role=\"alert\">\n            <h4 class=\"alert-heading\">{{'AN_ERROR_CREATE_ACCOUNT' | translate}}</h4>\n            <p>{{$ctrl.serverErrorMessage</p>\n          </div>\n\n          <!-- USER INFO -->\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-name\">* {{'NAME' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.name\" id=\"input-name\" name=\"name\" required type=\"text\" placeholder=\"{{'NAME_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-lastname\">* {{'LAST_NAME' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.lastname\" id=\"input-lastname\" name=\"lastname\" required type=\"text\" placeholder=\"{{'LAST_NAME_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n        </div>\n\n        <!-- EMAIL INFO -->\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-email\">* {{'EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.email\" id=\"input-email\" name=\"email\" ng-model-options=\"{ debounce: 3000 }\" required type=\"email\"\n                placeholder=\"{{'EMAIL_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-confirm-email\">* {{'CONFIRM_EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.confirmEmail\" id=\"input-confirm-email\" email name=\"confirmEmail\" email-match required type=\"email\"\n                placeholder=\"{{'CONFIRM_EMAIL_PLACEHOLDER' | translate}}\">\n            </div>\n\n            <!-- VALIDATION EMAIL -->\n            <span style=\"color:#f8b61c;\" ng-show=\"$ctrl.loginForm.email.$dirty && $ctrl.loginForm.email.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.email.$error.required\">{{'EMAIL_REQUIRED' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.email.$error.email\">{{'EMAIL_INVALID' | translate}}\n                <br>\n              </span>\n            </span>\n            <span style=\"color:#f8b61c;\" ng-show=\"$ctrl.loginForm.confirmEmail.$dirty && $ctrl.loginForm.confirmEmail.$invalid\">\n              <span ng-show=\"$ctrl.user.email !== $ctrl.user.confirmEmail\">{{'EMAIL_MATCH' | translate}}\n                <br> </span>\n            </span>\n\n          </div>\n        </div>\n\n        <!-- PASSWORD INFO -->\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-password\">* {{'PASSWORD' | translate}}</label>\n              <input type=\"password\" data-ng-model=\"$ctrl.user.password\" id=\"input-password\" ng-model-options=\"{ debounce: 500 }\" uppercase\n                lowercase numeric special-character required name=\"password\" ng-minlength=\"8\" placeholder=\"{{'PASSWORD_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-confirm-password\">* {{'CONFIRM_PASSWORD' | translate}}</label>\n              <input type=\"password\" data-ng-model=\"$ctrl.user.confirmPassword\" id=\"input-confirm-password\" ng-model-options=\"{ debounce: 500 }\"\n                required name=\"confirmPassword\" ng-minlength=\"8\" placeholder=\"{{'CONFIRM_PASSWORD_PLACEHOLDER' | translate}}\">\n            </div>\n            <!-- VALIDATION PASSWORD -->\n            <span style=\"color:#f8b61c;\" ng-show=\"$ctrl.loginForm.password.$dirty && $ctrl.loginForm.password.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.password.$error.required\">{{'PASSWORD_REQUIRED' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.minlength\">{{'PASSWORD_LENGTH' | translate}}\n                <br>\n              </span>\n            </span>\n            <span style=\"color:#f8b61c;\" ng-show=\"$ctrl.loginForm.confirmPassword.$dirty && $ctrl.loginForm.confirmPassword.$invalid\">\n              <span ng-show=\"$ctrl.user.confirmPassword !== $ctrl.user.password\">{{'PASSWORD_MATCH' | translate}}\n                <br>\n              </span>\n            </span>\n          </div>\n\n        </div>\n\n        <!-- CUPOM -->\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-coupon\">{{'DO_YOU_HAVE_A_COUPON' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.coupon\" id=\"input-coupon\" name=\"coupon\" type=\"text\" placeholder=\"{{'COUPON_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n          <div class=\"col-xs-12 col-lg-6\" style=\"margin-top: 15px;\">\n            <div class=\"area-button txt-right\" style=\"display: flex;justify-content: center;\">\n              <button class=\"rounded-button ng-hide\" data-toggle=\"modal\" data-target=\"#modal-terms\" ng-show=\"$ctrl.loginForm.$valid\" ng-click=\"$ctrl.enableTab()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\">\n              </button>\n\n              <button class=\"rounded-button\" ng-show=\"!$ctrl.loginForm.$valid\" ng-click=\"$ctrl.showError()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\">\n              </button>\n            </div>\n            <div style=\"display: flex;justify-content: center;\" ng-show=\"false\">\n              <a href=\"#!/login\" style=\"font-size: 10px;color: #fff;\">{{'BACK' | translate}}</p>\n            </div>\n          </div>\n\n        </div>\n\n      </form>\n    </div>\n  </section>\n</div>"
+
+/***/ },
+/* 695 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _index = __webpack_require__(683);
+	
+	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var SignupController = function () {
+	  function SignupController($state, HttpService, $filter, $sce, $injector, $timeout, $translate, ErrorMessagesService) {
+	    _classCallCheck(this, SignupController);
+	
+	    this.$state = $state;
+	    this.$timeout = $timeout;
+	    this.HttpService = HttpService;
+	    this.$translate = $translate;
+	    this.ErrorMessagesService = ErrorMessagesService;
+	    this.showErrorForm = false;
+	    this.termsCondition = $sce.trustAsHtml($filter('translate')('TERMS_CONDITIONS'));
+	    this.termsRepresentation = $sce.trustAsHtml($filter('translate')('REPRESENTATION_TERM'));
+	    this.serverError = false;
+	    this.user = {
+	      name: '',
+	      lastname: '',
+	      email: '',
+	      confirmEmail: '',
+	      password: '',
+	      confirmPassword: '',
+	      coupon: '',
+	      check1: false,
+	      check2: false,
+	      check3: false,
+	      check4: false
+	    };
+	  }
+	
+	  SignupController.prototype.doSignup = function () {
+	    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+	      var _this = this;
+	
+	      var obj, a, b, depositWallet;
+	      return regeneratorRuntime.wrap(function _callee$(_context) {
+	        while (1) {
+	          switch (_context.prev = _context.next) {
+	            case 0:
+	              this.showLoading(true);
+	              obj = {
+	                name: this.user.name,
+	                lastname: this.user.lastname,
+	                email: this.user.email,
+	                password: this.user.password,
+	                coupon: this.user.coupon,
+	                testnet: true
+	              };
+	              _context.next = 4;
+	              return this.HttpService.signup(obj).catch(function (error) {
+	                //this.serverError = true
+	                //this.serverErrorMessage = error.message
+	                _this.notificationError(true, error);
+	              });
+	
+	            case 4:
+	              a = _context.sent;
+	
+	              if (!(a && a.accessToken)) {
+	                _context.next = 25;
+	                break;
+	              }
+	
+	              this.serverError = false;
+	              this.serverErrorMessage = '';
+	              localStorage.setItem('lunes.accessToken', JSON.stringify(a));
+	              this.showLoading(false);
+	              _context.next = 12;
+	              return this.HttpService.confirmterm(a).catch(function (error) {
+	                _this.serverError = true;
+	                _this.serverErrorMessage = error.message;
+	                console.log(error);
+	              });
+	
+	            case 12:
+	              b = _context.sent;
+	
+	              if (!(!a.depositWallet || !a.depositWallet.BTC)) {
+	                _context.next = 22;
+	                break;
+	              }
+	
+	              _context.next = 16;
+	              return this.HttpService.createDepositWallet(a).catch(function (error) {
+	                if (error && error.response && error.response.data) {
+	                  alert(error.response.data.message);
+	                }
+	                console.log(error);
+	              });
+	
+	            case 16:
+	              depositWallet = _context.sent;
+	
+	              a.depositWallet = depositWallet;
+	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
+	              this.$state.go('historic');
+	              _context.next = 25;
+	              break;
+	
+	            case 22:
+	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
+	              this.$state.go('historic');
+	              console.log(a);
+	
+	            case 25:
+	            case 'end':
+	              return _context.stop();
+	          }
+	        }
+	      }, _callee, this);
+	    }));
+	
+	    function doSignup() {
+	      return _ref.apply(this, arguments);
+	    }
+	
+	    return doSignup;
+	  }();
+	
+	  SignupController.prototype.userIsValidToSignup = function userIsValidToSignup() {
+	    return this.user.name && this.user.email && this.user.password && this.user.lastname && this.user.confirmEmail && this.user.confirmPassword;
+	  };
+	
+	  SignupController.prototype.enableTab = function enableTab() {
+	    setTimeout(function () {
+	      document.getElementById("defaultOpen").click();
+	    }, 200);
+	  };
+	
+	  SignupController.prototype.allCheckboxIsChecked = function allCheckboxIsChecked() {
+	    return this.user.check1 && this.user.check2 && this.user.check4;
+	  };
+	
+	  SignupController.prototype.showError = function showError() {
+	    this.showErrorForm = true;
+	  };
+	
+	  SignupController.prototype.goToLogin = function goToLogin() {
+	    this.$state.go('login');
+	  };
+	
+	  SignupController.prototype.showLoading = function showLoading(isShow) {
+	    if (isShow) {
+	      this.notification(false);
+	      $('<div class="modal-backdrop"><img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442469/loading_y9ob8i.svg" /></div>').appendTo(document.body);
+	    } else {
+	      this.$timeout(function () {
+	        $(".modal-backdrop").remove();
+	      }, 1000);
+	    }
+	  };
+	
+	  SignupController.prototype.notificationError = function notificationError(isShow, msg) {
+	    if (isShow) {
+	      var self = this;
+	      $('<div class="modal-backdrop-error"><h4 style="margin-top: 10%;">' + this.ErrorMessagesService.get(msg) + '</h4><button class="close-error">ok</button></div>').appendTo(document.body);
+	      $('.close-error').on('click', function () {
+	        $(".modal-backdrop-error").remove();
+	      });
+	    }
+	  };
+	
+	  SignupController.prototype.notification = function notification(isShow) {
+	    if (isShow) {
+	      var self = this;
+	      $('<div class="modal-backdrop"><h4>' + this.$translate.instant('SIGNUP_SUCCESSFULY') + '</h4><br /><p>' + this.$translate.instant('REDIRECTING') + '</p></div>').appendTo(document.body);
+	      this.$timeout(function () {
+	        self.notification(false);
+	        self.$state.go('login');
+	      }, 5000);
+	    } else {
+	      this.$timeout(function () {
+	        $(".modal-backdrop").remove();
+	      }, 1000);
+	    }
+	  };
+	
+	  return SignupController;
+	}();
+	
+	SignupController.$inject = ['$state', 'HttpService', '$filter', '$sce', '$injector', '$timeout', '$translate', 'ErrorMessagesService'];
+	
+	exports.default = SignupController;
+
+/***/ },
+/* 696 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(697);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(691)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../node_modules/css-loader/index.js?sourceMap!../../node_modules/postcss-loader/index.js!../../node_modules/sass-loader/index.js?config=sassLoader!./signup.component.scss", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js?sourceMap!../../node_modules/postcss-loader/index.js!../../node_modules/sass-loader/index.js?config=sassLoader!./signup.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 697 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(690)(true);
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "/* Style the tab */\n.tab {\n  overflow: hidden;\n  padding: 0 22px; }\n\n/* Style the buttons that are used to open the tab content */\n.tab button {\n  border: 0;\n  border-radius: 20px;\n  padding: 5px 20px;\n  background-color: #f9f9f9;\n  float: left;\n  outline: none;\n  cursor: pointer;\n  transition: 0.3s;\n  margin-right: 10px; }\n\n/* Change background color of buttons on hover */\n.tab button:hover {\n  background-color: #4cd466; }\n\n/* Create an active/current tablink class */\n.tab button.active {\n  background-color: #4cd466;\n  color: #fff; }\n\n/* Style the tab content */\n.tabcontent {\n  display: none;\n  padding: 6px 12px;\n  border-top: none; }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/signup/src/signup/signup.component.scss","D:/workspaces/lunes/lunes-purchase/src/signup/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA,mBAAmB;AACnB;EACE,iBAAgB;EAChB,gBAAe,EAChB;;AAED,6DAA6D;AAC7D;EACE,UAAS;EACT,oBAAmB;EACnB,kBAAiB;EACjB,0BAAyB;EACzB,YAAW;EACX,cAAa;EACb,gBAAe;EACf,iBAAgB;EAChB,mBAAkB,EACnB;;AAED,iDAAiD;AACjD;EACE,0BClBa,EDmBd;;AAED,4CAA4C;AAC5C;EACE,0BCvBa;EDwBb,YAAW,EACZ;;AAED,2BAA2B;AAC3B;EACE,cAAa;EACb,kBAAiB;EACjB,iBAAgB,EACjB","file":"signup.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n/* Style the tab */\r\n.tab {\r\n  overflow: hidden;\r\n  padding: 0 22px;\r\n}\r\n\r\n/* Style the buttons that are used to open the tab content */\r\n.tab button {\r\n  border: 0;\r\n  border-radius: 20px;\r\n  padding: 5px 20px;\r\n  background-color: #f9f9f9;\r\n  float: left;\r\n  outline: none;\r\n  cursor: pointer;\r\n  transition: 0.3s;\r\n  margin-right: 10px;\r\n}\r\n\r\n/* Change background color of buttons on hover */\r\n.tab button:hover {\r\n  background-color: $green;\r\n}\r\n\r\n/* Create an active/current tablink class */\r\n.tab button.active {\r\n  background-color: $green;\r\n  color: #fff;\r\n}\r\n\r\n/* Style the tab content */\r\n.tabcontent {\r\n  display: none;\r\n  padding: 6px 12px;\r\n  border-top: none;\r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #4cd466;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
+	
+	// exports
+
+
+/***/ },
+/* 698 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _buyComponent = __webpack_require__(699);
+	
+	var _buyComponent2 = _interopRequireDefault(_buyComponent);
+	
+	var _buy = __webpack_require__(700);
+	
+	var _buy2 = _interopRequireDefault(_buy);
+	
+	__webpack_require__(701);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var BuyComponent = {
+	  template: _buyComponent2.default,
+	  controller: _buy2.default
+	};
+	
+	exports.default = BuyComponent;
+
+/***/ },
+/* 699 */
+/***/ function(module, exports) {
+
+	module.exports = "<!--<loading show=\"$ctrl.loading\"></loading>-->\n<div class=\"container\">\n\n  <lunesheader coin='$ctrl.currentCoinSelected' price='$ctrl.showQuotation()' showlinks='true' balanceuser='$ctrl.balanceUser.confirmed_balance'></lunesheader>\n\n  <!-- BUY -->\n  <section class=\"buy\">\n    <div>\n      <div class=\"row\">\n\n        <div class=\"col-12 title\">\n          <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>\n          <div>{{'OWN_COUPON' | translate}}\n            <span style=\"font-weight: bold;color: #3bbe6e;\">{{$ctrl.currentUser.ownCoupon}}</span>\n          </div>\n        </div>\n\n        <div class=\"col-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n        <div class=\"col-sm-12 col-md-7 col-lg-7\">\n\n          <!-- ERROR LIMIT -->\n          <div class=\"row\">\n            <div ng-show=\"$ctrl.showErrorLimit\" class=\"col-xs-12 col-lg-12\" style=\"padding: 10px;\n            background-color: #df3535;\n            text-align: center;\n            margin: 10px;\">{{$ctrl.showErrorLimit}}</div>\n          </div>\n\n          <!-- CALCULATOR -->\n          <div class=\"row\">\n\n            <div class=\"calculator col-xs-12 col-sm-12 col-lg-6\">\n              <div class=\"valueCripto\">\n                <div class=\"select-coin col-xs-12 col-lg-12\">\n                  <ul>\n                    <li ng-repeat=\"coin in $ctrl.coins\" ng-click=\"$ctrl.selectCoin(coin)\" ng-class=\"coin.selected ? 'selected': ''\">\n                      <img ng-src=\"{{coin.img}}\" alt=\"coin.label\">\n                    </li>\n                  </ul>\n                </div>\n                <div class=\"col-xs-12 col-lg-12 area-field\">\n                  <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToDeposit\" ng-change=\"$ctrl.calcValue()\" />\n                </div>\n              </div>\n            </div>\n\n            <div class=\"col-lg-1 equal\">=</div>\n\n            <div class=\"col-lg-5\">\n              <div class=\"lunesAmount\">\n                <div class=\"flag-lns\">\n                  <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\">\n                </div>\n                <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToReceive\" ng-change=\"$ctrl.calcValue('LNS')\"\n                  style=\"padding-top: 10px;\" />\n              </div>\n\n              <div class=\"col-lg-12\" style=\"text-align: right;\">\n                <label for=\"#\">\n                  <small>{{'PRICE_LUNES' | translate}}</small> = USD {{$ctrl.priceValueLunes}}\n                </label>\n              </div>\n            </div>\n\n          </div>\n\n          <!-- SHOW TOTAL -->\n          <div class=\"row\">\n            <div class=\"col-sm-12 col-lg-12\">\n              <div class=\"amountBalance total\">\n                <div class=\"result\" style=\"margin-top: 15px;\">\n                  <div>{{'AMOUNT_LUNES' | translate}}</div>\n                  <div>{{$ctrl.valueToReceive}}</div>\n                </div>\n                <div class=\"result\">\n                  <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>\n                  <div>{{$ctrl.bonusAmountFinal}}</div>\n                </div>\n                <div class=\"line-break\">\n                  <hr />\n                </div>\n                <div class=\"result\">\n                  <div>Total</div>\n                  <div>{{$ctrl.getTotal()}}</div>\n                </div>\n              </div>\n            </div>\n          </div>\n\n          <!-- ADVICE -->\n          <div class=\"row\">\n            <div class=\"col-lg-12 no-padding\">\n              <div class=\"area-button\" ng-show=\"false\">\n                <button class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\">{{'BUY' | translate}}</button>\n              </div>\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\" ng-show=\"false\">\n              * {{'MSG_BALANCE_DEPOSITED' | translate}}\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0 30px 0;\">\n              * {{'BUY_LIMIT_PHASE' | translate}}\n              <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n            </div>\n          </div>\n\n        </div>\n\n        <!-- QR CODE -->\n        <div class=\"col-xs-12 col-md-5 col-lg-5 container-qr-code\" style=\"text-align: center;\">\n\n          <div style=\"margin-bottom: 10px;\">\n            <span class=\"selected-label\">{{'SEND_TO_THIS_ADDRESS' | translate}}</span>\n          </div>\n\n          <img ng-src=\"{{$ctrl.currentQRCode.img}}\" class=\"qr-code img-thumbnail img-responsive\" />\n\n          <p class=\"address\">{{$ctrl.currentQRCode.address}}</p>\n\n        </div>\n\n      </div>\n    </div>\n  </section>\n\n</div>"
+
+/***/ },
+/* 700 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _lunesLib = __webpack_require__(475);
+	
+	var _lunesLib2 = _interopRequireDefault(_lunesLib);
+	
+	var _index = __webpack_require__(683);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var initialValue = '0.00000000';
+	
+	var BuyController = function () {
+	  function BuyController($rootScope, $scope, HttpService, $translate, $timeout, $state) {
+	    _classCallCheck(this, BuyController);
+	
+	    $rootScope.$on('unauthorized', function () {
+	      $state.go('login');
+	    });
+	    if (!localStorage.getItem(_index.STORAGE_KEY)) {
+	      $state.go('login');
+	    }
+	    this.$scope = $scope;
+	    this.HttpService = HttpService;
+	    this.$translate = $translate;
+	    this.$timeout = $timeout;
+	    this.$state = $state;
+	    this.currentUser = JSON.parse(localStorage.getItem(_index.STORAGE_KEY));
+	    this.showContainerCoins = false;
+	    this.balanceCoins = {};
+	    this.currentPhase = [];
+	    this.buyHistoryUser = {};
+	    this.valueToDeposit = initialValue;
+	    this.valueToReceive = initialValue;
+	    this.bonusAmountFinal = initialValue;
+	    this.buyLimit = '0';
+	    this.coins = _index.COINS_CONSTANT;
+	    this.currentCoinSelected = JSON.parse(JSON.stringify(this.coins[0]));
+	    this.currentQRCode = { address: '', img: '' };
+	    this.getBalanceCoin('BTC').catch(function (error) {
+	      console.log(error);
+	    });
+	    this.getBalanceCoin('LTC').catch(function (error) {
+	      console.log(error);
+	    });
+	    this.getBalanceCoin('ETH').catch(function (error) {
+	      console.log(error);
+	    });
+	    /*this.getBalanceLunes('LNS', this.currentUser).catch(error => {
+	      console.log(error);
+	    });*/
+	    this.showDepositWalletAddressQRCode(this.currentUser, this.currentCoinSelected);
+	    this.obtainPhase().catch(function (error) {
+	      console.log(error);
+	    });
+	    this.getBuyHistory().catch(function (error) {
+	      console.log(error);
+	    });
+	    this.showLoading(true);
+	  }
+	
+	  BuyController.prototype.getBuyHistory = function () {
+	    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+	      var buyHistory;
+	      return regeneratorRuntime.wrap(function _callee$(_context) {
+	        while (1) {
+	          switch (_context.prev = _context.next) {
+	            case 0:
+	              _context.next = 2;
+	              return this.HttpService.buyHistory(this.currentUser.email, this.currentUser.accessToken);
+	
+	            case 2:
+	              buyHistory = _context.sent;
+	
+	              this.buyHistoryUser = buyHistory;
+	
+	            case 4:
+	            case 'end':
+	              return _context.stop();
+	          }
+	        }
+	      }, _callee, this);
+	    }));
+	
+	    function getBuyHistory() {
+	      return _ref.apply(this, arguments);
+	    }
+	
+	    return getBuyHistory;
+	  }();
+	
+	  BuyController.prototype.showDepositWalletAddressQRCode = function () {
+	    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(currentUser, coin) {
+	      var a;
+	      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+	        while (1) {
+	          switch (_context2.prev = _context2.next) {
+	            case 0:
+	              _context2.next = 2;
+	              return this.HttpService.showDepositWalletAddressQRCode(this.currentUser, this.currentCoinSelected);
+	
+	            case 2:
+	              a = _context2.sent;
+	
+	              this.currentQRCode = JSON.parse(JSON.stringify(a));
+	              if (coin) {
+	                this.getCurrentBalanceUser(coin.name, this.currentQRCode.address, this.currentUser);
+	              }
+	
+	            case 5:
+	            case 'end':
+	              return _context2.stop();
+	          }
+	        }
+	      }, _callee2, this);
+	    }));
+	
+	    function showDepositWalletAddressQRCode(_x, _x2) {
+	      return _ref2.apply(this, arguments);
+	    }
+	
+	    return showDepositWalletAddressQRCode;
+	  }();
+	
+	  BuyController.prototype.doBuy = function () {
+	    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+	      return regeneratorRuntime.wrap(function _callee3$(_context3) {
+	        while (1) {
+	          switch (_context3.prev = _context3.next) {
+	            case 0:
+	            case 'end':
+	              return _context3.stop();
+	          }
+	        }
+	      }, _callee3, this);
+	    }));
+	
+	    function doBuy() {
+	      return _ref3.apply(this, arguments);
+	    }
+	
+	    return doBuy;
+	  }();
+	
+	  BuyController.prototype.getPhaseActive = function getPhaseActive() {
+	    var phase = this.currentPhase.filter(function (f) {
+	      return f.sale_status === 'active';
+	    });
+	    if (phase && phase.length) {
+	      return phase[0];
+	    }
+	    return {};
+	  };
+	
+	  BuyController.prototype.obtainPhase = function () {
+	    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+	      var phase;
+	      return regeneratorRuntime.wrap(function _callee4$(_context4) {
+	        while (1) {
+	          switch (_context4.prev = _context4.next) {
+	            case 0:
+	              _context4.prev = 0;
+	              phase = void 0;
+	
+	              if (!localStorage.getItem('lunes.phase')) {
+	                _context4.next = 10;
+	                break;
+	              }
+	
+	              this.currentPhase = JSON.parse(localStorage.getItem('lunes.phase'));
+	              phase = this.getPhaseActive();
+	
+	              this.percentBonus = phase.bonus * 100;
+	              this.priceValueLunes = parseFloat(phase.price_value);
+	
+	              if (this.currentUser.whitelist && phase.name === 'Whitelist') {
+	                this.buyLimit = 1000000;
+	              } else {
+	                this.buyLimit = phase.maximum_individual_limit;
+	              }
+	
+	              this.showLoading(false);
+	              return _context4.abrupt('return');
+	
+	            case 10:
+	              _context4.next = 12;
+	              return this.HttpService.obtainPhase().catch(function (error) {
+	                alert('Erro ao tentar recuperar dados da fase da ICO');
+	              });
+	
+	            case 12:
+	              this.currentPhase = _context4.sent;
+	
+	
+	              phase = this.getPhaseActive();
+	
+	              this.percentBonus = phase.bonus * 100;
+	              this.priceValueLunes = parseFloat(phase.price_value);
+	
+	              if (this.currentUser.whitelist && phase.name === 'Whitelist') {
+	                this.buyLimit = 1000000;
+	              } else {
+	                this.buyLimit = phase.maximum_individual_limit;
+	              }
+	
+	              if (this.currentPhase) {
+	                localStorage.setItem('lunes.phase', JSON.stringify(this.currentPhase));
+	              }
+	              this.showLoading(false);
+	              _context4.next = 24;
+	              break;
+	
+	            case 21:
+	              _context4.prev = 21;
+	              _context4.t0 = _context4['catch'](0);
+	
+	              console.log(_context4.t0);
+	
+	            case 24:
+	            case 'end':
+	              return _context4.stop();
+	          }
+	        }
+	      }, _callee4, this, [[0, 21]]);
+	    }));
+	
+	    function obtainPhase() {
+	      return _ref4.apply(this, arguments);
+	    }
+	
+	    return obtainPhase;
+	  }();
+	
+	  BuyController.prototype.getBalanceCoin = function () {
+	    var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(coin) {
+	      var balance;
+	      return regeneratorRuntime.wrap(function _callee5$(_context5) {
+	        while (1) {
+	          switch (_context5.prev = _context5.next) {
+	            case 0:
+	              _context5.next = 2;
+	              return this.HttpService.getBitcoinBalance(coin);
+	
+	            case 2:
+	              balance = _context5.sent;
+	
+	              this.balanceCoins[coin] = { balance: balance };
+	
+	            case 4:
+	            case 'end':
+	              return _context5.stop();
+	          }
+	        }
+	      }, _callee5, this);
+	    }));
+	
+	    function getBalanceCoin(_x3) {
+	      return _ref5.apply(this, arguments);
+	    }
+	
+	    return getBalanceCoin;
+	  }();
+	
+	  BuyController.prototype.getBalanceCoinETH = function () {
+	    var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(coin) {
+	      var balance;
+	      return regeneratorRuntime.wrap(function _callee6$(_context6) {
+	        while (1) {
+	          switch (_context6.prev = _context6.next) {
+	            case 0:
+	              _context6.next = 2;
+	              return this.HttpService.getBalanceCoinETH(coin);
+	
+	            case 2:
+	              balance = _context6.sent;
+	
+	              this.balanceCoins[coin] = { balance: balance };
+	
+	            case 4:
+	            case 'end':
+	              return _context6.stop();
+	          }
+	        }
+	      }, _callee6, this);
+	    }));
+	
+	    function getBalanceCoinETH(_x4) {
+	      return _ref6.apply(this, arguments);
+	    }
+	
+	    return getBalanceCoinETH;
+	  }();
+	
+	  BuyController.prototype.getBalanceLunes = function () {
+	    var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(coin, currentUser) {
+	      var balance;
+	      return regeneratorRuntime.wrap(function _callee7$(_context7) {
+	        while (1) {
+	          switch (_context7.prev = _context7.next) {
+	            case 0:
+	              _context7.next = 2;
+	              return this.HttpService.getBalanceLunes(coin, currentUser);
+	
+	            case 2:
+	              balance = _context7.sent;
+	
+	              this.balanceCoins[coin] = { balance: balance };
+	
+	            case 4:
+	            case 'end':
+	              return _context7.stop();
+	          }
+	        }
+	      }, _callee7, this);
+	    }));
+	
+	    function getBalanceLunes(_x5, _x6) {
+	      return _ref7.apply(this, arguments);
+	    }
+	
+	    return getBalanceLunes;
+	  }();
+	
+	  BuyController.prototype.goToHome = function goToHome() {
+	    this.$state.go('buy');
+	  };
+	
+	  BuyController.prototype.showLoading = function showLoading(isShow) {
+	    if (isShow) {
+	      $('<div class="modal-backdrop"><img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442469/loading_y9ob8i.svg" /></div>').appendTo(document.body);
+	    } else {
+	      this.$timeout(function () {
+	        $(".modal-backdrop").remove();
+	      }, 1000);
+	    }
+	  };
+	
+	  /**
+	   * coinDestination, bonusRate, coinAmount, exchangeRate, unitPrice, coupon
+	   * coinDestination  - eh o simbolo da moeda,
+	   * bonusRate        - eh a taxa de bonus da fase atual da ico,
+	   * coinAmount       - eh a quantidade de criptomoeda,
+	   * exchangeRate     - o preco em dolar,
+	   * unitPrice        - o preco atual da lunes em dolar e
+	   * coupon           - eh o cupom de bonus do usuario se houver
+	  */
+	
+	
+	  BuyController.prototype.calcValue = function calcValue(LNS) {
+	    if (!this.valueToReceive) {
+	      this.valueToReceive = initialValue;
+	    }
+	
+	    if (!this.valueToDeposit) {
+	      this.valueToDeposit = initialValue;
+	    }
+	
+	    var valueToReceive = parseFloat(this.valueToReceive);
+	    var valueToDeposit = parseFloat(this.valueToDeposit);
+	
+	    if (isNaN(valueToReceive) || isNaN(valueToDeposit)) {
+	      this.valueToDeposit = initialValue;
+	      this.valueToReceive = initialValue;
+	    }
+	
+	    if (LNS) {
+	      if (this.valueToReceive.indexOf(',') !== -1) {
+	        this.valueToReceive = this.valueToReceive.replace(/[, ]+/g, "0").trim();
+	      }
+	    } else {
+	      if (this.valueToDeposit.indexOf(',') !== -1) {
+	        this.valueToDeposit = this.valueToDeposit.replace(/[,]+/g, '').trim();
+	      }
+	    }
+	    this.checkMaxLength();
+	    var phase = this.getPhaseActive();
+	    var bonusRate = phase.bonus;
+	    var currentPrice = this.balanceCoins[this.currentCoinSelected.name].balance.PRICE;
+	    var coupon = this.currentUser.coupon;
+	
+	    this.valueToReceive = parseFloat(this.valueToReceive);
+	    this.valueToDeposit = parseFloat(this.valueToDeposit);
+	    this.buyLimit = parseFloat(this.buyLimit);
+	
+	    var coinAmount = LNS ? this.valueToReceive : this.valueToDeposit;
+	    coinAmount = parseFloat(coinAmount);
+	    if (isNaN(coinAmount)) {
+	      coinAmount = 0;
+	    }
+	    var unitPrice = phase.price_value;
+	    var calculateFinal = 0;
+	
+	    if (LNS) {
+	      if (coinAmount > this.buyLimit) {
+	        coinAmount = this.buyLimit;
+	        this.valueToReceive = this.buyLimit;
+	      }
+	
+	      calculateFinal = _lunesLib2.default.ico.buyConversion.fromLNS(bonusRate, coinAmount, currentPrice, unitPrice, coupon);
+	      this.valueToDeposit = calculateFinal.buyAmount;
+	      this.bonusAmountFinal = (parseFloat(phase.bonus) * this.valueToReceive).toString();
+	      return;
+	    }
+	
+	    calculateFinal = _lunesLib2.default.ico.buyConversion.toLNS(bonusRate, coinAmount, currentPrice, unitPrice, coupon);
+	
+	    this.valueToReceive = calculateFinal.buyAmount.toString();
+	    this.bonusAmountFinal = calculateFinal.bonusAmount;
+	
+	    if (this.valueToReceive > this.buyLimit) {
+	      this.showErrorLimit = 'Você ultrapassou o limite de compra!';
+	      coinAmount = this.buyLimit;
+	      this.valueToReceive = this.buyLimit;
+	      this.bonusAmountFinal = (parseFloat(phase.bonus) * this.buyLimit).toString();
+	    } else {
+	      this.showErrorLimit = '';
+	    }
+	  };
+	
+	  BuyController.prototype.getBuyLimit = function getBuyLimit() {
+	    return parseFloat(this.buyLimit);
+	  };
+	
+	  /**
+	   * Quantidade de Lunes (qtd) = resultado da calculadora
+	   * 30% Bônus (bonus) = 30% de qtd
+	   * Total = qtd + bonus
+	  */
+	
+	
+	  BuyController.prototype.getTotal = function getTotal() {
+	    var amountLNS = parseFloat(this.valueToReceive);
+	    var bonus = parseFloat(this.getPhaseActive().bonus) * amountLNS;
+	    var total = amountLNS + bonus;
+	    return total.toFixed(8);
+	  };
+	
+	  BuyController.prototype.checkMaxLength = function checkMaxLength() {
+	    if (typeof this.valueToDeposit === 'number') {
+	      this.valueToDeposit = this.valueToDeposit.toString();
+	    }
+	    var numberMax = 10;
+	    if (!isNaN(this.valueToDeposit) && this.valueToDeposit.indexOf(',') !== -1) {
+	      this.valueToDeposit = this.valueToDeposit.replace(",", ".");
+	    }
+	    if (this.valueToDeposit.length > numberMax) {
+	      this.valueToDeposit = this.valueToDeposit.substring(0, numberMax);
+	    }
+	  };
+	
+	  BuyController.prototype.showQuotation = function showQuotation() {
+	    if (Object.keys(this.balanceCoins).length) {
+	      return this.balanceCoins[this.currentCoinSelected.name].balance.PRICE;
+	    } else {
+	      return this.$translate.instant('LOADING');
+	    }
+	  };
+	
+	  BuyController.prototype.getFlag = function getFlag() {
+	    var flagUS = 'https://res.cloudinary.com/luneswallet/image/upload/v1519442468/flag-us_jxifyu.png';
+	    var flagBR = 'https://res.cloudinary.com/luneswallet/image/upload/v1519442467/flag-br_ksncrn.png';
+	    return this.$translate.instant('CURRENCY_USER') === 'USD' ? flagUS : flagBR;
+	  };
+	
+	  BuyController.prototype.logout = function logout() {
+	    localStorage.removeItem(_index.STORAGE_KEY);
+	  };
+	
+	  BuyController.prototype.getCurrentBalanceUser = function () {
+	    var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(coin, address, currentUser) {
+	      var _this = this;
+	
+	      var balance;
+	      return regeneratorRuntime.wrap(function _callee8$(_context8) {
+	        while (1) {
+	          switch (_context8.prev = _context8.next) {
+	            case 0:
+	              _context8.next = 2;
+	              return this.HttpService.getBalance(coin, address, currentUser);
+	
+	            case 2:
+	              balance = _context8.sent;
+	
+	              this.$timeout(function () {
+	                if (balance && balance.network === 'ETH') {
+	                  _this.balanceUser = {
+	                    confirmed_balance: balance.balance
+	                  };
+	                } else {
+	                  _this.balanceUser = balance;
+	                }
+	              }, 200);
+	
+	            case 4:
+	            case 'end':
+	              return _context8.stop();
+	          }
+	        }
+	      }, _callee8, this);
+	    }));
+	
+	    function getCurrentBalanceUser(_x7, _x8, _x9) {
+	      return _ref8.apply(this, arguments);
+	    }
+	
+	    return getCurrentBalanceUser;
+	  }();
+	
+	  BuyController.prototype.selectCoin = function selectCoin(coinSelected) {
+	    var _this2 = this;
+	
+	    this.valueToDeposit = initialValue;
+	    this.valueToReceive = initialValue;
+	    var self = this;
+	    this.coins = this.coins.filter(function (coin) {
+	      coin.selected = false;
+	      if (coin.label === coinSelected.label) {
+	        self.currentCoinSelected = JSON.parse(JSON.stringify(coin));
+	        self.showDepositWalletAddressQRCode(self.currentUser, coin);
+	        coin.selected = true;
+	      }
+	      return coin;
+	    });
+	    this.$timeout(function () {
+	      _this2.$scope.$apply();
+	    }, 200);
+	    //this.openCoinSelect();
+	  };
+	
+	  BuyController.prototype.openCoinSelect = function openCoinSelect() {
+	    this.showContainerCoins = !this.showContainerCoins;
+	  };
+	
+	  return BuyController;
+	}();
+	
+	BuyController.$inject = ['$rootScope', '$scope', 'HttpService', '$translate', '$timeout', '$state'];
+	
+	exports.default = BuyController;
+
+/***/ },
 /* 701 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -82415,7 +82432,7 @@
 	var content = __webpack_require__(702);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(483)(content, {});
+	var update = __webpack_require__(691)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -82435,12 +82452,12 @@
 /* 702 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(482)(true);
+	exports = module.exports = __webpack_require__(690)(true);
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".input-transparent {\n  border: 0;\n  margin: 0;\n  padding: 0 5px 0 5px;\n  text-align: right;\n  width: 100%;\n  background-color: transparent;\n  color: #fff;\n  font-size: 18px; }\n\n.calculator .equal {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  font-size: 30px; }\n\n.calculator .valueCripto {\n  min-height: 80px;\n  background-color: rgba(65, 37, 111, 0.8);\n  color: #fff;\n  padding: 10px;\n  border-radius: 5px;\n  text-align: right;\n  font-size: 18px;\n  line-height: 60px; }\n\n.calculator .valueMoney {\n  height: 80px;\n  background-color: rgba(65, 37, 111, 0.8);\n  color: #fff;\n  padding: 20px;\n  border-radius: 5px;\n  text-align: right;\n  font-size: 18px; }\n  .calculator .valueMoney .currency {\n    width: 100%;\n    text-align: right;\n    font-size: 10px;\n    padding-right: 9px;\n    padding-top: 3px; }\n\n.lunesAmount {\n  width: 100%;\n  background-color: rgba(65, 37, 111, 0.8);\n  height: 80px;\n  line-height: 60px;\n  text-align: right;\n  padding-right: 10px;\n  border-radius: 5px; }\n  .lunesAmount label {\n    font-size: 18px; }\n  .lunesAmount .flag-lns {\n    left: 0;\n    position: absolute;\n    background-color: #fff;\n    padding: 10px 30px;\n    border-radius: 5px 0 5px 5px;\n    box-shadow: #41266f 1px 0px 0px 2px; }\n\n.amountBalance {\n  margin-top: 20px;\n  border-radius: 5px; }\n  .amountBalance .total {\n    border-radius: 5px;\n    background-color: rgba(65, 37, 111, 0.8); }\n    .amountBalance .total .line-break {\n      margin-top: 22px;\n      padding: 10px; }\n      .amountBalance .total .line-break hr {\n        border-top: solid 2px #4cd466; }\n  .amountBalance .result {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    margin-bottom: 15px;\n    padding: 0 10px; }\n\n.select-coin {\n  position: relative; }\n  .select-coin ul {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin: 0;\n    padding: 0;\n    float: left;\n    text-align: center; }\n    .select-coin ul li {\n      list-style: none;\n      cursor: pointer;\n      padding: 0px 5px;\n      margin: 0 5px;\n      width: 40px;\n      border-radius: 5px; }\n      .select-coin ul li:hover, .select-coin ul li.selected {\n        background-color: #32bc57;\n        opacity: 0.9; }\n\n.container-coins {\n  width: 70px;\n  height: 210px;\n  position: absolute;\n  border-radius: 5px;\n  background-color: #e4e4e5;\n  top: 50px;\n  z-index: 99;\n  text-align: center; }\n  .container-coins ul {\n    margin: 0;\n    padding: 0; }\n    .container-coins ul li {\n      list-style: none;\n      text-align: center;\n      padding: 5px 10px;\n      cursor: pointer; }\n      .container-coins ul li.selected, .container-coins ul li:hover {\n        background-color: #c7c7c7;\n        border-radius: 5px; }\n\n.container-qr-code .selected-label {\n  border-radius: 10px;\n  padding: 2px 20px;\n  background-color: #432773;\n  color: #fdfdfd;\n  font-size: 12px; }\n\n.container-qr-code .address {\n  margin-top: 10px;\n  color: #4cd466; }\n\n.show-balance .show-balance-btc {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-btc .coin-name {\n    color: #e0972f; }\n\n.show-balance .show-balance-ltc {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-ltc .coin-name {\n    color: #9f9aa4; }\n\n.show-balance .show-balance-eth {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-eth .coin-name {\n    color: #b4d0cd; }\n\n.flex-right {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end; }\n\n.menu-top {\n  background-color: #432478;\n  border-radius: 10px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  list-style: none;\n  color: #fff;\n  text-transform: uppercase; }\n  .menu-top a {\n    color: #fff; }\n  .menu-top li {\n    margin-right: 10px;\n    font-size: 12px; }\n\n.container-logo-header {\n  text-align: right; }\n  .container-logo-header .container-quotation {\n    text-align: right;\n    padding: 5px 20px;\n    font-size: 12px;\n    border-radius: 20px;\n    background-color: #432478; }\n    .container-logo-header .container-quotation .logout a {\n      color: #f5b300; }\n  .container-logo-header .logo {\n    text-align: left;\n    padding: 10px; }\n  .container-logo-header .quotation {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row; }\n\n@media only screen and (max-width: 321px) {\n  .header {\n    display: block !important; }\n  .container-logo-header {\n    text-align: center; }\n    .container-logo-header .container-quotation {\n      margin: 10px 0 0 0; }\n    .container-logo-header .logo {\n      text-align: center;\n      padding: 10px; }\n    .container-logo-header .quotation {\n      text-align: center;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row;\n              flex-direction: row; }\n      .container-logo-header .quotation .container-quotation {\n        padding: 0 5px; }\n  .round-menu img {\n    width: 100%; }\n  .flex-right {\n    display: block; }\n  .menu.menu-top {\n    display: -webkit-box !important;\n    display: -ms-flexbox !important;\n    display: flex !important;\n    -webkit-box-pack: center !important;\n        -ms-flex-pack: center !important;\n            justify-content: center !important; }\n    .menu.menu-top li img {\n      width: 25px; } }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/buy/src/buy/buy.component.scss","D:/workspaces/lunes/lunes-purchase/src/buy/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA;EACE,UAAS;EACT,UAAS;EACT,qBAAoB;EACpB,kBAAiB;EACjB,YAAW;EACX,8BAA6B;EAC7B,YAAW;EACX,gBAAe,EAChB;;AAED;EAEI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,yBAAuB;MAAvB,sBAAuB;UAAvB,wBAAuB;EACvB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,gBAAe,EAChB;;AANH;EAQI,iBAAgB;EAChB,yCCnBiB;EDoBjB,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,kBAAiB;EACjB,gBAAe;EACf,kBAAiB,EAClB;;AAhBH;EAkBI,aAAY;EACZ,yCC7BiB;ED8BjB,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,kBAAiB;EACjB,gBAAe,EAQhB;EAhCH;IA0BM,YAAW;IACX,kBAAiB;IACjB,gBAAe;IACf,mBAAkB;IAClB,iBAAgB,EACjB;;AAIL;EACE,YAAW;EACX,yCC/CmB;EDgDnB,aAAY;EACZ,kBAAiB;EACjB,kBAAiB;EACjB,oBAAmB;EACnB,mBAAkB,EAYnB;EAnBD;IASI,gBAAe,EAChB;EAVH;IAYI,QAAO;IACP,mBAAkB;IAClB,uBAAsB;IACtB,mBAAkB;IAClB,6BAA4B;IAC5B,oCAAmC,EACpC;;AAGH;EACE,iBAAgB;EAChB,mBAAkB,EAqBnB;EAvBD;IAII,mBAAkB;IAClB,yCCvEiB,ED+ElB;IAbH;MAOM,iBAAgB;MAChB,cAAa,EAId;MAZL;QAUQ,8BC1EO,ED2ER;EAXP;IAgBI,qBAAa;IAAb,qBAAa;IAAb,cAAa;IACb,+BAAmB;IAAnB,8BAAmB;QAAnB,wBAAmB;YAAnB,oBAAmB;IACnB,0BAA8B;QAA9B,uBAA8B;YAA9B,+BAA8B;IAC9B,0BAAmB;QAAnB,uBAAmB;YAAnB,oBAAmB;IACnB,oBAAmB;IACnB,gBAAe,EAChB;;AAGH;EACE,mBAAkB,EAoBnB;EArBD;IAGI,qBAAa;IAAb,qBAAa;IAAb,cAAa;IACb,UAAS;IACT,WAAU;IACV,YAAW;IACX,mBAAkB,EAanB;IApBH;MASM,iBAAgB;MAChB,gBAAe;MACf,iBAAgB;MAChB,cAAa;MACb,YAAW;MACX,mBAAkB,EAKnB;MAnBL;QAgBQ,0BAAyB;QACzB,aAAY,EACb;;AAKP;EACE,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,mBAAkB;EAClB,0BAAyB;EACzB,UAAS;EACT,YAAW;EACX,mBAAkB,EAenB;EAvBD;IAUI,UAAS;IACT,WAAU,EAWX;IAtBH;MAaM,iBAAgB;MAChB,mBAAkB;MAClB,kBAAiB;MACjB,gBAAe,EAKhB;MArBL;QAkBQ,0BAAyB;QACzB,mBAAkB,EACnB;;AAKP;EAEI,oBAAmB;EACnB,kBAAiB;EACjB,0BAAyB;EACzB,eAAc;EACd,gBAAe,EAChB;;AAPH;EASI,iBAAgB;EAChB,eCnJW,EDoJZ;;AAGH;EAUM,iBAAgB;EAChB,gBAAe,EAKhB;EAhBL;IAcQ,eAXQ,EAYT;;AAfP;EAUM,iBAAgB;EAChB,gBAAe,EAKhB;EAhBL;IAcQ,eAVQ,EAWT;;AAfP;EAUM,iBAAgB;EAChB,gBAAe,EAKhB;EAhBL;IAcQ,eATQ,EAUT;;AAKP;EACE,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,sBAAyB;MAAzB,mBAAyB;UAAzB,0BAAyB,EAC1B;;AAED;EACE,0BAAyB;EACzB,oBAAmB;EACnB,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,+BAAmB;EAAnB,8BAAmB;MAAnB,wBAAmB;UAAnB,oBAAmB;EACnB,iBAAgB;EAChB,YAAW;EACX,0BAAyB,EAQ1B;EAfD;IASI,YAAW,EACZ;EAVH;IAYI,mBAAkB;IAClB,gBAAe,EAChB;;AAGH;EACE,kBAAiB,EAsBlB;EAvBD;IAGI,kBAAiB;IACjB,kBAAiB;IACjB,gBAAe;IACf,oBAAmB;IACnB,0BAAyB,EAM1B;IAbH;MAUQ,eAAc,EACf;EAXP;IAeI,iBAAgB;IAChB,cAAa,EACd;EAjBH;IAmBI,qBAAa;IAAb,qBAAa;IAAb,cAAa;IACb,sBAAyB;QAAzB,mBAAyB;YAAzB,0BAAyB;IACzB,+BAAmB;IAAnB,8BAAmB;QAAnB,wBAAmB;YAAnB,oBAAmB,EACpB;;AAGH;EACE;IACE,0BAAwB,EACzB;EACD;IACE,mBAAkB,EAiBnB;IAlBD;MAGI,mBAAkB,EACnB;IAJH;MAMI,mBAAkB;MAClB,cAAa,EACd;IARH;MAUI,mBAAkB;MAClB,qBAAa;MAAb,qBAAa;MAAb,cAAa;MACb,yBAAuB;UAAvB,sBAAuB;cAAvB,wBAAuB;MACvB,+BAAmB;MAAnB,8BAAmB;UAAnB,wBAAmB;cAAnB,oBAAmB,EAIpB;MAjBH;QAeM,eAAc,EACf;EAGL;IACE,YAAW,EACZ;EACD;IACE,eAAc,EACf;EACD;IACE,gCAAuB;IAAvB,gCAAuB;IAAvB,yBAAuB;IACvB,oCAAiC;QAAjC,iCAAiC;YAAjC,mCAAiC,EAMlC;IARD;MAKM,YAAW,EACZ,EAAA","file":"buy.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n.input-transparent {\r\n  border: 0;\r\n  margin: 0;\r\n  padding: 0 5px 0 5px;\r\n  text-align: right;\r\n  width: 100%;\r\n  background-color: transparent;\r\n  color: #fff;\r\n  font-size: 18px;\r\n}\r\n\r\n.calculator {\r\n  .equal {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    font-size: 30px;\r\n  }\r\n  .valueCripto {\r\n    min-height: 80px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    color: #fff;\r\n    padding: 10px;\r\n    border-radius: 5px;\r\n    text-align: right;\r\n    font-size: 18px;\r\n    line-height: 60px;\r\n  }\r\n  .valueMoney {\r\n    height: 80px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    color: #fff;\r\n    padding: 20px;\r\n    border-radius: 5px;\r\n    text-align: right;\r\n    font-size: 18px;\r\n    .currency {\r\n      width: 100%;\r\n      text-align: right;\r\n      font-size: 10px;\r\n      padding-right: 9px;\r\n      padding-top: 3px;\r\n    }\r\n  }\r\n}\r\n\r\n.lunesAmount {\r\n  width: 100%;\r\n  background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n  height: 80px;\r\n  line-height: 60px;\r\n  text-align: right;\r\n  padding-right: 10px;\r\n  border-radius: 5px;\r\n  label {\r\n    font-size: 18px;\r\n  }\r\n  .flag-lns {\r\n    left: 0;\r\n    position: absolute;\r\n    background-color: #fff;\r\n    padding: 10px 30px;\r\n    border-radius: 5px 0 5px 5px;\r\n    box-shadow: #41266f 1px 0px 0px 2px;\r\n  }\r\n}\r\n\r\n.amountBalance {\r\n  margin-top: 20px;\r\n  border-radius: 5px;\r\n  .total {\r\n    border-radius: 5px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    .line-break {\r\n      margin-top: 22px;\r\n      padding: 10px;\r\n      hr {\r\n        border-top: solid 2px $green;\r\n      }\r\n    }\r\n  }\r\n\r\n  .result {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    margin-bottom: 15px;\r\n    padding: 0 10px;\r\n  }\r\n}\r\n\r\n.select-coin {\r\n  position: relative;\r\n  ul {\r\n    display: flex;\r\n    margin: 0;\r\n    padding: 0;\r\n    float: left;\r\n    text-align: center;\r\n    li {\r\n      list-style: none;\r\n      cursor: pointer;\r\n      padding: 0px 5px;\r\n      margin: 0 5px;\r\n      width: 40px;\r\n      border-radius: 5px;\r\n      &:hover, &.selected {\r\n        background-color: #32bc57;\r\n        opacity: 0.9;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.container-coins {\r\n  width: 70px;\r\n  height: 210px;\r\n  position: absolute;\r\n  border-radius: 5px;\r\n  background-color: #e4e4e5;\r\n  top: 50px;\r\n  z-index: 99;\r\n  text-align: center;\r\n  ul {\r\n    margin: 0;\r\n    padding: 0;\r\n    li {\r\n      list-style: none;\r\n      text-align: center;\r\n      padding: 5px 10px;\r\n      cursor: pointer;\r\n      &.selected, &:hover {\r\n        background-color: #c7c7c7;\r\n        border-radius: 5px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.container-qr-code {\r\n  .selected-label {\r\n    border-radius: 10px;\r\n    padding: 2px 20px;\r\n    background-color: #432773;\r\n    color: #fdfdfd;\r\n    font-size: 12px;\r\n  }\r\n  .address {\r\n    margin-top: 10px;\r\n    color: $green;\r\n  }\r\n}\r\n\r\n.show-balance {\r\n  \r\n  $coins: (\r\n    btc: #e0972f,\r\n    ltc: #9f9aa4,\r\n    eth: #b4d0cd\r\n  );\r\n\r\n  @each $coin, $color in $coins {\r\n    .show-balance-#{$coin} {\r\n      margin-top: 1rem;\r\n      font-size: 2rem;\r\n\r\n      .coin-name {\r\n        color: $color;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.flex-right {\r\n  display: flex;\r\n  justify-content: flex-end;\r\n}\r\n\r\n.menu-top {\r\n  background-color: #432478;\r\n  border-radius: 10px;\r\n  display: flex;\r\n  flex-direction: row;\r\n  list-style: none;\r\n  color: #fff;\r\n  text-transform: uppercase;\r\n  a {\r\n    color: #fff;  \r\n  }\r\n  li {\r\n    margin-right: 10px;\r\n    font-size: 12px;\r\n  }\r\n}\r\n\r\n.container-logo-header {\r\n  text-align: right;\r\n  .container-quotation {\r\n    text-align: right; \r\n    padding: 5px 20px; \r\n    font-size: 12px;\r\n    border-radius: 20px;\r\n    background-color: #432478;\r\n    .logout {\r\n      a {\r\n        color: #f5b300;\r\n      }\r\n    }\r\n  }\r\n  .logo {\r\n    text-align: left;\r\n    padding: 10px;\r\n  }\r\n  .quotation {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n    flex-direction: row;\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 321px) {\r\n  .header {\r\n    display: block!important;\r\n  }\r\n  .container-logo-header {\r\n    text-align: center;\r\n    .container-quotation {\r\n      margin: 10px 0 0 0;\r\n    }\r\n    .logo {\r\n      text-align: center;\r\n      padding: 10px;\r\n    }\r\n    .quotation {\r\n      text-align: center;\r\n      display: flex;\r\n      justify-content: center;\r\n      flex-direction: row;\r\n      .container-quotation {\r\n        padding: 0 5px;\r\n      }\r\n    }\r\n  }\r\n  .round-menu img {\r\n    width: 100%;\r\n  }\r\n  .flex-right {\r\n    display: block;\r\n  }\r\n  .menu.menu-top {\r\n    display: flex!important;\r\n    justify-content: center!important;\r\n    li {\r\n      img {\r\n        width: 25px;\r\n      }\r\n    }\r\n  }\r\n}\r\n  ","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #4cd466;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
+	exports.push([module.id, ".input-transparent {\n  border: 0;\n  margin: 0;\n  padding: 0 5px 0 5px;\n  text-align: right;\n  width: 100%;\n  background-color: transparent;\n  color: #fff;\n  font-size: 18px; }\n\n.equal {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  font-size: 30px;\n  text-align: center; }\n\n.calculator .valueCripto {\n  min-height: 60px;\n  background-color: rgba(65, 37, 111, 0.8);\n  color: #fff;\n  padding: 10px;\n  border-radius: 5px;\n  text-align: right;\n  font-size: 18px;\n  line-height: 60px; }\n  .calculator .valueCripto .select-coin {\n    min-height: 60px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n  .calculator .valueCripto .area-field input {\n    text-align: center; }\n\n.calculator .valueMoney {\n  height: 80px;\n  background-color: rgba(65, 37, 111, 0.8);\n  color: #fff;\n  padding: 20px;\n  border-radius: 5px;\n  text-align: right;\n  font-size: 18px; }\n  .calculator .valueMoney .currency {\n    width: 100%;\n    text-align: right;\n    font-size: 10px;\n    padding-right: 9px;\n    padding-top: 3px; }\n\n.lunesAmount {\n  width: 100%;\n  background-color: rgba(65, 37, 111, 0.8);\n  height: 80px;\n  line-height: 60px;\n  text-align: right;\n  padding-right: 10px;\n  border-radius: 5px; }\n  .lunesAmount label {\n    font-size: 18px; }\n  .lunesAmount .flag-lns {\n    left: 0;\n    position: absolute;\n    background-color: #fff;\n    padding: 10px 30px;\n    border-radius: 5px 0 5px 5px;\n    box-shadow: #41266f 1px 0px 0px 2px; }\n\n.amountBalance {\n  margin-top: 20px;\n  border-radius: 5px; }\n  .amountBalance.total {\n    padding: 10px;\n    border-radius: 5px;\n    background-color: rgba(65, 37, 111, 0.8); }\n    .amountBalance.total .line-break {\n      margin-top: 22px;\n      padding: 10px; }\n      .amountBalance.total .line-break hr {\n        border-top: solid 2px #4cd466; }\n  .amountBalance .result {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    margin-bottom: 15px;\n    padding: 0 10px; }\n\n.select-coin {\n  position: relative; }\n  .select-coin ul {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin: 0;\n    padding: 0;\n    float: left;\n    text-align: center; }\n    .select-coin ul li {\n      list-style: none;\n      cursor: pointer;\n      padding: 0px 5px;\n      margin: 0 5px;\n      width: 40px;\n      border-radius: 5px; }\n      .select-coin ul li:hover, .select-coin ul li.selected {\n        background-color: #32bc57;\n        opacity: 0.9; }\n\n.container-coins {\n  width: 70px;\n  height: 210px;\n  position: absolute;\n  border-radius: 5px;\n  background-color: #e4e4e5;\n  top: 50px;\n  z-index: 99;\n  text-align: center; }\n  .container-coins ul {\n    margin: 0;\n    padding: 0; }\n    .container-coins ul li {\n      list-style: none;\n      text-align: center;\n      padding: 5px 10px;\n      cursor: pointer; }\n      .container-coins ul li.selected, .container-coins ul li:hover {\n        background-color: #c7c7c7;\n        border-radius: 5px; }\n\n.container-qr-code .selected-label {\n  border-radius: 5px;\n  padding: 5px 28px;\n  background-color: #432773;\n  color: #e5c523;\n  font-size: 12px; }\n\n.container-qr-code .address {\n  margin-top: 10px;\n  color: #4cd466; }\n\n.show-balance .show-balance-btc {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-btc .coin-name {\n    color: #e0972f; }\n\n.show-balance .show-balance-ltc {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-ltc .coin-name {\n    color: #9f9aa4; }\n\n.show-balance .show-balance-eth {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-eth .coin-name {\n    color: #b4d0cd; }\n\n.flex-right {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end; }\n\n.menu-top {\n  background-color: #432478;\n  border-radius: 10px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  list-style: none;\n  color: #fff;\n  text-transform: uppercase; }\n  .menu-top a {\n    color: #fff; }\n  .menu-top li {\n    margin-right: 10px;\n    font-size: 12px; }\n\n.container-logo-header {\n  text-align: right; }\n  .container-logo-header .container-quotation {\n    text-align: right;\n    padding: 5px 20px;\n    font-size: 12px;\n    border-radius: 20px;\n    background-color: #432478; }\n    .container-logo-header .container-quotation .logout a {\n      color: #f5b300; }\n  .container-logo-header .logo {\n    text-align: left;\n    padding: 10px; }\n  .container-logo-header .quotation {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row; }\n\n@media only screen and (max-width: 321px) {\n  .header {\n    display: block !important; }\n  .container-logo-header {\n    text-align: center; }\n    .container-logo-header .container-quotation {\n      margin: 10px 0 0 0; }\n    .container-logo-header .logo {\n      text-align: center;\n      padding: 10px; }\n    .container-logo-header .quotation {\n      text-align: center;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row;\n              flex-direction: row; }\n      .container-logo-header .quotation .container-quotation {\n        padding: 0 5px; }\n  .round-menu img {\n    width: 100%; }\n  .flex-right {\n    display: block; }\n  .menu.menu-top {\n    display: -webkit-box !important;\n    display: -ms-flexbox !important;\n    display: flex !important;\n    -webkit-box-pack: center !important;\n        -ms-flex-pack: center !important;\n            justify-content: center !important; }\n    .menu.menu-top li img {\n      width: 25px; } }\n\n@media only screen and (max-width: 426px) {\n  .container-logo-header .logo {\n    text-align: center;\n    margin-bottom: 20px; }\n  .valueCripto .select-coin {\n    clear: both;\n    min-height: 60px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n  .valueCripto .area-field input {\n    text-align: center; } }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/buy/src/buy/buy.component.scss","D:/workspaces/lunes/lunes-purchase/src/buy/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA;EACE,UAAS;EACT,UAAS;EACT,qBAAoB;EACpB,kBAAiB;EACjB,YAAW;EACX,8BAA6B;EAC7B,YAAW;EACX,gBAAe,EAChB;;AAED;EACE,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,yBAAuB;MAAvB,sBAAuB;UAAvB,wBAAuB;EACvB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,gBAAe;EACf,mBAAkB,EACnB;;AAED;EAEI,iBAAgB;EAChB,yCCrBiB;EDsBjB,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,kBAAiB;EACjB,gBAAe;EACf,kBAAiB,EASlB;EAlBH;IAWM,iBAAgB;IAChB,qBAAa;IAAb,qBAAa;IAAb,cAAa;IACb,yBAAuB;QAAvB,sBAAuB;YAAvB,wBAAuB,EACxB;EAdL;IAgBM,mBAAkB,EACnB;;AAjBL;EAoBI,aAAY;EACZ,yCCvCiB;EDwCjB,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,kBAAiB;EACjB,gBAAe,EAQhB;EAlCH;IA4BM,YAAW;IACX,kBAAiB;IACjB,gBAAe;IACf,mBAAkB;IAClB,iBAAgB,EACjB;;AAIL;EACE,YAAW;EACX,yCCzDmB;ED0DnB,aAAY;EACZ,kBAAiB;EACjB,kBAAiB;EACjB,oBAAmB;EACnB,mBAAkB,EAYnB;EAnBD;IASI,gBAAe,EAChB;EAVH;IAYI,QAAO;IACP,mBAAkB;IAClB,uBAAsB;IACtB,mBAAkB;IAClB,6BAA4B;IAC5B,oCAAmC,EACpC;;AAGH;EACE,iBAAgB;EAChB,mBAAkB,EAsBnB;EAxBD;IAII,cAAa;IACb,mBAAkB;IAClB,yCClFiB,ED0FlB;IAdH;MAQM,iBAAgB;MAChB,cAAa,EAId;MAbL;QAWQ,8BCrFO,EDsFR;EAZP;IAiBI,qBAAa;IAAb,qBAAa;IAAb,cAAa;IACb,+BAAmB;IAAnB,8BAAmB;QAAnB,wBAAmB;YAAnB,oBAAmB;IACnB,0BAA8B;QAA9B,uBAA8B;YAA9B,+BAA8B;IAC9B,0BAAmB;QAAnB,uBAAmB;YAAnB,oBAAmB;IACnB,oBAAmB;IACnB,gBAAe,EAChB;;AAGH;EACE,mBAAkB,EAoBnB;EArBD;IAGI,qBAAa;IAAb,qBAAa;IAAb,cAAa;IACb,UAAS;IACT,WAAU;IACV,YAAW;IACX,mBAAkB,EAanB;IApBH;MASM,iBAAgB;MAChB,gBAAe;MACf,iBAAgB;MAChB,cAAa;MACb,YAAW;MACX,mBAAkB,EAKnB;MAnBL;QAgBQ,0BAAyB;QACzB,aAAY,EACb;;AAKP;EACE,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,mBAAkB;EAClB,0BAAyB;EACzB,UAAS;EACT,YAAW;EACX,mBAAkB,EAenB;EAvBD;IAUI,UAAS;IACT,WAAU,EAWX;IAtBH;MAaM,iBAAgB;MAChB,mBAAkB;MAClB,kBAAiB;MACjB,gBAAe,EAKhB;MArBL;QAkBQ,0BAAyB;QACzB,mBAAkB,EACnB;;AAKP;EAEI,mBAAkB;EAClB,kBAAiB;EACjB,0BAAyB;EACzB,eAAc;EACd,gBAAe,EAChB;;AAPH;EASI,iBAAgB;EAChB,eC9JW,ED+JZ;;AAGH;EAUM,iBAAgB;EAChB,gBAAe,EAKhB;EAhBL;IAcQ,eAXQ,EAYT;;AAfP;EAUM,iBAAgB;EAChB,gBAAe,EAKhB;EAhBL;IAcQ,eAVQ,EAWT;;AAfP;EAUM,iBAAgB;EAChB,gBAAe,EAKhB;EAhBL;IAcQ,eATQ,EAUT;;AAKP;EACE,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,sBAAyB;MAAzB,mBAAyB;UAAzB,0BAAyB,EAC1B;;AAED;EACE,0BAAyB;EACzB,oBAAmB;EACnB,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,+BAAmB;EAAnB,8BAAmB;MAAnB,wBAAmB;UAAnB,oBAAmB;EACnB,iBAAgB;EAChB,YAAW;EACX,0BAAyB,EAQ1B;EAfD;IASI,YAAW,EACZ;EAVH;IAYI,mBAAkB;IAClB,gBAAe,EAChB;;AAGH;EACE,kBAAiB,EAsBlB;EAvBD;IAGI,kBAAiB;IACjB,kBAAiB;IACjB,gBAAe;IACf,oBAAmB;IACnB,0BAAyB,EAM1B;IAbH;MAUQ,eAAc,EACf;EAXP;IAeI,iBAAgB;IAChB,cAAa,EACd;EAjBH;IAmBI,qBAAa;IAAb,qBAAa;IAAb,cAAa;IACb,sBAAyB;QAAzB,mBAAyB;YAAzB,0BAAyB;IACzB,+BAAmB;IAAnB,8BAAmB;QAAnB,wBAAmB;YAAnB,oBAAmB,EACpB;;AAGH;EACE;IACE,0BAAwB,EACzB;EACD;IACE,mBAAkB,EAiBnB;IAlBD;MAGI,mBAAkB,EACnB;IAJH;MAMI,mBAAkB;MAClB,cAAa,EACd;IARH;MAUI,mBAAkB;MAClB,qBAAa;MAAb,qBAAa;MAAb,cAAa;MACb,yBAAuB;UAAvB,sBAAuB;cAAvB,wBAAuB;MACvB,+BAAmB;MAAnB,8BAAmB;UAAnB,wBAAmB;cAAnB,oBAAmB,EAIpB;MAjBH;QAeM,eAAc,EACf;EAGL;IACE,YAAW,EACZ;EACD;IACE,eAAc,EACf;EACD;IACE,gCAAuB;IAAvB,gCAAuB;IAAvB,yBAAuB;IACvB,oCAAiC;QAAjC,iCAAiC;YAAjC,mCAAiC,EAMlC;IARD;MAKM,YAAW,EACZ,EAAA;;AAKP;EACE;IAEI,mBAAkB;IAClB,oBAAmB,EACpB;EAEH;IAEI,YAAW;IACX,iBAAgB;IAChB,qBAAa;IAAb,qBAAa;IAAb,cAAa;IACb,yBAAuB;QAAvB,sBAAuB;YAAvB,wBAAuB,EACxB;EANH;IAQI,mBAAkB,EACnB,EAAA","file":"buy.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n.input-transparent {\r\n  border: 0;\r\n  margin: 0;\r\n  padding: 0 5px 0 5px;\r\n  text-align: right;\r\n  width: 100%;\r\n  background-color: transparent;\r\n  color: #fff;\r\n  font-size: 18px;\r\n}\r\n\r\n.equal {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  font-size: 30px;\r\n  text-align: center;\r\n}\r\n\r\n.calculator {\r\n  .valueCripto {\r\n    min-height: 60px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    color: #fff;\r\n    padding: 10px;\r\n    border-radius: 5px;\r\n    text-align: right;\r\n    font-size: 18px;\r\n    line-height: 60px;\r\n    .select-coin {\r\n      min-height: 60px;\r\n      display: flex;\r\n      justify-content: center;\r\n    }\r\n    .area-field input {\r\n      text-align: center;\r\n    }\r\n  }\r\n  .valueMoney {\r\n    height: 80px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    color: #fff;\r\n    padding: 20px;\r\n    border-radius: 5px;\r\n    text-align: right;\r\n    font-size: 18px;\r\n    .currency {\r\n      width: 100%;\r\n      text-align: right;\r\n      font-size: 10px;\r\n      padding-right: 9px;\r\n      padding-top: 3px;\r\n    }\r\n  }\r\n}\r\n\r\n.lunesAmount {\r\n  width: 100%;\r\n  background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n  height: 80px;\r\n  line-height: 60px;\r\n  text-align: right;\r\n  padding-right: 10px;\r\n  border-radius: 5px;\r\n  label {\r\n    font-size: 18px;\r\n  }\r\n  .flag-lns {\r\n    left: 0;\r\n    position: absolute;\r\n    background-color: #fff;\r\n    padding: 10px 30px;\r\n    border-radius: 5px 0 5px 5px;\r\n    box-shadow: #41266f 1px 0px 0px 2px;\r\n  }\r\n}\r\n\r\n.amountBalance {\r\n  margin-top: 20px;\r\n  border-radius: 5px;\r\n  &.total {\r\n    padding: 10px;\r\n    border-radius: 5px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    .line-break {\r\n      margin-top: 22px;\r\n      padding: 10px;\r\n      hr {\r\n        border-top: solid 2px $green;\r\n      }\r\n    }\r\n  }\r\n\r\n  .result {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    margin-bottom: 15px;\r\n    padding: 0 10px;\r\n  }\r\n}\r\n\r\n.select-coin {\r\n  position: relative;\r\n  ul {\r\n    display: flex;\r\n    margin: 0;\r\n    padding: 0;\r\n    float: left;\r\n    text-align: center;\r\n    li {\r\n      list-style: none;\r\n      cursor: pointer;\r\n      padding: 0px 5px;\r\n      margin: 0 5px;\r\n      width: 40px;\r\n      border-radius: 5px;\r\n      &:hover, &.selected {\r\n        background-color: #32bc57;\r\n        opacity: 0.9;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.container-coins {\r\n  width: 70px;\r\n  height: 210px;\r\n  position: absolute;\r\n  border-radius: 5px;\r\n  background-color: #e4e4e5;\r\n  top: 50px;\r\n  z-index: 99;\r\n  text-align: center;\r\n  ul {\r\n    margin: 0;\r\n    padding: 0;\r\n    li {\r\n      list-style: none;\r\n      text-align: center;\r\n      padding: 5px 10px;\r\n      cursor: pointer;\r\n      &.selected, &:hover {\r\n        background-color: #c7c7c7;\r\n        border-radius: 5px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.container-qr-code {\r\n  .selected-label {\r\n    border-radius: 5px;\r\n    padding: 5px 28px;\r\n    background-color: #432773;\r\n    color: #e5c523;\r\n    font-size: 12px;\r\n  }\r\n  .address {\r\n    margin-top: 10px;\r\n    color: $green;\r\n  }\r\n}\r\n\r\n.show-balance {\r\n  \r\n  $coins: (\r\n    btc: #e0972f,\r\n    ltc: #9f9aa4,\r\n    eth: #b4d0cd\r\n  );\r\n\r\n  @each $coin, $color in $coins {\r\n    .show-balance-#{$coin} {\r\n      margin-top: 1rem;\r\n      font-size: 2rem;\r\n\r\n      .coin-name {\r\n        color: $color;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.flex-right {\r\n  display: flex;\r\n  justify-content: flex-end;\r\n}\r\n\r\n.menu-top {\r\n  background-color: #432478;\r\n  border-radius: 10px;\r\n  display: flex;\r\n  flex-direction: row;\r\n  list-style: none;\r\n  color: #fff;\r\n  text-transform: uppercase;\r\n  a {\r\n    color: #fff;  \r\n  }\r\n  li {\r\n    margin-right: 10px;\r\n    font-size: 12px;\r\n  }\r\n}\r\n\r\n.container-logo-header {\r\n  text-align: right;\r\n  .container-quotation {\r\n    text-align: right; \r\n    padding: 5px 20px; \r\n    font-size: 12px;\r\n    border-radius: 20px;\r\n    background-color: #432478;\r\n    .logout {\r\n      a {\r\n        color: #f5b300;\r\n      }\r\n    }\r\n  }\r\n  .logo {\r\n    text-align: left;\r\n    padding: 10px;\r\n  }\r\n  .quotation {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n    flex-direction: row;\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 321px) {\r\n  .header {\r\n    display: block!important;\r\n  }\r\n  .container-logo-header {\r\n    text-align: center;\r\n    .container-quotation {\r\n      margin: 10px 0 0 0;\r\n    }\r\n    .logo {\r\n      text-align: center;\r\n      padding: 10px;\r\n    }\r\n    .quotation {\r\n      text-align: center;\r\n      display: flex;\r\n      justify-content: center;\r\n      flex-direction: row;\r\n      .container-quotation {\r\n        padding: 0 5px;\r\n      }\r\n    }\r\n  }\r\n  .round-menu img {\r\n    width: 100%;\r\n  }\r\n  .flex-right {\r\n    display: block;\r\n  }\r\n  .menu.menu-top {\r\n    display: flex!important;\r\n    justify-content: center!important;\r\n    li {\r\n      img {\r\n        width: 25px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 426px) {\r\n  .container-logo-header {\r\n    .logo {\r\n      text-align: center;\r\n      margin-bottom: 20px;\r\n    }\r\n  }\r\n  .valueCripto {\r\n    .select-coin {\r\n      clear: both;\r\n      min-height: 60px;\r\n      display: flex;\r\n      justify-content: center;\r\n    }\r\n    .area-field input {\r\n      text-align: center;\r\n    }\r\n  }\r\n}\r\n  ","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #4cd466;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
 	
 	// exports
 
@@ -82478,7 +82495,7 @@
 /* 704 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"container\">\n\n  <lunesheader showlogout='true' showlinks='true'></lunesheader>\n\n  <!-- DASHBOARD -->\n  <section class=\"dashboard\">\n    <div class=\"row\">\n      <div class=\"col-12 title mb-2-rem\">\n        <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>\n      </div>\n      <div class=\"col-12 history\">\n        <table class=\"lunes-table\" ng-if=\"$ctrl.checkWidthScreenDesktop()\">\n          <thead>\n            <tr>\n              <td>{{ 'DASHBOARD.DATE' | translate }}</td>\n              <td>{{ 'DASHBOARD.PHASE' | translate }}</td>\n              <td>{{ 'DASHBOARD.DEPOSIT' | translate }}</td>\n              <td>Lunes</td>\n              <td>{{ 'DASHBOARD.BONUS' | translate }}</td>\n              <td>Total</td>\n            </tr>\n          </thead>\n          <tbody data-ng-if=\"$ctrl.history.length > 0\">\n            <tr data-ng-repeat=\"history in $ctrl.history\" ng-class-odd=\"'odd'\" ng-class-even=\"'even'\">\n              <td>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</td>\n              <td>{{ history.phase || 1 }}</td>\n              <td>{{ history.deposit_value }} {{ history.deposit_coin }}</td>\n              <td>{{ history.credit_value }} LNS</td>\n              <td>{{ history.bonus_value }} LNS </td>\n              <td>{{ history.total }} LNS</td>\n            </tr>\n          </tbody>\n          <tfoot data-ng-if=\"$ctrl.history.length === 0\">\n            <tr>\n              <td colspan=\"6\" style=\"text-align: center;\">{{ 'DASHBOARD.NO_HISTORY' | translate }}</td>\n            </tr>\n          </tfoot>\n        </table>\n\n        <div ng-if=\"$ctrl.checkWidthScreenMobile()\">\n          <div data-ng-repeat=\"history in $ctrl.history\" ng-class-odd=\"'odd'\" ng-class-even=\"'even'\" style=\"border-radius: 5px;\">\n            <h6 style=\"text-align: center; padding: 10px; color: #4cd468;\">{{'TRANSACTION' | translate}} {{$index+1}}</h6>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.DATE' | translate }}</div>\n              <div>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.PHASE' | translate }}</div>\n              <div>{{ history.phase || 1 }}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.DEPOSIT' | translate }}</div>\n              <div>{{ history.deposit_value }} {{history.deposit_coin}}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>Lunes</div>\n              <div>{{ history.credit_value }} LNS</div>\n            </div>\n            <div class=\"responsive-table-card total-footer\" ng-show=\"false\">\n              <div>Total</div>\n              <div>{{ history.total }} LNS</div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"col-12 balance\">\n        <span>{{'MY_BALANCE' | translate}}:</span>\n        <span class=\"monetary\">{{ $ctrl.totalLns }}</span>\n        <span class=\"coin\">LNS</span>\n      </div>\n    </div>\n  </section>\n</div>"
+	module.exports = "<div class=\"container\">\n\n  <lunesheader showlogout='true' showlinks='true'></lunesheader>\n\n  <!-- DASHBOARD -->\n  <section class=\"dashboard\">\n    <div class=\"row\">\n      <div class=\"col-xs-12 col-md-12 col-lg-12 title mb-2-rem\">\n        <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>\n      </div>\n\n      <!-- BALANCE FOR EACH COIN -->\n      <div class=\"col-xs-12 col-md-6 col-lg-6 transaction-coins\">\n        <div class=\"show-balance\" ng-repeat=\"coin in $ctrl.coins\" style=\"margin-right: 15px;text-align: center;\">\n          <img ng-src=\"{{coin.img}}\" alt=\"{{coin.label}}\">\n          <p style=\"font-size: 10px;margin: 0;\">{{coin.label}}</p>\n          <small ng-show=\"false\" style=\"font-size: 8px;color: #ce3e3e;\">{{'UNCONFIRMED_BALANCE' | translate}}</small>\n          <p ng-show=\"false\" style=\"font-size: 10px;margin: 0;\">{{$ctrl.balanceProcessed[coin.name].unconfirmed_balance}}</p>\n        </div>\n      </div>\n\n      <div class=\"col-xs-12 col-md-6 col-lg-6 balance lns\">\n        <span>{{'MY_BALANCE' | translate}}:</span>\n        <span class=\"monetary\">{{ $ctrl.totalLns }}</span>\n        <span class=\"coin\">LNS</span>\n      </div>\n\n      <!-- end -->\n\n      <!-- TABLE RESUME HISTORIC PURCHASE -->\n      <div class=\"col-12 history\">\n        <table class=\"lunes-table\" ng-if=\"$ctrl.checkWidthScreenDesktop()\">\n          <thead>\n            <tr>\n              <td>{{ 'DASHBOARD.DATE' | translate }}</td>\n              <td>{{ 'DASHBOARD.PHASE' | translate }}</td>\n              <td>{{ 'DASHBOARD.DEPOSIT' | translate }}</td>\n              <td>Lunes</td>\n              <td>{{ 'DASHBOARD.BONUS' | translate }}</td>\n              <td>Total</td>\n            </tr>\n          </thead>\n          <tbody data-ng-if=\"$ctrl.history.length > 0\">\n            <tr data-ng-repeat=\"history in $ctrl.history\" ng-class-odd=\"'odd'\" ng-class-even=\"'even'\">\n              <td>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</td>\n              <td>{{ history.phase || 1 }}</td>\n              <td>{{ history.deposit_value }} {{ history.deposit_coin }}</td>\n              <td>{{ history.credit_value }} LNS</td>\n              <td>{{ history.bonus_value }} LNS </td>\n              <td>{{ history.total }} LNS</td>\n            </tr>\n          </tbody>\n          <tfoot data-ng-if=\"$ctrl.history.length === 0\">\n            <tr>\n              <td colspan=\"6\" style=\"text-align: center;\">{{ 'DASHBOARD.NO_HISTORY' | translate }}</td>\n            </tr>\n          </tfoot>\n        </table>\n\n        <div ng-if=\"$ctrl.checkWidthScreenMobile()\">\n          <div data-ng-repeat=\"history in $ctrl.history\" ng-class-odd=\"'odd'\" ng-class-even=\"'even'\" style=\"border-radius: 5px;\">\n            <h6 style=\"text-align: center; padding: 10px; color: #4cd468;\">{{'TRANSACTION' | translate}} {{$index+1}}</h6>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.DATE' | translate }}</div>\n              <div>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.PHASE' | translate }}</div>\n              <div>{{ history.phase || 1 }}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.DEPOSIT' | translate }}</div>\n              <div>{{ history.deposit_value }} {{history.deposit_coin}}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>Lunes</div>\n              <div>{{ history.credit_value }} LNS</div>\n            </div>\n            <div class=\"responsive-table-card total-footer\" ng-show=\"false\">\n              <div>Total</div>\n              <div>{{ history.total }} LNS</div>\n            </div>\n          </div>\n        </div>\n      </div>\n\n    </div>\n  </section>\n</div>"
 
 /***/ },
 /* 705 */
@@ -82490,11 +82507,11 @@
 	  value: true
 	});
 	
-	var _lunesLib = __webpack_require__(493);
+	var _lunesLib = __webpack_require__(475);
 	
 	var _lunesLib2 = _interopRequireDefault(_lunesLib);
 	
-	var _index = __webpack_require__(475);
+	var _index = __webpack_require__(683);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -82516,9 +82533,110 @@
 	    this.phaseName = '';
 	    this.history = [];
 	    this.totalLns = 0;
-	
+	    this.coins = _index.COINS_CONSTANT;
 	    this.getHistory();
+	    this.getProcessedBalanceUser();
 	  }
+	
+	  DashboardController.prototype.getProcessedBalanceUser = function () {
+	    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+	      var _this = this;
+	
+	      var BTC, LTC, ETH;
+	      return regeneratorRuntime.wrap(function _callee$(_context) {
+	        while (1) {
+	          switch (_context.prev = _context.next) {
+	            case 0:
+	              _context.next = 2;
+	              return this.HttpService.showDepositWalletAddressQRCode(this.currentUser, this.coins[0]);
+	
+	            case 2:
+	              BTC = _context.sent;
+	              _context.next = 5;
+	              return this.HttpService.showDepositWalletAddressQRCode(this.currentUser, this.coins[1]);
+	
+	            case 5:
+	              LTC = _context.sent;
+	              _context.next = 8;
+	              return this.HttpService.showDepositWalletAddressQRCode(this.currentUser, this.coins[2]);
+	
+	            case 8:
+	              ETH = _context.sent;
+	              _context.next = 11;
+	              return this.getCurrentBalanceUser(this.coins[0].name, BTC.address, this.currentUser);
+	
+	            case 11:
+	              this.balanceBTC = _context.sent;
+	              _context.next = 14;
+	              return this.getCurrentBalanceUser(this.coins[1].name, LTC.address, this.currentUser);
+	
+	            case 14:
+	              this.balanceLTC = _context.sent;
+	              _context.next = 17;
+	              return this.getCurrentBalanceUser(this.coins[2].name, ETH.address, this.currentUser);
+	
+	            case 17:
+	              this.balanceETH = _context.sent;
+	
+	
+	              if (this.balanceETH && this.balanceETH.network === 'ETH') {
+	                if (this.balanceETH.balance === '0') {
+	                  this.balanceETH.balance = '0.00000000';
+	                }
+	                this.balanceETH.confirmed_balance = this.balanceETH.balance;
+	              }
+	
+	              this.$timeout(function () {
+	                _this.balanceProcessed = {
+	                  BTC: JSON.parse(JSON.stringify(_this.balanceBTC)),
+	                  LTC: JSON.parse(JSON.stringify(_this.balanceLTC)),
+	                  ETH: JSON.parse(JSON.stringify(_this.balanceETH))
+	                };
+	              }, 200);
+	
+	            case 20:
+	            case 'end':
+	              return _context.stop();
+	          }
+	        }
+	      }, _callee, this);
+	    }));
+	
+	    function getProcessedBalanceUser() {
+	      return _ref.apply(this, arguments);
+	    }
+	
+	    return getProcessedBalanceUser;
+	  }();
+	
+	  DashboardController.prototype.getCurrentBalanceUser = function () {
+	    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(coin, address, currentUser) {
+	      var balance;
+	      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+	        while (1) {
+	          switch (_context2.prev = _context2.next) {
+	            case 0:
+	              _context2.next = 2;
+	              return this.HttpService.getBalance(coin, address, currentUser);
+	
+	            case 2:
+	              balance = _context2.sent;
+	              return _context2.abrupt('return', balance);
+	
+	            case 4:
+	            case 'end':
+	              return _context2.stop();
+	          }
+	        }
+	      }, _callee2, this);
+	    }));
+	
+	    function getCurrentBalanceUser(_x, _x2, _x3) {
+	      return _ref2.apply(this, arguments);
+	    }
+	
+	    return getCurrentBalanceUser;
+	  }();
 	
 	  DashboardController.prototype.showLoading = function showLoading(isShow) {
 	    if (isShow) {
@@ -82543,34 +82661,34 @@
 	  };
 	
 	  DashboardController.prototype.getHistory = function () {
-	    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-	      var _this = this;
+	    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+	      var _this2 = this;
 	
 	      var history;
-	      return regeneratorRuntime.wrap(function _callee$(_context) {
+	      return regeneratorRuntime.wrap(function _callee3$(_context3) {
 	        while (1) {
-	          switch (_context.prev = _context.next) {
+	          switch (_context3.prev = _context3.next) {
 	            case 0:
 	              this.showLoading(true);
-	              _context.next = 3;
+	              _context3.next = 3;
 	              return _lunesLib2.default.ico.buyHistory(this.currentUser.email, this.currentUser.accessToken, 1).catch(function (err) {
 	                return console.log(err);
 	              });
 	
 	            case 3:
-	              history = _context.sent;
+	              history = _context3.sent;
 	
 	              this.getPhases();
 	              this.$timeout(function () {
-	                _this.showLoading(false);
-	                _this.history = history.map(function (item) {
+	                _this2.showLoading(false);
+	                _this2.history = history.map(function (item) {
 	                  var total = parseFloat(item.credit_value) + parseFloat(item.bonus_value);
-	                  _this.getHistoryPhase(item.sale_phase_id);
+	                  _this2.getHistoryPhase(item.sale_phase_id);
 	
 	                  return {
 	                    total: total,
 	                    created: item.created,
-	                    phase: _this.phaseName,
+	                    phase: _this2.phaseName,
 	                    deposit_value: parseFloat(item.deposit_value),
 	                    deposit_coin: item.deposit_coin,
 	                    credit_value: parseFloat(item.credit_value),
@@ -82578,30 +82696,30 @@
 	                  };
 	                });
 	
-	                _this.getTotalLns();
+	                _this2.getTotalLns();
 	              }, 100);
 	
 	            case 6:
 	            case 'end':
-	              return _context.stop();
+	              return _context3.stop();
 	          }
 	        }
-	      }, _callee, this);
+	      }, _callee3, this);
 	    }));
 	
 	    function getHistory() {
-	      return _ref.apply(this, arguments);
+	      return _ref3.apply(this, arguments);
 	    }
 	
 	    return getHistory;
 	  }();
 	
 	  DashboardController.prototype.getTotalLns = function () {
-	    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+	    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
 	      var totalLns;
-	      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+	      return regeneratorRuntime.wrap(function _callee4$(_context4) {
 	        while (1) {
-	          switch (_context2.prev = _context2.next) {
+	          switch (_context4.prev = _context4.next) {
 	            case 0:
 	              totalLns = this.history.reduce(function (total, item) {
 	                return total + parseFloat(item.credit_value) + parseFloat(item.bonus_value);
@@ -82612,75 +82730,75 @@
 	
 	            case 2:
 	            case 'end':
-	              return _context2.stop();
+	              return _context4.stop();
 	          }
 	        }
-	      }, _callee2, this);
+	      }, _callee4, this);
 	    }));
 	
 	    function getTotalLns() {
-	      return _ref2.apply(this, arguments);
+	      return _ref4.apply(this, arguments);
 	    }
 	
 	    return getTotalLns;
 	  }();
 	
 	  DashboardController.prototype.getPhases = function () {
-	    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-	      return regeneratorRuntime.wrap(function _callee3$(_context3) {
+	    var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+	      return regeneratorRuntime.wrap(function _callee5$(_context5) {
 	        while (1) {
-	          switch (_context3.prev = _context3.next) {
+	          switch (_context5.prev = _context5.next) {
 	            case 0:
 	              if (!localStorage.getItem('lunes.phase')) {
-	                _context3.next = 3;
+	                _context5.next = 3;
 	                break;
 	              }
 	
 	              this.phases = JSON.parse(localStorage.getItem('lunes.phase'));
-	              return _context3.abrupt('return');
+	              return _context5.abrupt('return');
 	
 	            case 3:
-	              _context3.next = 5;
+	              _context5.next = 5;
 	              return this.HttpService.obtainPhase().catch(function (error) {
 	                console.log('Erro ao tentar recuperar dados da fase');
 	              });
 	
 	            case 5:
-	              this.phases = _context3.sent;
+	              this.phases = _context5.sent;
 	
 	            case 6:
 	            case 'end':
-	              return _context3.stop();
+	              return _context5.stop();
 	          }
 	        }
-	      }, _callee3, this);
+	      }, _callee5, this);
 	    }));
 	
 	    function getPhases() {
-	      return _ref3.apply(this, arguments);
+	      return _ref5.apply(this, arguments);
 	    }
 	
 	    return getPhases;
 	  }();
 	
 	  DashboardController.prototype.getHistoryPhase = function () {
-	    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(phase) {
+	    var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(phase) {
 	      var historyPhase;
-	      return regeneratorRuntime.wrap(function _callee4$(_context4) {
+	      return regeneratorRuntime.wrap(function _callee6$(_context6) {
 	        while (1) {
-	          switch (_context4.prev = _context4.next) {
+	          switch (_context6.prev = _context6.next) {
 	            case 0:
 	              historyPhase = this.phases.filter(function (item) {
 	                return item.sale_id === phase;
 	              });
 	
 	              if (!(historyPhase.length === 0)) {
-	                _context4.next = 4;
+	                _context6.next = 4;
 	                break;
 	              }
 	
 	              this.phaseName = '-';
-	              return _context4.abrupt('return');
+	              return _context6.abrupt('return');
 	
 	            case 4:
 	
@@ -82688,14 +82806,14 @@
 	
 	            case 5:
 	            case 'end':
-	              return _context4.stop();
+	              return _context6.stop();
 	          }
 	        }
-	      }, _callee4, this);
+	      }, _callee6, this);
 	    }));
 	
-	    function getHistoryPhase(_x) {
-	      return _ref4.apply(this, arguments);
+	    function getHistoryPhase(_x4) {
+	      return _ref6.apply(this, arguments);
 	    }
 	
 	    return getHistoryPhase;
@@ -82718,7 +82836,7 @@
 	var content = __webpack_require__(707);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(483)(content, {});
+	var update = __webpack_require__(691)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -82738,12 +82856,12 @@
 /* 707 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(482)(true);
+	exports = module.exports = __webpack_require__(690)(true);
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".green {\n  color: #4cd466; }\n\n.mb-1-rem {\n  margin-bottom: 1rem; }\n\n.mb-2-rem {\n  margin-bottom: 2rem; }\n\n.history {\n  margin-bottom: 2rem; }\n\n.balance {\n  font-family: 'Offside', cursive;\n  text-align: right; }\n\n.monetary {\n  font-size: 2rem;\n  margin-left: 10px; }\n\n.coin {\n  font-size: 2.5rem;\n  color: #4cd466; }\n\n.lunes-table {\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n  font-weight: lighter;\n  font-size: 12px;\n  overflow: hidden;\n  text-align: center;\n  width: 100%; }\n  .lunes-table td {\n    padding: 0.75rem; }\n  .lunes-table thead {\n    background: linear-gradient(to right, #654fa4, #876fc6, #654fa4); }\n  .lunes-table tbody {\n    background-color: #41256f; }\n    .lunes-table tbody tr:hover {\n      background-color: #3f2569; }\n\n/* \r\nMax width before this PARTICULAR table gets nasty\r\nThis query will take effect for any screen smaller than 760px\r\nand also iPads specifically.\r\n*/\n@media only screen and (max-width: 699px) {\n  /* Force table to not be like tables anymore */\n  table, thead, tbody, th, td, tr {\n    display: block; }\n  /* Hide table headers (but not display: none;, for accessibility) */\n  thead tr {\n    position: absolute;\n    top: -9999px;\n    left: -9999px; }\n  tr {\n    border: 1px solid #3f2669; }\n  td {\n    /* Behave  like a \"row\" */\n    border: none;\n    border-bottom: 1px solid #4b2d7d;\n    position: relative;\n    padding-left: 50%; }\n  td:before {\n    /* Now like a table header */\n    position: absolute;\n    /* Top/left values mimic padding */\n    top: 6px;\n    left: 6px;\n    width: 45%;\n    padding-right: 10px;\n    white-space: nowrap; }\n  .monetary {\n    font-size: 1rem;\n    margin-left: 10px; }\n  .coin {\n    font-size: 1.5rem;\n    color: #4cd466; } }\n\n@media only screen and (min-width: 700px) and (max-width: 768px) {\n  .lunes-table {\n    table-layout: fixed; }\n    .lunes-table tbody {\n      max-height: 400px;\n      overflow-y: auto;\n      display: block;\n      width: 690px; } }\n\n.odd {\n  background-color: #41256f; }\n\n.even {\n  background-color: #351e5a; }\n\n.responsive-table-card {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  padding: 10px;\n  margin-bottom: 10px;\n  border-bottom: solid 1px #4c2c7f; }\n  .responsive-table-card div {\n    font-size: 12px; }\n  .responsive-table-card.total-footer {\n    background-color: #4cd468;\n    border-radius: 0 0 5px 5px; }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/dashboard/src/dashboard/dashboard.component.scss","D:/workspaces/lunes/lunes-purchase/src/dashboard/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA;EACI,eCEW,EDDd;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,gCAA+B;EAC/B,kBAAiB,EACpB;;AAED;EACI,gBAAe;EACf,kBAAiB,EACpB;;AAED;EACI,kBAAiB;EACjB,eCzBW,ED0Bd;;AAED;EAEI,4BAA2B;EAC3B,6BAA4B;EAC5B,qBAAoB;EACpB,gBAAe;EACf,iBAAgB;EAChB,mBAAkB;EAClB,YAAW,EAiBd;EAzBD;IAWQ,iBAAgB,EACnB;EAZL;IAeQ,iEAAwF,EAC3F;EAhBL;IAmBQ,0BCjDa,EDsDhB;IAxBL;MAsBY,0BCnDc,EDoDjB;;AAIT;;;;EAIE;AACF;EAGC,+CAA+C;EAC/C;IACC,eAAc,EACd;EAED,oEAAoE;EACpE;IACC,mBAAkB;IAClB,aAAY;IACZ,cAAa,EACb;EAED;IAAK,0BAAyB,EAAK;EAEnC;IACC,0BAA0B;IAC1B,aAAY;IACZ,iCAAgC;IAChC,mBAAkB;IAClB,kBAAiB,EACjB;EAED;IACC,6BAA6B;IAC7B,mBAAkB;IAClB,mCAAmC;IACnC,SAAQ;IACR,UAAS;IACT,WAAU;IACV,oBAAmB;IACnB,oBAAmB,EAChB;EAED;IACI,gBAAe;IACf,kBAAiB,EACpB;EAED;IACI,kBAAiB;IACjB,eAAc,EACjB,EAAA;;AAGL;EAEI;IACI,oBAAmB,EAOtB;IARD;MAGQ,kBAAiB;MACjB,iBAAgB;MAChB,eAAc;MACd,aAAY,EACf,EAAA;;AAIT;EACI,0BAAyB,EAC5B;;AACD;EACI,0BAAyB,EAC5B;;AAED;EACI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,+BAAmB;EAAnB,8BAAmB;MAAnB,wBAAmB;UAAnB,oBAAmB;EACnB,0BAA8B;MAA9B,uBAA8B;UAA9B,+BAA8B;EAC9B,cAAa;EACb,oBAAmB;EACnB,iCAAgC,EAQnC;EAdD;IAQQ,gBAAe,EAClB;EATL;IAWQ,0BAAyB;IACzB,2BAA0B,EAC7B","file":"dashboard.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n.green {\r\n    color: $green;\r\n}\r\n\r\n.mb-1-rem {\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n.mb-2-rem {\r\n    margin-bottom: 2rem;\r\n}\r\n\r\n.history {\r\n    margin-bottom: 2rem;\r\n}\r\n\r\n.balance {\r\n    font-family: 'Offside', cursive;\r\n    text-align: right;\r\n}\r\n\r\n.monetary {\r\n    font-size: 2rem;\r\n    margin-left: 10px;\r\n}\r\n\r\n.coin {\r\n    font-size: 2.5rem;\r\n    color: $green;\r\n}\r\n\r\n.lunes-table {\r\n    // background: transparent;\r\n    border-top-left-radius: 5px;\r\n    border-top-right-radius: 5px;\r\n    font-weight: lighter;\r\n    font-size: 12px;\r\n    overflow: hidden;\r\n    text-align: center;\r\n    width: 100%;\r\n\r\n    td {\r\n        padding: 0.75rem;\r\n    }\r\n\r\n    thead {\r\n        background: linear-gradient(to right , $lightPrimary, $extraLightPrimary, $lightPrimary);\r\n    }\r\n\r\n    tbody {\r\n        background-color: $darkPrimary;\r\n        \r\n        tr:hover {\r\n            background-color: $extraDarkPrimary;\r\n        }\r\n    }\r\n}\r\n\r\n/* \r\nMax width before this PARTICULAR table gets nasty\r\nThis query will take effect for any screen smaller than 760px\r\nand also iPads specifically.\r\n*/\r\n@media \r\nonly screen and (max-width: 699px)  {\r\n\r\n\t/* Force table to not be like tables anymore */\r\n\ttable, thead, tbody, th, td, tr { \r\n\t\tdisplay: block; \r\n\t}\r\n\t\r\n\t/* Hide table headers (but not display: none;, for accessibility) */\r\n\tthead tr { \r\n\t\tposition: absolute;\r\n\t\ttop: -9999px;\r\n\t\tleft: -9999px;\r\n\t}\r\n\t\r\n\ttr { border: 1px solid #3f2669; }\r\n\t\r\n\ttd { \r\n\t\t/* Behave  like a \"row\" */\r\n\t\tborder: none;\r\n\t\tborder-bottom: 1px solid #4b2d7d; \r\n\t\tposition: relative;\r\n\t\tpadding-left: 50%; \r\n\t}\r\n\t\r\n\ttd:before { \r\n\t\t/* Now like a table header */\r\n\t\tposition: absolute;\r\n\t\t/* Top/left values mimic padding */\r\n\t\ttop: 6px;\r\n\t\tleft: 6px;\r\n\t\twidth: 45%; \r\n\t\tpadding-right: 10px; \r\n\t\twhite-space: nowrap;\r\n    }\r\n\r\n    .monetary {\r\n        font-size: 1rem;\r\n        margin-left: 10px;\r\n    }\r\n    \r\n    .coin {\r\n        font-size: 1.5rem;\r\n        color: #4cd466;\r\n    }\r\n}\r\n\r\n@media\r\nonly screen and (min-width: 700px) and (max-width: 768px) {\r\n    .lunes-table {\r\n        table-layout: fixed;\r\n        tbody {\r\n            max-height: 400px;\r\n            overflow-y: auto;\r\n            display: block;\r\n            width: 690px;\r\n        }\r\n    }\r\n}\r\n\r\n.odd {\r\n    background-color: #41256f;\r\n}\r\n.even {\r\n    background-color: #351e5a;\r\n}\r\n\r\n.responsive-table-card {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n    padding: 10px;\r\n    margin-bottom: 10px;\r\n    border-bottom: solid 1px #4c2c7f;\r\n    div {\r\n        font-size: 12px;\r\n    }\r\n    &.total-footer {\r\n        background-color: #4cd468;\r\n        border-radius: 0 0 5px 5px;\r\n    }\r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #4cd466;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
+	exports.push([module.id, ".green {\n  color: #4cd466; }\n\n.mb-1-rem {\n  margin-bottom: 1rem; }\n\n.mb-2-rem {\n  margin-bottom: 2rem; }\n\n.history {\n  margin-bottom: 2rem; }\n\n.balance {\n  font-family: 'Offside', cursive;\n  text-align: right; }\n\n.monetary {\n  font-size: 2rem;\n  margin-left: 10px; }\n\n.coin {\n  font-size: 2.5rem;\n  color: #4cd466; }\n\n.lunes-table {\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n  font-weight: lighter;\n  font-size: 12px;\n  overflow: hidden;\n  text-align: center;\n  width: 100%; }\n  .lunes-table td {\n    padding: 0.75rem; }\n  .lunes-table thead {\n    background: linear-gradient(to right, #654fa4, #876fc6, #654fa4); }\n  .lunes-table tbody {\n    background-color: #41256f; }\n    .lunes-table tbody tr:hover {\n      background-color: #3f2569; }\n\n/* \r\nMax width before this PARTICULAR table gets nasty\r\nThis query will take effect for any screen smaller than 760px\r\nand also iPads specifically.\r\n*/\n@media only screen and (max-width: 699px) {\n  /* Force table to not be like tables anymore */\n  table, thead, tbody, th, td, tr {\n    display: block; }\n  /* Hide table headers (but not display: none;, for accessibility) */\n  thead tr {\n    position: absolute;\n    top: -9999px;\n    left: -9999px; }\n  tr {\n    border: 1px solid #3f2669; }\n  td {\n    /* Behave  like a \"row\" */\n    border: none;\n    border-bottom: 1px solid #4b2d7d;\n    position: relative;\n    padding-left: 50%; }\n  td:before {\n    /* Now like a table header */\n    position: absolute;\n    /* Top/left values mimic padding */\n    top: 6px;\n    left: 6px;\n    width: 45%;\n    padding-right: 10px;\n    white-space: nowrap; }\n  .monetary {\n    font-size: 1rem;\n    margin-left: 10px; }\n  .coin {\n    font-size: 1.5rem;\n    color: #4cd466; } }\n\n@media only screen and (min-width: 700px) and (max-width: 768px) {\n  .lunes-table {\n    table-layout: fixed; }\n    .lunes-table tbody {\n      max-height: 400px;\n      overflow-y: auto;\n      display: block;\n      width: 690px; } }\n\n.odd {\n  background-color: #41256f; }\n\n.even {\n  background-color: #351e5a; }\n\n.responsive-table-card {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  padding: 10px;\n  margin-bottom: 10px;\n  border-bottom: solid 1px #4c2c7f; }\n  .responsive-table-card div {\n    font-size: 12px; }\n  .responsive-table-card.total-footer {\n    background-color: #4cd468;\n    border-radius: 0 0 5px 5px; }\n\n.transaction-coins {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start; }\n\n.balance.lns {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n\n@media only screen and (max-width: 426px) {\n  .transaction-coins {\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    margin-bottom: 20px; }\n  .balance.lns {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    margin-bottom: 20px; } }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/dashboard/src/dashboard/dashboard.component.scss","D:/workspaces/lunes/lunes-purchase/src/dashboard/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA;EACI,eCEW,EDDd;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,gCAA+B;EAC/B,kBAAiB,EACpB;;AAED;EACI,gBAAe;EACf,kBAAiB,EACpB;;AAED;EACI,kBAAiB;EACjB,eCzBW,ED0Bd;;AAED;EAEI,4BAA2B;EAC3B,6BAA4B;EAC5B,qBAAoB;EACpB,gBAAe;EACf,iBAAgB;EAChB,mBAAkB;EAClB,YAAW,EAiBd;EAzBD;IAWQ,iBAAgB,EACnB;EAZL;IAeQ,iEAAwF,EAC3F;EAhBL;IAmBQ,0BCjDa,EDsDhB;IAxBL;MAsBY,0BCnDc,EDoDjB;;AAIT;;;;EAIE;AACF;EAGC,+CAA+C;EAC/C;IACC,eAAc,EACd;EAED,oEAAoE;EACpE;IACC,mBAAkB;IAClB,aAAY;IACZ,cAAa,EACb;EAED;IAAK,0BAAyB,EAAK;EAEnC;IACC,0BAA0B;IAC1B,aAAY;IACZ,iCAAgC;IAChC,mBAAkB;IAClB,kBAAiB,EACjB;EAED;IACC,6BAA6B;IAC7B,mBAAkB;IAClB,mCAAmC;IACnC,SAAQ;IACR,UAAS;IACT,WAAU;IACV,oBAAmB;IACnB,oBAAmB,EAChB;EAED;IACI,gBAAe;IACf,kBAAiB,EACpB;EAED;IACI,kBAAiB;IACjB,eAAc,EACjB,EAAA;;AAGL;EAEI;IACI,oBAAmB,EAOtB;IARD;MAGQ,kBAAiB;MACjB,iBAAgB;MAChB,eAAc;MACd,aAAY,EACf,EAAA;;AAIT;EACI,0BAAyB,EAC5B;;AACD;EACI,0BAAyB,EAC5B;;AAED;EACI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,+BAAmB;EAAnB,8BAAmB;MAAnB,wBAAmB;UAAnB,oBAAmB;EACnB,0BAA8B;MAA9B,uBAA8B;UAA9B,+BAA8B;EAC9B,cAAa;EACb,oBAAmB;EACnB,iCAAgC,EAQnC;EAdD;IAQQ,gBAAe,EAClB;EATL;IAWQ,0BAAyB;IACzB,2BAA0B,EAC7B;;AAGL;EACI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,+BAAmB;EAAnB,8BAAmB;MAAnB,wBAAmB;UAAnB,oBAAmB;EACnB,wBAA2B;MAA3B,qBAA2B;UAA3B,4BAA2B,EAC9B;;AAED;EACI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,sBAAyB;MAAzB,mBAAyB;UAAzB,0BAAyB;EACzB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB,EACtB;;AAED;EACI;IACI,yBAAuB;QAAvB,sBAAuB;YAAvB,wBAAuB;IACvB,oBAAmB,EACtB;EAED;IACI,qBAAa;IAAb,qBAAa;IAAb,cAAa;IACb,sBAAyB;QAAzB,mBAAyB;YAAzB,0BAAyB;IACzB,0BAAmB;QAAnB,uBAAmB;YAAnB,oBAAmB;IACnB,oBAAmB,EACtB,EAAA","file":"dashboard.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n.green {\r\n    color: $green;\r\n}\r\n\r\n.mb-1-rem {\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n.mb-2-rem {\r\n    margin-bottom: 2rem;\r\n}\r\n\r\n.history {\r\n    margin-bottom: 2rem;\r\n}\r\n\r\n.balance {\r\n    font-family: 'Offside', cursive;\r\n    text-align: right;\r\n}\r\n\r\n.monetary {\r\n    font-size: 2rem;\r\n    margin-left: 10px;\r\n}\r\n\r\n.coin {\r\n    font-size: 2.5rem;\r\n    color: $green;\r\n}\r\n\r\n.lunes-table {\r\n    // background: transparent;\r\n    border-top-left-radius: 5px;\r\n    border-top-right-radius: 5px;\r\n    font-weight: lighter;\r\n    font-size: 12px;\r\n    overflow: hidden;\r\n    text-align: center;\r\n    width: 100%;\r\n\r\n    td {\r\n        padding: 0.75rem;\r\n    }\r\n\r\n    thead {\r\n        background: linear-gradient(to right , $lightPrimary, $extraLightPrimary, $lightPrimary);\r\n    }\r\n\r\n    tbody {\r\n        background-color: $darkPrimary;\r\n        \r\n        tr:hover {\r\n            background-color: $extraDarkPrimary;\r\n        }\r\n    }\r\n}\r\n\r\n/* \r\nMax width before this PARTICULAR table gets nasty\r\nThis query will take effect for any screen smaller than 760px\r\nand also iPads specifically.\r\n*/\r\n@media \r\nonly screen and (max-width: 699px)  {\r\n\r\n\t/* Force table to not be like tables anymore */\r\n\ttable, thead, tbody, th, td, tr { \r\n\t\tdisplay: block; \r\n\t}\r\n\t\r\n\t/* Hide table headers (but not display: none;, for accessibility) */\r\n\tthead tr { \r\n\t\tposition: absolute;\r\n\t\ttop: -9999px;\r\n\t\tleft: -9999px;\r\n\t}\r\n\t\r\n\ttr { border: 1px solid #3f2669; }\r\n\t\r\n\ttd { \r\n\t\t/* Behave  like a \"row\" */\r\n\t\tborder: none;\r\n\t\tborder-bottom: 1px solid #4b2d7d; \r\n\t\tposition: relative;\r\n\t\tpadding-left: 50%; \r\n\t}\r\n\t\r\n\ttd:before { \r\n\t\t/* Now like a table header */\r\n\t\tposition: absolute;\r\n\t\t/* Top/left values mimic padding */\r\n\t\ttop: 6px;\r\n\t\tleft: 6px;\r\n\t\twidth: 45%; \r\n\t\tpadding-right: 10px; \r\n\t\twhite-space: nowrap;\r\n    }\r\n\r\n    .monetary {\r\n        font-size: 1rem;\r\n        margin-left: 10px;\r\n    }\r\n    \r\n    .coin {\r\n        font-size: 1.5rem;\r\n        color: #4cd466;\r\n    }\r\n}\r\n\r\n@media\r\nonly screen and (min-width: 700px) and (max-width: 768px) {\r\n    .lunes-table {\r\n        table-layout: fixed;\r\n        tbody {\r\n            max-height: 400px;\r\n            overflow-y: auto;\r\n            display: block;\r\n            width: 690px;\r\n        }\r\n    }\r\n}\r\n\r\n.odd {\r\n    background-color: #41256f;\r\n}\r\n.even {\r\n    background-color: #351e5a;\r\n}\r\n\r\n.responsive-table-card {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n    padding: 10px;\r\n    margin-bottom: 10px;\r\n    border-bottom: solid 1px #4c2c7f;\r\n    div {\r\n        font-size: 12px;\r\n    }\r\n    &.total-footer {\r\n        background-color: #4cd468;\r\n        border-radius: 0 0 5px 5px;\r\n    }\r\n}\r\n\r\n.transaction-coins {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: flex-start;\r\n}\r\n\r\n.balance.lns {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n    align-items: center;\r\n}\r\n\r\n@media only screen and (max-width: 426px) {\r\n    .transaction-coins {\r\n        justify-content: center;\r\n        margin-bottom: 20px;\r\n    }\r\n    \r\n    .balance.lns {\r\n        display: flex;\r\n        justify-content: flex-end;\r\n        align-items: center;\r\n        margin-bottom: 20px;\r\n    }    \r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #4cd466;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
 	
 	// exports
 
@@ -82815,7 +82933,7 @@
 	var content = __webpack_require__(712);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(483)(content, {});
+	var update = __webpack_require__(691)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -82835,7 +82953,7 @@
 /* 712 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(482)(true);
+	exports = module.exports = __webpack_require__(690)(true);
 	// imports
 	
 	
@@ -82855,7 +82973,7 @@
 	    value: true
 	});
 	
-	var _constants = __webpack_require__(475);
+	var _constants = __webpack_require__(683);
 	
 	var _constants2 = _interopRequireDefault(_constants);
 	
@@ -82946,7 +83064,9 @@
 	  PASSWORD_SPECIALCHARACTER: 'At least one character in the password must be a special character [*&%$#@]',
 	  PASSWORD_ALPHANUMERIC: 'At least one character in the password must be a number',
 	  EMAIL_MATCH: 'E-mail must match',
-	  PASSWORD_MATCH: 'Password must match'
+	  PASSWORD_MATCH: 'Password must match',
+	  SEND_TO_THIS_ADDRESS: 'Send to this address',
+	  UNCONFIRMED_BALANCE: 'Unconfirmed'
 	}, _defineProperty(_USER$PASSWORD$PASSWO, 'DASHBOARD', {
 	  NO_HISTORY: 'You have no history yet',
 	  DATE: 'Date',
@@ -83021,16 +83141,18 @@
 	  AGREE_TERM: 'Eu concordo com os termos de uso acima.',
 	  AGREE_FUTURE_VALUE: 'Eu concordo que não há garantia do valor futuro da moeda Lunes.',
 	  TERM_TITLE: 'Termos e condições',
-	  EMAIL_REQUIRED: 'Email is required',
-	  EMAIL_INVALID: 'Invalid email address',
-	  PASSWORD_REQUIRED: 'Password is required',
-	  PASSWORD_LENGTH: 'Password length must be greater than 8 characters',
+	  EMAIL_REQUIRED: 'Email é obrigatório',
+	  EMAIL_INVALID: 'Endereço de email inválido',
+	  PASSWORD_REQUIRED: 'Senha é obrigatório',
+	  PASSWORD_LENGTH: 'Senha deve ser maior ou igual a 8 caracteres',
 	  PASSWORD_UPPERCASE: 'Ao menos um dos caracteres deve ser maiúsculo.',
 	  PASSWORD_LOWERCASE: 'Ao menos um dos caracteres deve minúscula',
 	  PASSWORD_SPECIALCHARACTER: 'Ao menos um dos caracteres deve ser um caractere especial [*&%$#@]',
 	  PASSWORD_ALPHANUMERIC: 'Ao menos um dos caracteres deve ser um número',
 	  EMAIL_MATCH: 'E-mail deve combinar com a confirmação',
 	  PASSWORD_MATCH: 'Senha deve combinar com a confirmação',
+	  SEND_TO_THIS_ADDRESS: 'Enviar para esse endereço',
+	  UNCONFIRMED_BALANCE: 'Não confirmado',
 	  QUOTATION: 'Cotação:'
 	}, _defineProperty(_USER$PASSWORD$PASSWO, 'DASHBOARD', {
 	  NO_HISTORY: 'Você ainda não possui histórico',
@@ -83098,15 +83220,15 @@
 	  value: true
 	});
 	
-	var _lunesLib = __webpack_require__(493);
+	var _lunesLib = __webpack_require__(475);
 	
 	var _lunesLib2 = _interopRequireDefault(_lunesLib);
 	
-	var _axios = __webpack_require__(570);
+	var _axios = __webpack_require__(552);
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
-	var _constants = __webpack_require__(475);
+	var _constants = __webpack_require__(683);
 	
 	var _cccStreamerUtilities = __webpack_require__(718);
 	
@@ -83492,15 +83614,23 @@
 	        while (1) {
 	          switch (_context11.prev = _context11.next) {
 	            case 0:
+	              if (!(coin && address && currentUser)) {
+	                _context11.next = 6;
+	                break;
+	              }
+	
 	              underCoin = coin.toLowerCase();
-	              _context11.next = 3;
+	              _context11.next = 4;
 	              return _lunesLib2.default.coins.getBalance({ address: address, coin: underCoin, testnet: false }, currentUser.accessToken);
 	
-	            case 3:
+	            case 4:
 	              balance = _context11.sent;
 	              return _context11.abrupt('return', balance && balance.data ? balance.data : {});
 	
-	            case 5:
+	            case 6:
+	              return _context11.abrupt('return', {});
+	
+	            case 7:
 	            case 'end':
 	              return _context11.stop();
 	          }
@@ -84089,7 +84219,7 @@
 	  value: true
 	});
 	
-	var _constants = __webpack_require__(475);
+	var _constants = __webpack_require__(683);
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -84137,7 +84267,7 @@
 	  value: true
 	});
 	
-	var _constants = __webpack_require__(475);
+	var _constants = __webpack_require__(683);
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -84184,7 +84314,7 @@
 	var content = __webpack_require__(723);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(483)(content, {});
+	var update = __webpack_require__(691)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -84204,16 +84334,16 @@
 /* 723 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(482)(true);
+	exports = module.exports = __webpack_require__(690)(true);
 	// imports
 	
 	
 	// module
-	exports.push([module.id, "body {\n  background-color: #4c2b82;\n  font-family: 'Roboto', sans-serif;\n  color: #fff;\n  font-size: 14px;\n  line-height: 20px;\n  font-weight: 100; }\n\n*, *:before, *:after {\n  box-sizing: border-box;\n  position: relative;\n  -webkit-box-sizing: border-box; }\n\n.center {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  height: 100%;\n  overflow: auto;\n  overflow-y: auto; }\n  @media (min-width: 768px) {\n    .center {\n      max-height: 780px; } }\n\nh1, h2, h3, h4 {\n  font-family: 'Offside', cursive;\n  line-height: 1.4em; }\n\nh2 {\n  font-size: 4em;\n  line-height: 1em; }\n\nh3 {\n  font-size: 2em;\n  line-height: 1.3em; }\n\n.txt-green {\n  color: #4cd466; }\n\n.txt-center {\n  text-align: center !important; }\n\n.txt-left {\n  text-align: left !important; }\n\n.txt-right {\n  text-align: right !important; }\n\n.no-padding {\n  padding: 0; }\n\n.cursor-pointer {\n  cursor: pointer; }\n\n.round-menu {\n  text-decoration: none;\n  padding: 10px; }\n  .round-menu img {\n    vertical-align: middle; }\n\n.modal-backdrop {\n  background-color: #4c2b82;\n  opacity: 0.7;\n  text-align: center; }\n\n/* Logo */\n.logo {\n  font-size: 40px;\n  font-family: 'Offside', cursive;\n  letter-spacing: -7px; }\n\n/* Header */\n.header {\n  margin: 20px 0;\n  background-color: #432478;\n  border-radius: 10px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 10px 0; }\n\n/* MENU horizontal */\nul.menu.horizontal {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -ms-flex-pack: distribute;\n      justify-content: space-around; }\n  ul.menu.horizontal li {\n    list-style: none; }\n    ul.menu.horizontal li a {\n      text-transform: uppercase;\n      text-decoration: none;\n      color: #fff; }\n      ul.menu.horizontal li a:hover {\n        color: #4cd466; }\n\n/* authentication */\n.authentication {\n  margin-top: 50px; }\n  .authentication .title {\n    margin: 20px 0; }\n\n.error-fields {\n  padding: 10px;\n  background-color: #f9d660;\n  color: #9b853b;\n  border-radius: 5px;\n  margin-left: 10px;\n  margin-bottom: 20px; }\n\n/* Modal Customized */\n.modal {\n  margin: 20px;\n  background-color: #4c2b82;\n  border-radius: 5px;\n  box-shadow: #4c2b82 1px 1px 17px 5px; }\n  .modal .icon-close {\n    text-align: center;\n    position: absolute;\n    right: 30px;\n    padding: 0 10px;\n    cursor: pointer;\n    font-weight: bold; }\n  .modal .modal-title {\n    margin-left: 2em;\n    font-weight: bold; }\n  .modal .modal-header {\n    border: 0; }\n  .modal .modal-content {\n    background-color: transparent;\n    padding: 10px;\n    border: 0;\n    /*\r\n    *  SCROLL BAR\r\n    */ }\n    .modal .modal-content .content {\n      background-color: #4c2b82;\n      border-radius: 5px;\n      box-shadow: #311d53 1px 1px 32px 0px;\n      color: #fff;\n      padding: 20px;\n      margin: 20px;\n      max-height: 100%;\n      overflow-y: overlay;\n      border: solid 8px #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar-track {\n      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n      background-color: #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar {\n      width: 6px;\n      background-color: #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar-thumb {\n      background-color: #4f2f85; }\n    .modal .modal-content .footer {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      text-align: left;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; }\n\n/* container button */\n.area-button {\n  text-align: center;\n  padding: 10px;\n  /* primary-button */\n  /* disabled button */ }\n  .area-button .primary-button {\n    border: 0;\n    border-radius: 22px;\n    padding: 11px 80px;\n    text-align: center;\n    background-color: #4cd566;\n    color: #fff;\n    font-size: 16px; }\n  .area-button .disabled-button {\n    padding: 10px 80px;\n    border: 0px solid #4e1f85;\n    border-radius: 25px;\n    font-size: 16px;\n    text-decoration: none;\n    display: inline-block;\n    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);\n    color: #FFFFFF;\n    background-color: #6929B3;\n    background-image: linear-gradient(to bottom, #6929B3, #6622B3);\n    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6929B3, endColorstr=#6622B3); }\n  .area-button .rounded-button {\n    border: 0;\n    border-radius: 100%;\n    width: 40px;\n    height: 40px;\n    background-color: #fff;\n    color: #4cd466;\n    box-shadow: #444343 0px 1px 6px 0px; }\n\n/* Input customized */\n.input-form label {\n  display: block; }\n\n.input-form input {\n  width: 90%;\n  border: 0;\n  border-bottom: solid 1px #9c9c9c;\n  background-color: transparent;\n  padding: 10px 0;\n  margin-bottom: 15px;\n  color: #fff;\n  outline: none; }\n  .input-form input::-webkit-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input:-ms-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input::placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input:-ms-input-placeholder {\n    /* Internet Explorer 10-11 */\n    color: #adadad; }\n  .input-form input::-ms-input-placeholder {\n    /* Microsoft Edge */\n    color: #adadad; }\n\n/* Custom Checkbox */\ninput[type=checkbox].css-checkbox {\n  height: 1px;\n  width: 1px;\n  margin: -1px;\n  padding: 0;\n  border: 0; }\n\ninput[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {\n  padding-left: 23px;\n  height: 18px;\n  display: inline-block;\n  line-height: 18px;\n  background-repeat: no-repeat;\n  background-position: 0 0;\n  font-size: 12px;\n  vertical-align: middle;\n  cursor: pointer; }\n\ninput[type=checkbox].css-checkbox:checked + label.css-label, input[type=checkbox].css-checkbox + label.css-label.chk {\n  background-position: 0 -18px; }\n\nlabel.css-label {\n  background-image: url(https://res.cloudinary.com/luneswallet/image/upload/v1519425382/check.png);\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\nbutton:focus {\n  outline: none !important; }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/scss/src/scss/base/_reset.scss","D:/workspaces/lunes/lunes-purchase/src/scss/src/scss/base/_color.scss"],"names":[],"mappings":"AAKA;EACE,0BCNe;EDOf,kCAAiC;EACjC,YAAW;EACX,gBAAe;EACf,kBAAiB;EACjB,iBAAgB,EACjB;;AAED;EACE,uBAAsB;EACtB,mBAAkB;EAClB,+BAA8B,EAC/B;;AAED;EACE,gBAAe;EACf,SAAQ;EACR,UAAS;EACT,yCAAgC;UAAhC,iCAAgC;EAChC,aAAY;EACZ,eAAc;EACd,iBAAgB,EAIjB;EAHC;IARF;MASI,kBAAiB,EAEpB,EAAA;;AAED;EACE,gCAA+B;EAC/B,mBAAkB,EACnB;;AAED;EACE,eAAc;EACd,iBAAgB,EACjB;;AACD;EACE,eAAc;EACd,mBAAkB,EACnB;;AAED;EACE,eC3Ca,ED4Cd;;AAED;EACE,8BAA4B,EAC7B;;AAED;EACE,4BAA0B,EAC3B;;AAED;EACE,6BAA2B,EAC5B;;AACD;EACE,WAAU,EACX;;AACD;EACE,gBAAe,EAChB;;AAED;EACE,sBAAqB;EACrB,cAAa,EAId;EAND;IAII,uBAAsB,EACvB;;AAGH;EACE,0BC9Ee;ED+Ef,aAAY;EACZ,mBAAkB,EACnB;;AACD,UAAU;AACV;EACE,gBAAe;EACf,gCAA+B;EAC/B,qBAAoB,EACrB;;AAED,YAAY;AACZ;EACE,eAAc;EACd,0BAAyB;EACzB,oBAAmB;EACnB,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,gBAAe,EAChB;;AAED,qBAAqB;AACrB;EAEI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,+BAAmB;EAAnB,8BAAmB;MAAnB,wBAAmB;UAAnB,oBAAmB;EACnB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,0BAA6B;MAA7B,8BAA6B,EAY9B;EAjBH;IAOM,iBAAgB,EASjB;IAhBL;MASQ,0BAAyB;MACzB,sBAAqB;MACrB,YAAW,EAIZ;MAfP;QAaU,eC5GK,ED6GN;;AAMT,oBAAoB;AACpB;EACE,iBAAgB,EAIjB;EALD;IAGI,eAAc,EACf;;AAGH;EACE,cAAa;EACb,0BC5Hc;ED6Hd,eAAc;EACd,mBAAkB;EAClB,kBAAiB;EACjB,oBAAmB,EACpB;;AAED,sBAAsB;AACtB;EACE,aAAY;EACZ,0BC5Ie;ED6If,mBAAkB;EAClB,qCAAqC,EAiEtC;EArED;IAOI,mBAAkB;IAClB,mBAAkB;IAClB,YAAW;IACX,gBAAe;IACf,gBAAe;IACf,kBAAiB,EAClB;EAbH;IAgBI,iBAAe;IACf,kBAAgB,EACjB;EAlBH;IAqBI,UAAS,EACV;EAtBH;IAyBI,8BAA6B;IAC7B,cAAa;IACb,UAAS;IAeT;;MAEE,EAuBH;IAnEH;MA8BM,0BCxKW;MDyKX,mBAAkB;MAClB,qCAAoC;MACpC,YAAW;MACX,cAAa;MACb,aAAY;MACZ,iBAAgB;MAEhB,oBAAmB;MACnB,0BAAyB,EAC1B;IAxCL;MA+CM,qDAAiD;MACjD,0BAAyB,EAC1B;IAjDL;MAoDM,WAAU;MACV,0BAAyB,EAC1B;IAtDL;MAyDM,0BAAyB,EAC1B;IA1DL;MA6DM,qBAAa;MAAb,qBAAa;MAAb,cAAa;MACb,iBAAgB;MAChB,0BAAmB;UAAnB,uBAAmB;cAAnB,oBAAmB;MACnB,6BAAsB;MAAtB,8BAAsB;UAAtB,2BAAsB;cAAtB,uBAAsB,EACvB;;AAML,sBAAsB;AACtB;EACE,mBAAkB;EAClB,cAAa;EAEb,oBAAoB;EAWpB,qBAAqB,EA+BtB;EA9CD;IAMI,UAAS;IACT,oBAAmB;IACnB,mBAAkB;IAClB,mBAAkB;IAClB,0BAAyB;IACzB,YAAW;IACX,gBAAe,EAChB;EAbH;IAiBI,mBAAkB;IAClB,0BAAyB;IAGzB,oBAAmB;IACnB,gBAAe;IACf,sBAAoB;IACpB,sBAAoB;IACpB,4CAAwC;IACxC,eAAc;IACd,0BAAyB;IAMzB,+DAA8D;IAAC,8GAA4G,EAC5K;EAlCH;IAqCI,UAAS;IACT,oBAAmB;IACnB,YAAW;IACX,aAAY;IACZ,uBAAsB;IACtB,eCvPW;IDwPX,oCAAmC,EACpC;;AAIH,sBAAsB;AACtB;EACE,eAAc,EACf;;AACD;EACE,WAAU;EACV,UAAS;EACT,iCAAgC;EAChC,8BAA6B;EAC7B,gBAAe;EACf,oBAAmB;EACnB,YAAW;EACX,cAAa,EAad;EArBD;IASmB,0CAA0C;IACvD,eAAc;IACd,WAAU;IAAG,aAAa,EAC7B;EAZH;IASmB,0CAA0C;IACvD,eAAc;IACd,WAAU;IAAG,aAAa,EAC7B;EAZH;IASmB,0CAA0C;IACvD,eAAc;IACd,WAAU;IAAG,aAAa,EAC7B;EAZH;IAc4B,6BAA6B;IACnD,eAAc,EACjB;EAhBH;IAkB6B,oBAAoB;IAC3C,eAAc,EACjB;;AAGH,qBAAqB;AACrB;EACC,YAAU;EAAG,WAAS;EAAG,aAAW;EAAG,WAAS;EAAG,UAAQ,EAC3D;;AAED;EACC,mBAAiB;EAChB,aAAW;EACZ,sBAAoB;EACpB,kBAAgB;EAChB,6BAA2B;EAC3B,yBAAwB;EACxB,gBAAc;EACd,uBAAqB;EACrB,gBAAc,EAEd;;AAED;EACC,6BAA4B,EAC5B;;AACD;EACC,iGAA+F;EAC/F,4BAA2B;EAC3B,0BAAyB;EAEzB,uBAAsB;EACtB,sBAAqB;EACrB,kBAAiB,EACjB;;AAED;EACI,yBAAwB,EAC3B","file":"main.scss","sourcesContent":["@import 'color';\r\n\r\n$break-small: 320px;\r\n$break-large: 1200px;\r\n\r\nbody {\r\n  background-color: $primary;\r\n  font-family: 'Roboto', sans-serif;\r\n  color: #fff;\r\n  font-size: 14px;\r\n  line-height: 20px;\r\n  font-weight: 100;\r\n};\r\n\r\n*, *:before, *:after {\r\n  box-sizing: border-box;\r\n  position: relative;\r\n  -webkit-box-sizing: border-box;\r\n}\r\n\r\n.center {\r\n  position: fixed;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n  height: 100%;\r\n  overflow: auto;\r\n  overflow-y: auto;\r\n  @media (min-width: 768px) {\r\n    max-height: 780px;\r\n  }\r\n}\r\n\r\nh1, h2, h3, h4 {\r\n  font-family: 'Offside', cursive;\r\n  line-height: 1.4em;\r\n}\r\n\r\nh2 {\r\n  font-size: 4em;\r\n  line-height: 1em;\r\n}\r\nh3 {\r\n  font-size: 2em;\r\n  line-height: 1.3em;\r\n}\r\n\r\n.txt-green {\r\n  color: $green;\r\n}\r\n\r\n.txt-center {\r\n  text-align: center!important;\r\n}\r\n\r\n.txt-left {\r\n  text-align: left!important;\r\n}\r\n\r\n.txt-right {\r\n  text-align: right!important;\r\n}\r\n.no-padding {\r\n  padding: 0;\r\n}\r\n.cursor-pointer {\r\n  cursor: pointer;\r\n}\r\n\r\n.round-menu {\r\n  text-decoration: none;\r\n  padding: 10px;\r\n  img {\r\n    vertical-align: middle; \r\n  }\r\n}\r\n\r\n.modal-backdrop {\r\n  background-color: $primary;\r\n  opacity: 0.7;\r\n  text-align: center;\r\n}\r\n/* Logo */\r\n.logo {\r\n  font-size: 40px;\r\n  font-family: 'Offside', cursive;\r\n  letter-spacing: -7px;\r\n}\r\n\r\n/* Header */\r\n.header {\r\n  margin: 20px 0;\r\n  background-color: #432478;\r\n  border-radius: 10px;\r\n  display: flex;\r\n  align-items: center;\r\n  padding: 10px 0;\r\n}\r\n\r\n/* MENU horizontal */\r\nul.menu {\r\n  &.horizontal {\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    justify-content: space-around;\r\n    li {\r\n      list-style: none;\r\n      a {\r\n        text-transform: uppercase;\r\n        text-decoration: none;\r\n        color: #fff;\r\n        &:hover {\r\n          color: $green;\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n/* authentication */\r\n.authentication {\r\n  margin-top: 50px;\r\n  .title {\r\n    margin: 20px 0;\r\n  }\r\n}\r\n\r\n.error-fields {\r\n  padding: 10px;\r\n  background-color: $yellow;\r\n  color: #9b853b;\r\n  border-radius: 5px;\r\n  margin-left: 10px;\r\n  margin-bottom: 20px;\r\n}\r\n \r\n/* Modal Customized */\r\n.modal {\r\n  margin: 20px;\r\n  background-color: $primary;\r\n  border-radius: 5px;\r\n  box-shadow: $primary 1px 1px 17px 5px;\r\n\r\n  .icon-close {\r\n    text-align: center;\r\n    position: absolute;\r\n    right: 30px;\r\n    padding: 0 10px;\r\n    cursor: pointer;\r\n    font-weight: bold;\r\n  }\r\n  \r\n  .modal-title{\r\n    margin-left:2em;\r\n    font-weight:bold;\r\n  }\r\n\r\n  .modal-header {\r\n    border: 0;\r\n  }\r\n  \r\n  .modal-content {\r\n    background-color: transparent;\r\n    padding: 10px;\r\n    border: 0;\r\n\r\n    .content {\r\n      background-color: $primary;\r\n      border-radius: 5px;\r\n      box-shadow: #311d53 1px 1px 32px 0px;\r\n      color: #fff;\r\n      padding: 20px;\r\n      margin: 20px;\r\n      max-height: 100%;\r\n      \r\n      overflow-y: overlay;\r\n      border: solid 8px #4c2b82;\r\n    }\r\n\r\n    /*\r\n    *  SCROLL BAR\r\n    */\r\n    .content::-webkit-scrollbar-track\r\n    {\r\n      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);\r\n      background-color: #4c2b82;\r\n    }\r\n    .content::-webkit-scrollbar\r\n    {\r\n      width: 6px;\r\n      background-color: #4c2b82;\r\n    }\r\n    .content::-webkit-scrollbar-thumb\r\n    {\r\n      background-color: #4f2f85;\r\n    }\r\n\r\n    .footer {\r\n      display: flex;\r\n      text-align: left;\r\n      align-items: center;\r\n      flex-direction: column;\r\n    }\r\n\r\n  }\r\n\r\n}\r\n\r\n/* container button */\r\n.area-button {\r\n  text-align: center;\r\n  padding: 10px;\r\n  \r\n  /* primary-button */\r\n  .primary-button {\r\n    border: 0;\r\n    border-radius: 22px;\r\n    padding: 11px 80px;\r\n    text-align: center;\r\n    background-color: #4cd566;\r\n    color: #fff;\r\n    font-size: 16px;\r\n  }\r\n\r\n  /* disabled button */\r\n  .disabled-button {\r\n    padding: 10px 80px;\r\n    border: 0px solid #4e1f85;\r\n    -webkit-border-radius: 25px; \r\n    -moz-border-radius: 25px;\r\n    border-radius: 25px;\r\n    font-size: 16px;\r\n    text-decoration:none; \r\n    display:inline-block;\r\n    text-shadow: -1px -1px 0 rgba(0,0,0,0.3); \r\n    color: #FFFFFF;\r\n    background-color: #6929B3; \r\n    background-image: -webkit-gradient(linear, left top, left bottom, from(#6929B3), to(#6622B3));\r\n    background-image: -webkit-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -moz-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -ms-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -o-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: linear-gradient(to bottom, #6929B3, #6622B3);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6929B3, endColorstr=#6622B3);\r\n  }\r\n\r\n  .rounded-button {\r\n    border: 0;\r\n    border-radius: 100%;\r\n    width: 40px;\r\n    height: 40px;\r\n    background-color: #fff;\r\n    color: $green;\r\n    box-shadow: #444343 0px 1px 6px 0px;\r\n  }\r\n\r\n}\r\n\r\n/* Input customized */\r\n.input-form label {\r\n  display: block;\r\n}\r\n.input-form input {\r\n  width: 90%;\r\n  border: 0;\r\n  border-bottom: solid 1px #9c9c9c;\r\n  background-color: transparent;\r\n  padding: 10px 0;\r\n  margin-bottom: 15px;\r\n  color: #fff;\r\n  outline: none;\r\n  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */\r\n      color: #adadad;\r\n      opacity: 1; /* Firefox */\r\n  }\r\n\r\n  &:-ms-input-placeholder { /* Internet Explorer 10-11 */\r\n      color: #adadad;\r\n  }\r\n\r\n  &::-ms-input-placeholder { /* Microsoft Edge */\r\n      color: #adadad;\r\n  }\r\n}\r\n\r\n/* Custom Checkbox */\r\ninput[type=checkbox].css-checkbox {\r\n\theight:1px; width:1px; margin:-1px; padding:0; border:0;\r\n}\r\n\r\ninput[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {\r\n\tpadding-left:23px;\r\n  height:18px; \r\n\tdisplay:inline-block;\r\n\tline-height:18px;\r\n\tbackground-repeat:no-repeat;\r\n\tbackground-position: 0 0;\r\n\tfont-size:12px;\r\n\tvertical-align:middle;\r\n\tcursor:pointer;\r\n\r\n}\r\n\r\ninput[type=checkbox].css-checkbox:checked + label.css-label, input[type=checkbox].css-checkbox + label.css-label.chk {\r\n\tbackground-position: 0 -18px;\r\n}\r\nlabel.css-label {\r\n\tbackground-image:url(https://res.cloudinary.com/luneswallet/image/upload/v1519425382/check.png);\r\n\t-webkit-touch-callout: none;\r\n\t-webkit-user-select: none;\r\n\t-khtml-user-select: none;\r\n\t-moz-user-select: none;\r\n\t-ms-user-select: none;\r\n\tuser-select: none;\r\n}\r\n\r\nbutton:focus {\r\n    outline: none !important;\r\n}\r\n","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #4cd466;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
+	exports.push([module.id, "body {\n  background-color: #4c2b82;\n  font-family: 'Roboto', sans-serif;\n  color: #fff;\n  font-size: 14px;\n  line-height: 20px;\n  font-weight: 100; }\n\n*, *:before, *:after {\n  box-sizing: border-box;\n  position: relative;\n  -webkit-box-sizing: border-box; }\n\n.center {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  height: 100%;\n  overflow: auto;\n  overflow-y: auto; }\n  @media (min-width: 768px) {\n    .center {\n      max-height: 780px; } }\n\nh1, h2, h3, h4 {\n  font-family: 'Offside', cursive;\n  line-height: 1.4em; }\n\nh2 {\n  font-size: 4em;\n  line-height: 1em; }\n\nh3 {\n  font-size: 2em;\n  line-height: 1.3em; }\n\n.txt-green {\n  color: #4cd466; }\n\n.txt-center {\n  text-align: center !important; }\n\n.txt-left {\n  text-align: left !important; }\n\n.txt-right {\n  text-align: right !important; }\n\n.no-padding {\n  padding: 0; }\n\n.cursor-pointer {\n  cursor: pointer; }\n\n.round-menu {\n  text-decoration: none;\n  padding: 10px; }\n  .round-menu img {\n    vertical-align: middle; }\n\n.modal-backdrop {\n  background-color: #4c2b82;\n  opacity: 0.7;\n  text-align: center; }\n\n/* Logo */\n.logo {\n  font-size: 40px;\n  font-family: 'Offside', cursive;\n  letter-spacing: -7px; }\n\n/* Header */\n.header {\n  margin: 20px 0;\n  background-color: #432478;\n  border-radius: 10px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 10px 0; }\n\n/* MENU horizontal */\nul.menu.horizontal {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -ms-flex-pack: distribute;\n      justify-content: space-around; }\n  ul.menu.horizontal li {\n    list-style: none; }\n    ul.menu.horizontal li a {\n      text-transform: uppercase;\n      text-decoration: none;\n      color: #fff; }\n      ul.menu.horizontal li a:hover {\n        color: #4cd466; }\n\n/* authentication */\n.authentication {\n  margin-top: 50px; }\n  .authentication .title {\n    margin: 20px 0; }\n\n.error-fields {\n  padding: 10px;\n  background-color: #f9d660;\n  color: #9b853b;\n  border-radius: 5px;\n  margin-left: 10px;\n  margin-bottom: 20px; }\n\n/* Modal Customized */\n.modal {\n  margin: 20px;\n  background-color: #4c2b82;\n  border-radius: 5px;\n  box-shadow: #4c2b82 1px 1px 17px 5px; }\n  .modal .icon-close {\n    text-align: center;\n    position: absolute;\n    right: 30px;\n    padding: 0 10px;\n    cursor: pointer;\n    font-weight: bold; }\n  .modal .modal-title {\n    margin-left: 2em;\n    font-weight: bold; }\n  .modal .modal-header {\n    border: 0; }\n  .modal .modal-content {\n    background-color: transparent;\n    padding: 10px;\n    border: 0;\n    /*\r\n    *  SCROLL BAR\r\n    */ }\n    .modal .modal-content .content {\n      background-color: #4c2b82;\n      border-radius: 5px;\n      box-shadow: #311d53 1px 1px 32px 0px;\n      color: #fff;\n      padding: 20px;\n      margin: 20px;\n      max-height: 100%;\n      overflow-y: overlay;\n      border: solid 8px #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar-track {\n      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n      background-color: #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar {\n      width: 6px;\n      background-color: #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar-thumb {\n      background-color: #4f2f85; }\n    .modal .modal-content .footer {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      text-align: left;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; }\n\n/* container button */\n.area-button {\n  text-align: center;\n  padding: 10px;\n  /* primary-button */\n  /* disabled button */ }\n  .area-button .primary-button {\n    border: 0;\n    border-radius: 22px;\n    padding: 11px 80px;\n    text-align: center;\n    background-color: #4cd566;\n    color: #fff;\n    font-size: 16px; }\n  .area-button .disabled-button {\n    padding: 10px 80px;\n    border: 0px solid #4e1f85;\n    border-radius: 25px;\n    font-size: 16px;\n    text-decoration: none;\n    display: inline-block;\n    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);\n    color: #FFFFFF;\n    background-color: #6929B3;\n    background-image: linear-gradient(to bottom, #6929B3, #6622B3);\n    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6929B3, endColorstr=#6622B3); }\n  .area-button .rounded-button {\n    border: 0;\n    border-radius: 100%;\n    width: 40px;\n    height: 40px;\n    background-color: #fff;\n    color: #4cd466;\n    box-shadow: #444343 0px 1px 6px 0px; }\n\n/* Input customized */\n.input-form label {\n  display: block;\n  font-size: 10px;\n  padding: 0;\n  margin: 0;\n  color: #90df4a; }\n\n.input-form input {\n  width: 90%;\n  border: 0;\n  border-bottom: solid 1px #9c9c9c;\n  background-color: transparent;\n  padding: 10px 0;\n  margin-bottom: 15px;\n  color: #fff;\n  outline: none; }\n  .input-form input::-webkit-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input:-ms-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input::placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input:-ms-input-placeholder {\n    /* Internet Explorer 10-11 */\n    color: #adadad; }\n  .input-form input::-ms-input-placeholder {\n    /* Microsoft Edge */\n    color: #adadad; }\n\n/* Custom Checkbox */\ninput[type=checkbox].css-checkbox {\n  height: 1px;\n  width: 1px;\n  margin: -1px;\n  padding: 0;\n  border: 0; }\n\ninput[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {\n  padding-left: 23px;\n  height: 18px;\n  display: inline-block;\n  line-height: 18px;\n  background-repeat: no-repeat;\n  background-position: 0 0;\n  font-size: 12px;\n  vertical-align: middle;\n  cursor: pointer; }\n\ninput[type=checkbox].css-checkbox:checked + label.css-label, input[type=checkbox].css-checkbox + label.css-label.chk {\n  background-position: 0 -18px; }\n\nlabel.css-label {\n  background-image: url(https://res.cloudinary.com/luneswallet/image/upload/v1519425382/check.png);\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\nbutton:focus {\n  outline: none !important; }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/scss/src/scss/base/_reset.scss","D:/workspaces/lunes/lunes-purchase/src/scss/src/scss/base/_color.scss"],"names":[],"mappings":"AAKA;EACE,0BCNe;EDOf,kCAAiC;EACjC,YAAW;EACX,gBAAe;EACf,kBAAiB;EACjB,iBAAgB,EACjB;;AAED;EACE,uBAAsB;EACtB,mBAAkB;EAClB,+BAA8B,EAC/B;;AAED;EACE,gBAAe;EACf,SAAQ;EACR,UAAS;EACT,yCAAgC;UAAhC,iCAAgC;EAChC,aAAY;EACZ,eAAc;EACd,iBAAgB,EAIjB;EAHC;IARF;MASI,kBAAiB,EAEpB,EAAA;;AAED;EACE,gCAA+B;EAC/B,mBAAkB,EACnB;;AAED;EACE,eAAc;EACd,iBAAgB,EACjB;;AACD;EACE,eAAc;EACd,mBAAkB,EACnB;;AAED;EACE,eC3Ca,ED4Cd;;AAED;EACE,8BAA4B,EAC7B;;AAED;EACE,4BAA0B,EAC3B;;AAED;EACE,6BAA2B,EAC5B;;AACD;EACE,WAAU,EACX;;AACD;EACE,gBAAe,EAChB;;AAED;EACE,sBAAqB;EACrB,cAAa,EAId;EAND;IAII,uBAAsB,EACvB;;AAGH;EACE,0BC9Ee;ED+Ef,aAAY;EACZ,mBAAkB,EACnB;;AACD,UAAU;AACV;EACE,gBAAe;EACf,gCAA+B;EAC/B,qBAAoB,EACrB;;AAED,YAAY;AACZ;EACE,eAAc;EACd,0BAAyB;EACzB,oBAAmB;EACnB,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,gBAAe,EAChB;;AAED,qBAAqB;AACrB;EAEI,qBAAa;EAAb,qBAAa;EAAb,cAAa;EACb,+BAAmB;EAAnB,8BAAmB;MAAnB,wBAAmB;UAAnB,oBAAmB;EACnB,0BAAmB;MAAnB,uBAAmB;UAAnB,oBAAmB;EACnB,0BAA6B;MAA7B,8BAA6B,EAY9B;EAjBH;IAOM,iBAAgB,EASjB;IAhBL;MASQ,0BAAyB;MACzB,sBAAqB;MACrB,YAAW,EAIZ;MAfP;QAaU,eC5GK,ED6GN;;AAMT,oBAAoB;AACpB;EACE,iBAAgB,EAIjB;EALD;IAGI,eAAc,EACf;;AAGH;EACE,cAAa;EACb,0BC5Hc;ED6Hd,eAAc;EACd,mBAAkB;EAClB,kBAAiB;EACjB,oBAAmB,EACpB;;AAED,sBAAsB;AACtB;EACE,aAAY;EACZ,0BC5Ie;ED6If,mBAAkB;EAClB,qCAAqC,EAiEtC;EArED;IAOI,mBAAkB;IAClB,mBAAkB;IAClB,YAAW;IACX,gBAAe;IACf,gBAAe;IACf,kBAAiB,EAClB;EAbH;IAgBI,iBAAe;IACf,kBAAgB,EACjB;EAlBH;IAqBI,UAAS,EACV;EAtBH;IAyBI,8BAA6B;IAC7B,cAAa;IACb,UAAS;IAeT;;MAEE,EAuBH;IAnEH;MA8BM,0BCxKW;MDyKX,mBAAkB;MAClB,qCAAoC;MACpC,YAAW;MACX,cAAa;MACb,aAAY;MACZ,iBAAgB;MAEhB,oBAAmB;MACnB,0BAAyB,EAC1B;IAxCL;MA+CM,qDAAiD;MACjD,0BAAyB,EAC1B;IAjDL;MAoDM,WAAU;MACV,0BAAyB,EAC1B;IAtDL;MAyDM,0BAAyB,EAC1B;IA1DL;MA6DM,qBAAa;MAAb,qBAAa;MAAb,cAAa;MACb,iBAAgB;MAChB,0BAAmB;UAAnB,uBAAmB;cAAnB,oBAAmB;MACnB,6BAAsB;MAAtB,8BAAsB;UAAtB,2BAAsB;cAAtB,uBAAsB,EACvB;;AAML,sBAAsB;AACtB;EACE,mBAAkB;EAClB,cAAa;EAEb,oBAAoB;EAWpB,qBAAqB,EA+BtB;EA9CD;IAMI,UAAS;IACT,oBAAmB;IACnB,mBAAkB;IAClB,mBAAkB;IAClB,0BAAyB;IACzB,YAAW;IACX,gBAAe,EAChB;EAbH;IAiBI,mBAAkB;IAClB,0BAAyB;IAGzB,oBAAmB;IACnB,gBAAe;IACf,sBAAoB;IACpB,sBAAoB;IACpB,4CAAwC;IACxC,eAAc;IACd,0BAAyB;IAMzB,+DAA8D;IAAC,8GAA4G,EAC5K;EAlCH;IAqCI,UAAS;IACT,oBAAmB;IACnB,YAAW;IACX,aAAY;IACZ,uBAAsB;IACtB,eCvPW;IDwPX,oCAAmC,EACpC;;AAIH,sBAAsB;AACtB;EACE,eAAc;EACd,gBAAe;EACf,WAAU;EACV,UAAS;EACT,eAAc,EACf;;AACD;EACE,WAAU;EACV,UAAS;EACT,iCAAgC;EAChC,8BAA6B;EAC7B,gBAAe;EACf,oBAAmB;EACnB,YAAW;EACX,cAAa,EAad;EArBD;IASmB,0CAA0C;IACvD,eAAc;IACd,WAAU;IAAG,aAAa,EAC7B;EAZH;IASmB,0CAA0C;IACvD,eAAc;IACd,WAAU;IAAG,aAAa,EAC7B;EAZH;IASmB,0CAA0C;IACvD,eAAc;IACd,WAAU;IAAG,aAAa,EAC7B;EAZH;IAc4B,6BAA6B;IACnD,eAAc,EACjB;EAhBH;IAkB6B,oBAAoB;IAC3C,eAAc,EACjB;;AAGH,qBAAqB;AACrB;EACC,YAAU;EAAG,WAAS;EAAG,aAAW;EAAG,WAAS;EAAG,UAAQ,EAC3D;;AAED;EACC,mBAAiB;EAChB,aAAW;EACZ,sBAAoB;EACpB,kBAAgB;EAChB,6BAA2B;EAC3B,yBAAwB;EACxB,gBAAc;EACd,uBAAqB;EACrB,gBAAc,EAEd;;AAED;EACC,6BAA4B,EAC5B;;AACD;EACC,iGAA+F;EAC/F,4BAA2B;EAC3B,0BAAyB;EAEzB,uBAAsB;EACtB,sBAAqB;EACrB,kBAAiB,EACjB;;AAED;EACI,yBAAwB,EAC3B","file":"main.scss","sourcesContent":["@import 'color';\r\n\r\n$break-small: 320px;\r\n$break-large: 1200px;\r\n\r\nbody {\r\n  background-color: $primary;\r\n  font-family: 'Roboto', sans-serif;\r\n  color: #fff;\r\n  font-size: 14px;\r\n  line-height: 20px;\r\n  font-weight: 100;\r\n};\r\n\r\n*, *:before, *:after {\r\n  box-sizing: border-box;\r\n  position: relative;\r\n  -webkit-box-sizing: border-box;\r\n}\r\n\r\n.center {\r\n  position: fixed;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n  height: 100%;\r\n  overflow: auto;\r\n  overflow-y: auto;\r\n  @media (min-width: 768px) {\r\n    max-height: 780px;\r\n  }\r\n}\r\n\r\nh1, h2, h3, h4 {\r\n  font-family: 'Offside', cursive;\r\n  line-height: 1.4em;\r\n}\r\n\r\nh2 {\r\n  font-size: 4em;\r\n  line-height: 1em;\r\n}\r\nh3 {\r\n  font-size: 2em;\r\n  line-height: 1.3em;\r\n}\r\n\r\n.txt-green {\r\n  color: $green;\r\n}\r\n\r\n.txt-center {\r\n  text-align: center!important;\r\n}\r\n\r\n.txt-left {\r\n  text-align: left!important;\r\n}\r\n\r\n.txt-right {\r\n  text-align: right!important;\r\n}\r\n.no-padding {\r\n  padding: 0;\r\n}\r\n.cursor-pointer {\r\n  cursor: pointer;\r\n}\r\n\r\n.round-menu {\r\n  text-decoration: none;\r\n  padding: 10px;\r\n  img {\r\n    vertical-align: middle; \r\n  }\r\n}\r\n\r\n.modal-backdrop {\r\n  background-color: $primary;\r\n  opacity: 0.7;\r\n  text-align: center;\r\n}\r\n/* Logo */\r\n.logo {\r\n  font-size: 40px;\r\n  font-family: 'Offside', cursive;\r\n  letter-spacing: -7px;\r\n}\r\n\r\n/* Header */\r\n.header {\r\n  margin: 20px 0;\r\n  background-color: #432478;\r\n  border-radius: 10px;\r\n  display: flex;\r\n  align-items: center;\r\n  padding: 10px 0;\r\n}\r\n\r\n/* MENU horizontal */\r\nul.menu {\r\n  &.horizontal {\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    justify-content: space-around;\r\n    li {\r\n      list-style: none;\r\n      a {\r\n        text-transform: uppercase;\r\n        text-decoration: none;\r\n        color: #fff;\r\n        &:hover {\r\n          color: $green;\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n/* authentication */\r\n.authentication {\r\n  margin-top: 50px;\r\n  .title {\r\n    margin: 20px 0;\r\n  }\r\n}\r\n\r\n.error-fields {\r\n  padding: 10px;\r\n  background-color: $yellow;\r\n  color: #9b853b;\r\n  border-radius: 5px;\r\n  margin-left: 10px;\r\n  margin-bottom: 20px;\r\n}\r\n \r\n/* Modal Customized */\r\n.modal {\r\n  margin: 20px;\r\n  background-color: $primary;\r\n  border-radius: 5px;\r\n  box-shadow: $primary 1px 1px 17px 5px;\r\n\r\n  .icon-close {\r\n    text-align: center;\r\n    position: absolute;\r\n    right: 30px;\r\n    padding: 0 10px;\r\n    cursor: pointer;\r\n    font-weight: bold;\r\n  }\r\n  \r\n  .modal-title{\r\n    margin-left:2em;\r\n    font-weight:bold;\r\n  }\r\n\r\n  .modal-header {\r\n    border: 0;\r\n  }\r\n  \r\n  .modal-content {\r\n    background-color: transparent;\r\n    padding: 10px;\r\n    border: 0;\r\n\r\n    .content {\r\n      background-color: $primary;\r\n      border-radius: 5px;\r\n      box-shadow: #311d53 1px 1px 32px 0px;\r\n      color: #fff;\r\n      padding: 20px;\r\n      margin: 20px;\r\n      max-height: 100%;\r\n      \r\n      overflow-y: overlay;\r\n      border: solid 8px #4c2b82;\r\n    }\r\n\r\n    /*\r\n    *  SCROLL BAR\r\n    */\r\n    .content::-webkit-scrollbar-track\r\n    {\r\n      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);\r\n      background-color: #4c2b82;\r\n    }\r\n    .content::-webkit-scrollbar\r\n    {\r\n      width: 6px;\r\n      background-color: #4c2b82;\r\n    }\r\n    .content::-webkit-scrollbar-thumb\r\n    {\r\n      background-color: #4f2f85;\r\n    }\r\n\r\n    .footer {\r\n      display: flex;\r\n      text-align: left;\r\n      align-items: center;\r\n      flex-direction: column;\r\n    }\r\n\r\n  }\r\n\r\n}\r\n\r\n/* container button */\r\n.area-button {\r\n  text-align: center;\r\n  padding: 10px;\r\n  \r\n  /* primary-button */\r\n  .primary-button {\r\n    border: 0;\r\n    border-radius: 22px;\r\n    padding: 11px 80px;\r\n    text-align: center;\r\n    background-color: #4cd566;\r\n    color: #fff;\r\n    font-size: 16px;\r\n  }\r\n\r\n  /* disabled button */\r\n  .disabled-button {\r\n    padding: 10px 80px;\r\n    border: 0px solid #4e1f85;\r\n    -webkit-border-radius: 25px; \r\n    -moz-border-radius: 25px;\r\n    border-radius: 25px;\r\n    font-size: 16px;\r\n    text-decoration:none; \r\n    display:inline-block;\r\n    text-shadow: -1px -1px 0 rgba(0,0,0,0.3); \r\n    color: #FFFFFF;\r\n    background-color: #6929B3; \r\n    background-image: -webkit-gradient(linear, left top, left bottom, from(#6929B3), to(#6622B3));\r\n    background-image: -webkit-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -moz-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -ms-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -o-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: linear-gradient(to bottom, #6929B3, #6622B3);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6929B3, endColorstr=#6622B3);\r\n  }\r\n\r\n  .rounded-button {\r\n    border: 0;\r\n    border-radius: 100%;\r\n    width: 40px;\r\n    height: 40px;\r\n    background-color: #fff;\r\n    color: $green;\r\n    box-shadow: #444343 0px 1px 6px 0px;\r\n  }\r\n\r\n}\r\n\r\n/* Input customized */\r\n.input-form label {\r\n  display: block;\r\n  font-size: 10px;\r\n  padding: 0;\r\n  margin: 0;\r\n  color: #90df4a;\r\n}\r\n.input-form input {\r\n  width: 90%;\r\n  border: 0;\r\n  border-bottom: solid 1px #9c9c9c;\r\n  background-color: transparent;\r\n  padding: 10px 0;\r\n  margin-bottom: 15px;\r\n  color: #fff;\r\n  outline: none;\r\n  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */\r\n      color: #adadad;\r\n      opacity: 1; /* Firefox */\r\n  }\r\n\r\n  &:-ms-input-placeholder { /* Internet Explorer 10-11 */\r\n      color: #adadad;\r\n  }\r\n\r\n  &::-ms-input-placeholder { /* Microsoft Edge */\r\n      color: #adadad;\r\n  }\r\n}\r\n\r\n/* Custom Checkbox */\r\ninput[type=checkbox].css-checkbox {\r\n\theight:1px; width:1px; margin:-1px; padding:0; border:0;\r\n}\r\n\r\ninput[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {\r\n\tpadding-left:23px;\r\n  height:18px; \r\n\tdisplay:inline-block;\r\n\tline-height:18px;\r\n\tbackground-repeat:no-repeat;\r\n\tbackground-position: 0 0;\r\n\tfont-size:12px;\r\n\tvertical-align:middle;\r\n\tcursor:pointer;\r\n\r\n}\r\n\r\ninput[type=checkbox].css-checkbox:checked + label.css-label, input[type=checkbox].css-checkbox + label.css-label.chk {\r\n\tbackground-position: 0 -18px;\r\n}\r\nlabel.css-label {\r\n\tbackground-image:url(https://res.cloudinary.com/luneswallet/image/upload/v1519425382/check.png);\r\n\t-webkit-touch-callout: none;\r\n\t-webkit-user-select: none;\r\n\t-khtml-user-select: none;\r\n\t-moz-user-select: none;\r\n\t-ms-user-select: none;\r\n\tuser-select: none;\r\n}\r\n\r\nbutton:focus {\r\n    outline: none !important;\r\n}\r\n","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #4cd466;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
 	
 	// exports
 
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?1519780464539
+//# sourceMappingURL=app.js.map?1519795774396
