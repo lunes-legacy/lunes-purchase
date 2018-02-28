@@ -11,11 +11,17 @@ class HttpService {
   }
 
   async login(userData) {
+    if (userData.email) {
+      userData.email = userData.email.toLowerCase();
+    }
     const data = await LunesLib.users.login(userData);
     return data;
   }
 
   async signup(userData) {
+    if (userData.email) {
+      userData.email = userData.email.toLowerCase();
+    }
     const obj = {
       email: userData.email,
       password: userData.password,

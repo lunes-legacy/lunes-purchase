@@ -13,7 +13,7 @@
   <div class="col-xs-8 col-md-9 col-lg-9 quotation" ng-show="$ctrl.coin && $ctrl.coin.img">
     <span class="container-quotation">
       {{'QUOTATION' | translate}}
-      <img ng-src="{{$ctrl.coin.img}}" alt="{{$ctrl.coin.label}}"> em USD - {{$ctrl.price}} |
+      <img ng-src="{{$ctrl.coin.img}}" alt="{{$ctrl.coin.label}}"> {{'IN' | translate}} USD - {{$ctrl.price}} |
       <span class="logout">
         <a href="#!/login" class="round-menu" ng-click="$ctrl.logout()">
           {{'LOGOUT' | translate}}

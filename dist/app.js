@@ -52145,7 +52145,7 @@
 /* 473 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"row container-logo-header\" style=\"padding: 10px 0;\">\r\n\r\n  <!-- LOGO -->\r\n  <div class=\"col-sm-4 col-md-3 col-lg-3 logo\" ng-click=\"$ctrl.goToHome()\">\r\n    <span>L</span>\r\n    <span>u</span>\r\n    <span>n</span>\r\n    <span class=\"txt-green\">e</span>\r\n    <span>s</span>\r\n  </div>\r\n\r\n  <!-- PRICE CURRENT COIN and LOGOUT -->\r\n  <div class=\"col-xs-8 col-md-9 col-lg-9 quotation\" ng-show=\"$ctrl.coin && $ctrl.coin.img\">\r\n    <span class=\"container-quotation\">\r\n      {{'QUOTATION' | translate}}\r\n      <img ng-src=\"{{$ctrl.coin.img}}\" alt=\"{{$ctrl.coin.label}}\"> em USD - {{$ctrl.price}} |\r\n      <span class=\"logout\">\r\n        <a href=\"#!/login\" class=\"round-menu\" ng-click=\"$ctrl.logout()\">\r\n          {{'LOGOUT' | translate}}\r\n        </a>\r\n      </span>\r\n    </span>\r\n  </div>\r\n\r\n  <div class=\"col-xs-8 col-md-9 col-lg-9 quotation\" ng-show=\"$ctrl.showlogout\">\r\n    <span class=\"container-quotation\" style=\"display: flex;align-items: center;\">\r\n      <span class=\"logout\">\r\n        <a href=\"#!/login\" class=\"round-menu\" ng-click=\"$ctrl.logout()\">\r\n          {{'LOGOUT' | translate}}\r\n        </a>\r\n      </span>\r\n    </span>\r\n  </div>\r\n</div>\r\n\r\n<!-- MENU and SOCIAL MEDIA links -->\r\n<nav class=\"header\" ng-show=\"$ctrl.showlinks\">\r\n  <div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6 nav-menu\" style=\"margin: 5px 0 10px 0;\">\r\n    <ul class=\"menu menu-top\" style=\"padding: 0;margin: 0;\">\r\n      <li>\r\n        <a href=\"#!/historic\">{{'PURCHASE_HISTORY' | translate}}</a>\r\n      </li>\r\n      <li>\r\n        |\r\n      </li>\r\n      <li>\r\n        <a href=\"#!/buy\">{{'BUY' | translate}}</a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n\r\n  <div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6 flex-right\">\r\n    <ul class=\"menu menu-top\" style=\"padding: 0;margin: 0;\">\r\n      <li>\r\n        <a href=\"https://www.facebook.com/lunesplatform/\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg\" alt=\"facebook\" />\r\n        </a>\r\n      </li>\r\n      <li>\r\n        <a href=\"https://t.me/LunesPlatformEN\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg\" alt=\"telegram\" />\r\n        </a>\r\n      </li>\r\n      <li>\r\n        <a href=\"https://twitter.com/lunesplatform\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg\" alt=\"twitter\" />\r\n        </a>\r\n      </li>\r\n      <li>\r\n        <a href=\"https://medium.com/@lunes.platform\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg\" alt=\"medium\" />\r\n        </a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</nav>"
+	module.exports = "<div class=\"row container-logo-header\" style=\"padding: 10px 0;\">\r\n\r\n  <!-- LOGO -->\r\n  <div class=\"col-sm-4 col-md-3 col-lg-3 logo\" ng-click=\"$ctrl.goToHome()\">\r\n    <span>L</span>\r\n    <span>u</span>\r\n    <span>n</span>\r\n    <span class=\"txt-green\">e</span>\r\n    <span>s</span>\r\n  </div>\r\n\r\n  <!-- PRICE CURRENT COIN and LOGOUT -->\r\n  <div class=\"col-xs-8 col-md-9 col-lg-9 quotation\" ng-show=\"$ctrl.coin && $ctrl.coin.img\">\r\n    <span class=\"container-quotation\">\r\n      {{'QUOTATION' | translate}}\r\n      <img ng-src=\"{{$ctrl.coin.img}}\" alt=\"{{$ctrl.coin.label}}\"> {{'IN' | translate}} USD - {{$ctrl.price}} |\r\n      <span class=\"logout\">\r\n        <a href=\"#!/login\" class=\"round-menu\" ng-click=\"$ctrl.logout()\">\r\n          {{'LOGOUT' | translate}}\r\n        </a>\r\n      </span>\r\n    </span>\r\n  </div>\r\n\r\n  <div class=\"col-xs-8 col-md-9 col-lg-9 quotation\" ng-show=\"$ctrl.showlogout\">\r\n    <span class=\"container-quotation\" style=\"display: flex;align-items: center;\">\r\n      <span class=\"logout\">\r\n        <a href=\"#!/login\" class=\"round-menu\" ng-click=\"$ctrl.logout()\">\r\n          {{'LOGOUT' | translate}}\r\n        </a>\r\n      </span>\r\n    </span>\r\n  </div>\r\n</div>\r\n\r\n<!-- MENU and SOCIAL MEDIA links -->\r\n<nav class=\"header\" ng-show=\"$ctrl.showlinks\">\r\n  <div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6 nav-menu\" style=\"margin: 5px 0 10px 0;\">\r\n    <ul class=\"menu menu-top\" style=\"padding: 0;margin: 0;\">\r\n      <li>\r\n        <a href=\"#!/historic\">{{'PURCHASE_HISTORY' | translate}}</a>\r\n      </li>\r\n      <li>\r\n        |\r\n      </li>\r\n      <li>\r\n        <a href=\"#!/buy\">{{'BUY' | translate}}</a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n\r\n  <div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6 flex-right\">\r\n    <ul class=\"menu menu-top\" style=\"padding: 0;margin: 0;\">\r\n      <li>\r\n        <a href=\"https://www.facebook.com/lunesplatform/\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg\" alt=\"facebook\" />\r\n        </a>\r\n      </li>\r\n      <li>\r\n        <a href=\"https://t.me/LunesPlatformEN\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg\" alt=\"telegram\" />\r\n        </a>\r\n      </li>\r\n      <li>\r\n        <a href=\"https://twitter.com/lunesplatform\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg\" alt=\"twitter\" />\r\n        </a>\r\n      </li>\r\n      <li>\r\n        <a href=\"https://medium.com/@lunes.platform\" target=\"_blank\" class=\"round-menu\">\r\n          <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg\" alt=\"medium\" />\r\n        </a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</nav>"
 
 /***/ },
 /* 474 */
@@ -82478,7 +82478,7 @@
 /* 704 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"container\">\n\n  <lunesheader showlogout='true' showlinks='true'></lunesheader>\n\n  <!-- DASHBOARD -->\n  <section class=\"dashboard\">\n    <div class=\"row\">\n      <div class=\"col-12 title mb-2-rem\">\n        <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>\n      </div>\n      <div class=\"col-12 history\">\n        <table class=\"lunes-table\" ng-if=\"$ctrl.checkWidthScreenDesktop()\">\n          <thead>\n            <tr>\n              <td>{{ 'DASHBOARD.DATE' | translate }}</td>\n              <td>{{ 'DASHBOARD.PHASE' | translate }}</td>\n              <td>{{ 'DASHBOARD.DEPOSIT' | translate }}</td>\n              <td>Lunes</td>\n              <td>{{ 'DASHBOARD.BONUS' | translate }}</td>\n              <td>Total</td>\n            </tr>\n          </thead>\n          <tbody data-ng-if=\"$ctrl.history.length > 0\">\n            <tr data-ng-repeat=\"history in $ctrl.history\" ng-class-odd=\"'odd'\" ng-class-even=\"'even'\">\n              <td>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</td>\n              <td>{{ history.phase || 1 }}</td>\n              <td>{{ history.deposit_value }} {{ history.deposit_coin }}</td>\n              <td>{{ history.credit_value }} LNS</td>\n              <td>{{ history.bonus_value }} LNS </td>\n              <td>{{ history.total }} LNS</td>\n            </tr>\n          </tbody>\n          <tfoot data-ng-if=\"$ctrl.history.length === 0\">\n            <tr>\n              <td colspan=\"6\" style=\"text-align: center;\">{{ 'DASHBOARD.NO_HISTORY' | translate }}</td>\n            </tr>\n          </tfoot>\n        </table>\n\n        <div ng-if=\"$ctrl.checkWidthScreenMobile()\">\n          <div data-ng-repeat=\"history in $ctrl.history\" ng-class-odd=\"'odd'\" ng-class-even=\"'even'\" style=\"border-radius: 5px;\">\n            <h6 style=\"text-align: center; padding: 10px; color: #4cd468;\">Transação {{$index+1}}</h6>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.DATE' | translate }}</div>\n              <div>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.PHASE' | translate }}</div>\n              <div>{{ history.phase || 1 }}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.DEPOSIT' | translate }}</div>\n              <div>{{ history.deposit_value }} LNS</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>Lunes</div>\n              <div>{{ history.credit_value }} LNS</div>\n            </div>\n            <div class=\"responsive-table-card total-footer\">\n              <div>Total</div>\n              <div>{{ history.total }} LNS</div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"col-12 balance\">\n        <span>Meu saldo:</span>\n        <span class=\"monetary\">{{ $ctrl.totalLns }}</span>\n        <span class=\"coin\">LNS</span>\n      </div>\n    </div>\n  </section>\n</div>"
+	module.exports = "<div class=\"container\">\n\n  <lunesheader showlogout='true' showlinks='true'></lunesheader>\n\n  <!-- DASHBOARD -->\n  <section class=\"dashboard\">\n    <div class=\"row\">\n      <div class=\"col-12 title mb-2-rem\">\n        <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>\n      </div>\n      <div class=\"col-12 history\">\n        <table class=\"lunes-table\" ng-if=\"$ctrl.checkWidthScreenDesktop()\">\n          <thead>\n            <tr>\n              <td>{{ 'DASHBOARD.DATE' | translate }}</td>\n              <td>{{ 'DASHBOARD.PHASE' | translate }}</td>\n              <td>{{ 'DASHBOARD.DEPOSIT' | translate }}</td>\n              <td>Lunes</td>\n              <td>{{ 'DASHBOARD.BONUS' | translate }}</td>\n              <td>Total</td>\n            </tr>\n          </thead>\n          <tbody data-ng-if=\"$ctrl.history.length > 0\">\n            <tr data-ng-repeat=\"history in $ctrl.history\" ng-class-odd=\"'odd'\" ng-class-even=\"'even'\">\n              <td>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</td>\n              <td>{{ history.phase || 1 }}</td>\n              <td>{{ history.deposit_value }} {{ history.deposit_coin }}</td>\n              <td>{{ history.credit_value }} LNS</td>\n              <td>{{ history.bonus_value }} LNS </td>\n              <td>{{ history.total }} LNS</td>\n            </tr>\n          </tbody>\n          <tfoot data-ng-if=\"$ctrl.history.length === 0\">\n            <tr>\n              <td colspan=\"6\" style=\"text-align: center;\">{{ 'DASHBOARD.NO_HISTORY' | translate }}</td>\n            </tr>\n          </tfoot>\n        </table>\n\n        <div ng-if=\"$ctrl.checkWidthScreenMobile()\">\n          <div data-ng-repeat=\"history in $ctrl.history\" ng-class-odd=\"'odd'\" ng-class-even=\"'even'\" style=\"border-radius: 5px;\">\n            <h6 style=\"text-align: center; padding: 10px; color: #4cd468;\">{{'TRANSACTION' | translate}} {{$index+1}}</h6>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.DATE' | translate }}</div>\n              <div>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.PHASE' | translate }}</div>\n              <div>{{ history.phase || 1 }}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.DEPOSIT' | translate }}</div>\n              <div>{{ history.deposit_value }} LNS</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>Lunes</div>\n              <div>{{ history.credit_value }} LNS</div>\n            </div>\n            <div class=\"responsive-table-card total-footer\">\n              <div>Total</div>\n              <div>{{ history.total }} LNS</div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"col-12 balance\">\n        <span>{{'MY_BALANCE' | translate}}:</span>\n        <span class=\"monetary\">{{ $ctrl.totalLns }}</span>\n        <span class=\"coin\">LNS</span>\n      </div>\n    </div>\n  </section>\n</div>"
 
 /***/ },
 /* 705 */
@@ -82902,6 +82902,9 @@
 	  COUPON_PLACEHOLDER: 'If yes, please type here',
 	  WELCOME: 'Welcome',
 	  BEGIN_YOUR_REGISTRATION: 'Begin your registration',
+	  TRANSACTION: 'Transaction',
+	  MY_BALANCE: 'My balance',
+	  IN: 'in',
 	  AGREE: 'Agree',
 	  DONT_HAVE_ACCOUNT: 'Don\'t have an account?',
 	  SIGNUP: 'Signup',
@@ -82993,6 +82996,9 @@
 	  BUY: 'Comprar',
 	  DASHBOARD: 'Dashboard',
 	  PURCHASE_HISTORY: 'Histórico de Compras',
+	  TRANSACTION: 'Transação',
+	  MY_BALANCE: 'Meu saldo',
+	  IN: 'em',
 	  CURRENCY_SYMBOL: 'R$',
 	  CURRENCY_USER: 'BRL',
 	  CURRENCY_EXCHANGE: 'bitstamp',
@@ -83128,14 +83134,17 @@
 	        while (1) {
 	          switch (_context.prev = _context.next) {
 	            case 0:
-	              _context.next = 2;
+	              if (userData.email) {
+	                userData.email = userData.email.toLowerCase();
+	              }
+	              _context.next = 3;
 	              return _lunesLib2.default.users.login(userData);
 	
-	            case 2:
+	            case 3:
 	              data = _context.sent;
 	              return _context.abrupt('return', data);
 	
-	            case 4:
+	            case 5:
 	            case 'end':
 	              return _context.stop();
 	          }
@@ -83157,6 +83166,9 @@
 	        while (1) {
 	          switch (_context2.prev = _context2.next) {
 	            case 0:
+	              if (userData.email) {
+	                userData.email = userData.email.toLowerCase();
+	              }
 	              obj = {
 	                email: userData.email,
 	                password: userData.password,
@@ -83164,14 +83176,14 @@
 	                coupon: userData.coupon,
 	                testnet: userData.testnet || false
 	              };
-	              _context2.next = 3;
+	              _context2.next = 4;
 	              return _lunesLib2.default.users.create(obj);
 	
-	            case 3:
+	            case 4:
 	              data = _context2.sent;
 	              return _context2.abrupt('return', data);
 	
-	            case 5:
+	            case 6:
 	            case 'end':
 	              return _context2.stop();
 	          }
@@ -84202,4 +84214,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?1519777395330
+//# sourceMappingURL=app.js.map?1519778600107

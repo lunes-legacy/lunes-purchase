@@ -39,7 +39,7 @@
 
         <div ng-if="$ctrl.checkWidthScreenMobile()">
           <div data-ng-repeat="history in $ctrl.history" ng-class-odd="'odd'" ng-class-even="'even'" style="border-radius: 5px;">
-            <h6 style="text-align: center; padding: 10px; color: #4cd468;">Transação {{$index+1}}</h6>
+            <h6 style="text-align: center; padding: 10px; color: #4cd468;">{{'TRANSACTION' | translate}} {{$index+1}}</h6>
             <div class="responsive-table-card">
               <div>{{ 'DASHBOARD.DATE' | translate }}</div>
               <div>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</div>
@@ -64,7 +64,7 @@
         </div>
       </div>
       <div class="col-12 balance">
-        <span>Meu saldo:</span>
+        <span>{{'MY_BALANCE' | translate}}:</span>
         <span class="monetary">{{ $ctrl.totalLns }}</span>
         <span class="coin">LNS</span>
       </div>
