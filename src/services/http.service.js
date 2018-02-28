@@ -12,7 +12,7 @@ class HttpService {
 
   async login(userData) {
     if (userData.email) {
-      userData.email = userData.email.toLowerCase();
+      //userData.email = userData.email.toLowerCase();
     }
     const data = await LunesLib.users.login(userData);
     return data;
