@@ -50,13 +50,13 @@
             </div>
             <div class="responsive-table-card">
               <div>{{ 'DASHBOARD.DEPOSIT' | translate }}</div>
-              <div>{{ history.deposit_value }} LNS</div>
+              <div>{{ history.deposit_value }} {{history.deposit_coin}}</div>
             </div>
             <div class="responsive-table-card">
               <div>Lunes</div>
               <div>{{ history.credit_value }} LNS</div>
             </div>
-            <div class="responsive-table-card total-footer">
+            <div class="responsive-table-card total-footer" ng-show="false">
               <div>Total</div>
               <div>{{ history.total }} LNS</div>
             </div>

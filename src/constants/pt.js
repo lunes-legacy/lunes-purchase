@@ -26,6 +26,7 @@ export default {
     BUY: 'Comprar',
     DASHBOARD: 'Dashboard',
     PURCHASE_HISTORY: 'Histórico de Compras',
+    DATE_FORMAT: 'dd-MM-yyyy',
     TRANSACTION: 'Transação',
     MY_BALANCE: 'Meu saldo',
     IN: 'em',

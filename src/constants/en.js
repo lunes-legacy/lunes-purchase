@@ -21,6 +21,7 @@ export default {
     TRANSACTION: 'Transaction',
     MY_BALANCE: 'My balance',
     IN: 'in',
+    DATE_FORMAT: 'MM-dd-yyyy',
     AGREE: 'Agree',
     DONT_HAVE_ACCOUNT: 'Don\'t have an account?',
     SIGNUP: 'Signup',
