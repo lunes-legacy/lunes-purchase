@@ -110,22 +110,22 @@ export default {
     
     <p class='question'>Q - What is the price of 1 LNS?</p>
     R- We will have 4 lots with the following prices:
-    1st lot: $ 0,01
-    2nd lot: $ 0,08
-    3rd lot: $ 0,15
-    4th lot: $ 0,30
+    1st lot: $ 0.01
+    2nd lot: $ 0.08
+    3rd lot: $ 0.15
+    4th lot: $ 0.30
     
     <p class='question'>Q - What is the limit of purchase per investor?</p>
-    A -1st lot: $ 0,01 - 300,000 coins
-    2nd lot: $ 0,08 - 5,000,000 coins
-    3rd lot: $ 0,15 - 8,000,000 coins
-    4th lot: $ 0,30 10,000,000 coins
+    A -1st lot: $ 0.01 - 300.000 coins
+    2nd lot: $ 0.08 - 5.000.000 coins
+    3rd lot: $ 0.15 - 8.000.000 coins
+    4th lot: $ 0.30 10.000.000 coins
     
     <p class='question'>Q - What is the max supply of coins??</p>
-    A - 600,000,000 coins. Total coins available for ICO process is 450,000,000.
+    A - 600.000.000 coins. Total coins available for ICO process is 450.000.000.
     
     <p class='question'>Q - What is the Soft Cap?</p>
-    A - 10,92M USD.
+    A - 10.92M USD.
     
     <p class='question'>Q- Can I buy with fiat currency?</p>
     A - No. We will accept only cryptocurrency.

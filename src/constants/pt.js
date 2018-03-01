@@ -108,19 +108,19 @@ export default {
     
     <p class='question'>Qual o preço de 1 LNS?</p>
     R- Teremos 4 lotes, com os preços de acordo com a seguinte ordem:
-    1º lote: $ 0,01
-    2º lote: $ 0,08
-    3º lote: $ 0,15
-    4º lote: $ 0,30
+    1º lote: $ 0.01
+    2º lote: $ 0.08
+    3º lote: $ 0.15
+    4º lote: $ 0.30
     
     <p class='question'>Qual o valor mínimo para compra?</p>
     R- Não há valor mínimo de compra.
     
     <p class='question'>Qual o valor máximo de compra por usuário?</p>
-    R- 1º lote: $ 0,01 - 300,000 de moedas
-    2º lote: $ 0,08 - 5,000,000 de moedas
-    3º lote: $ 0,15 - 8,000,000 de moedas
-    4º lote: $ 0,30 - 10,000,000 de moedas
+    R- 1º lote: $ 0.01 - 300.000 de moedas
+    2º lote: $ 0.08 - 5.000.000 de moedas
+    3º lote: $ 0.15 - 8.000.000 de moedas
+    4º lote: $ 0.30 - 10.000.000 de moedas
     
     <p class='question'>Qual o máximo de moedas emitidas?</p>
     R - 600 milhões de moedas. Sendo que 450 milhões estão disponíveis à venda.
