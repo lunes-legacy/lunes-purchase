@@ -83379,7 +83379,7 @@
 	          switch (_context.prev = _context.next) {
 	            case 0:
 	              if (userData.email) {
-	                //userData.email = userData.email.toLowerCase();
+	                userData.email = userData.email.toLowerCase();
 	              }
 	              _context.next = 3;
 	              return _lunesLib2.default.users.login(userData);
@@ -84466,4 +84466,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?1519875912146
+//# sourceMappingURL=app.js.map?1519882899427
