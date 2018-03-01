@@ -96,7 +96,7 @@ export default {
     A - Our blockchain is a fork of the Waves code, but we have very different functionalities. So Lunes is NOT an ethereum token.
     
     <h3>When does ICO start?</h3>
-    <p class='question'>Q - The PRE-ICO starts on February 25 and runs until March 30.
+    <p class='question'>Q - The PRE-ICO starts on February 25 and runs until March 30.</p>
     A- ICO starts on April 15 and runs until May 20.
     
     <h3>How to buy Lunes?</h3>
@@ -143,7 +143,7 @@ export default {
     A - We do not have a specific date. Apple has been very bureaucratic when it comes to cryptocurrencies. Although we are fully committed to making our app 
     available to iOS system.
     
-    <p class='question'>Q - What is the mining algorithm, PoW or PoS?
+    <p class='question'>Q - What is the mining algorithm, PoW or PoS?</p>
     A – LPoS, or Leased Proof of Stake, in which the Lunes tokens that are in your wallet can be used to "forge" tokens through the leasing process, safely 
     and without having to keep an open wallet.
     

@@ -94,7 +94,7 @@ export default {
     R - Nosso blockchain é um fork do código da Waves, porém temos funcionalidades bem distintas. Portanto a Lunes NÃO é um token ethereum.
     
     <p class='question'>Quando começa a ICO?</p>
-    <p class='question'>R- A pré-ICO começa no dia 25 de Fevereiro e vai até o dia 30 de Março.
+    R- A pré-ICO começa no dia 25 de Fevereiro e vai até o dia 30 de Março.
     A ICO começa no dia 15 de Abril e vai até o dia 20 de Maio.
     
     <p class='question'>Como comprar Lunes?</p>
@@ -103,7 +103,7 @@ export default {
     <p class='question'>Quais formas de pagamentos aceitas?</p>
     R- Bitcon, Ethereum e Litecoin.
     
-    <p class='question'>Como eu compro Lunes dentro do website?
+    <p class='question'>Como eu compro Lunes dentro do website?</p>
     R- Não há necessidade de fazer a compra. As suas Lunes serão convertidas automaticamente dentro de 20 minutos a 1 hora.
     
     <p class='question'>Qual o preço de 1 LNS?</p>
@@ -122,7 +122,7 @@ export default {
     3º lote: $ 0,15 - 8,000,000 de moedas
     4º lote: $ 0,30 - 10,000,000 de moedas
     
-    <p class='question'>Qual o máximo de moedas emitidas?
+    <p class='question'>Qual o máximo de moedas emitidas?</p>
     R - 600 milhões de moedas. Sendo que 450 milhões estão disponíveis à venda.
     
     <p class='question'>Qual o Soft Cap?</p>
