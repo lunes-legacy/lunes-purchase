@@ -103,7 +103,7 @@ export default {
     Q - Visit the website https://ico.lunes.io, register and log in. Just choose the desired payment A- method and send to the address of your choice. That simple.
     
     <p class='question'>Q-What currencies will you be accepting?</p>
-    A- Bitcon, Ethereum e Litecoin.
+    A- Bitcon, Ethereum and Litecoin.
     
     <p class='question'>Q - How do I convert my payment for Lunes in the website?</p>
     A- There is no need to convert it. Your Lunes will be automatically converted within 20 minutes to 1 hour after payment is confirmed.
