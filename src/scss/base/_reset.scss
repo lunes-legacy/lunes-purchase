@@ -321,3 +321,20 @@ label.css-label {
 button:focus {
     outline: none !important;
 }
+
+footer {
+  .container-footer {
+    margin-top: 50px;
+    padding: 10px;
+    background-color: #432773;
+    border-radius: 5px;
+    .row {
+      padding: 15px;
+      display: flex;
+      justify-content: flex-end;
+      a {
+        color: #fff;
+      }
+    }
+  }
+}

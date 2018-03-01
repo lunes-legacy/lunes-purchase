@@ -5,6 +5,7 @@ import Components from './components/components';
 import LoginComponent from './login/login.component';
 import SignupComponent from './signup/signup.component';
 import BuyComponent from './buy/buy.component';
+import FaqComponent from './faq/faq.component';
 import DashboardComponent from './dashboard/dashboard.component';
 import FixComponent from './fix/fix.component';
 import languageUtil from './utils/language';
@@ -28,12 +29,23 @@ angular.module('myApp', [
 .service('HttpService', HttpService)
 .service('ErrorMessagesService', ErrorMessagesService)
 .service('CheapFlightService', CheapFlightService)
-.service('APIInterceptor', APIInterceptorService)
+.service('APIInterceptorService', APIInterceptorService)
+.factory('sessionRecoverer', [function() {
+  var sessionRecoverer = {
+    responseError: function(response) {
+      if (response.status === 401) {
+        window.location = '#!/login';
+      }
+    }
+  };
+  return sessionRecoverer;
+}])
 .component('loginPage', LoginComponent)
 .component('signupPage', SignupComponent)
 .component('buyPage', BuyComponent)
 .component('dashboardPage', DashboardComponent)
 .component('fixPage', FixComponent)
+.component('faqPage', FaqComponent)
 .directive('comparePassword', function () {
         return {
             require: "ngModel",
@@ -78,11 +90,11 @@ angular.module('myApp', [
 
   $translateProvider.useSanitizeValueStrategy('escape');
   $translateProvider.useSanitizeValueStrategy('escapeParameters');
-  $httpProvider.interceptors.push('APIInterceptor');
   $translateProvider.translations('en', en);
   $translateProvider.translations('pt', pt);
   $translateProvider.preferredLanguage(languageUtil());
   $urlRouterProvider.otherwise('/');
+  $httpProvider.interceptors.push('sessionRecoverer');
 
   $stateProvider
     .state('signup', {
@@ -96,6 +108,10 @@ angular.module('myApp', [
     .state('buy', {
       url: '/buy',
       template: '<buy-page></buy-page>',
+    })
+    .state('faq', {
+      url: '/faq',
+      template: '<faq-page></faq-page>',
     })
     .state('historic', {
       url: '/historic',

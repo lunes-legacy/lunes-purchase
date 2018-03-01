@@ -1,6 +1,7 @@
 import { STORAGE_KEY } from '../constants';
 
 class APIInterceptorService {
+  
   constructor($rootScope) {
     'ngInject';
     this.$rootScope = $rootScope;
@@ -12,7 +13,7 @@ class APIInterceptorService {
       this.$rootScope.$broadcast('unauthorized');
     }
     return config;
-  };
+  }
 
   responseError(response) {
     console.log(" ")
@@ -20,7 +21,8 @@ class APIInterceptorService {
         this.$rootScope.$broadcast('unauthorized');
     }
     return response;  
-  };
+  }
+  
 }
 
 APIInterceptorService.$inject = ['$rootScope'];

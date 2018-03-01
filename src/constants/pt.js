@@ -62,6 +62,7 @@ export default {
     PASSWORD_MATCH: 'Senha deve combinar com a confirmação',
     SEND_TO_THIS_ADDRESS: 'Enviar para esse endereço',
     UNCONFIRMED_BALANCE: 'Não confirmado',
+    FAQ: 'Perguntas Frequentes',
     QUOTATION: 'Cotação:',
     DASHBOARD: {
       NO_HISTORY: 'Você ainda não possui histórico',
@@ -85,6 +86,74 @@ export default {
     PAGE_FIX: 'Página em manutenção',
     DO_YOU_CHANGE_PASSWORD: 'Você deseja alterar a senha?',
     CHANGE_PASSWORD_INSTRUCTION: 'Digite seu email para enviarmos as instruções de alteração de sua senha',
+    FAQ_TEXT: `
+    <h6>O que é a Lunes?</h6>
+    R- A plataforma Lunes, viabiliza o fornecimento de um conjunto de soluções construídas de forma descentralizada utilizando a tecnologia de blockchain como criação de tokens, registros de autenticidade e processamentos de pagamentos através de operadores de gateway, tanto de moedas fiduciárias quanto criptomoedas, facilitando a captação de recursos e private labels.
+    
+    <p class='question'>A Lunes é um token do Ethereum ou da Waves?</p>
+    R - Nosso blockchain é um fork do código da Waves, porém temos funcionalidades bem distintas. Portanto a Lunes NÃO é um token ethereum.
+    
+    <p class='question'>Quando começa a ICO?</p>
+    <p class='question'>R- A pré-ICO começa no dia 25 de Fevereiro e vai até o dia 30 de Março.
+    A ICO começa no dia 15 de Abril e vai até o dia 20 de Maio.
+    
+    <p class='question'>Como comprar Lunes?</p>
+    R- Visite o site https://ico.lunes.io , faça o cadastro e efetue o login. Basta escolher a forma de pagamento desejada e enviar para o endereço de sua escolha. Simples assim.
+    
+    <p class='question'>Quais formas de pagamentos aceitas?</p>
+    R- Bitcon, Ethereum e Litecoin.
+    
+    <p class='question'>Como eu compro Lunes dentro do website?
+    R- Não há necessidade de fazer a compra. As suas Lunes serão convertidas automaticamente dentro de 20 minutos a 1 hora.
+    
+    <p class='question'>Qual o preço de 1 LNS?</p>
+    R- Teremos 4 lotes, com os preços de acordo com a seguinte ordem:
+    1º lote: $ 0,01
+    2º lote: $ 0,08
+    3º lote: $ 0,15
+    4º lote: $ 0,30
+    
+    <p class='question'>Qual o valor mínimo para compra?</p>
+    R- Não há valor mínimo de compra.
+    
+    <p class='question'>Qual o valor máximo de compra por usuário?</p>
+    R- 1º lote: $ 0,01 - 300,000 de moedas
+    2º lote: $ 0,08 - 5,000,000 de moedas
+    3º lote: $ 0,15 - 8,000,000 de moedas
+    4º lote: $ 0,30 - 10,000,000 de moedas
+    
+    <p class='question'>Qual o máximo de moedas emitidas?
+    R - 600 milhões de moedas. Sendo que 450 milhões estão disponíveis à venda.
+    
+    <p class='question'>Qual o Soft Cap?</p>
+    R- 10,92M de dólares.
+    
+    
+    <p class='question'>Posso comprar Lunes em Real(BRL)?</p>
+    R- Não, será aceito apenas BTC, ETH e LTC como forma de pagamento.
+     
+    <p class='question'>Quando poderei transferir minhas Lunes?</p>
+    R- Após o final da ICO você poderá transferir suas Lunes para a carteira mobile ou web. 
+    
+    <p class='question'>A Lunes vai ser listada em alguma exchange?</p>
+    R - Pretendemos listar nossa moedas nas exchanges, porém ainda não podemos confirmar em quais. Após a ICO iremos começar as negociações e iremos informá-los.
+    
+    <p class='question'>A Lunes é uma security token?</p>
+    R- Não. A Lunes é uma utility token.
+    
+    <p class='question'>Quando sai a Lunes Wallet para iOS?</p>
+    R - Não temos uma data definida, a Apple é muito burocrática em relação as criptomoedas. Estamos com empenho total para disponibilizar nosso app também para o sistema iOS, porém dependemos da aprovação da Apple.
+    
+    <p class='question'>Qual o algoritmo de mineração, PoW ou PoS?</p>
+    R - LPoS, ou Leased Proof of Stake. Onde os tokens Lunes que estão na sua carteira podem ser utilizados para "forjar" tokens através do processo de leasing, com segurança e sem necessidade de manter uma carteira aberta. 
+    .
+     
+    <p class='question'>Quanto valerá 1 LNS nas exchanges?</p>
+    R- Não há como ter um controle de quanto valerá nas exchanges, o mercado é quem dita as regras.
+     
+    <p class='question'>Como montar um Lunes Node?</p>
+    R- O Lunes Node (ainda em desenvolvimento) é uma aplicação em java, compatível com qualquer sistema operacional que tenha suporte. Para o seu Lunes Node tenha a chance de minerar as transações, é necessário que a carteira configurada no lunes.conf tenha o saldo mínimo de 5000 Lunes.
+    `,
     REPRESENTATION_TERM: `
       <h3>Representação e Garantias</h3>
       <p>Ao participar da ICO o usuário concorda com o T&C e, em particular, eles representam e garantem que:</p>

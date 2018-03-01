@@ -65,6 +65,7 @@ export default {
     PASSWORD_MATCH: 'Password must match',
     SEND_TO_THIS_ADDRESS: 'Send to this address',
     UNCONFIRMED_BALANCE: 'Unconfirmed',
+    FAQ: 'F.A.Q',
     DASHBOARD: {
       NO_HISTORY: 'You have no history yet',
       DATE: 'Date',
@@ -85,6 +86,72 @@ export default {
     EMAIL_NOT_SENT: 'Email not sent or not exists',
     DO_YOU_CHANGE_PASSWORD: 'Do you want change you password?',
     CHANGE_PASSWORD_INSTRUCTION: 'Type your email for us send for you the instructions to change password',
+    FAQ_TEXT: `
+    <h6>What is Lunes?</h6>
+    <p>Lunes is a platform that provides a set of solutions that is decentralized by utilizing blockchain
+    technology: such as creating tokens, authenticity records, and making payment processing possible through our gateway operators by using “fiat” 
+    currencies and cryptocurrencies.</p>
+    
+    <p class='question'>Q - Is Lunes a Waves or Ethereum token?</p>
+    A - Our blockchain is a fork of the Waves code, but we have very different functionalities. So Lunes is NOT an ethereum token.
+    
+    <h3>When does ICO start?</h3>
+    <p class='question'>Q - The PRE-ICO starts on February 25 and runs until March 30.
+    A- ICO starts on April 15 and runs until May 20.
+    
+    <h3>How to buy Lunes?</h3>
+    Q - Visit the website https://ico.lunes.io, register and log in. Just choose the desired payment A- method and send to the address of your choice. That simple.
+    
+    <p class='question'>Q-What currencies will you be accepting?</p>
+    A- Bitcon, Ethereum e Litecoin.
+    
+    <p class='question'>Q - How do I convert my payment for Lunes in the website?</p>
+    A- There is no need to convert it. Your Lunes will be automatically converted within 20 minutes to 1 hour after payment is confirmed.
+    
+    <p class='question'>Q - What is the price of 1 LNS?</p>
+    R- We will have 4 lots with the following prices:
+    1st lot: $ 0,01
+    2nd lot: $ 0,08
+    3rd lot: $ 0,15
+    4th lot: $ 0,30
+    
+    <p class='question'>Q - What is the limit of purchase per investor?</p>
+    A -1st lot: $ 0,01 - 300,000 coins
+    2nd lot: $ 0,08 - 5,000,000 coins
+    3rd lot: $ 0,15 - 8,000,000 coins
+    4th lot: $ 0,30 10,000,000 coins
+    
+    <p class='question'>Q - What is the max supply of coins??</p>
+    A - 600,000,000 coins. Total coins available for ICO process is 450,000,000.
+    
+    <p class='question'>Q - What is the Soft Cap?</p>
+    A - 10,92M USD.
+    
+    <p class='question'>Q- Can I buy with fiat currency?</p>
+    A - No. We will accept only cryptocurrency.
+     
+    <p class='question'>Q- When can I transfer my Lunes?</p>
+    A - After ICO is finished, you will be able to transfer your Lunes coins.
+    
+    <p class='question'>Q - Is Lunes a security token?</p>
+    A - No. Lunes is a utility token.
+    
+    <p class='question'>Q  – Is Lunes going to be listed at any exchange?</p>
+    A – Yes, but we cannot confirm any at the moment.We will negotiate with exchanges after the ICO is finished. 
+    
+    <p class='question'>Q – When Lunes wallet will be released for iOS?</p>
+    A - We do not have a specific date. Apple has been very bureaucratic when it comes to cryptocurrencies. Although we are fully committed to making our app 
+    available to iOS system.
+    
+    <p class='question'>Q - What is the mining algorithm, PoW or PoS?
+    A – LPoS, or Leased Proof of Stake, in which the Lunes tokens that are in your wallet can be used to "forge" tokens through the leasing process, safely 
+    and without having to keep an open wallet.
+    
+    <p class='question'>Q – How can I create a Lunes Node?</p>
+    A- The Lunes Node (still in development) is an application in Java, compatible with any operating system which offers support. In order to your Lunes 
+    Node has the chance to mine the transactions, it is necessary for the Wallet set up in the Lunes.conf to hold at least 5,000 coins.
+      
+    `,
     REPRESENTATION_TERM: `
       <h3>Representation and Warranties</h3>
       <p>By participating in the Initial Coin Offering, the User agrees to the T&C and in particular, they represent and warrant that they:</p>

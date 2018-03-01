@@ -72,7 +72,15 @@ class DashboardController {
 
   async getHistory() {
     this.showLoading(true);
-    const history = await LunesLib.ico.buyHistory(this.currentUser.email, this.currentUser.accessToken, 1).catch(err => console.log(err));
+    if (!this.currentUser) {
+      this.$state.go('login');
+    }
+    const history = await LunesLib.ico.buyHistory(this.currentUser.email, this.currentUser.accessToken, 1).catch(err => {
+      if (err && err.error && err.error.status === 401) {
+        localStorage.removeItem(STORAGE_KEY);
+        this.$state.go('login');
+      }
+    });
     this.getPhases();
     this.$timeout(() => {
       this.showLoading(false);
