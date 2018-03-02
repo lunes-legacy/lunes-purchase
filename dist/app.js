@@ -9290,29 +9290,35 @@
 	  $translateProvider.preferredLanguage((0, _language2.default)());
 	  $urlRouterProvider.otherwise('/');
 	
-	  $stateProvider.state('signup', {
+	  $stateProvider
+	  /*.state('signup', {
 	    url: '/signup',
-	    template: '<signup-page></signup-page>'
-	  }).state('login', {
+	    template: '<signup-page></signup-page>',
+	  })
+	  .state('login', {
 	    url: '/login',
-	    template: '<login-page></login-page>'
-	  }).state('buy', {
+	    template: '<login-page></login-page>',
+	  })
+	  .state('buy', {
 	    url: '/buy',
-	    template: '<buy-page></buy-page>'
-	  }).state('faq', {
+	    template: '<buy-page></buy-page>',
+	  })
+	  .state('faq', {
 	    url: '/faq',
-	    template: '<faq-page></faq-page>'
-	  }).state('historic', {
+	    template: '<faq-page></faq-page>',
+	  })
+	  .state('historic', {
 	    url: '/historic',
-	    template: '<dashboard-page></dashboard-page>'
-	  }).state('home', {
+	    template: '<dashboard-page></dashboard-page>',
+	  })
+	  .state('home', {
 	    url: '/',
-	    template: '<login-page></login-page>'
-	  });
-	  /*.state('fix', {
-	    url: '/',
-	    template: '<fix-page></fix-page>',
+	    template: '<login-page></login-page>',
 	  });*/
+	  .state('fix', {
+	    url: '/',
+	    template: '<fix-page></fix-page>'
+	  });
 	}]);
 
 /***/ },
@@ -83034,7 +83040,7 @@
 /* 714 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"container\">\r\n  <div style=\"display: flex; align-items: center; justify-content: center; flex-direction: column; height: 100vh;\">\r\n    <div class=\"col-xs-12 col-lg-2 logo\">\r\n      <!-- eslint-disable -->\r\n      <span>L</span>\r\n      <span>u</span>\r\n      <span>n</span>\r\n      <span class=\"txt-green\">e</span>\r\n      <span>s</span>\r\n      <!-- eslint-disable -->\r\n    </div>\r\n    <h2>{{'PAGE_FIX' | translate}}</h2>\r\n  </div>\r\n</div>"
+	module.exports = "<div class=\"container\">\r\n  <div style=\"display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  flex-direction: column;\r\n  height: 100vh;\r\n  text-align: center;\">\r\n    <div class=\"col-xs-12 col-lg-2 logo\" style=\"margin-bottom: 50px;\">\r\n      <!-- eslint-disable -->\r\n      <span>L</span>\r\n      <span>u</span>\r\n      <span>n</span>\r\n      <span class=\"txt-green\">e</span>\r\n      <span>s</span>\r\n      <!-- eslint-disable -->\r\n    </div>\r\n    <h2>{{'PAGE_FIX' | translate}}</h2>\r\n  </div>\r\n</div>"
 
 /***/ },
 /* 715 */
@@ -84502,4 +84508,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?1519959589178
+//# sourceMappingURL=app.js.map?1519961657724
