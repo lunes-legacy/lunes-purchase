@@ -16,8 +16,7 @@ import { STORAGE_KEY } from './constants/index';
 import {
   CheapFlightService,
   HttpService,
-  ErrorMessagesService,
-  APIInterceptorService
+  ErrorMessagesService
 } from './services';
 import './scss/main.scss';
 
@@ -29,17 +28,6 @@ angular.module('myApp', [
 .service('HttpService', HttpService)
 .service('ErrorMessagesService', ErrorMessagesService)
 .service('CheapFlightService', CheapFlightService)
-.service('APIInterceptorService', APIInterceptorService)
-.factory('sessionRecoverer', [function() {
-  var sessionRecoverer = {
-    responseError: function(response) {
-      if (response.status === 401) {
-        window.location = '#!/login';
-      }
-    }
-  };
-  return sessionRecoverer;
-}])
 .component('loginPage', LoginComponent)
 .component('signupPage', SignupComponent)
 .component('buyPage', BuyComponent)
@@ -94,7 +82,6 @@ angular.module('myApp', [
   $translateProvider.translations('pt', pt);
   $translateProvider.preferredLanguage(languageUtil());
   $urlRouterProvider.otherwise('/');
-  $httpProvider.interceptors.push('sessionRecoverer');
 
   $stateProvider
     .state('signup', {
@@ -125,5 +112,6 @@ angular.module('myApp', [
       url: '/',
       template: '<fix-page></fix-page>',
     });*/
+
 })
 ;

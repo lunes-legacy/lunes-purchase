@@ -22,7 +22,7 @@ class BuyController {
     this.currentPhase = [];
     this.buyHistoryUser = {};
     this.valueToDeposit = initialValue;
-    this.valueToReceive = initialValue;
+    this.valueToReceive = '000000';
     this.bonusAmountFinal = initialValue;
     this.buyLimit = '0';
     this.coins = COINS_CONSTANT;
@@ -159,22 +159,33 @@ class BuyController {
    * exchangeRate     - o preco em dolar,
    * unitPrice        - o preco atual da lunes em dolar e
    * coupon           - eh o cupom de bonus do usuario se houver
+   * 
+   * Example: 30000 LNS => 0.27285849
+   * Example: 1000  LNS => 0.00090953
+   * Example: 500   LNS => 0.00045476
+   * Example: 10    LNS => 0.00000910
   */
   calcValue(LNS) {
-    if(!this.valueToReceive){
-      this.valueToReceive = initialValue
+    if (!this.valueToReceive) {
+      this.valueToReceive = '000000';
     }
 
-    if(!this.valueToDeposit){
-      this.valueToDeposit = initialValue
+    if (!this.valueToDeposit) {
+      this.valueToDeposit = initialValue;
     }
 
-    const valueToReceive = parseFloat(this.valueToReceive)
-    const valueToDeposit = parseFloat(this.valueToDeposit)
+    if (this.valueToReceive.length > 7) {
+      this.valueToReceive = this.valueToReceive.substr(0, 7);
+    }
 
-    if(isNaN(valueToReceive) || isNaN(valueToDeposit)){
-      this.valueToDeposit = initialValue
-      this.valueToReceive = initialValue
+    this.valueToReceive = this.valueToReceive.replace(/[^0-9.]+/, '');
+
+    const valueToReceive = parseFloat(this.valueToReceive);
+    const valueToDeposit = parseFloat(this.valueToDeposit);
+
+    if (isNaN(valueToReceive) || isNaN(valueToDeposit)) {
+      this.valueToDeposit = initialValue;
+      this.valueToReceive = '000000';
     }
 
     if (LNS) {
@@ -192,12 +203,10 @@ class BuyController {
     const currentPrice = this.balanceCoins[this.currentCoinSelected.name].balance.PRICE;
     const coupon = this.currentUser.coupon;
 
-    this.valueToReceive = parseFloat(this.valueToReceive)
-    this.valueToDeposit = parseFloat(this.valueToDeposit)
-    this.buyLimit = parseFloat(this.buyLimit)
+    this.buyLimit = parseFloat(this.buyLimit);
 
-    let coinAmount = (LNS) ? this.valueToReceive : this.valueToDeposit;
-    coinAmount = parseFloat(coinAmount)
+    let coinAmount = (LNS) ? valueToReceive : valueToDeposit;
+    coinAmount = parseFloat(coinAmount);
     if (isNaN(coinAmount)) {
       coinAmount = 0;
     }
@@ -213,6 +222,12 @@ class BuyController {
       calculateFinal = LunesLib.ico.buyConversion.fromLNS(bonusRate, coinAmount, currentPrice, unitPrice, coupon);
       this.valueToDeposit = calculateFinal.buyAmount;
       this.bonusAmountFinal = (parseFloat(phase.bonus) * this.valueToReceive).toString();
+      
+      this.$timeout(() => {
+        this.valueToReceive = parseFloat(this.valueToReceive);
+        this.valueToDeposit = parseFloat(this.valueToDeposit);
+      }, 2000);
+
       return;
     }
 
@@ -225,8 +240,8 @@ class BuyController {
       this.showErrorLimit = 'Você ultrapassou o limite de compra!';
       coinAmount = this.buyLimit;
       this.valueToReceive = this.buyLimit;
-	  this.bonusAmountFinal = (parseFloat(phase.bonus) * this.buyLimit).toString();
-    }else{
+	    this.bonusAmountFinal = (parseFloat(phase.bonus) * this.buyLimit).toString();
+    } else {
       this.showErrorLimit = ''
     }
   }

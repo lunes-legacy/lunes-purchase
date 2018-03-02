@@ -48,12 +48,12 @@
             <div class="col-lg-1 equal">=</div>
 
             <div class="col-lg-5">
-              <div class="lunesAmount">
+              <div class="lunesAmount" style="display: flex;align-items: center;">
                 <div class="flag-lns">
                   <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png" alt="Icon Lunes">
                 </div>
-                <input type="text" class="input-transparent numeric" name="value" ng-model="$ctrl.valueToReceive" ng-change="$ctrl.calcValue('LNS')"
-                  style="padding-top: 10px;" />
+                <input type="text" placeholder="000.000" class="input-transparent" name="value" ng-model="$ctrl.valueToReceive" ng-change="$ctrl.calcValue('LNS')"
+                />
               </div>
 
               <div class="col-lg-12" style="text-align: right;">

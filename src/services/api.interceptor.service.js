@@ -8,7 +8,6 @@ class APIInterceptorService {
   }
 
   request(config) {
-    console.log(" ")
     if (!localStorage.getItem(STORAGE_KEY)) {
       this.$rootScope.$broadcast('unauthorized');
     }
@@ -16,13 +15,12 @@ class APIInterceptorService {
   }
 
   responseError(response) {
-    console.log(" ")
     if (response.status === 401) {
         this.$rootScope.$broadcast('unauthorized');
     }
     return response;  
   }
-  
+
 }
 
 APIInterceptorService.$inject = ['$rootScope'];
