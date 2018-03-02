@@ -9241,20 +9241,11 @@
 	
 	var _services = __webpack_require__(721);
 	
-	__webpack_require__(727);
+	__webpack_require__(728);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	_angular2.default.module('myApp', [_angularUiRouter2.default, _components2.default, _angularTranslate2.default]).service('HttpService', _services.HttpService).service('ErrorMessagesService', _services.ErrorMessagesService).service('CheapFlightService', _services.CheapFlightService).service('APIInterceptorService', _services.APIInterceptorService).factory('sessionRecoverer', [function () {
-	  var sessionRecoverer = {
-	    responseError: function responseError(response) {
-	      if (response.status === 401) {
-	        window.location = '#!/login';
-	      }
-	    }
-	  };
-	  return sessionRecoverer;
-	}]).component('loginPage', _login2.default).component('signupPage', _signup2.default).component('buyPage', _buy2.default).component('dashboardPage', _dashboard2.default).component('fixPage', _fix2.default).component('faqPage', _faq2.default).directive('comparePassword', function () {
+	_angular2.default.module('myApp', [_angularUiRouter2.default, _components2.default, _angularTranslate2.default]).service('HttpService', _services.HttpService).service('ErrorMessagesService', _services.ErrorMessagesService).service('CheapFlightService', _services.CheapFlightService).component('loginPage', _login2.default).component('signupPage', _signup2.default).component('buyPage', _buy2.default).component('dashboardPage', _dashboard2.default).component('fixPage', _fix2.default).component('faqPage', _faq2.default).directive('comparePassword', function () {
 	  return {
 	    require: "ngModel",
 	    link: function link(scope, element, attributes, ngModel) {
@@ -9298,7 +9289,6 @@
 	  $translateProvider.translations('pt', _pt2.default);
 	  $translateProvider.preferredLanguage((0, _language2.default)());
 	  $urlRouterProvider.otherwise('/');
-	  $httpProvider.interceptors.push('sessionRecoverer');
 	
 	  $stateProvider.state('signup', {
 	    url: '/signup',
@@ -81883,7 +81873,7 @@
 /* 699 */
 /***/ function(module, exports) {
 
-	module.exports = "<!--<loading show=\"$ctrl.loading\"></loading>-->\n<div class=\"container\">\n\n  <lunesheader coin='$ctrl.currentCoinSelected' price='$ctrl.showQuotation()' showlinks='true' balanceuser='$ctrl.balanceUser.confirmed_balance'></lunesheader>\n\n  <!-- BUY -->\n  <section class=\"buy\">\n    <div>\n      <div class=\"row\">\n\n        <div class=\"col-12 title\">\n          <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>\n          <div>{{'OWN_COUPON' | translate}}\n            <span style=\"font-weight: bold;color: #3bbe6e;\">{{$ctrl.currentUser.ownCoupon}}</span>\n          </div>\n        </div>\n\n        <div class=\"col-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n        <div class=\"col-sm-12 col-md-7 col-lg-7\">\n\n          <!-- ERROR LIMIT -->\n          <div class=\"row\">\n            <div ng-show=\"$ctrl.showErrorLimit\" class=\"col-xs-12 col-lg-12\" style=\"padding: 10px;\n            background-color: #df3535;\n            text-align: center;\n            margin: 10px;\">{{$ctrl.showErrorLimit}}</div>\n          </div>\n\n          <!-- CALCULATOR -->\n          <div class=\"row\">\n\n            <div class=\"calculator col-xs-12 col-sm-12 col-lg-6\">\n              <div class=\"valueCripto\">\n                <div class=\"select-coin col-xs-12 col-lg-12\">\n                  <ul>\n                    <li ng-repeat=\"coin in $ctrl.coins\" ng-click=\"$ctrl.selectCoin(coin)\" ng-class=\"coin.selected ? 'selected': ''\">\n                      <img ng-src=\"{{coin.img}}\" alt=\"coin.label\">\n                    </li>\n                  </ul>\n                </div>\n                <div class=\"col-xs-12 col-lg-12 area-field\">\n                  <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToDeposit\" ng-change=\"$ctrl.calcValue()\" />\n                </div>\n              </div>\n            </div>\n\n            <div class=\"col-lg-1 equal\">=</div>\n\n            <div class=\"col-lg-5\">\n              <div class=\"lunesAmount\">\n                <div class=\"flag-lns\">\n                  <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\">\n                </div>\n                <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToReceive\" ng-change=\"$ctrl.calcValue('LNS')\"\n                  style=\"padding-top: 10px;\" />\n              </div>\n\n              <div class=\"col-lg-12\" style=\"text-align: right;\">\n                <label for=\"#\">\n                  <small>{{'PRICE_LUNES' | translate}}</small> = USD {{$ctrl.priceValueLunes}}\n                </label>\n              </div>\n            </div>\n\n          </div>\n\n          <!-- SHOW TOTAL -->\n          <div class=\"row\">\n            <div class=\"col-sm-12 col-lg-12\">\n              <div class=\"amountBalance total\">\n                <div class=\"result\" style=\"margin-top: 15px;\">\n                  <div>{{'AMOUNT_LUNES' | translate}}</div>\n                  <div>{{$ctrl.valueToReceive}}</div>\n                </div>\n                <div class=\"result\">\n                  <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>\n                  <div>{{$ctrl.bonusAmountFinal}}</div>\n                </div>\n                <div class=\"line-break\">\n                  <hr />\n                </div>\n                <div class=\"result\">\n                  <div>Total</div>\n                  <div>{{$ctrl.getTotal()}}</div>\n                </div>\n              </div>\n            </div>\n          </div>\n\n          <!-- ADVICE -->\n          <div class=\"row\">\n            <div class=\"col-lg-12 no-padding\">\n              <div class=\"area-button\" ng-show=\"false\">\n                <button class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\">{{'BUY' | translate}}</button>\n              </div>\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\" ng-show=\"false\">\n              * {{'MSG_BALANCE_DEPOSITED' | translate}}\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0 30px 0;\">\n              * {{'BUY_LIMIT_PHASE' | translate}}\n              <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n            </div>\n          </div>\n\n        </div>\n\n        <!-- QR CODE -->\n        <div class=\"col-xs-12 col-md-5 col-lg-5 container-qr-code\" style=\"text-align: center;\">\n\n          <div style=\"margin-bottom: 10px;\">\n            <span class=\"selected-label\">{{'SEND_TO_THIS_ADDRESS' | translate}} - {{$ctrl.currentCoinSelected.name}}</span>\n          </div>\n\n          <img ng-src=\"{{$ctrl.currentQRCode.img}}\" class=\"qr-code img-thumbnail img-responsive\" />\n\n          <p class=\"address\">{{$ctrl.currentQRCode.address}}</p>\n\n        </div>\n\n      </div>\n    </div>\n  </section>\n\n</div>\n<lunesfooter />"
+	module.exports = "<!--<loading show=\"$ctrl.loading\"></loading>-->\n<div class=\"container\">\n\n  <lunesheader coin='$ctrl.currentCoinSelected' price='$ctrl.showQuotation()' showlinks='true' balanceuser='$ctrl.balanceUser.confirmed_balance'></lunesheader>\n\n  <!-- BUY -->\n  <section class=\"buy\">\n    <div>\n      <div class=\"row\">\n\n        <div class=\"col-12 title\">\n          <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>\n          <div>{{'OWN_COUPON' | translate}}\n            <span style=\"font-weight: bold;color: #3bbe6e;\">{{$ctrl.currentUser.ownCoupon}}</span>\n          </div>\n        </div>\n\n        <div class=\"col-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n        <div class=\"col-sm-12 col-md-7 col-lg-7\">\n\n          <!-- ERROR LIMIT -->\n          <div class=\"row\">\n            <div ng-show=\"$ctrl.showErrorLimit\" class=\"col-xs-12 col-lg-12\" style=\"padding: 10px;\n            background-color: #df3535;\n            text-align: center;\n            margin: 10px;\">{{$ctrl.showErrorLimit}}</div>\n          </div>\n\n          <!-- CALCULATOR -->\n          <div class=\"row\">\n\n            <div class=\"calculator col-xs-12 col-sm-12 col-lg-6\">\n              <div class=\"valueCripto\">\n                <div class=\"select-coin col-xs-12 col-lg-12\">\n                  <ul>\n                    <li ng-repeat=\"coin in $ctrl.coins\" ng-click=\"$ctrl.selectCoin(coin)\" ng-class=\"coin.selected ? 'selected': ''\">\n                      <img ng-src=\"{{coin.img}}\" alt=\"coin.label\">\n                    </li>\n                  </ul>\n                </div>\n                <div class=\"col-xs-12 col-lg-12 area-field\">\n                  <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToDeposit\" ng-change=\"$ctrl.calcValue()\" />\n                </div>\n              </div>\n            </div>\n\n            <div class=\"col-lg-1 equal\">=</div>\n\n            <div class=\"col-lg-5\">\n              <div class=\"lunesAmount\" style=\"display: flex;align-items: center;\">\n                <div class=\"flag-lns\">\n                  <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\">\n                </div>\n                <input type=\"text\" placeholder=\"000.000\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToReceive\" ng-change=\"$ctrl.calcValue('LNS')\"\n                />\n              </div>\n\n              <div class=\"col-lg-12\" style=\"text-align: right;\">\n                <label for=\"#\">\n                  <small>{{'PRICE_LUNES' | translate}}</small> = USD {{$ctrl.priceValueLunes}}\n                </label>\n              </div>\n            </div>\n\n          </div>\n\n          <!-- SHOW TOTAL -->\n          <div class=\"row\">\n            <div class=\"col-sm-12 col-lg-12\">\n              <div class=\"amountBalance total\">\n                <div class=\"result\" style=\"margin-top: 15px;\">\n                  <div>{{'AMOUNT_LUNES' | translate}}</div>\n                  <div>{{$ctrl.valueToReceive}}</div>\n                </div>\n                <div class=\"result\">\n                  <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>\n                  <div>{{$ctrl.bonusAmountFinal}}</div>\n                </div>\n                <div class=\"line-break\">\n                  <hr />\n                </div>\n                <div class=\"result\">\n                  <div>Total</div>\n                  <div>{{$ctrl.getTotal()}}</div>\n                </div>\n              </div>\n            </div>\n          </div>\n\n          <!-- ADVICE -->\n          <div class=\"row\">\n            <div class=\"col-lg-12 no-padding\">\n              <div class=\"area-button\" ng-show=\"false\">\n                <button class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\">{{'BUY' | translate}}</button>\n              </div>\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\" ng-show=\"false\">\n              * {{'MSG_BALANCE_DEPOSITED' | translate}}\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0 30px 0;\">\n              * {{'BUY_LIMIT_PHASE' | translate}}\n              <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n            </div>\n          </div>\n\n        </div>\n\n        <!-- QR CODE -->\n        <div class=\"col-xs-12 col-md-5 col-lg-5 container-qr-code\" style=\"text-align: center;\">\n\n          <div style=\"margin-bottom: 10px;\">\n            <span class=\"selected-label\">{{'SEND_TO_THIS_ADDRESS' | translate}} - {{$ctrl.currentCoinSelected.name}}</span>\n          </div>\n\n          <img ng-src=\"{{$ctrl.currentQRCode.img}}\" class=\"qr-code img-thumbnail img-responsive\" />\n\n          <p class=\"address\">{{$ctrl.currentQRCode.address}}</p>\n\n        </div>\n\n      </div>\n    </div>\n  </section>\n\n</div>\n<lunesfooter />"
 
 /***/ },
 /* 700 */
@@ -81930,7 +81920,7 @@
 	    this.currentPhase = [];
 	    this.buyHistoryUser = {};
 	    this.valueToDeposit = initialValue;
-	    this.valueToReceive = initialValue;
+	    this.valueToReceive = '000000';
 	    this.bonusAmountFinal = initialValue;
 	    this.buyLimit = '0';
 	    this.coins = _index.COINS_CONSTANT;
@@ -82242,24 +82232,37 @@
 	   * exchangeRate     - o preco em dolar,
 	   * unitPrice        - o preco atual da lunes em dolar e
 	   * coupon           - eh o cupom de bonus do usuario se houver
+	   * 
+	   * Example: 30000 LNS => 0.27285849
+	   * Example: 1000  LNS => 0.00090953
+	   * Example: 500   LNS => 0.00045476
+	   * Example: 10    LNS => 0.00000910
 	  */
 	
 	
 	  BuyController.prototype.calcValue = function calcValue(LNS) {
+	    var _this = this;
+	
 	    if (!this.valueToReceive) {
-	      this.valueToReceive = initialValue;
+	      this.valueToReceive = '000000';
 	    }
 	
 	    if (!this.valueToDeposit) {
 	      this.valueToDeposit = initialValue;
 	    }
 	
+	    if (this.valueToReceive.length > 7) {
+	      this.valueToReceive = this.valueToReceive.substr(0, 7);
+	    }
+	
+	    this.valueToReceive = this.valueToReceive.replace(/[^0-9.]+/, '');
+	
 	    var valueToReceive = parseFloat(this.valueToReceive);
 	    var valueToDeposit = parseFloat(this.valueToDeposit);
 	
 	    if (isNaN(valueToReceive) || isNaN(valueToDeposit)) {
 	      this.valueToDeposit = initialValue;
-	      this.valueToReceive = initialValue;
+	      this.valueToReceive = '000000';
 	    }
 	
 	    if (LNS) {
@@ -82277,11 +82280,9 @@
 	    var currentPrice = this.balanceCoins[this.currentCoinSelected.name].balance.PRICE;
 	    var coupon = this.currentUser.coupon;
 	
-	    this.valueToReceive = parseFloat(this.valueToReceive);
-	    this.valueToDeposit = parseFloat(this.valueToDeposit);
 	    this.buyLimit = parseFloat(this.buyLimit);
 	
-	    var coinAmount = LNS ? this.valueToReceive : this.valueToDeposit;
+	    var coinAmount = LNS ? valueToReceive : valueToDeposit;
 	    coinAmount = parseFloat(coinAmount);
 	    if (isNaN(coinAmount)) {
 	      coinAmount = 0;
@@ -82298,6 +82299,12 @@
 	      calculateFinal = _lunesLib2.default.ico.buyConversion.fromLNS(bonusRate, coinAmount, currentPrice, unitPrice, coupon);
 	      this.valueToDeposit = calculateFinal.buyAmount;
 	      this.bonusAmountFinal = (parseFloat(phase.bonus) * this.valueToReceive).toString();
+	
+	      this.$timeout(function () {
+	        _this.valueToReceive = parseFloat(_this.valueToReceive);
+	        _this.valueToDeposit = parseFloat(_this.valueToDeposit);
+	      }, 2000);
+	
 	      return;
 	    }
 	
@@ -82367,7 +82374,7 @@
 	
 	  BuyController.prototype.getCurrentBalanceUser = function () {
 	    var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(coin, address, currentUser) {
-	      var _this = this;
+	      var _this2 = this;
 	
 	      var balance;
 	      return regeneratorRuntime.wrap(function _callee8$(_context8) {
@@ -82382,11 +82389,11 @@
 	
 	              this.$timeout(function () {
 	                if (balance && balance.network === 'ETH') {
-	                  _this.balanceUser = {
+	                  _this2.balanceUser = {
 	                    confirmed_balance: balance.balance
 	                  };
 	                } else {
-	                  _this.balanceUser = balance;
+	                  _this2.balanceUser = balance;
 	                }
 	              }, 200);
 	
@@ -82406,7 +82413,7 @@
 	  }();
 	
 	  BuyController.prototype.selectCoin = function selectCoin(coinSelected) {
-	    var _this2 = this;
+	    var _this3 = this;
 	
 	    this.valueToDeposit = initialValue;
 	    this.valueToReceive = initialValue;
@@ -82421,7 +82428,7 @@
 	      return coin;
 	    });
 	    this.$timeout(function () {
-	      _this2.$scope.$apply();
+	      _this3.$scope.$apply();
 	    }, 200);
 	    //this.openCoinSelect();
 	  };
@@ -83301,7 +83308,7 @@
 	  }
 	});
 	
-	var _cheapflights = __webpack_require__(724);
+	var _cheapflights = __webpack_require__(725);
 	
 	Object.defineProperty(exports, 'CheapFlightService', {
 	  enumerable: true,
@@ -83310,7 +83317,7 @@
 	  }
 	});
 	
-	var _errormessagesService = __webpack_require__(725);
+	var _errormessagesService = __webpack_require__(726);
 	
 	Object.defineProperty(exports, 'ErrorMessagesService', {
 	  enumerable: true,
@@ -83319,7 +83326,7 @@
 	  }
 	});
 	
-	var _apiInterceptorService = __webpack_require__(726);
+	var _apiInterceptorService = __webpack_require__(727);
 	
 	Object.defineProperty(exports, 'APIInterceptorService', {
 	  enumerable: true,
@@ -83353,6 +83360,10 @@
 	var _cccStreamerUtilities = __webpack_require__(723);
 	
 	var _cccStreamerUtilities2 = _interopRequireDefault(_cccStreamerUtilities);
+	
+	var _interceptor = __webpack_require__(724);
+	
+	var _interceptor2 = _interopRequireDefault(_interceptor);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -83479,27 +83490,24 @@
 	          switch (_context4.prev = _context4.next) {
 	            case 0:
 	              _context4.prev = 0;
-	
-	              console.log("");
-	              /* TODO - remove true value to production */
-	              _context4.next = 4;
+	              _context4.next = 3;
 	              return _lunesLib2.default.ico.confirmTerm(currentUser.email, currentUser.accessToken);
 	
-	            case 4:
+	            case 3:
 	              confirmTerm = _context4.sent;
 	              return _context4.abrupt('return', confirmTerm);
 	
-	            case 8:
-	              _context4.prev = 8;
+	            case 7:
+	              _context4.prev = 7;
 	              _context4.t0 = _context4['catch'](0);
 	              throw new Error(_context4.t0);
 	
-	            case 11:
+	            case 10:
 	            case 'end':
 	              return _context4.stop();
 	          }
 	        }
-	      }, _callee4, this, [[0, 8]]);
+	      }, _callee4, this, [[0, 7]]);
 	    }));
 	
 	    function confirmterm(_x5) {
@@ -83552,30 +83560,26 @@
 	          switch (_context6.prev = _context6.next) {
 	            case 0:
 	              _context6.prev = 0;
-	
-	              console.log("");
 	              address = JSON.parse(JSON.stringify(currentUser.depositWallet[currentCoinSelected.name].address));
-	
-	              console.log("");
 	              return _context6.abrupt('return', {
 	                address: address,
 	                img: 'https://chart.googleapis.com/chart?cht=qr&chl=' + address + '&chs=200x200&chld=L|0")'
 	              });
 	
-	            case 7:
-	              _context6.prev = 7;
+	            case 5:
+	              _context6.prev = 5;
 	              _context6.t0 = _context6['catch'](0);
 	              return _context6.abrupt('return', {
 	                address: 'error',
 	                img: 'https://www.computerhope.com/jargon/e/error.gif'
 	              });
 	
-	            case 10:
+	            case 8:
 	            case 'end':
 	              return _context6.stop();
 	          }
 	        }
-	      }, _callee6, this, [[0, 7]]);
+	      }, _callee6, this, [[0, 5]]);
 	    }));
 	
 	    function showDepositWalletAddressQRCode(_x6, _x7) {
@@ -83593,27 +83597,24 @@
 	          switch (_context7.prev = _context7.next) {
 	            case 0:
 	              _context7.prev = 0;
-	
-	              console.log("");
-	              /* TODO - remove true value to production */
-	              _context7.next = 4;
+	              _context7.next = 3;
 	              return _lunesLib2.default.coins.createDepositWallet(currentUser.email, currentUser.accessToken, false);
 	
-	            case 4:
+	            case 3:
 	              depositWalletAddresses = _context7.sent;
 	              return _context7.abrupt('return', depositWalletAddresses);
 	
-	            case 8:
-	              _context7.prev = 8;
+	            case 7:
+	              _context7.prev = 7;
 	              _context7.t0 = _context7['catch'](0);
 	              throw new Error(_context7.t0);
 	
-	            case 11:
+	            case 10:
 	            case 'end':
 	              return _context7.stop();
 	          }
 	        }
-	      }, _callee7, this, [[0, 8]]);
+	      }, _callee7, this, [[0, 7]]);
 	    }));
 	
 	    function createDepositWallet(_x8) {
@@ -83706,7 +83707,9 @@
 	          switch (_context10.prev = _context10.next) {
 	            case 0:
 	              _context10.next = 2;
-	              return _lunesLib2.default.ico.buyBalance(email, accessToken, 1);
+	              return _lunesLib2.default.ico.buyBalance(email, accessToken, 1).catch(function (error) {
+	                _interceptor2.default.responseError(error);
+	              });
 	
 	            case 2:
 	              a = _context10.sent;
@@ -83741,7 +83744,9 @@
 	
 	              underCoin = coin.toLowerCase();
 	              _context11.next = 4;
-	              return _lunesLib2.default.coins.getBalance({ address: address, coin: underCoin, testnet: false }, currentUser.accessToken);
+	              return _lunesLib2.default.coins.getBalance({ address: address, coin: underCoin, testnet: false }, currentUser.accessToken).catch(function (error) {
+	                _interceptor2.default.responseError(error);
+	              });
 	
 	            case 4:
 	              balance = _context11.sent;
@@ -84311,6 +84316,27 @@
 
 /***/ },
 /* 724 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _constants = __webpack_require__(683);
+	
+	exports.default = {
+	  responseError: function responseError(response) {
+	    if (response && response.error && response.error.status === 401) {
+	      localStorage.removeItem(_constants.STORAGE_KEY);
+	      window.location.href = "#!/login";
+	    }
+	  }
+	};
+
+/***/ },
+/* 725 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -84330,7 +84356,7 @@
 	exports.default = CheapFlightService;
 
 /***/ },
-/* 725 */
+/* 726 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -84378,7 +84404,7 @@
 	exports.default = ErrorMessagesService;
 
 /***/ },
-/* 726 */
+/* 727 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -84402,7 +84428,6 @@
 	  }
 	
 	  APIInterceptorService.prototype.request = function request(config) {
-	    console.log(" ");
 	    if (!localStorage.getItem(_constants.STORAGE_KEY)) {
 	      this.$rootScope.$broadcast('unauthorized');
 	    }
@@ -84410,7 +84435,6 @@
 	  };
 	
 	  APIInterceptorService.prototype.responseError = function responseError(response) {
-	    console.log(" ");
 	    if (response.status === 401) {
 	      this.$rootScope.$broadcast('unauthorized');
 	    }
@@ -84425,13 +84449,13 @@
 	exports.default = APIInterceptorService;
 
 /***/ },
-/* 727 */
+/* 728 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(728);
+	var content = __webpack_require__(729);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(691)(content, {});
@@ -84451,7 +84475,7 @@
 	}
 
 /***/ },
-/* 728 */
+/* 729 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(690)(true);
@@ -84466,4 +84490,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?1519882899427
+//# sourceMappingURL=app.js.map?1519955442527
