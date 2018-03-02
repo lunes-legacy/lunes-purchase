@@ -22,9 +22,10 @@
           <!-- ERROR LIMIT -->
           <div class="row">
             <div ng-show="$ctrl.showErrorLimit" class="col-xs-12 col-lg-12" style="padding: 10px;
-            background-color: #df3535;
+            background-color: #d33030;
             text-align: center;
-            margin: 10px;">{{$ctrl.showErrorLimit}}</div>
+            margin: 10px;
+            border-radius: 5px;">{{$ctrl.showErrorLimit}}</div>
           </div>
 
           <!-- CALCULATOR -->
@@ -71,7 +72,7 @@
               <div class="amountBalance total">
                 <div class="result" style="margin-top: 15px;">
                   <div>{{'AMOUNT_LUNES' | translate}}</div>
-                  <div>{{$ctrl.valueToReceive}}</div>
+                  <div>{{$ctrl.getTotalLNSParcial()}}</div>
                 </div>
                 <div class="result">
                   <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>

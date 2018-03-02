@@ -64,6 +64,7 @@ export default {
     UNCONFIRMED_BALANCE: 'Não confirmado',
     FAQ: 'Perguntas Frequentes',
     QUOTATION: 'Cotação:',
+    EXCEED_LIMIT_BUY: 'Você excedeu seu limite de compra',
     DASHBOARD: {
       NO_HISTORY: 'Você ainda não possui histórico',
       DATE: 'Data',

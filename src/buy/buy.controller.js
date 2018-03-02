@@ -178,7 +178,9 @@ class BuyController {
       this.valueToReceive = this.valueToReceive.substr(0, 7);
     }
 
-    this.valueToReceive = this.valueToReceive.replace(/[^0-9.]+/, '');
+    if (this.valueToReceive.replace) {
+      this.valueToReceive = this.valueToReceive.replace(/[^0-9.]+/, '');
+    }
 
     const valueToReceive = parseFloat(this.valueToReceive);
     const valueToDeposit = parseFloat(this.valueToDeposit);
@@ -189,14 +191,13 @@ class BuyController {
     }
 
     if (LNS) {
-      if (this.valueToReceive.indexOf(',') !== -1) {
+      if (this.valueToReceive.indexOf && this.valueToReceive.indexOf(',') !== -1) {
         this.valueToReceive = this.valueToReceive.replace(/[, ]+/g, "0").trim();
       }
-    } else {
-      if (this.valueToDeposit.indexOf(',') !== -1) {
-        this.valueToDeposit = this.valueToDeposit.replace(/[,]+/g, '').trim();
-      }
+    } else if (this.valueToDeposit.indexOf && this.valueToDeposit.indexOf(',') !== -1) {
+      this.valueToDeposit = this.valueToDeposit.replace(/[,]+/g, '').trim();
     }
+    
     this.checkMaxLength();
     const phase = this.getPhaseActive();
     const bonusRate = phase.bonus;
@@ -225,7 +226,7 @@ class BuyController {
       
       this.$timeout(() => {
         this.valueToReceive = parseFloat(this.valueToReceive);
-        this.valueToDeposit = parseFloat(this.valueToDeposit);
+        //this.valueToDeposit = parseFloat(this.valueToDeposit);
       }, 2000);
 
       return;
@@ -233,16 +234,19 @@ class BuyController {
 
     calculateFinal = LunesLib.ico.buyConversion.toLNS(bonusRate, coinAmount, currentPrice, unitPrice, coupon);
 
+    this.$timeout(() => {
+      this.valueToReceive = parseFloat(this.valueToReceive);
+      //this.valueToDeposit = parseFloat(this.valueToDeposit);
+    }, 2000);
+
     this.valueToReceive = calculateFinal.buyAmount.toString();
     this.bonusAmountFinal = calculateFinal.bonusAmount;
 
     if (this.valueToReceive > this.buyLimit) {
-      this.showErrorLimit = 'Você ultrapassou o limite de compra!';
       coinAmount = this.buyLimit;
       this.valueToReceive = this.buyLimit;
-	    this.bonusAmountFinal = (parseFloat(phase.bonus) * this.buyLimit).toString();
-    } else {
-      this.showErrorLimit = ''
+      this.bonusAmountFinal = (parseFloat(phase.bonus) * this.buyLimit).toString();
+      this.calcValue('LNS');
     }
   }
 
@@ -260,6 +264,10 @@ class BuyController {
     const bonus = parseFloat(this.getPhaseActive().bonus) * amountLNS;
     const total = amountLNS + bonus;
     return total.toFixed(8);
+  }
+
+  getTotalLNSParcial() {
+    return (this.valueToReceive.toFixed) ? this.valueToReceive.toFixed(8) : this.valueToReceive;
   }
 
   checkMaxLength() {

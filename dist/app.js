@@ -81662,7 +81662,7 @@
 	                email: this.user.email,
 	                password: this.user.password,
 	                coupon: this.user.coupon,
-	                testnet: true
+	                testnet: false
 	              };
 	              _context.next = 4;
 	              return this.HttpService.signup(obj).catch(function (error) {
@@ -81873,7 +81873,7 @@
 /* 699 */
 /***/ function(module, exports) {
 
-	module.exports = "<!--<loading show=\"$ctrl.loading\"></loading>-->\n<div class=\"container\">\n\n  <lunesheader coin='$ctrl.currentCoinSelected' price='$ctrl.showQuotation()' showlinks='true' balanceuser='$ctrl.balanceUser.confirmed_balance'></lunesheader>\n\n  <!-- BUY -->\n  <section class=\"buy\">\n    <div>\n      <div class=\"row\">\n\n        <div class=\"col-12 title\">\n          <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>\n          <div>{{'OWN_COUPON' | translate}}\n            <span style=\"font-weight: bold;color: #3bbe6e;\">{{$ctrl.currentUser.ownCoupon}}</span>\n          </div>\n        </div>\n\n        <div class=\"col-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n        <div class=\"col-sm-12 col-md-7 col-lg-7\">\n\n          <!-- ERROR LIMIT -->\n          <div class=\"row\">\n            <div ng-show=\"$ctrl.showErrorLimit\" class=\"col-xs-12 col-lg-12\" style=\"padding: 10px;\n            background-color: #df3535;\n            text-align: center;\n            margin: 10px;\">{{$ctrl.showErrorLimit}}</div>\n          </div>\n\n          <!-- CALCULATOR -->\n          <div class=\"row\">\n\n            <div class=\"calculator col-xs-12 col-sm-12 col-lg-6\">\n              <div class=\"valueCripto\">\n                <div class=\"select-coin col-xs-12 col-lg-12\">\n                  <ul>\n                    <li ng-repeat=\"coin in $ctrl.coins\" ng-click=\"$ctrl.selectCoin(coin)\" ng-class=\"coin.selected ? 'selected': ''\">\n                      <img ng-src=\"{{coin.img}}\" alt=\"coin.label\">\n                    </li>\n                  </ul>\n                </div>\n                <div class=\"col-xs-12 col-lg-12 area-field\">\n                  <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToDeposit\" ng-change=\"$ctrl.calcValue()\" />\n                </div>\n              </div>\n            </div>\n\n            <div class=\"col-lg-1 equal\">=</div>\n\n            <div class=\"col-lg-5\">\n              <div class=\"lunesAmount\" style=\"display: flex;align-items: center;\">\n                <div class=\"flag-lns\">\n                  <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\">\n                </div>\n                <input type=\"text\" placeholder=\"000.000\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToReceive\" ng-change=\"$ctrl.calcValue('LNS')\"\n                />\n              </div>\n\n              <div class=\"col-lg-12\" style=\"text-align: right;\">\n                <label for=\"#\">\n                  <small>{{'PRICE_LUNES' | translate}}</small> = USD {{$ctrl.priceValueLunes}}\n                </label>\n              </div>\n            </div>\n\n          </div>\n\n          <!-- SHOW TOTAL -->\n          <div class=\"row\">\n            <div class=\"col-sm-12 col-lg-12\">\n              <div class=\"amountBalance total\">\n                <div class=\"result\" style=\"margin-top: 15px;\">\n                  <div>{{'AMOUNT_LUNES' | translate}}</div>\n                  <div>{{$ctrl.valueToReceive}}</div>\n                </div>\n                <div class=\"result\">\n                  <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>\n                  <div>{{$ctrl.bonusAmountFinal}}</div>\n                </div>\n                <div class=\"line-break\">\n                  <hr />\n                </div>\n                <div class=\"result\">\n                  <div>Total</div>\n                  <div>{{$ctrl.getTotal()}}</div>\n                </div>\n              </div>\n            </div>\n          </div>\n\n          <!-- ADVICE -->\n          <div class=\"row\">\n            <div class=\"col-lg-12 no-padding\">\n              <div class=\"area-button\" ng-show=\"false\">\n                <button class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\">{{'BUY' | translate}}</button>\n              </div>\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\" ng-show=\"false\">\n              * {{'MSG_BALANCE_DEPOSITED' | translate}}\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0 30px 0;\">\n              * {{'BUY_LIMIT_PHASE' | translate}}\n              <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n            </div>\n          </div>\n\n        </div>\n\n        <!-- QR CODE -->\n        <div class=\"col-xs-12 col-md-5 col-lg-5 container-qr-code\" style=\"text-align: center;\">\n\n          <div style=\"margin-bottom: 10px;\">\n            <span class=\"selected-label\">{{'SEND_TO_THIS_ADDRESS' | translate}} - {{$ctrl.currentCoinSelected.name}}</span>\n          </div>\n\n          <img ng-src=\"{{$ctrl.currentQRCode.img}}\" class=\"qr-code img-thumbnail img-responsive\" />\n\n          <p class=\"address\">{{$ctrl.currentQRCode.address}}</p>\n\n        </div>\n\n      </div>\n    </div>\n  </section>\n\n</div>\n<lunesfooter />"
+	module.exports = "<!--<loading show=\"$ctrl.loading\"></loading>-->\n<div class=\"container\">\n\n  <lunesheader coin='$ctrl.currentCoinSelected' price='$ctrl.showQuotation()' showlinks='true' balanceuser='$ctrl.balanceUser.confirmed_balance'></lunesheader>\n\n  <!-- BUY -->\n  <section class=\"buy\">\n    <div>\n      <div class=\"row\">\n\n        <div class=\"col-12 title\">\n          <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>\n          <div>{{'OWN_COUPON' | translate}}\n            <span style=\"font-weight: bold;color: #3bbe6e;\">{{$ctrl.currentUser.ownCoupon}}</span>\n          </div>\n        </div>\n\n        <div class=\"col-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n        <div class=\"col-sm-12 col-md-7 col-lg-7\">\n\n          <!-- ERROR LIMIT -->\n          <div class=\"row\">\n            <div ng-show=\"$ctrl.showErrorLimit\" class=\"col-xs-12 col-lg-12\" style=\"padding: 10px;\n            background-color: #d33030;\n            text-align: center;\n            margin: 10px;\n            border-radius: 5px;\">{{$ctrl.showErrorLimit}}</div>\n          </div>\n\n          <!-- CALCULATOR -->\n          <div class=\"row\">\n\n            <div class=\"calculator col-xs-12 col-sm-12 col-lg-6\">\n              <div class=\"valueCripto\">\n                <div class=\"select-coin col-xs-12 col-lg-12\">\n                  <ul>\n                    <li ng-repeat=\"coin in $ctrl.coins\" ng-click=\"$ctrl.selectCoin(coin)\" ng-class=\"coin.selected ? 'selected': ''\">\n                      <img ng-src=\"{{coin.img}}\" alt=\"coin.label\">\n                    </li>\n                  </ul>\n                </div>\n                <div class=\"col-xs-12 col-lg-12 area-field\">\n                  <input type=\"text\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToDeposit\" ng-change=\"$ctrl.calcValue()\" />\n                </div>\n              </div>\n            </div>\n\n            <div class=\"col-lg-1 equal\">=</div>\n\n            <div class=\"col-lg-5\">\n              <div class=\"lunesAmount\" style=\"display: flex;align-items: center;\">\n                <div class=\"flag-lns\">\n                  <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\">\n                </div>\n                <input type=\"text\" placeholder=\"000.000\" class=\"input-transparent\" name=\"value\" ng-model=\"$ctrl.valueToReceive\" ng-change=\"$ctrl.calcValue('LNS')\"\n                />\n              </div>\n\n              <div class=\"col-lg-12\" style=\"text-align: right;\">\n                <label for=\"#\">\n                  <small>{{'PRICE_LUNES' | translate}}</small> = USD {{$ctrl.priceValueLunes}}\n                </label>\n              </div>\n            </div>\n\n          </div>\n\n          <!-- SHOW TOTAL -->\n          <div class=\"row\">\n            <div class=\"col-sm-12 col-lg-12\">\n              <div class=\"amountBalance total\">\n                <div class=\"result\" style=\"margin-top: 15px;\">\n                  <div>{{'AMOUNT_LUNES' | translate}}</div>\n                  <div>{{$ctrl.getTotalLNSParcial()}}</div>\n                </div>\n                <div class=\"result\">\n                  <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>\n                  <div>{{$ctrl.bonusAmountFinal}}</div>\n                </div>\n                <div class=\"line-break\">\n                  <hr />\n                </div>\n                <div class=\"result\">\n                  <div>Total</div>\n                  <div>{{$ctrl.getTotal()}}</div>\n                </div>\n              </div>\n            </div>\n          </div>\n\n          <!-- ADVICE -->\n          <div class=\"row\">\n            <div class=\"col-lg-12 no-padding\">\n              <div class=\"area-button\" ng-show=\"false\">\n                <button class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\">{{'BUY' | translate}}</button>\n              </div>\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\" ng-show=\"false\">\n              * {{'MSG_BALANCE_DEPOSITED' | translate}}\n            </div>\n            <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0 30px 0;\">\n              * {{'BUY_LIMIT_PHASE' | translate}}\n              <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n            </div>\n          </div>\n\n        </div>\n\n        <!-- QR CODE -->\n        <div class=\"col-xs-12 col-md-5 col-lg-5 container-qr-code\" style=\"text-align: center;\">\n\n          <div style=\"margin-bottom: 10px;\">\n            <span class=\"selected-label\">{{'SEND_TO_THIS_ADDRESS' | translate}} - {{$ctrl.currentCoinSelected.name}}</span>\n          </div>\n\n          <img ng-src=\"{{$ctrl.currentQRCode.img}}\" class=\"qr-code img-thumbnail img-responsive\" />\n\n          <p class=\"address\">{{$ctrl.currentQRCode.address}}</p>\n\n        </div>\n\n      </div>\n    </div>\n  </section>\n\n</div>\n<lunesfooter />"
 
 /***/ },
 /* 700 */
@@ -82255,7 +82255,9 @@
 	      this.valueToReceive = this.valueToReceive.substr(0, 7);
 	    }
 	
-	    this.valueToReceive = this.valueToReceive.replace(/[^0-9.]+/, '');
+	    if (this.valueToReceive.replace) {
+	      this.valueToReceive = this.valueToReceive.replace(/[^0-9.]+/, '');
+	    }
 	
 	    var valueToReceive = parseFloat(this.valueToReceive);
 	    var valueToDeposit = parseFloat(this.valueToDeposit);
@@ -82266,14 +82268,13 @@
 	    }
 	
 	    if (LNS) {
-	      if (this.valueToReceive.indexOf(',') !== -1) {
+	      if (this.valueToReceive.indexOf && this.valueToReceive.indexOf(',') !== -1) {
 	        this.valueToReceive = this.valueToReceive.replace(/[, ]+/g, "0").trim();
 	      }
-	    } else {
-	      if (this.valueToDeposit.indexOf(',') !== -1) {
-	        this.valueToDeposit = this.valueToDeposit.replace(/[,]+/g, '').trim();
-	      }
+	    } else if (this.valueToDeposit.indexOf && this.valueToDeposit.indexOf(',') !== -1) {
+	      this.valueToDeposit = this.valueToDeposit.replace(/[,]+/g, '').trim();
 	    }
+	
 	    this.checkMaxLength();
 	    var phase = this.getPhaseActive();
 	    var bonusRate = phase.bonus;
@@ -82302,7 +82303,7 @@
 	
 	      this.$timeout(function () {
 	        _this.valueToReceive = parseFloat(_this.valueToReceive);
-	        _this.valueToDeposit = parseFloat(_this.valueToDeposit);
+	        //this.valueToDeposit = parseFloat(this.valueToDeposit);
 	      }, 2000);
 	
 	      return;
@@ -82310,16 +82311,19 @@
 	
 	    calculateFinal = _lunesLib2.default.ico.buyConversion.toLNS(bonusRate, coinAmount, currentPrice, unitPrice, coupon);
 	
+	    this.$timeout(function () {
+	      _this.valueToReceive = parseFloat(_this.valueToReceive);
+	      //this.valueToDeposit = parseFloat(this.valueToDeposit);
+	    }, 2000);
+	
 	    this.valueToReceive = calculateFinal.buyAmount.toString();
 	    this.bonusAmountFinal = calculateFinal.bonusAmount;
 	
 	    if (this.valueToReceive > this.buyLimit) {
-	      this.showErrorLimit = 'Você ultrapassou o limite de compra!';
 	      coinAmount = this.buyLimit;
 	      this.valueToReceive = this.buyLimit;
 	      this.bonusAmountFinal = (parseFloat(phase.bonus) * this.buyLimit).toString();
-	    } else {
-	      this.showErrorLimit = '';
+	      this.calcValue('LNS');
 	    }
 	  };
 	
@@ -82339,6 +82343,10 @@
 	    var bonus = parseFloat(this.getPhaseActive().bonus) * amountLNS;
 	    var total = amountLNS + bonus;
 	    return total.toFixed(8);
+	  };
+	
+	  BuyController.prototype.getTotalLNSParcial = function getTotalLNSParcial() {
+	    return this.valueToReceive.toFixed ? this.valueToReceive.toFixed(8) : this.valueToReceive;
 	  };
 	
 	  BuyController.prototype.checkMaxLength = function checkMaxLength() {
@@ -83192,7 +83200,8 @@
 	  PASSWORD_MATCH: 'Password must match',
 	  SEND_TO_THIS_ADDRESS: 'Send to this address',
 	  UNCONFIRMED_BALANCE: 'Unconfirmed',
-	  FAQ: 'F.A.Q'
+	  FAQ: 'F.A.Q',
+	  EXCEED_LIMIT_BUY: 'You exceeded your limit buy'
 	}, _defineProperty(_USER$PASSWORD$PASSWO, 'DASHBOARD', {
 	  NO_HISTORY: 'You have no history yet',
 	  DATE: 'Date',
@@ -83280,7 +83289,8 @@
 	  SEND_TO_THIS_ADDRESS: 'Enviar para esse endereço',
 	  UNCONFIRMED_BALANCE: 'Não confirmado',
 	  FAQ: 'Perguntas Frequentes',
-	  QUOTATION: 'Cotação:'
+	  QUOTATION: 'Cotação:',
+	  EXCEED_LIMIT_BUY: 'Você excedeu seu limite de compra'
 	}, _defineProperty(_USER$PASSWORD$PASSWO, 'DASHBOARD', {
 	  NO_HISTORY: 'Você ainda não possui histórico',
 	  DATE: 'Data',
@@ -84490,4 +84500,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?1519955442527
+//# sourceMappingURL=app.js.map?1519957605947

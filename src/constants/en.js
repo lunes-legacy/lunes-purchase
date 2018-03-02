@@ -66,6 +66,7 @@ export default {
     SEND_TO_THIS_ADDRESS: 'Send to this address',
     UNCONFIRMED_BALANCE: 'Unconfirmed',
     FAQ: 'F.A.Q',
+    EXCEED_LIMIT_BUY: 'You exceeded your limit buy',
     DASHBOARD: {
       NO_HISTORY: 'You have no history yet',
       DATE: 'Date',
