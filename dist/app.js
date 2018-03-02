@@ -9290,35 +9290,29 @@
 	  $translateProvider.preferredLanguage((0, _language2.default)());
 	  $urlRouterProvider.otherwise('/');
 	
-	  $stateProvider
-	  /*.state('signup', {
+	  $stateProvider.state('signup', {
 	    url: '/signup',
-	    template: '<signup-page></signup-page>',
-	  })
-	  .state('login', {
+	    template: '<signup-page></signup-page>'
+	  }).state('login', {
 	    url: '/login',
-	    template: '<login-page></login-page>',
-	  })
-	  .state('buy', {
+	    template: '<login-page></login-page>'
+	  }).state('buy', {
 	    url: '/buy',
-	    template: '<buy-page></buy-page>',
-	  })
-	  .state('faq', {
+	    template: '<buy-page></buy-page>'
+	  }).state('faq', {
 	    url: '/faq',
-	    template: '<faq-page></faq-page>',
-	  })
-	  .state('historic', {
+	    template: '<faq-page></faq-page>'
+	  }).state('historic', {
 	    url: '/historic',
-	    template: '<dashboard-page></dashboard-page>',
-	  })
-	  .state('home', {
+	    template: '<dashboard-page></dashboard-page>'
+	  }).state('home', {
 	    url: '/',
-	    template: '<login-page></login-page>',
-	  });*/
-	  .state('fix', {
-	    url: '/',
-	    template: '<fix-page></fix-page>'
+	    template: '<login-page></login-page>'
 	  });
+	  /*.state('fix', {
+	    url: '/',
+	    template: '<fix-page></fix-page>',
+	  });*/
 	}]);
 
 /***/ },
@@ -84508,4 +84502,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?1519961657724
+//# sourceMappingURL=app.js.map?1519962726043
