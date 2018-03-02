@@ -82312,7 +82312,9 @@
 	    calculateFinal = _lunesLib2.default.ico.buyConversion.toLNS(bonusRate, coinAmount, currentPrice, unitPrice, coupon);
 	
 	    this.$timeout(function () {
-	      _this.valueToReceive = parseFloat(_this.valueToReceive);
+	      if (_this.valueToReceive !== '0.00000000') {
+	        _this.valueToReceive = parseFloat(_this.valueToReceive);
+	      }
 	      //this.valueToDeposit = parseFloat(this.valueToDeposit);
 	    }, 2000);
 	
@@ -84500,4 +84502,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?1519957605947
+//# sourceMappingURL=app.js.map?1519959589178

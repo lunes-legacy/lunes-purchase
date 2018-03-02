@@ -235,7 +235,9 @@ class BuyController {
     calculateFinal = LunesLib.ico.buyConversion.toLNS(bonusRate, coinAmount, currentPrice, unitPrice, coupon);
 
     this.$timeout(() => {
-      this.valueToReceive = parseFloat(this.valueToReceive);
+      if (this.valueToReceive !== '0.00000000') {
+        this.valueToReceive = parseFloat(this.valueToReceive);
+      }
       //this.valueToDeposit = parseFloat(this.valueToDeposit);
     }, 2000);
 
