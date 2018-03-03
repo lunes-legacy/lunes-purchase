@@ -3,8 +3,6 @@ import controller from './header.controller';
 
 const LunesHeaderComponent = {
   bindings: {
-    coin: '=',
-    price: '=',
     showlinks: '=',
     showlogout: '=',
     balanceuser: '='

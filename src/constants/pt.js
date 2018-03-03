@@ -46,6 +46,7 @@ export default {
     AUTHENTICATE_INVALID: 'Autenticação Inválida',
     AN_ERROR_CREATE_ACCOUNT: 'Um erro ocorreu ao criar a conta',
     MSG_BALANCE_DEPOSITED: 'Todo saldo depositado nesse endereço será automaticamente convertido em Lunes no dia 26/02/2018 às 23:00',
+    DEPOSIT_CONFIRMATION_ADVICE: 'Seu depósito será adicionado pelo nosso sistema automaticamente quando recebermos 3 confirmações',
     US_CITIZEN: 'Eu concordo que não sou um cidadão dos Estados Unidos da América.',
     AGREE_TERM: 'Eu concordo com os termos de uso acima.',
     AGREE_FUTURE_VALUE: 'Eu concordo que não há garantia do valor futuro da moeda Lunes.',
@@ -60,7 +61,7 @@ export default {
     PASSWORD_ALPHANUMERIC: 'Ao menos um dos caracteres deve ser um número',
     EMAIL_MATCH: 'E-mail deve combinar com a confirmação',
     PASSWORD_MATCH: 'Senha deve combinar com a confirmação',
-    SEND_TO_THIS_ADDRESS: 'Enviar para esse endereço',
+    SEND_TO_THIS_ADDRESS: 'Por favor, envie',
     UNCONFIRMED_BALANCE: 'Não confirmado',
     QUOTATION: 'Cotação:',
     DASHBOARD: {
@@ -70,6 +71,7 @@ export default {
       DEPOSIT: 'Depósito',
       BONUS: 'Bônus'
     },
+    TO: 'para',
     BALANCE: 'Saldo',
     EMAIL_ALREADY: 'Email já cadastrado',
     ERROR_SERVER: 'Erro interno no servidor',

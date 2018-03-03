@@ -1,14 +1,15 @@
 @import '../scss/base/_color';
 
-.input-transparent {
+.input-calculator {
+  background-color: $darkPrimary;
   border: 0;
-  margin: 0;
-  padding: 0 5px 0 5px;
-  text-align: right;
-  width: 100%;
-  background-color: transparent;
+  border-radius: 5px;
   color: #fff;
   font-size: 18px;
+  margin-bottom: 15px;
+  padding: 10px;
+  text-align: right;
+  width: 230px;
 }
 
 .equal {
@@ -21,22 +22,8 @@
 
 .calculator {
   .valueCripto {
-    min-height: 60px;
-    background-color: rgba($color: $darkPrimary, $alpha: 0.8);
-    color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: right;
-    font-size: 18px;
-    line-height: 60px;
-    .select-coin {
-      min-height: 60px;
-      display: flex;
-      justify-content: center;
-    }
-    .area-field input {
-      text-align: center;
-    }
+    margin-top: 15px;
+    text-align: center;
   }
   .valueMoney {
     height: 80px;
@@ -57,39 +44,33 @@
 }
 
 .lunesAmount {
-  width: 100%;
-  background-color: rgba($color: $darkPrimary, $alpha: 0.8);
-  height: 80px;
-  line-height: 60px;
-  text-align: right;
-  padding-right: 10px;
-  border-radius: 5px;
-  label {
-    font-size: 18px;
+  margin-left: -50px;
+  
+  .input-calculator {
+    margin-left: 0;
+    border-radius: 0 5px 5px 0;
+    padding: 15px 10px;
   }
+
   .flag-lns {
-    left: 0;
-    position: absolute;
     background-color: #fff;
-    padding: 10px 30px;
-    border-radius: 5px 0 5px 5px;
-    box-shadow: #41266f 1px 0px 0px 2px;
+    border-radius: 5px 0 0 5px;
+    margin-bottom: 5px;
+    margin-right: -5px;
+    padding: 10px 10px 14px 15px;
   }
 }
 
 .amountBalance {
-  margin-top: 20px;
-  border-radius: 5px;
-  &.total {
-    padding: 10px;
+  text-align: center;
+  .total {
+    background-color: rgba($color: $darkPrimary, $alpha: 0.8); 
     border-radius: 5px;
-    background-color: rgba($color: $darkPrimary, $alpha: 0.8);
-    .line-break {
-      margin-top: 22px;
-      padding: 10px;
-      hr {
-        border-top: solid 2px $green;
-      }
+    margin: 0 auto;
+    padding: 10px;
+    width: 230px;
+    hr {
+      border-top: solid 1px $green;
     }
   }
 
@@ -98,29 +79,36 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
     padding: 0 10px;
   }
 }
 
 .select-coin {
-  position: relative;
+  display: flex;
+  justify-content: center;
+
   ul {
     display: flex;
     margin: 0;
     padding: 0;
-    float: left;
     text-align: center;
     li {
+      border: 2px solid $darkPrimary;        
       list-style: none;
       cursor: pointer;
-      padding: 0px 5px;
-      margin: 0 5px;
-      width: 40px;
+      margin: 0 20px;
+      width: 50px;
       border-radius: 5px;
+      opacity: 0.6;
+      img {
+        display: block;
+        margin: 10px auto;
+        max-width: 25px;
+      }
       &:hover, &.selected {
-        background-color: #32bc57;
-        opacity: 0.9;
+        background-color: $green;
+        opacity: 1;
+        border: 2px solid $green;        
       }
     }
   }
@@ -152,21 +140,24 @@
 }
 
 .container-qr-code {
-  .selected-label {
-    border-radius: 5px;
-    padding: 5px 28px;
-    background-color: #432773;
-    color: #e5c523;
+  border-radius: 15px;
+  box-shadow: 0px 0px 25px 0px rgba(65,37,111,1);
+  text-align: center;
+  padding: 30px 10px;
+  .qr-code {
+    margin-top: 15px;
+  }
+  .debosit-advice {
+    color: #fff;
     font-size: 12px;
   }
   .address {
-    margin-top: 10px;
     color: $green;
+    margin-top: 15px 0;
   }
 }
 
 .show-balance {
-  
   $coins: (
     btc: #e0972f,
     ltc: #9f9aa4,
@@ -190,46 +181,30 @@
   justify-content: flex-end;
 }
 
-.menu-top {
-  background-color: #432478;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: row;
-  list-style: none;
-  color: #fff;
-  text-transform: uppercase;
-  a {
-    color: #fff;  
-  }
-  li {
-    margin-right: 10px;
-    font-size: 12px;
-  }
-}
-
 .container-logo-header {
-  text-align: right;
-  .container-quotation {
-    text-align: right; 
-    padding: 5px 20px; 
-    font-size: 12px;
-    border-radius: 20px;
-    background-color: #432478;
-    .logout {
-      a {
-        color: #f5b300;
-      }
-    }
-  }
   .logo {
     text-align: left;
     padding: 10px;
   }
-  .quotation {
+  .container-data {
+    // padding: 5px 20px; 
     display: flex;
-    justify-content: flex-end;
-    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    .container-balance {
+      text-align: right;
+    }
+    .coupom {    
+      text-align: center;
+    }
   }
+}
+
+.error-limit {
+  padding: 10px;
+  background-color: #df3535;
+  text-align: center;
+  margin: 10px;
 }
 
 @media only screen and (max-width: 321px) {

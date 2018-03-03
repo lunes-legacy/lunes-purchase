@@ -1,7 +1,7 @@
 <div class="row container-logo-header" style="padding: 10px 0;">
 
   <!-- LOGO -->
-  <div class="col-sm-4 col-md-3 col-lg-3 logo" ng-click="$ctrl.goToHome()">
+  <div class="col-sm-12 col-md-4 col-lg-4 logo" ng-click="$ctrl.goToHome()">
     <span>L</span>
     <span>u</span>
     <span>n</span>
@@ -10,51 +10,32 @@
   </div>
 
   <!-- PRICE CURRENT COIN and LOGOUT -->
-  <div class="col-xs-8 col-md-9 col-lg-9 quotation" ng-show="$ctrl.coin && $ctrl.coin.img">
-    <span class="container-quotation">
-      {{'QUOTATION' | translate}}
-      <img ng-src="{{$ctrl.coin.img}}" alt="{{$ctrl.coin.label}}"> {{'IN' | translate}} USD - {{$ctrl.price}}
-    </span>
-    <span>&nbsp;</span>
-    <span class="container-quotation">
-      {{'MY_BALANCE' | translate}} LNS
-      <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png" alt="Icon Lunes"> {{$ctrl.totalLns}} |
-      <span class="logout">
-        <a href="#!/login" class="round-menu" ng-click="$ctrl.logout()">
-          {{'LOGOUT' | translate}}
-        </a>
-      </span>
-    </span>
-  </div>
-
-  <div class="col-xs-8 col-md-9 col-lg-9 quotation" ng-show="$ctrl.showlogout">
-    <span class="container-quotation" style="display: flex;align-items: center;">
-      <span class="logout">
-        <a href="#!/login" class="round-menu" ng-click="$ctrl.logout()">
-          {{'LOGOUT' | translate}}
-        </a>
-      </span>
-    </span>
+  <div class="col-sm-12 col-md-8 col-lg-8 container-data">
+    <div class="col-xs-12 col-md-6 col-lg-6 coupom">
+      {{'OWN_COUPON' | translate}}
+      <span style="font-weight: bold;color: #3bbe6e;">{{$ctrl.currentUser.ownCoupon}}</span>
+    </div>
+    <div class="col-xs-12 col-md-6 col-lg-6 container-balance">
+      <span>{{'MY_BALANCE' | translate}}</span>
+      <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png" alt="Icon Lunes"> {{$ctrl.totalLns}}
+    </div>
   </div>
 </div>
 
 <!-- MENU and SOCIAL MEDIA links -->
 <nav class="header" ng-show="$ctrl.showlinks">
-  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 nav-menu" style="margin: 5px 0 10px 0;">
+  <div class="col-12 nav-menu">
     <ul class="menu menu-top" style="padding: 0;margin: 0;">
       <li>
-        <a href="#!/historic">{{'PURCHASE_HISTORY' | translate}}</a>
+        <a class="menu-link" href="#!/historic">{{'PURCHASE_HISTORY' | translate}}</a>
       </li>
       <li>
-        |
-      </li>
-      <li>
-        <a href="#!/buy">{{'BUY' | translate}}</a>
+        <a class="menu-link" href="#!/buy">{{'BUY' | translate}}</a>
       </li>
     </ul>
   </div>
 
-  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 flex-right">
+  <!-- <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 flex-right">
     <ul class="menu menu-top" style="padding: 0;margin: 0;">
       <li>
         <a href="https://www.facebook.com/lunesplatform/" target="_blank" class="round-menu">
@@ -77,5 +58,5 @@
         </a>
       </li>
     </ul>
-  </div>
+  </div> -->
 </nav>

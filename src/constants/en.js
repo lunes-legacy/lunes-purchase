@@ -48,6 +48,7 @@ export default {
     BALANCE: 'Balance',
     AN_ERROR_CREATE_ACCOUNT: 'An error occured while creating account',
     MSG_BALANCE_DEPOSITED: 'All balance deposited in the address will automatically be converted to Lunes on 02/26/2018',
+    DEPOSIT_CONFIRMATION_ADVICE: 'Your deposit will be added by our system automatically once we receive 3 confirmations',
     US_CITIZEN: 'I agree i am not a citizen of the United States of America.',
     AGREE_TERM: 'I agree with the above terms of use.',
     AGREE_FUTURE_VALUE: 'I agree the price of the lunes cryptocurrency is not guaranteed in the future.',
@@ -63,7 +64,7 @@ export default {
     PASSWORD_ALPHANUMERIC: 'At least one character in the password must be a number',
     EMAIL_MATCH: 'E-mail must match',
     PASSWORD_MATCH: 'Password must match',
-    SEND_TO_THIS_ADDRESS: 'Send to this address',
+    SEND_TO_THIS_ADDRESS: 'Please, send',
     UNCONFIRMED_BALANCE: 'Unconfirmed',
     DASHBOARD: {
       NO_HISTORY: 'You have no history yet',
@@ -72,6 +73,7 @@ export default {
       DEPOSIT: 'Deposit',
       BONUS: 'Bonus'
     },
+    TO: 'to',
     EMAIL_ALREADY: 'The email address already exists',
     TERMS_CONDITION_TITLE: 'Terms and Conditions',
     REPRESENTATION_TERM_TITLE: 'Representation and Warranties',

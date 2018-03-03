@@ -90,15 +90,19 @@ h3 {
 /* Header */
 .header {
   margin: 20px 0;
-  background-color: #432478;
-  border-radius: 10px;
   display: flex;
   align-items: center;
   padding: 10px 0;
 }
 
+.nav-menu {
+  padding-left: 0;
+  width: 100%;
+}
+
 /* MENU horizontal */
 ul.menu {
+  padding-right: 0;
   &.horizontal {
     display: flex;
     flex-direction: row;
@@ -106,6 +110,7 @@ ul.menu {
     justify-content: space-around;
     li {
       list-style: none;
+      padding: 10px;
       a {
         text-transform: uppercase;
         text-decoration: none;
@@ -115,6 +120,31 @@ ul.menu {
         }
       }
     }
+  }
+}
+
+// TODO: verificar se pode mesclar essa com a de cima
+.menu-top {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0;
+  a {
+    padding: 20px;  
+    color: #fff;
+    text-decoration: none;
+  }
+  .menu-link {
+    &:hover {
+      border-bottom: 2px solid $green;      
+      color: $green;
+    }
+  }
+  li {  
+    margin-right: 15px;
+    font-size: 12px;
   }
 }
 
@@ -221,6 +251,11 @@ ul.menu {
     background-color: #4cd566;
     color: #fff;
     font-size: 16px;
+    transition: all .3s ease-in-out;
+    text-decoration: none;
+    &:hover {
+      background-color: $darkGreen;
+    }
   }
 
   /* disabled button */
@@ -320,4 +355,44 @@ label.css-label {
 
 button:focus {
     outline: none !important;
+}
+
+.user-menu {
+  position: relative;
+  display: inline-block;
+  height: 100px;
+  margin-top: 1rem;
+
+  @media only screen and (max-width: 460px) {
+    height: 150px;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .logout {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -5px;
+
+    @media only screen and (max-width: 460px) {
+      justify-content: flex-start;
+    }
+
+    // TODO: aplicar suavidade ao exibir o menu
+    // .ng-hide {
+    //   opacity: 0;
+    // }
+    
+    // .ng-hide-add,
+    // .ng-hide-remove {
+    //   transition: all linear .5s;
+    // }
+
+    a {
+      text-decoration: none !important;
+    }
+  }
 }
