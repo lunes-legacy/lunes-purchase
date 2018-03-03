@@ -2,12 +2,13 @@ import LunesLib from 'lunes-lib';
 import { STORAGE_KEY } from '../../constants/index';
 
 class HeaderController {
-  constructor($state, $timeout) {
+  constructor($state, $timeout, $location) {
     'ngInject';
     this.$state = $state;
     this.$timeout = $timeout;
     this.showlinks = true;
     this.showlogout = true;
+    this.location = $location.path().replace(/\W/, '');
     this.history = [];
     this.currentUser = JSON.parse(localStorage.getItem(STORAGE_KEY));
     this.getHistory().catch((err) => {
@@ -55,6 +56,6 @@ class HeaderController {
   }
 }
 
-HeaderController.$inject = ['$state', '$timeout'];
+HeaderController.$inject = ['$state', '$timeout', '$location'];
 
 export default HeaderController;

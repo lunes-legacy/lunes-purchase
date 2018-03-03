@@ -136,15 +136,22 @@ ul.menu {
     color: #fff;
     text-decoration: none;
   }
-  .menu-link {
-    &:hover {
-      border-bottom: 2px solid $green;      
-      color: $green;
-    }
-  }
   li {  
     margin-right: 15px;
     font-size: 12px;
+    min-height: 2.2rem;
+    &:hover {
+      border-bottom: 2px solid $green;      
+      a {
+        color: $green;
+      }
+    }
+  }
+  .active {
+    border-bottom: 2px solid $green;
+    a {
+      color: $green;
+    }
   }
 }
 

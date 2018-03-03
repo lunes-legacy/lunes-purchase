@@ -10,7 +10,7 @@
   </div>
 
   <!-- PRICE CURRENT COIN and LOGOUT -->
-  <div class="col-sm-12 col-md-8 col-lg-8 container-data">
+  <div class="col-sm-12 col-md-8 col-lg-8 container-data" ng-show="$ctrl.showlinks">
     <div class="col-xs-12 col-md-6 col-lg-6 coupom">
       {{'OWN_COUPON' | translate}}
       <span style="font-weight: bold;color: #3bbe6e;">{{$ctrl.currentUser.ownCoupon}}</span>
@@ -26,11 +26,11 @@
 <nav class="header" ng-show="$ctrl.showlinks">
   <div class="col-12 nav-menu">
     <ul class="menu menu-top" style="padding: 0;margin: 0;">
-      <li>
-        <a class="menu-link" href="#!/buy">{{'BUY' | translate}}</a>
+      <li ng-class="{active: $ctrl.location === 'buy'}">
+        <a href="#!/buy">{{'BUY' | translate}}</a>
       </li>
-      <li>
-        <a class="menu-link" href="#!/historic">{{'PURCHASE_HISTORY' | translate}}</a>
+      <li ng-class="{active: $ctrl.location === 'historic'}">
+        <a href="#!/historic">{{'PURCHASE_HISTORY' | translate}}</a>
       </li>
     </ul>
   </div>
