@@ -5,10 +5,22 @@
   <!-- DASHBOARD -->
   <section class="dashboard">
     <div class="row">
-      <div class="col-xs-12 col-md-12 col-lg-12 title mb-2-rem">
-        <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>
+      <div class="title user-menu">
+        <a href="" id="user-menu" ng-click="$ctrl.toogleUserMenu()">
+          <h4>
+            {{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}
+            <i class="fas fa-angle-down green"></i>
+          </h4>
+        </a>
+        <div class="logout area-button" ng-show="$ctrl.showUserMenu">
+          <a href="#!/login" class="primary-button" ng-click="$ctrl.logout()">
+            {{'LOGOUT' | translate}}
+          </a>
+        </div>
       </div>
+    </div>
 
+    <div class="row">
       <!-- BALANCE FOR EACH COIN -->
       <div class="col-xs-12 col-md-6 col-lg-6 transaction-coins">
         <div class="show-balance" ng-repeat="coin in $ctrl.coins" style="margin-right: 15px;text-align: center;">

@@ -1,128 +1,114 @@
 <!--<loading show="$ctrl.loading"></loading>-->
 <div class="container">
 
-  <lunesheader coin='$ctrl.currentCoinSelected' price='$ctrl.showQuotation()' showlinks='true' balanceuser='$ctrl.balanceUser.confirmed_balance'></lunesheader>
+  <lunesheader showlinks='true' balanceuser='$ctrl.balanceUser.confirmed_balance'></lunesheader>
 
   <!-- BUY -->
   <section class="buy">
-    <div>
-      <div class="row">
+    <div class="row">
+      <div class="title user-menu">
+        <a href="" id="user-menu" ng-click="$ctrl.toogleUserMenu()">
+          <h4>
+            {{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}
+            <i class="fas fa-angle-down green"></i>
+          </h4>
+        </a>
+        <div class="logout area-button" ng-show="$ctrl.showUserMenu">
+          <a href="#!/login" class="primary-button" ng-click="$ctrl.logout()">
+            {{'LOGOUT' | translate}}
+          </a>
+        </div>
+      </div>
+    </div>
 
-        <div class="col-12 title">
-          <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>
-          <div>{{'OWN_COUPON' | translate}}
-            <span style="font-weight: bold;color: #3bbe6e;">{{$ctrl.currentUser.ownCoupon}}</span>
+    <div class="col-12 error-fields" ng-show="$ctrl.showErrorForm">{{'ALL_FIELDS_REQUIRED' | translate}}</div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <!-- ERROR LIMIT -->
+        <div class="row">
+          <div ng-show="$ctrl.showErrorLimit" class="col-xs-12 col-lg-12 error-limit">{{$ctrl.showErrorLimit}}</div>
+        </div>
+
+        <!-- CALCULATOR -->
+        <div class="row">
+          <div class="calculator col-lg-8 offset-lg-2">
+            <div class="select-coin">
+              <ul>
+                <li ng-repeat="coin in $ctrl.coins" ng-click="$ctrl.selectCoin(coin)" ng-class="coin.selected ? 'selected': ''">
+                  <img ng-src="{{coin.img}}" alt="coin.label">
+                </li>
+              </ul>
+            </div>
+            <div class="valueCripto">
+              <input type="text" class="input-calculator" name="value" ng-model="$ctrl.valueToDeposit" ng-change="$ctrl.calcValue()" />
+              <div class="lunesAmount">
+                <img class="flag-lns" src="https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png" alt="Icon Lunes">
+                <input type="text" placeholder="000.000" class="input-calculator" name="value" ng-model="$ctrl.valueToReceive" ng-change="$ctrl.calcValue('LNS')"
+                />
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="col-12 error-fields" ng-show="$ctrl.showErrorForm">{{'ALL_FIELDS_REQUIRED' | translate}}</div>
-
-        <div class="col-sm-12 col-md-7 col-lg-7">
-
-          <!-- ERROR LIMIT -->
-          <div class="row">
-            <div ng-show="$ctrl.showErrorLimit" class="col-xs-12 col-lg-12" style="padding: 10px;
-            background-color: #d33030;
-            text-align: center;
-            margin: 10px;
-            border-radius: 5px;">{{$ctrl.showErrorLimit}}</div>
-          </div>
-
-          <!-- CALCULATOR -->
-          <div class="row">
-
-            <div class="calculator col-xs-12 col-sm-12 col-lg-6">
-              <div class="valueCripto">
-                <div class="select-coin col-xs-12 col-lg-12">
-                  <ul>
-                    <li ng-repeat="coin in $ctrl.coins" ng-click="$ctrl.selectCoin(coin)" ng-class="coin.selected ? 'selected': ''">
-                      <img ng-src="{{coin.img}}" alt="coin.label">
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-xs-12 col-lg-12 area-field">
-                  <input type="text" class="input-transparent" name="value" ng-model="$ctrl.valueToDeposit" ng-change="$ctrl.calcValue()" />
-                </div>
+        <!-- SHOW TOTAL -->
+        <div class="row">
+          <div class="amountBalance col-lg-8 offset-lg-2">
+            <div class="total">
+              <div class="result">
+                <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>
+                <div>{{$ctrl.bonusAmountFinal}}</div>
+              </div>
+              <hr />
+              <div class="result">
+                <div>Total</div>
+                <div>{{$ctrl.getTotal()}}</div>
               </div>
             </div>
-
-            <div class="col-lg-1 equal">=</div>
-
-            <div class="col-lg-5">
-              <div class="lunesAmount" style="display: flex;align-items: center;">
-                <div class="flag-lns">
-                  <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png" alt="Icon Lunes">
-                </div>
-                <input type="text" placeholder="000.000" class="input-transparent" name="value" ng-model="$ctrl.valueToReceive" ng-change="$ctrl.calcValue('LNS')"
-                />
-              </div>
-
-              <div class="col-lg-12" style="text-align: right;">
-                <label for="#">
-                  <small>{{'PRICE_LUNES' | translate}}</small> = USD {{$ctrl.priceValueLunes}}
-                </label>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- SHOW TOTAL -->
-          <div class="row">
-            <div class="col-sm-12 col-lg-12">
-              <div class="amountBalance total">
-                <div class="result" style="margin-top: 15px;">
-                  <div>{{'AMOUNT_LUNES' | translate}}</div>
-                  <div>{{$ctrl.getTotalLNSParcial()}}</div>
-                </div>
-                <div class="result">
-                  <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>
-                  <div>{{$ctrl.bonusAmountFinal}}</div>
-                </div>
-                <div class="line-break">
-                  <hr />
-                </div>
-                <div class="result">
-                  <div>Total</div>
-                  <div>{{$ctrl.getTotal()}}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- ADVICE -->
-          <div class="row">
-            <div class="col-lg-12 no-padding">
-              <div class="area-button" ng-show="false">
-                <button class="primary-button" data-ng-click="$ctrl.doSignup()">{{'BUY' | translate}}</button>
-              </div>
-            </div>
-            <div class="col-lg-12" style="text-align: left; margin: 10px 0;" ng-show="false">
-              * {{'MSG_BALANCE_DEPOSITED' | translate}}
-            </div>
-            <div class="col-lg-12" style="text-align: left; margin: 10px 0 30px 0;">
+            <div style="text-align: center; margin: 10px 0 30px 0;">
               * {{'BUY_LIMIT_PHASE' | translate}}
               <span style="font-size:15px;font-weight:bold">{{$ctrl.getBuyLimit();}} LNS </span>
             </div>
           </div>
-
         </div>
 
-        <!-- QR CODE -->
-        <div class="col-xs-12 col-md-5 col-lg-5 container-qr-code" style="text-align: center;">
-
-          <div style="margin-bottom: 10px;">
-            <span class="selected-label">{{'SEND_TO_THIS_ADDRESS' | translate}} - {{$ctrl.currentCoinSelected.name}}</span>
+        <!-- ADVICE
+        <div class="row">
+          <div class="col-lg-12 no-padding">
+            <div class="area-button" ng-show="false">
+              <button class="primary-button" data-ng-click="$ctrl.doSignup()">{{'BUY' | translate}}</button>
+            </div>
           </div>
-
-          <img ng-src="{{$ctrl.currentQRCode.img}}" class="qr-code img-thumbnail img-responsive" />
-
-          <p class="address">{{$ctrl.currentQRCode.address}}</p>
-
+          <div class="col-lg-12" style="text-align: left; margin: 10px 0;" ng-show="false">
+            * {{'MSG_BALANCE_DEPOSITED' | translate}}
+          </div>
+          <div class="col-lg-12" style="text-align: left; margin: 10px 0 30px 0;">
+            * {{'BUY_LIMIT_PHASE' | translate}}
+            <span style="font-size:15px;font-weight:bold">{{$ctrl.getBuyLimit();}} LNS </span>
+          </div>
+        </div> -->
+      </div>
+      <!-- QR CODE -->
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="area-button" ng-show="!$ctrl.showQrCode">
+          <a href="" class="primary-button" ng-click="$ctrl.toogleShowQrCode()">{{'BUY' | translate}}</a>
         </div>
-
+        <div class="container-qr-code col-lg-8 offset-lg-2" ng-show="$ctrl.showQrCode">
+          <div class="debosit-advice">
+            <span>
+              {{'SEND_TO_THIS_ADDRESS' | translate}} {{$ctrl.valueToDeposit}} {{$ctrl.currentCoinSelected.name}} {{'TO' | translate}}
+            </span>
+            <div class="address">
+              {{$ctrl.currentQRCode.address}}
+            </div>
+            <span>{{'DEPOSIT_CONFIRMATION_ADVICE' | translate}}</span>
+          </div>
+          <div class="qr-code">
+            <img ng-src="{{$ctrl.currentQRCode.img}}" class="qr-code img-thumbnail img-responsive" />
+          </div>
+        </div>
       </div>
     </div>
   </section>
-
 </div>
 <lunesfooter />

@@ -6,26 +6,25 @@ class HeaderController {
     'ngInject';
     this.$state = $state;
     this.$timeout = $timeout;
-    this.coin = {};
-    this.price = '';
     this.showlinks = true;
     this.showlogout = true;
     this.history = [];
     this.currentUser = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    this.getHistory().catch(err => {
+    this.getHistory().catch((err) => {
       console.log(err);
-    })
+    });
   }
 
   async getHistory() {
     if (!this.currentUser) {
       return;
     }
-    const history = await LunesLib.ico.buyHistory(this.currentUser.email, this.currentUser.accessToken, 1).catch(err => console.log(err));
+    const history = await LunesLib.ico.buyHistory(this.currentUser.email, this.currentUser.accessToken, 1)
+      .catch(err => console.log(err));
     this.$timeout(() => {
       this.history = history.map((item) => {
         const total = parseFloat(item.credit_value) + parseFloat(item.bonus_value);
-        
+
         return {
           total: total,
           deposit_value: parseFloat(item.deposit_value),

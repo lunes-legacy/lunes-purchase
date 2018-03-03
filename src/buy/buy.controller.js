@@ -28,6 +28,8 @@ class BuyController {
     this.coins = COINS_CONSTANT;
     this.currentCoinSelected = JSON.parse(JSON.stringify(this.coins[0]));
     this.currentQRCode = { address: '', img: '' };
+    this.showUserMenu = false;
+    this.showQrCode = false;
     this.getBalanceCoin('BTC').catch(error => {
       console.log(error);
     });
@@ -274,7 +276,7 @@ class BuyController {
 
   checkMaxLength() {
     if (typeof this.valueToDeposit === 'number') {
-      this.valueToDeposit = this.valueToDeposit.toString();  
+      this.valueToDeposit = this.valueToDeposit.toString();
     }
     const numberMax = 10;
     if (!isNaN(this.valueToDeposit) && this.valueToDeposit.indexOf(',') !== -1) {
@@ -337,6 +339,14 @@ class BuyController {
 
   openCoinSelect() {
     this.showContainerCoins = !this.showContainerCoins;
+  }
+
+  toogleUserMenu() {
+    this.showUserMenu = !this.showUserMenu;
+  }
+
+  toogleShowQrCode() {
+    this.showQrCode = !this.showQrCode;
   }
 }
 

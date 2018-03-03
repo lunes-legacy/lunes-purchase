@@ -14,6 +14,7 @@ class DashboardController {
     this.history = [];
     this.totalLns = 0;
     this.coins = COINS_CONSTANT;
+    this.showUserMenu = false;
     this.getHistory();
     this.getProcessedBalanceUser();
   }
@@ -63,7 +64,7 @@ class DashboardController {
   }
 
   checkWidthScreenDesktop() {
-    return window.innerWidth >= 768; 
+    return window.innerWidth >= 768;
   }
 
   checkWidthScreenMobile() {
@@ -132,6 +133,10 @@ class DashboardController {
     }
 
     this.phaseName = historyPhase[0].name;
+  }
+
+  toogleUserMenu() {
+    this.showUserMenu = !this.showUserMenu;
   }
 }
 
