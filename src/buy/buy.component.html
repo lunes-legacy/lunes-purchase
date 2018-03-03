@@ -13,8 +13,8 @@
             <i class="fas fa-angle-down green"></i>
           </h4>
         </a>
-        <div class="logout" ng-show="$ctrl.showUserMenu">
-          <a href="#!/login" ng-click="$ctrl.logout()">
+        <div class="logout area-button" ng-show="$ctrl.showUserMenu">
+          <a href="#!/login" class="primary-button" ng-click="$ctrl.logout()">
             {{'LOGOUT' | translate}}
           </a>
         </div>
@@ -93,7 +93,7 @@
         <div class="area-button" ng-show="!$ctrl.showQrCode">
           <a href="" class="primary-button" ng-click="$ctrl.toogleShowQrCode()">{{'BUY' | translate}}</a>
         </div>
-        <div class="container-qr-code col-md-8 offset-md-2" ng-show="$ctrl.showQrCode">
+        <div class="container-qr-code col-lg-8 offset-lg-2" ng-show="$ctrl.showQrCode">
           <div class="debosit-advice">
             <span>
               {{'SEND_TO_THIS_ADDRESS' | translate}} {{$ctrl.valueToDeposit}} {{$ctrl.currentCoinSelected.name}} {{'TO' | translate}}
