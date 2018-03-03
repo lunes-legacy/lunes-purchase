@@ -42,10 +42,10 @@ class LoginController {
             });
             a.depositWallet = depositWallet;
             localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
-            this.$state.go('buy');
+            this.$state.go('historic');
           } else {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
-            this.$state.go('buy');
+            this.$state.go('historic');
           }
         } else {
           $('#modal-terms').modal('show');

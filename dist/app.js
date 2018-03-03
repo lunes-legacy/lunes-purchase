@@ -81063,13 +81063,13 @@
 	
 	              a.depositWallet = depositWallet;
 	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
-	              this.$state.go('buy');
+	              this.$state.go('historic');
 	              _context.next = 19;
 	              break;
 	
 	            case 17:
 	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
-	              this.$state.go('buy');
+	              this.$state.go('historic');
 	
 	            case 19:
 	              _context.next = 23;
@@ -83270,7 +83270,7 @@
 	              }, 0);
 	
 	
-	              this.totalLns = totalLns;
+	              this.totalLns = totalLns.toFixed(8);
 	
 	            case 2:
 	            case 'end':
@@ -84918,4 +84918,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?1520103663474
+//# sourceMappingURL=app.js.map?1520104262472
