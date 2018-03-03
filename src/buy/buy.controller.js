@@ -187,6 +187,9 @@ class BuyController {
     const valueToReceive = parseFloat(this.valueToReceive);
     const valueToDeposit = parseFloat(this.valueToDeposit);
 
+    // hide message error to value LNS less than 0
+    this.errorTypeValueToReceive = false;
+
     if (isNaN(valueToReceive) || isNaN(valueToDeposit)) {
       this.valueToDeposit = initialValue;
       this.valueToReceive = '000000';
@@ -319,6 +322,7 @@ class BuyController {
   }
 
   selectCoin(coinSelected) {
+    this.showQrCode = false;
     this.valueToDeposit = initialValue;
     this.valueToReceive = initialValue;
     let self = this;
@@ -346,6 +350,10 @@ class BuyController {
   }
 
   toogleShowQrCode() {
+    if (parseFloat(this.valueToReceive) === 0) {
+      this.errorTypeValueToReceive = this.$translate.instant('AMOUNT_MINIMUN_VALIDATION');
+      return;
+    }
     this.showQrCode = !this.showQrCode;
   }
 }

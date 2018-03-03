@@ -86,6 +86,7 @@ export default {
     EMAIL_SENT: 'Email enviado com sucesso',
     CLOSE: 'Fechar',
     EMAIL_NOT_SENT: 'Email não enviado ou não existe',
+    AMOUNT_MINIMUN_VALIDATION: 'O preço mínimo de LNS deve ser maior do que zero',
     PAGE_FIX: 'Página em manutenção',
     DO_YOU_CHANGE_PASSWORD: 'Você deseja alterar a senha?',
     CHANGE_PASSWORD_INSTRUCTION: 'Digite seu email para enviarmos as instruções de alteração de sua senha',

@@ -1,6 +1,13 @@
 <div class="container faq">
-  <h3 style="margin: 20px 0;">{{'FAQ' | translate}}</h3>
+
+  <span onclick="window.history.back();" style="cursor: pointer;font-size: 10px;border-radius: 10px;background-color: #4c2b82;box-shadow: #392060 1px 1px 1px;padding: 2px 10px;">
+    <i class="fas fa-angle-left"></i>&nbsp;&nbsp;&nbsp; {{'BACK' | translate}}
+  </span>
+
+  <h3 style="margin: 20px 0;" id="here">{{'FAQ' | translate}}</h3>
+
   <p ng-show="false" ng-bind-html="$ctrl.faqText"></p>
+
   <div style="text-align: left;">
     <ul style="margin: 0;padding: 0;">
       <li class="containerQuestion" ng-repeat="question in $ctrl.questions">

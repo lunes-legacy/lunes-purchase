@@ -1,5 +1,5 @@
 class FAQController {
-    constructor($sce, $filter, $translate) {
+    constructor($sce, $filter, $translate, $window) {
       this.faqText = $sce.trustAsHtml($filter('translate')('FAQ_TEXT'));
       this.questions = [{
         question: $translate.instant('WHATS_LUNES'),
@@ -91,6 +91,10 @@ class FAQController {
         answer: $translate.instant('DOUBT_18_A'),
         show: false
       }];
+
+      // scroll to top page
+      $window.scrollTo(0, 0);
+
     }
 
     open(question) {
@@ -104,6 +108,6 @@ class FAQController {
     }
   }
 
-  FAQController.$inject = ['$sce', '$filter', '$translate'];
+  FAQController.$inject = ['$sce', '$filter', '$translate', '$window'];
 
   export default FAQController;
