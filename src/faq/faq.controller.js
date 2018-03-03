@@ -32,6 +32,19 @@ class FAQController {
       }, {
         question: $translate.instant('DOUBT_07'),
         answer: $translate.instant('DOUBT_07_A'),
+        items: [{
+          translate: 'ITEM_07_1',
+          value: '$ 0.01'
+        }, {
+          translate: 'ITEM_07_2',
+          value: '$ 0.08'
+        }, {
+          translate: 'ITEM_07_3',
+          value: '$ 0.15'
+        }, {
+          translate: 'ITEM_07_4',
+          value: '$ 0.30'
+        }],
         show: false
       }, {
         question: $translate.instant('DOUBT_08'),

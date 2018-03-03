@@ -104,11 +104,11 @@ export default {
     DOUBT_06: `How do I convert my payment for Lunes in the website?`,
     DOUBT_06_A: `There is no need to convert it. Your Lunes will be automatically converted within 20 minutes to 1 hour after payment is confirmed.`,
     DOUBT_07: `What is the price of 1 LNS?`,
-    DOUBT_07_A: `We will have 4 lots with the following prices:
-    <br />1st lot: $ 0.01
-    <br />2nd lot: $ 0.08
-    <br />3rd lot: $ 0.15
-    <br />4th lot: $ 0.30`,
+    DOUBT_07_A: `We will have 4 lots with the following prices:`,
+    ITEM_07_1: '1st lot:',
+    ITEM_07_2: '2nd lot:',
+    ITEM_07_3: '3rd lot:',
+    ITEM_07_4: '4th lot:',
 
     DOUBT_08: `What is the limit of purchase per investor?`,
     DOUBT_08_A: `1st lot: $ 0.01 - 300.000 coins

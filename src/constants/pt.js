@@ -104,11 +104,11 @@ export default {
     DOUBT_06: `Como eu compro Lunes dentro do website?`,
     DOUBT_06_A: `Não há necessidade de fazer a compra. As suas Lunes serão convertidas automaticamente dentro de 20 minutos a 1 hora.`,
     DOUBT_07: `Qual o preço de 1 LNS?`,
-    DOUBT_07_A: `Teremos 4 lotes, com os preços de acordo com a seguinte ordem:
-    \n 1st lot: $ 0.01
-    \n 2nd lot: $ 0.08
-    \n 3rd lot: $ 0.15
-    \n 4th lot: $ 0.30`,
+    DOUBT_07_A: `Teremos 4 lotes, com os preços de acordo com a seguinte ordem:`,
+    ITEM_07_1: '1. lot:',
+    ITEM_07_2: '2. lot:',
+    ITEM_07_3: '3. lot:',
+    ITEM_07_4: '4. lot:',
     
     DOUBT_08: `Qual o valor mínimo para compra?`,
     DOUBT_08_A: `Não há valor mínimo de compra.`,
