@@ -1,4 +1,26 @@
 <div class="container faq">
-  <h3>{{'FAQ' | translate}}</h3>
-  <p ng-bind-html="$ctrl.faqText"></p>
+  <h3 style="margin: 20px 0;">{{'FAQ' | translate}}</h3>
+  <p ng-show="false" ng-bind-html="$ctrl.faqText"></p>
+  <div style="text-align: left;">
+    <ul style="margin: 0;padding: 0;">
+      <li class="containerQuestion" ng-repeat="question in $ctrl.questions">
+
+        <div class="question" ng-click="$ctrl.open(question)">
+          <p class="title">{{question.question}}</p>
+          <small class="smalGreen" ng-show="!question.show">
+            <i class="fas fa-angle-right"></i>
+          </small>
+          <small class="smallGreen" ng-show="question.show">
+            <i class="fas fa-angle-down"></i>
+          </small>
+        </div>
+
+        <ul class="containerAnswer" ng-show="question.show">
+          <li class="answer">
+            <p style="color: #5ad68c; margin: 0;">{{question.answer}}</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </div>

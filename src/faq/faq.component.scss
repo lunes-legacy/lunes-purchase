@@ -5,8 +5,93 @@
 }
 
 .faq {
-  h6 {
-    margin-top: 40px;
-    color: #5dcd5d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 40px;
+
+  .containerQuestion {
+    width: 100%;
+    background-color: #532e95;
+    padding: 5px 10px;
+    border-bottom: solid 1px #4a2782;
+    width: 500px;
+    list-style: none;
+  }
+  .question {
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    .title {
+      padding: 10px 20px 10px 0;
+      color: #fff;
+    }
+  }
+  .smallGreen {
+    color: #64de74;
+  }
+  .containerAnswer {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    .answer {
+      margin: 0;
+      padding: 5px;
+      list-style: none;
+      width: 480px;
+      background-color: #4d2b8a;
+      font-size: 11px;
+    }
   }
 }
+
+@media only screen and (max-width: 426px) {
+  .faq {
+    h3 {
+      text-align: center;
+    }
+  }
+  .containerQuestion {
+    width: 425px!important;
+    .containerAnswer {
+      .answer {
+        width: 405px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  .faq {
+    h3 {
+      text-align: center;
+    }
+  }
+  .containerQuestion {
+    width: 375px!important;
+    .containerAnswer {
+      .answer {
+        width: 355px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 321px) {
+  .faq {
+    h3 {
+      text-align: center;
+    }
+  }
+  .containerQuestion {
+    width: 320px!important;
+    .containerAnswer {
+      .answer {
+        width: 298px;
+      }
+    }
+  }
+}
+
