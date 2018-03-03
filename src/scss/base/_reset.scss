@@ -392,6 +392,8 @@ footer {
 
   @media only screen and (max-width: 460px) {
     height: 150px;
+    text-align: center;
+    width: 100%;
   }
 
   a {
@@ -421,5 +423,13 @@ footer {
     a {
       text-decoration: none !important;
     }
+  }
+}
+
+@media only screen and (max-width: 460px) {
+  footer .container-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
