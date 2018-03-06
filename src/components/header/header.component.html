@@ -1,5 +1,4 @@
 <div class="row container-logo-header" style="padding: 10px 0;">
-
   <!-- LOGO -->
   <div class="col-sm-12 col-md-4 col-lg-4 logo" ng-click="$ctrl.goToHome()">
     <span>L</span>
@@ -20,6 +19,18 @@
       <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png" alt="Icon Lunes"> {{$ctrl.totalLns}}
     </div>
   </div>
+</div>
+
+<!-- QUOTATION COINS -  btc, eth, ltc -->
+<div style="margin: 10px 0; display: flex; align-items: center; justify-content: flex-end;" ng-show="$ctrl.showlinks">
+  <small style="padding: 0 10px;color: #FFC107;">
+    <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_btc.svg" alt="bitcoin" style="width: 13px;">&nbsp;$ {{$ctrl.balanceCoins.BTC.balance.PRICE}}</small> |
+
+  <small style="padding: 0 10px;color: #507f94;">
+    <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon_ltc.svg" alt="litecoin" style="width: 13px;">&nbsp;$ {{$ctrl.balanceCoins.LTC.balance.PRICE}}</small> |
+
+  <small style="padding: 0 10px;color: #778084;">
+    <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_eth.svg" alt="ethereum" style="width: 10px;">&nbsp;$ {{$ctrl.balanceCoins.ETH.balance.PRICE}}</small>
 </div>
 
 <!-- MENU and SOCIAL MEDIA links -->

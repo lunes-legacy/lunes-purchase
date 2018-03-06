@@ -34,6 +34,14 @@ class HttpService {
     return data;
   }
 
+  async toBuy(address) {
+    if (!address) { return; }
+    const buyed = await axios.get(`https://apiw.lunes.io/api/ico/request-buy/${address}`).catch(error => {
+      throw new Error(error);
+    });
+    return buyed;
+  }
+
   async changePassword(email, accessToken) {
     const a = await LunesLib.users.resetPassword({ email });
     return a;

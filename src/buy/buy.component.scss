@@ -207,6 +207,62 @@
   margin: 10px;
 }
 
+.lunes-current-price {
+  text-align: right;
+  margin-right: 18%;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 1439px) {
+  .lunes-current-price {
+    margin-right: 15%;
+  }
+}
+
+@media only screen and (max-width: 1025px) {
+  .lunes-current-price {
+    margin-right: 11%;
+  }
+}
+
+@media only screen and (max-width: 769px) {
+  .lunes-current-price {
+    margin-right: 16%;
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .container-logo-header {
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  }
+  .valueCripto {
+    .select-coin {
+      clear: both;
+      min-height: 60px;
+      display: flex;
+      justify-content: center;
+    }
+    .area-field input {
+      text-align: center;
+    }
+  }
+  .container-qr-code {
+    padding: 30px 15px;
+  }
+  .lunes-current-price {
+    margin-right: 19%;
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  .lunes-current-price {
+    margin-right: 14%;
+  }  
+}
+
 @media only screen and (max-width: 321px) {
   .header {
     display: block!important;
@@ -245,28 +301,8 @@
       }
     }
   }
-}
-
-@media only screen and (max-width: 426px) {
-  .container-logo-header {
-    .logo {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-  }
-  .valueCripto {
-    .select-coin {
-      clear: both;
-      min-height: 60px;
-      display: flex;
-      justify-content: center;
-    }
-    .area-field input {
-      text-align: center;
-    }
-  }
-  .container-qr-code {
-    padding: 30px 15px;
+  .lunes-current-price {
+    margin-right: 7%;
   }
 }
   

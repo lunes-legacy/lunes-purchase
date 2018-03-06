@@ -20,6 +20,7 @@ class BuyController {
     this.showContainerCoins = false;
     this.balanceCoins = {};
     this.currentPhase = [];
+    this.currentPhaseActive = {};
     this.buyHistoryUser = {};
     this.valueToDeposit = initialValue;
     this.valueToReceive = '000000';
@@ -39,9 +40,6 @@ class BuyController {
     this.getBalanceCoin('ETH').catch(error => {
       console.log(error);
     });
-    /*this.getBalanceLunes('LNS', this.currentUser).catch(error => {
-      console.log(error);
-    });*/
     this.showDepositWalletAddressQRCode(this.currentUser, this.currentCoinSelected);
     this.obtainPhase().catch(error => {
       console.log(error);
@@ -65,10 +63,6 @@ class BuyController {
     }
   }
 
-  async doBuy() {
-
-  }
-
   getPhaseActive() {
     const phase = this.currentPhase.filter(f => {
       return f.sale_status === 'active';
@@ -85,6 +79,7 @@ class BuyController {
       if (localStorage.getItem('lunes.phase')) {
         this.currentPhase = JSON.parse(localStorage.getItem('lunes.phase'));
         phase = this.getPhaseActive();
+        this.currentPhaseActive = JSON.parse(JSON.stringify(phase));
 
         this.percentBonus = phase.bonus*100;
         this.priceValueLunes = parseFloat(phase.price_value);
@@ -99,7 +94,8 @@ class BuyController {
         return;
       }
       this.currentPhase = await this.HttpService.obtainPhase().catch(error => {
-        alert('Erro ao tentar recuperar dados da fase da ICO');
+        //alert('Erro ao tentar recuperar dados da fase da ICO');
+        console.log("Erro on get phase");
       });
 
       phase = this.getPhaseActive();
@@ -354,6 +350,9 @@ class BuyController {
       this.errorTypeValueToReceive = this.$translate.instant('AMOUNT_MINIMUN_VALIDATION');
       return;
     }
+    this.HttpService.toBuy(this.currentQRCode.address).catch(error => {
+      console.log(error);
+    });
     this.showQrCode = !this.showQrCode;
   }
 }

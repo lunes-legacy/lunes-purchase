@@ -3,6 +3,10 @@
 $break-small: 320px;
 $break-large: 1200px;
 
+input {
+  outline: none;
+}
+
 body {
   background-color: $primary;
   font-family: 'Roboto', sans-serif;

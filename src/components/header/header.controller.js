@@ -2,18 +2,44 @@ import LunesLib from 'lunes-lib';
 import { STORAGE_KEY } from '../../constants/index';
 
 class HeaderController {
-  constructor($state, $timeout, $location) {
+  constructor($state, $timeout, $location, HttpService) {
     'ngInject';
     this.$state = $state;
     this.$timeout = $timeout;
+    this.HttpService = HttpService;
     this.showlinks = true;
     this.showlogout = true;
     this.location = $location.path().replace(/\W/, '');
     this.history = [];
+    this.balanceCoins = {};
     this.currentUser = JSON.parse(localStorage.getItem(STORAGE_KEY));
     this.getHistory().catch((err) => {
       console.log(err);
     });
+    this.getBalanceCoin('BTC').catch(error => {
+      console.log(error);
+    });
+    this.getBalanceCoin('LTC').catch(error => {
+      console.log(error);
+    });
+    this.getBalanceCoin('ETH').catch(error => {
+      console.log(error);
+    });
+  }
+
+  async getBalanceCoin(coin) {
+    const balance = await this.HttpService.getBitcoinBalance(coin);
+    this.balanceCoins[coin] = { balance };
+  }
+
+  async getBalanceCoinETH(coin) {
+    const balance = await this.HttpService.getBalanceCoinETH(coin);
+    this.balanceCoins[coin] = { balance };
+  }
+
+  async getBalanceLunes(coin, currentUser) {
+    const balance = await this.HttpService.getBalanceLunes(coin, currentUser);
+    this.balanceCoins[coin] = { balance };
   }
 
   async getHistory() {
@@ -56,6 +82,6 @@ class HeaderController {
   }
 }
 
-HeaderController.$inject = ['$state', '$timeout', '$location'];
+HeaderController.$inject = ['$state', '$timeout', '$location', 'HttpService'];
 
 export default HeaderController;

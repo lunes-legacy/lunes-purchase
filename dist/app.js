@@ -52343,7 +52343,7 @@
 /* 475 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"row container-logo-header\" style=\"padding: 10px 0;\">\n\n  <!-- LOGO -->\n  <div class=\"col-sm-12 col-md-4 col-lg-4 logo\" ng-click=\"$ctrl.goToHome()\">\n    <span>L</span>\n    <span>u</span>\n    <span>n</span>\n    <span class=\"txt-green\">e</span>\n    <span>s</span>\n  </div>\n\n  <!-- PRICE CURRENT COIN and LOGOUT -->\n  <div class=\"col-sm-12 col-md-8 col-lg-8 container-data\" ng-show=\"$ctrl.showlinks\">\n    <div class=\"col-xs-12 col-md-6 col-lg-6 coupom\">\n      {{'OWN_COUPON' | translate}}\n      <span style=\"font-weight: bold;color: #3bbe6e;\">{{$ctrl.currentUser.ownCoupon}}</span>\n    </div>\n    <div class=\"col-xs-12 col-md-6 col-lg-6 container-balance\">\n      <span>{{'MY_BALANCE' | translate}}</span>\n      <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\"> {{$ctrl.totalLns}}\n    </div>\n  </div>\n</div>\n\n<!-- MENU and SOCIAL MEDIA links -->\n<nav class=\"header\" ng-show=\"$ctrl.showlinks\">\n  <div class=\"col-12 nav-menu\">\n    <ul class=\"menu menu-top\" style=\"padding: 0;margin: 0;\">\n      <li ng-class=\"{active: $ctrl.location === 'buy'}\">\n        <a href=\"#!/buy\">{{'BUY' | translate}}</a>\n      </li>\n      <li ng-class=\"{active: $ctrl.location === 'historic'}\">\n        <a href=\"#!/historic\">{{'PURCHASE_HISTORY' | translate}}</a>\n      </li>\n    </ul>\n  </div>\n</nav>"
+	module.exports = "<div class=\"row container-logo-header\" style=\"padding: 10px 0;\">\n  <!-- LOGO -->\n  <div class=\"col-sm-12 col-md-4 col-lg-4 logo\" ng-click=\"$ctrl.goToHome()\">\n    <span>L</span>\n    <span>u</span>\n    <span>n</span>\n    <span class=\"txt-green\">e</span>\n    <span>s</span>\n  </div>\n\n  <!-- PRICE CURRENT COIN and LOGOUT -->\n  <div class=\"col-sm-12 col-md-8 col-lg-8 container-data\" ng-show=\"$ctrl.showlinks\">\n    <div class=\"col-xs-12 col-md-6 col-lg-6 coupom\">\n      {{'OWN_COUPON' | translate}}\n      <span style=\"font-weight: bold;color: #3bbe6e;\">{{$ctrl.currentUser.ownCoupon}}</span>\n    </div>\n    <div class=\"col-xs-12 col-md-6 col-lg-6 container-balance\">\n      <span>{{'MY_BALANCE' | translate}}</span>\n      <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\"> {{$ctrl.totalLns}}\n    </div>\n  </div>\n</div>\n\n<!-- QUOTATION COINS -  btc, eth, ltc -->\n<div style=\"margin: 10px 0; display: flex; align-items: center; justify-content: flex-end;\" ng-show=\"$ctrl.showlinks\">\n  <small style=\"padding: 0 10px;color: #FFC107;\">\n    <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_btc.svg\" alt=\"bitcoin\" style=\"width: 13px;\">&nbsp;$ {{$ctrl.balanceCoins.BTC.balance.PRICE}}</small> |\n\n  <small style=\"padding: 0 10px;color: #507f94;\">\n    <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon_ltc.svg\" alt=\"litecoin\" style=\"width: 13px;\">&nbsp;$ {{$ctrl.balanceCoins.LTC.balance.PRICE}}</small> |\n\n  <small style=\"padding: 0 10px;color: #778084;\">\n    <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_eth.svg\" alt=\"ethereum\" style=\"width: 10px;\">&nbsp;$ {{$ctrl.balanceCoins.ETH.balance.PRICE}}</small>\n</div>\n\n<!-- MENU and SOCIAL MEDIA links -->\n<nav class=\"header\" ng-show=\"$ctrl.showlinks\">\n  <div class=\"col-12 nav-menu\">\n    <ul class=\"menu menu-top\" style=\"padding: 0;margin: 0;\">\n      <li ng-class=\"{active: $ctrl.location === 'buy'}\">\n        <a href=\"#!/buy\">{{'BUY' | translate}}</a>\n      </li>\n      <li ng-class=\"{active: $ctrl.location === 'historic'}\">\n        <a href=\"#!/historic\">{{'PURCHASE_HISTORY' | translate}}</a>\n      </li>\n    </ul>\n  </div>\n</nav>"
 
 /***/ },
 /* 476 */
@@ -52368,48 +52368,149 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	var HeaderController = function () {
-	  HeaderController.$inject = ["$state", "$timeout", "$location"];
-	  function HeaderController($state, $timeout, $location) {
+	  HeaderController.$inject = ["$state", "$timeout", "$location", "HttpService"];
+	  function HeaderController($state, $timeout, $location, HttpService) {
 	    'ngInject';
 	
 	    _classCallCheck(this, HeaderController);
 	
 	    this.$state = $state;
 	    this.$timeout = $timeout;
+	    this.HttpService = HttpService;
 	    this.showlinks = true;
 	    this.showlogout = true;
 	    this.location = $location.path().replace(/\W/, '');
 	    this.history = [];
+	    this.balanceCoins = {};
 	    this.currentUser = JSON.parse(localStorage.getItem(_index.STORAGE_KEY));
 	    this.getHistory().catch(function (err) {
 	      console.log(err);
 	    });
+	    this.getBalanceCoin('BTC').catch(function (error) {
+	      console.log(error);
+	    });
+	    this.getBalanceCoin('LTC').catch(function (error) {
+	      console.log(error);
+	    });
+	    this.getBalanceCoin('ETH').catch(function (error) {
+	      console.log(error);
+	    });
 	  }
 	
-	  HeaderController.prototype.getHistory = function () {
-	    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-	      var _this = this;
-	
-	      var history;
+	  HeaderController.prototype.getBalanceCoin = function () {
+	    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(coin) {
+	      var balance;
 	      return regeneratorRuntime.wrap(function _callee$(_context) {
 	        while (1) {
 	          switch (_context.prev = _context.next) {
 	            case 0:
+	              _context.next = 2;
+	              return this.HttpService.getBitcoinBalance(coin);
+	
+	            case 2:
+	              balance = _context.sent;
+	
+	              this.balanceCoins[coin] = { balance: balance };
+	
+	            case 4:
+	            case 'end':
+	              return _context.stop();
+	          }
+	        }
+	      }, _callee, this);
+	    }));
+	
+	    function getBalanceCoin(_x) {
+	      return _ref.apply(this, arguments);
+	    }
+	
+	    return getBalanceCoin;
+	  }();
+	
+	  HeaderController.prototype.getBalanceCoinETH = function () {
+	    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(coin) {
+	      var balance;
+	      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+	        while (1) {
+	          switch (_context2.prev = _context2.next) {
+	            case 0:
+	              _context2.next = 2;
+	              return this.HttpService.getBalanceCoinETH(coin);
+	
+	            case 2:
+	              balance = _context2.sent;
+	
+	              this.balanceCoins[coin] = { balance: balance };
+	
+	            case 4:
+	            case 'end':
+	              return _context2.stop();
+	          }
+	        }
+	      }, _callee2, this);
+	    }));
+	
+	    function getBalanceCoinETH(_x2) {
+	      return _ref2.apply(this, arguments);
+	    }
+	
+	    return getBalanceCoinETH;
+	  }();
+	
+	  HeaderController.prototype.getBalanceLunes = function () {
+	    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(coin, currentUser) {
+	      var balance;
+	      return regeneratorRuntime.wrap(function _callee3$(_context3) {
+	        while (1) {
+	          switch (_context3.prev = _context3.next) {
+	            case 0:
+	              _context3.next = 2;
+	              return this.HttpService.getBalanceLunes(coin, currentUser);
+	
+	            case 2:
+	              balance = _context3.sent;
+	
+	              this.balanceCoins[coin] = { balance: balance };
+	
+	            case 4:
+	            case 'end':
+	              return _context3.stop();
+	          }
+	        }
+	      }, _callee3, this);
+	    }));
+	
+	    function getBalanceLunes(_x3, _x4) {
+	      return _ref3.apply(this, arguments);
+	    }
+	
+	    return getBalanceLunes;
+	  }();
+	
+	  HeaderController.prototype.getHistory = function () {
+	    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+	      var _this = this;
+	
+	      var history;
+	      return regeneratorRuntime.wrap(function _callee4$(_context4) {
+	        while (1) {
+	          switch (_context4.prev = _context4.next) {
+	            case 0:
 	              if (this.currentUser) {
-	                _context.next = 2;
+	                _context4.next = 2;
 	                break;
 	              }
 	
-	              return _context.abrupt('return');
+	              return _context4.abrupt('return');
 	
 	            case 2:
-	              _context.next = 4;
+	              _context4.next = 4;
 	              return _lunesLib2.default.ico.buyHistory(this.currentUser.email, this.currentUser.accessToken, 1).catch(function (err) {
 	                return console.log(err);
 	              });
 	
 	            case 4:
-	              history = _context.sent;
+	              history = _context4.sent;
 	
 	              this.$timeout(function () {
 	                _this.history = history.map(function (item) {
@@ -52429,25 +52530,25 @@
 	
 	            case 6:
 	            case 'end':
-	              return _context.stop();
+	              return _context4.stop();
 	          }
 	        }
-	      }, _callee, this);
+	      }, _callee4, this);
 	    }));
 	
 	    function getHistory() {
-	      return _ref.apply(this, arguments);
+	      return _ref4.apply(this, arguments);
 	    }
 	
 	    return getHistory;
 	  }();
 	
 	  HeaderController.prototype.getTotalLns = function () {
-	    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+	    var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
 	      var totalLns;
-	      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+	      return regeneratorRuntime.wrap(function _callee5$(_context5) {
 	        while (1) {
-	          switch (_context2.prev = _context2.next) {
+	          switch (_context5.prev = _context5.next) {
 	            case 0:
 	              totalLns = this.history.reduce(function (total, item) {
 	                return total + parseFloat(item.credit_value) + parseFloat(item.bonus_value);
@@ -52458,14 +52559,14 @@
 	
 	            case 2:
 	            case 'end':
-	              return _context2.stop();
+	              return _context5.stop();
 	          }
 	        }
-	      }, _callee2, this);
+	      }, _callee5, this);
 	    }));
 	
 	    function getTotalLns() {
-	      return _ref2.apply(this, arguments);
+	      return _ref5.apply(this, arguments);
 	    }
 	
 	    return getTotalLns;
@@ -52482,7 +52583,7 @@
 	  return HeaderController;
 	}();
 	
-	HeaderController.$inject = ['$state', '$timeout', '$location'];
+	HeaderController.$inject = ['$state', '$timeout', '$location', 'HttpService'];
 	
 	exports.default = HeaderController;
 
@@ -81063,13 +81164,13 @@
 	
 	              a.depositWallet = depositWallet;
 	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
-	              this.$state.go('historic');
+	              this.$state.go('buy');
 	              _context.next = 19;
 	              break;
 	
 	            case 17:
 	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(a));
-	              this.$state.go('historic');
+	              this.$state.go('buy');
 	
 	            case 19:
 	              _context.next = 23;
@@ -81187,13 +81288,13 @@
 	
 	              this.currentUser.depositWallet = depositWallet;
 	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(this.currentUser));
-	              this.$state.go('historic');
+	              this.$state.go('buy');
 	              _context3.next = 17;
 	              break;
 	
 	            case 14:
 	              localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(this.currentUser));
-	              this.$state.go('historic');
+	              this.$state.go('buy');
 	              console.log(this.currentUser);
 	
 	            case 17:
@@ -82156,7 +82257,7 @@
 /* 701 */
 /***/ function(module, exports) {
 
-	module.exports = "<!--<loading show=\"$ctrl.loading\"></loading>-->\n<div class=\"container\">\n\n  <lunesheader showlinks=\"true\" balanceuser=\"$ctrl.balanceUser.confirmed_balance\"></lunesheader>\n\n  <!-- BUY -->\n  <section class=\"buy\">\n    <div class=\"row\">\n      <div class=\"title user-menu\">\n        <a href=\"\" id=\"user-menu\" ng-click=\"$ctrl.toogleUserMenu()\">\n          <h4>\n            {{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}\n            <span ng-show=\"!$ctrl.showUserMenu\">\n              <i class=\"fas fa-angle-right green\"></i>\n            </span>\n            <span ng-show=\"$ctrl.showUserMenu\">\n              <i class=\"fas fa-angle-down green\"></i>\n            </span>\n          </h4>\n        </a>\n        <div class=\"logout area-button\" ng-show=\"$ctrl.showUserMenu\">\n          <a href=\"#!/login\" class=\"primary-button\" ng-click=\"$ctrl.logout()\">\n            {{'LOGOUT' | translate}}\n          </a>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n    <div class=\"row\">\n      <div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6\">\n        <!-- ERROR LIMIT -->\n        <div class=\"row\">\n          <div ng-show=\"$ctrl.showErrorLimit\" class=\"col-xs-12 col-lg-12 error-limit\">{{$ctrl.showErrorLimit}}</div>\n        </div>\n\n        <!-- CALCULATOR -->\n        <div class=\"row\">\n          <div class=\"calculator col-lg-8 offset-lg-2\">\n            <div class=\"select-coin\">\n              <ul>\n                <li ng-repeat=\"coin in $ctrl.coins\" ng-click=\"$ctrl.selectCoin(coin)\" ng-class=\"coin.selected ? 'selected': ''\">\n                  <img ng-src=\"{{coin.img}}\" alt=\"coin.label\">\n                </li>\n              </ul>\n            </div>\n            <div class=\"valueCripto\">\n              <input type=\"text\" class=\"input-calculator\" name=\"value\" ng-model=\"$ctrl.valueToDeposit\" ng-change=\"$ctrl.calcValue()\" />\n              <div class=\"lunesAmount\">\n                <img class=\"flag-lns\" src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\">\n                <input type=\"text\" placeholder=\"000.000\" class=\"input-calculator\" name=\"value\" ng-model=\"$ctrl.valueToReceive\" ng-change=\"$ctrl.calcValue('LNS')\"\n                />\n              </div>\n            </div>\n            <div ng-show=\"$ctrl.errorTypeValueToReceive\" style=\"padding: 0 0 10px;font-size: 11px;text-align: center;color: #cf4444;text-shadow: none;\">\n              {{$ctrl.errorTypeValueToReceive}}\n            </div>\n          </div>\n        </div>\n\n        <!-- SHOW TOTAL -->\n        <div class=\"row\">\n          <div class=\"amountBalance col-lg-8 offset-lg-2\">\n            <div class=\"total\">\n              <div class=\"result\">\n                <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>\n                <div>{{$ctrl.bonusAmountFinal}}</div>\n              </div>\n              <hr />\n              <div class=\"result\">\n                <div>Total</div>\n                <div>{{$ctrl.getTotal()}}</div>\n              </div>\n            </div>\n            <div style=\"text-align: center; margin: 10px 0 30px 0;\">\n              * {{'BUY_LIMIT_PHASE' | translate}}\n              <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n            </div>\n          </div>\n        </div>\n\n        <!-- ADVICE\n        <div class=\"row\">\n          <div class=\"col-lg-12 no-padding\">\n            <div class=\"area-button\" ng-show=\"false\">\n              <button class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\">{{'BUY' | translate}}</button>\n            </div>\n          </div>\n          <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\" ng-show=\"false\">\n            * {{'MSG_BALANCE_DEPOSITED' | translate}}\n          </div>\n          <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0 30px 0;\">\n            * {{'BUY_LIMIT_PHASE' | translate}}\n            <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n          </div>\n        </div> -->\n      </div>\n      <!-- QR CODE -->\n      <div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6\">\n        <div class=\"area-button\" ng-show=\"!$ctrl.showQrCode\">\n          <a href=\"\" class=\"primary-button\" ng-click=\"$ctrl.toogleShowQrCode()\">{{'BUY' | translate}}</a>\n        </div>\n        <div class=\"container-qr-code col-lg-8 offset-lg-2\" ng-show=\"$ctrl.showQrCode\">\n          <div class=\"debosit-advice\">\n            <span>\n              {{'SEND_TO_THIS_ADDRESS' | translate}} {{$ctrl.valueToDeposit}} {{$ctrl.currentCoinSelected.name}} {{'TO' | translate}}\n            </span>\n            <div class=\"address\">\n              {{$ctrl.currentQRCode.address}}\n            </div>\n            <span>{{'DEPOSIT_CONFIRMATION_ADVICE' | translate}}</span>\n          </div>\n          <div class=\"qr-code\">\n            <img ng-src=\"{{$ctrl.currentQRCode.img}}\" class=\"qr-code img-thumbnail img-responsive\" />\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</div>\n<lunesfooter />"
+	module.exports = "<!--<loading show=\"$ctrl.loading\"></loading>-->\n<div class=\"container\">\n\n  <lunesheader showlinks=\"true\" balanceuser=\"$ctrl.balanceUser.confirmed_balance\"></lunesheader>\n\n  <!-- BUY -->\n  <section class=\"buy\">\n    <div class=\"row\">\n      <div class=\"title user-menu\">\n        <a href=\"\" id=\"user-menu\" ng-click=\"$ctrl.toogleUserMenu()\">\n          <h4>\n            {{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}\n            <span ng-show=\"!$ctrl.showUserMenu\">\n              <i class=\"fas fa-angle-right green\"></i>\n            </span>\n            <span ng-show=\"$ctrl.showUserMenu\">\n              <i class=\"fas fa-angle-down green\"></i>\n            </span>\n          </h4>\n        </a>\n        <div class=\"logout area-button\" ng-show=\"$ctrl.showUserMenu\">\n          <a href=\"#!/login\" class=\"primary-button\" ng-click=\"$ctrl.logout()\">\n            {{'LOGOUT' | translate}}\n          </a>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n    <div class=\"row\">\n      <div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6\">\n        <!-- ERROR LIMIT -->\n        <div class=\"row\">\n          <div ng-show=\"$ctrl.showErrorLimit\" class=\"col-xs-12 col-lg-12 error-limit\">{{$ctrl.showErrorLimit}}</div>\n        </div>\n\n        <!-- CALCULATOR -->\n        <div class=\"row\">\n          <div class=\"calculator col-lg-8 offset-lg-2\">\n            <div class=\"select-coin\">\n              <ul>\n                <li ng-repeat=\"coin in $ctrl.coins\" ng-click=\"$ctrl.selectCoin(coin)\" ng-class=\"coin.selected ? 'selected': ''\">\n                  <img ng-src=\"{{coin.img}}\" alt=\"coin.label\">\n                </li>\n              </ul>\n            </div>\n            <div class=\"valueCripto\">\n              <input type=\"text\" class=\"input-calculator\" name=\"value\" ng-model=\"$ctrl.valueToDeposit\" ng-change=\"$ctrl.calcValue()\" />\n              <div class=\"lunesAmount\">\n                <img class=\"flag-lns\" src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\">\n                <input type=\"text\" placeholder=\"000.000\" class=\"input-calculator\" name=\"value\" ng-model=\"$ctrl.valueToReceive\" ng-change=\"$ctrl.calcValue('LNS')\"\n                />\n              </div>\n              <div class=\"lunes-current-price\">\n                <small>1 LNS = {{$ctrl.currentPhaseActive.price_value}}</small>\n              </div>\n            </div>\n            <div ng-show=\"$ctrl.errorTypeValueToReceive\" style=\"padding: 0 0 10px;font-size: 11px;text-align: center;color: #cf4444;text-shadow: none;\">\n              {{$ctrl.errorTypeValueToReceive}}\n            </div>\n          </div>\n        </div>\n\n        <!-- SHOW TOTAL -->\n        <div class=\"row\">\n          <div class=\"amountBalance col-lg-8 offset-lg-2\">\n            <div class=\"total\">\n              <div class=\"result\">\n                <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>\n                <div>{{$ctrl.bonusAmountFinal}}</div>\n              </div>\n              <hr />\n              <div class=\"result\">\n                <div>Total</div>\n                <div>{{$ctrl.getTotal()}}</div>\n              </div>\n            </div>\n            <div style=\"text-align: center; margin: 10px 0 30px 0;\">\n              * {{'BUY_LIMIT_PHASE' | translate}}\n              <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n            </div>\n          </div>\n        </div>\n\n        <!-- ADVICE\n        <div class=\"row\">\n          <div class=\"col-lg-12 no-padding\">\n            <div class=\"area-button\" ng-show=\"false\">\n              <button class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\">{{'BUY' | translate}}</button>\n            </div>\n          </div>\n          <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\" ng-show=\"false\">\n            * {{'MSG_BALANCE_DEPOSITED' | translate}}\n          </div>\n          <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0 30px 0;\">\n            * {{'BUY_LIMIT_PHASE' | translate}}\n            <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n          </div>\n        </div> -->\n      </div>\n      <!-- QR CODE -->\n      <div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6\">\n        <div class=\"area-button\" ng-show=\"!$ctrl.showQrCode\">\n          <a href=\"\" class=\"primary-button\" ng-click=\"$ctrl.toogleShowQrCode()\">{{'BUY' | translate}}</a>\n        </div>\n        <div class=\"container-qr-code col-lg-8 offset-lg-2\" ng-show=\"$ctrl.showQrCode\">\n          <div class=\"debosit-advice\">\n            <span>\n              {{'SEND_TO_THIS_ADDRESS' | translate}} {{$ctrl.valueToDeposit}} {{$ctrl.currentCoinSelected.name}} {{'TO' | translate}}\n            </span>\n            <div class=\"address\">\n              {{$ctrl.currentQRCode.address}}\n            </div>\n            <span>{{'DEPOSIT_CONFIRMATION_ADVICE' | translate}}</span>\n          </div>\n          <div class=\"qr-code\">\n            <img ng-src=\"{{$ctrl.currentQRCode.img}}\" class=\"qr-code img-thumbnail img-responsive\" />\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</div>\n<lunesfooter />"
 
 /***/ },
 /* 702 */
@@ -82201,6 +82302,7 @@
 	    this.showContainerCoins = false;
 	    this.balanceCoins = {};
 	    this.currentPhase = [];
+	    this.currentPhaseActive = {};
 	    this.buyHistoryUser = {};
 	    this.valueToDeposit = initialValue;
 	    this.valueToReceive = '000000';
@@ -82220,9 +82322,6 @@
 	    this.getBalanceCoin('ETH').catch(function (error) {
 	      console.log(error);
 	    });
-	    /*this.getBalanceLunes('LNS', this.currentUser).catch(error => {
-	      console.log(error);
-	    });*/
 	    this.showDepositWalletAddressQRCode(this.currentUser, this.currentCoinSelected);
 	    this.obtainPhase().catch(function (error) {
 	      console.log(error);
@@ -82296,26 +82395,6 @@
 	    return showDepositWalletAddressQRCode;
 	  }();
 	
-	  BuyController.prototype.doBuy = function () {
-	    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-	      return regeneratorRuntime.wrap(function _callee3$(_context3) {
-	        while (1) {
-	          switch (_context3.prev = _context3.next) {
-	            case 0:
-	            case 'end':
-	              return _context3.stop();
-	          }
-	        }
-	      }, _callee3, this);
-	    }));
-	
-	    function doBuy() {
-	      return _ref3.apply(this, arguments);
-	    }
-	
-	    return doBuy;
-	  }();
-	
 	  BuyController.prototype.getPhaseActive = function getPhaseActive() {
 	    var phase = this.currentPhase.filter(function (f) {
 	      return f.sale_status === 'active';
@@ -82327,22 +82406,23 @@
 	  };
 	
 	  BuyController.prototype.obtainPhase = function () {
-	    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+	    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
 	      var phase;
-	      return regeneratorRuntime.wrap(function _callee4$(_context4) {
+	      return regeneratorRuntime.wrap(function _callee3$(_context3) {
 	        while (1) {
-	          switch (_context4.prev = _context4.next) {
+	          switch (_context3.prev = _context3.next) {
 	            case 0:
-	              _context4.prev = 0;
+	              _context3.prev = 0;
 	              phase = void 0;
 	
 	              if (!localStorage.getItem('lunes.phase')) {
-	                _context4.next = 10;
+	                _context3.next = 11;
 	                break;
 	              }
 	
 	              this.currentPhase = JSON.parse(localStorage.getItem('lunes.phase'));
 	              phase = this.getPhaseActive();
+	              this.currentPhaseActive = JSON.parse(JSON.stringify(phase));
 	
 	              this.percentBonus = phase.bonus * 100;
 	              this.priceValueLunes = parseFloat(phase.price_value);
@@ -82354,16 +82434,17 @@
 	              }
 	
 	              this.showLoading(false);
-	              return _context4.abrupt('return');
+	              return _context3.abrupt('return');
 	
-	            case 10:
-	              _context4.next = 12;
+	            case 11:
+	              _context3.next = 13;
 	              return this.HttpService.obtainPhase().catch(function (error) {
-	                alert('Erro ao tentar recuperar dados da fase da ICO');
+	                //alert('Erro ao tentar recuperar dados da fase da ICO');
+	                console.log("Erro on get phase");
 	              });
 	
-	            case 12:
-	              this.currentPhase = _context4.sent;
+	            case 13:
+	              this.currentPhase = _context3.sent;
 	
 	
 	              phase = this.getPhaseActive();
@@ -82381,31 +82462,61 @@
 	                localStorage.setItem('lunes.phase', JSON.stringify(this.currentPhase));
 	              }
 	              this.showLoading(false);
-	              _context4.next = 24;
+	              _context3.next = 25;
 	              break;
 	
-	            case 21:
-	              _context4.prev = 21;
-	              _context4.t0 = _context4['catch'](0);
+	            case 22:
+	              _context3.prev = 22;
+	              _context3.t0 = _context3['catch'](0);
 	
-	              console.log(_context4.t0);
+	              console.log(_context3.t0);
 	
-	            case 24:
+	            case 25:
 	            case 'end':
-	              return _context4.stop();
+	              return _context3.stop();
 	          }
 	        }
-	      }, _callee4, this, [[0, 21]]);
+	      }, _callee3, this, [[0, 22]]);
 	    }));
 	
 	    function obtainPhase() {
-	      return _ref4.apply(this, arguments);
+	      return _ref3.apply(this, arguments);
 	    }
 	
 	    return obtainPhase;
 	  }();
 	
 	  BuyController.prototype.getBalanceCoin = function () {
+	    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(coin) {
+	      var balance;
+	      return regeneratorRuntime.wrap(function _callee4$(_context4) {
+	        while (1) {
+	          switch (_context4.prev = _context4.next) {
+	            case 0:
+	              _context4.next = 2;
+	              return this.HttpService.getBitcoinBalance(coin);
+	
+	            case 2:
+	              balance = _context4.sent;
+	
+	              this.balanceCoins[coin] = { balance: balance };
+	
+	            case 4:
+	            case 'end':
+	              return _context4.stop();
+	          }
+	        }
+	      }, _callee4, this);
+	    }));
+	
+	    function getBalanceCoin(_x3) {
+	      return _ref4.apply(this, arguments);
+	    }
+	
+	    return getBalanceCoin;
+	  }();
+	
+	  BuyController.prototype.getBalanceCoinETH = function () {
 	    var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(coin) {
 	      var balance;
 	      return regeneratorRuntime.wrap(function _callee5$(_context5) {
@@ -82413,7 +82524,7 @@
 	          switch (_context5.prev = _context5.next) {
 	            case 0:
 	              _context5.next = 2;
-	              return this.HttpService.getBitcoinBalance(coin);
+	              return this.HttpService.getBalanceCoinETH(coin);
 	
 	            case 2:
 	              balance = _context5.sent;
@@ -82428,22 +82539,22 @@
 	      }, _callee5, this);
 	    }));
 	
-	    function getBalanceCoin(_x3) {
+	    function getBalanceCoinETH(_x4) {
 	      return _ref5.apply(this, arguments);
 	    }
 	
-	    return getBalanceCoin;
+	    return getBalanceCoinETH;
 	  }();
 	
-	  BuyController.prototype.getBalanceCoinETH = function () {
-	    var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(coin) {
+	  BuyController.prototype.getBalanceLunes = function () {
+	    var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(coin, currentUser) {
 	      var balance;
 	      return regeneratorRuntime.wrap(function _callee6$(_context6) {
 	        while (1) {
 	          switch (_context6.prev = _context6.next) {
 	            case 0:
 	              _context6.next = 2;
-	              return this.HttpService.getBalanceCoinETH(coin);
+	              return this.HttpService.getBalanceLunes(coin, currentUser);
 	
 	            case 2:
 	              balance = _context6.sent;
@@ -82458,38 +82569,8 @@
 	      }, _callee6, this);
 	    }));
 	
-	    function getBalanceCoinETH(_x4) {
-	      return _ref6.apply(this, arguments);
-	    }
-	
-	    return getBalanceCoinETH;
-	  }();
-	
-	  BuyController.prototype.getBalanceLunes = function () {
-	    var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(coin, currentUser) {
-	      var balance;
-	      return regeneratorRuntime.wrap(function _callee7$(_context7) {
-	        while (1) {
-	          switch (_context7.prev = _context7.next) {
-	            case 0:
-	              _context7.next = 2;
-	              return this.HttpService.getBalanceLunes(coin, currentUser);
-	
-	            case 2:
-	              balance = _context7.sent;
-	
-	              this.balanceCoins[coin] = { balance: balance };
-	
-	            case 4:
-	            case 'end':
-	              return _context7.stop();
-	          }
-	        }
-	      }, _callee7, this);
-	    }));
-	
 	    function getBalanceLunes(_x5, _x6) {
-	      return _ref7.apply(this, arguments);
+	      return _ref6.apply(this, arguments);
 	    }
 	
 	    return getBalanceLunes;
@@ -82671,19 +82752,19 @@
 	  };
 	
 	  BuyController.prototype.getCurrentBalanceUser = function () {
-	    var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(coin, address, currentUser) {
+	    var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(coin, address, currentUser) {
 	      var _this2 = this;
 	
 	      var balance;
-	      return regeneratorRuntime.wrap(function _callee8$(_context8) {
+	      return regeneratorRuntime.wrap(function _callee7$(_context7) {
 	        while (1) {
-	          switch (_context8.prev = _context8.next) {
+	          switch (_context7.prev = _context7.next) {
 	            case 0:
-	              _context8.next = 2;
+	              _context7.next = 2;
 	              return this.HttpService.getBalance(coin, address, currentUser);
 	
 	            case 2:
-	              balance = _context8.sent;
+	              balance = _context7.sent;
 	
 	              this.$timeout(function () {
 	                if (balance && balance.network === 'ETH') {
@@ -82697,14 +82778,14 @@
 	
 	            case 4:
 	            case 'end':
-	              return _context8.stop();
+	              return _context7.stop();
 	          }
 	        }
-	      }, _callee8, this);
+	      }, _callee7, this);
 	    }));
 	
 	    function getCurrentBalanceUser(_x7, _x8, _x9) {
-	      return _ref8.apply(this, arguments);
+	      return _ref7.apply(this, arguments);
 	    }
 	
 	    return getCurrentBalanceUser;
@@ -82745,6 +82826,9 @@
 	      this.errorTypeValueToReceive = this.$translate.instant('AMOUNT_MINIMUN_VALIDATION');
 	      return;
 	    }
+	    this.HttpService.toBuy(this.currentQRCode.address).catch(function (error) {
+	      console.log(error);
+	    });
 	    this.showQrCode = !this.showQrCode;
 	  };
 	
@@ -82790,7 +82874,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".input-calculator {\n  background-color: #41256f;\n  border: 0;\n  border-radius: 5px;\n  color: #fff;\n  font-size: 18px;\n  margin-bottom: 15px;\n  padding: 10px;\n  text-align: right;\n  width: 230px; }\n\n.equal {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n      justify-content: center;\n  -ms-flex-align: center;\n      align-items: center;\n  font-size: 30px;\n  text-align: center; }\n\n.calculator .valueCripto {\n  margin-top: 15px;\n  text-align: center; }\n\n.calculator .valueMoney {\n  height: 80px;\n  background-color: rgba(65, 37, 111, 0.8);\n  color: #fff;\n  padding: 20px;\n  border-radius: 5px;\n  text-align: right;\n  font-size: 18px; }\n  .calculator .valueMoney .currency {\n    width: 100%;\n    text-align: right;\n    font-size: 10px;\n    padding-right: 9px;\n    padding-top: 3px; }\n\n.lunesAmount {\n  margin-left: -50px; }\n  .lunesAmount .input-calculator {\n    margin-left: 0;\n    border-radius: 0 5px 5px 0;\n    padding: 15px 10px; }\n  .lunesAmount .flag-lns {\n    background-color: #fff;\n    border-radius: 5px 0 0 5px;\n    margin-bottom: 5px;\n    margin-right: -5px;\n    padding: 10px 10px 14px 15px; }\n\n.amountBalance {\n  text-align: center; }\n  .amountBalance .total {\n    background-color: rgba(65, 37, 111, 0.8);\n    border-radius: 5px;\n    margin: 0 auto;\n    padding: 10px;\n    width: 230px; }\n    .amountBalance .total hr {\n      border-top: solid 1px #44af57; }\n  .amountBalance .result {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-direction: row;\n        flex-direction: row;\n    -ms-flex-pack: justify;\n        justify-content: space-between;\n    -ms-flex-align: center;\n        align-items: center;\n    padding: 0 10px; }\n\n.select-coin {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n      justify-content: center; }\n  .select-coin ul {\n    display: -ms-flexbox;\n    display: flex;\n    margin: 0;\n    padding: 0;\n    text-align: center; }\n    .select-coin ul li {\n      border: 2px solid #41256f;\n      list-style: none;\n      cursor: pointer;\n      margin: 0 20px;\n      width: 50px;\n      border-radius: 5px;\n      opacity: 0.6; }\n      .select-coin ul li img {\n        display: block;\n        margin: 10px auto;\n        max-width: 25px; }\n      .select-coin ul li:hover, .select-coin ul li.selected {\n        background-color: #44af57;\n        opacity: 1;\n        border: 2px solid #44af57; }\n\n.container-coins {\n  width: 70px;\n  height: 210px;\n  position: absolute;\n  border-radius: 5px;\n  background-color: #e4e4e5;\n  top: 50px;\n  z-index: 99;\n  text-align: center; }\n  .container-coins ul {\n    margin: 0;\n    padding: 0; }\n    .container-coins ul li {\n      list-style: none;\n      text-align: center;\n      padding: 5px 10px;\n      cursor: pointer; }\n      .container-coins ul li.selected, .container-coins ul li:hover {\n        background-color: #c7c7c7;\n        border-radius: 5px; }\n\n.container-qr-code {\n  border-radius: 15px;\n  box-shadow: 0px 0px 25px 0px #41256f;\n  text-align: center;\n  padding: 30px; }\n  .container-qr-code .qr-code {\n    margin-top: 15px; }\n  .container-qr-code .debosit-advice {\n    color: #fff;\n    font-size: 12px; }\n  .container-qr-code .address {\n    color: #44af57;\n    margin-top: 15px 0; }\n\n.show-balance .show-balance-btc {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-btc .coin-name {\n    color: #e0972f; }\n\n.show-balance .show-balance-ltc {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-ltc .coin-name {\n    color: #9f9aa4; }\n\n.show-balance .show-balance-eth {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-eth .coin-name {\n    color: #b4d0cd; }\n\n.flex-right {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: end;\n      justify-content: flex-end; }\n\n.container-logo-header .logo {\n  text-align: left;\n  padding: 10px; }\n\n.container-logo-header .container-data {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  font-size: 14px; }\n  .container-logo-header .container-data .container-balance {\n    text-align: right; }\n  .container-logo-header .container-data .coupom {\n    text-align: center; }\n\n.error-limit {\n  padding: 10px;\n  background-color: #df3535;\n  text-align: center;\n  margin: 10px; }\n\n@media only screen and (max-width: 321px) {\n  .header {\n    display: block !important; }\n  .container-logo-header {\n    text-align: center; }\n    .container-logo-header .container-quotation {\n      margin: 10px 0 0 0; }\n    .container-logo-header .logo {\n      text-align: center;\n      padding: 10px; }\n    .container-logo-header .quotation {\n      text-align: center;\n      display: -ms-flexbox;\n      display: flex;\n      -ms-flex-pack: center;\n          justify-content: center;\n      -ms-flex-direction: row;\n          flex-direction: row; }\n      .container-logo-header .quotation .container-quotation {\n        padding: 0 5px; }\n  .round-menu img {\n    width: 100%; }\n  .flex-right {\n    display: block; }\n  .menu.menu-top {\n    display: -ms-flexbox !important;\n    display: flex !important;\n    -ms-flex-pack: center !important;\n        justify-content: center !important; }\n    .menu.menu-top li img {\n      width: 25px; } }\n\n@media only screen and (max-width: 426px) {\n  .container-logo-header .logo {\n    text-align: center;\n    margin-bottom: 20px; }\n  .valueCripto .select-coin {\n    clear: both;\n    min-height: 60px;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: center;\n        justify-content: center; }\n  .valueCripto .area-field input {\n    text-align: center; }\n  .container-qr-code {\n    padding: 30px 15px; } }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/buy/src/buy/buy.component.scss","D:/workspaces/lunes/lunes-purchase/src/buy/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA;EACE,0BCAmB;EDCnB,UAAS;EACT,mBAAkB;EAClB,YAAW;EACX,gBAAe;EACf,oBAAmB;EACnB,cAAa;EACb,kBAAiB;EACjB,aAAY,EACb;;AAED;EACE,qBAAa;EAAb,cAAa;EACb,sBAAuB;MAAvB,wBAAuB;EACvB,uBAAmB;MAAnB,oBAAmB;EACnB,gBAAe;EACf,mBAAkB,EACnB;;AAED;EAEI,iBAAgB;EAChB,mBAAkB,EACnB;;AAJH;EAMI,aAAY;EACZ,yCC1BiB;ED2BjB,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,kBAAiB;EACjB,gBAAe,EAQhB;EApBH;IAcM,YAAW;IACX,kBAAiB;IACjB,gBAAe;IACf,mBAAkB;IAClB,iBAAgB,EACjB;;AAIL;EACE,mBAAkB,EAenB;EAhBD;IAII,eAAc;IACd,2BAA0B;IAC1B,mBAAkB,EACnB;EAPH;IAUI,uBAAsB;IACtB,2BAA0B;IAC1B,mBAAkB;IAClB,mBAAkB;IAClB,6BAA4B,EAC7B;;AAGH;EACE,mBAAkB,EAmBnB;EApBD;IAGI,yCC/DiB;IDgEjB,mBAAkB;IAClB,eAAc;IACd,cAAa;IACb,aAAY,EAIb;IAXH;MASM,8BCnES,EDoEV;EAVL;IAcI,qBAAa;IAAb,cAAa;IACb,wBAAmB;QAAnB,oBAAmB;IACnB,uBAA8B;QAA9B,+BAA8B;IAC9B,uBAAmB;QAAnB,oBAAmB;IACnB,gBAAe,EAChB;;AAGH;EACE,qBAAa;EAAb,cAAa;EACb,sBAAuB;MAAvB,wBAAuB,EA2BxB;EA7BD;IAKI,qBAAa;IAAb,cAAa;IACb,UAAS;IACT,WAAU;IACV,mBAAkB,EAoBnB;IA5BH;MAUM,0BC5Fe;MD6Ff,iBAAgB;MAChB,gBAAe;MACf,eAAc;MACd,YAAW;MACX,mBAAkB;MAClB,aAAY,EAWb;MA3BL;QAkBQ,eAAc;QACd,kBAAiB;QACjB,gBAAe,EAChB;MArBP;QAuBQ,0BCvGO;QDwGP,WAAU;QACV,0BCzGO,ED0GR;;AAKP;EACE,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,mBAAkB;EAClB,0BAAyB;EACzB,UAAS;EACT,YAAW;EACX,mBAAkB,EAenB;EAvBD;IAUI,UAAS;IACT,WAAU,EAWX;IAtBH;MAaM,iBAAgB;MAChB,mBAAkB;MAClB,kBAAiB;MACjB,gBAAe,EAKhB;MArBL;QAkBQ,0BAAyB;QACzB,mBAAkB,EACnB;;AAKP;EACE,oBAAmB;EACnB,qCAA8C;EAC9C,mBAAkB;EAClB,cAAa,EAYd;EAhBD;IAMI,iBAAgB,EACjB;EAPH;IASI,YAAW;IACX,gBAAe,EAChB;EAXH;IAaI,eCrJW;IDsJX,mBAAkB,EACnB;;AAGH;EASM,iBAAgB;EAChB,gBAAe,EAKhB;EAfL;IAaQ,eAXQ,EAYT;;AAdP;EASM,iBAAgB;EAChB,gBAAe,EAKhB;EAfL;IAaQ,eAVQ,EAWT;;AAdP;EASM,iBAAgB;EAChB,gBAAe,EAKhB;EAfL;IAaQ,eATQ,EAUT;;AAKP;EACE,qBAAa;EAAb,cAAa;EACb,mBAAyB;MAAzB,0BAAyB,EAC1B;;AAED;EAEI,iBAAgB;EAChB,cAAa,EACd;;AAJH;EAOI,qBAAa;EAAb,cAAa;EACb,uBAAmB;MAAnB,oBAAmB;EACnB,gBAAe,EAOhB;EAhBH;IAWM,kBAAiB,EAClB;EAZL;IAcM,mBAAkB,EACnB;;AAIL;EACE,cAAa;EACb,0BAAyB;EACzB,mBAAkB;EAClB,aAAY,EACb;;AAED;EACE;IACE,0BAAwB,EACzB;EACD;IACE,mBAAkB,EAiBnB;IAlBD;MAGI,mBAAkB,EACnB;IAJH;MAMI,mBAAkB;MAClB,cAAa,EACd;IARH;MAUI,mBAAkB;MAClB,qBAAa;MAAb,cAAa;MACb,sBAAuB;UAAvB,wBAAuB;MACvB,wBAAmB;UAAnB,oBAAmB,EAIpB;MAjBH;QAeM,eAAc,EACf;EAGL;IACE,YAAW,EACZ;EACD;IACE,eAAc,EACf;EACD;IACE,gCAAuB;IAAvB,yBAAuB;IACvB,iCAAiC;QAAjC,mCAAiC,EAMlC;IARD;MAKM,YAAW,EACZ,EAAA;;AAKP;EACE;IAEI,mBAAkB;IAClB,oBAAmB,EACpB;EAEH;IAEI,YAAW;IACX,iBAAgB;IAChB,qBAAa;IAAb,cAAa;IACb,sBAAuB;QAAvB,wBAAuB,EACxB;EANH;IAQI,mBAAkB,EACnB;EAEH;IACE,mBAAkB,EACnB,EAAA","file":"buy.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n.input-calculator {\r\n  background-color: $darkPrimary;\r\n  border: 0;\r\n  border-radius: 5px;\r\n  color: #fff;\r\n  font-size: 18px;\r\n  margin-bottom: 15px;\r\n  padding: 10px;\r\n  text-align: right;\r\n  width: 230px;\r\n}\r\n\r\n.equal {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  font-size: 30px;\r\n  text-align: center;\r\n}\r\n\r\n.calculator {\r\n  .valueCripto {\r\n    margin-top: 15px;\r\n    text-align: center;\r\n  }\r\n  .valueMoney {\r\n    height: 80px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    color: #fff;\r\n    padding: 20px;\r\n    border-radius: 5px;\r\n    text-align: right;\r\n    font-size: 18px;\r\n    .currency {\r\n      width: 100%;\r\n      text-align: right;\r\n      font-size: 10px;\r\n      padding-right: 9px;\r\n      padding-top: 3px;\r\n    }\r\n  }\r\n}\r\n\r\n.lunesAmount {\r\n  margin-left: -50px;\r\n  \r\n  .input-calculator {\r\n    margin-left: 0;\r\n    border-radius: 0 5px 5px 0;\r\n    padding: 15px 10px;\r\n  }\r\n\r\n  .flag-lns {\r\n    background-color: #fff;\r\n    border-radius: 5px 0 0 5px;\r\n    margin-bottom: 5px;\r\n    margin-right: -5px;\r\n    padding: 10px 10px 14px 15px;\r\n  }\r\n}\r\n\r\n.amountBalance {\r\n  text-align: center;\r\n  .total {\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8); \r\n    border-radius: 5px;\r\n    margin: 0 auto;\r\n    padding: 10px;\r\n    width: 230px;\r\n    hr {\r\n      border-top: solid 1px $green;\r\n    }\r\n  }\r\n\r\n  .result {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    padding: 0 10px;\r\n  }\r\n}\r\n\r\n.select-coin {\r\n  display: flex;\r\n  justify-content: center;\r\n\r\n  ul {\r\n    display: flex;\r\n    margin: 0;\r\n    padding: 0;\r\n    text-align: center;\r\n    li {\r\n      border: 2px solid $darkPrimary;        \r\n      list-style: none;\r\n      cursor: pointer;\r\n      margin: 0 20px;\r\n      width: 50px;\r\n      border-radius: 5px;\r\n      opacity: 0.6;\r\n      img {\r\n        display: block;\r\n        margin: 10px auto;\r\n        max-width: 25px;\r\n      }\r\n      &:hover, &.selected {\r\n        background-color: $green;\r\n        opacity: 1;\r\n        border: 2px solid $green;        \r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.container-coins {\r\n  width: 70px;\r\n  height: 210px;\r\n  position: absolute;\r\n  border-radius: 5px;\r\n  background-color: #e4e4e5;\r\n  top: 50px;\r\n  z-index: 99;\r\n  text-align: center;\r\n  ul {\r\n    margin: 0;\r\n    padding: 0;\r\n    li {\r\n      list-style: none;\r\n      text-align: center;\r\n      padding: 5px 10px;\r\n      cursor: pointer;\r\n      &.selected, &:hover {\r\n        background-color: #c7c7c7;\r\n        border-radius: 5px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.container-qr-code {\r\n  border-radius: 15px;\r\n  box-shadow: 0px 0px 25px 0px rgba(65,37,111,1);\r\n  text-align: center;\r\n  padding: 30px;\r\n  .qr-code {\r\n    margin-top: 15px;\r\n  }\r\n  .debosit-advice {\r\n    color: #fff;\r\n    font-size: 12px;\r\n  }\r\n  .address {\r\n    color: $green;\r\n    margin-top: 15px 0;\r\n  }\r\n}\r\n\r\n.show-balance {\r\n  $coins: (\r\n    btc: #e0972f,\r\n    ltc: #9f9aa4,\r\n    eth: #b4d0cd\r\n  );\r\n\r\n  @each $coin, $color in $coins {\r\n    .show-balance-#{$coin} {\r\n      margin-top: 1rem;\r\n      font-size: 2rem;\r\n\r\n      .coin-name {\r\n        color: $color;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.flex-right {\r\n  display: flex;\r\n  justify-content: flex-end;\r\n}\r\n\r\n.container-logo-header {\r\n  .logo {\r\n    text-align: left;\r\n    padding: 10px;\r\n  }\r\n  .container-data {\r\n    // padding: 5px 20px; \r\n    display: flex;\r\n    align-items: center;\r\n    font-size: 14px;\r\n    .container-balance {\r\n      text-align: right;\r\n    }\r\n    .coupom {    \r\n      text-align: center;\r\n    }\r\n  }\r\n}\r\n\r\n.error-limit {\r\n  padding: 10px;\r\n  background-color: #df3535;\r\n  text-align: center;\r\n  margin: 10px;\r\n}\r\n\r\n@media only screen and (max-width: 321px) {\r\n  .header {\r\n    display: block!important;\r\n  }\r\n  .container-logo-header {\r\n    text-align: center;\r\n    .container-quotation {\r\n      margin: 10px 0 0 0;\r\n    }\r\n    .logo {\r\n      text-align: center;\r\n      padding: 10px;\r\n    }\r\n    .quotation {\r\n      text-align: center;\r\n      display: flex;\r\n      justify-content: center;\r\n      flex-direction: row;\r\n      .container-quotation {\r\n        padding: 0 5px;\r\n      }\r\n    }\r\n  }\r\n  .round-menu img {\r\n    width: 100%;\r\n  }\r\n  .flex-right {\r\n    display: block;\r\n  }\r\n  .menu.menu-top {\r\n    display: flex!important;\r\n    justify-content: center!important;\r\n    li {\r\n      img {\r\n        width: 25px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 426px) {\r\n  .container-logo-header {\r\n    .logo {\r\n      text-align: center;\r\n      margin-bottom: 20px;\r\n    }\r\n  }\r\n  .valueCripto {\r\n    .select-coin {\r\n      clear: both;\r\n      min-height: 60px;\r\n      display: flex;\r\n      justify-content: center;\r\n    }\r\n    .area-field input {\r\n      text-align: center;\r\n    }\r\n  }\r\n  .container-qr-code {\r\n    padding: 30px 15px;\r\n  }\r\n}\r\n  ","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #44af57;\r\n$darkGreen: #44af57;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
+	exports.push([module.id, ".input-calculator {\n  background-color: #41256f;\n  border: 0;\n  border-radius: 5px;\n  color: #fff;\n  font-size: 18px;\n  margin-bottom: 15px;\n  padding: 10px;\n  text-align: right;\n  width: 230px; }\n\n.equal {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n      justify-content: center;\n  -ms-flex-align: center;\n      align-items: center;\n  font-size: 30px;\n  text-align: center; }\n\n.calculator .valueCripto {\n  margin-top: 15px;\n  text-align: center; }\n\n.calculator .valueMoney {\n  height: 80px;\n  background-color: rgba(65, 37, 111, 0.8);\n  color: #fff;\n  padding: 20px;\n  border-radius: 5px;\n  text-align: right;\n  font-size: 18px; }\n  .calculator .valueMoney .currency {\n    width: 100%;\n    text-align: right;\n    font-size: 10px;\n    padding-right: 9px;\n    padding-top: 3px; }\n\n.lunesAmount {\n  margin-left: -50px; }\n  .lunesAmount .input-calculator {\n    margin-left: 0;\n    border-radius: 0 5px 5px 0;\n    padding: 15px 10px; }\n  .lunesAmount .flag-lns {\n    background-color: #fff;\n    border-radius: 5px 0 0 5px;\n    margin-bottom: 5px;\n    margin-right: -5px;\n    padding: 10px 10px 14px 15px; }\n\n.amountBalance {\n  text-align: center; }\n  .amountBalance .total {\n    background-color: rgba(65, 37, 111, 0.8);\n    border-radius: 5px;\n    margin: 0 auto;\n    padding: 10px;\n    width: 230px; }\n    .amountBalance .total hr {\n      border-top: solid 1px #44af57; }\n  .amountBalance .result {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-direction: row;\n        flex-direction: row;\n    -ms-flex-pack: justify;\n        justify-content: space-between;\n    -ms-flex-align: center;\n        align-items: center;\n    padding: 0 10px; }\n\n.select-coin {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n      justify-content: center; }\n  .select-coin ul {\n    display: -ms-flexbox;\n    display: flex;\n    margin: 0;\n    padding: 0;\n    text-align: center; }\n    .select-coin ul li {\n      border: 2px solid #41256f;\n      list-style: none;\n      cursor: pointer;\n      margin: 0 20px;\n      width: 50px;\n      border-radius: 5px;\n      opacity: 0.6; }\n      .select-coin ul li img {\n        display: block;\n        margin: 10px auto;\n        max-width: 25px; }\n      .select-coin ul li:hover, .select-coin ul li.selected {\n        background-color: #44af57;\n        opacity: 1;\n        border: 2px solid #44af57; }\n\n.container-coins {\n  width: 70px;\n  height: 210px;\n  position: absolute;\n  border-radius: 5px;\n  background-color: #e4e4e5;\n  top: 50px;\n  z-index: 99;\n  text-align: center; }\n  .container-coins ul {\n    margin: 0;\n    padding: 0; }\n    .container-coins ul li {\n      list-style: none;\n      text-align: center;\n      padding: 5px 10px;\n      cursor: pointer; }\n      .container-coins ul li.selected, .container-coins ul li:hover {\n        background-color: #c7c7c7;\n        border-radius: 5px; }\n\n.container-qr-code {\n  border-radius: 15px;\n  box-shadow: 0px 0px 25px 0px #41256f;\n  text-align: center;\n  padding: 30px; }\n  .container-qr-code .qr-code {\n    margin-top: 15px; }\n  .container-qr-code .debosit-advice {\n    color: #fff;\n    font-size: 12px; }\n  .container-qr-code .address {\n    color: #44af57;\n    margin-top: 15px 0; }\n\n.show-balance .show-balance-btc {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-btc .coin-name {\n    color: #e0972f; }\n\n.show-balance .show-balance-ltc {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-ltc .coin-name {\n    color: #9f9aa4; }\n\n.show-balance .show-balance-eth {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-eth .coin-name {\n    color: #b4d0cd; }\n\n.flex-right {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: end;\n      justify-content: flex-end; }\n\n.container-logo-header .logo {\n  text-align: left;\n  padding: 10px; }\n\n.container-logo-header .container-data {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  font-size: 14px; }\n  .container-logo-header .container-data .container-balance {\n    text-align: right; }\n  .container-logo-header .container-data .coupom {\n    text-align: center; }\n\n.error-limit {\n  padding: 10px;\n  background-color: #df3535;\n  text-align: center;\n  margin: 10px; }\n\n.lunes-current-price {\n  text-align: right;\n  margin-right: 18%;\n  margin-bottom: 20px; }\n\n@media only screen and (max-width: 1439px) {\n  .lunes-current-price {\n    margin-right: 15%; } }\n\n@media only screen and (max-width: 1025px) {\n  .lunes-current-price {\n    margin-right: 11%; } }\n\n@media only screen and (max-width: 769px) {\n  .lunes-current-price {\n    margin-right: 16%; } }\n\n@media only screen and (max-width: 426px) {\n  .container-logo-header .logo {\n    text-align: center;\n    margin-bottom: 20px; }\n  .valueCripto .select-coin {\n    clear: both;\n    min-height: 60px;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: center;\n        justify-content: center; }\n  .valueCripto .area-field input {\n    text-align: center; }\n  .container-qr-code {\n    padding: 30px 15px; }\n  .lunes-current-price {\n    margin-right: 19%; } }\n\n@media only screen and (max-width: 376px) {\n  .lunes-current-price {\n    margin-right: 14%; } }\n\n@media only screen and (max-width: 321px) {\n  .header {\n    display: block !important; }\n  .container-logo-header {\n    text-align: center; }\n    .container-logo-header .container-quotation {\n      margin: 10px 0 0 0; }\n    .container-logo-header .logo {\n      text-align: center;\n      padding: 10px; }\n    .container-logo-header .quotation {\n      text-align: center;\n      display: -ms-flexbox;\n      display: flex;\n      -ms-flex-pack: center;\n          justify-content: center;\n      -ms-flex-direction: row;\n          flex-direction: row; }\n      .container-logo-header .quotation .container-quotation {\n        padding: 0 5px; }\n  .round-menu img {\n    width: 100%; }\n  .flex-right {\n    display: block; }\n  .menu.menu-top {\n    display: -ms-flexbox !important;\n    display: flex !important;\n    -ms-flex-pack: center !important;\n        justify-content: center !important; }\n    .menu.menu-top li img {\n      width: 25px; }\n  .lunes-current-price {\n    margin-right: 7%; } }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/buy/src/buy/buy.component.scss","D:/workspaces/lunes/lunes-purchase/src/buy/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA;EACE,0BCAmB;EDCnB,UAAS;EACT,mBAAkB;EAClB,YAAW;EACX,gBAAe;EACf,oBAAmB;EACnB,cAAa;EACb,kBAAiB;EACjB,aAAY,EACb;;AAED;EACE,qBAAa;EAAb,cAAa;EACb,sBAAuB;MAAvB,wBAAuB;EACvB,uBAAmB;MAAnB,oBAAmB;EACnB,gBAAe;EACf,mBAAkB,EACnB;;AAED;EAEI,iBAAgB;EAChB,mBAAkB,EACnB;;AAJH;EAMI,aAAY;EACZ,yCC1BiB;ED2BjB,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,kBAAiB;EACjB,gBAAe,EAQhB;EApBH;IAcM,YAAW;IACX,kBAAiB;IACjB,gBAAe;IACf,mBAAkB;IAClB,iBAAgB,EACjB;;AAIL;EACE,mBAAkB,EAenB;EAhBD;IAII,eAAc;IACd,2BAA0B;IAC1B,mBAAkB,EACnB;EAPH;IAUI,uBAAsB;IACtB,2BAA0B;IAC1B,mBAAkB;IAClB,mBAAkB;IAClB,6BAA4B,EAC7B;;AAGH;EACE,mBAAkB,EAmBnB;EApBD;IAGI,yCC/DiB;IDgEjB,mBAAkB;IAClB,eAAc;IACd,cAAa;IACb,aAAY,EAIb;IAXH;MASM,8BCnES,EDoEV;EAVL;IAcI,qBAAa;IAAb,cAAa;IACb,wBAAmB;QAAnB,oBAAmB;IACnB,uBAA8B;QAA9B,+BAA8B;IAC9B,uBAAmB;QAAnB,oBAAmB;IACnB,gBAAe,EAChB;;AAGH;EACE,qBAAa;EAAb,cAAa;EACb,sBAAuB;MAAvB,wBAAuB,EA2BxB;EA7BD;IAKI,qBAAa;IAAb,cAAa;IACb,UAAS;IACT,WAAU;IACV,mBAAkB,EAoBnB;IA5BH;MAUM,0BC5Fe;MD6Ff,iBAAgB;MAChB,gBAAe;MACf,eAAc;MACd,YAAW;MACX,mBAAkB;MAClB,aAAY,EAWb;MA3BL;QAkBQ,eAAc;QACd,kBAAiB;QACjB,gBAAe,EAChB;MArBP;QAuBQ,0BCvGO;QDwGP,WAAU;QACV,0BCzGO,ED0GR;;AAKP;EACE,YAAW;EACX,cAAa;EACb,mBAAkB;EAClB,mBAAkB;EAClB,0BAAyB;EACzB,UAAS;EACT,YAAW;EACX,mBAAkB,EAenB;EAvBD;IAUI,UAAS;IACT,WAAU,EAWX;IAtBH;MAaM,iBAAgB;MAChB,mBAAkB;MAClB,kBAAiB;MACjB,gBAAe,EAKhB;MArBL;QAkBQ,0BAAyB;QACzB,mBAAkB,EACnB;;AAKP;EACE,oBAAmB;EACnB,qCAA8C;EAC9C,mBAAkB;EAClB,cAAa,EAYd;EAhBD;IAMI,iBAAgB,EACjB;EAPH;IASI,YAAW;IACX,gBAAe,EAChB;EAXH;IAaI,eCrJW;IDsJX,mBAAkB,EACnB;;AAGH;EASM,iBAAgB;EAChB,gBAAe,EAKhB;EAfL;IAaQ,eAXQ,EAYT;;AAdP;EASM,iBAAgB;EAChB,gBAAe,EAKhB;EAfL;IAaQ,eAVQ,EAWT;;AAdP;EASM,iBAAgB;EAChB,gBAAe,EAKhB;EAfL;IAaQ,eATQ,EAUT;;AAKP;EACE,qBAAa;EAAb,cAAa;EACb,mBAAyB;MAAzB,0BAAyB,EAC1B;;AAED;EAEI,iBAAgB;EAChB,cAAa,EACd;;AAJH;EAOI,qBAAa;EAAb,cAAa;EACb,uBAAmB;MAAnB,oBAAmB;EACnB,gBAAe,EAOhB;EAhBH;IAWM,kBAAiB,EAClB;EAZL;IAcM,mBAAkB,EACnB;;AAIL;EACE,cAAa;EACb,0BAAyB;EACzB,mBAAkB;EAClB,aAAY,EACb;;AAED;EACE,kBAAiB;EACjB,kBAAiB;EACjB,oBAAmB,EACpB;;AAED;EACE;IACE,kBAAiB,EAClB,EAAA;;AAGH;EACE;IACE,kBAAiB,EAClB,EAAA;;AAGH;EACE;IACE,kBAAiB,EAClB,EAAA;;AAGH;EACE;IAEI,mBAAkB;IAClB,oBAAmB,EACpB;EAEH;IAEI,YAAW;IACX,iBAAgB;IAChB,qBAAa;IAAb,cAAa;IACb,sBAAuB;QAAvB,wBAAuB,EACxB;EANH;IAQI,mBAAkB,EACnB;EAEH;IACE,mBAAkB,EACnB;EACD;IACE,kBAAiB,EAClB,EAAA;;AAGH;EACE;IACE,kBAAiB,EAClB,EAAA;;AAGH;EACE;IACE,0BAAwB,EACzB;EACD;IACE,mBAAkB,EAiBnB;IAlBD;MAGI,mBAAkB,EACnB;IAJH;MAMI,mBAAkB;MAClB,cAAa,EACd;IARH;MAUI,mBAAkB;MAClB,qBAAa;MAAb,cAAa;MACb,sBAAuB;UAAvB,wBAAuB;MACvB,wBAAmB;UAAnB,oBAAmB,EAIpB;MAjBH;QAeM,eAAc,EACf;EAGL;IACE,YAAW,EACZ;EACD;IACE,eAAc,EACf;EACD;IACE,gCAAuB;IAAvB,yBAAuB;IACvB,iCAAiC;QAAjC,mCAAiC,EAMlC;IARD;MAKM,YAAW,EACZ;EAGL;IACE,iBAAgB,EACjB,EAAA","file":"buy.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n.input-calculator {\r\n  background-color: $darkPrimary;\r\n  border: 0;\r\n  border-radius: 5px;\r\n  color: #fff;\r\n  font-size: 18px;\r\n  margin-bottom: 15px;\r\n  padding: 10px;\r\n  text-align: right;\r\n  width: 230px;\r\n}\r\n\r\n.equal {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  font-size: 30px;\r\n  text-align: center;\r\n}\r\n\r\n.calculator {\r\n  .valueCripto {\r\n    margin-top: 15px;\r\n    text-align: center;\r\n  }\r\n  .valueMoney {\r\n    height: 80px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    color: #fff;\r\n    padding: 20px;\r\n    border-radius: 5px;\r\n    text-align: right;\r\n    font-size: 18px;\r\n    .currency {\r\n      width: 100%;\r\n      text-align: right;\r\n      font-size: 10px;\r\n      padding-right: 9px;\r\n      padding-top: 3px;\r\n    }\r\n  }\r\n}\r\n\r\n.lunesAmount {\r\n  margin-left: -50px;\r\n  \r\n  .input-calculator {\r\n    margin-left: 0;\r\n    border-radius: 0 5px 5px 0;\r\n    padding: 15px 10px;\r\n  }\r\n\r\n  .flag-lns {\r\n    background-color: #fff;\r\n    border-radius: 5px 0 0 5px;\r\n    margin-bottom: 5px;\r\n    margin-right: -5px;\r\n    padding: 10px 10px 14px 15px;\r\n  }\r\n}\r\n\r\n.amountBalance {\r\n  text-align: center;\r\n  .total {\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8); \r\n    border-radius: 5px;\r\n    margin: 0 auto;\r\n    padding: 10px;\r\n    width: 230px;\r\n    hr {\r\n      border-top: solid 1px $green;\r\n    }\r\n  }\r\n\r\n  .result {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    padding: 0 10px;\r\n  }\r\n}\r\n\r\n.select-coin {\r\n  display: flex;\r\n  justify-content: center;\r\n\r\n  ul {\r\n    display: flex;\r\n    margin: 0;\r\n    padding: 0;\r\n    text-align: center;\r\n    li {\r\n      border: 2px solid $darkPrimary;        \r\n      list-style: none;\r\n      cursor: pointer;\r\n      margin: 0 20px;\r\n      width: 50px;\r\n      border-radius: 5px;\r\n      opacity: 0.6;\r\n      img {\r\n        display: block;\r\n        margin: 10px auto;\r\n        max-width: 25px;\r\n      }\r\n      &:hover, &.selected {\r\n        background-color: $green;\r\n        opacity: 1;\r\n        border: 2px solid $green;        \r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.container-coins {\r\n  width: 70px;\r\n  height: 210px;\r\n  position: absolute;\r\n  border-radius: 5px;\r\n  background-color: #e4e4e5;\r\n  top: 50px;\r\n  z-index: 99;\r\n  text-align: center;\r\n  ul {\r\n    margin: 0;\r\n    padding: 0;\r\n    li {\r\n      list-style: none;\r\n      text-align: center;\r\n      padding: 5px 10px;\r\n      cursor: pointer;\r\n      &.selected, &:hover {\r\n        background-color: #c7c7c7;\r\n        border-radius: 5px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.container-qr-code {\r\n  border-radius: 15px;\r\n  box-shadow: 0px 0px 25px 0px rgba(65,37,111,1);\r\n  text-align: center;\r\n  padding: 30px;\r\n  .qr-code {\r\n    margin-top: 15px;\r\n  }\r\n  .debosit-advice {\r\n    color: #fff;\r\n    font-size: 12px;\r\n  }\r\n  .address {\r\n    color: $green;\r\n    margin-top: 15px 0;\r\n  }\r\n}\r\n\r\n.show-balance {\r\n  $coins: (\r\n    btc: #e0972f,\r\n    ltc: #9f9aa4,\r\n    eth: #b4d0cd\r\n  );\r\n\r\n  @each $coin, $color in $coins {\r\n    .show-balance-#{$coin} {\r\n      margin-top: 1rem;\r\n      font-size: 2rem;\r\n\r\n      .coin-name {\r\n        color: $color;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.flex-right {\r\n  display: flex;\r\n  justify-content: flex-end;\r\n}\r\n\r\n.container-logo-header {\r\n  .logo {\r\n    text-align: left;\r\n    padding: 10px;\r\n  }\r\n  .container-data {\r\n    // padding: 5px 20px; \r\n    display: flex;\r\n    align-items: center;\r\n    font-size: 14px;\r\n    .container-balance {\r\n      text-align: right;\r\n    }\r\n    .coupom {    \r\n      text-align: center;\r\n    }\r\n  }\r\n}\r\n\r\n.error-limit {\r\n  padding: 10px;\r\n  background-color: #df3535;\r\n  text-align: center;\r\n  margin: 10px;\r\n}\r\n\r\n.lunes-current-price {\r\n  text-align: right;\r\n  margin-right: 18%;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n@media only screen and (max-width: 1439px) {\r\n  .lunes-current-price {\r\n    margin-right: 15%;\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 1025px) {\r\n  .lunes-current-price {\r\n    margin-right: 11%;\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 769px) {\r\n  .lunes-current-price {\r\n    margin-right: 16%;\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 426px) {\r\n  .container-logo-header {\r\n    .logo {\r\n      text-align: center;\r\n      margin-bottom: 20px;\r\n    }\r\n  }\r\n  .valueCripto {\r\n    .select-coin {\r\n      clear: both;\r\n      min-height: 60px;\r\n      display: flex;\r\n      justify-content: center;\r\n    }\r\n    .area-field input {\r\n      text-align: center;\r\n    }\r\n  }\r\n  .container-qr-code {\r\n    padding: 30px 15px;\r\n  }\r\n  .lunes-current-price {\r\n    margin-right: 19%;\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 376px) {\r\n  .lunes-current-price {\r\n    margin-right: 14%;\r\n  }  \r\n}\r\n\r\n@media only screen and (max-width: 321px) {\r\n  .header {\r\n    display: block!important;\r\n  }\r\n  .container-logo-header {\r\n    text-align: center;\r\n    .container-quotation {\r\n      margin: 10px 0 0 0;\r\n    }\r\n    .logo {\r\n      text-align: center;\r\n      padding: 10px;\r\n    }\r\n    .quotation {\r\n      text-align: center;\r\n      display: flex;\r\n      justify-content: center;\r\n      flex-direction: row;\r\n      .container-quotation {\r\n        padding: 0 5px;\r\n      }\r\n    }\r\n  }\r\n  .round-menu img {\r\n    width: 100%;\r\n  }\r\n  .flex-right {\r\n    display: block;\r\n  }\r\n  .menu.menu-top {\r\n    display: flex!important;\r\n    justify-content: center!important;\r\n    li {\r\n      img {\r\n        width: 25px;\r\n      }\r\n    }\r\n  }\r\n  .lunes-current-price {\r\n    margin-right: 7%;\r\n  }\r\n}\r\n  ","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #44af57;\r\n$darkGreen: #44af57;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
 	
 	// exports
 
@@ -83881,21 +83965,31 @@
 	    return signup;
 	  }();
 	
-	  HttpService.prototype.changePassword = function () {
-	    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(email, accessToken) {
-	      var a;
+	  HttpService.prototype.toBuy = function () {
+	    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(address) {
+	      var buyed;
 	      return regeneratorRuntime.wrap(function _callee3$(_context3) {
 	        while (1) {
 	          switch (_context3.prev = _context3.next) {
 	            case 0:
-	              _context3.next = 2;
-	              return _lunesLib2.default.users.resetPassword({ email: email });
+	              if (address) {
+	                _context3.next = 2;
+	                break;
+	              }
+	
+	              return _context3.abrupt('return');
 	
 	            case 2:
-	              a = _context3.sent;
-	              return _context3.abrupt('return', a);
+	              _context3.next = 4;
+	              return _axios2.default.get('https://apiw.lunes.io/api/ico/request-buy/' + address).catch(function (error) {
+	                throw new Error(error);
+	              });
 	
 	            case 4:
+	              buyed = _context3.sent;
+	              return _context3.abrupt('return', buyed);
+	
+	            case 6:
 	            case 'end':
 	              return _context3.stop();
 	          }
@@ -83903,72 +83997,101 @@
 	      }, _callee3, this);
 	    }));
 	
-	    function changePassword(_x3, _x4) {
+	    function toBuy(_x3) {
 	      return _ref3.apply(this, arguments);
+	    }
+	
+	    return toBuy;
+	  }();
+	
+	  HttpService.prototype.changePassword = function () {
+	    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(email, accessToken) {
+	      var a;
+	      return regeneratorRuntime.wrap(function _callee4$(_context4) {
+	        while (1) {
+	          switch (_context4.prev = _context4.next) {
+	            case 0:
+	              _context4.next = 2;
+	              return _lunesLib2.default.users.resetPassword({ email: email });
+	
+	            case 2:
+	              a = _context4.sent;
+	              return _context4.abrupt('return', a);
+	
+	            case 4:
+	            case 'end':
+	              return _context4.stop();
+	          }
+	        }
+	      }, _callee4, this);
+	    }));
+	
+	    function changePassword(_x4, _x5) {
+	      return _ref4.apply(this, arguments);
 	    }
 	
 	    return changePassword;
 	  }();
 	
 	  HttpService.prototype.confirmterm = function () {
-	    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(currentUser) {
+	    var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(currentUser) {
 	      var confirmTerm;
-	      return regeneratorRuntime.wrap(function _callee4$(_context4) {
+	      return regeneratorRuntime.wrap(function _callee5$(_context5) {
 	        while (1) {
-	          switch (_context4.prev = _context4.next) {
+	          switch (_context5.prev = _context5.next) {
 	            case 0:
-	              _context4.prev = 0;
-	              _context4.next = 3;
+	              _context5.prev = 0;
+	              _context5.next = 3;
 	              return _lunesLib2.default.ico.confirmTerm(currentUser.email, currentUser.accessToken);
 	
 	            case 3:
-	              confirmTerm = _context4.sent;
-	              return _context4.abrupt('return', confirmTerm);
+	              confirmTerm = _context5.sent;
+	              return _context5.abrupt('return', confirmTerm);
 	
 	            case 7:
-	              _context4.prev = 7;
-	              _context4.t0 = _context4['catch'](0);
-	              throw new Error(_context4.t0);
+	              _context5.prev = 7;
+	              _context5.t0 = _context5['catch'](0);
+	              throw new Error(_context5.t0);
 	
 	            case 10:
 	            case 'end':
-	              return _context4.stop();
+	              return _context5.stop();
 	          }
 	        }
-	      }, _callee4, this, [[0, 7]]);
+	      }, _callee5, this, [[0, 7]]);
 	    }));
 	
-	    function confirmterm(_x5) {
-	      return _ref4.apply(this, arguments);
+	    function confirmterm(_x6) {
+	      return _ref5.apply(this, arguments);
 	    }
 	
 	    return confirmterm;
 	  }();
 	
 	  HttpService.prototype.obtainPhase = function () {
-	    var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+	    var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
 	      var phase;
-	      return regeneratorRuntime.wrap(function _callee5$(_context5) {
+	      return regeneratorRuntime.wrap(function _callee6$(_context6) {
 	        while (1) {
-	          switch (_context5.prev = _context5.next) {
+	          switch (_context6.prev = _context6.next) {
 	            case 0:
-	              _context5.next = 2;
+	              _context6.next = 2;
 	              return _lunesLib2.default.ico.obtainPhase();
 	
 	            case 2:
-	              phase = _context5.sent;
-	              return _context5.abrupt('return', phase);
+	              phase = _context6.sent;
+	              return _context6.abrupt('return', phase);
 	
 	            case 4:
 	            case 'end':
-	              return _context5.stop();
+	              return _context6.stop();
 	          }
 	        }
-	      }, _callee5, this);
+	      }, _callee6, this);
 	    }));
 	
 	    function obtainPhase() {
-	      return _ref5.apply(this, arguments);
+	      return _ref6.apply(this, arguments);
 	    }
 	
 	    return obtainPhase;
@@ -83981,132 +84104,132 @@
 	
 	
 	  HttpService.prototype.showDepositWalletAddressQRCode = function () {
-	    var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(currentUser, currentCoinSelected) {
+	    var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(currentUser, currentCoinSelected) {
 	      var address;
-	      return regeneratorRuntime.wrap(function _callee6$(_context6) {
+	      return regeneratorRuntime.wrap(function _callee7$(_context7) {
 	        while (1) {
-	          switch (_context6.prev = _context6.next) {
+	          switch (_context7.prev = _context7.next) {
 	            case 0:
-	              _context6.prev = 0;
+	              _context7.prev = 0;
 	              address = JSON.parse(JSON.stringify(currentUser.depositWallet[currentCoinSelected.name].address));
-	              return _context6.abrupt('return', {
+	              return _context7.abrupt('return', {
 	                address: address,
 	                img: 'https://chart.googleapis.com/chart?cht=qr&chl=' + address + '&chs=200x200&chld=L|0")'
 	              });
 	
 	            case 5:
-	              _context6.prev = 5;
-	              _context6.t0 = _context6['catch'](0);
-	              return _context6.abrupt('return', {
+	              _context7.prev = 5;
+	              _context7.t0 = _context7['catch'](0);
+	              return _context7.abrupt('return', {
 	                address: 'error',
 	                img: 'https://www.computerhope.com/jargon/e/error.gif'
 	              });
 	
 	            case 8:
 	            case 'end':
-	              return _context6.stop();
+	              return _context7.stop();
 	          }
 	        }
-	      }, _callee6, this, [[0, 5]]);
+	      }, _callee7, this, [[0, 5]]);
 	    }));
 	
-	    function showDepositWalletAddressQRCode(_x6, _x7) {
-	      return _ref6.apply(this, arguments);
+	    function showDepositWalletAddressQRCode(_x7, _x8) {
+	      return _ref7.apply(this, arguments);
 	    }
 	
 	    return showDepositWalletAddressQRCode;
 	  }();
 	
 	  HttpService.prototype.createDepositWallet = function () {
-	    var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(currentUser) {
+	    var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(currentUser) {
 	      var depositWalletAddresses;
-	      return regeneratorRuntime.wrap(function _callee7$(_context7) {
+	      return regeneratorRuntime.wrap(function _callee8$(_context8) {
 	        while (1) {
-	          switch (_context7.prev = _context7.next) {
+	          switch (_context8.prev = _context8.next) {
 	            case 0:
-	              _context7.prev = 0;
-	              _context7.next = 3;
+	              _context8.prev = 0;
+	              _context8.next = 3;
 	              return _lunesLib2.default.coins.createDepositWallet(currentUser.email, currentUser.accessToken, false);
 	
 	            case 3:
-	              depositWalletAddresses = _context7.sent;
-	              return _context7.abrupt('return', depositWalletAddresses);
+	              depositWalletAddresses = _context8.sent;
+	              return _context8.abrupt('return', depositWalletAddresses);
 	
 	            case 7:
-	              _context7.prev = 7;
-	              _context7.t0 = _context7['catch'](0);
-	              throw new Error(_context7.t0);
+	              _context8.prev = 7;
+	              _context8.t0 = _context8['catch'](0);
+	              throw new Error(_context8.t0);
 	
 	            case 10:
 	            case 'end':
-	              return _context7.stop();
+	              return _context8.stop();
 	          }
 	        }
-	      }, _callee7, this, [[0, 7]]);
+	      }, _callee8, this, [[0, 7]]);
 	    }));
 	
-	    function createDepositWallet(_x8) {
-	      return _ref7.apply(this, arguments);
+	    function createDepositWallet(_x9) {
+	      return _ref8.apply(this, arguments);
 	    }
 	
 	    return createDepositWallet;
 	  }();
 	
 	  HttpService.prototype.getBalanceLunes = function () {
-	    var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(coin, currentUser) {
+	    var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(coin, currentUser) {
 	      var address, balance;
-	      return regeneratorRuntime.wrap(function _callee8$(_context8) {
+	      return regeneratorRuntime.wrap(function _callee9$(_context9) {
 	        while (1) {
-	          switch (_context8.prev = _context8.next) {
+	          switch (_context9.prev = _context9.next) {
 	            case 0:
-	              _context8.prev = 0;
+	              _context9.prev = 0;
 	              address = currentUser.wallet.coins[0].addresses[0].address;
-	              _context8.next = 4;
+	              _context9.next = 4;
 	              return _lunesLib2.default.coins.bitcoin.getBalance({ address: address }, currentUser.accessToken);
 	
 	            case 4:
-	              balance = _context8.sent;
-	              return _context8.abrupt('return', {
+	              balance = _context9.sent;
+	              return _context9.abrupt('return', {
 	                COIN: 'LNS',
 	                CURRENTPRICE: balance
 	              });
 	
 	            case 8:
-	              _context8.prev = 8;
-	              _context8.t0 = _context8['catch'](0);
-	              throw new Error(_context8.t0);
+	              _context9.prev = 8;
+	              _context9.t0 = _context9['catch'](0);
+	              throw new Error(_context9.t0);
 	
 	            case 11:
 	            case 'end':
-	              return _context8.stop();
+	              return _context9.stop();
 	          }
 	        }
-	      }, _callee8, this, [[0, 8]]);
+	      }, _callee9, this, [[0, 8]]);
 	    }));
 	
-	    function getBalanceLunes(_x9, _x10) {
-	      return _ref8.apply(this, arguments);
+	    function getBalanceLunes(_x10, _x11) {
+	      return _ref9.apply(this, arguments);
 	    }
 	
 	    return getBalanceLunes;
 	  }();
 	
 	  HttpService.prototype.getBalanceCoinETH = function () {
-	    var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(coin) {
+	    var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(coin) {
 	      var toSymbol, currencySymbol, priceData, price;
-	      return regeneratorRuntime.wrap(function _callee9$(_context9) {
+	      return regeneratorRuntime.wrap(function _callee10$(_context10) {
 	        while (1) {
-	          switch (_context9.prev = _context9.next) {
+	          switch (_context10.prev = _context10.next) {
 	            case 0:
 	              toSymbol = this.$translate.instant('CURRENCY_USER');
 	              currencySymbol = this.$translate.instant('CURRENCY_SYMBOL');
-	              _context9.next = 4;
+	              _context10.next = 4;
 	              return _axios2.default.get('https://braziliex.com/api/v1/public/ticker/eth_usd', {});
 	
 	            case 4:
-	              priceData = _context9.sent;
+	              priceData = _context10.sent;
 	              price = parseFloat(priceData.data.last).toFixed(2);
-	              return _context9.abrupt('return', {
+	              return _context10.abrupt('return', {
 	                COIN: 'ETH',
 	                CURRENTPRICE: currencySymbol + ' ' + price,
 	                DISPLAYPRICE: '1 ETH | ' + price
@@ -84114,76 +84237,36 @@
 	
 	            case 7:
 	            case 'end':
-	              return _context9.stop();
-	          }
-	        }
-	      }, _callee9, this);
-	    }));
-	
-	    function getBalanceCoinETH(_x11) {
-	      return _ref9.apply(this, arguments);
-	    }
-	
-	    return getBalanceCoinETH;
-	  }();
-	
-	  HttpService.prototype.buyHistory = function () {
-	    var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(email, accessToken) {
-	      var a;
-	      return regeneratorRuntime.wrap(function _callee10$(_context10) {
-	        while (1) {
-	          switch (_context10.prev = _context10.next) {
-	            case 0:
-	              _context10.next = 2;
-	              return _lunesLib2.default.ico.buyBalance(email, accessToken, 1).catch(function (error) {
-	                _interceptor2.default.responseError(error);
-	              });
-	
-	            case 2:
-	              a = _context10.sent;
-	              return _context10.abrupt('return', a);
-	
-	            case 4:
-	            case 'end':
 	              return _context10.stop();
 	          }
 	        }
 	      }, _callee10, this);
 	    }));
 	
-	    function buyHistory(_x12, _x13) {
+	    function getBalanceCoinETH(_x12) {
 	      return _ref10.apply(this, arguments);
 	    }
 	
-	    return buyHistory;
+	    return getBalanceCoinETH;
 	  }();
 	
-	  HttpService.prototype.getBalance = function () {
-	    var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(coin, address, currentUser) {
-	      var underCoin, balance;
+	  HttpService.prototype.buyHistory = function () {
+	    var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(email, accessToken) {
+	      var a;
 	      return regeneratorRuntime.wrap(function _callee11$(_context11) {
 	        while (1) {
 	          switch (_context11.prev = _context11.next) {
 	            case 0:
-	              if (!(coin && address && currentUser)) {
-	                _context11.next = 6;
-	                break;
-	              }
-	
-	              underCoin = coin.toLowerCase();
-	              _context11.next = 4;
-	              return _lunesLib2.default.coins.getBalance({ address: address, coin: underCoin, testnet: false }, currentUser.accessToken).catch(function (error) {
+	              _context11.next = 2;
+	              return _lunesLib2.default.ico.buyBalance(email, accessToken, 1).catch(function (error) {
 	                _interceptor2.default.responseError(error);
 	              });
 	
+	            case 2:
+	              a = _context11.sent;
+	              return _context11.abrupt('return', a);
+	
 	            case 4:
-	              balance = _context11.sent;
-	              return _context11.abrupt('return', balance && balance.data ? balance.data : {});
-	
-	            case 6:
-	              return _context11.abrupt('return', {});
-	
-	            case 7:
 	            case 'end':
 	              return _context11.stop();
 	          }
@@ -84191,19 +84274,59 @@
 	      }, _callee11, this);
 	    }));
 	
-	    function getBalance(_x14, _x15, _x16) {
+	    function buyHistory(_x13, _x14) {
 	      return _ref11.apply(this, arguments);
+	    }
+	
+	    return buyHistory;
+	  }();
+	
+	  HttpService.prototype.getBalance = function () {
+	    var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(coin, address, currentUser) {
+	      var underCoin, balance;
+	      return regeneratorRuntime.wrap(function _callee12$(_context12) {
+	        while (1) {
+	          switch (_context12.prev = _context12.next) {
+	            case 0:
+	              if (!(coin && address && currentUser)) {
+	                _context12.next = 6;
+	                break;
+	              }
+	
+	              underCoin = coin.toLowerCase();
+	              _context12.next = 4;
+	              return _lunesLib2.default.coins.getBalance({ address: address, coin: underCoin, testnet: false }, currentUser.accessToken).catch(function (error) {
+	                _interceptor2.default.responseError(error);
+	              });
+	
+	            case 4:
+	              balance = _context12.sent;
+	              return _context12.abrupt('return', balance && balance.data ? balance.data : {});
+	
+	            case 6:
+	              return _context12.abrupt('return', {});
+	
+	            case 7:
+	            case 'end':
+	              return _context12.stop();
+	          }
+	        }
+	      }, _callee12, this);
+	    }));
+	
+	    function getBalance(_x15, _x16, _x17) {
+	      return _ref12.apply(this, arguments);
 	    }
 	
 	    return getBalance;
 	  }();
 	
 	  HttpService.prototype.getBitcoinBalance = function () {
-	    var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(coin) {
+	    var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(coin) {
 	      var toSymbol, queryObj, tsym, priceData, currentPrice, displayPrice, ticker;
-	      return regeneratorRuntime.wrap(function _callee12$(_context12) {
+	      return regeneratorRuntime.wrap(function _callee13$(_context13) {
 	        while (1) {
-	          switch (_context12.prev = _context12.next) {
+	          switch (_context13.prev = _context13.next) {
 	            case 0:
 	              toSymbol = 'USD';
 	              queryObj = {
@@ -84212,11 +84335,11 @@
 	                exchange: this.$translate.instant('CURRENCY_EXCHANGE')
 	              };
 	              tsym = _cccStreamerUtilities2.default.STATIC.CURRENCY.getSymbol(toSymbol);
-	              _context12.next = 5;
+	              _context13.next = 5;
 	              return _lunesLib2.default.coins.getPrice(queryObj);
 	
 	            case 5:
-	              priceData = _context12.sent;
+	              priceData = _context13.sent;
 	              currentPrice = _cccStreamerUtilities2.default.convertValueToDisplay(tsym, priceData[toSymbol]);
 	              displayPrice = '1 ' + coin + ' | ' + currentPrice;
 	              ticker = {
@@ -84228,18 +84351,18 @@
 	                CHANGE: 'up',
 	                COIN: coin
 	              };
-	              return _context12.abrupt('return', ticker);
+	              return _context13.abrupt('return', ticker);
 	
 	            case 10:
 	            case 'end':
-	              return _context12.stop();
+	              return _context13.stop();
 	          }
 	        }
-	      }, _callee12, this);
+	      }, _callee13, this);
 	    }));
 	
-	    function getBitcoinBalance(_x17) {
-	      return _ref12.apply(this, arguments);
+	    function getBitcoinBalance(_x18) {
+	      return _ref13.apply(this, arguments);
 	    }
 	
 	    return getBitcoinBalance;
@@ -84911,11 +85034,11 @@
 	
 	
 	// module
-	exports.push([module.id, "body {\n  background-color: #4c2b82;\n  font-family: 'Roboto', sans-serif;\n  color: #fff;\n  font-size: 14px;\n  line-height: 20px;\n  font-weight: 100; }\n\n*, *:before, *:after {\n  box-sizing: border-box;\n  position: relative;\n  -webkit-box-sizing: border-box; }\n\n.center {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  height: 100%;\n  overflow: auto;\n  overflow-y: auto; }\n  @media (min-width: 768px) {\n    .center {\n      max-height: 780px; } }\n\nh1, h2, h3, h4 {\n  font-family: 'Offside', cursive;\n  line-height: 1.4em; }\n\nh2 {\n  font-size: 4em;\n  line-height: 1em; }\n\nh3 {\n  font-size: 2em;\n  line-height: 1.3em; }\n\n.txt-green {\n  color: #44af57; }\n\n.txt-center {\n  text-align: center !important; }\n\n.txt-left {\n  text-align: left !important; }\n\n.txt-right {\n  text-align: right !important; }\n\n.no-padding {\n  padding: 0; }\n\n.cursor-pointer {\n  cursor: pointer; }\n\n.round-menu {\n  text-decoration: none;\n  padding: 10px; }\n  .round-menu img {\n    vertical-align: middle; }\n\n.modal-backdrop {\n  background-color: #4c2b82;\n  opacity: 0.7;\n  text-align: center; }\n\n/* Logo */\n.logo {\n  font-size: 40px;\n  font-family: 'Offside', cursive;\n  letter-spacing: -7px; }\n\n/* Header */\n.header {\n  margin: 20px 0;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  padding: 10px 0; }\n\n.nav-menu {\n  padding-left: 0;\n  width: 100%; }\n\n/* MENU horizontal */\nul.menu {\n  padding-right: 0; }\n  ul.menu.horizontal {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-direction: row;\n        flex-direction: row;\n    -ms-flex-align: center;\n        align-items: center;\n    -ms-flex-pack: distribute;\n        justify-content: space-around; }\n    ul.menu.horizontal li {\n      list-style: none;\n      padding: 10px; }\n      ul.menu.horizontal li a {\n        text-transform: uppercase;\n        text-decoration: none;\n        color: #fff; }\n        ul.menu.horizontal li a:hover {\n          color: #44af57; }\n\n.menu-top {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: row;\n      flex-direction: row;\n  list-style: none;\n  color: #fff;\n  text-transform: uppercase;\n  margin: 0; }\n  .menu-top a {\n    padding: 20px;\n    color: #fff;\n    text-decoration: none; }\n  .menu-top li {\n    margin-right: 15px;\n    font-size: 12px;\n    min-height: 2.2rem; }\n    .menu-top li:hover {\n      border-bottom: 2px solid #44af57; }\n      .menu-top li:hover a {\n        color: #44af57; }\n  .menu-top .active {\n    border-bottom: 2px solid #44af57; }\n    .menu-top .active a {\n      color: #44af57; }\n\n/* authentication */\n.authentication {\n  margin-top: 50px; }\n  .authentication .title {\n    margin: 20px 0; }\n\n.error-fields {\n  padding: 10px;\n  background-color: #f9d660;\n  color: #9b853b;\n  border-radius: 5px;\n  margin-left: 10px;\n  margin-bottom: 20px; }\n\n/* Modal Customized */\n.modal {\n  margin: 20px;\n  background-color: #4c2b82;\n  border-radius: 5px;\n  box-shadow: #4c2b82 1px 1px 17px 5px; }\n  .modal .icon-close {\n    text-align: center;\n    position: absolute;\n    right: 30px;\n    padding: 0 10px;\n    cursor: pointer;\n    font-weight: bold; }\n  .modal .modal-title {\n    margin-left: 2em;\n    font-weight: bold; }\n  .modal .modal-header {\n    border: 0; }\n  .modal .modal-content {\n    background-color: transparent;\n    padding: 10px;\n    border: 0;\n    /*\r\n    *  SCROLL BAR\r\n    */ }\n    .modal .modal-content .content {\n      background-color: #4c2b82;\n      border-radius: 5px;\n      box-shadow: #311d53 1px 1px 32px 0px;\n      color: #fff;\n      padding: 20px;\n      margin: 20px;\n      max-height: 100%;\n      overflow-y: overlay;\n      border: solid 8px #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar-track {\n      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n      background-color: #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar {\n      width: 6px;\n      background-color: #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar-thumb {\n      background-color: #4f2f85; }\n    .modal .modal-content .footer {\n      display: -ms-flexbox;\n      display: flex;\n      text-align: left;\n      -ms-flex-align: center;\n          align-items: center;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n\n/* container button */\n.area-button {\n  text-align: center;\n  padding: 10px;\n  /* primary-button */\n  /* disabled button */ }\n  .area-button .primary-button {\n    border: 0;\n    border-radius: 22px;\n    padding: 11px 80px;\n    text-align: center;\n    background-color: #4cd566;\n    color: #fff;\n    font-size: 16px;\n    transition: all .3s ease-in-out;\n    text-decoration: none; }\n    .area-button .primary-button:hover {\n      background-color: #44af57; }\n  .area-button .disabled-button {\n    padding: 10px 80px;\n    border: 0px solid #4e1f85;\n    border-radius: 25px;\n    font-size: 16px;\n    text-decoration: none;\n    display: inline-block;\n    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);\n    color: #FFFFFF;\n    background-color: #6929B3;\n    background-image: linear-gradient(to bottom, #6929B3, #6622B3);\n    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6929B3, endColorstr=#6622B3); }\n  .area-button .rounded-button {\n    border: 0;\n    border-radius: 100%;\n    width: 40px;\n    height: 40px;\n    background-color: #fff;\n    color: #44af57;\n    box-shadow: #444343 0px 1px 6px 0px; }\n\n/* Input customized */\n.input-form label {\n  display: block;\n  font-size: 10px;\n  padding: 0;\n  margin: 0;\n  color: #90df4a; }\n\n.input-form input {\n  width: 90%;\n  border: 0;\n  border-bottom: solid 1px #9c9c9c;\n  background-color: transparent;\n  padding: 10px 0;\n  margin-bottom: 15px;\n  color: #fff;\n  outline: none; }\n  .input-form input::-webkit-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input:-ms-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input::placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input:-ms-input-placeholder {\n    /* Internet Explorer 10-11 */\n    color: #adadad; }\n  .input-form input::-ms-input-placeholder {\n    /* Microsoft Edge */\n    color: #adadad; }\n\n/* Custom Checkbox */\ninput[type=checkbox].css-checkbox {\n  height: 1px;\n  width: 1px;\n  margin: -1px;\n  padding: 0;\n  border: 0; }\n\ninput[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {\n  padding-left: 23px;\n  height: 18px;\n  display: inline-block;\n  line-height: 18px;\n  background-repeat: no-repeat;\n  background-position: 0 0;\n  font-size: 12px;\n  vertical-align: middle;\n  cursor: pointer; }\n\ninput[type=checkbox].css-checkbox:checked + label.css-label, input[type=checkbox].css-checkbox + label.css-label.chk {\n  background-position: 0 -18px; }\n\nlabel.css-label {\n  background-image: url(https://res.cloudinary.com/luneswallet/image/upload/v1519425382/check.png);\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\nbutton:focus {\n  outline: none !important; }\n\nfooter .social {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: end;\n      justify-content: flex-end; }\n  footer .social li {\n    list-style: none;\n    padding: 2rem 0 0 1rem; }\n    footer .social li img {\n      width: 30px; }\n\nfooter .container-footer {\n  margin-top: 30px;\n  padding: 10px;\n  background-color: #432773;\n  border-radius: 5px; }\n  footer .container-footer .row {\n    padding: 15px;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between; }\n    footer .container-footer .row a {\n      color: #fff; }\n\n.user-menu {\n  position: relative;\n  display: inline-block;\n  height: 100px;\n  margin-top: 1rem; }\n  @media only screen and (max-width: 460px) {\n    .user-menu {\n      height: 150px;\n      text-align: center;\n      width: 100%; } }\n  .user-menu a {\n    color: #fff;\n    text-decoration: none; }\n  .user-menu .logout {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: end;\n        justify-content: flex-end;\n    margin-top: -5px; }\n    @media only screen and (max-width: 460px) {\n      .user-menu .logout {\n        -ms-flex-pack: start;\n            justify-content: flex-start; } }\n    .user-menu .logout a {\n      text-decoration: none !important; }\n\n@media only screen and (max-width: 460px) {\n  footer .container-social {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-align: center;\n        align-items: center;\n    -ms-flex-pack: center;\n        justify-content: center; } }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/scss/src/scss/base/_reset.scss","D:/workspaces/lunes/lunes-purchase/src/scss/src/scss/base/_color.scss"],"names":[],"mappings":"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","file":"main.scss","sourcesContent":["@import 'color';\r\n\r\n$break-small: 320px;\r\n$break-large: 1200px;\r\n\r\nbody {\r\n  background-color: $primary;\r\n  font-family: 'Roboto', sans-serif;\r\n  color: #fff;\r\n  font-size: 14px;\r\n  line-height: 20px;\r\n  font-weight: 100;\r\n};\r\n\r\n*, *:before, *:after {\r\n  box-sizing: border-box;\r\n  position: relative;\r\n  -webkit-box-sizing: border-box;\r\n}\r\n\r\n.center {\r\n  position: fixed;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n  height: 100%;\r\n  overflow: auto;\r\n  overflow-y: auto;\r\n  @media (min-width: 768px) {\r\n    max-height: 780px;\r\n  }\r\n}\r\n\r\nh1, h2, h3, h4 {\r\n  font-family: 'Offside', cursive;\r\n  line-height: 1.4em;\r\n}\r\n\r\nh2 {\r\n  font-size: 4em;\r\n  line-height: 1em;\r\n}\r\nh3 {\r\n  font-size: 2em;\r\n  line-height: 1.3em;\r\n}\r\n\r\n.txt-green {\r\n  color: $green;\r\n}\r\n\r\n.txt-center {\r\n  text-align: center!important;\r\n}\r\n\r\n.txt-left {\r\n  text-align: left!important;\r\n}\r\n\r\n.txt-right {\r\n  text-align: right!important;\r\n}\r\n.no-padding {\r\n  padding: 0;\r\n}\r\n.cursor-pointer {\r\n  cursor: pointer;\r\n}\r\n\r\n.round-menu {\r\n  text-decoration: none;\r\n  padding: 10px;\r\n  img {\r\n    vertical-align: middle; \r\n  }\r\n}\r\n\r\n.modal-backdrop {\r\n  background-color: $primary;\r\n  opacity: 0.7;\r\n  text-align: center;\r\n}\r\n/* Logo */\r\n.logo {\r\n  font-size: 40px;\r\n  font-family: 'Offside', cursive;\r\n  letter-spacing: -7px;\r\n}\r\n\r\n/* Header */\r\n.header {\r\n  margin: 20px 0;\r\n  display: flex;\r\n  align-items: center;\r\n  padding: 10px 0;\r\n}\r\n\r\n.nav-menu {\r\n  padding-left: 0;\r\n  width: 100%;\r\n}\r\n\r\n/* MENU horizontal */\r\nul.menu {\r\n  padding-right: 0;\r\n  &.horizontal {\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    justify-content: space-around;\r\n    li {\r\n      list-style: none;\r\n      padding: 10px;\r\n      a {\r\n        text-transform: uppercase;\r\n        text-decoration: none;\r\n        color: #fff;\r\n        &:hover {\r\n          color: $green;\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n// TODO: verificar se pode mesclar essa com a de cima\r\n.menu-top {\r\n  display: flex;\r\n  flex-direction: row;\r\n  list-style: none;\r\n  color: #fff;\r\n  text-transform: uppercase;\r\n  margin: 0;\r\n  a {\r\n    padding: 20px;  \r\n    color: #fff;\r\n    text-decoration: none;\r\n  }\r\n  li {  \r\n    margin-right: 15px;\r\n    font-size: 12px;\r\n    min-height: 2.2rem;\r\n    &:hover {\r\n      border-bottom: 2px solid $green;      \r\n      a {\r\n        color: $green;\r\n      }\r\n    }\r\n  }\r\n  .active {\r\n    border-bottom: 2px solid $green;\r\n    a {\r\n      color: $green;\r\n    }\r\n  }\r\n}\r\n\r\n/* authentication */\r\n.authentication {\r\n  margin-top: 50px;\r\n  .title {\r\n    margin: 20px 0;\r\n  }\r\n}\r\n\r\n.error-fields {\r\n  padding: 10px;\r\n  background-color: $yellow;\r\n  color: #9b853b;\r\n  border-radius: 5px;\r\n  margin-left: 10px;\r\n  margin-bottom: 20px;\r\n}\r\n \r\n/* Modal Customized */\r\n.modal {\r\n  margin: 20px;\r\n  background-color: $primary;\r\n  border-radius: 5px;\r\n  box-shadow: $primary 1px 1px 17px 5px;\r\n\r\n  .icon-close {\r\n    text-align: center;\r\n    position: absolute;\r\n    right: 30px;\r\n    padding: 0 10px;\r\n    cursor: pointer;\r\n    font-weight: bold;\r\n  }\r\n  \r\n  .modal-title{\r\n    margin-left:2em;\r\n    font-weight:bold;\r\n  }\r\n\r\n  .modal-header {\r\n    border: 0;\r\n  }\r\n  \r\n  .modal-content {\r\n    background-color: transparent;\r\n    padding: 10px;\r\n    border: 0;\r\n\r\n    .content {\r\n      background-color: $primary;\r\n      border-radius: 5px;\r\n      box-shadow: #311d53 1px 1px 32px 0px;\r\n      color: #fff;\r\n      padding: 20px;\r\n      margin: 20px;\r\n      max-height: 100%;\r\n      \r\n      overflow-y: overlay;\r\n      border: solid 8px #4c2b82;\r\n    }\r\n\r\n    /*\r\n    *  SCROLL BAR\r\n    */\r\n    .content::-webkit-scrollbar-track\r\n    {\r\n      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);\r\n      background-color: #4c2b82;\r\n    }\r\n    .content::-webkit-scrollbar\r\n    {\r\n      width: 6px;\r\n      background-color: #4c2b82;\r\n    }\r\n    .content::-webkit-scrollbar-thumb\r\n    {\r\n      background-color: #4f2f85;\r\n    }\r\n\r\n    .footer {\r\n      display: flex;\r\n      text-align: left;\r\n      align-items: center;\r\n      flex-direction: column;\r\n    }\r\n\r\n  }\r\n\r\n}\r\n\r\n/* container button */\r\n.area-button {\r\n  text-align: center;\r\n  padding: 10px;\r\n  \r\n  /* primary-button */\r\n  .primary-button {\r\n    border: 0;\r\n    border-radius: 22px;\r\n    padding: 11px 80px;\r\n    text-align: center;\r\n    background-color: #4cd566;\r\n    color: #fff;\r\n    font-size: 16px;\r\n    transition: all .3s ease-in-out;\r\n    text-decoration: none;\r\n    &:hover {\r\n      background-color: $darkGreen;\r\n    }\r\n  }\r\n\r\n  /* disabled button */\r\n  .disabled-button {\r\n    padding: 10px 80px;\r\n    border: 0px solid #4e1f85;\r\n    -webkit-border-radius: 25px; \r\n    -moz-border-radius: 25px;\r\n    border-radius: 25px;\r\n    font-size: 16px;\r\n    text-decoration:none; \r\n    display:inline-block;\r\n    text-shadow: -1px -1px 0 rgba(0,0,0,0.3); \r\n    color: #FFFFFF;\r\n    background-color: #6929B3; \r\n    background-image: -webkit-gradient(linear, left top, left bottom, from(#6929B3), to(#6622B3));\r\n    background-image: -webkit-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -moz-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -ms-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -o-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: linear-gradient(to bottom, #6929B3, #6622B3);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6929B3, endColorstr=#6622B3);\r\n  }\r\n\r\n  .rounded-button {\r\n    border: 0;\r\n    border-radius: 100%;\r\n    width: 40px;\r\n    height: 40px;\r\n    background-color: #fff;\r\n    color: $green;\r\n    box-shadow: #444343 0px 1px 6px 0px;\r\n  }\r\n\r\n}\r\n\r\n/* Input customized */\r\n.input-form label {\r\n  display: block;\r\n  font-size: 10px;\r\n  padding: 0;\r\n  margin: 0;\r\n  color: #90df4a;\r\n}\r\n.input-form input {\r\n  width: 90%;\r\n  border: 0;\r\n  border-bottom: solid 1px #9c9c9c;\r\n  background-color: transparent;\r\n  padding: 10px 0;\r\n  margin-bottom: 15px;\r\n  color: #fff;\r\n  outline: none;\r\n  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */\r\n      color: #adadad;\r\n      opacity: 1; /* Firefox */\r\n  }\r\n\r\n  &:-ms-input-placeholder { /* Internet Explorer 10-11 */\r\n      color: #adadad;\r\n  }\r\n\r\n  &::-ms-input-placeholder { /* Microsoft Edge */\r\n      color: #adadad;\r\n  }\r\n}\r\n\r\n/* Custom Checkbox */\r\ninput[type=checkbox].css-checkbox {\r\n\theight:1px; width:1px; margin:-1px; padding:0; border:0;\r\n}\r\n\r\ninput[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {\r\n\tpadding-left:23px;\r\n  height:18px; \r\n\tdisplay:inline-block;\r\n\tline-height:18px;\r\n\tbackground-repeat:no-repeat;\r\n\tbackground-position: 0 0;\r\n\tfont-size:12px;\r\n\tvertical-align:middle;\r\n\tcursor:pointer;\r\n\r\n}\r\n\r\ninput[type=checkbox].css-checkbox:checked + label.css-label, input[type=checkbox].css-checkbox + label.css-label.chk {\r\n\tbackground-position: 0 -18px;\r\n}\r\nlabel.css-label {\r\n\tbackground-image:url(https://res.cloudinary.com/luneswallet/image/upload/v1519425382/check.png);\r\n\t-webkit-touch-callout: none;\r\n\t-webkit-user-select: none;\r\n\t-khtml-user-select: none;\r\n\t-moz-user-select: none;\r\n\t-ms-user-select: none;\r\n\tuser-select: none;\r\n}\r\n\r\nbutton:focus {\r\n    outline: none !important;\r\n}\r\n\r\nfooter {\r\n  .social {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n    li {\r\n      list-style: none;\r\n      padding: 2rem 0 0 1rem;\r\n      img {\r\n        width: 30px;\r\n      }\r\n    }\r\n  }\r\n  .container-footer {\r\n    margin-top: 30px;\r\n    padding: 10px;\r\n    background-color: #432773;\r\n    border-radius: 5px;\r\n    .row {\r\n      padding: 15px;\r\n      display: flex;\r\n      justify-content: space-between;\r\n      a {\r\n        color: #fff;\r\n      }\r\n    }\r\n  }\r\n}\r\n.user-menu {\r\n  position: relative;\r\n  display: inline-block;\r\n  height: 100px;\r\n  margin-top: 1rem;\r\n\r\n  @media only screen and (max-width: 460px) {\r\n    height: 150px;\r\n    text-align: center;\r\n    width: 100%;\r\n  }\r\n\r\n  a {\r\n    color: #fff;\r\n    text-decoration: none;\r\n  }\r\n\r\n  .logout {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n    margin-top: -5px;\r\n\r\n    @media only screen and (max-width: 460px) {\r\n      justify-content: flex-start;\r\n    }\r\n\r\n    // TODO: aplicar suavidade ao exibir o menu\r\n    // .ng-hide {\r\n    //   opacity: 0;\r\n    // }\r\n    \r\n    // .ng-hide-add,\r\n    // .ng-hide-remove {\r\n    //   transition: all linear .5s;\r\n    // }\r\n\r\n    a {\r\n      text-decoration: none !important;\r\n    }\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 460px) {\r\n  footer .container-social {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n  }\r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #44af57;\r\n$darkGreen: #44af57;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
+	exports.push([module.id, "input {\n  outline: none; }\n\nbody {\n  background-color: #4c2b82;\n  font-family: 'Roboto', sans-serif;\n  color: #fff;\n  font-size: 14px;\n  line-height: 20px;\n  font-weight: 100; }\n\n*, *:before, *:after {\n  box-sizing: border-box;\n  position: relative;\n  -webkit-box-sizing: border-box; }\n\n.center {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  height: 100%;\n  overflow: auto;\n  overflow-y: auto; }\n  @media (min-width: 768px) {\n    .center {\n      max-height: 780px; } }\n\nh1, h2, h3, h4 {\n  font-family: 'Offside', cursive;\n  line-height: 1.4em; }\n\nh2 {\n  font-size: 4em;\n  line-height: 1em; }\n\nh3 {\n  font-size: 2em;\n  line-height: 1.3em; }\n\n.txt-green {\n  color: #44af57; }\n\n.txt-center {\n  text-align: center !important; }\n\n.txt-left {\n  text-align: left !important; }\n\n.txt-right {\n  text-align: right !important; }\n\n.no-padding {\n  padding: 0; }\n\n.cursor-pointer {\n  cursor: pointer; }\n\n.round-menu {\n  text-decoration: none;\n  padding: 10px; }\n  .round-menu img {\n    vertical-align: middle; }\n\n.modal-backdrop {\n  background-color: #4c2b82;\n  opacity: 0.7;\n  text-align: center; }\n\n/* Logo */\n.logo {\n  font-size: 40px;\n  font-family: 'Offside', cursive;\n  letter-spacing: -7px; }\n\n/* Header */\n.header {\n  margin: 20px 0;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  padding: 10px 0; }\n\n.nav-menu {\n  padding-left: 0;\n  width: 100%; }\n\n/* MENU horizontal */\nul.menu {\n  padding-right: 0; }\n  ul.menu.horizontal {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-direction: row;\n        flex-direction: row;\n    -ms-flex-align: center;\n        align-items: center;\n    -ms-flex-pack: distribute;\n        justify-content: space-around; }\n    ul.menu.horizontal li {\n      list-style: none;\n      padding: 10px; }\n      ul.menu.horizontal li a {\n        text-transform: uppercase;\n        text-decoration: none;\n        color: #fff; }\n        ul.menu.horizontal li a:hover {\n          color: #44af57; }\n\n.menu-top {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: row;\n      flex-direction: row;\n  list-style: none;\n  color: #fff;\n  text-transform: uppercase;\n  margin: 0; }\n  .menu-top a {\n    padding: 20px;\n    color: #fff;\n    text-decoration: none; }\n  .menu-top li {\n    margin-right: 15px;\n    font-size: 12px;\n    min-height: 2.2rem; }\n    .menu-top li:hover {\n      border-bottom: 2px solid #44af57; }\n      .menu-top li:hover a {\n        color: #44af57; }\n  .menu-top .active {\n    border-bottom: 2px solid #44af57; }\n    .menu-top .active a {\n      color: #44af57; }\n\n/* authentication */\n.authentication {\n  margin-top: 50px; }\n  .authentication .title {\n    margin: 20px 0; }\n\n.error-fields {\n  padding: 10px;\n  background-color: #f9d660;\n  color: #9b853b;\n  border-radius: 5px;\n  margin-left: 10px;\n  margin-bottom: 20px; }\n\n/* Modal Customized */\n.modal {\n  margin: 20px;\n  background-color: #4c2b82;\n  border-radius: 5px;\n  box-shadow: #4c2b82 1px 1px 17px 5px; }\n  .modal .icon-close {\n    text-align: center;\n    position: absolute;\n    right: 30px;\n    padding: 0 10px;\n    cursor: pointer;\n    font-weight: bold; }\n  .modal .modal-title {\n    margin-left: 2em;\n    font-weight: bold; }\n  .modal .modal-header {\n    border: 0; }\n  .modal .modal-content {\n    background-color: transparent;\n    padding: 10px;\n    border: 0;\n    /*\r\n    *  SCROLL BAR\r\n    */ }\n    .modal .modal-content .content {\n      background-color: #4c2b82;\n      border-radius: 5px;\n      box-shadow: #311d53 1px 1px 32px 0px;\n      color: #fff;\n      padding: 20px;\n      margin: 20px;\n      max-height: 100%;\n      overflow-y: overlay;\n      border: solid 8px #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar-track {\n      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n      background-color: #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar {\n      width: 6px;\n      background-color: #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar-thumb {\n      background-color: #4f2f85; }\n    .modal .modal-content .footer {\n      display: -ms-flexbox;\n      display: flex;\n      text-align: left;\n      -ms-flex-align: center;\n          align-items: center;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n\n/* container button */\n.area-button {\n  text-align: center;\n  padding: 10px;\n  /* primary-button */\n  /* disabled button */ }\n  .area-button .primary-button {\n    border: 0;\n    border-radius: 22px;\n    padding: 11px 80px;\n    text-align: center;\n    background-color: #4cd566;\n    color: #fff;\n    font-size: 16px;\n    transition: all .3s ease-in-out;\n    text-decoration: none; }\n    .area-button .primary-button:hover {\n      background-color: #44af57; }\n  .area-button .disabled-button {\n    padding: 10px 80px;\n    border: 0px solid #4e1f85;\n    border-radius: 25px;\n    font-size: 16px;\n    text-decoration: none;\n    display: inline-block;\n    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);\n    color: #FFFFFF;\n    background-color: #6929B3;\n    background-image: linear-gradient(to bottom, #6929B3, #6622B3);\n    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6929B3, endColorstr=#6622B3); }\n  .area-button .rounded-button {\n    border: 0;\n    border-radius: 100%;\n    width: 40px;\n    height: 40px;\n    background-color: #fff;\n    color: #44af57;\n    box-shadow: #444343 0px 1px 6px 0px; }\n\n/* Input customized */\n.input-form label {\n  display: block;\n  font-size: 10px;\n  padding: 0;\n  margin: 0;\n  color: #90df4a; }\n\n.input-form input {\n  width: 90%;\n  border: 0;\n  border-bottom: solid 1px #9c9c9c;\n  background-color: transparent;\n  padding: 10px 0;\n  margin-bottom: 15px;\n  color: #fff;\n  outline: none; }\n  .input-form input::-webkit-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input:-ms-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input::placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input:-ms-input-placeholder {\n    /* Internet Explorer 10-11 */\n    color: #adadad; }\n  .input-form input::-ms-input-placeholder {\n    /* Microsoft Edge */\n    color: #adadad; }\n\n/* Custom Checkbox */\ninput[type=checkbox].css-checkbox {\n  height: 1px;\n  width: 1px;\n  margin: -1px;\n  padding: 0;\n  border: 0; }\n\ninput[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {\n  padding-left: 23px;\n  height: 18px;\n  display: inline-block;\n  line-height: 18px;\n  background-repeat: no-repeat;\n  background-position: 0 0;\n  font-size: 12px;\n  vertical-align: middle;\n  cursor: pointer; }\n\ninput[type=checkbox].css-checkbox:checked + label.css-label, input[type=checkbox].css-checkbox + label.css-label.chk {\n  background-position: 0 -18px; }\n\nlabel.css-label {\n  background-image: url(https://res.cloudinary.com/luneswallet/image/upload/v1519425382/check.png);\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\nbutton:focus {\n  outline: none !important; }\n\nfooter .social {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: end;\n      justify-content: flex-end; }\n  footer .social li {\n    list-style: none;\n    padding: 2rem 0 0 1rem; }\n    footer .social li img {\n      width: 30px; }\n\nfooter .container-footer {\n  margin-top: 30px;\n  padding: 10px;\n  background-color: #432773;\n  border-radius: 5px; }\n  footer .container-footer .row {\n    padding: 15px;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between; }\n    footer .container-footer .row a {\n      color: #fff; }\n\n.user-menu {\n  position: relative;\n  display: inline-block;\n  height: 100px;\n  margin-top: 1rem; }\n  @media only screen and (max-width: 460px) {\n    .user-menu {\n      height: 150px;\n      text-align: center;\n      width: 100%; } }\n  .user-menu a {\n    color: #fff;\n    text-decoration: none; }\n  .user-menu .logout {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: end;\n        justify-content: flex-end;\n    margin-top: -5px; }\n    @media only screen and (max-width: 460px) {\n      .user-menu .logout {\n        -ms-flex-pack: start;\n            justify-content: flex-start; } }\n    .user-menu .logout a {\n      text-decoration: none !important; }\n\n@media only screen and (max-width: 460px) {\n  footer .container-social {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-align: center;\n        align-items: center;\n    -ms-flex-pack: center;\n        justify-content: center; } }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/scss/src/scss/base/_reset.scss","D:/workspaces/lunes/lunes-purchase/src/scss/src/scss/base/_color.scss"],"names":[],"mappings":"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","file":"main.scss","sourcesContent":["@import 'color';\r\n\r\n$break-small: 320px;\r\n$break-large: 1200px;\r\n\r\ninput {\r\n  outline: none;\r\n}\r\n\r\nbody {\r\n  background-color: $primary;\r\n  font-family: 'Roboto', sans-serif;\r\n  color: #fff;\r\n  font-size: 14px;\r\n  line-height: 20px;\r\n  font-weight: 100;\r\n};\r\n\r\n*, *:before, *:after {\r\n  box-sizing: border-box;\r\n  position: relative;\r\n  -webkit-box-sizing: border-box;\r\n}\r\n\r\n.center {\r\n  position: fixed;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n  height: 100%;\r\n  overflow: auto;\r\n  overflow-y: auto;\r\n  @media (min-width: 768px) {\r\n    max-height: 780px;\r\n  }\r\n}\r\n\r\nh1, h2, h3, h4 {\r\n  font-family: 'Offside', cursive;\r\n  line-height: 1.4em;\r\n}\r\n\r\nh2 {\r\n  font-size: 4em;\r\n  line-height: 1em;\r\n}\r\nh3 {\r\n  font-size: 2em;\r\n  line-height: 1.3em;\r\n}\r\n\r\n.txt-green {\r\n  color: $green;\r\n}\r\n\r\n.txt-center {\r\n  text-align: center!important;\r\n}\r\n\r\n.txt-left {\r\n  text-align: left!important;\r\n}\r\n\r\n.txt-right {\r\n  text-align: right!important;\r\n}\r\n.no-padding {\r\n  padding: 0;\r\n}\r\n.cursor-pointer {\r\n  cursor: pointer;\r\n}\r\n\r\n.round-menu {\r\n  text-decoration: none;\r\n  padding: 10px;\r\n  img {\r\n    vertical-align: middle; \r\n  }\r\n}\r\n\r\n.modal-backdrop {\r\n  background-color: $primary;\r\n  opacity: 0.7;\r\n  text-align: center;\r\n}\r\n/* Logo */\r\n.logo {\r\n  font-size: 40px;\r\n  font-family: 'Offside', cursive;\r\n  letter-spacing: -7px;\r\n}\r\n\r\n/* Header */\r\n.header {\r\n  margin: 20px 0;\r\n  display: flex;\r\n  align-items: center;\r\n  padding: 10px 0;\r\n}\r\n\r\n.nav-menu {\r\n  padding-left: 0;\r\n  width: 100%;\r\n}\r\n\r\n/* MENU horizontal */\r\nul.menu {\r\n  padding-right: 0;\r\n  &.horizontal {\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    justify-content: space-around;\r\n    li {\r\n      list-style: none;\r\n      padding: 10px;\r\n      a {\r\n        text-transform: uppercase;\r\n        text-decoration: none;\r\n        color: #fff;\r\n        &:hover {\r\n          color: $green;\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n// TODO: verificar se pode mesclar essa com a de cima\r\n.menu-top {\r\n  display: flex;\r\n  flex-direction: row;\r\n  list-style: none;\r\n  color: #fff;\r\n  text-transform: uppercase;\r\n  margin: 0;\r\n  a {\r\n    padding: 20px;  \r\n    color: #fff;\r\n    text-decoration: none;\r\n  }\r\n  li {  \r\n    margin-right: 15px;\r\n    font-size: 12px;\r\n    min-height: 2.2rem;\r\n    &:hover {\r\n      border-bottom: 2px solid $green;      \r\n      a {\r\n        color: $green;\r\n      }\r\n    }\r\n  }\r\n  .active {\r\n    border-bottom: 2px solid $green;\r\n    a {\r\n      color: $green;\r\n    }\r\n  }\r\n}\r\n\r\n/* authentication */\r\n.authentication {\r\n  margin-top: 50px;\r\n  .title {\r\n    margin: 20px 0;\r\n  }\r\n}\r\n\r\n.error-fields {\r\n  padding: 10px;\r\n  background-color: $yellow;\r\n  color: #9b853b;\r\n  border-radius: 5px;\r\n  margin-left: 10px;\r\n  margin-bottom: 20px;\r\n}\r\n \r\n/* Modal Customized */\r\n.modal {\r\n  margin: 20px;\r\n  background-color: $primary;\r\n  border-radius: 5px;\r\n  box-shadow: $primary 1px 1px 17px 5px;\r\n\r\n  .icon-close {\r\n    text-align: center;\r\n    position: absolute;\r\n    right: 30px;\r\n    padding: 0 10px;\r\n    cursor: pointer;\r\n    font-weight: bold;\r\n  }\r\n  \r\n  .modal-title{\r\n    margin-left:2em;\r\n    font-weight:bold;\r\n  }\r\n\r\n  .modal-header {\r\n    border: 0;\r\n  }\r\n  \r\n  .modal-content {\r\n    background-color: transparent;\r\n    padding: 10px;\r\n    border: 0;\r\n\r\n    .content {\r\n      background-color: $primary;\r\n      border-radius: 5px;\r\n      box-shadow: #311d53 1px 1px 32px 0px;\r\n      color: #fff;\r\n      padding: 20px;\r\n      margin: 20px;\r\n      max-height: 100%;\r\n      \r\n      overflow-y: overlay;\r\n      border: solid 8px #4c2b82;\r\n    }\r\n\r\n    /*\r\n    *  SCROLL BAR\r\n    */\r\n    .content::-webkit-scrollbar-track\r\n    {\r\n      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);\r\n      background-color: #4c2b82;\r\n    }\r\n    .content::-webkit-scrollbar\r\n    {\r\n      width: 6px;\r\n      background-color: #4c2b82;\r\n    }\r\n    .content::-webkit-scrollbar-thumb\r\n    {\r\n      background-color: #4f2f85;\r\n    }\r\n\r\n    .footer {\r\n      display: flex;\r\n      text-align: left;\r\n      align-items: center;\r\n      flex-direction: column;\r\n    }\r\n\r\n  }\r\n\r\n}\r\n\r\n/* container button */\r\n.area-button {\r\n  text-align: center;\r\n  padding: 10px;\r\n  \r\n  /* primary-button */\r\n  .primary-button {\r\n    border: 0;\r\n    border-radius: 22px;\r\n    padding: 11px 80px;\r\n    text-align: center;\r\n    background-color: #4cd566;\r\n    color: #fff;\r\n    font-size: 16px;\r\n    transition: all .3s ease-in-out;\r\n    text-decoration: none;\r\n    &:hover {\r\n      background-color: $darkGreen;\r\n    }\r\n  }\r\n\r\n  /* disabled button */\r\n  .disabled-button {\r\n    padding: 10px 80px;\r\n    border: 0px solid #4e1f85;\r\n    -webkit-border-radius: 25px; \r\n    -moz-border-radius: 25px;\r\n    border-radius: 25px;\r\n    font-size: 16px;\r\n    text-decoration:none; \r\n    display:inline-block;\r\n    text-shadow: -1px -1px 0 rgba(0,0,0,0.3); \r\n    color: #FFFFFF;\r\n    background-color: #6929B3; \r\n    background-image: -webkit-gradient(linear, left top, left bottom, from(#6929B3), to(#6622B3));\r\n    background-image: -webkit-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -moz-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -ms-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -o-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: linear-gradient(to bottom, #6929B3, #6622B3);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6929B3, endColorstr=#6622B3);\r\n  }\r\n\r\n  .rounded-button {\r\n    border: 0;\r\n    border-radius: 100%;\r\n    width: 40px;\r\n    height: 40px;\r\n    background-color: #fff;\r\n    color: $green;\r\n    box-shadow: #444343 0px 1px 6px 0px;\r\n  }\r\n\r\n}\r\n\r\n/* Input customized */\r\n.input-form label {\r\n  display: block;\r\n  font-size: 10px;\r\n  padding: 0;\r\n  margin: 0;\r\n  color: #90df4a;\r\n}\r\n.input-form input {\r\n  width: 90%;\r\n  border: 0;\r\n  border-bottom: solid 1px #9c9c9c;\r\n  background-color: transparent;\r\n  padding: 10px 0;\r\n  margin-bottom: 15px;\r\n  color: #fff;\r\n  outline: none;\r\n  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */\r\n      color: #adadad;\r\n      opacity: 1; /* Firefox */\r\n  }\r\n\r\n  &:-ms-input-placeholder { /* Internet Explorer 10-11 */\r\n      color: #adadad;\r\n  }\r\n\r\n  &::-ms-input-placeholder { /* Microsoft Edge */\r\n      color: #adadad;\r\n  }\r\n}\r\n\r\n/* Custom Checkbox */\r\ninput[type=checkbox].css-checkbox {\r\n\theight:1px; width:1px; margin:-1px; padding:0; border:0;\r\n}\r\n\r\ninput[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {\r\n\tpadding-left:23px;\r\n  height:18px; \r\n\tdisplay:inline-block;\r\n\tline-height:18px;\r\n\tbackground-repeat:no-repeat;\r\n\tbackground-position: 0 0;\r\n\tfont-size:12px;\r\n\tvertical-align:middle;\r\n\tcursor:pointer;\r\n\r\n}\r\n\r\ninput[type=checkbox].css-checkbox:checked + label.css-label, input[type=checkbox].css-checkbox + label.css-label.chk {\r\n\tbackground-position: 0 -18px;\r\n}\r\nlabel.css-label {\r\n\tbackground-image:url(https://res.cloudinary.com/luneswallet/image/upload/v1519425382/check.png);\r\n\t-webkit-touch-callout: none;\r\n\t-webkit-user-select: none;\r\n\t-khtml-user-select: none;\r\n\t-moz-user-select: none;\r\n\t-ms-user-select: none;\r\n\tuser-select: none;\r\n}\r\n\r\nbutton:focus {\r\n    outline: none !important;\r\n}\r\n\r\nfooter {\r\n  .social {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n    li {\r\n      list-style: none;\r\n      padding: 2rem 0 0 1rem;\r\n      img {\r\n        width: 30px;\r\n      }\r\n    }\r\n  }\r\n  .container-footer {\r\n    margin-top: 30px;\r\n    padding: 10px;\r\n    background-color: #432773;\r\n    border-radius: 5px;\r\n    .row {\r\n      padding: 15px;\r\n      display: flex;\r\n      justify-content: space-between;\r\n      a {\r\n        color: #fff;\r\n      }\r\n    }\r\n  }\r\n}\r\n.user-menu {\r\n  position: relative;\r\n  display: inline-block;\r\n  height: 100px;\r\n  margin-top: 1rem;\r\n\r\n  @media only screen and (max-width: 460px) {\r\n    height: 150px;\r\n    text-align: center;\r\n    width: 100%;\r\n  }\r\n\r\n  a {\r\n    color: #fff;\r\n    text-decoration: none;\r\n  }\r\n\r\n  .logout {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n    margin-top: -5px;\r\n\r\n    @media only screen and (max-width: 460px) {\r\n      justify-content: flex-start;\r\n    }\r\n\r\n    // TODO: aplicar suavidade ao exibir o menu\r\n    // .ng-hide {\r\n    //   opacity: 0;\r\n    // }\r\n    \r\n    // .ng-hide-add,\r\n    // .ng-hide-remove {\r\n    //   transition: all linear .5s;\r\n    // }\r\n\r\n    a {\r\n      text-decoration: none !important;\r\n    }\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 460px) {\r\n  footer .container-social {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n  }\r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #44af57;\r\n$darkGreen: #44af57;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
 	
 	// exports
 
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?1520104262472
+//# sourceMappingURL=app.js.map?v=1520302378306
