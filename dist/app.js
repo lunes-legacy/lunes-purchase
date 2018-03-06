@@ -52555,7 +52555,7 @@
 	              }, 0);
 	
 	
-	              this.totalLns = totalLns;
+	              this.totalLns = totalLns.toFixed(8);
 	
 	            case 2:
 	            case 'end':
@@ -83314,7 +83314,7 @@
 	                  _this2.getHistoryPhase(item.sale_phase_id);
 	
 	                  return {
-	                    total: total,
+	                    total: total.toFixed(8),
 	                    created: item.created,
 	                    phase: _this2.phaseName,
 	                    deposit_value: parseFloat(item.deposit_value),
@@ -85041,4 +85041,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?v=1520302378306
+//# sourceMappingURL=app.js.map?v=1520304345221

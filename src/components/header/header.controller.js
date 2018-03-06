@@ -70,7 +70,7 @@ class HeaderController {
       return total + parseFloat(item.credit_value) + parseFloat(item.bonus_value);
     }, 0);
 
-    this.totalLns = totalLns;
+    this.totalLns = totalLns.toFixed(8);
   }
 
   logout() {

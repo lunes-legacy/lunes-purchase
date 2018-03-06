@@ -90,7 +90,7 @@ class DashboardController {
         this.getHistoryPhase(item.sale_phase_id);
 
         return {
-          total: total,
+          total: total.toFixed(8),
           created: item.created,
           phase: this.phaseName,
           deposit_value: parseFloat(item.deposit_value),
