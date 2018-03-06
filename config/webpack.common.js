@@ -10,7 +10,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, '..', 'dist'),
-    filename: `[name].js?${new Date().getTime()}`
+    filename: `[name].js?v=${new Date().getTime()}`
   },
   plugins: [
     new HtmlWebpackPlugin({
