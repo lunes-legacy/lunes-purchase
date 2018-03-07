@@ -75,9 +75,9 @@ angular.module('myApp', [
 )
 .config(($stateProvider, $translateProvider, $urlRouterProvider, $httpProvider) => {
   'ngInject';
-  console.log('antes')
+
   smartlookClient.init('7bf326969e67ec2ce0e10f3c4be929ecdd63771a')
-  console.log('depois')
+
   $translateProvider.useSanitizeValueStrategy('escape');
   $translateProvider.useSanitizeValueStrategy('escapeParameters');
   $translateProvider.translations('en', en);

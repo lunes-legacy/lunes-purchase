@@ -1,4 +1,5 @@
 import LunesLib from 'lunes-lib';
+import smartlookClient from 'smartlook-client';
 import { STORAGE_KEY, COINS_CONSTANT } from '../constants/index';
 
 class DashboardController {
@@ -17,6 +18,17 @@ class DashboardController {
     this.showUserMenu = false;
     this.getHistory();
     this.getProcessedBalanceUser();
+
+    if (this.currentUser) {
+      const userTrack = { name: this.currentUser.fullname, email: this.currentUser.email, ownCoupon: this.currentUser.ownCoupon, coupon: this.currentUser.coupon, confirmIcoTerm: this.currentUser.confirmIcoTerm };
+      if (this.currentUser.depositWallet){
+        userTrack.btcAddress = this.currentUser.depositWallet.BTC.address;
+        userTrack.ltcAddress = this.currentUser.depositWallet.LTC.address;
+        userTrack.ethAddress = this.currentUser.depositWallet.ETH.address;
+      }
+      smartlookClient.identify(this.currentUser._id, userTrack );
+    }
+      
   }
 
   async getProcessedBalanceUser() {

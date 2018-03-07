@@ -37,7 +37,7 @@
 
         <!-- CALCULATOR -->
         <div class="row">
-          <div class="calculator col-lg-8 offset-lg-2">
+          <div class="calculator col-lg-12">
             <div class="select-coin">
               <ul>
                 <li ng-repeat="coin in $ctrl.coins" ng-click="$ctrl.selectCoin(coin)" ng-class="coin.selected ? 'selected': ''">
@@ -48,7 +48,11 @@
             <div class="valueCripto">
               <input type="text" class="input-calculator" name="value" ng-model="$ctrl.valueToDeposit" ng-change="$ctrl.calcValue()" />
               <div class="lunesAmount">
-                <img class="flag-lns" src="https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png" alt="Icon Lunes">
+                <img style="position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 99;" class="flag-lns" src="https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png"
+                  alt="Icon Lunes">
                 <input type="text" placeholder="000.000" class="input-calculator" name="value" ng-model="$ctrl.valueToReceive" ng-change="$ctrl.calcValue('LNS')"
                 />
               </div>
@@ -64,7 +68,7 @@
 
         <!-- SHOW TOTAL -->
         <div class="row">
-          <div class="amountBalance col-lg-8 offset-lg-2">
+          <div class="amountBalance col-lg-12">
             <div class="total">
               <div class="result">
                 <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>

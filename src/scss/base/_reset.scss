@@ -400,6 +400,7 @@ footer {
   display: inline-block;
   height: 100px;
   margin-top: 1rem;
+  padding-left: 10px;
 
   @media only screen and (max-width: 460px) {
     height: 150px;
@@ -442,5 +443,10 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .menu-top {
+    a {
+      padding: 0;
+    }
   }
 }

@@ -8904,47 +8904,47 @@
 	
 	var _components2 = _interopRequireDefault(_components);
 	
-	var _login = __webpack_require__(686);
+	var _login = __webpack_require__(691);
 	
 	var _login2 = _interopRequireDefault(_login);
 	
-	var _signup = __webpack_require__(695);
+	var _signup = __webpack_require__(697);
 	
 	var _signup2 = _interopRequireDefault(_signup);
 	
-	var _buy = __webpack_require__(700);
+	var _buy = __webpack_require__(702);
 	
 	var _buy2 = _interopRequireDefault(_buy);
 	
-	var _faq = __webpack_require__(705);
+	var _faq = __webpack_require__(707);
 	
 	var _faq2 = _interopRequireDefault(_faq);
 	
-	var _dashboard = __webpack_require__(710);
+	var _dashboard = __webpack_require__(712);
 	
 	var _dashboard2 = _interopRequireDefault(_dashboard);
 	
-	var _fix = __webpack_require__(715);
+	var _fix = __webpack_require__(717);
 	
 	var _fix2 = _interopRequireDefault(_fix);
 	
-	var _language = __webpack_require__(720);
+	var _language = __webpack_require__(722);
 	
 	var _language2 = _interopRequireDefault(_language);
 	
-	var _en = __webpack_require__(721);
+	var _en = __webpack_require__(723);
 	
 	var _en2 = _interopRequireDefault(_en);
 	
-	var _pt = __webpack_require__(722);
+	var _pt = __webpack_require__(724);
 	
 	var _pt2 = _interopRequireDefault(_pt);
 	
 	var _index = __webpack_require__(685);
 	
-	var _services = __webpack_require__(723);
+	var _services = __webpack_require__(725);
 	
-	__webpack_require__(730);
+	__webpack_require__(732);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -8985,9 +8985,8 @@
 	}).config(["$stateProvider", "$translateProvider", "$urlRouterProvider", "$httpProvider", function ($stateProvider, $translateProvider, $urlRouterProvider, $httpProvider) {
 	  'ngInject';
 	
-	  console.log('antes');
 	  _smartlookClient2.default.init('7bf326969e67ec2ce0e10f3c4be929ecdd63771a');
-	  console.log('depois');
+	
 	  $translateProvider.useSanitizeValueStrategy('escape');
 	  $translateProvider.useSanitizeValueStrategy('escapeParameters');
 	  $translateProvider.translations('en', _en2.default);
@@ -67968,6 +67967,8 @@
 	
 	var _header2 = _interopRequireDefault(_header);
 	
+	__webpack_require__(686);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var LunesHeaderComponent = {
@@ -67985,7 +67986,7 @@
 /* 476 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"row container-logo-header\" style=\"padding: 10px 0;\">\n  <!-- LOGO -->\n  <div class=\"col-sm-12 col-md-4 col-lg-4 logo\" ng-click=\"$ctrl.goToHome()\">\n    <span>L</span>\n    <span>u</span>\n    <span>n</span>\n    <span class=\"txt-green\">e</span>\n    <span>s</span>\n  </div>\n\n  <!-- PRICE CURRENT COIN and LOGOUT -->\n  <div class=\"col-sm-12 col-md-8 col-lg-8 container-data\" ng-show=\"$ctrl.showlinks\">\n    <div class=\"col-xs-12 col-md-6 col-lg-6 coupom\">\n      {{'OWN_COUPON' | translate}}\n      <span style=\"font-weight: bold;color: #3bbe6e;\">{{$ctrl.currentUser.ownCoupon}}</span>\n    </div>\n    <div class=\"col-xs-12 col-md-6 col-lg-6 container-balance\">\n      <span>{{'MY_BALANCE' | translate}}</span>\n      <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\"> {{$ctrl.totalLns}}\n    </div>\n  </div>\n</div>\n\n<!-- QUOTATION COINS -  btc, eth, ltc -->\n<div style=\"margin: 10px 0; display: flex; align-items: center; justify-content: flex-end;\" ng-show=\"$ctrl.showlinks\">\n  <small style=\"padding: 0 10px;color: #FFC107;\">\n    <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_btc.svg\" alt=\"bitcoin\" style=\"width: 13px;\">&nbsp;$ {{$ctrl.balanceCoins.BTC.balance.PRICE}}</small> |\n\n  <small style=\"padding: 0 10px;color: #507f94;\">\n    <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon_ltc.svg\" alt=\"litecoin\" style=\"width: 13px;\">&nbsp;$ {{$ctrl.balanceCoins.LTC.balance.PRICE}}</small> |\n\n  <small style=\"padding: 0 10px;color: #778084;\">\n    <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_eth.svg\" alt=\"ethereum\" style=\"width: 10px;\">&nbsp;$ {{$ctrl.balanceCoins.ETH.balance.PRICE}}</small>\n</div>\n\n<!-- MENU and SOCIAL MEDIA links -->\n<nav class=\"header\" ng-show=\"$ctrl.showlinks\">\n  <div class=\"col-12 nav-menu\">\n    <ul class=\"menu menu-top\" style=\"padding: 0;margin: 0;\">\n      <li ng-class=\"{active: $ctrl.location === 'buy'}\">\n        <a href=\"#!/buy\">{{'BUY' | translate}}</a>\n      </li>\n      <li ng-class=\"{active: $ctrl.location === 'historic'}\">\n        <a href=\"#!/historic\">{{'PURCHASE_HISTORY' | translate}}</a>\n      </li>\n    </ul>\n  </div>\n</nav>"
+	module.exports = "<div class=\"row container-logo-header\" style=\"padding: 10px 0;\">\n  <!-- LOGO -->\n  <div class=\"col-sm-12 col-md-4 col-lg-4 logo\" ng-click=\"$ctrl.goToHome()\">\n    <span>L</span>\n    <span>u</span>\n    <span>n</span>\n    <span class=\"txt-green\">e</span>\n    <span>s</span>\n  </div>\n\n  <!-- PRICE CURRENT COIN and LOGOUT -->\n  <div class=\"col-sm-12 col-md-8 col-lg-8 container-data\" ng-show=\"$ctrl.showlinks\">\n    <div class=\"col-xs-12 col-md-6 col-lg-6 coupom\">\n      {{'OWN_COUPON' | translate}}\n      <span style=\"font-weight: bold;color: #3bbe6e;\">{{$ctrl.currentUser.ownCoupon}}</span>\n    </div>\n    <div class=\"col-xs-12 col-md-6 col-lg-6 container-balance\">\n      <span>{{'MY_BALANCE' | translate}}</span>\n      <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\"> {{$ctrl.totalLns}}\n    </div>\n  </div>\n</div>\n\n<!-- QUOTATION COINS -  btc, eth, ltc -->\n<div class=\"quotation-coins\" ng-show=\"$ctrl.showlinks\">\n  <small style=\"padding: 0 10px;color: #FFC107;\">\n    <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_btc.svg\" alt=\"bitcoin\" style=\"width: 13px;\">&nbsp;$ {{$ctrl.balanceCoins.BTC.balance.PRICE}}</small> |\n\n  <small style=\"padding: 0 10px;color: #507f94;\">\n    <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon_ltc.svg\" alt=\"litecoin\" style=\"width: 13px;\">&nbsp;$ {{$ctrl.balanceCoins.LTC.balance.PRICE}}</small> |\n\n  <small style=\"padding: 0 10px;color: #778084;\">\n    <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_eth.svg\" alt=\"ethereum\" style=\"width: 10px;\">&nbsp;$ {{$ctrl.balanceCoins.ETH.balance.PRICE}}</small>\n</div>\n\n<!-- MENU and SOCIAL MEDIA links -->\n<nav class=\"header\" ng-show=\"$ctrl.showlinks\">\n  <div class=\"col-12 nav-menu\">\n    <ul class=\"menu menu-top\" style=\"padding: 0;margin: 0;\">\n      <li ng-class=\"{active: $ctrl.location === 'buy'}\">\n        <a href=\"#!/buy\">{{'BUY' | translate}}</a>\n      </li>\n      <li ng-class=\"{active: $ctrl.location === 'historic'}\">\n        <a href=\"#!/historic\">{{'PURCHASE_HISTORY' | translate}}</a>\n      </li>\n    </ul>\n  </div>\n</nav>"
 
 /***/ },
 /* 477 */
@@ -104766,21 +104767,534 @@
 /* 686 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(687);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(689)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js?config=sassLoader!./header.component.scss", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/postcss-loader/index.js!../../../node_modules/sass-loader/index.js?config=sassLoader!./header.component.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 687 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(688)(true);
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".quotation-coins {\n  margin: 10px 0;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: end;\n      justify-content: flex-end; }\n\n@media only screen and (max-width: 426px) {\n  .quotation-coins {\n    -ms-flex-pack: center;\n        justify-content: center; } }\n", "", {"version":3,"sources":["/home/felipe/lunes-purchase/src/components/header/src/components/header/header.component.scss"],"names":[],"mappings":"AAAA;EACE,eAAc;EACd,qBAAa;EAAb,cAAa;EACb,uBAAmB;MAAnB,oBAAmB;EACnB,mBAAyB;MAAzB,0BAAyB,EAC1B;;AAED;EACE;IACE,sBAAuB;QAAvB,wBAAuB,EACxB,EAAA","file":"header.component.scss","sourcesContent":[".quotation-coins {\n  margin: 10px 0; \n  display: flex; \n  align-items: center; \n  justify-content: flex-end;\n}\n\n@media only screen and (max-width: 426px) {\n  .quotation-coins {\n    justify-content: center;\n  }  \n}"],"sourceRoot":""}]);
+	
+	// exports
+
+
+/***/ },
+/* 688 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function(useSourceMap) {
+		var list = [];
+	
+		// return the list of modules as css string
+		list.toString = function toString() {
+			return this.map(function (item) {
+				var content = cssWithMappingToString(item, useSourceMap);
+				if(item[2]) {
+					return "@media " + item[2] + "{" + content + "}";
+				} else {
+					return content;
+				}
+			}).join("");
+		};
+	
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+	
+	function cssWithMappingToString(item, useSourceMap) {
+		var content = item[1] || '';
+		var cssMapping = item[3];
+		if (!cssMapping) {
+			return content;
+		}
+	
+		if (useSourceMap && typeof btoa === 'function') {
+			var sourceMapping = toComment(cssMapping);
+			var sourceURLs = cssMapping.sources.map(function (source) {
+				return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+			});
+	
+			return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+		}
+	
+		return [content].join('\n');
+	}
+	
+	// Adapted from convert-source-map (MIT)
+	function toComment(sourceMap) {
+		// eslint-disable-next-line no-undef
+		var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+		var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+	
+		return '/*# ' + data + ' */';
+	}
+
+
+/***/ },
+/* 689 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			// Test for IE <= 9 as proposed by Browserhacks
+			// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+			// Tests for existence of standard globals is to allow style-loader 
+			// to operate correctly into non-standard environments
+			// @see https://github.com/webpack-contrib/style-loader/issues/177
+			return window && document && document.all && !window.atob;
+		}),
+		getElement = (function(fn) {
+			var memo = {};
+			return function(selector) {
+				if (typeof memo[selector] === "undefined") {
+					memo[selector] = fn.call(this, selector);
+				}
+				return memo[selector]
+			};
+		})(function (styleTarget) {
+			return document.querySelector(styleTarget)
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [],
+		fixUrls = __webpack_require__(690);
+	
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+	
+		options = options || {};
+		options.attrs = typeof options.attrs === "object" ? options.attrs : {};
+	
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+	
+		// By default, add <style> tags to the <head> element
+		if (typeof options.insertInto === "undefined") options.insertInto = "head";
+	
+		// By default, add <style> tags to the bottom of the target
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+	
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+	
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	};
+	
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+	
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+	
+	function insertStyleElement(options, styleElement) {
+		var styleTarget = getElement(options.insertInto)
+		if (!styleTarget) {
+			throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
+		}
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				styleTarget.insertBefore(styleElement, styleTarget.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				styleTarget.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				styleTarget.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			styleTarget.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+	
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+	
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		options.attrs.type = "text/css";
+	
+		attachTagAttrs(styleElement, options.attrs);
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+	
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		options.attrs.type = "text/css";
+		options.attrs.rel = "stylesheet";
+	
+		attachTagAttrs(linkElement, options.attrs);
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+	
+	function attachTagAttrs(element, attrs) {
+		Object.keys(attrs).forEach(function (key) {
+			element.setAttribute(key, attrs[key]);
+		});
+	}
+	
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+	
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement, options);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+	
+		update(obj);
+	
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+	
+	var replaceText = (function () {
+		var textStore = [];
+	
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+	
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+	
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+	
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+	
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+	
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+	
+	function updateLink(linkElement, options, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+	
+		/* If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
+		and there is no publicPath defined then lets turn convertToAbsoluteUrls
+		on by default.  Otherwise default to the convertToAbsoluteUrls option
+		directly
+		*/
+		var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
+	
+		if (options.convertToAbsoluteUrls || autoFixUrls){
+			css = fixUrls(css);
+		}
+	
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+	
+		var blob = new Blob([css], { type: "text/css" });
+	
+		var oldSrc = linkElement.href;
+	
+		linkElement.href = URL.createObjectURL(blob);
+	
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
+
+/***/ },
+/* 690 */
+/***/ function(module, exports) {
+
+	
+	/**
+	 * When source maps are enabled, `style-loader` uses a link element with a data-uri to
+	 * embed the css on the page. This breaks all relative urls because now they are relative to a
+	 * bundle instead of the current page.
+	 *
+	 * One solution is to only use full urls, but that may be impossible.
+	 *
+	 * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
+	 *
+	 * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
+	 *
+	 */
+	
+	module.exports = function (css) {
+	  // get current location
+	  var location = typeof window !== "undefined" && window.location;
+	
+	  if (!location) {
+	    throw new Error("fixUrls requires window.location");
+	  }
+	
+		// blank or null?
+		if (!css || typeof css !== "string") {
+		  return css;
+	  }
+	
+	  var baseUrl = location.protocol + "//" + location.host;
+	  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
+	
+		// convert each url(...)
+		/*
+		This regular expression is just a way to recursively match brackets within
+		a string.
+	
+		 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
+		   (  = Start a capturing group
+		     (?:  = Start a non-capturing group
+		         [^)(]  = Match anything that isn't a parentheses
+		         |  = OR
+		         \(  = Match a start parentheses
+		             (?:  = Start another non-capturing groups
+		                 [^)(]+  = Match anything that isn't a parentheses
+		                 |  = OR
+		                 \(  = Match a start parentheses
+		                     [^)(]*  = Match anything that isn't a parentheses
+		                 \)  = Match a end parentheses
+		             )  = End Group
+	              *\) = Match anything and then a close parens
+	          )  = Close non-capturing group
+	          *  = Match anything
+	       )  = Close capturing group
+		 \)  = Match a close parens
+	
+		 /gi  = Get all matches, not the first.  Be case insensitive.
+		 */
+		var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
+			// strip quotes (if they exist)
+			var unquotedOrigUrl = origUrl
+				.trim()
+				.replace(/^"(.*)"$/, function(o, $1){ return $1; })
+				.replace(/^'(.*)'$/, function(o, $1){ return $1; });
+	
+			// already a full url? no change
+			if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/)/i.test(unquotedOrigUrl)) {
+			  return fullMatch;
+			}
+	
+			// convert the url to a full url
+			var newUrl;
+	
+			if (unquotedOrigUrl.indexOf("//") === 0) {
+			  	//TODO: should we add protocol?
+				newUrl = unquotedOrigUrl;
+			} else if (unquotedOrigUrl.indexOf("/") === 0) {
+				// path should be relative to the base url
+				newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
+			} else {
+				// path should be relative to current directory
+				newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
+			}
+	
+			// send back the fixed url(...)
+			return "url(" + JSON.stringify(newUrl) + ")";
+		});
+	
+		// send back the fixed css
+		return fixedCss;
+	};
+
+
+/***/ },
+/* 691 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	
-	var _loginComponent = __webpack_require__(687);
+	var _loginComponent = __webpack_require__(692);
 	
 	var _loginComponent2 = _interopRequireDefault(_loginComponent);
 	
-	var _login = __webpack_require__(688);
+	var _login = __webpack_require__(693);
 	
 	var _login2 = _interopRequireDefault(_login);
 	
-	__webpack_require__(690);
+	__webpack_require__(695);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -104792,13 +105306,13 @@
 	exports.default = LoginComponent;
 
 /***/ },
-/* 687 */
+/* 692 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"container login\">\n\n  <!-- MODAL - criar directiva depois -->\n  <div id=\"modal-terms\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <div>\n        <script>\n          function openCity(evt, cityName) {\n            // Declare all variables\n            var i, tabcontent, tablinks;\n\n            // Get all elements with class=\"tabcontent\" and hide them\n            tabcontent = document.getElementsByClassName(\"tabcontent\");\n            for (i = 0; i < tabcontent.length; i++) {\n              tabcontent[i].style.display = \"none\";\n            }\n\n            // Get all elements with class=\"tablinks\" and remove the class \"active\"\n            tablinks = document.getElementsByClassName(\"tablinks\");\n            for (i = 0; i < tablinks.length; i++) {\n              tablinks[i].className = tablinks[i].className.replace(\" active\", \"\");\n            }\n\n            // Show the current tab, and add an \"active\" class to the button that opened the tab\n            document.getElementById(cityName).style.display = \"block\";\n            evt.currentTarget.className += \" active\";\n          }\n        </script>\n        <!-- Tab links -->\n        <div class=\"tab\">\n          <button class=\"tablinks\" onclick=\"openCity(event, 'terms_condition')\" id=\"defaultOpen\">{{'TERMS_CONDITION_TITLE' | translate}}</button>\n          <button class=\"tablinks\" onclick=\"openCity(event, 'representation_condition')\">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>\n        </div>\n        <!-- Tab content -->\n        <div id=\"terms_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsCondition\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n\n        <div id=\"representation_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsRepresentation\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG1\" id=\"checkboxG1\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check1\" ng-change=\"$ctrl.allCheckboxIsChecked()\">\n            <label for=\"checkboxG1\" class=\"css-label radGroup1 clr\"> {{'US_CITIZEN' | translate}} </label>\n          </div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG2\" id=\"checkboxG2\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check2\">\n            <label for=\"checkboxG2\" class=\"css-label radGroup1 clr\"> {{'AGREE_TERM' | translate}} </label>\n          </div>\n          <!--<div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG3\" id=\"checkboxG3\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check3\">\n            <label for=\"checkboxG3\" class=\"css-label radGroup1 clr\"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>\n          </div>-->\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG4\" id=\"checkboxG4\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check4\">\n            <label for=\"checkboxG4\" class=\"css-label radGroup1 clr\"> {{'AGREE_FUTURE_VALUE' | translate}}</label>\n          </div>\n          <div class=\"area-button\">\n            <button ng-show=\"$ctrl.allCheckboxIsChecked()\" class=\"primary-button\" data-ng-click=\"$ctrl.doAccept()\" data-dismiss=\"modal\">{{'AGREE' | translate}}</button>\n            <!--<button ng-show=\"!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()\" class=\"disabled-button\">{{'AGREE' | translate}}</button>-->\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- MODAL - criar directiva change password -->\n  <div id=\"modal-change-password\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\" style=\"height: 100%;\">\n\n      <div ng-show=\"$ctrl.loadingResetPass\" class=\"loadingResetPass\">\n        {{'LOADING' | translate}}\n      </div>\n\n      <div ng-show=\"$ctrl.showMsgEmailSent\" class=\"showEmailSent\">\n        <h3 for=\"change\">{{'EMAIL_SENT' | translate}}</h3>\n        <div style=\"width: 100px;\">\n          <button class=\"icon-close\" data-dismiss=\"modal\">{{'CLOSE' | translate}}</button>\n        </div>\n      </div>\n\n      <form class=\"form-msg-pass\" ng-show=\"!$ctrl.loadingResetPass && !$ctrl.showMsgEmailSent\">\n        <div style=\"text-align: center;\">\n          <h3 for=\"change\">{{'CHANGE_PASSWORD_INSTRUCTION' | translate}}</h3>\n        </div>\n        <div ng-show=\"$ctrl.showErrorMsgEmailSent\" class=\"showErrorMsg\">\n          <h5 for=\"change\">{{'EMAIL_NOT_SENT' | translate}}</h5>\n          <div style=\"width: 100px;\">\n            <button style=\"border: 0;\n              padding: 5px 20px;\n              border-radius: 20px;\n              cursor: pointer;\" class=\"icon-close\" data-dismiss=\"modal\">{{'CLOSE' | translate}}</button>\n          </div>\n        </div>\n\n        <div>\n          <input type=\"text\" name=\"change-password\" ng-model=\"$ctrl.emailToChangePassword\" style=\"    border: 0;\n          width: 200px;\n          border-bottom: solid 1px #734cb3;\n          background-color: transparent;\n          padding: 20px;\n          color: #fff;\n          margin: 20px;\">\n        </div>\n        <div>\n          <button ng-click=\"$ctrl.doChangePassword()\" style=\"    border: 0;\n          padding: 5px 20px;\n          border-radius: 20px;\n          cursor: pointer;\">{{'CHANGE_PASSWORD' | translate}}</button>\n        </div>\n      </form>\n    </div>\n  </div>\n\n  <lunesheader showlogout='false' showlinks='false'></lunesheader>\n\n  <!-- AUTHENTICATION FORM -->\n  <section class=\"authentication\">\n    <div>\n      <form name=\"$ctrl.loginForm\">\n        <div class=\"row\">\n\n          <div class=\"col-12 title\">\n            <h4>{{'WELCOME' | translate}}</h4>\n          </div>\n\n          <div class=\"col-12 col-lg-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n          <div class=\"col-lg-6 col-xs-12\">\n            <div class=\"input-form\">\n              <label for=\"input-email\">{{'EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.email\" id=\"input-email\" name=\"email\" required type=\"text\" placeholder=\"{{'EMAIL_PLACEHOLDER' | translate}}\">\n            </div>\n            <div class=\"input-form\">\n              <label for=\"input-password\">{{'PASSWORD' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.password\" id=\"input-password\" name=\"password\" minlength=\"8\" required type=\"password\" placeholder=\"{{'PASSWORD_PLACEHOLDER' | translate}}\">\n            </div>\n            <div class=\"area-button txt-center\">\n              <button class=\"rounded-button\" data-toggle=\"modal\" ng-click=\"$ctrl.doLogin()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\" />\n              </button>\n            </div>\n            <div class=\"dont-have-account\">\n              <label>{{'DONT_HAVE_ACCOUNT' | translate}}</label>\n              <label class=\"txt-green label-signup\" ng-click=\"$ctrl.goToSignup()\">{{'SIGNUP' | translate}}</label>\n              <!--<p class=\"cursor-pointer\">{{'RESET_PASSWORD' | translate}}</p>-->\n            </div>\n            <div style=\"margin: 5px 0 30px 0;\">\n              <label>{{'DO_YOU_CHANGE_PASSWORD' | translate}}</label>\n              <label class=\"txt-green label-signup\" data-toggle=\"modal\" data-target=\"#modal-change-password\">{{'CHANGE_PASSWORD' | translate}}</label>\n            </div>\n\n          </div>\n\n          <div class=\"col-lg-5 col-xs-12\" style=\"margin: 5px 0 30px 0;\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519751608/pre_ico_img.png\" width=\"100%\" alt=\"next\" />\n          </div>\n\n          <div class=\"col-lg-4 col-xs-12\" ng-show=\"false\">\n            <div id=\"counter\" class=\"\">\n              <span id=\"coin_counter\" ng-show=\"false\">$ 00 000 000</span>\n              <div id=\"loading_bar\">\n                <div id=\"loading_bar_green\" style=\"width:50%;\"></div>\n              </div>\n              <div>\n                <div class=\"row\" style=\"text-align: center;\">\n                  <div class=\"col-xs-6 col-lg-6\">\n                    Pre-Ico\n                  </div>\n                  <div class=\"col-xs-6 col-lg-6\">\n                    Ico\n                  </div>\n                </div>\n\n                <!-- conter -->\n                <div class=\"row\" id=\"number\">\n                  <div class=\"col-xs-12\" id=\"time\">\n                    <div id=\"clockdiv\">\n                      <div>\n                        <span class=\"days\"></span>\n                        <div class=\"smalltext\">Days</div>\n                      </div>\n                      <div>\n                        <span class=\"hours\"></span>\n                        <div class=\"smalltext\">Hours</div>\n                      </div>\n                      <div>\n                        <span class=\"minutes\"></span>\n                        <div class=\"smalltext\">Minutes</div>\n                      </div>\n                      <div>\n                        <span class=\"seconds\"></span>\n                        <div class=\"smalltext\">Seconds</div>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n\n                <!-- hard cap -->\n                <div class=\"row\" id=\"number\">\n                  <div class=\"col-xs-12 col-lg-12\" id=\"hard-cap\">\n                    <p>Hard cap</p>\n                    <p>$ 100 000 000</p>\n                  </div>\n                </div>\n\n              </div>\n            </div>\n\n          </div>\n\n\n\n      </form>\n      </div>\n  </section>\n  </div>\n  <lunesfooter />"
+	module.exports = "<div class=\"container login\">\n\n  <!-- MODAL - criar directiva depois -->\n  <div id=\"modal-terms\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <div>\n        <script>\n          function openCity(evt, cityName) {\n            // Declare all variables\n            var i, tabcontent, tablinks;\n\n            // Get all elements with class=\"tabcontent\" and hide them\n            tabcontent = document.getElementsByClassName(\"tabcontent\");\n            for (i = 0; i < tabcontent.length; i++) {\n              tabcontent[i].style.display = \"none\";\n            }\n\n            // Get all elements with class=\"tablinks\" and remove the class \"active\"\n            tablinks = document.getElementsByClassName(\"tablinks\");\n            for (i = 0; i < tablinks.length; i++) {\n              tablinks[i].className = tablinks[i].className.replace(\" active\", \"\");\n            }\n\n            // Show the current tab, and add an \"active\" class to the button that opened the tab\n            document.getElementById(cityName).style.display = \"block\";\n            evt.currentTarget.className += \" active\";\n          }\n        </script>\n        <!-- Tab links -->\n        <div class=\"tab\">\n          <button class=\"tablinks\" onclick=\"openCity(event, 'terms_condition')\" id=\"defaultOpen\">{{'TERMS_CONDITION_TITLE' | translate}}</button>\n          <button class=\"tablinks\" onclick=\"openCity(event, 'representation_condition')\">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>\n        </div>\n        <!-- Tab content -->\n        <div id=\"terms_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsCondition\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n\n        <div id=\"representation_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsRepresentation\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG1\" id=\"checkboxG1\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check1\" ng-change=\"$ctrl.allCheckboxIsChecked()\">\n            <label for=\"checkboxG1\" class=\"css-label radGroup1 clr\"> {{'US_CITIZEN' | translate}} </label>\n          </div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG2\" id=\"checkboxG2\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check2\">\n            <label for=\"checkboxG2\" class=\"css-label radGroup1 clr\"> {{'AGREE_TERM' | translate}} </label>\n          </div>\n          <!--<div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG3\" id=\"checkboxG3\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check3\">\n            <label for=\"checkboxG3\" class=\"css-label radGroup1 clr\"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>\n          </div>-->\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG4\" id=\"checkboxG4\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check4\">\n            <label for=\"checkboxG4\" class=\"css-label radGroup1 clr\"> {{'AGREE_FUTURE_VALUE' | translate}}</label>\n          </div>\n          <div class=\"area-button\">\n            <button ng-show=\"$ctrl.allCheckboxIsChecked()\" class=\"primary-button\" data-ng-click=\"$ctrl.doAccept()\" data-dismiss=\"modal\">{{'AGREE' | translate}}</button>\n            <!--<button ng-show=\"!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()\" class=\"disabled-button\">{{'AGREE' | translate}}</button>-->\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- MODAL - criar directiva change password -->\n  <div id=\"modal-change-password\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\" style=\"height: 100%;\">\n\n      <div ng-show=\"$ctrl.loadingResetPass\" class=\"loadingResetPass\">\n        {{'LOADING' | translate}}\n      </div>\n\n      <div ng-show=\"$ctrl.showMsgEmailSent\" class=\"showEmailSent\">\n        <h3 for=\"change\">{{'EMAIL_SENT' | translate}}</h3>\n        <div style=\"width: 100px;\">\n          <button class=\"icon-close\" data-dismiss=\"modal\">{{'CLOSE' | translate}}</button>\n        </div>\n      </div>\n\n      <form class=\"form-msg-pass\" ng-show=\"!$ctrl.loadingResetPass && !$ctrl.showMsgEmailSent\">\n        <div style=\"text-align: center;\">\n          <h3 for=\"change\">{{'CHANGE_PASSWORD_INSTRUCTION' | translate}}</h3>\n        </div>\n        <div ng-show=\"$ctrl.showErrorMsgEmailSent\" class=\"showErrorMsg\">\n          <h5 for=\"change\">{{'EMAIL_NOT_SENT' | translate}}</h5>\n          <div style=\"width: 100px;\">\n            <button style=\"border: 0;\n              padding: 5px 20px;\n              border-radius: 20px;\n              cursor: pointer;\" class=\"icon-close\" data-dismiss=\"modal\">{{'CLOSE' | translate}}</button>\n          </div>\n        </div>\n\n        <div>\n          <input type=\"text\" name=\"change-password\" ng-model=\"$ctrl.emailToChangePassword\" style=\"    border: 0;\n          width: 200px;\n          border-bottom: solid 1px #734cb3;\n          background-color: transparent;\n          padding: 20px;\n          color: #fff;\n          margin: 20px;\">\n        </div>\n        <div>\n          <button ng-click=\"$ctrl.doChangePassword()\" style=\"    border: 0;\n          padding: 5px 20px;\n          border-radius: 20px;\n          cursor: pointer;\">{{'CHANGE_PASSWORD' | translate}}</button>\n        </div>\n      </form>\n    </div>\n  </div>\n\n  <lunesheader showlogout='false' showlinks='false'></lunesheader>\n\n  <!-- AUTHENTICATION FORM -->\n  <section class=\"authentication\">\n    <div>\n      <form name=\"$ctrl.loginForm\">\n        <div class=\"row\">\n\n          <div class=\"col-12 title\">\n            <h4>{{'WELCOME' | translate}}</h4>\n          </div>\n\n          <div class=\"col-12 col-lg-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n          <div class=\"col-lg-6 col-xs-12\">\n            <div class=\"input-form\">\n              <label for=\"input-email\">{{'EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.email\" id=\"input-email\" name=\"email\" required type=\"text\" placeholder=\"{{'EMAIL_PLACEHOLDER' | translate}}\">\n            </div>\n            <div class=\"input-form\">\n              <label for=\"input-password\">{{'PASSWORD' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.password\" id=\"input-password\" name=\"password\" minlength=\"8\" required type=\"password\" placeholder=\"{{'PASSWORD_PLACEHOLDER' | translate}}\">\n            </div>\n            <div class=\"area-button txt-center\">\n              <button class=\"rounded-button\" data-toggle=\"modal\" ng-click=\"$ctrl.doLogin()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\" />\n              </button>\n            </div>\n            <div class=\"dont-have-account\">\n              <label>{{'DONT_HAVE_ACCOUNT' | translate}}</label>\n              <label class=\"txt-green label-signup\" ng-click=\"$ctrl.goToSignup()\">{{'SIGNUP' | translate}}</label>\n              <!--<p class=\"cursor-pointer\">{{'RESET_PASSWORD' | translate}}</p>-->\n            </div>\n            <div style=\"margin: 5px 0 30px 0;\">\n              <label>{{'DO_YOU_CHANGE_PASSWORD' | translate}}</label>\n              <label class=\"txt-green label-signup\" data-toggle=\"modal\" data-target=\"#modal-change-password\">{{'CHANGE_PASSWORD' | translate}}</label>\n            </div>\n\n          </div>\n\n          <div class=\"col-lg-5 col-xs-12\" style=\"margin: 5px 0 30px 0;\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1520387055/illustracao-wallet-lunes_dhikqa.png\" width=\"100%\"\n              alt=\"next\" />\n          </div>\n\n          <div class=\"col-lg-4 col-xs-12\" ng-show=\"false\">\n            <div id=\"counter\" class=\"\">\n              <span id=\"coin_counter\" ng-show=\"false\">$ 00 000 000</span>\n              <div id=\"loading_bar\">\n                <div id=\"loading_bar_green\" style=\"width:50%;\"></div>\n              </div>\n              <div>\n                <div class=\"row\" style=\"text-align: center;\">\n                  <div class=\"col-xs-6 col-lg-6\">\n                    Pre-Ico\n                  </div>\n                  <div class=\"col-xs-6 col-lg-6\">\n                    Ico\n                  </div>\n                </div>\n\n                <!-- conter -->\n                <div class=\"row\" id=\"number\">\n                  <div class=\"col-xs-12\" id=\"time\">\n                    <div id=\"clockdiv\">\n                      <div>\n                        <span class=\"days\"></span>\n                        <div class=\"smalltext\">Days</div>\n                      </div>\n                      <div>\n                        <span class=\"hours\"></span>\n                        <div class=\"smalltext\">Hours</div>\n                      </div>\n                      <div>\n                        <span class=\"minutes\"></span>\n                        <div class=\"smalltext\">Minutes</div>\n                      </div>\n                      <div>\n                        <span class=\"seconds\"></span>\n                        <div class=\"smalltext\">Seconds</div>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n\n                <!-- hard cap -->\n                <div class=\"row\" id=\"number\">\n                  <div class=\"col-xs-12 col-lg-12\" id=\"hard-cap\">\n                    <p>Hard cap</p>\n                    <p>$ 100 000 000</p>\n                  </div>\n                </div>\n\n              </div>\n            </div>\n\n          </div>\n\n\n\n      </form>\n      </div>\n  </section>\n  </div>\n  <lunesfooter />"
 
 /***/ },
-/* 688 */
+/* 693 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -104809,7 +105323,11 @@
 	
 	var _index = __webpack_require__(685);
 	
-	var _countdown = __webpack_require__(689);
+	var _smartlookClient = __webpack_require__(331);
+	
+	var _smartlookClient2 = _interopRequireDefault(_smartlookClient);
+	
+	var _countdown = __webpack_require__(694);
 	
 	var _countdown2 = _interopRequireDefault(_countdown);
 	
@@ -104843,6 +105361,25 @@
 	      console.log(error);
 	    });
 	    (0, _countdown2.default)();
+	    var randomKey = void 0;
+	    var currentUser = JSON.parse(localStorage.getItem(_index.STORAGE_KEY));
+	    var userTrack = void 0;
+	    if (!currentUser) {
+	      randomKey = localStorage.getItem(_index.RANDOM_KEY);
+	      if (!randomKey) {
+	        randomKey = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);
+	        localStorage.setItem(_index.RANDOM_KEY, randomKey);
+	      }
+	      _smartlookClient2.default.identify(randomKey, {});
+	    } else {
+	      userTrack = { name: currentUser.fullname, email: currentUser.email, ownCoupon: currentUser.ownCoupon, coupon: currentUser.coupon, confirmIcoTerm: currentUser.confirmIcoTerm };
+	      if (currentUser.depositWallet) {
+	        userTrack.btcAddress = currentUser.depositWallet.BTC.address;
+	        userTrack.ltcAddress = currentUser.depositWallet.LTC.address;
+	        userTrack.ethAddress = currentUser.depositWallet.ETH.address;
+	      }
+	      _smartlookClient2.default.identify(currentUser._id, userTrack);
+	    }
 	  }
 	
 	  LoginController.prototype.doLogin = function () {
@@ -105116,7 +105653,7 @@
 	exports.default = LoginController;
 
 /***/ },
-/* 689 */
+/* 694 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -105171,16 +105708,16 @@
 	exports.default = start;
 
 /***/ },
-/* 690 */
+/* 695 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(691);
+	var content = __webpack_require__(696);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(693)(content, {});
+	var update = __webpack_require__(689)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -105197,10 +105734,10 @@
 	}
 
 /***/ },
-/* 691 */
+/* 696 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(692)(true);
+	exports = module.exports = __webpack_require__(688)(true);
 	// imports
 	
 	
@@ -105211,480 +105748,7 @@
 
 
 /***/ },
-/* 692 */
-/***/ function(module, exports) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	module.exports = function(useSourceMap) {
-		var list = [];
-	
-		// return the list of modules as css string
-		list.toString = function toString() {
-			return this.map(function (item) {
-				var content = cssWithMappingToString(item, useSourceMap);
-				if(item[2]) {
-					return "@media " + item[2] + "{" + content + "}";
-				} else {
-					return content;
-				}
-			}).join("");
-		};
-	
-		// import a list of modules into the list
-		list.i = function(modules, mediaQuery) {
-			if(typeof modules === "string")
-				modules = [[null, modules, ""]];
-			var alreadyImportedModules = {};
-			for(var i = 0; i < this.length; i++) {
-				var id = this[i][0];
-				if(typeof id === "number")
-					alreadyImportedModules[id] = true;
-			}
-			for(i = 0; i < modules.length; i++) {
-				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if(mediaQuery && !item[2]) {
-						item[2] = mediaQuery;
-					} else if(mediaQuery) {
-						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-					}
-					list.push(item);
-				}
-			}
-		};
-		return list;
-	};
-	
-	function cssWithMappingToString(item, useSourceMap) {
-		var content = item[1] || '';
-		var cssMapping = item[3];
-		if (!cssMapping) {
-			return content;
-		}
-	
-		if (useSourceMap && typeof btoa === 'function') {
-			var sourceMapping = toComment(cssMapping);
-			var sourceURLs = cssMapping.sources.map(function (source) {
-				return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-			});
-	
-			return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-		}
-	
-		return [content].join('\n');
-	}
-	
-	// Adapted from convert-source-map (MIT)
-	function toComment(sourceMap) {
-		// eslint-disable-next-line no-undef
-		var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-		var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-	
-		return '/*# ' + data + ' */';
-	}
-
-
-/***/ },
-/* 693 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	var stylesInDom = {},
-		memoize = function(fn) {
-			var memo;
-			return function () {
-				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-				return memo;
-			};
-		},
-		isOldIE = memoize(function() {
-			// Test for IE <= 9 as proposed by Browserhacks
-			// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
-			// Tests for existence of standard globals is to allow style-loader 
-			// to operate correctly into non-standard environments
-			// @see https://github.com/webpack-contrib/style-loader/issues/177
-			return window && document && document.all && !window.atob;
-		}),
-		getElement = (function(fn) {
-			var memo = {};
-			return function(selector) {
-				if (typeof memo[selector] === "undefined") {
-					memo[selector] = fn.call(this, selector);
-				}
-				return memo[selector]
-			};
-		})(function (styleTarget) {
-			return document.querySelector(styleTarget)
-		}),
-		singletonElement = null,
-		singletonCounter = 0,
-		styleElementsInsertedAtTop = [],
-		fixUrls = __webpack_require__(694);
-	
-	module.exports = function(list, options) {
-		if(false) {
-			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-		}
-	
-		options = options || {};
-		options.attrs = typeof options.attrs === "object" ? options.attrs : {};
-	
-		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-		// tags it will allow on a page
-		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
-	
-		// By default, add <style> tags to the <head> element
-		if (typeof options.insertInto === "undefined") options.insertInto = "head";
-	
-		// By default, add <style> tags to the bottom of the target
-		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
-	
-		var styles = listToStyles(list);
-		addStylesToDom(styles, options);
-	
-		return function update(newList) {
-			var mayRemove = [];
-			for(var i = 0; i < styles.length; i++) {
-				var item = styles[i];
-				var domStyle = stylesInDom[item.id];
-				domStyle.refs--;
-				mayRemove.push(domStyle);
-			}
-			if(newList) {
-				var newStyles = listToStyles(newList);
-				addStylesToDom(newStyles, options);
-			}
-			for(var i = 0; i < mayRemove.length; i++) {
-				var domStyle = mayRemove[i];
-				if(domStyle.refs === 0) {
-					for(var j = 0; j < domStyle.parts.length; j++)
-						domStyle.parts[j]();
-					delete stylesInDom[domStyle.id];
-				}
-			}
-		};
-	};
-	
-	function addStylesToDom(styles, options) {
-		for(var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-			if(domStyle) {
-				domStyle.refs++;
-				for(var j = 0; j < domStyle.parts.length; j++) {
-					domStyle.parts[j](item.parts[j]);
-				}
-				for(; j < item.parts.length; j++) {
-					domStyle.parts.push(addStyle(item.parts[j], options));
-				}
-			} else {
-				var parts = [];
-				for(var j = 0; j < item.parts.length; j++) {
-					parts.push(addStyle(item.parts[j], options));
-				}
-				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-			}
-		}
-	}
-	
-	function listToStyles(list) {
-		var styles = [];
-		var newStyles = {};
-		for(var i = 0; i < list.length; i++) {
-			var item = list[i];
-			var id = item[0];
-			var css = item[1];
-			var media = item[2];
-			var sourceMap = item[3];
-			var part = {css: css, media: media, sourceMap: sourceMap};
-			if(!newStyles[id])
-				styles.push(newStyles[id] = {id: id, parts: [part]});
-			else
-				newStyles[id].parts.push(part);
-		}
-		return styles;
-	}
-	
-	function insertStyleElement(options, styleElement) {
-		var styleTarget = getElement(options.insertInto)
-		if (!styleTarget) {
-			throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
-		}
-		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
-		if (options.insertAt === "top") {
-			if(!lastStyleElementInsertedAtTop) {
-				styleTarget.insertBefore(styleElement, styleTarget.firstChild);
-			} else if(lastStyleElementInsertedAtTop.nextSibling) {
-				styleTarget.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
-			} else {
-				styleTarget.appendChild(styleElement);
-			}
-			styleElementsInsertedAtTop.push(styleElement);
-		} else if (options.insertAt === "bottom") {
-			styleTarget.appendChild(styleElement);
-		} else {
-			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
-		}
-	}
-	
-	function removeStyleElement(styleElement) {
-		styleElement.parentNode.removeChild(styleElement);
-		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
-		if(idx >= 0) {
-			styleElementsInsertedAtTop.splice(idx, 1);
-		}
-	}
-	
-	function createStyleElement(options) {
-		var styleElement = document.createElement("style");
-		options.attrs.type = "text/css";
-	
-		attachTagAttrs(styleElement, options.attrs);
-		insertStyleElement(options, styleElement);
-		return styleElement;
-	}
-	
-	function createLinkElement(options) {
-		var linkElement = document.createElement("link");
-		options.attrs.type = "text/css";
-		options.attrs.rel = "stylesheet";
-	
-		attachTagAttrs(linkElement, options.attrs);
-		insertStyleElement(options, linkElement);
-		return linkElement;
-	}
-	
-	function attachTagAttrs(element, attrs) {
-		Object.keys(attrs).forEach(function (key) {
-			element.setAttribute(key, attrs[key]);
-		});
-	}
-	
-	function addStyle(obj, options) {
-		var styleElement, update, remove;
-	
-		if (options.singleton) {
-			var styleIndex = singletonCounter++;
-			styleElement = singletonElement || (singletonElement = createStyleElement(options));
-			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
-			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
-		} else if(obj.sourceMap &&
-			typeof URL === "function" &&
-			typeof URL.createObjectURL === "function" &&
-			typeof URL.revokeObjectURL === "function" &&
-			typeof Blob === "function" &&
-			typeof btoa === "function") {
-			styleElement = createLinkElement(options);
-			update = updateLink.bind(null, styleElement, options);
-			remove = function() {
-				removeStyleElement(styleElement);
-				if(styleElement.href)
-					URL.revokeObjectURL(styleElement.href);
-			};
-		} else {
-			styleElement = createStyleElement(options);
-			update = applyToTag.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-			};
-		}
-	
-		update(obj);
-	
-		return function updateStyle(newObj) {
-			if(newObj) {
-				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
-					return;
-				update(obj = newObj);
-			} else {
-				remove();
-			}
-		};
-	}
-	
-	var replaceText = (function () {
-		var textStore = [];
-	
-		return function (index, replacement) {
-			textStore[index] = replacement;
-			return textStore.filter(Boolean).join('\n');
-		};
-	})();
-	
-	function applyToSingletonTag(styleElement, index, remove, obj) {
-		var css = remove ? "" : obj.css;
-	
-		if (styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = replaceText(index, css);
-		} else {
-			var cssNode = document.createTextNode(css);
-			var childNodes = styleElement.childNodes;
-			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
-			if (childNodes.length) {
-				styleElement.insertBefore(cssNode, childNodes[index]);
-			} else {
-				styleElement.appendChild(cssNode);
-			}
-		}
-	}
-	
-	function applyToTag(styleElement, obj) {
-		var css = obj.css;
-		var media = obj.media;
-	
-		if(media) {
-			styleElement.setAttribute("media", media)
-		}
-	
-		if(styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = css;
-		} else {
-			while(styleElement.firstChild) {
-				styleElement.removeChild(styleElement.firstChild);
-			}
-			styleElement.appendChild(document.createTextNode(css));
-		}
-	}
-	
-	function updateLink(linkElement, options, obj) {
-		var css = obj.css;
-		var sourceMap = obj.sourceMap;
-	
-		/* If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
-		and there is no publicPath defined then lets turn convertToAbsoluteUrls
-		on by default.  Otherwise default to the convertToAbsoluteUrls option
-		directly
-		*/
-		var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
-	
-		if (options.convertToAbsoluteUrls || autoFixUrls){
-			css = fixUrls(css);
-		}
-	
-		if(sourceMap) {
-			// http://stackoverflow.com/a/26603875
-			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-		}
-	
-		var blob = new Blob([css], { type: "text/css" });
-	
-		var oldSrc = linkElement.href;
-	
-		linkElement.href = URL.createObjectURL(blob);
-	
-		if(oldSrc)
-			URL.revokeObjectURL(oldSrc);
-	}
-
-
-/***/ },
-/* 694 */
-/***/ function(module, exports) {
-
-	
-	/**
-	 * When source maps are enabled, `style-loader` uses a link element with a data-uri to
-	 * embed the css on the page. This breaks all relative urls because now they are relative to a
-	 * bundle instead of the current page.
-	 *
-	 * One solution is to only use full urls, but that may be impossible.
-	 *
-	 * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
-	 *
-	 * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
-	 *
-	 */
-	
-	module.exports = function (css) {
-	  // get current location
-	  var location = typeof window !== "undefined" && window.location;
-	
-	  if (!location) {
-	    throw new Error("fixUrls requires window.location");
-	  }
-	
-		// blank or null?
-		if (!css || typeof css !== "string") {
-		  return css;
-	  }
-	
-	  var baseUrl = location.protocol + "//" + location.host;
-	  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
-	
-		// convert each url(...)
-		/*
-		This regular expression is just a way to recursively match brackets within
-		a string.
-	
-		 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
-		   (  = Start a capturing group
-		     (?:  = Start a non-capturing group
-		         [^)(]  = Match anything that isn't a parentheses
-		         |  = OR
-		         \(  = Match a start parentheses
-		             (?:  = Start another non-capturing groups
-		                 [^)(]+  = Match anything that isn't a parentheses
-		                 |  = OR
-		                 \(  = Match a start parentheses
-		                     [^)(]*  = Match anything that isn't a parentheses
-		                 \)  = Match a end parentheses
-		             )  = End Group
-	              *\) = Match anything and then a close parens
-	          )  = Close non-capturing group
-	          *  = Match anything
-	       )  = Close capturing group
-		 \)  = Match a close parens
-	
-		 /gi  = Get all matches, not the first.  Be case insensitive.
-		 */
-		var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
-			// strip quotes (if they exist)
-			var unquotedOrigUrl = origUrl
-				.trim()
-				.replace(/^"(.*)"$/, function(o, $1){ return $1; })
-				.replace(/^'(.*)'$/, function(o, $1){ return $1; });
-	
-			// already a full url? no change
-			if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/)/i.test(unquotedOrigUrl)) {
-			  return fullMatch;
-			}
-	
-			// convert the url to a full url
-			var newUrl;
-	
-			if (unquotedOrigUrl.indexOf("//") === 0) {
-			  	//TODO: should we add protocol?
-				newUrl = unquotedOrigUrl;
-			} else if (unquotedOrigUrl.indexOf("/") === 0) {
-				// path should be relative to the base url
-				newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
-			} else {
-				// path should be relative to current directory
-				newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
-			}
-	
-			// send back the fixed url(...)
-			return "url(" + JSON.stringify(newUrl) + ")";
-		});
-	
-		// send back the fixed css
-		return fixedCss;
-	};
-
-
-/***/ },
-/* 695 */
+/* 697 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -105693,15 +105757,15 @@
 	  value: true
 	});
 	
-	var _signupComponent = __webpack_require__(696);
+	var _signupComponent = __webpack_require__(698);
 	
 	var _signupComponent2 = _interopRequireDefault(_signupComponent);
 	
-	var _signup = __webpack_require__(697);
+	var _signup = __webpack_require__(699);
 	
 	var _signup2 = _interopRequireDefault(_signup);
 	
-	__webpack_require__(698);
+	__webpack_require__(700);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -105713,13 +105777,13 @@
 	exports.default = SignupComponent;
 
 /***/ },
-/* 696 */
+/* 698 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"container\">\n\n  <!-- MODAL - criar directiva depois -->\n  <div id=\"modal-terms\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <div>\n        <script>\n          function openCity(evt, cityName) {\n            // Declare all variables\n            var i, tabcontent, tablinks;\n\n            // Get all elements with class=\"tabcontent\" and hide them\n            tabcontent = document.getElementsByClassName(\"tabcontent\");\n            for (i = 0; i < tabcontent.length; i++) {\n              tabcontent[i].style.display = \"none\";\n            }\n\n            // Get all elements with class=\"tablinks\" and remove the class \"active\"\n            tablinks = document.getElementsByClassName(\"tablinks\");\n            for (i = 0; i < tablinks.length; i++) {\n              tablinks[i].className = tablinks[i].className.replace(\" active\", \"\");\n            }\n\n            // Show the current tab, and add an \"active\" class to the button that opened the tab\n            document.getElementById(cityName).style.display = \"block\";\n            evt.currentTarget.className += \" active\";\n          }\n        </script>\n        <!-- Tab links -->\n        <div class=\"tab\">\n          <button class=\"tablinks\" onclick=\"openCity(event, 'terms_condition')\" id=\"defaultOpen\">{{'TERMS_CONDITION_TITLE' | translate}}</button>\n          <button class=\"tablinks\" onclick=\"openCity(event, 'representation_condition')\">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>\n        </div>\n        <!-- Tab content -->\n        <div id=\"terms_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsCondition\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n\n        <div id=\"representation_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsRepresentation\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG1\" id=\"checkboxG1\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check1\" ng-change=\"$ctrl.allCheckboxIsChecked()\">\n            <label for=\"checkboxG1\" class=\"css-label radGroup1 clr\"> {{'US_CITIZEN' | translate}} </label>\n          </div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG2\" id=\"checkboxG2\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check2\">\n            <label for=\"checkboxG2\" class=\"css-label radGroup1 clr\"> {{'AGREE_TERM' | translate}} </label>\n          </div>\n          <!--<div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG3\" id=\"checkboxG3\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check3\">\n            <label for=\"checkboxG3\" class=\"css-label radGroup1 clr\"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>\n          </div>-->\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG4\" id=\"checkboxG4\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check4\">\n            <label for=\"checkboxG4\" class=\"css-label radGroup1 clr\"> {{'AGREE_FUTURE_VALUE' | translate}}</label>\n          </div>\n          <div class=\"area-button\">\n            <button ng-show=\"$ctrl.allCheckboxIsChecked()\" class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\" data-dismiss=\"modal\">{{'AGREE' | translate}}</button>\n            <!--<button ng-show=\"!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()\" class=\"disabled-button\">{{'AGREE' | translate}}</button>-->\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <lunesheader showlogout='false' showlinks='false'></lunesheader>\n\n  <!-- AUTHENTICATION FORM -->\n  <section class=\"authentication\">\n    <div>\n      <form name=\"$ctrl.loginForm\">\n\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-12 title\">\n            <h4>{{'WELCOME' | translate}}</h4>\n            <h4>{{'BEGIN_YOUR_REGISTRATION' | translate}}</h4>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n          <div class=\"alert alert-danger\" ng-show=\"$ctrl.serverError\" role=\"alert\">\n            <h4 class=\"alert-heading\">{{'AN_ERROR_CREATE_ACCOUNT' | translate}}</h4>\n            <p>{{$ctrl.serverErrorMessage</p>\n          </div>\n\n          <!-- USER INFO -->\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-name\">* {{'NAME' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.name\" id=\"input-name\" name=\"name\" required type=\"text\" placeholder=\"{{'NAME_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-lastname\">* {{'LAST_NAME' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.lastname\" id=\"input-lastname\" name=\"lastname\" required type=\"text\" placeholder=\"{{'LAST_NAME_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n        </div>\n\n        <!-- EMAIL INFO -->\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-email\">* {{'EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.email\" id=\"input-email\" name=\"email\" ng-model-options=\"{ debounce: 3000 }\" required type=\"email\"\n                placeholder=\"{{'EMAIL_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-confirm-email\">* {{'CONFIRM_EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.confirmEmail\" id=\"input-confirm-email\" email name=\"confirmEmail\" email-match required type=\"email\"\n                placeholder=\"{{'CONFIRM_EMAIL_PLACEHOLDER' | translate}}\">\n            </div>\n\n            <!-- VALIDATION EMAIL -->\n            <span style=\"color:#f8b61c;\" ng-show=\"$ctrl.loginForm.email.$dirty && $ctrl.loginForm.email.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.email.$error.required\">{{'EMAIL_REQUIRED' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.email.$error.email\">{{'EMAIL_INVALID' | translate}}\n                <br>\n              </span>\n            </span>\n            <span style=\"color:#f8b61c;\" ng-show=\"$ctrl.loginForm.confirmEmail.$dirty && $ctrl.loginForm.confirmEmail.$invalid\">\n              <span ng-show=\"$ctrl.user.email !== $ctrl.user.confirmEmail\">{{'EMAIL_MATCH' | translate}}\n                <br> </span>\n            </span>\n\n          </div>\n        </div>\n\n        <!-- PASSWORD INFO -->\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-password\">* {{'PASSWORD' | translate}}</label>\n              <input type=\"password\" data-ng-model=\"$ctrl.user.password\" id=\"input-password\" ng-model-options=\"{ debounce: 500 }\" uppercase\n                lowercase numeric special-character required name=\"password\" ng-minlength=\"8\" placeholder=\"{{'PASSWORD_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-confirm-password\">* {{'CONFIRM_PASSWORD' | translate}}</label>\n              <input type=\"password\" data-ng-model=\"$ctrl.user.confirmPassword\" id=\"input-confirm-password\" ng-model-options=\"{ debounce: 500 }\"\n                required name=\"confirmPassword\" ng-minlength=\"8\" placeholder=\"{{'CONFIRM_PASSWORD_PLACEHOLDER' | translate}}\">\n            </div>\n            <!-- VALIDATION PASSWORD -->\n            <span style=\"color:#f8b61c;\" ng-show=\"$ctrl.loginForm.password.$dirty && $ctrl.loginForm.password.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.password.$error.required\">{{'PASSWORD_REQUIRED' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.minlength\">{{'PASSWORD_LENGTH' | translate}}\n                <br>\n              </span>\n            </span>\n            <span style=\"color:#f8b61c;\" ng-show=\"$ctrl.loginForm.confirmPassword.$dirty && $ctrl.loginForm.confirmPassword.$invalid\">\n              <span ng-show=\"$ctrl.user.confirmPassword !== $ctrl.user.password\">{{'PASSWORD_MATCH' | translate}}\n                <br>\n              </span>\n            </span>\n          </div>\n\n        </div>\n\n        <!-- CUPOM -->\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-coupon\">{{'DO_YOU_HAVE_A_COUPON' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.coupon\" id=\"input-coupon\" name=\"coupon\" type=\"text\" placeholder=\"{{'COUPON_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n          <div class=\"col-xs-12 col-lg-6\" style=\"margin-top: 15px;\">\n            <div class=\"area-button txt-right\" style=\"display: flex;justify-content: center;\">\n              <button class=\"rounded-button ng-hide\" data-toggle=\"modal\" data-target=\"#modal-terms\" ng-show=\"$ctrl.loginForm.$valid\" ng-click=\"$ctrl.enableTab()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\">\n              </button>\n\n              <button class=\"rounded-button\" ng-show=\"!$ctrl.loginForm.$valid\" ng-click=\"$ctrl.showError()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\">\n              </button>\n            </div>\n            <div style=\"display: flex;justify-content: center;\" ng-show=\"false\">\n              <a href=\"#!/login\" style=\"font-size: 10px;color: #fff;\">{{'BACK' | translate}}</p>\n            </div>\n          </div>\n\n        </div>\n\n      </form>\n    </div>\n  </section>\n</div>\n<lunesfooter />"
 
 /***/ },
-/* 697 */
+/* 699 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -105769,16 +105833,22 @@
 	
 	    var randomKey = void 0;
 	    var currentUser = JSON.parse(localStorage.getItem(_index.STORAGE_KEY));
-	
-	    console.log(currentUser);
+	    var userTrack = void 0;
 	    if (!currentUser) {
 	      randomKey = localStorage.getItem(_index.RANDOM_KEY);
 	      if (!randomKey) {
 	        randomKey = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);
+	        localStorage.setItem(_index.RANDOM_KEY, randomKey);
 	      }
 	      _smartlookClient2.default.identify(randomKey, {});
 	    } else {
-	      _smartlookClient2.default.identify(currentUser._id, { name: currentUser.name, email: currentUser.email });
+	      userTrack = { name: currentUser.fullname, email: currentUser.email, ownCoupon: currentUser.ownCoupon, coupon: currentUser.coupon, confirmIcoTerm: currentUser.confirmIcoTerm };
+	      if (currentUser.depositWallet) {
+	        userTrack.btcAddress = currentUser.depositWallet.BTC.address;
+	        userTrack.ltcAddress = currentUser.depositWallet.LTC.address;
+	        userTrack.ethAddress = currentUser.depositWallet.ETH.address;
+	      }
+	      _smartlookClient2.default.identify(currentUser._id, userTrack);
 	    }
 	  }
 	
@@ -105937,16 +106007,16 @@
 	exports.default = SignupController;
 
 /***/ },
-/* 698 */
+/* 700 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(699);
+	var content = __webpack_require__(701);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(693)(content, {});
+	var update = __webpack_require__(689)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -105963,10 +106033,10 @@
 	}
 
 /***/ },
-/* 699 */
+/* 701 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(692)(true);
+	exports = module.exports = __webpack_require__(688)(true);
 	// imports
 	
 	
@@ -105975,41 +106045,6 @@
 	
 	// exports
 
-
-/***/ },
-/* 700 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _buyComponent = __webpack_require__(701);
-	
-	var _buyComponent2 = _interopRequireDefault(_buyComponent);
-	
-	var _buy = __webpack_require__(702);
-	
-	var _buy2 = _interopRequireDefault(_buy);
-	
-	__webpack_require__(703);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var BuyComponent = {
-	  template: _buyComponent2.default,
-	  controller: _buy2.default
-	};
-	
-	exports.default = BuyComponent;
-
-/***/ },
-/* 701 */
-/***/ function(module, exports) {
-
-	module.exports = "<!--<loading show=\"$ctrl.loading\"></loading>-->\n<div class=\"container\">\n\n  <lunesheader showlinks=\"true\" balanceuser=\"$ctrl.balanceUser.confirmed_balance\"></lunesheader>\n\n  <!-- BUY -->\n  <section class=\"buy\">\n    <div class=\"row\">\n      <div class=\"title user-menu\">\n        <a href=\"\" id=\"user-menu\" ng-click=\"$ctrl.toogleUserMenu()\">\n          <h4>\n            {{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}\n            <span ng-show=\"!$ctrl.showUserMenu\">\n              <i class=\"fas fa-angle-right green\"></i>\n            </span>\n            <span ng-show=\"$ctrl.showUserMenu\">\n              <i class=\"fas fa-angle-down green\"></i>\n            </span>\n          </h4>\n        </a>\n        <div class=\"logout area-button\" ng-show=\"$ctrl.showUserMenu\">\n          <a href=\"#!/login\" class=\"primary-button\" ng-click=\"$ctrl.logout()\">\n            {{'LOGOUT' | translate}}\n          </a>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n    <div class=\"row\">\n      <div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6\">\n        <!-- ERROR LIMIT -->\n        <div class=\"row\">\n          <div ng-show=\"$ctrl.showErrorLimit\" class=\"col-xs-12 col-lg-12 error-limit\">{{$ctrl.showErrorLimit}}</div>\n        </div>\n\n        <!-- CALCULATOR -->\n        <div class=\"row\">\n          <div class=\"calculator col-lg-8 offset-lg-2\">\n            <div class=\"select-coin\">\n              <ul>\n                <li ng-repeat=\"coin in $ctrl.coins\" ng-click=\"$ctrl.selectCoin(coin)\" ng-class=\"coin.selected ? 'selected': ''\">\n                  <img ng-src=\"{{coin.img}}\" alt=\"coin.label\">\n                </li>\n              </ul>\n            </div>\n            <div class=\"valueCripto\">\n              <input type=\"text\" class=\"input-calculator\" name=\"value\" ng-model=\"$ctrl.valueToDeposit\" ng-change=\"$ctrl.calcValue()\" />\n              <div class=\"lunesAmount\">\n                <img class=\"flag-lns\" src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\">\n                <input type=\"text\" placeholder=\"000.000\" class=\"input-calculator\" name=\"value\" ng-model=\"$ctrl.valueToReceive\" ng-change=\"$ctrl.calcValue('LNS')\"\n                />\n              </div>\n              <div class=\"lunes-current-price\">\n                <small>1 LNS = {{$ctrl.currentPhaseActive.price_value}}</small>\n              </div>\n            </div>\n            <div ng-show=\"$ctrl.errorTypeValueToReceive\" style=\"padding: 0 0 10px;font-size: 11px;text-align: center;color: #cf4444;text-shadow: none;\">\n              {{$ctrl.errorTypeValueToReceive}}\n            </div>\n          </div>\n        </div>\n\n        <!-- SHOW TOTAL -->\n        <div class=\"row\">\n          <div class=\"amountBalance col-lg-8 offset-lg-2\">\n            <div class=\"total\">\n              <div class=\"result\">\n                <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>\n                <div>{{$ctrl.bonusAmountFinal}}</div>\n              </div>\n              <hr />\n              <div class=\"result\">\n                <div>Total</div>\n                <div>{{$ctrl.getTotal()}}</div>\n              </div>\n            </div>\n            <div style=\"text-align: center; margin: 10px 0 30px 0;\">\n              * {{'BUY_LIMIT_PHASE' | translate}}\n              <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n            </div>\n          </div>\n        </div>\n\n        <!-- ADVICE\n        <div class=\"row\">\n          <div class=\"col-lg-12 no-padding\">\n            <div class=\"area-button\" ng-show=\"false\">\n              <button class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\">{{'BUY' | translate}}</button>\n            </div>\n          </div>\n          <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\" ng-show=\"false\">\n            * {{'MSG_BALANCE_DEPOSITED' | translate}}\n          </div>\n          <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0 30px 0;\">\n            * {{'BUY_LIMIT_PHASE' | translate}}\n            <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n          </div>\n        </div> -->\n      </div>\n      <!-- QR CODE -->\n      <div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6\">\n        <div class=\"area-button\" ng-show=\"!$ctrl.showQrCode\">\n          <a href=\"\" class=\"primary-button\" ng-click=\"$ctrl.toogleShowQrCode()\">{{'BUY' | translate}}</a>\n        </div>\n        <div class=\"container-qr-code col-lg-8 offset-lg-2\" ng-show=\"$ctrl.showQrCode\">\n          <div class=\"debosit-advice\">\n            <span>\n              {{'SEND_TO_THIS_ADDRESS' | translate}} {{$ctrl.valueToDeposit}} {{$ctrl.currentCoinSelected.name}} {{'TO' | translate}}\n            </span>\n            <div class=\"address\">\n              {{$ctrl.currentQRCode.address}}\n            </div>\n            <span>{{'DEPOSIT_CONFIRMATION_ADVICE' | translate}}</span>\n          </div>\n          <div class=\"qr-code\">\n            <img ng-src=\"{{$ctrl.currentQRCode.img}}\" class=\"qr-code img-thumbnail img-responsive\" />\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</div>\n<lunesfooter />"
 
 /***/ },
 /* 702 */
@@ -106021,9 +106056,48 @@
 	  value: true
 	});
 	
+	var _buyComponent = __webpack_require__(703);
+	
+	var _buyComponent2 = _interopRequireDefault(_buyComponent);
+	
+	var _buy = __webpack_require__(704);
+	
+	var _buy2 = _interopRequireDefault(_buy);
+	
+	__webpack_require__(705);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var BuyComponent = {
+	  template: _buyComponent2.default,
+	  controller: _buy2.default
+	};
+	
+	exports.default = BuyComponent;
+
+/***/ },
+/* 703 */
+/***/ function(module, exports) {
+
+	module.exports = "<!--<loading show=\"$ctrl.loading\"></loading>-->\n<div class=\"container\">\n\n  <lunesheader showlinks=\"true\" balanceuser=\"$ctrl.balanceUser.confirmed_balance\"></lunesheader>\n\n  <!-- BUY -->\n  <section class=\"buy\">\n    <div class=\"row\">\n      <div class=\"title user-menu\">\n        <a href=\"\" id=\"user-menu\" ng-click=\"$ctrl.toogleUserMenu()\">\n          <h4>\n            {{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}\n            <span ng-show=\"!$ctrl.showUserMenu\">\n              <i class=\"fas fa-angle-right green\"></i>\n            </span>\n            <span ng-show=\"$ctrl.showUserMenu\">\n              <i class=\"fas fa-angle-down green\"></i>\n            </span>\n          </h4>\n        </a>\n        <div class=\"logout area-button\" ng-show=\"$ctrl.showUserMenu\">\n          <a href=\"#!/login\" class=\"primary-button\" ng-click=\"$ctrl.logout()\">\n            {{'LOGOUT' | translate}}\n          </a>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n    <div class=\"row\">\n      <div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6\">\n        <!-- ERROR LIMIT -->\n        <div class=\"row\">\n          <div ng-show=\"$ctrl.showErrorLimit\" class=\"col-xs-12 col-lg-12 error-limit\">{{$ctrl.showErrorLimit}}</div>\n        </div>\n\n        <!-- CALCULATOR -->\n        <div class=\"row\">\n          <div class=\"calculator col-lg-12\">\n            <div class=\"select-coin\">\n              <ul>\n                <li ng-repeat=\"coin in $ctrl.coins\" ng-click=\"$ctrl.selectCoin(coin)\" ng-class=\"coin.selected ? 'selected': ''\">\n                  <img ng-src=\"{{coin.img}}\" alt=\"coin.label\">\n                </li>\n              </ul>\n            </div>\n            <div class=\"valueCripto\">\n              <input type=\"text\" class=\"input-calculator\" name=\"value\" ng-model=\"$ctrl.valueToDeposit\" ng-change=\"$ctrl.calcValue()\" />\n              <div class=\"lunesAmount\">\n                <img style=\"position: absolute;\n                top: 0;\n                left: 0;\n                z-index: 99;\" class=\"flag-lns\" src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\"\n                  alt=\"Icon Lunes\">\n                <input type=\"text\" placeholder=\"000.000\" class=\"input-calculator\" name=\"value\" ng-model=\"$ctrl.valueToReceive\" ng-change=\"$ctrl.calcValue('LNS')\"\n                />\n              </div>\n              <div class=\"lunes-current-price\">\n                <small>1 LNS = {{$ctrl.currentPhaseActive.price_value}}</small>\n              </div>\n            </div>\n            <div ng-show=\"$ctrl.errorTypeValueToReceive\" style=\"padding: 0 0 10px;font-size: 11px;text-align: center;color: #cf4444;text-shadow: none;\">\n              {{$ctrl.errorTypeValueToReceive}}\n            </div>\n          </div>\n        </div>\n\n        <!-- SHOW TOTAL -->\n        <div class=\"row\">\n          <div class=\"amountBalance col-lg-12\">\n            <div class=\"total\">\n              <div class=\"result\">\n                <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>\n                <div>{{$ctrl.bonusAmountFinal}}</div>\n              </div>\n              <hr />\n              <div class=\"result\">\n                <div>Total</div>\n                <div>{{$ctrl.getTotal()}}</div>\n              </div>\n            </div>\n            <div style=\"text-align: center; margin: 10px 0 30px 0;\">\n              * {{'BUY_LIMIT_PHASE' | translate}}\n              <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n            </div>\n          </div>\n        </div>\n\n        <!-- ADVICE\n        <div class=\"row\">\n          <div class=\"col-lg-12 no-padding\">\n            <div class=\"area-button\" ng-show=\"false\">\n              <button class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\">{{'BUY' | translate}}</button>\n            </div>\n          </div>\n          <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0;\" ng-show=\"false\">\n            * {{'MSG_BALANCE_DEPOSITED' | translate}}\n          </div>\n          <div class=\"col-lg-12\" style=\"text-align: left; margin: 10px 0 30px 0;\">\n            * {{'BUY_LIMIT_PHASE' | translate}}\n            <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n          </div>\n        </div> -->\n      </div>\n      <!-- QR CODE -->\n      <div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6\">\n        <div class=\"area-button\" ng-show=\"!$ctrl.showQrCode\">\n          <a href=\"\" class=\"primary-button\" ng-click=\"$ctrl.toogleShowQrCode()\">{{'BUY' | translate}}</a>\n        </div>\n        <div class=\"container-qr-code col-lg-8 offset-lg-2\" ng-show=\"$ctrl.showQrCode\">\n          <div class=\"debosit-advice\">\n            <span>\n              {{'SEND_TO_THIS_ADDRESS' | translate}} {{$ctrl.valueToDeposit}} {{$ctrl.currentCoinSelected.name}} {{'TO' | translate}}\n            </span>\n            <div class=\"address\">\n              {{$ctrl.currentQRCode.address}}\n            </div>\n            <span>{{'DEPOSIT_CONFIRMATION_ADVICE' | translate}}</span>\n          </div>\n          <div class=\"qr-code\">\n            <img ng-src=\"{{$ctrl.currentQRCode.img}}\" class=\"qr-code img-thumbnail img-responsive\" />\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</div>\n<lunesfooter />"
+
+/***/ },
+/* 704 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
 	var _lunesLib = __webpack_require__(478);
 	
 	var _lunesLib2 = _interopRequireDefault(_lunesLib);
+	
+	var _smartlookClient = __webpack_require__(331);
+	
+	var _smartlookClient2 = _interopRequireDefault(_smartlookClient);
 	
 	var _index = __webpack_require__(685);
 	
@@ -106051,7 +106125,6 @@
 	    this.$timeout = $timeout;
 	    this.$state = $state;
 	    this.currentUser = JSON.parse(localStorage.getItem(_index.STORAGE_KEY));
-	    console.log(currentUser);
 	    this.showContainerCoins = false;
 	    this.balanceCoins = {};
 	    this.currentPhase = [];
@@ -106083,6 +106156,16 @@
 	      console.log(error);
 	    });
 	    this.showLoading(true);
+	
+	    if (this.currentUser) {
+	      var userTrack = { name: this.currentUser.fullname, email: this.currentUser.email, ownCoupon: this.currentUser.ownCoupon, coupon: this.currentUser.coupon, confirmIcoTerm: this.currentUser.confirmIcoTerm };
+	      if (this.currentUser.depositWallet) {
+	        userTrack.btcAddress = this.currentUser.depositWallet.BTC.address;
+	        userTrack.ltcAddress = this.currentUser.depositWallet.LTC.address;
+	        userTrack.ethAddress = this.currentUser.depositWallet.ETH.address;
+	      }
+	      _smartlookClient2.default.identify(this.currentUser._id, userTrack);
+	    }
 	  }
 	
 	  BuyController.prototype.getBuyHistory = function () {
@@ -106593,16 +106676,16 @@
 	exports.default = BuyController;
 
 /***/ },
-/* 703 */
+/* 705 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(704);
+	var content = __webpack_require__(706);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(693)(content, {});
+	var update = __webpack_require__(689)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -106619,21 +106702,21 @@
 	}
 
 /***/ },
-/* 704 */
+/* 706 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(692)(true);
+	exports = module.exports = __webpack_require__(688)(true);
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".input-calculator {\n  background-color: #41256f;\n  border: 0;\n  border-radius: 5px;\n  color: #fff;\n  font-size: 18px;\n  margin-bottom: 15px;\n  padding: 10px;\n  text-align: right;\n  width: 230px; }\n\n.equal {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n      justify-content: center;\n  -ms-flex-align: center;\n      align-items: center;\n  font-size: 30px;\n  text-align: center; }\n\n.calculator .valueCripto {\n  margin-top: 15px;\n  text-align: center; }\n\n.calculator .valueMoney {\n  height: 80px;\n  background-color: rgba(65, 37, 111, 0.8);\n  color: #fff;\n  padding: 20px;\n  border-radius: 5px;\n  text-align: right;\n  font-size: 18px; }\n  .calculator .valueMoney .currency {\n    width: 100%;\n    text-align: right;\n    font-size: 10px;\n    padding-right: 9px;\n    padding-top: 3px; }\n\n.lunesAmount {\n  margin-left: -50px; }\n  .lunesAmount .input-calculator {\n    margin-left: 0;\n    border-radius: 0 5px 5px 0;\n    padding: 15px 10px; }\n  .lunesAmount .flag-lns {\n    background-color: #fff;\n    border-radius: 5px 0 0 5px;\n    margin-bottom: 5px;\n    margin-right: -5px;\n    padding: 10px 10px 14px 15px; }\n\n.amountBalance {\n  text-align: center; }\n  .amountBalance .total {\n    background-color: rgba(65, 37, 111, 0.8);\n    border-radius: 5px;\n    margin: 0 auto;\n    padding: 10px;\n    width: 230px; }\n    .amountBalance .total hr {\n      border-top: solid 1px #44af57; }\n  .amountBalance .result {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-direction: row;\n        flex-direction: row;\n    -ms-flex-pack: justify;\n        justify-content: space-between;\n    -ms-flex-align: center;\n        align-items: center;\n    padding: 0 10px; }\n\n.select-coin {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n      justify-content: center; }\n  .select-coin ul {\n    display: -ms-flexbox;\n    display: flex;\n    margin: 0;\n    padding: 0;\n    text-align: center; }\n    .select-coin ul li {\n      border: 2px solid #41256f;\n      list-style: none;\n      cursor: pointer;\n      margin: 0 20px;\n      width: 50px;\n      border-radius: 5px;\n      opacity: 0.6; }\n      .select-coin ul li img {\n        display: block;\n        margin: 10px auto;\n        max-width: 25px; }\n      .select-coin ul li:hover, .select-coin ul li.selected {\n        background-color: #44af57;\n        opacity: 1;\n        border: 2px solid #44af57; }\n\n.container-coins {\n  width: 70px;\n  height: 210px;\n  position: absolute;\n  border-radius: 5px;\n  background-color: #e4e4e5;\n  top: 50px;\n  z-index: 99;\n  text-align: center; }\n  .container-coins ul {\n    margin: 0;\n    padding: 0; }\n    .container-coins ul li {\n      list-style: none;\n      text-align: center;\n      padding: 5px 10px;\n      cursor: pointer; }\n      .container-coins ul li.selected, .container-coins ul li:hover {\n        background-color: #c7c7c7;\n        border-radius: 5px; }\n\n.container-qr-code {\n  border-radius: 15px;\n  box-shadow: 0px 0px 25px 0px #41256f;\n  text-align: center;\n  padding: 30px; }\n  .container-qr-code .qr-code {\n    margin-top: 15px; }\n  .container-qr-code .debosit-advice {\n    color: #fff;\n    font-size: 12px; }\n  .container-qr-code .address {\n    color: #44af57;\n    margin-top: 15px 0; }\n\n.show-balance .show-balance-btc {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-btc .coin-name {\n    color: #e0972f; }\n\n.show-balance .show-balance-ltc {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-ltc .coin-name {\n    color: #9f9aa4; }\n\n.show-balance .show-balance-eth {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-eth .coin-name {\n    color: #b4d0cd; }\n\n.flex-right {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: end;\n      justify-content: flex-end; }\n\n.container-logo-header .logo {\n  text-align: left;\n  padding: 10px; }\n\n.container-logo-header .container-data {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  font-size: 14px; }\n  .container-logo-header .container-data .container-balance {\n    text-align: right; }\n  .container-logo-header .container-data .coupom {\n    text-align: center; }\n\n.error-limit {\n  padding: 10px;\n  background-color: #df3535;\n  text-align: center;\n  margin: 10px; }\n\n.lunes-current-price {\n  text-align: right;\n  margin-right: 18%;\n  margin-bottom: 20px; }\n\n@media only screen and (max-width: 1439px) {\n  .lunes-current-price {\n    margin-right: 15%; } }\n\n@media only screen and (max-width: 1025px) {\n  .lunes-current-price {\n    margin-right: 11%; } }\n\n@media only screen and (max-width: 769px) {\n  .lunes-current-price {\n    margin-right: 16%; } }\n\n@media only screen and (max-width: 426px) {\n  .container-logo-header .logo {\n    text-align: center;\n    margin-bottom: 20px; }\n  .valueCripto .select-coin {\n    clear: both;\n    min-height: 60px;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: center;\n        justify-content: center; }\n  .valueCripto .area-field input {\n    text-align: center; }\n  .container-qr-code {\n    padding: 30px 15px; }\n  .lunes-current-price {\n    margin-right: 19%; } }\n\n@media only screen and (max-width: 376px) {\n  .lunes-current-price {\n    margin-right: 14%; } }\n\n@media only screen and (max-width: 321px) {\n  .header {\n    display: block !important; }\n  .container-logo-header {\n    text-align: center; }\n    .container-logo-header .container-quotation {\n      margin: 10px 0 0 0; }\n    .container-logo-header .logo {\n      text-align: center;\n      padding: 10px; }\n    .container-logo-header .quotation {\n      text-align: center;\n      display: -ms-flexbox;\n      display: flex;\n      -ms-flex-pack: center;\n          justify-content: center;\n      -ms-flex-direction: row;\n          flex-direction: row; }\n      .container-logo-header .quotation .container-quotation {\n        padding: 0 5px; }\n  .round-menu img {\n    width: 100%; }\n  .flex-right {\n    display: block; }\n  .menu.menu-top {\n    display: -ms-flexbox !important;\n    display: flex !important;\n    -ms-flex-pack: center !important;\n        justify-content: center !important; }\n    .menu.menu-top li img {\n      width: 25px; }\n  .lunes-current-price {\n    margin-right: 7%; } }\n", "", {"version":3,"sources":["/home/felipe/lunes-purchase/src/buy/src/buy/buy.component.scss","/home/felipe/lunes-purchase/src/buy/src/scss/base/_color.scss"],"names":[],"mappings":"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","file":"buy.component.scss","sourcesContent":["@import '../scss/base/_color';\n\n.input-calculator {\n  background-color: $darkPrimary;\n  border: 0;\n  border-radius: 5px;\n  color: #fff;\n  font-size: 18px;\n  margin-bottom: 15px;\n  padding: 10px;\n  text-align: right;\n  width: 230px;\n}\n\n.equal {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 30px;\n  text-align: center;\n}\n\n.calculator {\n  .valueCripto {\n    margin-top: 15px;\n    text-align: center;\n  }\n  .valueMoney {\n    height: 80px;\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\n    color: #fff;\n    padding: 20px;\n    border-radius: 5px;\n    text-align: right;\n    font-size: 18px;\n    .currency {\n      width: 100%;\n      text-align: right;\n      font-size: 10px;\n      padding-right: 9px;\n      padding-top: 3px;\n    }\n  }\n}\n\n.lunesAmount {\n  margin-left: -50px;\n  \n  .input-calculator {\n    margin-left: 0;\n    border-radius: 0 5px 5px 0;\n    padding: 15px 10px;\n  }\n\n  .flag-lns {\n    background-color: #fff;\n    border-radius: 5px 0 0 5px;\n    margin-bottom: 5px;\n    margin-right: -5px;\n    padding: 10px 10px 14px 15px;\n  }\n}\n\n.amountBalance {\n  text-align: center;\n  .total {\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8); \n    border-radius: 5px;\n    margin: 0 auto;\n    padding: 10px;\n    width: 230px;\n    hr {\n      border-top: solid 1px $green;\n    }\n  }\n\n  .result {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n    padding: 0 10px;\n  }\n}\n\n.select-coin {\n  display: flex;\n  justify-content: center;\n\n  ul {\n    display: flex;\n    margin: 0;\n    padding: 0;\n    text-align: center;\n    li {\n      border: 2px solid $darkPrimary;        \n      list-style: none;\n      cursor: pointer;\n      margin: 0 20px;\n      width: 50px;\n      border-radius: 5px;\n      opacity: 0.6;\n      img {\n        display: block;\n        margin: 10px auto;\n        max-width: 25px;\n      }\n      &:hover, &.selected {\n        background-color: $green;\n        opacity: 1;\n        border: 2px solid $green;        \n      }\n    }\n  }\n}\n\n.container-coins {\n  width: 70px;\n  height: 210px;\n  position: absolute;\n  border-radius: 5px;\n  background-color: #e4e4e5;\n  top: 50px;\n  z-index: 99;\n  text-align: center;\n  ul {\n    margin: 0;\n    padding: 0;\n    li {\n      list-style: none;\n      text-align: center;\n      padding: 5px 10px;\n      cursor: pointer;\n      &.selected, &:hover {\n        background-color: #c7c7c7;\n        border-radius: 5px;\n      }\n    }\n  }\n}\n\n.container-qr-code {\n  border-radius: 15px;\n  box-shadow: 0px 0px 25px 0px rgba(65,37,111,1);\n  text-align: center;\n  padding: 30px;\n  .qr-code {\n    margin-top: 15px;\n  }\n  .debosit-advice {\n    color: #fff;\n    font-size: 12px;\n  }\n  .address {\n    color: $green;\n    margin-top: 15px 0;\n  }\n}\n\n.show-balance {\n  $coins: (\n    btc: #e0972f,\n    ltc: #9f9aa4,\n    eth: #b4d0cd\n  );\n\n  @each $coin, $color in $coins {\n    .show-balance-#{$coin} {\n      margin-top: 1rem;\n      font-size: 2rem;\n\n      .coin-name {\n        color: $color;\n      }\n    }\n  }\n}\n\n.flex-right {\n  display: flex;\n  justify-content: flex-end;\n}\n\n.container-logo-header {\n  .logo {\n    text-align: left;\n    padding: 10px;\n  }\n  .container-data {\n    // padding: 5px 20px; \n    display: flex;\n    align-items: center;\n    font-size: 14px;\n    .container-balance {\n      text-align: right;\n    }\n    .coupom {    \n      text-align: center;\n    }\n  }\n}\n\n.error-limit {\n  padding: 10px;\n  background-color: #df3535;\n  text-align: center;\n  margin: 10px;\n}\n\n.lunes-current-price {\n  text-align: right;\n  margin-right: 18%;\n  margin-bottom: 20px;\n}\n\n@media only screen and (max-width: 1439px) {\n  .lunes-current-price {\n    margin-right: 15%;\n  }\n}\n\n@media only screen and (max-width: 1025px) {\n  .lunes-current-price {\n    margin-right: 11%;\n  }\n}\n\n@media only screen and (max-width: 769px) {\n  .lunes-current-price {\n    margin-right: 16%;\n  }\n}\n\n@media only screen and (max-width: 426px) {\n  .container-logo-header {\n    .logo {\n      text-align: center;\n      margin-bottom: 20px;\n    }\n  }\n  .valueCripto {\n    .select-coin {\n      clear: both;\n      min-height: 60px;\n      display: flex;\n      justify-content: center;\n    }\n    .area-field input {\n      text-align: center;\n    }\n  }\n  .container-qr-code {\n    padding: 30px 15px;\n  }\n  .lunes-current-price {\n    margin-right: 19%;\n  }\n}\n\n@media only screen and (max-width: 376px) {\n  .lunes-current-price {\n    margin-right: 14%;\n  }  \n}\n\n@media only screen and (max-width: 321px) {\n  .header {\n    display: block!important;\n  }\n  .container-logo-header {\n    text-align: center;\n    .container-quotation {\n      margin: 10px 0 0 0;\n    }\n    .logo {\n      text-align: center;\n      padding: 10px;\n    }\n    .quotation {\n      text-align: center;\n      display: flex;\n      justify-content: center;\n      flex-direction: row;\n      .container-quotation {\n        padding: 0 5px;\n      }\n    }\n  }\n  .round-menu img {\n    width: 100%;\n  }\n  .flex-right {\n    display: block;\n  }\n  .menu.menu-top {\n    display: flex!important;\n    justify-content: center!important;\n    li {\n      img {\n        width: 25px;\n      }\n    }\n  }\n  .lunes-current-price {\n    margin-right: 7%;\n  }\n}\n  ","$primary: #4c2b82 !default;\n$lightPrimary: #654fa4;\n$extraLightPrimary: #876fc6;\n$darkPrimary: #41256f;\n$extraDarkPrimary: #3f2569;\n$green: #44af57;\n$darkGreen: #44af57;\n$yellow: #f9d660;\n$darkGray: #333;"],"sourceRoot":""}]);
+	exports.push([module.id, ".input-calculator {\n  background-color: #41256f;\n  border: 0;\n  border-radius: 5px;\n  color: #fff;\n  font-size: 18px;\n  margin-bottom: 15px;\n  padding: 13px;\n  text-align: right;\n  width: 100%; }\n\n.equal {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n      justify-content: center;\n  -ms-flex-align: center;\n      align-items: center;\n  font-size: 30px;\n  text-align: center; }\n\n.calculator .valueCripto {\n  margin-top: 15px; }\n\n.calculator .valueMoney {\n  height: 80px;\n  background-color: rgba(65, 37, 111, 0.8);\n  color: #fff;\n  padding: 20px;\n  border-radius: 5px;\n  text-align: right;\n  font-size: 18px; }\n  .calculator .valueMoney .currency {\n    width: 100%;\n    text-align: right;\n    font-size: 10px;\n    padding-right: 9px;\n    padding-top: 3px; }\n\n.lunesAmount .input-calculator {\n  margin-left: 0;\n  border-radius: 0 5px 5px 0;\n  padding: 15px 10px; }\n\n.lunesAmount .flag-lns {\n  background-color: #fff;\n  border-radius: 5px 0 0 5px;\n  margin-bottom: 5px;\n  margin-right: -5px;\n  padding: 10px 10px 14px 15px; }\n\n.amountBalance {\n  text-align: center; }\n  .amountBalance .total {\n    background-color: rgba(65, 37, 111, 0.8);\n    border-radius: 5px;\n    margin: 0 auto;\n    padding: 10px;\n    width: 100%; }\n    .amountBalance .total hr {\n      border-top: solid 1px #44af57; }\n  .amountBalance .result {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-direction: row;\n        flex-direction: row;\n    -ms-flex-pack: justify;\n        justify-content: space-between;\n    -ms-flex-align: center;\n        align-items: center;\n    padding: 0 10px; }\n\n.select-coin {\n  display: -ms-flexbox;\n  display: flex; }\n  .select-coin ul {\n    display: -ms-flexbox;\n    display: flex;\n    margin: 0;\n    padding: 0;\n    text-align: center; }\n    .select-coin ul li {\n      border: 2px solid #41256f;\n      list-style: none;\n      cursor: pointer;\n      margin: 0 20px 0 0;\n      width: 50px;\n      border-radius: 5px;\n      opacity: 0.6; }\n      .select-coin ul li img {\n        display: block;\n        margin: 10px auto;\n        max-width: 25px; }\n      .select-coin ul li:hover, .select-coin ul li.selected {\n        background-color: #44af57;\n        opacity: 1;\n        border: 2px solid #44af57; }\n\n.container-coins {\n  width: 70px;\n  height: 210px;\n  position: absolute;\n  border-radius: 5px;\n  background-color: #e4e4e5;\n  top: 50px;\n  z-index: 99;\n  text-align: center; }\n  .container-coins ul {\n    margin: 0;\n    padding: 0; }\n    .container-coins ul li {\n      list-style: none;\n      text-align: center;\n      padding: 5px 10px;\n      cursor: pointer; }\n      .container-coins ul li.selected, .container-coins ul li:hover {\n        background-color: #c7c7c7;\n        border-radius: 5px; }\n\n.container-qr-code {\n  border-radius: 15px;\n  box-shadow: 0px 0px 25px 0px #41256f;\n  text-align: center;\n  padding: 30px; }\n  .container-qr-code .qr-code {\n    margin-top: 15px; }\n  .container-qr-code .debosit-advice {\n    color: #fff;\n    font-size: 12px; }\n  .container-qr-code .address {\n    color: #44af57;\n    margin-top: 15px 0; }\n\n.show-balance .show-balance-btc {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-btc .coin-name {\n    color: #e0972f; }\n\n.show-balance .show-balance-ltc {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-ltc .coin-name {\n    color: #9f9aa4; }\n\n.show-balance .show-balance-eth {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-eth .coin-name {\n    color: #b4d0cd; }\n\n.flex-right {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: end;\n      justify-content: flex-end; }\n\n.container-logo-header .logo {\n  text-align: left;\n  padding: 10px; }\n\n.container-logo-header .container-data {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  font-size: 14px; }\n  .container-logo-header .container-data .container-balance {\n    text-align: right; }\n  .container-logo-header .container-data .coupom {\n    text-align: center; }\n\n.error-limit {\n  padding: 10px;\n  background-color: #df3535;\n  text-align: center;\n  margin: 10px; }\n\n.lunes-current-price {\n  text-align: right;\n  margin-bottom: 20px; }\n\n@media only screen and (max-width: 426px) {\n  .container-logo-header .logo {\n    text-align: center;\n    margin-bottom: 20px; }\n  .valueCripto .select-coin {\n    clear: both;\n    min-height: 60px;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: center;\n        justify-content: center; }\n  .valueCripto .area-field input {\n    text-align: center; }\n  .container-qr-code {\n    padding: 30px 15px; } }\n\n@media only screen and (max-width: 321px) {\n  .header {\n    display: block !important; }\n  .container-logo-header {\n    text-align: center; }\n    .container-logo-header .container-quotation {\n      margin: 10px 0 0 0; }\n    .container-logo-header .logo {\n      text-align: center;\n      padding: 10px; }\n    .container-logo-header .quotation {\n      text-align: center;\n      display: -ms-flexbox;\n      display: flex;\n      -ms-flex-pack: center;\n          justify-content: center;\n      -ms-flex-direction: row;\n          flex-direction: row; }\n      .container-logo-header .quotation .container-quotation {\n        padding: 0 5px; }\n  .round-menu img {\n    width: 100%; }\n  .flex-right {\n    display: block; }\n  .menu.menu-top {\n    display: -ms-flexbox !important;\n    display: flex !important;\n    -ms-flex-pack: center !important;\n        justify-content: center !important; }\n    .menu.menu-top li img {\n      width: 25px; } }\n", "", {"version":3,"sources":["/home/felipe/lunes-purchase/src/buy/src/buy/buy.component.scss","/home/felipe/lunes-purchase/src/buy/src/scss/base/_color.scss"],"names":[],"mappings":"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","file":"buy.component.scss","sourcesContent":["@import '../scss/base/_color';\n\n.input-calculator {\n  background-color: $darkPrimary;\n  border: 0;\n  border-radius: 5px;\n  color: #fff;\n  font-size: 18px;\n  margin-bottom: 15px;\n  padding: 13px;\n  text-align: right;\n  width: 100%;\n}\n\n.equal {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 30px;\n  text-align: center;\n}\n\n.calculator {\n  .valueCripto {\n    margin-top: 15px;\n  }\n  .valueMoney {\n    height: 80px;\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\n    color: #fff;\n    padding: 20px;\n    border-radius: 5px;\n    text-align: right;\n    font-size: 18px;\n    .currency {\n      width: 100%;\n      text-align: right;\n      font-size: 10px;\n      padding-right: 9px;\n      padding-top: 3px;\n    }\n  }\n}\n\n.lunesAmount {\n  .input-calculator {\n    margin-left: 0;\n    border-radius: 0 5px 5px 0;\n    padding: 15px 10px;\n  }\n\n  .flag-lns {\n    background-color: #fff;\n    border-radius: 5px 0 0 5px;\n    margin-bottom: 5px;\n    margin-right: -5px;\n    padding: 10px 10px 14px 15px;\n  }\n}\n\n.amountBalance {\n  text-align: center;\n  .total {\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8); \n    border-radius: 5px;\n    margin: 0 auto;\n    padding: 10px;\n    width: 100%;\n    hr {\n      border-top: solid 1px $green;\n    }\n  }\n\n  .result {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n    padding: 0 10px;\n  }\n}\n\n.select-coin {\n  display: flex;\n\n  ul {\n    display: flex;\n    margin: 0;\n    padding: 0;\n    text-align: center;\n    li {\n      border: 2px solid $darkPrimary;        \n      list-style: none;\n      cursor: pointer;\n      margin: 0 20px 0 0;\n      width: 50px;\n      border-radius: 5px;\n      opacity: 0.6;\n      img {\n        display: block;\n        margin: 10px auto;\n        max-width: 25px;\n      }\n      &:hover, &.selected {\n        background-color: $green;\n        opacity: 1;\n        border: 2px solid $green;        \n      }\n    }\n  }\n}\n\n.container-coins {\n  width: 70px;\n  height: 210px;\n  position: absolute;\n  border-radius: 5px;\n  background-color: #e4e4e5;\n  top: 50px;\n  z-index: 99;\n  text-align: center;\n  ul {\n    margin: 0;\n    padding: 0;\n    li {\n      list-style: none;\n      text-align: center;\n      padding: 5px 10px;\n      cursor: pointer;\n      &.selected, &:hover {\n        background-color: #c7c7c7;\n        border-radius: 5px;\n      }\n    }\n  }\n}\n\n.container-qr-code {\n  border-radius: 15px;\n  box-shadow: 0px 0px 25px 0px rgba(65,37,111,1);\n  text-align: center;\n  padding: 30px;\n  .qr-code {\n    margin-top: 15px;\n  }\n  .debosit-advice {\n    color: #fff;\n    font-size: 12px;\n  }\n  .address {\n    color: $green;\n    margin-top: 15px 0;\n  }\n}\n\n.show-balance {\n  $coins: (\n    btc: #e0972f,\n    ltc: #9f9aa4,\n    eth: #b4d0cd\n  );\n\n  @each $coin, $color in $coins {\n    .show-balance-#{$coin} {\n      margin-top: 1rem;\n      font-size: 2rem;\n\n      .coin-name {\n        color: $color;\n      }\n    }\n  }\n}\n\n.flex-right {\n  display: flex;\n  justify-content: flex-end;\n}\n\n.container-logo-header {\n  .logo {\n    text-align: left;\n    padding: 10px;\n  }\n  .container-data {\n    // padding: 5px 20px; \n    display: flex;\n    align-items: center;\n    font-size: 14px;\n    .container-balance {\n      text-align: right;\n    }\n    .coupom {    \n      text-align: center;\n    }\n  }\n}\n\n.error-limit {\n  padding: 10px;\n  background-color: #df3535;\n  text-align: center;\n  margin: 10px;\n}\n\n.lunes-current-price {\n  text-align: right;\n  margin-bottom: 20px;\n}\n\n@media only screen and (max-width: 426px) {\n  .container-logo-header {\n    .logo {\n      text-align: center;\n      margin-bottom: 20px;\n    }\n  }\n  .valueCripto {\n    .select-coin {\n      clear: both;\n      min-height: 60px;\n      display: flex;\n      justify-content: center;\n    }\n    .area-field input {\n      text-align: center;\n    }\n  }\n  .container-qr-code {\n    padding: 30px 15px;\n  }\n}\n\n@media only screen and (max-width: 321px) {\n  .header {\n    display: block!important;\n  }\n  .container-logo-header {\n    text-align: center;\n    .container-quotation {\n      margin: 10px 0 0 0;\n    }\n    .logo {\n      text-align: center;\n      padding: 10px;\n    }\n    .quotation {\n      text-align: center;\n      display: flex;\n      justify-content: center;\n      flex-direction: row;\n      .container-quotation {\n        padding: 0 5px;\n      }\n    }\n  }\n  .round-menu img {\n    width: 100%;\n  }\n  .flex-right {\n    display: block;\n  }\n  .menu.menu-top {\n    display: flex!important;\n    justify-content: center!important;\n    li {\n      img {\n        width: 25px;\n      }\n    }\n  }\n}\n  ","$primary: #4c2b82 !default;\n$lightPrimary: #654fa4;\n$extraLightPrimary: #876fc6;\n$darkPrimary: #41256f;\n$extraDarkPrimary: #3f2569;\n$green: #44af57;\n$darkGreen: #44af57;\n$yellow: #f9d660;\n$darkGray: #333;"],"sourceRoot":""}]);
 	
 	// exports
 
 
 /***/ },
-/* 705 */
+/* 707 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -106642,15 +106725,15 @@
 	  value: true
 	});
 	
-	var _faqComponent = __webpack_require__(706);
+	var _faqComponent = __webpack_require__(708);
 	
 	var _faqComponent2 = _interopRequireDefault(_faqComponent);
 	
-	var _faq = __webpack_require__(707);
+	var _faq = __webpack_require__(709);
 	
 	var _faq2 = _interopRequireDefault(_faq);
 	
-	__webpack_require__(708);
+	__webpack_require__(710);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -106662,20 +106745,28 @@
 	exports.default = FAQComponent;
 
 /***/ },
-/* 706 */
+/* 708 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"container faq\">\n\n  <span onclick=\"window.history.back();\" style=\"cursor: pointer;font-size: 10px;border-radius: 10px;background-color: #4c2b82;box-shadow: #392060 1px 1px 1px;padding: 2px 10px;\">\n    <i class=\"fas fa-angle-left\"></i>&nbsp;&nbsp;&nbsp; {{'BACK' | translate}}\n  </span>\n\n  <h3 style=\"margin: 20px 0;\" id=\"here\">{{'FAQ' | translate}}</h3>\n\n  <p ng-show=\"false\" ng-bind-html=\"$ctrl.faqText\"></p>\n\n  <div style=\"text-align: left;\">\n    <ul style=\"margin: 0;padding: 0;\">\n      <li class=\"containerQuestion\" ng-repeat=\"question in $ctrl.questions\">\n\n        <div class=\"question\" ng-click=\"$ctrl.open(question)\">\n          <p class=\"title\">{{question.question}}</p>\n          <small class=\"smalGreen\" ng-show=\"!question.show\">\n            <i class=\"fas fa-angle-right\"></i>\n          </small>\n          <small class=\"smallGreen\" ng-show=\"question.show\">\n            <i class=\"fas fa-angle-down\"></i>\n          </small>\n        </div>\n\n        <ul class=\"containerAnswer\" ng-show=\"question.show\">\n          <li class=\"answer\">\n            <p style=\"color: #5ad68c; margin: 0;\">{{question.answer}}</p>\n            <p ng-repeat=\"item in question.items\" style=\"margin: 0;font-size: 10px;\">{{item.translate | translate}} {{item.value}}</p>\n          </li>\n        </ul>\n      </li>\n    </ul>\n  </div>\n</div>"
 
 /***/ },
-/* 707 */
-/***/ function(module, exports) {
+/* 709 */
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	
+	var _index = __webpack_require__(685);
+	
+	var _smartlookClient = __webpack_require__(331);
+	
+	var _smartlookClient2 = _interopRequireDefault(_smartlookClient);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -106777,6 +106868,26 @@
 	
 	    // scroll to top page
 	    $window.scrollTo(0, 0);
+	
+	    var randomKey = void 0;
+	    var currentUser = JSON.parse(localStorage.getItem(_index.STORAGE_KEY));
+	    var userTrack = void 0;
+	    if (!currentUser) {
+	      randomKey = localStorage.getItem(_index.RANDOM_KEY);
+	      if (!randomKey) {
+	        randomKey = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);
+	        localStorage.setItem(_index.RANDOM_KEY, randomKey);
+	      }
+	      _smartlookClient2.default.identify(randomKey, {});
+	    } else {
+	      userTrack = { name: currentUser.fullname, email: currentUser.email, ownCoupon: currentUser.ownCoupon, coupon: currentUser.coupon, confirmIcoTerm: currentUser.confirmIcoTerm };
+	      if (currentUser.depositWallet) {
+	        userTrack.btcAddress = currentUser.depositWallet.BTC.address;
+	        userTrack.ltcAddress = currentUser.depositWallet.LTC.address;
+	        userTrack.ethAddress = currentUser.depositWallet.ETH.address;
+	      }
+	      _smartlookClient2.default.identify(currentUser._id, userTrack);
+	    }
 	  }
 	
 	  FAQController.prototype.open = function open(question) {
@@ -106797,16 +106908,16 @@
 	exports.default = FAQController;
 
 /***/ },
-/* 708 */
+/* 710 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(709);
+	var content = __webpack_require__(711);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(693)(content, {});
+	var update = __webpack_require__(689)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -106823,10 +106934,10 @@
 	}
 
 /***/ },
-/* 709 */
+/* 711 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(692)(true);
+	exports = module.exports = __webpack_require__(688)(true);
 	// imports
 	
 	
@@ -106835,41 +106946,6 @@
 	
 	// exports
 
-
-/***/ },
-/* 710 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _dashboardComponent = __webpack_require__(711);
-	
-	var _dashboardComponent2 = _interopRequireDefault(_dashboardComponent);
-	
-	var _dashboard = __webpack_require__(712);
-	
-	var _dashboard2 = _interopRequireDefault(_dashboard);
-	
-	__webpack_require__(713);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var DashboardComponent = {
-	  template: _dashboardComponent2.default,
-	  controller: _dashboard2.default
-	};
-	
-	exports.default = DashboardComponent;
-
-/***/ },
-/* 711 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"container\">\n\n  <lunesheader showlogout=\"true\" showlinks=\"true\"></lunesheader>\n\n  <!-- DASHBOARD -->\n  <section class=\"dashboard\">\n    <div class=\"row\">\n      <div class=\"title user-menu\">\n        <a href=\"\" id=\"user-menu\" ng-click=\"$ctrl.toogleUserMenu()\">\n          <h4>\n            {{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}\n            <span ng-show=\"!$ctrl.showUserMenu\">\n              <i class=\"fas fa-angle-right green\"></i>\n            </span>\n            <span ng-show=\"$ctrl.showUserMenu\">\n              <i class=\"fas fa-angle-down green\"></i>\n            </span>\n          </h4>\n        </a>\n        <div class=\"logout area-button\" ng-show=\"$ctrl.showUserMenu\">\n          <a href=\"#!/login\" class=\"primary-button\" ng-click=\"$ctrl.logout()\">\n            {{'LOGOUT' | translate}}\n          </a>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"row\">\n      <!-- BALANCE FOR EACH COIN -->\n      <div class=\"col-xs-12 col-md-6 col-lg-6 transaction-coins\">\n        <div class=\"show-balance\" ng-repeat=\"coin in $ctrl.coins\" style=\"margin-right: 15px;text-align: center;\">\n          <img ng-src=\"{{coin.img}}\" alt=\"{{coin.label}}\">\n          <p style=\"font-size: 10px;margin: 0;\">{{coin.label}}</p>\n          <small ng-show=\"false\" style=\"font-size: 8px;color: #ce3e3e;\">{{'UNCONFIRMED_BALANCE' | translate}}</small>\n          <p ng-show=\"false\" style=\"font-size: 10px;margin: 0;\">{{$ctrl.balanceProcessed[coin.name].unconfirmed_balance}}</p>\n        </div>\n      </div>\n\n      <div class=\"col-xs-12 col-md-6 col-lg-6 balance lns\">\n        <span>{{'MY_BALANCE' | translate}}:</span>\n        <span class=\"monetary\">{{ $ctrl.totalLns }}</span>\n        <span class=\"coin\">LNS</span>\n      </div>\n\n      <!-- end -->\n\n      <!-- TABLE RESUME HISTORIC PURCHASE -->\n      <div class=\"col-12 history\">\n        <table class=\"lunes-table\" ng-if=\"$ctrl.checkWidthScreenDesktop()\">\n          <thead>\n            <tr>\n              <td>{{ 'DASHBOARD.DATE' | translate }}</td>\n              <td>{{ 'DASHBOARD.PHASE' | translate }}</td>\n              <td>{{ 'DASHBOARD.DEPOSIT' | translate }}</td>\n              <td>Lunes</td>\n              <td>{{ 'DASHBOARD.BONUS' | translate }}</td>\n              <td>Total</td>\n            </tr>\n          </thead>\n          <tbody data-ng-if=\"$ctrl.history.length > 0\">\n            <tr data-ng-repeat=\"history in $ctrl.history\" ng-class-odd=\"'odd'\" ng-class-even=\"'even'\">\n              <td>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</td>\n              <td>{{ history.phase || 1 }}</td>\n              <td>{{ history.deposit_value }} {{ history.deposit_coin }}</td>\n              <td>{{ history.credit_value }} LNS</td>\n              <td>{{ history.bonus_value }} LNS </td>\n              <td>{{ history.total }} LNS</td>\n            </tr>\n          </tbody>\n          <tfoot data-ng-if=\"$ctrl.history.length === 0\">\n            <tr>\n              <td colspan=\"6\" style=\"text-align: center;\">{{ 'DASHBOARD.NO_HISTORY' | translate }}</td>\n            </tr>\n          </tfoot>\n        </table>\n\n        <div ng-if=\"$ctrl.checkWidthScreenMobile()\">\n          <div data-ng-repeat=\"history in $ctrl.history\" ng-class-odd=\"'odd'\" ng-class-even=\"'even'\" style=\"border-radius: 5px;\">\n            <h6 style=\"text-align: center; padding: 10px; color: #4cd468;\">{{'TRANSACTION' | translate}} {{$index+1}}</h6>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.DATE' | translate }}</div>\n              <div>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.PHASE' | translate }}</div>\n              <div>{{ history.phase || 1 }}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.DEPOSIT' | translate }}</div>\n              <div>{{ history.deposit_value }} {{history.deposit_coin}}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>Lunes</div>\n              <div>{{ history.credit_value }} LNS</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.BONUS' | translate }}</div>\n              <div>{{ history.bonus_value }} LNS</div>\n            </div>\n            <div class=\"responsive-table-card total-footer\" ng-show=\"false\">\n              <div>Total</div>\n              <div>{{ history.total }} LNS</div>\n            </div>\n          </div>\n        </div>\n      </div>\n\n    </div>\n  </section>\n</div>\n<lunesfooter />"
 
 /***/ },
 /* 712 */
@@ -106881,9 +106957,48 @@
 	  value: true
 	});
 	
+	var _dashboardComponent = __webpack_require__(713);
+	
+	var _dashboardComponent2 = _interopRequireDefault(_dashboardComponent);
+	
+	var _dashboard = __webpack_require__(714);
+	
+	var _dashboard2 = _interopRequireDefault(_dashboard);
+	
+	__webpack_require__(715);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var DashboardComponent = {
+	  template: _dashboardComponent2.default,
+	  controller: _dashboard2.default
+	};
+	
+	exports.default = DashboardComponent;
+
+/***/ },
+/* 713 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"container\">\n\n  <lunesheader showlogout=\"true\" showlinks=\"true\"></lunesheader>\n\n  <!-- DASHBOARD -->\n  <section class=\"dashboard\">\n    <div>\n      <div class=\"title user-menu\" style=\"padding-left: 0;\">\n        <a href=\"\" id=\"user-menu\" ng-click=\"$ctrl.toogleUserMenu()\">\n          <h4>\n            {{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}\n            <span ng-show=\"!$ctrl.showUserMenu\">\n              <i class=\"fas fa-angle-right green\"></i>\n            </span>\n            <span ng-show=\"$ctrl.showUserMenu\">\n              <i class=\"fas fa-angle-down green\"></i>\n            </span>\n          </h4>\n        </a>\n        <div class=\"logout area-button\" ng-show=\"$ctrl.showUserMenu\">\n          <a href=\"#!/login\" class=\"primary-button\" ng-click=\"$ctrl.logout()\">\n            {{'LOGOUT' | translate}}\n          </a>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"row\">\n      <!-- BALANCE FOR EACH COIN -->\n      <div class=\"col-xs-12 col-md-6 col-lg-6 transaction-coins\">\n        <div class=\"show-balance\" ng-repeat=\"coin in $ctrl.coins\" style=\"margin-right: 15px;text-align: center;\">\n          <img ng-src=\"{{coin.img}}\" alt=\"{{coin.label}}\">\n          <p style=\"font-size: 10px;margin: 0;\">{{coin.label}}</p>\n          <small ng-show=\"false\" style=\"font-size: 8px;color: #ce3e3e;\">{{'UNCONFIRMED_BALANCE' | translate}}</small>\n          <p ng-show=\"false\" style=\"font-size: 10px;margin: 0;\">{{$ctrl.balanceProcessed[coin.name].unconfirmed_balance}}</p>\n        </div>\n      </div>\n\n      <div class=\"col-xs-12 col-md-6 col-lg-6 balance lns\">\n        <span>{{'MY_BALANCE' | translate}}:</span>\n        <span class=\"monetary\">{{ $ctrl.totalLns }}</span>\n        <span class=\"coin\">LNS</span>\n      </div>\n\n      <!-- end -->\n\n      <!-- TABLE RESUME HISTORIC PURCHASE -->\n      <div class=\"col-12 history\">\n        <table class=\"lunes-table\" ng-if=\"$ctrl.checkWidthScreenDesktop()\">\n          <thead>\n            <tr>\n              <td>{{ 'DASHBOARD.DATE' | translate }}</td>\n              <td>{{ 'DASHBOARD.PHASE' | translate }}</td>\n              <td>{{ 'DASHBOARD.DEPOSIT' | translate }}</td>\n              <td>Lunes</td>\n              <td>{{ 'DASHBOARD.BONUS' | translate }}</td>\n              <td>Total</td>\n            </tr>\n          </thead>\n          <tbody data-ng-if=\"$ctrl.history.length > 0\">\n            <tr data-ng-repeat=\"history in $ctrl.history\" ng-class-odd=\"'odd'\" ng-class-even=\"'even'\">\n              <td>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</td>\n              <td>{{ history.phase || 1 }}</td>\n              <td>{{ history.deposit_value }} {{ history.deposit_coin }}</td>\n              <td>{{ history.credit_value }} LNS</td>\n              <td>{{ history.bonus_value }} LNS </td>\n              <td>{{ history.total }} LNS</td>\n            </tr>\n          </tbody>\n          <tfoot data-ng-if=\"$ctrl.history.length === 0\">\n            <tr>\n              <td colspan=\"6\" style=\"text-align: center;\">{{ 'DASHBOARD.NO_HISTORY' | translate }}</td>\n            </tr>\n          </tfoot>\n        </table>\n\n        <div ng-if=\"$ctrl.checkWidthScreenMobile()\">\n          <div data-ng-repeat=\"history in $ctrl.history\" ng-class-odd=\"'odd'\" ng-class-even=\"'even'\" style=\"border-radius: 5px;\">\n            <h6 style=\"text-align: center; padding: 10px; color: #4cd468;\">{{'TRANSACTION' | translate}} {{$index+1}}</h6>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.DATE' | translate }}</div>\n              <div>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.PHASE' | translate }}</div>\n              <div>{{ history.phase || 1 }}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.DEPOSIT' | translate }}</div>\n              <div>{{ history.deposit_value }} {{history.deposit_coin}}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>Lunes</div>\n              <div>{{ history.credit_value }} LNS</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.BONUS' | translate }}</div>\n              <div>{{ history.bonus_value }} LNS</div>\n            </div>\n            <div class=\"responsive-table-card total-footer\" ng-show=\"false\">\n              <div>Total</div>\n              <div>{{ history.total }} LNS</div>\n            </div>\n          </div>\n        </div>\n      </div>\n\n    </div>\n  </section>\n</div>\n<lunesfooter />"
+
+/***/ },
+/* 714 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
 	var _lunesLib = __webpack_require__(478);
 	
 	var _lunesLib2 = _interopRequireDefault(_lunesLib);
+	
+	var _smartlookClient = __webpack_require__(331);
+	
+	var _smartlookClient2 = _interopRequireDefault(_smartlookClient);
 	
 	var _index = __webpack_require__(685);
 	
@@ -106911,6 +107026,16 @@
 	    this.showUserMenu = false;
 	    this.getHistory();
 	    this.getProcessedBalanceUser();
+	
+	    if (this.currentUser) {
+	      var userTrack = { name: this.currentUser.fullname, email: this.currentUser.email, ownCoupon: this.currentUser.ownCoupon, coupon: this.currentUser.coupon, confirmIcoTerm: this.currentUser.confirmIcoTerm };
+	      if (this.currentUser.depositWallet) {
+	        userTrack.btcAddress = this.currentUser.depositWallet.BTC.address;
+	        userTrack.ltcAddress = this.currentUser.depositWallet.LTC.address;
+	        userTrack.ethAddress = this.currentUser.depositWallet.ETH.address;
+	      }
+	      _smartlookClient2.default.identify(this.currentUser._id, userTrack);
+	    }
 	  }
 	
 	  DashboardController.prototype.getProcessedBalanceUser = function () {
@@ -107212,16 +107337,16 @@
 	exports.default = DashboardController;
 
 /***/ },
-/* 713 */
+/* 715 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(714);
+	var content = __webpack_require__(716);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(693)(content, {});
+	var update = __webpack_require__(689)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -107238,10 +107363,10 @@
 	}
 
 /***/ },
-/* 714 */
+/* 716 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(692)(true);
+	exports = module.exports = __webpack_require__(688)(true);
 	// imports
 	
 	
@@ -107252,7 +107377,7 @@
 
 
 /***/ },
-/* 715 */
+/* 717 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -107261,15 +107386,15 @@
 	  value: true
 	});
 	
-	var _fixComponent = __webpack_require__(716);
+	var _fixComponent = __webpack_require__(718);
 	
 	var _fixComponent2 = _interopRequireDefault(_fixComponent);
 	
-	var _fix = __webpack_require__(717);
+	var _fix = __webpack_require__(719);
 	
 	var _fix2 = _interopRequireDefault(_fix);
 	
-	__webpack_require__(718);
+	__webpack_require__(720);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -107281,13 +107406,13 @@
 	exports.default = FixComponent;
 
 /***/ },
-/* 716 */
+/* 718 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"container\">\n  <div style=\"display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-direction: column;\n  height: 100vh;\n  text-align: center;\">\n    <div class=\"col-xs-12 col-lg-2 logo\" style=\"margin-bottom: 50px;\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n    <h2>{{'PAGE_FIX' | translate}}</h2>\n  </div>\n</div>"
 
 /***/ },
-/* 717 */
+/* 719 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -107309,16 +107434,16 @@
 	exports.default = FixController;
 
 /***/ },
-/* 718 */
+/* 720 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(719);
+	var content = __webpack_require__(721);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(693)(content, {});
+	var update = __webpack_require__(689)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -107335,10 +107460,10 @@
 	}
 
 /***/ },
-/* 719 */
+/* 721 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(692)(true);
+	exports = module.exports = __webpack_require__(688)(true);
 	// imports
 	
 	
@@ -107349,7 +107474,7 @@
 
 
 /***/ },
-/* 720 */
+/* 722 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -107372,7 +107497,7 @@
 	};
 
 /***/ },
-/* 721 */
+/* 723 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -107453,7 +107578,7 @@
 	  PASSWORD_MATCH: 'Password must match',
 	  SEND_TO_THIS_ADDRESS: 'Please, send',
 	  UNCONFIRMED_BALANCE: 'Unconfirmed',
-	  AMOUNT_MINIMUN_VALIDATION: 'The minimun price of LNS must be greater than zero',
+	  AMOUNT_MINIMUN_VALIDATION: 'The amount of LNS must be greater than zero',
 	  FAQ: 'F.A.Q',
 	  EXCEED_LIMIT_BUY: 'You exceeded your limit buy'
 	}, _defineProperty(_USER$PASSWORD$PASSWO, 'DASHBOARD', {
@@ -107465,7 +107590,7 @@
 	}), _defineProperty(_USER$PASSWORD$PASSWO, 'TO', 'to'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_ALREADY', 'The email address already exists'), _defineProperty(_USER$PASSWORD$PASSWO, 'TERMS_CONDITION_TITLE', 'Terms and Conditions'), _defineProperty(_USER$PASSWORD$PASSWO, 'REPRESENTATION_TERM_TITLE', 'Representation and Warranties'), _defineProperty(_USER$PASSWORD$PASSWO, 'ERROR_SERVER', 'Error on server'), _defineProperty(_USER$PASSWORD$PASSWO, 'COUPON', 'Coupon'), _defineProperty(_USER$PASSWORD$PASSWO, 'OWN_COUPON', 'My Coupon'), _defineProperty(_USER$PASSWORD$PASSWO, 'TYPE_COUPON', 'Type your coupon bonus'), _defineProperty(_USER$PASSWORD$PASSWO, 'CHANGE_PASSWORD', 'Change Password'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_SENT', 'Email sent successfully'), _defineProperty(_USER$PASSWORD$PASSWO, 'CLOSE', 'Close'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_NOT_SENT', 'Email not sent or not exists'), _defineProperty(_USER$PASSWORD$PASSWO, 'DO_YOU_CHANGE_PASSWORD', 'Do you want change you password?'), _defineProperty(_USER$PASSWORD$PASSWO, 'CHANGE_PASSWORD_INSTRUCTION', 'Type your email for us send for you the instructions to change password'), _defineProperty(_USER$PASSWORD$PASSWO, 'WHATS_LUNES', 'What is Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'WHATS_LUNES_A', 'Lunes is a platform that provides a set of solutions that is decentralized by utilizing blockchain\n    technology: such as creating tokens, authenticity records, and making payment processing possible through our gateway operators by using \u201Cfiat\u201D \n    currencies and cryptocurrencies.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_01', 'Is Lunes a Waves or Ethereum token?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_01_A', 'Our blockchain is a fork of the Waves code, but we have very different functionalities. So Lunes is NOT an ethereum token.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_02', 'When does PRE_ICO start?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_02_A', 'The PRE-ICO starts on February 25 and runs until March 30.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_03', 'When does ICO start?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_03_A', 'ICO starts on April 15 and runs until May 20.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_04', 'How to buy Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_04_A', 'Visit the website https://ico.lunes.io, register and log in. Just choose the desired payment A- method and send to the address of your choice. That simple.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_05', 'What currencies will you be accepting?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_05_A', 'Bitcoin, Ethereum and Litecoin.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_06', 'How do I convert my payment for Lunes in the website?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_06_A', 'There is no need to convert it. Your Lunes will be automatically converted within 20 minutes to 1 hour after payment is confirmed.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_07', 'What is the price of 1 LNS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_07_A', 'We will have 4 lots with the following prices:'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_1', '1st lot:'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_2', '2nd lot:'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_3', '3rd lot:'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_4', '4th lot:'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_08', 'What is the limit of purchase per investor?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_08_A', '1st lot: $ 0.01 - 300.000 coins\n    <br />2nd lot: $ 0.08 - 5.000.000 coins\n    <br />3rd lot: $ 0.15 - 8.000.000 coins\n    <br />4th lot: $ 0.30 10.000.000 coins'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09', 'What is the max supply of coins?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09_A', '600.000.000 coins. Total coins available for ICO process is 450.000.000.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_10', 'What is the Soft Cap?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_10_A', '10.92M USD.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_11', 'Can I buy with fiat currency?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_11_A', 'No. We will accept only cryptocurrency.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_12', 'When can I transfer my Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_12_A', 'After ICO is finished, you will be able to transfer your Lunes coins.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_13', 'Is Lunes a security token?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_13_A', 'No. Lunes is a utility token.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_14', 'Is Lunes going to be listed at any exchange?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_14_A', 'Yes, but we cannot confirm any at the moment. We will negotiate with exchanges after the ICO is finished.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_15', 'When Lunes wallet will be released for iOS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_15_A', 'We do not have a specific date. Apple has been very bureaucratic when it comes to cryptocurrencies. Although we are fully committed to making our app \n    available to iOS system.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_16', 'What is the mining algorithm, PoW or PoS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_16_A', 'LPoS, or Leased Proof of Stake, in which the Lunes tokens that are in your wallet can be used to "forge" tokens through the leasing process, safely \n    and without having to keep an open wallet.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_17', 'What the price to 1LNS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_17_A', 'We not have how to control of the price in the exchanges, the market dictates the rules'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_18', 'How can I create a Lunes Node?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_18_A', 'The Lunes Node (still in development) is an application in Java, compatible with any operating system which offers support. In order to your Lunes \n    Node has the chance to mine the transactions, it is necessary for the Wallet set up in the Lunes.conf to hold at least 5,000 coins.'), _defineProperty(_USER$PASSWORD$PASSWO, 'FAQ_TEXT', '\n      \n    '), _defineProperty(_USER$PASSWORD$PASSWO, 'REPRESENTATION_TERM', '\n      <h3>Representation and Warranties</h3>\n      <p>By participating in the Initial Coin Offering, the User agrees to the T&C and in particular, they represent and warrant that they:</p>\n      <br>1. are authorized and have full power to purchase LNS according to the laws that apply in their jurisdiction of domicile;\n      <br>2. live in a jurisdiction which allows Lunes to sell the Lunes tokens through a Initial Coin Offering without requiring any local authorization;\n      <br>3. are familiar with all related regulations in the specific jurisdiction in which they are based and that purchasing cryptographic tokens in that jurisdiction is not prohibited, restricted or subject to additional conditions of any kind;\n      <br>4. are not a U.S., or Canadian, or Chinese, or South Korean, or Singaporean citizen, resident or entity (a \u201CU.S., or Canadian, or Chinese, or South Korean, or Singaporean Person\u201D) nor are they purchasing Lunes Tokens or signing on behalf of a U.S., or Canadian, or Chinese, or South Korean, or Singaporean Person. Are not acting for the purpose of speculative investment; will not use the Token Sale for any illegal activity, including but not limited to money laundering and the financing of terrorism;\n      <br>5. are solely responsible for determining whether the acquisition of LNS is appropriate for them; are acquiring LNS for future use of the Lunes Platform; understand the risks associated with the Initial Coin Offering (incl. the risks related to the non-development of Lunes Platform and operations);\n      <br>6. understand the use of cryptocurrencies and the associated risks\n    '), _defineProperty(_USER$PASSWORD$PASSWO, 'TERMS_CONDITIONS', '\n      <h3>Terms and Conditions</h3>\n      <p>The Terms and Conditions (the \u201CT&C\u201D) apply to the buyer of the Lunes token\n      (\u201CLNS\u201D) and future user of the Lunes Platform. You should carefully read the T&C, as well as the white paper of the Lunes project before participating in the Initial Coin Offering.</p>\n\n      <h5>Applicability</h5>\n      <p>The following T&C constitute the agreement (the \u201CAgreement\u201D) between Lunes Platform (hereinafter \u201CLunes\u201D or the \u201CCompany\u201D), and you (the \u201CUser\u201D) with respect to\n      the purchase of the Lunes Token and the future services offered through the Lunes Platform. By using our services, you are agreeing to be bound by the T&C in\n      its latest version. You are aware that Lunes may change this T&C at any time. Your continued use of the Lunes Platform means that you accept any new or modified\n      terms.</p>\n\n      <h5>Services</h5>\n      <p>Lunes is a platform which provides a set of decentralized solutions through blockchain.\n      In an uncomplicated and affordable way, we will pulverize our technologies into the population. With real solutions for daily life, we deliver services and\n      products ranging from payment processes and fundraising, to authenticity records.</p>\n\n      <h5>The Lunes Token (LNS)</h5>\n      <p>LNS does not have the legal qualification as a security. LNS is final and non-refundable. LNS is not a share and does not give any right to participate in the\n      general meetings of Lunes. LNS will not have a particular usage outside the Lunes Platform. The purchase of LNS shall therefore not be done for speculative usage.</p>\n\n      <p>LNS can be purchased during the Initial Coin Offering directly from the Company or after the ICO at the Company or exchanger.</p>\n\n      <p>Any future User purchasing LNS expressly acknowledges and represents that she/he has carefully reviewed the T&C and fully understands the risks, costs and\n      benefits associated with the purchase of this token as indicated in the T&C.</p>\n\n      <h5>Knowledge required<h5>\n      <p>A future User undertaking to purchase LNS in relation to the token sale,  should ensure that she/he understands and has significant experience of cryptocurrencies,\n      blockchain systems and services, and that she/he fully understands the risks associated with the token sale as well as the mechanism related to the use of\n      cryptocurrencies (incl. storage).</p>\n\n      <p>Lunes shall not be responsible for any loss of LNS or situations making it impossible to access to LNS, which may result in any actions or omissions of the future\n      User or any person undertaking to acquire LNS.</p>\n\n      <h5>Risks</h5>\n      <p>Acquiring LNS involves various risks, in particular that Lunes may not be able to launch its operations and develop its platform. Therefore, and prior to\n      acquiring\n      LNS, any future user should carefully consider the risks, costs, and benefits of acquiring LNS within the Initial Coin Offering, and, if necessary, obtain\n      independent advice in this regard. Any interested person who is not in the position to accept or to understand the risks associated with the Initial Coin\n      Offering (incl. the risks related to the non- development of Lunes Platform and operations) or any other risks as indicated in the T&C, should not acquire\n      LNS, at this stage or later.</p>\n\n      <h5>Self-Acquisition</h5>\n      <p>Lunes is allowed to acquire LNS from the market at market price as value disbursement method. The acquisition must be authorized by the Board of Directors,\n      under\n      the condition that no conflict of interests is identified. Through acquisition of LNS, Lunes is not allowed to perform operations such as manipulation of LNS\n      market.</p>\n\n      <h5>Important Disclaimer</h5>\n      <p>The T&C shall not and cannot be considered as an invitation to enter into an investment. They do not constitute or relate in any way nor should they be\n      considered\n      as an offering of securities in any jurisdiction. The T&C do not include or contain any information or indication that might be considered as a recommendation\n      or that might be used to base any investment decision. LNS is a utility token and is not intended to be used as an investment.</p>\n\n      <p>Lunes will be an operative entity managing a platform and LNS is only a utility token. Therefore, Lunes is not a financial intermediary and is not\n      required to obtain any authorization for anti-money laundering purposes.</p>\n\n      <p>Acquiring LNS shall not grant any right or influence over Lunes\u2019 organization and governance to the purchasers.</p>\n\n      <p>Employees of Lunes are allowed to operate with LNS at market price if they are in knowledge of information that may modify the price of the token.</p>\n\n      <p>Regulatory authorities are carefully scrutinizing businesses and operations associated to cryptocurrencies in the world. In that respect, regulatory measures,\n      investigations or actions may impact Lunes\u2019 business and even limit or prevent it from developing its operations in the future. Any person undertaking to acquire\n      LNS must be aware that the Lunes business model and the T&C may change or need to be modified because of new regulatory and compliance requirements from any\n      applicable laws in any jurisdictions. In such case, purchasers and any person undertaking to acquire LNS acknowledge and understand that neither Lunes nor any\n      of its affiliates shall be held liable for any direct or indirect loss or damages caused by such changes.</p>\n\n      <p>Lunes will do its best to launch its operations and develop the Lunes Platform. Any person undertaking to acquire LNS acknowledges and understands that Lunes does\n      not provide any guarantee that it will manage to establish an operative platform and therefore it cannot guarantee that the LNS can be used for social trading on\n      the platform. They acknowledge and understand therefore that Lunes (incl. its bodies and employees) assumes no liability or responsibility for any loss or damage\n      that would result from or relate to the incapacity to use LNS, except in the case of intentional misconduct or gross negligence.</p>\n\n      <h5>Intellectual Property Rights</h5>\n      <p>To the extent that copyright or other intellectual property rights exist in the Lunes Platform, such as software, know-how, analysis or programs, those copyrights\n      and other intellectual and industrial rights belong to Lunes.</p>\n\n      <h5>Limitation of Liability</h5>\n      <p>Lunes, as well as its officers, directors, agents, joint ventures, employees and suppliers, assumes no liability or responsibility for any loss arising out of or\n      related to the use of the Lunes Platform or any technical, interruption or malfunction of the platform.</p>\n\n      <p>The limitation of liability set out above shall not be applicable in the event that Lunes, or a Lunes-employee, has caused the damage by intentional misconduct or\n      by gross negligence.</p>\n\n      <h5>Severability</h5>\n      <p>If any of the provisions of the T&C or of the Agreement are deemed to be invalid, void or unenforceable, the remaining provisions shall continue in full force and\n      effect.</p>\n    '), _USER$PASSWORD$PASSWO);
 
 /***/ },
-/* 722 */
+/* 724 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -107552,10 +107677,10 @@
 	  PHASE: 'Fase',
 	  DEPOSIT: 'Depósito',
 	  BONUS: 'Bônus'
-	}), _defineProperty(_USER$PASSWORD$PASSWO, 'TO', 'para'), _defineProperty(_USER$PASSWORD$PASSWO, 'BALANCE', 'Saldo'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_ALREADY', 'Email já cadastrado'), _defineProperty(_USER$PASSWORD$PASSWO, 'ERROR_SERVER', 'Erro interno no servidor'), _defineProperty(_USER$PASSWORD$PASSWO, 'COUPON', 'Cupom'), _defineProperty(_USER$PASSWORD$PASSWO, 'OWN_COUPON', 'Meu Cupom'), _defineProperty(_USER$PASSWORD$PASSWO, 'TYPE_COUPON', 'Insira seu cupom de bônus'), _defineProperty(_USER$PASSWORD$PASSWO, 'TERMS_CONDITION_TITLE', 'Termos e Condições'), _defineProperty(_USER$PASSWORD$PASSWO, 'REPRESENTATION_TERM_TITLE', 'Representações e Garantias'), _defineProperty(_USER$PASSWORD$PASSWO, 'CHANGE_PASSWORD', 'Alterar Senha'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_SENT', 'Email enviado com sucesso'), _defineProperty(_USER$PASSWORD$PASSWO, 'CLOSE', 'Fechar'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_NOT_SENT', 'Email não enviado ou não existe'), _defineProperty(_USER$PASSWORD$PASSWO, 'AMOUNT_MINIMUN_VALIDATION', 'O preço mínimo de LNS deve ser maior do que zero'), _defineProperty(_USER$PASSWORD$PASSWO, 'PAGE_FIX', 'Página em manutenção'), _defineProperty(_USER$PASSWORD$PASSWO, 'DO_YOU_CHANGE_PASSWORD', 'Você deseja alterar a senha?'), _defineProperty(_USER$PASSWORD$PASSWO, 'CHANGE_PASSWORD_INSTRUCTION', 'Digite seu email para enviarmos as instruções de alteração de sua senha'), _defineProperty(_USER$PASSWORD$PASSWO, 'WHATS_LUNES', 'O que é a Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'WHATS_LUNES_A', 'A plataforma Lunes, viabiliza o fornecimento de um conjunto de solu\xE7\xF5es constru\xEDdas de forma descentralizada utilizando a \n    tecnologia de blockchain como cria\xE7\xE3o de tokens, registros de autenticidade e processamentos de pagamentos atrav\xE9s de operadores de gateway, \n    tanto de moedas fiduci\xE1rias quanto criptomoedas, facilitando a capta\xE7\xE3o de recursos e private labels.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_01', 'A Lunes \xE9 um token do Ethereum ou da Waves?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_01_A', 'Nosso blockchain \xE9 um fork do c\xF3digo da Waves, por\xE9m temos funcionalidades bem distintas. Portanto a Lunes N\xC3O \xE9 um token ethereum.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_02', 'Quando come\xE7a a PR\xC9-ICO?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_02_A', 'A pr\xE9-ICO come\xE7a no dia 25 de Fevereiro e vai at\xE9 o dia 30 de Mar\xE7o.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_03', 'Quando come\xE7a a ICO?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_03_A', 'A ICO come\xE7a no dia 15 de Abril e vai at\xE9 o dia 20 de Maio.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_04', 'Como comprar Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_04_A', 'Visite o site https://ico.lunes.io , fa\xE7a o cadastro e efetue o login. Basta escolher a forma de pagamento desejada e enviar para o endere\xE7o de sua escolha. Simples assim.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_05', 'Quais formas de pagamentos aceitas?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_05_A', 'Bitcoin, Ethereum e Litecoin.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_06', 'Como eu compro Lunes dentro do website?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_06_A', 'N\xE3o h\xE1 necessidade de fazer a compra. As suas Lunes ser\xE3o convertidas automaticamente dentro de 20 minutos a 1 hora.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_07', 'Qual o pre\xE7o de 1 LNS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_07_A', 'Teremos 4 lotes, com os pre\xE7os de acordo com a seguinte ordem:'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_1', 'lote 1'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_2', 'lote 2'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_3', 'lote 3'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_4', 'lote 4'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_08', 'Qual o valor m\xEDnimo para compra?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_08_A', 'N\xE3o h\xE1 valor m\xEDnimo de compra.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09', 'Qual o valor m\xE1ximo de compra por usu\xE1rio?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09_A', '1\xBA lote: $ 0.01 - 300.000 de moedas\n    <br />2\xBA lote: $ 0.08 - 5.000.000 de moedas\n    <br />3\xBA lote: $ 0.15 - 8.000.000 de moedas\n    <br />4\xBA lote: $ 0.30 - 10.000.000 de moedas'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09', 'Qual o m\xE1ximo de moedas emitidas?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09_A', '600 milh\xF5es de moedas. Sendo que 450 milh\xF5es est\xE3o dispon\xEDveis \xE0 venda.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_10', 'Qual o Soft Cap?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_10_A', '10.92M de d\xF3lares.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_11', 'Posso comprar Lunes em Real(BRL)?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_11_A', 'N\xE3o, ser\xE1 aceito apenas BTC, ETH e LTC como forma de pagamento.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_12', 'Quando poderei transferir minhas Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_12_A', 'Ap\xF3s o final da ICO voc\xEA poder\xE1 transferir suas Lunes para a carteira mobile ou web.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_13', 'A Lunes vai ser listada em alguma exchange?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_13_A', 'Pretendemos listar nossa moeda nas exchanges, por\xE9m ainda n\xE3o podemos confirmar em quais. Ap\xF3s a ICO iremos come\xE7ar as negocia\xE7\xF5es e iremos inform\xE1-los.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_14', 'A Lunes \xE9 uma security token?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_14_A', 'N\xE3o. A Lunes \xE9 uma utility token.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_15', 'Quando sai a Lunes Wallet para iOS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_15_A', 'N\xE3o temos uma data definida, a Apple \xE9 muito burocr\xE1tica em rela\xE7\xE3o as criptomoedas. Estamos com empenho total para disponibilizar nosso app tamb\xE9m para o sistema iOS, por\xE9m dependemos da aprova\xE7\xE3o da Apple.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_16', 'Qual o algoritmo de minera\xE7\xE3o, PoW ou PoS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_16_A', 'LPoS, ou Leased Proof of Stake. Onde os tokens Lunes que est\xE3o na sua carteira podem ser utilizados para "forjar" tokens atrav\xE9s do processo de leasing, com seguran\xE7a e sem necessidade de manter uma carteira aberta.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_17', 'Quanto valer\xE1 1 LNS nas exchanges?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_17_A', 'N\xE3o h\xE1 como ter um controle de quanto valer\xE1 nas exchanges, o mercado \xE9 quem dita as regras.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_18', 'Como montar um Lunes Node?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_18_A', 'O Lunes Node (ainda em desenvolvimento) \xE9 uma aplica\xE7\xE3o em java, compat\xEDvel com qualquer sistema operacional que tenha suporte. Para o seu Lunes Node tenha a chance de minerar as transa\xE7\xF5es, \xE9 necess\xE1rio que a carteira configurada no lunes.conf tenha o saldo m\xEDnimo de 5000 Lunes.'), _defineProperty(_USER$PASSWORD$PASSWO, 'FAQ_TEXT', ''), _defineProperty(_USER$PASSWORD$PASSWO, 'REPRESENTATION_TERM', '\n      <h3>Representa\xE7\xE3o e Garantias</h3>\n      <p>Ao participar da ICO o usu\xE1rio concorda com o T&C e, em particular, eles representam e garantem que:</p>\n      <br>1. S\xE3o autorizados e t\xEAm poder completo para comprar LNS de acordo com as leis que se aplicam em sua jurisdi\xE7\xE3o do domic\xEDlio;\n      <br>2. vivem em uma jurisdi\xE7\xE3o que permite que Lunes venda tokens atrav\xE9s de uma ICO sem exigir qualquer autoriza\xE7\xE3o local;\n      <br>3. est\xE3o familiarizados com todos os regulamentos relacionados na jurisdi\xE7\xE3o espec\xEDficas em que eles vivem e que a compra de tokens criptografados na jurisdi\xE7\xE3o n\xE3o \xE9 proibida, restrita ou sujeitas a qualquer tipo de condi\xE7\xF5es adicionais;\n      <br>4. N\xE3o s\xE3o um cidad\xE3o dos Estados Unidos, do Canad\xE1, de Singapura, da China ou da Cor\xE9ia do Sul ou residente ou entidade e nem est\xE3o comprando tokens Lunes ou assinando em nome de um cidad\xE3o americano, ou canadense, ou singapurense, ou sul coreano, ou chin\xEAs. N\xE3o est\xE3o agindo para fins de investimento especulativo; n\xE3o utilizar\xE1 a venda simb\xF3lica para qualquer actividade ilegal, incluindo, mas n\xE3o se limitando \xE0 lavagem de dinheiro e ao financiamento do terrorismo;\n      <br>5. s\xE3o os \xFAnicos respons\xE1veis por determinar se a aquisi\xE7\xE3o de LNS \xE9 adequada para eles; est\xE3o adquirindo LNS para uso futuro da plataforma Lunes; compreender os riscos associados \xE0 ICO (incl. os riscos relacionados com o n\xE3o desenvolvimento da plataforma e opera\xE7\xF5es da Lunes); e\n      <br>6. compreender o uso de criptomoedas e os riscos associados.\n    '), _defineProperty(_USER$PASSWORD$PASSWO, 'TERMS_CONDITIONS', '\n    <h3>Termos e condi\xE7\xF5es</h3>\n    <p>Os termos e condi\xE7\xF5es aplicam-se ao comprador do token Lunes ("LNS") e ao usu\xE1rio futuro da plataforma Lunes. Voc\xEA deve ler atentamente os termos e condi\xE7\xF5es,\n    bem como o Whitepaper do projeto Lunes antes de participar na ICO.</p>\n\n    <h5>Aplicabilidade</h5>\n    <p>Os seguintes termos e condi\xE7\xF5es constituem o acordo entre a plataforma Lunes (doravante "Lunes" ou a "empresa"), e voc\xEA (o "usu\xE1rio") no que diz respeito \xE0 compra dos tokens Lunes e aos servi\xE7os futuros oferecidos atrav\xE9s da Lunes Plataforma. Ao utilizar os nossos servi\xE7os, voc\xEA est\xE1 concordando em ser vinculado pelos termos e condi\xE7\xF5es em sua vers\xE3o mais recente. Voc\xEA est\xE1 ciente de que a Lunes pode mudar estes termos e condi\xE7\xF5es a qualquer momento. O uso continuado da plataforma Lunes significa que voc\xEA aceita quaisquer termos novos ou modificados.\n    Servi\xE7os\n    Lunes \xE9 uma plataforma que fornece um conjunto de solu\xE7\xF5es descentralizadas atrav\xE9s blockchain.\n    De uma forma descomplicada e acess\xEDvel, vamos pulverizar as nossas tecnologias para a  popula\xE7\xE3o. Com solu\xE7\xF5es reais para a vida cotidiana, entregamos servi\xE7os e\n    produtos que v\xE3o desde processos de pagamento e capta\xE7\xE3o de recursos, at\xE9 registros de autenticidade.</p>\n\n    <h5>O token Lunes (LNS)</h5>\n\n    <p>LNS n\xE3o tem a qualifica\xE7\xE3o legal de um cau\xE7\xE3o. Uma vez comprado o LNS n\xE3o \xE9 reembols\xE1vel. LNS n\xE3o \xE9 uma participa\xE7\xE3o da Lunes e n\xE3o d\xE1 qualquer direito de intera\xE7\xE3o nas reuni\xF5es gerais da Lunes. Os LNS podem ser adquiridos durante a fase de ICO diretamente da empresa ou ap\xF3s a ICO na empresa ou em certas exchanges.\n    Qualquer futuro usu\xE1rio que comprar LNS, expressamente reconhece que reviu cuidadosamente os termos e condi\xE7\xF5es e compreende plenamente os riscos, custos e benef\xEDcios associados com a compra deste token, como indicado nos termos e condi\xE7\xF5es.\n    Um futuro usu\xE1rio comprador de LNS tokens deve assegurar que compreenda e tenha uma experi\xEAncia significativa com crypto moedas, sistemas e servi\xE7os blockchain, e que compreenda plenamente os riscos associados a venda de tokens, bem como o mecanismo relacionado ao uso de crypto moedas.\n    A Lunes n\xE3o ser\xE1 respons\xE1vel por qualquer perda de LNS ou situa\xE7\xF5es que impossibilitam o acesso \xE0 LNS, o que pode resultar em quaisquer a\xE7\xF5es ou omiss\xF5es do futuro\n    usu\xE1rio ou de qualquer pessoa que se comprometa a adquirir ins.</p>\n\n    <h5>Os riscos</h5>\n\n    <p>A aquisi\xE7\xE3o de LNS envolve v\xE1rios riscos, em particular que a Lunes pode n\xE3o ser capaz de lan\xE7ar suas opera\xE7\xF5es e desenvolver sua plataforma. Portanto, e\n    antes de adquirir LNS, qualquer futuro usu\xE1rio deve considerar cuidadosamente os riscos, custos e benef\xEDcios da aquisi\xE7\xE3o de LNS dentro da ICO, e, se necess\xE1rio,\n    obter aconselhamento independente a este respeito. Qualquer pessoa interessada que n\xE3o esteja em posi\xE7\xE3o de aceitar ou de compreender os riscos associados \xE0\n    ICO (incl. os riscos relacionados com o n\xE3o desenvolvimento da plataforma e opera\xE7\xF5es da Lunes) ou quaisquer outros riscos conforme indicado nos termos e condi\xE7\xF5es,\n    n\xE3o devem adquirir LNS, nesta fase ou mais tarde.</p>\n\n    <h5>Auto-aquisi\xE7\xE3o</h5>\n\n    <p>\xC9 permitido a Lunes adquirir LNS do mercado a pre\xE7o de mercado como o m\xE9todo do desembolso do valor. A aquisi\xE7\xE3o deve ser autorizada pelo Conselho de\n    administra\xE7\xE3o, a condi\xE7\xE3o de n\xE3o se identificar nenhum conflito de interesses. Atrav\xE9s da aquisi\xE7\xE3o de LNS, Lunes n\xE3o tem permiss\xE3o para realizar opera\xE7\xF5es\n    como a manipula\xE7\xE3o do mercado de LNS.</p>\n\n    <h5>Importante Aviso De Isen\xE7\xE3o</h5>\n\n    <p>Os termos e condi\xE7\xF5es n\xE3o devem e n\xE3o podem ser considerados como um convite para entrar em um investimento. Eles n\xE3o constituem ou se relacionam de forma alguma, nem devem ser considerados como uma oferta de t\xEDtulos em qualquer jurisdi\xE7\xE3o. Os termos e condi\xE7\xF5es n\xE3o incluem nem cont\xE9m qualquer informa\xE7\xE3o ou indica\xE7\xE3o que possa ser considerada como uma recomenda\xE7\xE3o ou que possa ser usada para basear qualquer decis\xE3o de investimento. LNS \xE9 um token utilit\xE1rio e n\xE3o se destina a ser usado como um investimento.\n    A Lunes ser\xE1 uma entidade operativa gerenciando uma plataforma e LNS \xE9 apenas um token utilit\xE1rio. Portanto, Lunes n\xE3o \xE9 um intermedi\xE1rio financeiro, portanto n\xE3o \xE9 obrigado a obter qualquer autoriza\xE7\xE3o para fins anti-lavagem de dinheiro.\n    A aquisi\xE7\xE3o de LNS n\xE3o conceder\xE1 qualquer direito ou influ\xEAncia sobre a organiza\xE7\xE3o e governan\xE7a sobre a Lunes aos compradores.\n    Os funcion\xE1rios de Lunes est\xE3o autorizados a operar com o LNS a pre\xE7o de mercado, caso conhe\xE7am informa\xE7\xF5es que possam modificar o pre\xE7o do token.\n    As autoridades reguladoras est\xE3o examinando cuidadosamente as empresas e opera\xE7\xF5es associadas \xE0 crypto moedas no mundo. Nesse sentido, as medidas regulat\xF3rias, investiga\xE7\xF5es ou a\xE7\xF5es podem impactar os neg\xF3cios da Lunes e at\xE9 mesmo limit\xE1-la ou impedi-la de desenvolver suas opera\xE7\xF5es no futuro. Qualquer pessoa que se comprometa a adquirir o LNS deve estar ciente de que o modelo de neg\xF3cios Lunes e o T&C podem mudar ou precisar ser modificados devido a novos requisitos regulat\xF3rios e de conformidade de quaisquer leis aplic\xE1veis em qualquer jurisdi\xE7\xE3o. Nesse caso, os compradores e qualquer pessoa que se comprometa a adquirir LNS reconhecem e compreendem que a Lunes e suas filiais n\xE3o ser\xE3o responsabilizadas por quaisquer perdas ou danos diretos ou indiretos causados por tais altera\xE7\xF5es.\n    Lunes far\xE1 o seu melhor para lan\xE7ar suas opera\xE7\xF5es e desenvolver a plataforma Lunes. Qualquer pessoa que empreender na aquisi\xE7\xE3o de LNS reconhece e entende que\n    Lunes n\xE3o fornece qualquer garantia de que vai conseguir estabelecer uma plataforma operativa e, portanto, n\xE3o pode garantir que os LNS podem ser utilizados\n    para o com\xE9rcio social na plataforma. Reconhecem e compreendem conseq\xFCentemente que Lunes (incl. seus empregados) n\xE3o assume nenhuma responsabilidade por qualquer\n    perda ou dano que resulte ou se relacione com a incapacidade de usar o LNS, exceto no caso de m\xE1 conduta intencional ou bruta neglig\xEAncia.</p>\n\n    <h5>Direitos de propriedade intelectual</h5>\n\n    <p>Na medida em que o copyright ou outros direitos de propriedade intelectual existem na plataforma Lunes, tais como software, know-how, an\xE1lise ou programas,\n    os direitos autorais e outros direitos intelectuais e industriais pertencem a Lunes.</p>\n\n    <h5>Limita\xE7\xE3o da responsabilidade</h5>\n\n    <p>Lunes, bem como seus oficiais, diretores, agentes, joint-ventures, funcion\xE1rios e fornecedores, n\xE3o assume qualquer responsabilidade por qualquer perda resultante, ou relacionada ao uso, da plataforma Lunes ou qualquer t\xE9cnica, interrup\xE7\xE3o ou avaria da plataforma.\n    A limita\xE7\xE3o da responsabilidade acima referida n\xE3o \xE9 aplic\xE1vel no caso de Lunes, ou de um trabalhador Lunes, ter causado o dano por m\xE1 conduta intencional ou por\n    neglig\xEAncia grosseira.</p>\n\n    <h5>Separa\xE7\xE3o</h5>\n\n    <p>Se qualquer das disposi\xE7\xF5es do T&C ou do acordo for considerada inv\xE1lida, nula ou inexequ\xEDvel, as restantes disposi\xE7\xF5es continuar\xE3o em pleno vigor e efeito.</p>\n'), _USER$PASSWORD$PASSWO);
+	}), _defineProperty(_USER$PASSWORD$PASSWO, 'TO', 'para'), _defineProperty(_USER$PASSWORD$PASSWO, 'BALANCE', 'Saldo'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_ALREADY', 'Email já cadastrado'), _defineProperty(_USER$PASSWORD$PASSWO, 'ERROR_SERVER', 'Erro interno no servidor'), _defineProperty(_USER$PASSWORD$PASSWO, 'COUPON', 'Cupom'), _defineProperty(_USER$PASSWORD$PASSWO, 'OWN_COUPON', 'Meu Cupom'), _defineProperty(_USER$PASSWORD$PASSWO, 'TYPE_COUPON', 'Insira seu cupom de bônus'), _defineProperty(_USER$PASSWORD$PASSWO, 'TERMS_CONDITION_TITLE', 'Termos e Condições'), _defineProperty(_USER$PASSWORD$PASSWO, 'REPRESENTATION_TERM_TITLE', 'Representações e Garantias'), _defineProperty(_USER$PASSWORD$PASSWO, 'CHANGE_PASSWORD', 'Alterar Senha'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_SENT', 'Email enviado com sucesso'), _defineProperty(_USER$PASSWORD$PASSWO, 'CLOSE', 'Fechar'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_NOT_SENT', 'Email não enviado ou não existe'), _defineProperty(_USER$PASSWORD$PASSWO, 'AMOUNT_MINIMUN_VALIDATION', 'A quantidade mínima de LNS deve ser maior do que zero'), _defineProperty(_USER$PASSWORD$PASSWO, 'PAGE_FIX', 'Página em manutenção'), _defineProperty(_USER$PASSWORD$PASSWO, 'DO_YOU_CHANGE_PASSWORD', 'Você deseja alterar a senha?'), _defineProperty(_USER$PASSWORD$PASSWO, 'CHANGE_PASSWORD_INSTRUCTION', 'Digite seu email para enviarmos as instruções de alteração de sua senha'), _defineProperty(_USER$PASSWORD$PASSWO, 'WHATS_LUNES', 'O que é a Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'WHATS_LUNES_A', 'A plataforma Lunes, viabiliza o fornecimento de um conjunto de solu\xE7\xF5es constru\xEDdas de forma descentralizada utilizando a \n    tecnologia de blockchain como cria\xE7\xE3o de tokens, registros de autenticidade e processamentos de pagamentos atrav\xE9s de operadores de gateway, \n    tanto de moedas fiduci\xE1rias quanto criptomoedas, facilitando a capta\xE7\xE3o de recursos e private labels.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_01', 'A Lunes \xE9 um token do Ethereum ou da Waves?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_01_A', 'Nosso blockchain \xE9 um fork do c\xF3digo da Waves, por\xE9m temos funcionalidades bem distintas. Portanto a Lunes N\xC3O \xE9 um token ethereum.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_02', 'Quando come\xE7a a PR\xC9-ICO?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_02_A', 'A pr\xE9-ICO come\xE7a no dia 25 de Fevereiro e vai at\xE9 o dia 30 de Mar\xE7o.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_03', 'Quando come\xE7a a ICO?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_03_A', 'A ICO come\xE7a no dia 15 de Abril e vai at\xE9 o dia 20 de Maio.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_04', 'Como comprar Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_04_A', 'Visite o site https://ico.lunes.io , fa\xE7a o cadastro e efetue o login. Basta escolher a forma de pagamento desejada e enviar para o endere\xE7o de sua escolha. Simples assim.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_05', 'Quais formas de pagamentos aceitas?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_05_A', 'Bitcoin, Ethereum e Litecoin.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_06', 'Como eu compro Lunes dentro do website?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_06_A', 'N\xE3o h\xE1 necessidade de fazer a compra. As suas Lunes ser\xE3o convertidas automaticamente dentro de 20 minutos a 1 hora.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_07', 'Qual o pre\xE7o de 1 LNS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_07_A', 'Teremos 4 lotes, com os pre\xE7os de acordo com a seguinte ordem:'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_1', 'lote 1'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_2', 'lote 2'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_3', 'lote 3'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_4', 'lote 4'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_08', 'Qual o valor m\xEDnimo para compra?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_08_A', 'N\xE3o h\xE1 valor m\xEDnimo de compra.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09', 'Qual o valor m\xE1ximo de compra por usu\xE1rio?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09_A', '1\xBA lote: $ 0.01 - 300.000 de moedas\n    <br />2\xBA lote: $ 0.08 - 5.000.000 de moedas\n    <br />3\xBA lote: $ 0.15 - 8.000.000 de moedas\n    <br />4\xBA lote: $ 0.30 - 10.000.000 de moedas'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09', 'Qual o m\xE1ximo de moedas emitidas?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09_A', '600 milh\xF5es de moedas. Sendo que 450 milh\xF5es est\xE3o dispon\xEDveis \xE0 venda.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_10', 'Qual o Soft Cap?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_10_A', '10.92M de d\xF3lares.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_11', 'Posso comprar Lunes em Real(BRL)?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_11_A', 'N\xE3o, ser\xE1 aceito apenas BTC, ETH e LTC como forma de pagamento.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_12', 'Quando poderei transferir minhas Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_12_A', 'Ap\xF3s o final da ICO voc\xEA poder\xE1 transferir suas Lunes para a carteira mobile ou web.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_13', 'A Lunes vai ser listada em alguma exchange?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_13_A', 'Pretendemos listar nossa moeda nas exchanges, por\xE9m ainda n\xE3o podemos confirmar em quais. Ap\xF3s a ICO iremos come\xE7ar as negocia\xE7\xF5es e iremos inform\xE1-los.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_14', 'A Lunes \xE9 uma security token?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_14_A', 'N\xE3o. A Lunes \xE9 uma utility token.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_15', 'Quando sai a Lunes Wallet para iOS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_15_A', 'N\xE3o temos uma data definida, a Apple \xE9 muito burocr\xE1tica em rela\xE7\xE3o as criptomoedas. Estamos com empenho total para disponibilizar nosso app tamb\xE9m para o sistema iOS, por\xE9m dependemos da aprova\xE7\xE3o da Apple.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_16', 'Qual o algoritmo de minera\xE7\xE3o, PoW ou PoS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_16_A', 'LPoS, ou Leased Proof of Stake. Onde os tokens Lunes que est\xE3o na sua carteira podem ser utilizados para "forjar" tokens atrav\xE9s do processo de leasing, com seguran\xE7a e sem necessidade de manter uma carteira aberta.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_17', 'Quanto valer\xE1 1 LNS nas exchanges?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_17_A', 'N\xE3o h\xE1 como ter um controle de quanto valer\xE1 nas exchanges, o mercado \xE9 quem dita as regras.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_18', 'Como montar um Lunes Node?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_18_A', 'O Lunes Node (ainda em desenvolvimento) \xE9 uma aplica\xE7\xE3o em java, compat\xEDvel com qualquer sistema operacional que tenha suporte. Para o seu Lunes Node tenha a chance de minerar as transa\xE7\xF5es, \xE9 necess\xE1rio que a carteira configurada no lunes.conf tenha o saldo m\xEDnimo de 5000 Lunes.'), _defineProperty(_USER$PASSWORD$PASSWO, 'FAQ_TEXT', ''), _defineProperty(_USER$PASSWORD$PASSWO, 'REPRESENTATION_TERM', '\n      <h3>Representa\xE7\xE3o e Garantias</h3>\n      <p>Ao participar da ICO o usu\xE1rio concorda com o T&C e, em particular, eles representam e garantem que:</p>\n      <br>1. S\xE3o autorizados e t\xEAm poder completo para comprar LNS de acordo com as leis que se aplicam em sua jurisdi\xE7\xE3o do domic\xEDlio;\n      <br>2. vivem em uma jurisdi\xE7\xE3o que permite que Lunes venda tokens atrav\xE9s de uma ICO sem exigir qualquer autoriza\xE7\xE3o local;\n      <br>3. est\xE3o familiarizados com todos os regulamentos relacionados na jurisdi\xE7\xE3o espec\xEDficas em que eles vivem e que a compra de tokens criptografados na jurisdi\xE7\xE3o n\xE3o \xE9 proibida, restrita ou sujeitas a qualquer tipo de condi\xE7\xF5es adicionais;\n      <br>4. N\xE3o s\xE3o um cidad\xE3o dos Estados Unidos, do Canad\xE1, de Singapura, da China ou da Cor\xE9ia do Sul ou residente ou entidade e nem est\xE3o comprando tokens Lunes ou assinando em nome de um cidad\xE3o americano, ou canadense, ou singapurense, ou sul coreano, ou chin\xEAs. N\xE3o est\xE3o agindo para fins de investimento especulativo; n\xE3o utilizar\xE1 a venda simb\xF3lica para qualquer actividade ilegal, incluindo, mas n\xE3o se limitando \xE0 lavagem de dinheiro e ao financiamento do terrorismo;\n      <br>5. s\xE3o os \xFAnicos respons\xE1veis por determinar se a aquisi\xE7\xE3o de LNS \xE9 adequada para eles; est\xE3o adquirindo LNS para uso futuro da plataforma Lunes; compreender os riscos associados \xE0 ICO (incl. os riscos relacionados com o n\xE3o desenvolvimento da plataforma e opera\xE7\xF5es da Lunes); e\n      <br>6. compreender o uso de criptomoedas e os riscos associados.\n    '), _defineProperty(_USER$PASSWORD$PASSWO, 'TERMS_CONDITIONS', '\n    <h3>Termos e condi\xE7\xF5es</h3>\n    <p>Os termos e condi\xE7\xF5es aplicam-se ao comprador do token Lunes ("LNS") e ao usu\xE1rio futuro da plataforma Lunes. Voc\xEA deve ler atentamente os termos e condi\xE7\xF5es,\n    bem como o Whitepaper do projeto Lunes antes de participar na ICO.</p>\n\n    <h5>Aplicabilidade</h5>\n    <p>Os seguintes termos e condi\xE7\xF5es constituem o acordo entre a plataforma Lunes (doravante "Lunes" ou a "empresa"), e voc\xEA (o "usu\xE1rio") no que diz respeito \xE0 compra dos tokens Lunes e aos servi\xE7os futuros oferecidos atrav\xE9s da Lunes Plataforma. Ao utilizar os nossos servi\xE7os, voc\xEA est\xE1 concordando em ser vinculado pelos termos e condi\xE7\xF5es em sua vers\xE3o mais recente. Voc\xEA est\xE1 ciente de que a Lunes pode mudar estes termos e condi\xE7\xF5es a qualquer momento. O uso continuado da plataforma Lunes significa que voc\xEA aceita quaisquer termos novos ou modificados.\n    Servi\xE7os\n    Lunes \xE9 uma plataforma que fornece um conjunto de solu\xE7\xF5es descentralizadas atrav\xE9s blockchain.\n    De uma forma descomplicada e acess\xEDvel, vamos pulverizar as nossas tecnologias para a  popula\xE7\xE3o. Com solu\xE7\xF5es reais para a vida cotidiana, entregamos servi\xE7os e\n    produtos que v\xE3o desde processos de pagamento e capta\xE7\xE3o de recursos, at\xE9 registros de autenticidade.</p>\n\n    <h5>O token Lunes (LNS)</h5>\n\n    <p>LNS n\xE3o tem a qualifica\xE7\xE3o legal de um cau\xE7\xE3o. Uma vez comprado o LNS n\xE3o \xE9 reembols\xE1vel. LNS n\xE3o \xE9 uma participa\xE7\xE3o da Lunes e n\xE3o d\xE1 qualquer direito de intera\xE7\xE3o nas reuni\xF5es gerais da Lunes. Os LNS podem ser adquiridos durante a fase de ICO diretamente da empresa ou ap\xF3s a ICO na empresa ou em certas exchanges.\n    Qualquer futuro usu\xE1rio que comprar LNS, expressamente reconhece que reviu cuidadosamente os termos e condi\xE7\xF5es e compreende plenamente os riscos, custos e benef\xEDcios associados com a compra deste token, como indicado nos termos e condi\xE7\xF5es.\n    Um futuro usu\xE1rio comprador de LNS tokens deve assegurar que compreenda e tenha uma experi\xEAncia significativa com crypto moedas, sistemas e servi\xE7os blockchain, e que compreenda plenamente os riscos associados a venda de tokens, bem como o mecanismo relacionado ao uso de crypto moedas.\n    A Lunes n\xE3o ser\xE1 respons\xE1vel por qualquer perda de LNS ou situa\xE7\xF5es que impossibilitam o acesso \xE0 LNS, o que pode resultar em quaisquer a\xE7\xF5es ou omiss\xF5es do futuro\n    usu\xE1rio ou de qualquer pessoa que se comprometa a adquirir ins.</p>\n\n    <h5>Os riscos</h5>\n\n    <p>A aquisi\xE7\xE3o de LNS envolve v\xE1rios riscos, em particular que a Lunes pode n\xE3o ser capaz de lan\xE7ar suas opera\xE7\xF5es e desenvolver sua plataforma. Portanto, e\n    antes de adquirir LNS, qualquer futuro usu\xE1rio deve considerar cuidadosamente os riscos, custos e benef\xEDcios da aquisi\xE7\xE3o de LNS dentro da ICO, e, se necess\xE1rio,\n    obter aconselhamento independente a este respeito. Qualquer pessoa interessada que n\xE3o esteja em posi\xE7\xE3o de aceitar ou de compreender os riscos associados \xE0\n    ICO (incl. os riscos relacionados com o n\xE3o desenvolvimento da plataforma e opera\xE7\xF5es da Lunes) ou quaisquer outros riscos conforme indicado nos termos e condi\xE7\xF5es,\n    n\xE3o devem adquirir LNS, nesta fase ou mais tarde.</p>\n\n    <h5>Auto-aquisi\xE7\xE3o</h5>\n\n    <p>\xC9 permitido a Lunes adquirir LNS do mercado a pre\xE7o de mercado como o m\xE9todo do desembolso do valor. A aquisi\xE7\xE3o deve ser autorizada pelo Conselho de\n    administra\xE7\xE3o, a condi\xE7\xE3o de n\xE3o se identificar nenhum conflito de interesses. Atrav\xE9s da aquisi\xE7\xE3o de LNS, Lunes n\xE3o tem permiss\xE3o para realizar opera\xE7\xF5es\n    como a manipula\xE7\xE3o do mercado de LNS.</p>\n\n    <h5>Importante Aviso De Isen\xE7\xE3o</h5>\n\n    <p>Os termos e condi\xE7\xF5es n\xE3o devem e n\xE3o podem ser considerados como um convite para entrar em um investimento. Eles n\xE3o constituem ou se relacionam de forma alguma, nem devem ser considerados como uma oferta de t\xEDtulos em qualquer jurisdi\xE7\xE3o. Os termos e condi\xE7\xF5es n\xE3o incluem nem cont\xE9m qualquer informa\xE7\xE3o ou indica\xE7\xE3o que possa ser considerada como uma recomenda\xE7\xE3o ou que possa ser usada para basear qualquer decis\xE3o de investimento. LNS \xE9 um token utilit\xE1rio e n\xE3o se destina a ser usado como um investimento.\n    A Lunes ser\xE1 uma entidade operativa gerenciando uma plataforma e LNS \xE9 apenas um token utilit\xE1rio. Portanto, Lunes n\xE3o \xE9 um intermedi\xE1rio financeiro, portanto n\xE3o \xE9 obrigado a obter qualquer autoriza\xE7\xE3o para fins anti-lavagem de dinheiro.\n    A aquisi\xE7\xE3o de LNS n\xE3o conceder\xE1 qualquer direito ou influ\xEAncia sobre a organiza\xE7\xE3o e governan\xE7a sobre a Lunes aos compradores.\n    Os funcion\xE1rios de Lunes est\xE3o autorizados a operar com o LNS a pre\xE7o de mercado, caso conhe\xE7am informa\xE7\xF5es que possam modificar o pre\xE7o do token.\n    As autoridades reguladoras est\xE3o examinando cuidadosamente as empresas e opera\xE7\xF5es associadas \xE0 crypto moedas no mundo. Nesse sentido, as medidas regulat\xF3rias, investiga\xE7\xF5es ou a\xE7\xF5es podem impactar os neg\xF3cios da Lunes e at\xE9 mesmo limit\xE1-la ou impedi-la de desenvolver suas opera\xE7\xF5es no futuro. Qualquer pessoa que se comprometa a adquirir o LNS deve estar ciente de que o modelo de neg\xF3cios Lunes e o T&C podem mudar ou precisar ser modificados devido a novos requisitos regulat\xF3rios e de conformidade de quaisquer leis aplic\xE1veis em qualquer jurisdi\xE7\xE3o. Nesse caso, os compradores e qualquer pessoa que se comprometa a adquirir LNS reconhecem e compreendem que a Lunes e suas filiais n\xE3o ser\xE3o responsabilizadas por quaisquer perdas ou danos diretos ou indiretos causados por tais altera\xE7\xF5es.\n    Lunes far\xE1 o seu melhor para lan\xE7ar suas opera\xE7\xF5es e desenvolver a plataforma Lunes. Qualquer pessoa que empreender na aquisi\xE7\xE3o de LNS reconhece e entende que\n    Lunes n\xE3o fornece qualquer garantia de que vai conseguir estabelecer uma plataforma operativa e, portanto, n\xE3o pode garantir que os LNS podem ser utilizados\n    para o com\xE9rcio social na plataforma. Reconhecem e compreendem conseq\xFCentemente que Lunes (incl. seus empregados) n\xE3o assume nenhuma responsabilidade por qualquer\n    perda ou dano que resulte ou se relacione com a incapacidade de usar o LNS, exceto no caso de m\xE1 conduta intencional ou bruta neglig\xEAncia.</p>\n\n    <h5>Direitos de propriedade intelectual</h5>\n\n    <p>Na medida em que o copyright ou outros direitos de propriedade intelectual existem na plataforma Lunes, tais como software, know-how, an\xE1lise ou programas,\n    os direitos autorais e outros direitos intelectuais e industriais pertencem a Lunes.</p>\n\n    <h5>Limita\xE7\xE3o da responsabilidade</h5>\n\n    <p>Lunes, bem como seus oficiais, diretores, agentes, joint-ventures, funcion\xE1rios e fornecedores, n\xE3o assume qualquer responsabilidade por qualquer perda resultante, ou relacionada ao uso, da plataforma Lunes ou qualquer t\xE9cnica, interrup\xE7\xE3o ou avaria da plataforma.\n    A limita\xE7\xE3o da responsabilidade acima referida n\xE3o \xE9 aplic\xE1vel no caso de Lunes, ou de um trabalhador Lunes, ter causado o dano por m\xE1 conduta intencional ou por\n    neglig\xEAncia grosseira.</p>\n\n    <h5>Separa\xE7\xE3o</h5>\n\n    <p>Se qualquer das disposi\xE7\xF5es do T&C ou do acordo for considerada inv\xE1lida, nula ou inexequ\xEDvel, as restantes disposi\xE7\xF5es continuar\xE3o em pleno vigor e efeito.</p>\n'), _USER$PASSWORD$PASSWO);
 
 /***/ },
-/* 723 */
+/* 725 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -107564,7 +107689,7 @@
 	  value: true
 	});
 	
-	var _http = __webpack_require__(724);
+	var _http = __webpack_require__(726);
 	
 	Object.defineProperty(exports, 'HttpService', {
 	  enumerable: true,
@@ -107573,7 +107698,7 @@
 	  }
 	});
 	
-	var _cheapflights = __webpack_require__(727);
+	var _cheapflights = __webpack_require__(729);
 	
 	Object.defineProperty(exports, 'CheapFlightService', {
 	  enumerable: true,
@@ -107582,7 +107707,7 @@
 	  }
 	});
 	
-	var _errormessagesService = __webpack_require__(728);
+	var _errormessagesService = __webpack_require__(730);
 	
 	Object.defineProperty(exports, 'ErrorMessagesService', {
 	  enumerable: true,
@@ -107591,7 +107716,7 @@
 	  }
 	});
 	
-	var _apiInterceptorService = __webpack_require__(729);
+	var _apiInterceptorService = __webpack_require__(731);
 	
 	Object.defineProperty(exports, 'APIInterceptorService', {
 	  enumerable: true,
@@ -107603,7 +107728,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 724 */
+/* 726 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -107622,11 +107747,11 @@
 	
 	var _constants = __webpack_require__(685);
 	
-	var _cccStreamerUtilities = __webpack_require__(725);
+	var _cccStreamerUtilities = __webpack_require__(727);
 	
 	var _cccStreamerUtilities2 = _interopRequireDefault(_cccStreamerUtilities);
 	
-	var _interceptor = __webpack_require__(726);
+	var _interceptor = __webpack_require__(728);
 	
 	var _interceptor2 = _interopRequireDefault(_interceptor);
 	
@@ -108129,7 +108254,7 @@
 	exports.default = HttpService;
 
 /***/ },
-/* 725 */
+/* 727 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -108619,7 +108744,7 @@
 	exports.default = CCC;
 
 /***/ },
-/* 726 */
+/* 728 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -108640,7 +108765,7 @@
 	};
 
 /***/ },
-/* 727 */
+/* 729 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -108660,7 +108785,7 @@
 	exports.default = CheapFlightService;
 
 /***/ },
-/* 728 */
+/* 730 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -108708,7 +108833,7 @@
 	exports.default = ErrorMessagesService;
 
 /***/ },
-/* 729 */
+/* 731 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -108753,16 +108878,16 @@
 	exports.default = APIInterceptorService;
 
 /***/ },
-/* 730 */
+/* 732 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(731);
+	var content = __webpack_require__(733);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(693)(content, {});
+	var update = __webpack_require__(689)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -108779,19 +108904,19 @@
 	}
 
 /***/ },
-/* 731 */
+/* 733 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(692)(true);
+	exports = module.exports = __webpack_require__(688)(true);
 	// imports
 	
 	
 	// module
-	exports.push([module.id, "input {\n  outline: none; }\n\nbody {\n  background-color: #4c2b82;\n  font-family: 'Roboto', sans-serif;\n  color: #fff;\n  font-size: 14px;\n  line-height: 20px;\n  font-weight: 100; }\n\n*, *:before, *:after {\n  box-sizing: border-box;\n  position: relative;\n  -webkit-box-sizing: border-box; }\n\n.center {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  height: 100%;\n  overflow: auto;\n  overflow-y: auto; }\n  @media (min-width: 768px) {\n    .center {\n      max-height: 780px; } }\n\nh1, h2, h3, h4 {\n  font-family: 'Offside', cursive;\n  line-height: 1.4em; }\n\nh2 {\n  font-size: 4em;\n  line-height: 1em; }\n\nh3 {\n  font-size: 2em;\n  line-height: 1.3em; }\n\n.txt-green {\n  color: #44af57; }\n\n.txt-center {\n  text-align: center !important; }\n\n.txt-left {\n  text-align: left !important; }\n\n.txt-right {\n  text-align: right !important; }\n\n.no-padding {\n  padding: 0; }\n\n.cursor-pointer {\n  cursor: pointer; }\n\n.round-menu {\n  text-decoration: none;\n  padding: 10px; }\n  .round-menu img {\n    vertical-align: middle; }\n\n.modal-backdrop {\n  background-color: #4c2b82;\n  opacity: 0.7;\n  text-align: center; }\n\n/* Logo */\n.logo {\n  font-size: 40px;\n  font-family: 'Offside', cursive;\n  letter-spacing: -7px; }\n\n/* Header */\n.header {\n  margin: 20px 0;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  padding: 10px 0; }\n\n.nav-menu {\n  padding-left: 0;\n  width: 100%; }\n\n/* MENU horizontal */\nul.menu {\n  padding-right: 0; }\n  ul.menu.horizontal {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-direction: row;\n        flex-direction: row;\n    -ms-flex-align: center;\n        align-items: center;\n    -ms-flex-pack: distribute;\n        justify-content: space-around; }\n    ul.menu.horizontal li {\n      list-style: none;\n      padding: 10px; }\n      ul.menu.horizontal li a {\n        text-transform: uppercase;\n        text-decoration: none;\n        color: #fff; }\n        ul.menu.horizontal li a:hover {\n          color: #44af57; }\n\n.menu-top {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: row;\n      flex-direction: row;\n  list-style: none;\n  color: #fff;\n  text-transform: uppercase;\n  margin: 0; }\n  .menu-top a {\n    padding: 20px;\n    color: #fff;\n    text-decoration: none; }\n  .menu-top li {\n    margin-right: 15px;\n    font-size: 12px;\n    min-height: 2.2rem; }\n    .menu-top li:hover {\n      border-bottom: 2px solid #44af57; }\n      .menu-top li:hover a {\n        color: #44af57; }\n  .menu-top .active {\n    border-bottom: 2px solid #44af57; }\n    .menu-top .active a {\n      color: #44af57; }\n\n/* authentication */\n.authentication {\n  margin-top: 50px; }\n  .authentication .title {\n    margin: 20px 0; }\n\n.error-fields {\n  padding: 10px;\n  background-color: #f9d660;\n  color: #9b853b;\n  border-radius: 5px;\n  margin-left: 10px;\n  margin-bottom: 20px; }\n\n/* Modal Customized */\n.modal {\n  margin: 20px;\n  background-color: #4c2b82;\n  border-radius: 5px;\n  box-shadow: #4c2b82 1px 1px 17px 5px; }\n  .modal .icon-close {\n    text-align: center;\n    position: absolute;\n    right: 30px;\n    padding: 0 10px;\n    cursor: pointer;\n    font-weight: bold; }\n  .modal .modal-title {\n    margin-left: 2em;\n    font-weight: bold; }\n  .modal .modal-header {\n    border: 0; }\n  .modal .modal-content {\n    background-color: transparent;\n    padding: 10px;\n    border: 0;\n    /*\n    *  SCROLL BAR\n    */ }\n    .modal .modal-content .content {\n      background-color: #4c2b82;\n      border-radius: 5px;\n      box-shadow: #311d53 1px 1px 32px 0px;\n      color: #fff;\n      padding: 20px;\n      margin: 20px;\n      max-height: 100%;\n      overflow-y: overlay;\n      border: solid 8px #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar-track {\n      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n      background-color: #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar {\n      width: 6px;\n      background-color: #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar-thumb {\n      background-color: #4f2f85; }\n    .modal .modal-content .footer {\n      display: -ms-flexbox;\n      display: flex;\n      text-align: left;\n      -ms-flex-align: center;\n          align-items: center;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n\n/* container button */\n.area-button {\n  text-align: center;\n  padding: 10px;\n  /* primary-button */\n  /* disabled button */ }\n  .area-button .primary-button {\n    border: 0;\n    border-radius: 22px;\n    padding: 11px 80px;\n    text-align: center;\n    background-color: #4cd566;\n    color: #fff;\n    font-size: 16px;\n    transition: all .3s ease-in-out;\n    text-decoration: none; }\n    .area-button .primary-button:hover {\n      background-color: #44af57; }\n  .area-button .disabled-button {\n    padding: 10px 80px;\n    border: 0px solid #4e1f85;\n    border-radius: 25px;\n    font-size: 16px;\n    text-decoration: none;\n    display: inline-block;\n    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);\n    color: #FFFFFF;\n    background-color: #6929B3;\n    background-image: linear-gradient(to bottom, #6929B3, #6622B3);\n    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6929B3, endColorstr=#6622B3); }\n  .area-button .rounded-button {\n    border: 0;\n    border-radius: 100%;\n    width: 40px;\n    height: 40px;\n    background-color: #fff;\n    color: #44af57;\n    box-shadow: #444343 0px 1px 6px 0px; }\n\n/* Input customized */\n.input-form label {\n  display: block;\n  font-size: 10px;\n  padding: 0;\n  margin: 0;\n  color: #90df4a; }\n\n.input-form input {\n  width: 90%;\n  border: 0;\n  border-bottom: solid 1px #9c9c9c;\n  background-color: transparent;\n  padding: 10px 0;\n  margin-bottom: 15px;\n  color: #fff;\n  outline: none; }\n  .input-form input::-webkit-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input:-ms-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input::placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input:-ms-input-placeholder {\n    /* Internet Explorer 10-11 */\n    color: #adadad; }\n  .input-form input::-ms-input-placeholder {\n    /* Microsoft Edge */\n    color: #adadad; }\n\n/* Custom Checkbox */\ninput[type=checkbox].css-checkbox {\n  height: 1px;\n  width: 1px;\n  margin: -1px;\n  padding: 0;\n  border: 0; }\n\ninput[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {\n  padding-left: 23px;\n  height: 18px;\n  display: inline-block;\n  line-height: 18px;\n  background-repeat: no-repeat;\n  background-position: 0 0;\n  font-size: 12px;\n  vertical-align: middle;\n  cursor: pointer; }\n\ninput[type=checkbox].css-checkbox:checked + label.css-label, input[type=checkbox].css-checkbox + label.css-label.chk {\n  background-position: 0 -18px; }\n\nlabel.css-label {\n  background-image: url(https://res.cloudinary.com/luneswallet/image/upload/v1519425382/check.png);\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\nbutton:focus {\n  outline: none !important; }\n\nfooter .social {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: end;\n      justify-content: flex-end; }\n  footer .social li {\n    list-style: none;\n    padding: 2rem 0 0 1rem; }\n    footer .social li img {\n      width: 30px; }\n\nfooter .container-footer {\n  margin-top: 30px;\n  padding: 10px;\n  background-color: #432773;\n  border-radius: 5px; }\n  footer .container-footer .row {\n    padding: 15px;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between; }\n    footer .container-footer .row a {\n      color: #fff; }\n\n.user-menu {\n  position: relative;\n  display: inline-block;\n  height: 100px;\n  margin-top: 1rem; }\n  @media only screen and (max-width: 460px) {\n    .user-menu {\n      height: 150px;\n      text-align: center;\n      width: 100%; } }\n  .user-menu a {\n    color: #fff;\n    text-decoration: none; }\n  .user-menu .logout {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: end;\n        justify-content: flex-end;\n    margin-top: -5px; }\n    @media only screen and (max-width: 460px) {\n      .user-menu .logout {\n        -ms-flex-pack: start;\n            justify-content: flex-start; } }\n    .user-menu .logout a {\n      text-decoration: none !important; }\n\n@media only screen and (max-width: 460px) {\n  footer .container-social {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-align: center;\n        align-items: center;\n    -ms-flex-pack: center;\n        justify-content: center; } }\n", "", {"version":3,"sources":["/home/felipe/lunes-purchase/src/scss/src/scss/base/_reset.scss","/home/felipe/lunes-purchase/src/scss/src/scss/base/_color.scss"],"names":[],"mappings":"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","file":"main.scss","sourcesContent":["@import 'color';\n\n$break-small: 320px;\n$break-large: 1200px;\n\ninput {\n  outline: none;\n}\n\nbody {\n  background-color: $primary;\n  font-family: 'Roboto', sans-serif;\n  color: #fff;\n  font-size: 14px;\n  line-height: 20px;\n  font-weight: 100;\n};\n\n*, *:before, *:after {\n  box-sizing: border-box;\n  position: relative;\n  -webkit-box-sizing: border-box;\n}\n\n.center {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  height: 100%;\n  overflow: auto;\n  overflow-y: auto;\n  @media (min-width: 768px) {\n    max-height: 780px;\n  }\n}\n\nh1, h2, h3, h4 {\n  font-family: 'Offside', cursive;\n  line-height: 1.4em;\n}\n\nh2 {\n  font-size: 4em;\n  line-height: 1em;\n}\nh3 {\n  font-size: 2em;\n  line-height: 1.3em;\n}\n\n.txt-green {\n  color: $green;\n}\n\n.txt-center {\n  text-align: center!important;\n}\n\n.txt-left {\n  text-align: left!important;\n}\n\n.txt-right {\n  text-align: right!important;\n}\n.no-padding {\n  padding: 0;\n}\n.cursor-pointer {\n  cursor: pointer;\n}\n\n.round-menu {\n  text-decoration: none;\n  padding: 10px;\n  img {\n    vertical-align: middle; \n  }\n}\n\n.modal-backdrop {\n  background-color: $primary;\n  opacity: 0.7;\n  text-align: center;\n}\n/* Logo */\n.logo {\n  font-size: 40px;\n  font-family: 'Offside', cursive;\n  letter-spacing: -7px;\n}\n\n/* Header */\n.header {\n  margin: 20px 0;\n  display: flex;\n  align-items: center;\n  padding: 10px 0;\n}\n\n.nav-menu {\n  padding-left: 0;\n  width: 100%;\n}\n\n/* MENU horizontal */\nul.menu {\n  padding-right: 0;\n  &.horizontal {\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    justify-content: space-around;\n    li {\n      list-style: none;\n      padding: 10px;\n      a {\n        text-transform: uppercase;\n        text-decoration: none;\n        color: #fff;\n        &:hover {\n          color: $green;\n        }\n      }\n    }\n  }\n}\n\n// TODO: verificar se pode mesclar essa com a de cima\n.menu-top {\n  display: flex;\n  flex-direction: row;\n  list-style: none;\n  color: #fff;\n  text-transform: uppercase;\n  margin: 0;\n  a {\n    padding: 20px;  \n    color: #fff;\n    text-decoration: none;\n  }\n  li {  \n    margin-right: 15px;\n    font-size: 12px;\n    min-height: 2.2rem;\n    &:hover {\n      border-bottom: 2px solid $green;      \n      a {\n        color: $green;\n      }\n    }\n  }\n  .active {\n    border-bottom: 2px solid $green;\n    a {\n      color: $green;\n    }\n  }\n}\n\n/* authentication */\n.authentication {\n  margin-top: 50px;\n  .title {\n    margin: 20px 0;\n  }\n}\n\n.error-fields {\n  padding: 10px;\n  background-color: $yellow;\n  color: #9b853b;\n  border-radius: 5px;\n  margin-left: 10px;\n  margin-bottom: 20px;\n}\n \n/* Modal Customized */\n.modal {\n  margin: 20px;\n  background-color: $primary;\n  border-radius: 5px;\n  box-shadow: $primary 1px 1px 17px 5px;\n\n  .icon-close {\n    text-align: center;\n    position: absolute;\n    right: 30px;\n    padding: 0 10px;\n    cursor: pointer;\n    font-weight: bold;\n  }\n  \n  .modal-title{\n    margin-left:2em;\n    font-weight:bold;\n  }\n\n  .modal-header {\n    border: 0;\n  }\n  \n  .modal-content {\n    background-color: transparent;\n    padding: 10px;\n    border: 0;\n\n    .content {\n      background-color: $primary;\n      border-radius: 5px;\n      box-shadow: #311d53 1px 1px 32px 0px;\n      color: #fff;\n      padding: 20px;\n      margin: 20px;\n      max-height: 100%;\n      \n      overflow-y: overlay;\n      border: solid 8px #4c2b82;\n    }\n\n    /*\n    *  SCROLL BAR\n    */\n    .content::-webkit-scrollbar-track\n    {\n      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);\n      background-color: #4c2b82;\n    }\n    .content::-webkit-scrollbar\n    {\n      width: 6px;\n      background-color: #4c2b82;\n    }\n    .content::-webkit-scrollbar-thumb\n    {\n      background-color: #4f2f85;\n    }\n\n    .footer {\n      display: flex;\n      text-align: left;\n      align-items: center;\n      flex-direction: column;\n    }\n\n  }\n\n}\n\n/* container button */\n.area-button {\n  text-align: center;\n  padding: 10px;\n  \n  /* primary-button */\n  .primary-button {\n    border: 0;\n    border-radius: 22px;\n    padding: 11px 80px;\n    text-align: center;\n    background-color: #4cd566;\n    color: #fff;\n    font-size: 16px;\n    transition: all .3s ease-in-out;\n    text-decoration: none;\n    &:hover {\n      background-color: $darkGreen;\n    }\n  }\n\n  /* disabled button */\n  .disabled-button {\n    padding: 10px 80px;\n    border: 0px solid #4e1f85;\n    -webkit-border-radius: 25px; \n    -moz-border-radius: 25px;\n    border-radius: 25px;\n    font-size: 16px;\n    text-decoration:none; \n    display:inline-block;\n    text-shadow: -1px -1px 0 rgba(0,0,0,0.3); \n    color: #FFFFFF;\n    background-color: #6929B3; \n    background-image: -webkit-gradient(linear, left top, left bottom, from(#6929B3), to(#6622B3));\n    background-image: -webkit-linear-gradient(top, #6929B3, #6622B3);\n    background-image: -moz-linear-gradient(top, #6929B3, #6622B3);\n    background-image: -ms-linear-gradient(top, #6929B3, #6622B3);\n    background-image: -o-linear-gradient(top, #6929B3, #6622B3);\n    background-image: linear-gradient(to bottom, #6929B3, #6622B3);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6929B3, endColorstr=#6622B3);\n  }\n\n  .rounded-button {\n    border: 0;\n    border-radius: 100%;\n    width: 40px;\n    height: 40px;\n    background-color: #fff;\n    color: $green;\n    box-shadow: #444343 0px 1px 6px 0px;\n  }\n\n}\n\n/* Input customized */\n.input-form label {\n  display: block;\n  font-size: 10px;\n  padding: 0;\n  margin: 0;\n  color: #90df4a;\n}\n.input-form input {\n  width: 90%;\n  border: 0;\n  border-bottom: solid 1px #9c9c9c;\n  background-color: transparent;\n  padding: 10px 0;\n  margin-bottom: 15px;\n  color: #fff;\n  outline: none;\n  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */\n      color: #adadad;\n      opacity: 1; /* Firefox */\n  }\n\n  &:-ms-input-placeholder { /* Internet Explorer 10-11 */\n      color: #adadad;\n  }\n\n  &::-ms-input-placeholder { /* Microsoft Edge */\n      color: #adadad;\n  }\n}\n\n/* Custom Checkbox */\ninput[type=checkbox].css-checkbox {\n\theight:1px; width:1px; margin:-1px; padding:0; border:0;\n}\n\ninput[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {\n\tpadding-left:23px;\n  height:18px; \n\tdisplay:inline-block;\n\tline-height:18px;\n\tbackground-repeat:no-repeat;\n\tbackground-position: 0 0;\n\tfont-size:12px;\n\tvertical-align:middle;\n\tcursor:pointer;\n\n}\n\ninput[type=checkbox].css-checkbox:checked + label.css-label, input[type=checkbox].css-checkbox + label.css-label.chk {\n\tbackground-position: 0 -18px;\n}\nlabel.css-label {\n\tbackground-image:url(https://res.cloudinary.com/luneswallet/image/upload/v1519425382/check.png);\n\t-webkit-touch-callout: none;\n\t-webkit-user-select: none;\n\t-khtml-user-select: none;\n\t-moz-user-select: none;\n\t-ms-user-select: none;\n\tuser-select: none;\n}\n\nbutton:focus {\n    outline: none !important;\n}\n\nfooter {\n  .social {\n    display: flex;\n    justify-content: flex-end;\n    li {\n      list-style: none;\n      padding: 2rem 0 0 1rem;\n      img {\n        width: 30px;\n      }\n    }\n  }\n  .container-footer {\n    margin-top: 30px;\n    padding: 10px;\n    background-color: #432773;\n    border-radius: 5px;\n    .row {\n      padding: 15px;\n      display: flex;\n      justify-content: space-between;\n      a {\n        color: #fff;\n      }\n    }\n  }\n}\n.user-menu {\n  position: relative;\n  display: inline-block;\n  height: 100px;\n  margin-top: 1rem;\n\n  @media only screen and (max-width: 460px) {\n    height: 150px;\n    text-align: center;\n    width: 100%;\n  }\n\n  a {\n    color: #fff;\n    text-decoration: none;\n  }\n\n  .logout {\n    display: flex;\n    justify-content: flex-end;\n    margin-top: -5px;\n\n    @media only screen and (max-width: 460px) {\n      justify-content: flex-start;\n    }\n\n    // TODO: aplicar suavidade ao exibir o menu\n    // .ng-hide {\n    //   opacity: 0;\n    // }\n    \n    // .ng-hide-add,\n    // .ng-hide-remove {\n    //   transition: all linear .5s;\n    // }\n\n    a {\n      text-decoration: none !important;\n    }\n  }\n}\n\n@media only screen and (max-width: 460px) {\n  footer .container-social {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  }\n}","$primary: #4c2b82 !default;\n$lightPrimary: #654fa4;\n$extraLightPrimary: #876fc6;\n$darkPrimary: #41256f;\n$extraDarkPrimary: #3f2569;\n$green: #44af57;\n$darkGreen: #44af57;\n$yellow: #f9d660;\n$darkGray: #333;"],"sourceRoot":""}]);
+	exports.push([module.id, "input {\n  outline: none; }\n\nbody {\n  background-color: #4c2b82;\n  font-family: 'Roboto', sans-serif;\n  color: #fff;\n  font-size: 14px;\n  line-height: 20px;\n  font-weight: 100; }\n\n*, *:before, *:after {\n  box-sizing: border-box;\n  position: relative;\n  -webkit-box-sizing: border-box; }\n\n.center {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  height: 100%;\n  overflow: auto;\n  overflow-y: auto; }\n  @media (min-width: 768px) {\n    .center {\n      max-height: 780px; } }\n\nh1, h2, h3, h4 {\n  font-family: 'Offside', cursive;\n  line-height: 1.4em; }\n\nh2 {\n  font-size: 4em;\n  line-height: 1em; }\n\nh3 {\n  font-size: 2em;\n  line-height: 1.3em; }\n\n.txt-green {\n  color: #44af57; }\n\n.txt-center {\n  text-align: center !important; }\n\n.txt-left {\n  text-align: left !important; }\n\n.txt-right {\n  text-align: right !important; }\n\n.no-padding {\n  padding: 0; }\n\n.cursor-pointer {\n  cursor: pointer; }\n\n.round-menu {\n  text-decoration: none;\n  padding: 10px; }\n  .round-menu img {\n    vertical-align: middle; }\n\n.modal-backdrop {\n  background-color: #4c2b82;\n  opacity: 0.7;\n  text-align: center; }\n\n/* Logo */\n.logo {\n  font-size: 40px;\n  font-family: 'Offside', cursive;\n  letter-spacing: -7px; }\n\n/* Header */\n.header {\n  margin: 20px 0;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  padding: 10px 0; }\n\n.nav-menu {\n  padding-left: 0;\n  width: 100%; }\n\n/* MENU horizontal */\nul.menu {\n  padding-right: 0; }\n  ul.menu.horizontal {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-direction: row;\n        flex-direction: row;\n    -ms-flex-align: center;\n        align-items: center;\n    -ms-flex-pack: distribute;\n        justify-content: space-around; }\n    ul.menu.horizontal li {\n      list-style: none;\n      padding: 10px; }\n      ul.menu.horizontal li a {\n        text-transform: uppercase;\n        text-decoration: none;\n        color: #fff; }\n        ul.menu.horizontal li a:hover {\n          color: #44af57; }\n\n.menu-top {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: row;\n      flex-direction: row;\n  list-style: none;\n  color: #fff;\n  text-transform: uppercase;\n  margin: 0; }\n  .menu-top a {\n    padding: 20px;\n    color: #fff;\n    text-decoration: none; }\n  .menu-top li {\n    margin-right: 15px;\n    font-size: 12px;\n    min-height: 2.2rem; }\n    .menu-top li:hover {\n      border-bottom: 2px solid #44af57; }\n      .menu-top li:hover a {\n        color: #44af57; }\n  .menu-top .active {\n    border-bottom: 2px solid #44af57; }\n    .menu-top .active a {\n      color: #44af57; }\n\n/* authentication */\n.authentication {\n  margin-top: 50px; }\n  .authentication .title {\n    margin: 20px 0; }\n\n.error-fields {\n  padding: 10px;\n  background-color: #f9d660;\n  color: #9b853b;\n  border-radius: 5px;\n  margin-left: 10px;\n  margin-bottom: 20px; }\n\n/* Modal Customized */\n.modal {\n  margin: 20px;\n  background-color: #4c2b82;\n  border-radius: 5px;\n  box-shadow: #4c2b82 1px 1px 17px 5px; }\n  .modal .icon-close {\n    text-align: center;\n    position: absolute;\n    right: 30px;\n    padding: 0 10px;\n    cursor: pointer;\n    font-weight: bold; }\n  .modal .modal-title {\n    margin-left: 2em;\n    font-weight: bold; }\n  .modal .modal-header {\n    border: 0; }\n  .modal .modal-content {\n    background-color: transparent;\n    padding: 10px;\n    border: 0;\n    /*\n    *  SCROLL BAR\n    */ }\n    .modal .modal-content .content {\n      background-color: #4c2b82;\n      border-radius: 5px;\n      box-shadow: #311d53 1px 1px 32px 0px;\n      color: #fff;\n      padding: 20px;\n      margin: 20px;\n      max-height: 100%;\n      overflow-y: overlay;\n      border: solid 8px #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar-track {\n      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n      background-color: #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar {\n      width: 6px;\n      background-color: #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar-thumb {\n      background-color: #4f2f85; }\n    .modal .modal-content .footer {\n      display: -ms-flexbox;\n      display: flex;\n      text-align: left;\n      -ms-flex-align: center;\n          align-items: center;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n\n/* container button */\n.area-button {\n  text-align: center;\n  padding: 10px;\n  /* primary-button */\n  /* disabled button */ }\n  .area-button .primary-button {\n    border: 0;\n    border-radius: 22px;\n    padding: 11px 80px;\n    text-align: center;\n    background-color: #4cd566;\n    color: #fff;\n    font-size: 16px;\n    transition: all .3s ease-in-out;\n    text-decoration: none; }\n    .area-button .primary-button:hover {\n      background-color: #44af57; }\n  .area-button .disabled-button {\n    padding: 10px 80px;\n    border: 0px solid #4e1f85;\n    border-radius: 25px;\n    font-size: 16px;\n    text-decoration: none;\n    display: inline-block;\n    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);\n    color: #FFFFFF;\n    background-color: #6929B3;\n    background-image: linear-gradient(to bottom, #6929B3, #6622B3);\n    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6929B3, endColorstr=#6622B3); }\n  .area-button .rounded-button {\n    border: 0;\n    border-radius: 100%;\n    width: 40px;\n    height: 40px;\n    background-color: #fff;\n    color: #44af57;\n    box-shadow: #444343 0px 1px 6px 0px; }\n\n/* Input customized */\n.input-form label {\n  display: block;\n  font-size: 10px;\n  padding: 0;\n  margin: 0;\n  color: #90df4a; }\n\n.input-form input {\n  width: 90%;\n  border: 0;\n  border-bottom: solid 1px #9c9c9c;\n  background-color: transparent;\n  padding: 10px 0;\n  margin-bottom: 15px;\n  color: #fff;\n  outline: none; }\n  .input-form input::-webkit-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input:-ms-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input::placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input:-ms-input-placeholder {\n    /* Internet Explorer 10-11 */\n    color: #adadad; }\n  .input-form input::-ms-input-placeholder {\n    /* Microsoft Edge */\n    color: #adadad; }\n\n/* Custom Checkbox */\ninput[type=checkbox].css-checkbox {\n  height: 1px;\n  width: 1px;\n  margin: -1px;\n  padding: 0;\n  border: 0; }\n\ninput[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {\n  padding-left: 23px;\n  height: 18px;\n  display: inline-block;\n  line-height: 18px;\n  background-repeat: no-repeat;\n  background-position: 0 0;\n  font-size: 12px;\n  vertical-align: middle;\n  cursor: pointer; }\n\ninput[type=checkbox].css-checkbox:checked + label.css-label, input[type=checkbox].css-checkbox + label.css-label.chk {\n  background-position: 0 -18px; }\n\nlabel.css-label {\n  background-image: url(https://res.cloudinary.com/luneswallet/image/upload/v1519425382/check.png);\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\nbutton:focus {\n  outline: none !important; }\n\nfooter .social {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: end;\n      justify-content: flex-end; }\n  footer .social li {\n    list-style: none;\n    padding: 2rem 0 0 1rem; }\n    footer .social li img {\n      width: 30px; }\n\nfooter .container-footer {\n  margin-top: 30px;\n  padding: 10px;\n  background-color: #432773;\n  border-radius: 5px; }\n  footer .container-footer .row {\n    padding: 15px;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between; }\n    footer .container-footer .row a {\n      color: #fff; }\n\n.user-menu {\n  position: relative;\n  display: inline-block;\n  height: 100px;\n  margin-top: 1rem;\n  padding-left: 10px; }\n  @media only screen and (max-width: 460px) {\n    .user-menu {\n      height: 150px;\n      text-align: center;\n      width: 100%; } }\n  .user-menu a {\n    color: #fff;\n    text-decoration: none; }\n  .user-menu .logout {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: end;\n        justify-content: flex-end;\n    margin-top: -5px; }\n    @media only screen and (max-width: 460px) {\n      .user-menu .logout {\n        -ms-flex-pack: start;\n            justify-content: flex-start; } }\n    .user-menu .logout a {\n      text-decoration: none !important; }\n\n@media only screen and (max-width: 460px) {\n  footer .container-social {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-align: center;\n        align-items: center;\n    -ms-flex-pack: center;\n        justify-content: center; }\n  .menu-top a {\n    padding: 0; } }\n", "", {"version":3,"sources":["/home/felipe/lunes-purchase/src/scss/src/scss/base/_reset.scss","/home/felipe/lunes-purchase/src/scss/src/scss/base/_color.scss"],"names":[],"mappings":"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","file":"main.scss","sourcesContent":["@import 'color';\n\n$break-small: 320px;\n$break-large: 1200px;\n\ninput {\n  outline: none;\n}\n\nbody {\n  background-color: $primary;\n  font-family: 'Roboto', sans-serif;\n  color: #fff;\n  font-size: 14px;\n  line-height: 20px;\n  font-weight: 100;\n};\n\n*, *:before, *:after {\n  box-sizing: border-box;\n  position: relative;\n  -webkit-box-sizing: border-box;\n}\n\n.center {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  height: 100%;\n  overflow: auto;\n  overflow-y: auto;\n  @media (min-width: 768px) {\n    max-height: 780px;\n  }\n}\n\nh1, h2, h3, h4 {\n  font-family: 'Offside', cursive;\n  line-height: 1.4em;\n}\n\nh2 {\n  font-size: 4em;\n  line-height: 1em;\n}\nh3 {\n  font-size: 2em;\n  line-height: 1.3em;\n}\n\n.txt-green {\n  color: $green;\n}\n\n.txt-center {\n  text-align: center!important;\n}\n\n.txt-left {\n  text-align: left!important;\n}\n\n.txt-right {\n  text-align: right!important;\n}\n.no-padding {\n  padding: 0;\n}\n.cursor-pointer {\n  cursor: pointer;\n}\n\n.round-menu {\n  text-decoration: none;\n  padding: 10px;\n  img {\n    vertical-align: middle; \n  }\n}\n\n.modal-backdrop {\n  background-color: $primary;\n  opacity: 0.7;\n  text-align: center;\n}\n/* Logo */\n.logo {\n  font-size: 40px;\n  font-family: 'Offside', cursive;\n  letter-spacing: -7px;\n}\n\n/* Header */\n.header {\n  margin: 20px 0;\n  display: flex;\n  align-items: center;\n  padding: 10px 0;\n}\n\n.nav-menu {\n  padding-left: 0;\n  width: 100%;\n}\n\n/* MENU horizontal */\nul.menu {\n  padding-right: 0;\n  &.horizontal {\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    justify-content: space-around;\n    li {\n      list-style: none;\n      padding: 10px;\n      a {\n        text-transform: uppercase;\n        text-decoration: none;\n        color: #fff;\n        &:hover {\n          color: $green;\n        }\n      }\n    }\n  }\n}\n\n// TODO: verificar se pode mesclar essa com a de cima\n.menu-top {\n  display: flex;\n  flex-direction: row;\n  list-style: none;\n  color: #fff;\n  text-transform: uppercase;\n  margin: 0;\n  a {\n    padding: 20px;  \n    color: #fff;\n    text-decoration: none;\n  }\n  li {  \n    margin-right: 15px;\n    font-size: 12px;\n    min-height: 2.2rem;\n    &:hover {\n      border-bottom: 2px solid $green;      \n      a {\n        color: $green;\n      }\n    }\n  }\n  .active {\n    border-bottom: 2px solid $green;\n    a {\n      color: $green;\n    }\n  }\n}\n\n/* authentication */\n.authentication {\n  margin-top: 50px;\n  .title {\n    margin: 20px 0;\n  }\n}\n\n.error-fields {\n  padding: 10px;\n  background-color: $yellow;\n  color: #9b853b;\n  border-radius: 5px;\n  margin-left: 10px;\n  margin-bottom: 20px;\n}\n \n/* Modal Customized */\n.modal {\n  margin: 20px;\n  background-color: $primary;\n  border-radius: 5px;\n  box-shadow: $primary 1px 1px 17px 5px;\n\n  .icon-close {\n    text-align: center;\n    position: absolute;\n    right: 30px;\n    padding: 0 10px;\n    cursor: pointer;\n    font-weight: bold;\n  }\n  \n  .modal-title{\n    margin-left:2em;\n    font-weight:bold;\n  }\n\n  .modal-header {\n    border: 0;\n  }\n  \n  .modal-content {\n    background-color: transparent;\n    padding: 10px;\n    border: 0;\n\n    .content {\n      background-color: $primary;\n      border-radius: 5px;\n      box-shadow: #311d53 1px 1px 32px 0px;\n      color: #fff;\n      padding: 20px;\n      margin: 20px;\n      max-height: 100%;\n      \n      overflow-y: overlay;\n      border: solid 8px #4c2b82;\n    }\n\n    /*\n    *  SCROLL BAR\n    */\n    .content::-webkit-scrollbar-track\n    {\n      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);\n      background-color: #4c2b82;\n    }\n    .content::-webkit-scrollbar\n    {\n      width: 6px;\n      background-color: #4c2b82;\n    }\n    .content::-webkit-scrollbar-thumb\n    {\n      background-color: #4f2f85;\n    }\n\n    .footer {\n      display: flex;\n      text-align: left;\n      align-items: center;\n      flex-direction: column;\n    }\n\n  }\n\n}\n\n/* container button */\n.area-button {\n  text-align: center;\n  padding: 10px;\n  \n  /* primary-button */\n  .primary-button {\n    border: 0;\n    border-radius: 22px;\n    padding: 11px 80px;\n    text-align: center;\n    background-color: #4cd566;\n    color: #fff;\n    font-size: 16px;\n    transition: all .3s ease-in-out;\n    text-decoration: none;\n    &:hover {\n      background-color: $darkGreen;\n    }\n  }\n\n  /* disabled button */\n  .disabled-button {\n    padding: 10px 80px;\n    border: 0px solid #4e1f85;\n    -webkit-border-radius: 25px; \n    -moz-border-radius: 25px;\n    border-radius: 25px;\n    font-size: 16px;\n    text-decoration:none; \n    display:inline-block;\n    text-shadow: -1px -1px 0 rgba(0,0,0,0.3); \n    color: #FFFFFF;\n    background-color: #6929B3; \n    background-image: -webkit-gradient(linear, left top, left bottom, from(#6929B3), to(#6622B3));\n    background-image: -webkit-linear-gradient(top, #6929B3, #6622B3);\n    background-image: -moz-linear-gradient(top, #6929B3, #6622B3);\n    background-image: -ms-linear-gradient(top, #6929B3, #6622B3);\n    background-image: -o-linear-gradient(top, #6929B3, #6622B3);\n    background-image: linear-gradient(to bottom, #6929B3, #6622B3);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6929B3, endColorstr=#6622B3);\n  }\n\n  .rounded-button {\n    border: 0;\n    border-radius: 100%;\n    width: 40px;\n    height: 40px;\n    background-color: #fff;\n    color: $green;\n    box-shadow: #444343 0px 1px 6px 0px;\n  }\n\n}\n\n/* Input customized */\n.input-form label {\n  display: block;\n  font-size: 10px;\n  padding: 0;\n  margin: 0;\n  color: #90df4a;\n}\n.input-form input {\n  width: 90%;\n  border: 0;\n  border-bottom: solid 1px #9c9c9c;\n  background-color: transparent;\n  padding: 10px 0;\n  margin-bottom: 15px;\n  color: #fff;\n  outline: none;\n  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */\n      color: #adadad;\n      opacity: 1; /* Firefox */\n  }\n\n  &:-ms-input-placeholder { /* Internet Explorer 10-11 */\n      color: #adadad;\n  }\n\n  &::-ms-input-placeholder { /* Microsoft Edge */\n      color: #adadad;\n  }\n}\n\n/* Custom Checkbox */\ninput[type=checkbox].css-checkbox {\n\theight:1px; width:1px; margin:-1px; padding:0; border:0;\n}\n\ninput[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {\n\tpadding-left:23px;\n  height:18px; \n\tdisplay:inline-block;\n\tline-height:18px;\n\tbackground-repeat:no-repeat;\n\tbackground-position: 0 0;\n\tfont-size:12px;\n\tvertical-align:middle;\n\tcursor:pointer;\n\n}\n\ninput[type=checkbox].css-checkbox:checked + label.css-label, input[type=checkbox].css-checkbox + label.css-label.chk {\n\tbackground-position: 0 -18px;\n}\nlabel.css-label {\n\tbackground-image:url(https://res.cloudinary.com/luneswallet/image/upload/v1519425382/check.png);\n\t-webkit-touch-callout: none;\n\t-webkit-user-select: none;\n\t-khtml-user-select: none;\n\t-moz-user-select: none;\n\t-ms-user-select: none;\n\tuser-select: none;\n}\n\nbutton:focus {\n    outline: none !important;\n}\n\nfooter {\n  .social {\n    display: flex;\n    justify-content: flex-end;\n    li {\n      list-style: none;\n      padding: 2rem 0 0 1rem;\n      img {\n        width: 30px;\n      }\n    }\n  }\n  .container-footer {\n    margin-top: 30px;\n    padding: 10px;\n    background-color: #432773;\n    border-radius: 5px;\n    .row {\n      padding: 15px;\n      display: flex;\n      justify-content: space-between;\n      a {\n        color: #fff;\n      }\n    }\n  }\n}\n.user-menu {\n  position: relative;\n  display: inline-block;\n  height: 100px;\n  margin-top: 1rem;\n  padding-left: 10px;\n\n  @media only screen and (max-width: 460px) {\n    height: 150px;\n    text-align: center;\n    width: 100%;\n  }\n\n  a {\n    color: #fff;\n    text-decoration: none;\n  }\n\n  .logout {\n    display: flex;\n    justify-content: flex-end;\n    margin-top: -5px;\n\n    @media only screen and (max-width: 460px) {\n      justify-content: flex-start;\n    }\n\n    // TODO: aplicar suavidade ao exibir o menu\n    // .ng-hide {\n    //   opacity: 0;\n    // }\n    \n    // .ng-hide-add,\n    // .ng-hide-remove {\n    //   transition: all linear .5s;\n    // }\n\n    a {\n      text-decoration: none !important;\n    }\n  }\n}\n\n@media only screen and (max-width: 460px) {\n  footer .container-social {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  }\n  .menu-top {\n    a {\n      padding: 0;\n    }\n  }\n}","$primary: #4c2b82 !default;\n$lightPrimary: #654fa4;\n$extraLightPrimary: #876fc6;\n$darkPrimary: #41256f;\n$extraDarkPrimary: #3f2569;\n$green: #44af57;\n$darkGreen: #44af57;\n$yellow: #f9d660;\n$darkGray: #333;"],"sourceRoot":""}]);
 	
 	// exports
 
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?v=1520431627775
+//# sourceMappingURL=app.js.map?v=1520436375965

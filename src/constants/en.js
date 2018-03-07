@@ -66,7 +66,7 @@ export default {
     PASSWORD_MATCH: 'Password must match',
     SEND_TO_THIS_ADDRESS: 'Please, send',
     UNCONFIRMED_BALANCE: 'Unconfirmed',
-    AMOUNT_MINIMUN_VALIDATION: 'The minimun price of LNS must be greater than zero',
+    AMOUNT_MINIMUN_VALIDATION: 'The amount of LNS must be greater than zero',
     FAQ: 'F.A.Q',
     EXCEED_LIMIT_BUY: 'You exceeded your limit buy',
     DASHBOARD: {

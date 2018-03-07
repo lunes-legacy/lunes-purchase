@@ -1,4 +1,5 @@
 import LunesLib from 'lunes-lib';
+import smartlookClient from 'smartlook-client';
 import { STORAGE_KEY, COINS_CONSTANT } from '../constants/index';
 
 const initialValue = '0.00000000';
@@ -17,7 +18,6 @@ class BuyController {
     this.$timeout = $timeout;
     this.$state = $state;
     this.currentUser = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    console.log(currentUser)
     this.showContainerCoins = false;
     this.balanceCoins = {};
     this.currentPhase = [];
@@ -49,6 +49,16 @@ class BuyController {
       console.log(error);
     });
     this.showLoading(true);
+
+    if (this.currentUser) {
+      const userTrack = { name: this.currentUser.fullname, email: this.currentUser.email, ownCoupon: this.currentUser.ownCoupon, coupon: this.currentUser.coupon, confirmIcoTerm: this.currentUser.confirmIcoTerm };
+      if (this.currentUser.depositWallet){
+        userTrack.btcAddress = this.currentUser.depositWallet.BTC.address;
+        userTrack.ltcAddress = this.currentUser.depositWallet.LTC.address;
+        userTrack.ethAddress = this.currentUser.depositWallet.ETH.address;
+      }
+      smartlookClient.identify(this.currentUser._id, userTrack );
+    }
   }
 
   async getBuyHistory() {
