@@ -17,6 +17,7 @@ class BuyController {
     this.$timeout = $timeout;
     this.$state = $state;
     this.currentUser = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    console.log(currentUser)
     this.showContainerCoins = false;
     this.balanceCoins = {};
     this.currentPhase = [];
@@ -26,27 +27,7 @@ class BuyController {
     this.valueToReceive = '000000';
     this.bonusAmountFinal = initialValue;
     this.buyLimit = '0';
-<<<<<<< HEAD
-    
-    this.coins = [{
-      label: 'Bitcoin',
-      name: 'BTC',
-      img: 'https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_btc.svg',
-      selected: true
-    }, {
-      label: 'Litecoin',
-      name: 'LTC',
-      img: 'https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon_ltc.svg',
-      selected: false
-    }, {
-      label: 'Ethereum',
-      name: 'ETH',
-      img: 'http://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_eth.svg',
-      selected: false
-    }];
-=======
     this.coins = COINS_CONSTANT;
->>>>>>> 0846d0da6dead4aa5659077a465c52592215b42e
     this.currentCoinSelected = JSON.parse(JSON.stringify(this.coins[0]));
     this.currentQRCode = { address: '', img: '' };
     this.showUserMenu = false;
@@ -184,9 +165,6 @@ class BuyController {
    * Example: 10    LNS => 0.00000910
   */
   calcValue(LNS) {
-<<<<<<< HEAD
-    
-=======
     if (!this.valueToReceive) {
       this.valueToReceive = '000000';
     }
@@ -214,7 +192,6 @@ class BuyController {
       this.valueToReceive = '000000';
     }
 
->>>>>>> 0846d0da6dead4aa5659077a465c52592215b42e
     if (LNS) {
       if (this.valueToReceive.indexOf && this.valueToReceive.indexOf(',') !== -1) {
         this.valueToReceive = this.valueToReceive.replace(/[, ]+/g, "0").trim();
