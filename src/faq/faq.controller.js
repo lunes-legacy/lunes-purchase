@@ -1,3 +1,5 @@
+import { STORAGE_KEY, RANDOM_KEY } from '../constants/index';
+import smartlookClient from 'smartlook-client';
 class FAQController {
     constructor($sce, $filter, $translate, $window) {
       this.faqText = $sce.trustAsHtml($filter('translate')('FAQ_TEXT'));
@@ -94,6 +96,26 @@ class FAQController {
 
       // scroll to top page
       $window.scrollTo(0, 0);
+
+      let randomKey;
+      const currentUser = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      let userTrack;
+      if (!currentUser) {
+          randomKey = localStorage.getItem(RANDOM_KEY);
+          if (!randomKey) {
+              randomKey = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);
+              localStorage.setItem(RANDOM_KEY, randomKey);
+            }
+          smartlookClient.identify(randomKey, { });
+        } else {
+          userTrack = { name: currentUser.fullname, email: currentUser.email, ownCoupon: currentUser.ownCoupon, coupon: currentUser.coupon, confirmIcoTerm: currentUser.confirmIcoTerm };
+          if(currentUser.depositWallet){
+            userTrack.btcAddress = currentUser.depositWallet.BTC.address;
+            userTrack.ltcAddress = currentUser.depositWallet.LTC.address;
+            userTrack.ethAddress = currentUser.depositWallet.ETH.address;
+          }
+          smartlookClient.identify(currentUser._id, userTrack );
+        }
 
     }
 

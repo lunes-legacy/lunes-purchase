@@ -1,5 +1,6 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
+import smartlookClient from 'smartlook-client';
 import I18n from 'angular-translate';
 import Components from './components/components';
 import LoginComponent from './login/login.component';
@@ -35,9 +36,9 @@ angular.module('myApp', [
 .component('fixPage', FixComponent)
 .component('faqPage', FaqComponent)
 .directive('comparePassword', function () {
-        return {
-            require: "ngModel",
-            link: function(scope, element, attributes, ngModel) {
+  return {
+          require: 'ngModel',
+          link: function(scope, element, attributes, ngModel) {
 
                 ngModel.$validators.comparePassword = function(modelValue) {
 
@@ -52,13 +53,12 @@ angular.module('myApp', [
                 ngModel.$validate()
             }
         };
-    }
+}
 )
 .directive('compareEmail', function () {
-
   return {
-      require: "ngModel",
-      link: function(scope, element, attributes, ngModel) {
+    require: 'ngModel',
+    link: function(scope, element, attributes, ngModel) {
 
           ngModel.$validators.compareEmail = function(modelValue) {
             if (ngModel.$isEmpty(modelValue) || ngModel.$$parentForm.confirmEmail.$viewValue === '') {
@@ -75,6 +75,8 @@ angular.module('myApp', [
 )
 .config(($stateProvider, $translateProvider, $urlRouterProvider, $httpProvider) => {
   'ngInject';
+
+  smartlookClient.init('7bf326969e67ec2ce0e10f3c4be929ecdd63771a')
 
   $translateProvider.useSanitizeValueStrategy('escape');
   $translateProvider.useSanitizeValueStrategy('escapeParameters');
@@ -112,5 +114,4 @@ angular.module('myApp', [
       url: '/',
       template: '<fix-page></fix-page>',
     });*/
-
 });

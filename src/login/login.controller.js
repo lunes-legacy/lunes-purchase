@@ -1,4 +1,6 @@
 import { STORAGE_KEY } from '../constants/index';
+import { RANDOM_KEY } from '../constants/index';
+import smartlookClient from 'smartlook-client';
 import Countdown from '../utils/countdown';
 
 class LoginController {
@@ -23,6 +25,25 @@ class LoginController {
         console.log(error);
       });
       Countdown();
+      let randomKey;
+      const currentUser = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      let userTrack
+      if (!currentUser) {
+          randomKey = localStorage.getItem(RANDOM_KEY);
+          if (!randomKey) {
+              randomKey = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);
+              localStorage.setItem(RANDOM_KEY, randomKey);
+            }
+          smartlookClient.identify(randomKey, { });
+        } else {
+          userTrack = { name: currentUser.fullname, email: currentUser.email, ownCoupon: currentUser.ownCoupon, coupon: currentUser.coupon, confirmIcoTerm: currentUser.confirmIcoTerm };
+          if(currentUser.depositWallet){
+            userTrack.btcAddress = currentUser.depositWallet.BTC.address;
+            userTrack.ltcAddress = currentUser.depositWallet.LTC.address;
+            userTrack.ethAddress = currentUser.depositWallet.ETH.address;
+          }
+          smartlookClient.identify(currentUser._id, userTrack );
+        }
     }
 
     async doLogin() {

@@ -6,6 +6,7 @@ export default {
 }
 
 exports.STORAGE_KEY = 'lunes.accessToken';
+exports.RANDOM_KEY = 'lunes.randomKey';
 
 exports.PERIOD = {
     RANGE_1D: 'RANGE_1D',
