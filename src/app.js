@@ -38,7 +38,7 @@ angular.module('myApp', [
 .directive('comparePassword', function () {
   return {
           require: 'ngModel',
-          link(scope, element, attributes, ngModel) {
+          link: function(scope, element, attributes, ngModel) {
 
                 ngModel.$validators.comparePassword = function(modelValue) {
 
@@ -58,7 +58,7 @@ angular.module('myApp', [
 .directive('compareEmail', function () {
   return {
     require: 'ngModel',
-    link(scope, element, attributes, ngModel) {
+    link: function(scope, element, attributes, ngModel) {
 
           ngModel.$validators.compareEmail = function(modelValue) {
             if (ngModel.$isEmpty(modelValue) || ngModel.$$parentForm.confirmEmail.$viewValue === '') {
