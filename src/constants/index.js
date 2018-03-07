@@ -14,3 +14,20 @@ exports.PERIOD = {
     RANGE_1Y: 'RANGE_1Y',
     RANGE_MAX: 'RANGE_MAX',
 };
+
+exports.COINS_CONSTANT = [{
+  label: 'Bitcoin',
+  name: 'BTC',
+  img: 'https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_btc.svg',
+  selected: true
+}, {
+  label: 'Litecoin',
+  name: 'LTC',
+  img: 'https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon_ltc.svg',
+  selected: false
+}, {
+  label: 'Ethereum',
+  name: 'ETH',
+  img: 'https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_eth.svg',
+  selected: false
+}];

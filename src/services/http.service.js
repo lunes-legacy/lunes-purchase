@@ -2,6 +2,7 @@ import LunesLib from 'lunes-lib';
 import axios from 'axios';
 import { PERIOD } from '../constants';
 import CCC from '../utils/ccc-streamer-utilities';
+import Interceptor from '../utils/interceptor';
 
 class HttpService {
   constructor($http, $translate) {
@@ -11,35 +12,49 @@ class HttpService {
   }
 
   async login(userData) {
+    if (userData.email) {
+      userData.email = userData.email.toLowerCase();
+    }
     const data = await LunesLib.users.login(userData);
     return data;
   }
 
   async signup(userData) {
+    if (userData.email) {
+      userData.email = userData.email.toLowerCase();
+    }
     const obj = {
       email: userData.email,
       password: userData.password,
       fullname: `${userData.name} ${userData.lastname}`,
+      coupon: userData.coupon,
       testnet: userData.testnet || false
     };
     const data = await LunesLib.users.create(obj);
     return data;
   }
 
+  async toBuy(address) {
+    if (!address) { return; }
+    const buyed = await axios.get(`https://apiw.lunes.io/api/ico/request-buy/${address}`).catch(error => {
+      throw new Error(error);
+    });
+    return buyed;
+  }
+
   async changePassword(email, accessToken) {
     const a = await LunesLib.users.resetPassword({ email });
     return a;
   }
-  
+
   async confirmterm(currentUser) {
     try {
-      console.log("");
       /* TODO - remove true value to production */
       let confirmTerm = await LunesLib.ico.confirmTerm(currentUser.email, currentUser.accessToken);
       return confirmTerm;
     } catch (error) {
       throw new Error(error);
-    }  
+    }
   }
 
   async obtainPhase() {
@@ -53,9 +68,7 @@ class HttpService {
   */
   async showDepositWalletAddressQRCode(currentUser, currentCoinSelected) {
     try {
-      console.log("");
       const address = JSON.parse(JSON.stringify(currentUser.depositWallet[currentCoinSelected.name].address));
-      console.log("");
       return {
         address,
         img: `https://chart.googleapis.com/chart?cht=qr&chl=${address}&chs=200x200&chld=L|0")`
@@ -70,13 +83,12 @@ class HttpService {
 
   async createDepositWallet(currentUser) {
     try {
-      console.log("");
       /* TODO - remove true value to production */
       let depositWalletAddresses = await LunesLib.coins.createDepositWallet(currentUser.email, currentUser.accessToken, false);
       return depositWalletAddresses;
     } catch (error) {
       throw new Error(error);
-    }  
+    }
   }
 
   async getBalanceLunes(coin, currentUser) {
@@ -101,19 +113,25 @@ class HttpService {
       COIN: 'ETH',
       CURRENTPRICE: `${currencySymbol} ${price}`,
       DISPLAYPRICE: `1 ETH | ${price}`
-    };  
+    };
   }
 
   async buyHistory(email, accessToken) {
-    const a = await LunesLib.ico.buyHistory(email, accessToken);
-    console.log(a);
-    return a; 
+    const a = await LunesLib.ico.buyBalance(email, accessToken, 1).catch(error => {
+      Interceptor.responseError(error);
+    });
+    return a;
   }
 
   async getBalance(coin, address, currentUser) {
-    let underCoin = coin.toLowerCase();
-    let balance = await LunesLib.coins.getBalance({ address, coin: underCoin, testnet: false }, currentUser.accessToken);
-    return (balance && balance.data) ? balance.data : {};
+    if (coin && address && currentUser) {
+      let underCoin = coin.toLowerCase();
+      let balance = await LunesLib.coins.getBalance({ address, coin: underCoin, testnet: false }, currentUser.accessToken).catch(error => {
+        Interceptor.responseError(error);
+      });
+      return (balance && balance.data) ? balance.data : {};
+    }
+    return {};
   }
 
   async getBitcoinBalance(coin) {

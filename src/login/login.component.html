@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container login">
 
   <!-- MODAL - criar directiva depois -->
   <div id="modal-terms" class="modal">
@@ -82,44 +82,23 @@
     </div>
     <div class="modal-content" style="height: 100%;">
 
-      <div ng-show="$ctrl.loadingResetPass" style="display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;">
+      <div ng-show="$ctrl.loadingResetPass" class="loadingResetPass">
         {{'LOADING' | translate}}
       </div>
 
-      <div ng-show="$ctrl.showMsgEmailSent" style="display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100%;">
+      <div ng-show="$ctrl.showMsgEmailSent" class="showEmailSent">
         <h3 for="change">{{'EMAIL_SENT' | translate}}</h3>
         <div style="width: 100px;">
-          <button style="border: 0;
-            padding: 5px 20px;
-            border-radius: 20px;
-            cursor: pointer;" class="icon-close" data-dismiss="modal">{{'CLOSE' | translate}}</button>
+          <button class="icon-close" data-dismiss="modal">{{'CLOSE' | translate}}</button>
         </div>
       </div>
 
-      <form style="display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;" ng-show="!$ctrl.loadingResetPass && !$ctrl.showMsgEmailSent">
-        <div>
+      <form class="form-msg-pass" ng-show="!$ctrl.loadingResetPass && !$ctrl.showMsgEmailSent">
+        <div style="text-align: center;">
           <h3 for="change">{{'CHANGE_PASSWORD_INSTRUCTION' | translate}}</h3>
         </div>
-        <div ng-show="$ctrl.showErrorMsgEmailSent" style="display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          height: 100%;">
-          <h5 for="change" style="padding: 2px 10px;
-          background-color: #d83636;
-          border-radius: 20px;">{{'EMAIL_NOT_SENT' | translate}}</h5>
+        <div ng-show="$ctrl.showErrorMsgEmailSent" class="showErrorMsg">
+          <h5 for="change">{{'EMAIL_NOT_SENT' | translate}}</h5>
           <div style="width: 100px;">
             <button style="border: 0;
               padding: 5px 20px;
@@ -147,57 +126,7 @@
     </div>
   </div>
 
-  <!-- HEADER - criar diretiva depois -->
-  <nav class="header nav" style="padding: 20px 0;">
-    <div class="col-xs-12 col-lg-2 logo">
-      <!-- eslint-disable -->
-      <span>L</span>
-      <span>u</span>
-      <span>n</span>
-      <span class="txt-green">e</span>
-      <span>s</span>
-      <!-- eslint-disable -->
-    </div>
-
-    <div class="col-xs-12 col-lg-6  nav-menu" style="margin-bottom: 20px;">
-      <!--<ul class="menu horizontal">
-        <li>
-          <a href="#!/whitelist">{{'WHITELIST' | translate}}</a>
-        </li>
-        <li>
-          <a href="#!/buy">{{'BUY' | translate}}</a>
-        </li>
-        <li>
-          <a href="#!/dashboard">{{'DASHBOARD' | translate}}</a>
-        </li>
-      </ul>-->
-    </div>
-
-    <div class="col-xs-12 col-lg-4 txt-right">
-      <ul class="menu horizontal">
-        <li>
-          <a href="https://www.facebook.com/lunesplatform/" target="_blank" class="round-menu">
-            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg" alt="facebook" />
-          </a>
-        </li>
-        <li>
-          <a href="https://t.me/LunesPlatformEN" target="_blank" class="round-menu">
-            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg" alt="telegram" />
-          </a>
-        </li>
-        <li>
-          <a href="https://twitter.com/lunesplatform" target="_blank" class="round-menu">
-            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg" alt="twitter" />
-          </a>
-        </li>
-        <li>
-          <a href="https://medium.com/@lunes.platform" target="_blank" class="round-menu">
-            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg" alt="medium" />
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <lunesheader showlogout='false' showlinks='false'></lunesheader>
 
   <!-- AUTHENTICATION FORM -->
   <section class="authentication">
@@ -214,11 +143,11 @@
           <div class="col-lg-6 col-xs-12">
             <div class="input-form">
               <label for="input-email">{{'EMAIL' | translate}}</label>
-              <input data-ng-model="$ctrl.user.email" id="input-email" name="email" required type="text" placeholder="{{'EMAIL' | translate}}">
+              <input data-ng-model="$ctrl.user.email" id="input-email" name="email" required type="text" placeholder="{{'EMAIL_PLACEHOLDER' | translate}}">
             </div>
             <div class="input-form">
               <label for="input-password">{{'PASSWORD' | translate}}</label>
-              <input data-ng-model="$ctrl.user.password" id="input-password" name="password" minlength="8" required type="password" placeholder="{{'PASSWORD' | translate}}">
+              <input data-ng-model="$ctrl.user.password" id="input-password" name="password" minlength="8" required type="password" placeholder="{{'PASSWORD_PLACEHOLDER' | translate}}">
             </div>
             <div class="area-button txt-center">
               <button class="rounded-button" data-toggle="modal" ng-click="$ctrl.doLogin()">
@@ -230,16 +159,15 @@
               <label class="txt-green label-signup" ng-click="$ctrl.goToSignup()">{{'SIGNUP' | translate}}</label>
               <!--<p class="cursor-pointer">{{'RESET_PASSWORD' | translate}}</p>-->
             </div>
-            <div>
+            <div style="margin: 5px 0 30px 0;">
               <label>{{'DO_YOU_CHANGE_PASSWORD' | translate}}</label>
               <label class="txt-green label-signup" data-toggle="modal" data-target="#modal-change-password">{{'CHANGE_PASSWORD' | translate}}</label>
             </div>
 
           </div>
 
-          <div class="col-lg-5 col-xs-12">
-            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442473/whitelist-illustration_pclyxv.png" width="100%"
-              alt="next" />
+          <div class="col-lg-5 col-xs-12" style="margin: 5px 0 30px 0;">
+            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519751608/pre_ico_img.png" width="100%" alt="next" />
           </div>
 
           <div class="col-lg-4 col-xs-12" ng-show="false">
@@ -301,3 +229,4 @@
       </div>
   </section>
   </div>
+  <lunesfooter />

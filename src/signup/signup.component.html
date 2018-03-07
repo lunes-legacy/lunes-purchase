@@ -73,141 +73,137 @@
     </div>
   </div>
 
-  <!-- HEADER - criar diretiva depois -->
-  <nav class="header nav" style="padding: 20px 0;">
-    <div class="nav-left logo" style="cursor: pointer;" ng-click="$ctrl.goToLogin()">
-      <!-- eslint-disable -->
-      <span>L</span>
-      <span>u</span>
-      <span>n</span>
-      <span class="txt-green">e</span>
-      <span>s</span>
-      <!-- eslint-disable -->
-    </div>
-
-    <div class="nav-right nav-menu"></div>
-  </nav>
+  <lunesheader showlogout='false' showlinks='false'></lunesheader>
 
   <!-- AUTHENTICATION FORM -->
   <section class="authentication">
     <div>
       <form name="$ctrl.loginForm">
+
         <div class="row">
           <div class="col-xs-12 col-lg-12 title">
             <h4>{{'WELCOME' | translate}}</h4>
             <h4>{{'BEGIN_YOUR_REGISTRATION' | translate}}</h4>
           </div>
+
           <div class="col-xs-12 col-lg-12 error-fields" ng-show="$ctrl.showErrorForm">{{'ALL_FIELDS_REQUIRED' | translate}}</div>
+
           <div class="alert alert-danger" ng-show="$ctrl.serverError" role="alert">
             <h4 class="alert-heading">{{'AN_ERROR_CREATE_ACCOUNT' | translate}}</h4>
             <p>{{$ctrl.serverErrorMessage</p>
           </div>
+
+          <!-- USER INFO -->
           <div class="col-xs-12 col-lg-6">
             <div class="input-form">
-              <label for="input-name">{{'NAME' | translate}}</label>
-              <input data-ng-model="$ctrl.user.name" id="input-name" name="name" required type="text" placeholder="{{'NAME' | translate}}">
+              <label for="input-name">* {{'NAME' | translate}}</label>
+              <input data-ng-model="$ctrl.user.name" id="input-name" name="name" required type="text" placeholder="{{'NAME_PLACEHOLDER' | translate}}">
             </div>
           </div>
 
           <div class="col-xs-12 col-lg-6">
             <div class="input-form">
-              <label for="input-lastname">{{'LAST_NAME' | translate}}</label>
-              <input data-ng-model="$ctrl.user.lastname" id="input-lastname" name="lastname" required type="text" placeholder="{{'LAST_NAME' | translate}}">
+              <label for="input-lastname">* {{'LAST_NAME' | translate}}</label>
+              <input data-ng-model="$ctrl.user.lastname" id="input-lastname" name="lastname" required type="text" placeholder="{{'LAST_NAME_PLACEHOLDER' | translate}}">
             </div>
           </div>
         </div>
 
+        <!-- EMAIL INFO -->
         <div class="row">
           <div class="col-xs-12 col-lg-6">
             <div class="input-form">
-              <label for="input-email">{{'EMAIL' | translate}}</label>
-              <input data-ng-model="$ctrl.user.email" id="input-email" name="email" ng-model-options="{ debounce: 500 }" required type="email"
-                placeholder="{{'EMAIL' | translate}}">
+              <label for="input-email">* {{'EMAIL' | translate}}</label>
+              <input data-ng-model="$ctrl.user.email" id="input-email" name="email" ng-model-options="{ debounce: 3000 }" required type="email"
+                placeholder="{{'EMAIL_PLACEHOLDER' | translate}}">
             </div>
           </div>
 
           <div class="col-xs-12 col-lg-6">
             <div class="input-form">
-              <label for="input-confirm-email">{{'CONFIRM_EMAIL' | translate}}</label>
+              <label for="input-confirm-email">* {{'CONFIRM_EMAIL' | translate}}</label>
               <input data-ng-model="$ctrl.user.confirmEmail" id="input-confirm-email" email name="confirmEmail" email-match required type="email"
-                placeholder="{{'CONFIRM_EMAIL' | translate}}">
+                placeholder="{{'CONFIRM_EMAIL_PLACEHOLDER' | translate}}">
             </div>
 
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-xs-12 col-lg-6">
-            <div class="input-form">
-              <label for="input-password">{{'PASSWORD' | translate}}</label>
-              <input type="password" data-ng-model="$ctrl.user.password" id="input-password" ng-model-options="{ debounce: 500 }" uppercase
-                lowercase numeric special-character required name="password" ng-minlength="8" placeholder="{{'PASSWORD' | translate}}">
-            </div>
-
-            <!-- exibit validation -->
-            <span style="color:#f8e71c;" ng-show="$ctrl.loginForm.email.$dirty && $ctrl.loginForm.email.$invalid">
+            <!-- VALIDATION EMAIL -->
+            <span style="color:#f8b61c;" ng-show="$ctrl.loginForm.email.$dirty && $ctrl.loginForm.email.$invalid">
               <span ng-show="$ctrl.loginForm.email.$error.required">{{'EMAIL_REQUIRED' | translate}}
                 <br>
               </span>
               <span ng-show="$ctrl.loginForm.email.$error.email">{{'EMAIL_INVALID' | translate}}
+                <br>
+              </span>
+            </span>
+            <span style="color:#f8b61c;" ng-show="$ctrl.loginForm.confirmEmail.$dirty && $ctrl.loginForm.confirmEmail.$invalid">
+              <span ng-show="$ctrl.user.email !== $ctrl.user.confirmEmail">{{'EMAIL_MATCH' | translate}}
                 <br> </span>
+            </span>
 
-            </span>
-            <span style="color:#f8e71c;" ng-show="$ctrl.loginForm.confirmEmail.$dirty && $ctrl.loginForm.confirmEmail.$invalid">
-              <span ng-show="$ctrl.loginForm.confirmEmail.$error.compareEmail || $ctrl.loginForm.email.$error.compareEmail">{{'EMAIL_MATCH' | translate}}
-                <br> </span>
-            </span>
-            <span style="color:#f8e71c;" ng-show="$ctrl.loginForm.password.$dirty && $ctrl.loginForm.password.$invalid">
+          </div>
+        </div>
+
+        <!-- PASSWORD INFO -->
+        <div class="row">
+          <div class="col-xs-12 col-lg-6">
+            <div class="input-form">
+              <label for="input-password">* {{'PASSWORD' | translate}}</label>
+              <input type="password" data-ng-model="$ctrl.user.password" id="input-password" ng-model-options="{ debounce: 500 }" uppercase
+                lowercase numeric special-character required name="password" ng-minlength="8" placeholder="{{'PASSWORD_PLACEHOLDER' | translate}}">
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-lg-6">
+            <div class="input-form">
+              <label for="input-confirm-password">* {{'CONFIRM_PASSWORD' | translate}}</label>
+              <input type="password" data-ng-model="$ctrl.user.confirmPassword" id="input-confirm-password" ng-model-options="{ debounce: 500 }"
+                required name="confirmPassword" ng-minlength="8" placeholder="{{'CONFIRM_PASSWORD_PLACEHOLDER' | translate}}">
+            </div>
+            <!-- VALIDATION PASSWORD -->
+            <span style="color:#f8b61c;" ng-show="$ctrl.loginForm.password.$dirty && $ctrl.loginForm.password.$invalid">
               <span ng-show="$ctrl.loginForm.password.$error.required">{{'PASSWORD_REQUIRED' | translate}}
                 <br>
               </span>
               <span ng-show="$ctrl.loginForm.password.$error.minlength">{{'PASSWORD_LENGTH' | translate}}
                 <br>
               </span>
-              <span ng-show="$ctrl.loginForm.password.$error.uppercase">{{'PASSWORD_UPPERCASE' | translate}}
-                <br>
-              </span>
-              <span ng-show="$ctrl.loginForm.password.$error.lowercase">{{'PASSWORD_LOWERCASE' | translate}}
-                <br>
-              </span>
-              <span ng-show="$ctrl.loginForm.password.$error.numeric">{{'PASSWORD_ALPHANUMERIC' | translate}}
-                <br>
-              </span>
-              <span ng-show="$ctrl.loginForm.password.$error.specialCharacter">{{'PASSWORD_SPECIALCHARACTER' | translate}}
-                <br>
-              </span>
-
             </span>
-
-            <span style="color:#f8e71c;" ng-show="$ctrl.loginForm.confirmPassword.$dirty && $ctrl.loginForm.confirmPassword.$invalid">
-              <span ng-show="$ctrl.loginForm.confirmPassword.$error.comparePassword || $ctrl.loginForm.password.$error.comparePassword">{{'PASSWORD_MATCH' | translate}}
-                <br> </span>
+            <span style="color:#f8b61c;" ng-show="$ctrl.loginForm.confirmPassword.$dirty && $ctrl.loginForm.confirmPassword.$invalid">
+              <span ng-show="$ctrl.user.confirmPassword !== $ctrl.user.password">{{'PASSWORD_MATCH' | translate}}
+                <br>
+              </span>
             </span>
           </div>
 
+        </div>
+
+        <!-- CUPOM -->
+        <div class="row">
           <div class="col-xs-12 col-lg-6">
             <div class="input-form">
-              <label for="input-confirm-password">{{'CONFIRM_PASSWORD' | translate}}</label>
-              <input type="password" data-ng-model="$ctrl.user.confirmPassword" id="input-confirm-password" ng-model-options="{ debounce: 500 }"
-                required name="confirmPassword" ng-minlength="8" placeholder="{{'CONFIRM_PASSWORD' | translate}}">
-
+              <label for="input-coupon">{{'DO_YOU_HAVE_A_COUPON' | translate}}</label>
+              <input data-ng-model="$ctrl.user.coupon" id="input-coupon" name="coupon" type="text" placeholder="{{'COUPON_PLACEHOLDER' | translate}}">
             </div>
-
-            <div class="area-button txt-right">
-              <button class="rounded-button" data-toggle="modal" data-target="#modal-terms" ng-show="$ctrl.loginForm.$valid" ng-click="$ctrl.enableTab()">
-                <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png" width="20px" alt="next" />
+          </div>
+          <div class="col-xs-12 col-lg-6" style="margin-top: 15px;">
+            <div class="area-button txt-right" style="display: flex;justify-content: center;">
+              <button class="rounded-button ng-hide" data-toggle="modal" data-target="#modal-terms" ng-show="$ctrl.loginForm.$valid" ng-click="$ctrl.enableTab()">
+                <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png" width="20px" alt="next">
               </button>
 
               <button class="rounded-button" ng-show="!$ctrl.loginForm.$valid" ng-click="$ctrl.showError()">
-                <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png" width="20px" alt="next" />
+                <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png" width="20px" alt="next">
               </button>
             </div>
+            <div style="display: flex;justify-content: center;" ng-show="false">
+              <a href="#!/login" style="font-size: 10px;color: #fff;">{{'BACK' | translate}}</p>
+            </div>
+          </div>
 
-
-
-
+        </div>
 
       </form>
-      </div>
+    </div>
   </section>
-  </div>
+</div>
+<lunesfooter />

@@ -3,6 +3,10 @@
 $break-small: 320px;
 $break-large: 1200px;
 
+input {
+  outline: none;
+}
+
 body {
   background-color: $primary;
   font-family: 'Roboto', sans-serif;
@@ -71,7 +75,6 @@ h3 {
   text-decoration: none;
   padding: 10px;
   img {
-    width: 25px;
     vertical-align: middle; 
   }
 }
@@ -91,10 +94,19 @@ h3 {
 /* Header */
 .header {
   margin: 20px 0;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.nav-menu {
+  padding-left: 0;
+  width: 100%;
 }
 
 /* MENU horizontal */
 ul.menu {
+  padding-right: 0;
   &.horizontal {
     display: flex;
     flex-direction: row;
@@ -102,6 +114,7 @@ ul.menu {
     justify-content: space-around;
     li {
       list-style: none;
+      padding: 10px;
       a {
         text-transform: uppercase;
         text-decoration: none;
@@ -110,6 +123,38 @@ ul.menu {
           color: $green;
         }
       }
+    }
+  }
+}
+
+// TODO: verificar se pode mesclar essa com a de cima
+.menu-top {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0;
+  a {
+    padding: 20px;  
+    color: #fff;
+    text-decoration: none;
+  }
+  li {  
+    margin-right: 15px;
+    font-size: 12px;
+    min-height: 2.2rem;
+    &:hover {
+      border-bottom: 2px solid $green;      
+      a {
+        color: $green;
+      }
+    }
+  }
+  .active {
+    border-bottom: 2px solid $green;
+    a {
+      color: $green;
     }
   }
 }
@@ -217,6 +262,11 @@ ul.menu {
     background-color: #4cd566;
     color: #fff;
     font-size: 16px;
+    transition: all .3s ease-in-out;
+    text-decoration: none;
+    &:hover {
+      background-color: $darkGreen;
+    }
   }
 
   /* disabled button */
@@ -255,6 +305,10 @@ ul.menu {
 /* Input customized */
 .input-form label {
   display: block;
+  font-size: 10px;
+  padding: 0;
+  margin: 0;
+  color: #90df4a;
 }
 .input-form input {
   width: 90%;
@@ -310,3 +364,83 @@ label.css-label {
 	user-select: none;
 }
 
+button:focus {
+    outline: none !important;
+}
+
+footer {
+  .social {
+    display: flex;
+    justify-content: flex-end;
+    li {
+      list-style: none;
+      padding: 2rem 0 0 1rem;
+      img {
+        width: 30px;
+      }
+    }
+  }
+  .container-footer {
+    margin-top: 30px;
+    padding: 10px;
+    background-color: #432773;
+    border-radius: 5px;
+    .row {
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      a {
+        color: #fff;
+      }
+    }
+  }
+}
+.user-menu {
+  position: relative;
+  display: inline-block;
+  height: 100px;
+  margin-top: 1rem;
+
+  @media only screen and (max-width: 460px) {
+    height: 150px;
+    text-align: center;
+    width: 100%;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .logout {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -5px;
+
+    @media only screen and (max-width: 460px) {
+      justify-content: flex-start;
+    }
+
+    // TODO: aplicar suavidade ao exibir o menu
+    // .ng-hide {
+    //   opacity: 0;
+    // }
+    
+    // .ng-hide-add,
+    // .ng-hide-remove {
+    //   transition: all linear .5s;
+    // }
+
+    a {
+      text-decoration: none !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 460px) {
+  footer .container-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,8 +1,16 @@
-import { STORAGE_KEY } from '../constants/index';
 import LunesLib from 'lunes-lib';
+import { STORAGE_KEY, COINS_CONSTANT } from '../constants/index';
+
+const initialValue = '0.00000000';
 
 class BuyController {
-  constructor($scope, HttpService, $translate, $timeout, $state) {
+  constructor($rootScope, $scope, HttpService, $translate, $timeout, $state) {
+    $rootScope.$on('unauthorized', () => {
+      $state.go('login');
+    });
+    if (!localStorage.getItem(STORAGE_KEY)) {
+      $state.go('login');
+    }
     this.$scope = $scope;
     this.HttpService = HttpService;
     this.$translate = $translate;
@@ -12,11 +20,13 @@ class BuyController {
     this.showContainerCoins = false;
     this.balanceCoins = {};
     this.currentPhase = [];
+    this.currentPhaseActive = {};
     this.buyHistoryUser = {};
-    this.valueToDeposit = '0.00000000';
-    this.valueToReceive = '0.00000000';
-    this.bonusAmountFinal = '0.00000000';
+    this.valueToDeposit = initialValue;
+    this.valueToReceive = '000000';
+    this.bonusAmountFinal = initialValue;
     this.buyLimit = '0';
+<<<<<<< HEAD
     
     this.coins = [{
       label: 'Bitcoin',
@@ -34,8 +44,13 @@ class BuyController {
       img: 'http://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_eth.svg',
       selected: false
     }];
+=======
+    this.coins = COINS_CONSTANT;
+>>>>>>> 0846d0da6dead4aa5659077a465c52592215b42e
     this.currentCoinSelected = JSON.parse(JSON.stringify(this.coins[0]));
     this.currentQRCode = { address: '', img: '' };
+    this.showUserMenu = false;
+    this.showQrCode = false;
     this.getBalanceCoin('BTC').catch(error => {
       console.log(error);
     });
@@ -45,9 +60,6 @@ class BuyController {
     this.getBalanceCoin('ETH').catch(error => {
       console.log(error);
     });
-    /*this.getBalanceLunes('LNS', this.currentUser).catch(error => {
-      console.log(error);
-    });*/
     this.showDepositWalletAddressQRCode(this.currentUser, this.currentCoinSelected);
     this.obtainPhase().catch(error => {
       console.log(error);
@@ -60,7 +72,7 @@ class BuyController {
 
   async getBuyHistory() {
     const buyHistory = await this.HttpService.buyHistory(this.currentUser.email, this.currentUser.accessToken);
-    this.buyHistoryUser = buyHistory; 
+    this.buyHistoryUser = buyHistory;
   }
 
   async showDepositWalletAddressQRCode(currentUser, coin) {
@@ -69,10 +81,6 @@ class BuyController {
     if (coin) {
       this.getCurrentBalanceUser(coin.name, this.currentQRCode.address, this.currentUser);
     }
-  }
-
-  async doBuy() {
-
   }
 
   getPhaseActive() {
@@ -86,12 +94,12 @@ class BuyController {
   }
 
   async obtainPhase() {
-    
     try {
       let phase;
       if (localStorage.getItem('lunes.phase')) {
         this.currentPhase = JSON.parse(localStorage.getItem('lunes.phase'));
         phase = this.getPhaseActive();
+        this.currentPhaseActive = JSON.parse(JSON.stringify(phase));
 
         this.percentBonus = phase.bonus*100;
         this.priceValueLunes = parseFloat(phase.price_value);
@@ -106,15 +114,15 @@ class BuyController {
         return;
       }
       this.currentPhase = await this.HttpService.obtainPhase().catch(error => {
-        alert('Erro ao tentar recuperar dados da fase da ICO');  
+        //alert('Erro ao tentar recuperar dados da fase da ICO');
+        console.log("Erro on get phase");
       });
-      console.log(this.currentPhase);
 
       phase = this.getPhaseActive();
 
       this.percentBonus = phase.bonus*100;
       this.priceValueLunes = parseFloat(phase.price_value);
-      
+
       if (this.currentUser.whitelist && phase.name === 'Whitelist') {
         this.buyLimit = 1000000;
       } else {
@@ -139,12 +147,12 @@ class BuyController {
 
   async getBalanceCoinETH(coin) {
     const balance = await this.HttpService.getBalanceCoinETH(coin);
-    this.balanceCoins[coin] = { balance };  
+    this.balanceCoins[coin] = { balance };
   }
 
   async getBalanceLunes(coin, currentUser) {
     const balance = await this.HttpService.getBalanceLunes(coin, currentUser);
-    this.balanceCoins[coin] = { balance };  
+    this.balanceCoins[coin] = { balance };
   }
 
   goToHome() {
@@ -163,32 +171,68 @@ class BuyController {
 
   /**
    * coinDestination, bonusRate, coinAmount, exchangeRate, unitPrice, coupon
-   * coinDestination  - eh o simbolo da moeda, 
-   * bonusRate        - eh a taxa de bonus da fase atual da ico, 
-   * coinAmount       - eh a quantidade de criptomoeda, 
-   * exchangeRate     - o preco em dolar, 
-   * unitPrice        - o preco atual da lunes em dolar e 
+   * coinDestination  - eh o simbolo da moeda,
+   * bonusRate        - eh a taxa de bonus da fase atual da ico,
+   * coinAmount       - eh a quantidade de criptomoeda,
+   * exchangeRate     - o preco em dolar,
+   * unitPrice        - o preco atual da lunes em dolar e
    * coupon           - eh o cupom de bonus do usuario se houver
+   * 
+   * Example: 30000 LNS => 0.27285849
+   * Example: 1000  LNS => 0.00090953
+   * Example: 500   LNS => 0.00045476
+   * Example: 10    LNS => 0.00000910
   */
   calcValue(LNS) {
+<<<<<<< HEAD
     
-    if (LNS) {
-      if (this.valueToReceive.indexOf(',') !== -1) {
-        this.valueToReceive = this.valueToReceive.replace(/[, ]+/g, "0").trim(); 
-      }
-    } else {
-      if (this.valueToDeposit.indexOf(',') !== -1) {
-        this.valueToDeposit = this.valueToDeposit.replace(/[, ]+/g, "0").trim(); 
-      }
+=======
+    if (!this.valueToReceive) {
+      this.valueToReceive = '000000';
     }
+
+    if (!this.valueToDeposit) {
+      this.valueToDeposit = initialValue;
+    }
+
+    if (this.valueToReceive.length > 7) {
+      this.valueToReceive = this.valueToReceive.substr(0, 7);
+    }
+
+    if (this.valueToReceive.replace) {
+      this.valueToReceive = this.valueToReceive.replace(/[^0-9.]+/, '');
+    }
+
+    const valueToReceive = parseFloat(this.valueToReceive);
+    const valueToDeposit = parseFloat(this.valueToDeposit);
+
+    // hide message error to value LNS less than 0
+    this.errorTypeValueToReceive = false;
+
+    if (isNaN(valueToReceive) || isNaN(valueToDeposit)) {
+      this.valueToDeposit = initialValue;
+      this.valueToReceive = '000000';
+    }
+
+>>>>>>> 0846d0da6dead4aa5659077a465c52592215b42e
+    if (LNS) {
+      if (this.valueToReceive.indexOf && this.valueToReceive.indexOf(',') !== -1) {
+        this.valueToReceive = this.valueToReceive.replace(/[, ]+/g, "0").trim();
+      }
+    } else if (this.valueToDeposit.indexOf && this.valueToDeposit.indexOf(',') !== -1) {
+      this.valueToDeposit = this.valueToDeposit.replace(/[,]+/g, '').trim();
+    }
+    
     this.checkMaxLength();
     const phase = this.getPhaseActive();
     const bonusRate = phase.bonus;
     const currentPrice = this.balanceCoins[this.currentCoinSelected.name].balance.PRICE;
     const coupon = this.currentUser.coupon;
 
+    this.buyLimit = parseFloat(this.buyLimit);
 
-    let coinAmount = (LNS) ? this.valueToReceive : this.valueToDeposit;
+    let coinAmount = (LNS) ? valueToReceive : valueToDeposit;
+    coinAmount = parseFloat(coinAmount);
     if (isNaN(coinAmount)) {
       coinAmount = 0;
     }
@@ -204,19 +248,32 @@ class BuyController {
       calculateFinal = LunesLib.ico.buyConversion.fromLNS(bonusRate, coinAmount, currentPrice, unitPrice, coupon);
       this.valueToDeposit = calculateFinal.buyAmount;
       this.bonusAmountFinal = (parseFloat(phase.bonus) * this.valueToReceive).toString();
+      
+      this.$timeout(() => {
+        this.valueToReceive = parseFloat(this.valueToReceive);
+        //this.valueToDeposit = parseFloat(this.valueToDeposit);
+      }, 2000);
+
       return;
     }
-    
+
     calculateFinal = LunesLib.ico.buyConversion.toLNS(bonusRate, coinAmount, currentPrice, unitPrice, coupon);
+
+    this.$timeout(() => {
+      if (this.valueToReceive !== '0.00000000') {
+        this.valueToReceive = parseFloat(this.valueToReceive);
+      }
+      //this.valueToDeposit = parseFloat(this.valueToDeposit);
+    }, 2000);
 
     this.valueToReceive = calculateFinal.buyAmount.toString();
     this.bonusAmountFinal = calculateFinal.bonusAmount;
 
     if (this.valueToReceive > this.buyLimit) {
-      calculateFinal = LunesLib.ico.buyConversion.fromLNS(bonusRate, this.buyLimit, currentPrice, unitPrice, coupon);
-      this.valueToReceive = this.buyLimit.toString();
-      this.valueToDeposit = calculateFinal.buyAmount;
-      this.bonusAmountFinal = (parseFloat(phase.bonus) * this.valueToReceive).toString();
+      coinAmount = this.buyLimit;
+      this.valueToReceive = this.buyLimit;
+      this.bonusAmountFinal = (parseFloat(phase.bonus) * this.buyLimit).toString();
+      this.calcValue('LNS');
     }
   }
 
@@ -236,10 +293,17 @@ class BuyController {
     return total.toFixed(8);
   }
 
+  getTotalLNSParcial() {
+    return (this.valueToReceive.toFixed) ? this.valueToReceive.toFixed(8) : this.valueToReceive;
+  }
+
   checkMaxLength() {
+    if (typeof this.valueToDeposit === 'number') {
+      this.valueToDeposit = this.valueToDeposit.toString();
+    }
     const numberMax = 10;
-    if (this.valueToDeposit.indexOf(',') !== -1) {
-      this.valueToDeposit = this.valueToDeposit.replace(",", "."); 
+    if (!isNaN(this.valueToDeposit) && this.valueToDeposit.indexOf(',') !== -1) {
+      this.valueToDeposit = this.valueToDeposit.replace(",", ".");
     }
     if (this.valueToDeposit.length > numberMax) {
       this.valueToDeposit = this.valueToDeposit.substring(0, numberMax);
@@ -265,7 +329,6 @@ class BuyController {
   }
 
   async getCurrentBalanceUser(coin, address, currentUser) {
-    console.log("");
     const balance = await this.HttpService.getBalance(coin, address, currentUser);
     this.$timeout(() => {
       if (balance && balance.network === 'ETH') {
@@ -279,8 +342,9 @@ class BuyController {
   }
 
   selectCoin(coinSelected) {
-    this.valueToDeposit = '0.00000000';
-    this.valueToReceive = '0.00000000';
+    this.showQrCode = false;
+    this.valueToDeposit = initialValue;
+    this.valueToReceive = initialValue;
     let self = this;
     this.coins = this.coins.filter(coin => {
       coin.selected = false;
@@ -294,14 +358,29 @@ class BuyController {
     this.$timeout(() => {
       this.$scope.$apply();
     }, 200);
-    //this.openCoinSelect();  
+    //this.openCoinSelect();
   }
 
   openCoinSelect() {
-    this.showContainerCoins = !this.showContainerCoins;  
+    this.showContainerCoins = !this.showContainerCoins;
+  }
+
+  toogleUserMenu() {
+    this.showUserMenu = !this.showUserMenu;
+  }
+
+  toogleShowQrCode() {
+    if (parseFloat(this.valueToReceive) === 0) {
+      this.errorTypeValueToReceive = this.$translate.instant('AMOUNT_MINIMUN_VALIDATION');
+      return;
+    }
+    this.HttpService.toBuy(this.currentQRCode.address).catch(error => {
+      console.log(error);
+    });
+    this.showQrCode = !this.showQrCode;
   }
 }
 
-BuyController.$inject = ['$scope', 'HttpService', '$translate', '$timeout', '$state'];
+BuyController.$inject = ['$rootScope', '$scope', 'HttpService', '$translate', '$timeout', '$state'];
 
 export default BuyController;

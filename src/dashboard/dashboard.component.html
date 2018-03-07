@@ -1,75 +1,64 @@
 <div class="container">
 
-  <!-- HEADER - criar diretiva depois -->
-  <nav class="header nav" style="padding: 20px 0;">
-    <div class="col-sm-12 col-md-2 col-lg-2 logo" ng-click="$ctrl.goToHome()" style="cursor: pointer;">
-      <!-- eslint-disable -->
-      <span>L</span>
-      <span>u</span>
-      <span>n</span>
-      <span class="txt-green">e</span>
-      <span>s</span>
-      <!-- eslint-disable -->
-    </div>
-
-    <div class="col-sm-12 col-md-6 col-lg-6 nav-menu">
-      <ul class="menu horizontal">
-        <li>
-          <a href="#!/whitelist">{{'WHITELIST' | translate}}</a>
-        </li>
-        <li>
-          <a href="#!/buy">{{'BUY' | translate}}</a>
-        </li>
-        <li>
-          <a href="#!/dashboard">{{'DASHBOARD' | translate}}</a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="col-4 txt-right">
-      <ul class="menu horizontal">
-        <li>
-          <a href="https://www.facebook.com/lunesplatform/" target="_blank" class="round-menu">
-            <img src="../assets/facebook.png" alt="facebook" />
-          </a>
-        </li>
-        <li>
-          <a href="https://t.me/LunesPlatformEN" target="_blank" class="round-menu">
-            <img src="../assets/telegram.png" alt="telegram" />
-          </a>
-        </li>
-        <li>
-          <a href="https://twitter.com/lunesplatform" target="_blank" class="round-menu">
-            <img src="../assets/twitter.png" alt="twitter" />
-          </a>
-        </li>
-        <li>
-          <a href="https://medium.com/@lunes.platform" target="_blank" class="round-menu">
-            <img src="../assets/medium.png" alt="medium" />
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <lunesheader showlogout="true" showlinks="true"></lunesheader>
 
   <!-- DASHBOARD -->
   <section class="dashboard">
     <div class="row">
-      <div class="col-12 title mb-2-rem">
-        <h4>{{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}</h4>
+      <div class="title user-menu">
+        <a href="" id="user-menu" ng-click="$ctrl.toogleUserMenu()">
+          <h4>
+            {{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}
+            <span ng-show="!$ctrl.showUserMenu">
+              <i class="fas fa-angle-right green"></i>
+            </span>
+            <span ng-show="$ctrl.showUserMenu">
+              <i class="fas fa-angle-down green"></i>
+            </span>
+          </h4>
+        </a>
+        <div class="logout area-button" ng-show="$ctrl.showUserMenu">
+          <a href="#!/login" class="primary-button" ng-click="$ctrl.logout()">
+            {{'LOGOUT' | translate}}
+          </a>
+        </div>
       </div>
+    </div>
+
+    <div class="row">
+      <!-- BALANCE FOR EACH COIN -->
+      <div class="col-xs-12 col-md-6 col-lg-6 transaction-coins">
+        <div class="show-balance" ng-repeat="coin in $ctrl.coins" style="margin-right: 15px;text-align: center;">
+          <img ng-src="{{coin.img}}" alt="{{coin.label}}">
+          <p style="font-size: 10px;margin: 0;">{{coin.label}}</p>
+          <small ng-show="false" style="font-size: 8px;color: #ce3e3e;">{{'UNCONFIRMED_BALANCE' | translate}}</small>
+          <p ng-show="false" style="font-size: 10px;margin: 0;">{{$ctrl.balanceProcessed[coin.name].unconfirmed_balance}}</p>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-6 col-lg-6 balance lns">
+        <span>{{'MY_BALANCE' | translate}}:</span>
+        <span class="monetary">{{ $ctrl.totalLns }}</span>
+        <span class="coin">LNS</span>
+      </div>
+
+      <!-- end -->
+
+      <!-- TABLE RESUME HISTORIC PURCHASE -->
       <div class="col-12 history">
-        <table class="table table-striped">
+        <table class="lunes-table" ng-if="$ctrl.checkWidthScreenDesktop()">
           <thead>
-            <th>{{ 'DASHBOARD.DATE' | translate }}</th>
-            <th>{{ 'DASHBOARD.PHASE' | translate }}</th>
-            <th>{{ 'DASHBOARD.DEPOSIT' | translate }}</th>
-            <th>Lunes</th>
-            <th>{{ 'DASHBOARD.BONUS' | translate }}</th>
-            <th>Total</th>
+            <tr>
+              <td>{{ 'DASHBOARD.DATE' | translate }}</td>
+              <td>{{ 'DASHBOARD.PHASE' | translate }}</td>
+              <td>{{ 'DASHBOARD.DEPOSIT' | translate }}</td>
+              <td>Lunes</td>
+              <td>{{ 'DASHBOARD.BONUS' | translate }}</td>
+              <td>Total</td>
+            </tr>
           </thead>
           <tbody data-ng-if="$ctrl.history.length > 0">
-            <tr data-ng-repeat="history in $ctrl.history">
+            <tr data-ng-repeat="history in $ctrl.history" ng-class-odd="'odd'" ng-class-even="'even'">
               <td>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</td>
               <td>{{ history.phase || 1 }}</td>
               <td>{{ history.deposit_value }} {{ history.deposit_coin }}</td>
@@ -84,12 +73,39 @@
             </tr>
           </tfoot>
         </table>
+
+        <div ng-if="$ctrl.checkWidthScreenMobile()">
+          <div data-ng-repeat="history in $ctrl.history" ng-class-odd="'odd'" ng-class-even="'even'" style="border-radius: 5px;">
+            <h6 style="text-align: center; padding: 10px; color: #4cd468;">{{'TRANSACTION' | translate}} {{$index+1}}</h6>
+            <div class="responsive-table-card">
+              <div>{{ 'DASHBOARD.DATE' | translate }}</div>
+              <div>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</div>
+            </div>
+            <div class="responsive-table-card">
+              <div>{{ 'DASHBOARD.PHASE' | translate }}</div>
+              <div>{{ history.phase || 1 }}</div>
+            </div>
+            <div class="responsive-table-card">
+              <div>{{ 'DASHBOARD.DEPOSIT' | translate }}</div>
+              <div>{{ history.deposit_value }} {{history.deposit_coin}}</div>
+            </div>
+            <div class="responsive-table-card">
+              <div>Lunes</div>
+              <div>{{ history.credit_value }} LNS</div>
+            </div>
+            <div class="responsive-table-card">
+              <div>{{ 'DASHBOARD.BONUS' | translate }}</div>
+              <div>{{ history.bonus_value }} LNS</div>
+            </div>
+            <div class="responsive-table-card total-footer" ng-show="false">
+              <div>Total</div>
+              <div>{{ history.total }} LNS</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-12 balance">
-        <span>Meu saldo:</span>
-        <span class="monetary">{{ $ctrl.totalLns }}</span>
-        <span class="coin">LNS</span>
-      </div>
+
     </div>
   </section>
 </div>
+<lunesfooter />

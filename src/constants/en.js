@@ -1,14 +1,27 @@
 export default {
     USER: 'User',
     PASSWORD: 'Password',
+    PASSWORD_PLACEHOLDER: 'Type your password here',
     NAME: 'Name',
+    NAME_PLACEHOLDER: 'Type your name here',
     LAST_NAME: 'Last Name',
+    LAST_NAME_PLACEHOLDER: 'Type your last name here',
     EMAIL: 'Email',
+    EMAIL_PLACEHOLDER: 'Type your email here',
     CONFIRM_EMAIL: 'Confirm Email',
-    ALL_FIELDS_REQUIRED: 'All fields are required',
+    CONFIRM_EMAIL_PLACEHOLDER: 'Type your email again',
+    ALL_FIELDS_REQUIRED: 'Please, type the fields required',
+    BACK: 'click here to back',
     CONFIRM_PASSWORD: 'Confirm Password',
+    CONFIRM_PASSWORD_PLACEHOLDER: 'Type your password again',
+    COUPON: 'Do you have any coupon code?',
+    COUPON_PLACEHOLDER: 'If yes, please type here',
     WELCOME: 'Welcome',
     BEGIN_YOUR_REGISTRATION: 'Begin your registration',
+    TRANSACTION: 'Transaction',
+    MY_BALANCE: 'My balance',
+    IN: 'in',
+    DATE_FORMAT: 'MM-dd-yyyy',
     AGREE: 'Agree',
     DONT_HAVE_ACCOUNT: 'Don\'t have an account?',
     SIGNUP: 'Signup',
@@ -16,6 +29,7 @@ export default {
     WHITELIST: 'Whitelist',
     BUY: 'Buy',
     DASHBOARD: 'Dashboard',
+    PURCHASE_HISTORY: 'Purchase History',
     CURRENCY_SYMBOL: 'U$',
     CURRENCY_USER: 'USD',
     CURRENCY_EXCHANGE: 'bitstamp',
@@ -23,15 +37,18 @@ export default {
     COIN_SELECTED: 'coin selected',
     LOADING: 'loading...',
     AMOUNT_LUNES: 'Amount LNS',
+    DO_YOU_HAVE_A_COUPON: 'Do you have a coupon?',
     BONUS: 'Bonus',
     SIGNUP_SUCCESSFULY: 'Sucessful Registration',
     REDIRECTING: 'redirecting to login...',
     LOGOUT: 'logout',
     AUTHENTICATE_INVALID: 'Invalid Authentication',
     BUY_LIMIT_PHASE: 'Buy limit for this phase:',
+    QUOTATION: 'Price:',
     BALANCE: 'Balance',
     AN_ERROR_CREATE_ACCOUNT: 'An error occured while creating account',
-    MSG_BALANCE_DEPOSITED: '* All balance deposited in the address will automatically be converted to Lunes on 02/25/2018 using the exchange rate of the moment. Exceeding balance above the buy limit will be available in the next sale phases. ',
+    MSG_BALANCE_DEPOSITED: 'All balance deposited in the address will automatically be converted to Lunes on 02/26/2018',
+    DEPOSIT_CONFIRMATION_ADVICE: 'Your deposit will be added by our system automatically once we receive 3 confirmations',
     US_CITIZEN: 'I agree i am not a citizen of the United States of America.',
     AGREE_TERM: 'I agree with the above terms of use.',
     AGREE_FUTURE_VALUE: 'I agree the price of the lunes cryptocurrency is not guaranteed in the future.',
@@ -47,6 +64,11 @@ export default {
     PASSWORD_ALPHANUMERIC: 'At least one character in the password must be a number',
     EMAIL_MATCH: 'E-mail must match',
     PASSWORD_MATCH: 'Password must match',
+    SEND_TO_THIS_ADDRESS: 'Please, send',
+    UNCONFIRMED_BALANCE: 'Unconfirmed',
+    AMOUNT_MINIMUN_VALIDATION: 'The minimun price of LNS must be greater than zero',
+    FAQ: 'F.A.Q',
+    EXCEED_LIMIT_BUY: 'You exceeded your limit buy',
     DASHBOARD: {
       NO_HISTORY: 'You have no history yet',
       DATE: 'Date',
@@ -54,6 +76,7 @@ export default {
       DEPOSIT: 'Deposit',
       BONUS: 'Bonus'
     },
+    TO: 'to',
     EMAIL_ALREADY: 'The email address already exists',
     TERMS_CONDITION_TITLE: 'Terms and Conditions',
     REPRESENTATION_TERM_TITLE: 'Representation and Warranties',
@@ -67,6 +90,72 @@ export default {
     EMAIL_NOT_SENT: 'Email not sent or not exists',
     DO_YOU_CHANGE_PASSWORD: 'Do you want change you password?',
     CHANGE_PASSWORD_INSTRUCTION: 'Type your email for us send for you the instructions to change password',
+    WHATS_LUNES: 'What is Lunes?',
+    WHATS_LUNES_A: `Lunes is a platform that provides a set of solutions that is decentralized by utilizing blockchain
+    technology: such as creating tokens, authenticity records, and making payment processing possible through our gateway operators by using “fiat” 
+    currencies and cryptocurrencies.`,
+    DOUBT_01: `Is Lunes a Waves or Ethereum token?`,
+    DOUBT_01_A: `Our blockchain is a fork of the Waves code, but we have very different functionalities. So Lunes is NOT an ethereum token.`,
+    DOUBT_02: `When does PRE_ICO start?`,
+    DOUBT_02_A: `The PRE-ICO starts on February 25 and runs until March 30.`,
+    DOUBT_03: `When does ICO start?`,
+    DOUBT_03_A: `ICO starts on April 15 and runs until May 20.`,
+    DOUBT_04: `How to buy Lunes?`,
+    DOUBT_04_A: `Visit the website https://ico.lunes.io, register and log in. Just choose the desired payment A- method and send to the address of your choice. That simple.`,
+    DOUBT_05: `What currencies will you be accepting?`,
+    DOUBT_05_A: `Bitcoin, Ethereum and Litecoin.`,
+    DOUBT_06: `How do I convert my payment for Lunes in the website?`,
+    DOUBT_06_A: `There is no need to convert it. Your Lunes will be automatically converted within 20 minutes to 1 hour after payment is confirmed.`,
+    DOUBT_07: `What is the price of 1 LNS?`,
+    DOUBT_07_A: `We will have 4 lots with the following prices:`,
+    ITEM_07_1: '1st lot:',
+    ITEM_07_2: '2nd lot:',
+    ITEM_07_3: '3rd lot:',
+    ITEM_07_4: '4th lot:',
+
+    DOUBT_08: `What is the limit of purchase per investor?`,
+    DOUBT_08_A: `1st lot: $ 0.01 - 300.000 coins
+    <br />2nd lot: $ 0.08 - 5.000.000 coins
+    <br />3rd lot: $ 0.15 - 8.000.000 coins
+    <br />4th lot: $ 0.30 10.000.000 coins`,
+
+    DOUBT_09: `What is the max supply of coins?`,
+    DOUBT_09_A: `600.000.000 coins. Total coins available for ICO process is 450.000.000.`,
+
+    DOUBT_10: `What is the Soft Cap?`,
+    DOUBT_10_A: `10.92M USD.`,
+
+    DOUBT_11: `Can I buy with fiat currency?`,
+    DOUBT_11_A: `No. We will accept only cryptocurrency.`,
+
+    DOUBT_12: `When can I transfer my Lunes?`,
+    DOUBT_12_A: `After ICO is finished, you will be able to transfer your Lunes coins.`,
+
+    DOUBT_13: `Is Lunes a security token?`,
+    DOUBT_13_A: `No. Lunes is a utility token.`,
+
+    DOUBT_14: `Is Lunes going to be listed at any exchange?`,
+    DOUBT_14_A: `Yes, but we cannot confirm any at the moment. We will negotiate with exchanges after the ICO is finished.`,
+
+    DOUBT_15: `When Lunes wallet will be released for iOS?`,
+    DOUBT_15_A: `We do not have a specific date. Apple has been very bureaucratic when it comes to cryptocurrencies. Although we are fully committed to making our app 
+    available to iOS system.`,
+
+    DOUBT_16: `What is the mining algorithm, PoW or PoS?`,
+    DOUBT_16_A: `LPoS, or Leased Proof of Stake, in which the Lunes tokens that are in your wallet can be used to "forge" tokens through the leasing process, safely 
+    and without having to keep an open wallet.`,
+    
+    DOUBT_17: `What the price to 1LNS?`,
+    DOUBT_17_A: `We not have how to control of the price in the exchanges, the market dictates the rules`,
+
+    DOUBT_18: `How can I create a Lunes Node?`,
+    DOUBT_18_A: `The Lunes Node (still in development) is an application in Java, compatible with any operating system which offers support. In order to your Lunes 
+    Node has the chance to mine the transactions, it is necessary for the Wallet set up in the Lunes.conf to hold at least 5,000 coins.`,
+
+    
+    FAQ_TEXT: `
+      
+    `,
     REPRESENTATION_TERM: `
       <h3>Representation and Warranties</h3>
       <p>By participating in the Initial Coin Offering, the User agrees to the T&C and in particular, they represent and warrant that they:</p>

@@ -6,11 +6,11 @@ const autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: {
-    app: ['babel-polyfill', './src/app.js']
+    app: ['babel-polyfill', `./src/app.js`]
   },
   output: {
     path: path.join(__dirname, '..', 'dist'),
-    filename: '[name].js'
+    filename: `[name].js?v=${new Date().getTime()}`
   },
   plugins: [
     new HtmlWebpackPlugin({

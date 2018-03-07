@@ -5,11 +5,13 @@ import Components from './components/components';
 import LoginComponent from './login/login.component';
 import SignupComponent from './signup/signup.component';
 import BuyComponent from './buy/buy.component';
+import FaqComponent from './faq/faq.component';
 import DashboardComponent from './dashboard/dashboard.component';
 import FixComponent from './fix/fix.component';
 import languageUtil from './utils/language';
 import en from './constants/en';
 import pt from './constants/pt';
+import { STORAGE_KEY } from './constants/index';
 
 import {
   CheapFlightService,
@@ -31,98 +33,7 @@ angular.module('myApp', [
 .component('buyPage', BuyComponent)
 .component('dashboardPage', DashboardComponent)
 .component('fixPage', FixComponent)
-.directive('uppercase', function() {
-  return {
-    require: 'ngModel',
-    link: function(scope, elm, attrs, ctrl) {
-      ctrl.$validators.uppercase = function(modelValue, viewValue) {
-        var regexUppercase = new RegExp(/[A-Z]+/);
-
-        if (ctrl.$isEmpty(modelValue)) {
-          // consider empty models to be valid
-          return true;
-        }
-
-        if (regexUppercase.test(viewValue)) {
-          // it is valid
-
-          return true;
-        }
-
-        // it is invalid
-        return false;
-      };
-    }
-  };
-})
-.directive('lowercase', function() {
-  return {
-    require: 'ngModel',
-    link: function(scope, elm, attrs, ctrl) {
-
-      ctrl.$validators.lowercase = function(modelValue, viewValue) {
-
-        var regexLowercase = new RegExp(/[a-z]+/);
-        if (ctrl.$isEmpty(modelValue)) {
-          // consider empty models to be valid
-          return true;
-        }
-
-        if (regexLowercase.test(viewValue)) {
-          // it is valid
-          return true;
-        }
-
-        // it is invalid
-        return false;
-      };
-    }
-  };
-})
-.directive('specialCharacter', function() {
-  return {
-    require: 'ngModel',
-    link: function(scope, elm, attrs, ctrl) {
-      ctrl.$validators.specialCharacter = function(modelValue, viewValue) {
-        var regexSpecialCharacter = new RegExp(/[*&%$#@]+/);
-        if (ctrl.$isEmpty(modelValue)) {
-          // consider empty models to be valid
-          return true;
-        }
-
-        if (regexSpecialCharacter.test(viewValue)) {
-          // it is valid
-          return true;
-        }
-
-        // it is invalid
-        return false;
-      };
-    }
-  };
-})
-.directive('numeric', function() {
-  return {
-    require: 'ngModel',
-    link: function(scope, elm, attrs, ctrl) {
-      ctrl.$validators.numeric = function(modelValue, viewValue) {
-        var regexNumeric = new RegExp(/[\d]+/);
-        if (ctrl.$isEmpty(modelValue)) {
-          // consider empty models to be valid
-          return true;
-        }
-
-        if (regexNumeric.test(viewValue)) {
-          // it is valid
-          return true;
-        }
-
-        // it is invalid
-        return false;
-      };
-    }
-  };
-})
+.component('faqPage', FaqComponent)
 .directive('comparePassword', function () {
         return {
             require: "ngModel",
@@ -162,19 +73,18 @@ angular.module('myApp', [
   };
 }
 )
-.config(($stateProvider, $translateProvider, $urlRouterProvider) => {
+.config(($stateProvider, $translateProvider, $urlRouterProvider, $httpProvider) => {
   'ngInject';
 
   $translateProvider.useSanitizeValueStrategy('escape');
   $translateProvider.useSanitizeValueStrategy('escapeParameters');
-  //$translateProvider.useSanitizeValueStrategy('sce');
   $translateProvider.translations('en', en);
   $translateProvider.translations('pt', pt);
   $translateProvider.preferredLanguage(languageUtil());
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    /*.state('signup', {
+    .state('signup', {
       url: '/signup',
       template: '<signup-page></signup-page>',
     })
@@ -186,17 +96,21 @@ angular.module('myApp', [
       url: '/buy',
       template: '<buy-page></buy-page>',
     })
-    .state('dashboard', {
-      url: '/dashboard',
+    .state('faq', {
+      url: '/faq',
+      template: '<faq-page></faq-page>',
+    })
+    .state('historic', {
+      url: '/historic',
       template: '<dashboard-page></dashboard-page>',
     })
     .state('home', {
       url: '/',
       template: '<login-page></login-page>',
-    });*/
-    .state('fix', {
+    });
+    /*.state('fix', {
       url: '/',
       template: '<fix-page></fix-page>',
-    });
-})
-;
+    });*/
+
+});
