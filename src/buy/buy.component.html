@@ -57,7 +57,7 @@
                 />
               </div>
               <div class="lunes-current-price">
-                <small>1 LNS = {{$ctrl.currentPhaseActive.price_value}}</small>
+                <small>1 LNS = {{'$' + $ctrl.currentPhaseActive.price_value}}</small>
               </div>
             </div>
             <div ng-show="$ctrl.errorTypeValueToReceive" style="padding: 0 0 10px;font-size: 11px;text-align: center;color: #cf4444;text-shadow: none;">
