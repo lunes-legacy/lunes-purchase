@@ -93,6 +93,7 @@ class BuyController {
         this.currentPhase = JSON.parse(localStorage.getItem('lunes.phase'));
         phase = this.getPhaseActive();
         this.currentPhaseActive = JSON.parse(JSON.stringify(phase));
+        this.currentPhaseActive.price_value = Number(this.currentPhaseActive.price_value).toFixed(2);
 
         this.percentBonus = phase.bonus*100;
         
