@@ -3,10 +3,33 @@
   display: flex; 
   align-items: center; 
   justify-content: flex-end;
+  small {
+    font-size: 20px;
+    img {
+      width: 16px;
+    }
+  }
 }
 
 @media only screen and (max-width: 426px) {
   .quotation-coins {
     justify-content: center;
+    small {
+      font-size: 14px;
+      img {
+        width: 13px;
+      }
+    }
+  }  
+}
+
+@media only screen and (max-width: 375px) {
+  .quotation-coins {
+    small {
+      font-size: 14px;
+      img {
+        width: 13px;
+      }
+    }
   }  
 }
