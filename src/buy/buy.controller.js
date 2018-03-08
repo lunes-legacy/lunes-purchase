@@ -61,6 +61,7 @@ class BuyController {
       }
       smartlookClient.identify(this.currentUser._id, userTrack );
     }
+    //introJs().start();
   }
 
   async getBuyHistory() {
