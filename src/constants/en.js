@@ -66,7 +66,12 @@ export default {
     PASSWORD_MATCH: 'Password must match',
     SEND_TO_THIS_ADDRESS: 'Please, send',
     UNCONFIRMED_BALANCE: 'Unconfirmed',
+    CALCULATOR: 'Calculator',
     AMOUNT_MINIMUN_VALIDATION: 'The amount of LNS must be greater than zero',
+    MSG_COIN_PLACEHOLDER: `Type a value in {{COIN}} to calculate`,
+    VIEW_ADDRESS_TO_DEPOSIT: 'View address to deposit',
+    MSG_COIN_PLACEHOLDER_LNS: 'or type the value in Lunes',
+    CHOOSE_YOUR_COIN_TO_BUY: 'Choose the coin, type the value you want to buy and press the "View address to deposit" button to see your deposit address.',
     FAQ: 'F.A.Q',
     EXCEED_LIMIT_BUY: 'You exceeded your limit buy',
     DASHBOARD: {

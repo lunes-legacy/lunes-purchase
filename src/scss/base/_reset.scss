@@ -252,11 +252,11 @@ ul.menu {
 .area-button {
   text-align: center;
   padding: 10px;
-  
+
   /* primary-button */
   .primary-button {
     border: 0;
-    border-radius: 22px;
+    border-radius: 40px;
     padding: 11px 80px;
     text-align: center;
     background-color: #4cd566;
@@ -266,6 +266,10 @@ ul.menu {
     text-decoration: none;
     &:hover {
       background-color: $darkGreen;
+    }
+    &.disabled {
+      background-color: #69548c!important;
+      color: #b4abc3!important;
     }
   }
 

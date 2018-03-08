@@ -38,6 +38,10 @@
         <!-- CALCULATOR -->
         <div class="row">
           <div class="calculator col-lg-12">
+            <div>
+              <h5>{{'CALCULATOR' | translate}}</h5>
+              <p style="padding: 0 50px 0 0;">{{'CHOOSE_YOUR_COIN_TO_BUY' | translate}}</p>
+            </div>
             <div class="select-coin">
               <ul>
                 <li ng-repeat="coin in $ctrl.coins" ng-click="$ctrl.selectCoin(coin)" ng-class="coin.selected ? 'selected': ''">
@@ -46,15 +50,17 @@
               </ul>
             </div>
             <div class="valueCripto">
-              <input type="text" class="input-calculator" name="value" ng-model="$ctrl.valueToDeposit" ng-change="$ctrl.calcValue()" />
+              <input type="text" placeholder="{{$ctrl.msgCoinPlaceholder}}" ng-class="$ctrl.valueToDeposit === '' ? 'animation-color' : ''"
+                class="input-calculator" name="value" ng-model="$ctrl.valueToDeposit" ng-change="$ctrl.calcValue()" />
+
               <div class="lunesAmount">
                 <img style="position: absolute;
                 top: 0;
                 left: 0;
                 z-index: 99;" class="flag-lns" src="https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png"
                   alt="Icon Lunes">
-                <input type="text" placeholder="000.000" class="input-calculator" name="value" ng-model="$ctrl.valueToReceive" ng-change="$ctrl.calcValue('LNS')"
-                />
+                <input type="text" placeholder="{{$ctrl.msgCoinPlaceholderLNS}}" class="input-calculator" name="value" ng-model="$ctrl.valueToReceive"
+                  ng-change="$ctrl.calcValue('LNS')" />
               </div>
               <div class="lunes-current-price">
                 <small>1 LNS = {{$ctrl.currentPhaseActive.price_value}}</small>
@@ -105,8 +111,8 @@
       </div>
       <!-- QR CODE -->
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-        <div class="area-button" ng-show="!$ctrl.showQrCode">
-          <a href="" class="primary-button" ng-click="$ctrl.toogleShowQrCode()">{{'BUY' | translate}}</a>
+        <div class="area-button" ng-show="!$ctrl.showQrCode" style="margin-top: 20px;">
+          <button ng-class="$ctrl.valueToDeposit ? '' : 'disabled'" class="primary-button" ng-click="$ctrl.toogleShowQrCode()">{{'VIEW_ADDRESS_TO_DEPOSIT' | translate}}</button>
         </div>
         <div class="container-qr-code col-lg-8 offset-lg-2" ng-show="$ctrl.showQrCode">
           <div class="debosit-advice">

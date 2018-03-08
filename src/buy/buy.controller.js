@@ -23,15 +23,17 @@ class BuyController {
     this.currentPhase = [];
     this.currentPhaseActive = {};
     this.buyHistoryUser = {};
-    this.valueToDeposit = initialValue;
-    this.valueToReceive = '000000';
+    this.valueToDeposit = '';
+    this.valueToReceive = '';
     this.bonusAmountFinal = initialValue;
     this.buyLimit = '0';
-    this.coins = COINS_CONSTANT;
+    this.coins = JSON.parse(JSON.stringify(COINS_CONSTANT));
     this.currentCoinSelected = JSON.parse(JSON.stringify(this.coins[0]));
     this.currentQRCode = { address: '', img: '' };
     this.showUserMenu = false;
     this.showQrCode = false;
+    this.msgCoinPlaceholder = $translate.instant('MSG_COIN_PLACEHOLDER', { COIN: this.currentCoinSelected.name });
+    this.msgCoinPlaceholderLNS = $translate.instant('MSG_COIN_PLACEHOLDER_LNS');
     this.getBalanceCoin('BTC').catch(error => {
       console.log(error);
     });
@@ -277,7 +279,7 @@ class BuyController {
     const amountLNS = parseFloat(this.valueToReceive);
     const bonus = parseFloat(this.getPhaseActive().bonus) * amountLNS;
     const total = amountLNS + bonus;
-    return total.toFixed(8);
+    return isNaN(total) ? 0 : total.toFixed(8);
   }
 
   getTotalLNSParcial() {
@@ -329,10 +331,12 @@ class BuyController {
   }
 
   selectCoin(coinSelected) {
-    this.showQrCode = false;
-    this.valueToDeposit = initialValue;
-    this.valueToReceive = initialValue;
     let self = this;
+
+    this.showQrCode = false;
+    this.valueToDeposit = '';
+    this.valueToReceive = '';
+    
     this.coins = this.coins.filter(coin => {
       coin.selected = false;
       if (coin.label === coinSelected.label) {
@@ -342,6 +346,9 @@ class BuyController {
       }
       return coin;
     });
+
+    this.msgCoinPlaceholder = this.$translate.instant('MSG_COIN_PLACEHOLDER', { COIN: this.currentCoinSelected.name });
+
     this.$timeout(() => {
       this.$scope.$apply();
     }, 200);
@@ -357,7 +364,7 @@ class BuyController {
   }
 
   toogleShowQrCode() {
-    if (parseFloat(this.valueToReceive) === 0) {
+    if (!this.valueToDeposit) {
       this.errorTypeValueToReceive = this.$translate.instant('AMOUNT_MINIMUN_VALIDATION');
       return;
     }

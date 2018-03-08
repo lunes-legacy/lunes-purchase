@@ -10,6 +10,40 @@
   padding: 13px;
   text-align: right;
   width: 100%;
+  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #fff;
+    opacity: 1; /* Firefox */
+    font-size: 12px;
+  }
+
+  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: #fff;
+      font-size: 12px;
+  }
+
+  &::-ms-input-placeholder { /* Microsoft Edge */
+      color: #fff;
+      font-size: 12px;
+  }
+}
+
+.animation-color {
+  animation: colorchange 8s infinite; /* animation-name followed by duration in seconds*/
+  -webkit-animation: colorchange 8s infinite; /* Chrome and Safari */
+
+  @keyframes colorchange
+  {
+    0%   {background: #41256f;}
+    50% {background: #2f1b50;}
+    100% {background: #41256f;}
+  }
+
+  @-webkit-keyframes colorchange
+  {
+    0%   {background: #41256f;}
+    50% {background: #2f1b50;}
+    100% {background: #41256f;}
+  }
 }
 
 .equal {
