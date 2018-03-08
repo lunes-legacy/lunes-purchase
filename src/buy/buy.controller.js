@@ -246,12 +246,15 @@ class BuyController {
         bonusRate = phase.bonus;
 
       }
+    } else {
+      bonusRate = phase.bonus;
     }
 
     const currentPrice = this.balanceCoins[this.currentCoinSelected.name].balance.PRICE;
     const coupon = this.currentUser.coupon;
 
     this.buyLimit = parseFloat(this.buyLimit);
+    bonusRate = parseFloat(bonusRate);
 
     let coinAmount = (LNS) ? valueToReceive : valueToDeposit;
     coinAmount = parseFloat(coinAmount);
@@ -290,6 +293,8 @@ class BuyController {
 
     this.valueToReceive = calculateFinal.buyAmount.toString();
     this.bonusAmountFinal = calculateFinal.bonusAmount;
+
+    
 
     if (this.valueToReceive > this.buyLimit) {
       coinAmount = this.buyLimit;
