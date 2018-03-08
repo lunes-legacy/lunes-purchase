@@ -106549,8 +106549,7 @@
 	
 	      return;
 	    }
-	    console.log(bonusRate);
-	    console.log(bonusRate);
+	
 	    calculateFinal = _lunesLib2.default.ico.buyConversion.toLNS(bonusRate, coinAmount, currentPrice, unitPrice, coupon);
 	
 	    this.$timeout(function () {
@@ -108966,4 +108965,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?v=1520526909202
+//# sourceMappingURL=app.js.map?v=1520528106024
