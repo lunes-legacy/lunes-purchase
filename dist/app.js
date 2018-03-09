@@ -85312,8 +85312,4 @@
 
 /***/ }
 /******/ ]);
-<<<<<<< HEAD
-//# sourceMappingURL=app.js.map?v=1520563844113
-=======
-//# sourceMappingURL=app.js.map?v=1520622616713
->>>>>>> c3f3444d4eab0904850efb333cf4111d62e37674
+//# sourceMappingURL=app.js.map?v=1520626232294
