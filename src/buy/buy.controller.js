@@ -1,6 +1,6 @@
 import LunesLib from 'lunes-lib';
 import smartlookClient from 'smartlook-client';
-import { STORAGE_KEY, COINS_CONSTANT } from '../constants/index';
+import { STORAGE_KEY, COINS_CONSTANT, INTROJS_VIEWED_KEY } from '../constants/index';
 
 const initialValue = '0.00000000';
 
@@ -23,15 +23,17 @@ class BuyController {
     this.currentPhase = [];
     this.currentPhaseActive = {};
     this.buyHistoryUser = {};
-    this.valueToDeposit = initialValue;
-    this.valueToReceive = '000000';
+    this.valueToDeposit = '';
+    this.valueToReceive = '';
     this.bonusAmountFinal = initialValue;
     this.buyLimit = '0';
-    this.coins = COINS_CONSTANT;
+    this.coins = JSON.parse(JSON.stringify(COINS_CONSTANT));
     this.currentCoinSelected = JSON.parse(JSON.stringify(this.coins[0]));
     this.currentQRCode = { address: '', img: '' };
     this.showUserMenu = false;
     this.showQrCode = false;
+    this.msgCoinPlaceholder = $translate.instant('MSG_COIN_PLACEHOLDER', { COIN: this.currentCoinSelected.name });
+    this.msgCoinPlaceholderLNS = $translate.instant('MSG_COIN_PLACEHOLDER_LNS');
     this.getBalanceCoin('BTC').catch(error => {
       console.log(error);
     });
@@ -91,8 +93,10 @@ class BuyController {
         this.currentPhase = JSON.parse(localStorage.getItem('lunes.phase'));
         phase = this.getPhaseActive();
         this.currentPhaseActive = JSON.parse(JSON.stringify(phase));
+        this.currentPhaseActive.price_value = Number(this.currentPhaseActive.price_value).toFixed(2);
 
         this.percentBonus = phase.bonus*100;
+        
         this.priceValueLunes = parseFloat(phase.price_value);
 
         if (this.currentUser.whitelist && phase.name === 'Whitelist') {
@@ -101,6 +105,15 @@ class BuyController {
           this.buyLimit = phase.maximum_individual_limit;
         }
 
+        if (this.currentUser.couponOffer) {
+          if (this.currentUser.couponOffer.maximum_individual_limit) {
+            this.buyLimit = this.currentUser.couponOffer.maximum_individual_limit;
+          }
+          if(this.currentUser.couponOffer.bonus) {
+            this.percentBonus = this.currentUser.couponOffer.bonus*100;
+          }
+        }
+  
         this.showLoading(false);
         return;
       }
@@ -112,12 +125,22 @@ class BuyController {
       phase = this.getPhaseActive();
 
       this.percentBonus = phase.bonus*100;
+      
       this.priceValueLunes = parseFloat(phase.price_value);
 
       if (this.currentUser.whitelist && phase.name === 'Whitelist') {
         this.buyLimit = 1000000;
       } else {
         this.buyLimit = phase.maximum_individual_limit;
+      }
+
+      if (this.currentUser.couponOffer) {
+        if (this.currentUser.couponOffer.maximum_individual_limit) {
+          this.buyLimit = this.currentUser.couponOffer.maximum_individual_limit;
+        }
+        if(this.currentUser.couponOffer.bonus) {
+          this.percentBonus = this.currentUser.couponOffer.bonus * 100;
+        }
       }
 
       if (this.currentPhase) {
@@ -150,12 +173,20 @@ class BuyController {
     this.$state.go('buy');
   }
 
+  showHelp() {
+    introJs().start();  
+  }
+
   showLoading(isShow) {
     if (isShow) {
       $(`<div class="modal-backdrop"><img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442469/loading_y9ob8i.svg" /></div>`).appendTo(document.body);
     } else {
       this.$timeout(function() {
         $(".modal-backdrop").remove();
+        if (!localStorage.getItem(INTROJS_VIEWED_KEY)) {
+          localStorage.setItem(INTROJS_VIEWED_KEY, true);
+          introJs().start();
+        }
       }, 1000);
     }
   }
@@ -212,11 +243,26 @@ class BuyController {
     
     this.checkMaxLength();
     const phase = this.getPhaseActive();
-    const bonusRate = phase.bonus;
+
+    let bonusRate;
+    if (this.currentUser.couponOffer) {
+      
+      if (this.currentUser.couponOffer.bonus) {
+        bonusRate = this.currentUser.couponOffer.bonus;
+
+      } else {
+        bonusRate = phase.bonus;
+
+      }
+    } else {
+      bonusRate = phase.bonus;
+    }
+
     const currentPrice = this.balanceCoins[this.currentCoinSelected.name].balance.PRICE;
     const coupon = this.currentUser.coupon;
 
     this.buyLimit = parseFloat(this.buyLimit);
+    bonusRate = parseFloat(bonusRate);
 
     let coinAmount = (LNS) ? valueToReceive : valueToDeposit;
     coinAmount = parseFloat(coinAmount);
@@ -234,7 +280,7 @@ class BuyController {
 
       calculateFinal = LunesLib.ico.buyConversion.fromLNS(bonusRate, coinAmount, currentPrice, unitPrice, coupon);
       this.valueToDeposit = calculateFinal.buyAmount;
-      this.bonusAmountFinal = (parseFloat(phase.bonus) * this.valueToReceive).toString();
+      this.bonusAmountFinal = (parseFloat(bonusRate) * this.valueToReceive).toString();
       
       this.$timeout(() => {
         this.valueToReceive = parseFloat(this.valueToReceive);
@@ -256,10 +302,12 @@ class BuyController {
     this.valueToReceive = calculateFinal.buyAmount.toString();
     this.bonusAmountFinal = calculateFinal.bonusAmount;
 
+    
+
     if (this.valueToReceive > this.buyLimit) {
       coinAmount = this.buyLimit;
       this.valueToReceive = this.buyLimit;
-      this.bonusAmountFinal = (parseFloat(phase.bonus) * this.buyLimit).toString();
+      this.bonusAmountFinal = (parseFloat(bonusRate) * this.buyLimit).toString();
       this.calcValue('LNS');
     }
   }
@@ -277,7 +325,7 @@ class BuyController {
     const amountLNS = parseFloat(this.valueToReceive);
     const bonus = parseFloat(this.getPhaseActive().bonus) * amountLNS;
     const total = amountLNS + bonus;
-    return total.toFixed(8);
+    return isNaN(total) ? 0 : total.toFixed(8);
   }
 
   getTotalLNSParcial() {
@@ -329,10 +377,12 @@ class BuyController {
   }
 
   selectCoin(coinSelected) {
-    this.showQrCode = false;
-    this.valueToDeposit = initialValue;
-    this.valueToReceive = initialValue;
     let self = this;
+
+    this.showQrCode = false;
+    this.valueToDeposit = '';
+    this.valueToReceive = '';
+    
     this.coins = this.coins.filter(coin => {
       coin.selected = false;
       if (coin.label === coinSelected.label) {
@@ -342,6 +392,9 @@ class BuyController {
       }
       return coin;
     });
+
+    this.msgCoinPlaceholder = this.$translate.instant('MSG_COIN_PLACEHOLDER', { COIN: this.currentCoinSelected.name });
+
     this.$timeout(() => {
       this.$scope.$apply();
     }, 200);
@@ -357,7 +410,7 @@ class BuyController {
   }
 
   toogleShowQrCode() {
-    if (parseFloat(this.valueToReceive) === 0) {
+    if (!this.valueToDeposit) {
       this.errorTypeValueToReceive = this.$translate.instant('AMOUNT_MINIMUN_VALIDATION');
       return;
     }

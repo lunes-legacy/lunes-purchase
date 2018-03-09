@@ -7,6 +7,7 @@ export default {
 
 exports.STORAGE_KEY = 'lunes.accessToken';
 exports.RANDOM_KEY = 'lunes.randomKey';
+exports.INTROJS_VIEWED_KEY = 'lunes.introjs.viewed';
 
 exports.PERIOD = {
     RANGE_1D: 'RANGE_1D',

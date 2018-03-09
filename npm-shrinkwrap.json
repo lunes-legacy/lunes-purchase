@@ -4851,8 +4851,7 @@
       }
     },
     "lunes-lib": {
-      "version": "0.0.26",
-      "resolved": "https://registry.npmjs.org/lunes-lib/-/lunes-lib-0.0.26.tgz",
+      "version": "https://registry.npmjs.org/lunes-lib/-/lunes-lib-0.0.26.tgz",
       "integrity": "sha512-WvcjC9QaVOE5AkoAhyt3yiIE+QsamF3bMf8ZhjW7AwDEolY83q/FCWkUdRIIqWX17FB6cNYar7KVCLEhKwcwHw==",
       "requires": {
         "axios": "0.17.1",
