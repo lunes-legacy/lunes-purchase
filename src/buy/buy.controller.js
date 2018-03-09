@@ -1,6 +1,6 @@
 import LunesLib from 'lunes-lib';
 import smartlookClient from 'smartlook-client';
-import { STORAGE_KEY, COINS_CONSTANT } from '../constants/index';
+import { STORAGE_KEY, COINS_CONSTANT, INTROJS_VIEWED_KEY } from '../constants/index';
 
 const initialValue = '0.00000000';
 
@@ -61,7 +61,6 @@ class BuyController {
       }
       smartlookClient.identify(this.currentUser._id, userTrack );
     }
-    //introJs().start();
   }
 
   async getBuyHistory() {
@@ -174,12 +173,20 @@ class BuyController {
     this.$state.go('buy');
   }
 
+  showHelp() {
+    introJs().start();  
+  }
+
   showLoading(isShow) {
     if (isShow) {
       $(`<div class="modal-backdrop"><img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442469/loading_y9ob8i.svg" /></div>`).appendTo(document.body);
     } else {
       this.$timeout(function() {
         $(".modal-backdrop").remove();
+        if (!localStorage.getItem(INTROJS_VIEWED_KEY)) {
+          localStorage.setItem(INTROJS_VIEWED_KEY, true);
+          introJs().start();
+        }
       }, 1000);
     }
   }

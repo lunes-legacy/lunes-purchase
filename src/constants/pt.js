@@ -64,6 +64,13 @@ export default {
     SEND_TO_THIS_ADDRESS: 'Por favor, envie',
     UNCONFIRMED_BALANCE: 'Não confirmado',
     FAQ: 'Perguntas Frequentes',
+    HELP_CHOOSE_COIN: 'Escolha a moeda que você vai enviar.',
+    HELP_TYPE_AMOUNT: 'Digite a quantidade da moeda escolhida que você vai enviar.',
+    HELP_OR_ENTER_LNS: 'Ou digite a quantidade em Lunes que você quer comprar.',
+    HELP_CURRENT_PRICE: 'Valor atual de 1 LNS.',
+    HELP_CHECK_TOTAL: 'Confira o total de Lunes que você vai comprar e a quantia equivalente ao bônus.',
+    HELP_USER_MAX: 'Limite máximo de compra pro usuário',
+    HELP_CLICK_VIEW_ADDRESS: 'Clique para visualizar o endereço ou QR Code para depósito',
     QUOTATION: 'Cotação:',
     EXCEED_LIMIT_BUY: 'Você excedeu seu limite de compra',
     DASHBOARD: {

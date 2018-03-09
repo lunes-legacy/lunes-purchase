@@ -454,3 +454,31 @@ footer {
     }
   }
 }
+
+.introjs-tooltip {
+  background-color: #624492!important;
+}
+
+.introjs-arrow.left, .introjs-arrow.left-bottom {
+  border-right-color: #624492!important;
+}
+
+.introjs-arrow.bottom {
+  border-top-color: #624492!important;
+}
+
+.introjs-helperNumberLayer {
+  background: linear-gradient(to bottom, #ffd119 0%, #cf8104 100%)!important;
+}
+
+.introjs-button.introjs-nextbutton {
+  color: #4acd64!important;
+}
+
+.introjs-button.introjs-prevbutton {
+  color: #8f8a96!important;
+}
+
+.introjs-bullets ul li a.active {
+  background: #4c2985!important;
+}

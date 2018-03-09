@@ -73,6 +73,14 @@ export default {
     MSG_COIN_PLACEHOLDER_LNS: 'or type the value in Lunes',
     CHOOSE_YOUR_COIN_TO_BUY: 'Choose the coin, type the value you want to buy and press the "View address to deposit" button to see your deposit address.',
     FAQ: 'F.A.Q',
+    HELP_CHOOSE_COIN: 'Choose the coin you are going to send',
+    HELP_TYPE_AMOUNT: 'Type the amount of chosen coin you are sending',
+    HELP_OR_ENTER_LNS: 'Or enter the amount on Lunes that you want to buy',
+    HELP_CURRENT_PRICE: 'Current value of 1 LNS',
+    HELP_CHECK_TOTAL: 'Check the total of Lunes that you will buy and the amount equivalent to the bonus',
+    HELP_USER_MAX: 'User maximum purchase limit',
+    HELP_CLICK_VIEW_ADDRESS: 'Click to view address or QR Code for deposit',
+
     EXCEED_LIMIT_BUY: 'You exceeded your limit buy',
     DASHBOARD: {
       NO_HISTORY: 'You have no history yet',

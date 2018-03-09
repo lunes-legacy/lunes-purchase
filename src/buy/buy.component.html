@@ -39,10 +39,14 @@
         <div class="row">
           <div class="calculator col-lg-12">
             <div>
-              <h5>{{'CALCULATOR' | translate}}</h5>
+              <h5>{{'CALCULATOR' | translate}}
+                <span style="cursor: pointer;" ng-click="$ctrl.showHelp()">
+                  <i class="fas fa-question-circle"></i>
+                </span>
+              </h5>
               <p style="padding: 0 50px 0 0;">{{'CHOOSE_YOUR_COIN_TO_BUY' | translate}}</p>
             </div>
-            <div class="select-coin" data-step="1" data-intro='Escolha uma moeda para depositar'>
+            <div class="select-coin" data-step="1" data-intro="{{'HELP_CHOOSE_COIN' | translate}}">
               <ul>
                 <li ng-repeat="coin in $ctrl.coins" ng-click="$ctrl.selectCoin(coin)" ng-class="coin.selected ? 'selected': ''">
                   <img ng-src="{{coin.img}}" alt="coin.label">
@@ -50,11 +54,11 @@
               </ul>
             </div>
             <div class="valueCripto">
-              <input type="text" data-step="2" data-intro='Aqui você digita a quantidade de moedas que deseja depositar' placeholder="{{$ctrl.msgCoinPlaceholder}}"
+              <input type="text" data-step="2" data-intro="{{'HELP_TYPE_AMOUNT' | translate}}" placeholder="{{$ctrl.msgCoinPlaceholder}}"
                 ng-class="$ctrl.valueToDeposit === '' ? 'animation-color' : ''" class="input-calculator" name="value" ng-model="$ctrl.valueToDeposit"
                 ng-change="$ctrl.calcValue()" />
 
-              <div class="lunesAmount" data-step="3" data-intro='Você pode digitar a quantidade de lunes que deseja adquirir'>
+              <div class="lunesAmount" data-step="3" data-intro="{{'HELP_OR_ENTER_LNS' | translate}}">
                 <img style="position: absolute;
                 top: 0;
                 left: 0;
@@ -63,9 +67,8 @@
                 <input type="text" placeholder="{{$ctrl.msgCoinPlaceholderLNS}}" class="input-calculator" name="value" ng-model="$ctrl.valueToReceive"
                   ng-change="$ctrl.calcValue('LNS')" />
               </div>
-              <div class="lunes-current-price" data-step="4" data-intro='Nessa primeira fase 1 LNS está valendo 0.01 USD'>
+              <div class="lunes-current-price" data-step="4" data-intro="{{'HELP_CURRENT_PRICE' | translate}}">
                 <small>1 LNS = {{'$' + $ctrl.currentPhaseActive.price_value}}</small>
-                >>>>>>> 1e882935389b0ccce9fee5370bcacbc006fd40a1
               </div>
             </div>
             <div ng-show="$ctrl.errorTypeValueToReceive" style="padding: 0 0 10px;font-size: 11px;text-align: center;color: #cf4444;text-shadow: none;">
@@ -75,7 +78,7 @@
         </div>
 
         <!-- SHOW TOTAL -->
-        <div class="row" data-step="5" data-intro='A medida que você defina a quantidade de moedas Lunes, a calculadora faz o cálculo extao e soma o bônus dessa fase'>
+        <div class="row" data-step="5" data-intro="{{'HELP_CHECK_TOTAL' | translate}}">
           <div class="amountBalance col-lg-12">
             <div class="total">
               <div class="result">
@@ -88,7 +91,7 @@
                 <div>{{$ctrl.getTotal()}}</div>
               </div>
             </div>
-            <div style="text-align: center; margin: 10px 0 30px 0;" data-step="6" data-intro='Lembre-se que a compra limite nessa fase é de 300.000 LNS'>
+            <div style="text-align: center; margin: 10px 0 30px 0;" data-step="6" data-intro="{{'HELP_USER_MAX' | translate}}">
               * {{'BUY_LIMIT_PHASE' | translate}}
               <span style="font-size:15px;font-weight:bold">{{$ctrl.getBuyLimit();}} LNS </span>
             </div>
@@ -97,7 +100,7 @@
       </div>
 
       <!-- QR CODE -->
-      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" data-step="7" data-intro='Ao digitar algum valor na calculadora, esse botão será habilitado e irá mostrar o endereço de depósito de acordo com a moeda que você escolheu'>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" data-step="7" data-intro="{{'HELP_CLICK_VIEW_ADDRESS' | translate}}">
         <div class="area-button" ng-show="!$ctrl.showQrCode" style="margin-top: 20px;">
           <button ng-class="$ctrl.valueToDeposit ? '' : 'disabled'" class="primary-button" ng-click="$ctrl.toogleShowQrCode()">{{'VIEW_ADDRESS_TO_DEPOSIT' | translate}}</button>
         </div>
