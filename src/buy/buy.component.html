@@ -64,7 +64,8 @@
                   ng-change="$ctrl.calcValue('LNS')" />
               </div>
               <div class="lunes-current-price" data-step="4" data-intro='Nessa primeira fase 1 LNS está valendo 0.01 USD'>
-                <small>1 LNS = {{$ctrl.currentPhaseActive.price_value}}</small>
+                <small>1 LNS = {{'$' + $ctrl.currentPhaseActive.price_value}}</small>
+                >>>>>>> 1e882935389b0ccce9fee5370bcacbc006fd40a1
               </div>
             </div>
             <div ng-show="$ctrl.errorTypeValueToReceive" style="padding: 0 0 10px;font-size: 11px;text-align: center;color: #cf4444;text-shadow: none;">

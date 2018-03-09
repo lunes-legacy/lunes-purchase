@@ -94,8 +94,10 @@ class BuyController {
         this.currentPhase = JSON.parse(localStorage.getItem('lunes.phase'));
         phase = this.getPhaseActive();
         this.currentPhaseActive = JSON.parse(JSON.stringify(phase));
+        this.currentPhaseActive.price_value = Number(this.currentPhaseActive.price_value).toFixed(2);
 
         this.percentBonus = phase.bonus*100;
+        
         this.priceValueLunes = parseFloat(phase.price_value);
 
         if (this.currentUser.whitelist && phase.name === 'Whitelist') {
@@ -104,6 +106,15 @@ class BuyController {
           this.buyLimit = phase.maximum_individual_limit;
         }
 
+        if (this.currentUser.couponOffer) {
+          if (this.currentUser.couponOffer.maximum_individual_limit) {
+            this.buyLimit = this.currentUser.couponOffer.maximum_individual_limit;
+          }
+          if(this.currentUser.couponOffer.bonus) {
+            this.percentBonus = this.currentUser.couponOffer.bonus*100;
+          }
+        }
+  
         this.showLoading(false);
         return;
       }
@@ -115,12 +126,22 @@ class BuyController {
       phase = this.getPhaseActive();
 
       this.percentBonus = phase.bonus*100;
+      
       this.priceValueLunes = parseFloat(phase.price_value);
 
       if (this.currentUser.whitelist && phase.name === 'Whitelist') {
         this.buyLimit = 1000000;
       } else {
         this.buyLimit = phase.maximum_individual_limit;
+      }
+
+      if (this.currentUser.couponOffer) {
+        if (this.currentUser.couponOffer.maximum_individual_limit) {
+          this.buyLimit = this.currentUser.couponOffer.maximum_individual_limit;
+        }
+        if(this.currentUser.couponOffer.bonus) {
+          this.percentBonus = this.currentUser.couponOffer.bonus * 100;
+        }
       }
 
       if (this.currentPhase) {
@@ -215,11 +236,26 @@ class BuyController {
     
     this.checkMaxLength();
     const phase = this.getPhaseActive();
-    const bonusRate = phase.bonus;
+
+    let bonusRate;
+    if (this.currentUser.couponOffer) {
+      
+      if (this.currentUser.couponOffer.bonus) {
+        bonusRate = this.currentUser.couponOffer.bonus;
+
+      } else {
+        bonusRate = phase.bonus;
+
+      }
+    } else {
+      bonusRate = phase.bonus;
+    }
+
     const currentPrice = this.balanceCoins[this.currentCoinSelected.name].balance.PRICE;
     const coupon = this.currentUser.coupon;
 
     this.buyLimit = parseFloat(this.buyLimit);
+    bonusRate = parseFloat(bonusRate);
 
     let coinAmount = (LNS) ? valueToReceive : valueToDeposit;
     coinAmount = parseFloat(coinAmount);
@@ -237,7 +273,7 @@ class BuyController {
 
       calculateFinal = LunesLib.ico.buyConversion.fromLNS(bonusRate, coinAmount, currentPrice, unitPrice, coupon);
       this.valueToDeposit = calculateFinal.buyAmount;
-      this.bonusAmountFinal = (parseFloat(phase.bonus) * this.valueToReceive).toString();
+      this.bonusAmountFinal = (parseFloat(bonusRate) * this.valueToReceive).toString();
       
       this.$timeout(() => {
         this.valueToReceive = parseFloat(this.valueToReceive);
@@ -259,10 +295,12 @@ class BuyController {
     this.valueToReceive = calculateFinal.buyAmount.toString();
     this.bonusAmountFinal = calculateFinal.bonusAmount;
 
+    
+
     if (this.valueToReceive > this.buyLimit) {
       coinAmount = this.buyLimit;
       this.valueToReceive = this.buyLimit;
-      this.bonusAmountFinal = (parseFloat(phase.bonus) * this.buyLimit).toString();
+      this.bonusAmountFinal = (parseFloat(bonusRate) * this.buyLimit).toString();
       this.calcValue('LNS');
     }
   }
