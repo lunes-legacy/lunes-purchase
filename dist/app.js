@@ -52568,19 +52568,21 @@
 	              history = _context4.sent;
 	
 	              this.$timeout(function () {
-	                _this.history = history.map(function (item) {
-	                  var total = parseFloat(item.credit_value) + parseFloat(item.bonus_value);
+	                if (history) {
+	                  _this.history = history.map(function (item) {
+	                    var total = parseFloat(item.credit_value) + parseFloat(item.bonus_value);
 	
-	                  return {
-	                    total: total,
-	                    deposit_value: parseFloat(item.deposit_value),
-	                    deposit_coin: item.deposit_coin,
-	                    credit_value: parseFloat(item.credit_value),
-	                    bonus_value: parseFloat(item.bonus_value)
-	                  };
-	                });
+	                    return {
+	                      total: total,
+	                      deposit_value: parseFloat(item.deposit_value),
+	                      deposit_coin: item.deposit_coin,
+	                      credit_value: parseFloat(item.credit_value),
+	                      bonus_value: parseFloat(item.bonus_value)
+	                    };
+	                  });
 	
-	                _this.getTotalLns();
+	                  _this.getTotalLns();
+	                }
 	              }, 100);
 	
 	            case 6:
@@ -81702,7 +81704,11 @@
 	        userTrack.ltcAddress = currentUser.depositWallet.LTC.address;
 	        userTrack.ethAddress = currentUser.depositWallet.ETH.address;
 	      }
-	      _smartlookClient2.default.identify(currentUser._id, userTrack);
+	      if (currentUser && currentUser._id) {
+	        _smartlookClient2.default.identify(currentUser._id, userTrack);
+	      } else {
+	        _smartlookClient2.default.identify(currentUser.email, userTrack);
+	      }
 	    }
 	  }
 	
@@ -82172,7 +82178,11 @@
 	        userTrack.ltcAddress = currentUser.depositWallet.LTC.address;
 	        userTrack.ethAddress = currentUser.depositWallet.ETH.address;
 	      }
-	      _smartlookClient2.default.identify(currentUser._id, userTrack);
+	      if (currentUser && currentUser._id) {
+	        _smartlookClient2.default.identify(currentUser._id, userTrack);
+	      } else {
+	        _smartlookClient2.default.identify(currentUser.email, userTrack);
+	      }
 	    }
 	  }
 	
@@ -82490,7 +82500,11 @@
 	        userTrack.ltcAddress = this.currentUser.depositWallet.LTC.address;
 	        userTrack.ethAddress = this.currentUser.depositWallet.ETH.address;
 	      }
-	      _smartlookClient2.default.identify(this.currentUser._id, userTrack);
+	      if (this.currentUser && this.currentUser._id) {
+	        _smartlookClient2.default.identify(this.currentUser._id, userTrack);
+	      } else {
+	        _smartlookClient2.default.identify(this.currentUser.email, userTrack);
+	      }
 	    }
 	  }
 	
@@ -83259,7 +83273,11 @@
 	        userTrack.ltcAddress = currentUser.depositWallet.LTC.address;
 	        userTrack.ethAddress = currentUser.depositWallet.ETH.address;
 	      }
-	      _smartlookClient2.default.identify(currentUser._id, userTrack);
+	      if (currentUser && currentUser._id) {
+	        _smartlookClient2.default.identify(currentUser._id, userTrack);
+	      } else {
+	        _smartlookClient2.default.identify(currentUser.email, userTrack);
+	      }
 	    }
 	  }
 	
@@ -83407,7 +83425,11 @@
 	        userTrack.ltcAddress = this.currentUser.depositWallet.LTC.address;
 	        userTrack.ethAddress = this.currentUser.depositWallet.ETH.address;
 	      }
-	      _smartlookClient2.default.identify(this.currentUser._id, userTrack);
+	      if (this.currentUser._id) {
+	        _smartlookClient2.default.identify(this.currentUser._id, userTrack);
+	      } else {
+	        _smartlookClient2.default.identify(this.currentUser.email, userTrack);
+	      }
 	    }
 	  }
 	
@@ -83560,22 +83582,24 @@
 	              this.getPhases();
 	              this.$timeout(function () {
 	                _this2.showLoading(false);
-	                _this2.history = history.map(function (item) {
-	                  var total = parseFloat(item.credit_value) + parseFloat(item.bonus_value);
-	                  _this2.getHistoryPhase(item.sale_phase_id);
+	                if (history) {
+	                  _this2.history = history.map(function (item) {
+	                    var total = parseFloat(item.credit_value) + parseFloat(item.bonus_value);
+	                    _this2.getHistoryPhase(item.sale_phase_id);
 	
-	                  return {
-	                    total: total.toFixed(8),
-	                    created: item.created,
-	                    phase: _this2.phaseName,
-	                    deposit_value: parseFloat(item.deposit_value),
-	                    deposit_coin: item.deposit_coin,
-	                    credit_value: parseFloat(item.credit_value),
-	                    bonus_value: parseFloat(item.bonus_value)
-	                  };
-	                });
+	                    return {
+	                      total: total.toFixed(8),
+	                      created: item.created,
+	                      phase: _this2.phaseName,
+	                      deposit_value: parseFloat(item.deposit_value),
+	                      deposit_coin: item.deposit_coin,
+	                      credit_value: parseFloat(item.credit_value),
+	                      bonus_value: parseFloat(item.bonus_value)
+	                    };
+	                  });
 	
-	                _this2.getTotalLns();
+	                  _this2.getTotalLns();
+	                }
 	              }, 100);
 	
 	            case 7:
@@ -85312,4 +85336,8 @@
 
 /***/ }
 /******/ ]);
+<<<<<<< HEAD
 //# sourceMappingURL=app.js.map?v=1520622616713
+=======
+//# sourceMappingURL=app.js.map?v=1520648655699
+>>>>>>> 6266b4e... Fix urgent bug

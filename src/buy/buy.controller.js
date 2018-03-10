@@ -59,7 +59,11 @@ class BuyController {
         userTrack.ltcAddress = this.currentUser.depositWallet.LTC.address;
         userTrack.ethAddress = this.currentUser.depositWallet.ETH.address;
       }
-      smartlookClient.identify(this.currentUser._id, userTrack );
+      if (this.currentUser && this.currentUser._id) {
+        smartlookClient.identify(this.currentUser._id, userTrack );
+      } else {
+        smartlookClient.identify(this.currentUser.email, userTrack );
+      }
     }
   }
 

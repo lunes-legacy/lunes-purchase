@@ -49,19 +49,21 @@ class HeaderController {
     const history = await LunesLib.ico.buyHistory(this.currentUser.email, this.currentUser.accessToken, 1)
       .catch(err => console.log(err));
     this.$timeout(() => {
-      this.history = history.map((item) => {
-        const total = parseFloat(item.credit_value) + parseFloat(item.bonus_value);
-
-        return {
-          total: total,
-          deposit_value: parseFloat(item.deposit_value),
-          deposit_coin: item.deposit_coin,
-          credit_value: parseFloat(item.credit_value),
-          bonus_value: parseFloat(item.bonus_value)
-        };
-      });
-
-      this.getTotalLns();
+      if (history) {
+        this.history = history.map((item) => {
+          const total = parseFloat(item.credit_value) + parseFloat(item.bonus_value);
+  
+          return {
+            total: total,
+            deposit_value: parseFloat(item.deposit_value),
+            deposit_coin: item.deposit_coin,
+            credit_value: parseFloat(item.credit_value),
+            bonus_value: parseFloat(item.bonus_value)
+          };
+        });
+  
+        this.getTotalLns();
+      }
     }, 100);
   }
 
