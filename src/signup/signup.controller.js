@@ -44,7 +44,11 @@ class SignupController {
           userTrack.ltcAddress = currentUser.depositWallet.LTC.address;
           userTrack.ethAddress = currentUser.depositWallet.ETH.address;
         }
-        smartlookClient.identify(currentUser._id, userTrack );
+        if (currentUser && currentUser._id) {
+          smartlookClient.identify(currentUser._id, userTrack );
+        } else {
+          smartlookClient.identify(currentUser.email, userTrack );
+        }
       }
   }
 

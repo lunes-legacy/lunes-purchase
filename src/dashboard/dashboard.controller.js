@@ -26,7 +26,11 @@ class DashboardController {
         userTrack.ltcAddress = this.currentUser.depositWallet.LTC.address;
         userTrack.ethAddress = this.currentUser.depositWallet.ETH.address;
       }
-      smartlookClient.identify(this.currentUser._id, userTrack );
+      if (this.currentUser._id) {
+        smartlookClient.identify(this.currentUser._id, userTrack );
+      } else {
+        smartlookClient.identify(this.currentUser.email, userTrack );
+      }
     }
       
   }
@@ -97,22 +101,24 @@ class DashboardController {
     this.getPhases();
     this.$timeout(() => {
       this.showLoading(false);
-      this.history = history.map((item) => {
-        const total = parseFloat(item.credit_value) + parseFloat(item.bonus_value);
-        this.getHistoryPhase(item.sale_phase_id);
-
-        return {
-          total: total.toFixed(8),
-          created: item.created,
-          phase: this.phaseName,
-          deposit_value: parseFloat(item.deposit_value),
-          deposit_coin: item.deposit_coin,
-          credit_value: parseFloat(item.credit_value),
-          bonus_value: parseFloat(item.bonus_value)
-        };
-      });
-
-      this.getTotalLns();
+      if (history) {
+        this.history = history.map((item) => {
+          const total = parseFloat(item.credit_value) + parseFloat(item.bonus_value);
+          this.getHistoryPhase(item.sale_phase_id);
+  
+          return {
+            total: total.toFixed(8),
+            created: item.created,
+            phase: this.phaseName,
+            deposit_value: parseFloat(item.deposit_value),
+            deposit_coin: item.deposit_coin,
+            credit_value: parseFloat(item.credit_value),
+            bonus_value: parseFloat(item.bonus_value)
+          };
+        });
+  
+        this.getTotalLns();
+      }
     }, 100);
   }
 
