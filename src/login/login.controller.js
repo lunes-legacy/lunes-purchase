@@ -37,7 +37,7 @@ class LoginController {
           smartlookClient.identify(randomKey, { });
         } else {
           userTrack = { name: currentUser.fullname, email: currentUser.email, ownCoupon: currentUser.ownCoupon, coupon: currentUser.coupon, confirmIcoTerm: currentUser.confirmIcoTerm };
-          if(currentUser.depositWallet){
+          if(currentUser.depositWallet && currentUser.depositWallet.BTC){
             userTrack.btcAddress = currentUser.depositWallet.BTC.address;
             userTrack.ltcAddress = currentUser.depositWallet.LTC.address;
             userTrack.ethAddress = currentUser.depositWallet.ETH.address;
@@ -52,24 +52,48 @@ class LoginController {
 
     async doLogin() {
       this.showLoading(true);
-      const a = await this.HttpService.login(this.user).catch(error => {
+      let userLogged = await this.HttpService.login(this.user).catch(error => {
+        if (error && error.messageKey === 'NEED_PASS_TWOFA') {
+          this.showFieldTwofa = true;
+          return;
+        }
         this.notification(true, error);
       });
       this.showLoading(false);
-      if (a && a.accessToken) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
-        if (a.confirmIcoTerm) {
-          if (!a.depositWallet || !a.depositWallet.BTC) {
-            const depositWallet = await this.HttpService.createDepositWallet(a).catch(error => {
+
+      if (this.showFieldTwofa) {
+        if (this.user.twofa) {
+          userLogged = await this.HttpService.login(this.user);
+          if (userLogged) {
+            this.redirectLogin(userLogged);
+          } else {
+            this.twofaInvalidMsg = 'Google Authentcator invalid';
+          }
+        }
+      } else {
+        this.redirectLogin(userLogged);
+      }
+    }
+
+    async redirectLogin(userLogged) {
+      if (userLogged && userLogged.accessToken) {
+
+        this.showFieldTwofa = false;
+        
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(userLogged));
+
+        if (userLogged.confirmIcoTerm) {
+          if (!userLogged.depositWallet || !userLogged.depositWallet.BTC) {
+            const depositWallet = await this.HttpService.createDepositWallet(userLogged).catch(error => {
                 if (error && error.response && error.response.data) {
                     console.log(error);
                 }
             });
-            a.depositWallet = depositWallet;
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
+            userLogged.depositWallet = depositWallet;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(userLogged));
             this.$state.go('buy');
           } else {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(userLogged));
             this.$state.go('buy');
           }
         } else {

@@ -84,6 +84,8 @@ export default {
     BALANCE: 'Saldo',
     EMAIL_ALREADY: 'Email já cadastrado',
     ERROR_SERVER: 'Erro interno no servidor',
+    GOOGLE_AUTH: 'Autenticador Google',
+    TYPE_GOOGLE_AUTH: 'Digite seu código',
     COUPON: 'Cupom',
     OWN_COUPON: 'Meu Cupom',
     TYPE_COUPON: 'Insira seu cupom de bônus',

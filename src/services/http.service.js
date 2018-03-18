@@ -47,6 +47,11 @@ class HttpService {
     return a;
   }
 
+  async generateTwofa(email) {
+    const bae64Img = await LunesLib.users.generateTwofa(email);
+    return bae64Img.qrcode;
+  }
+
   async confirmterm(currentUser) {
     try {
       /* TODO - remove true value to production */

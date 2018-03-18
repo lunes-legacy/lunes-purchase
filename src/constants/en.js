@@ -94,6 +94,8 @@ export default {
     TERMS_CONDITION_TITLE: 'Terms and Conditions',
     REPRESENTATION_TERM_TITLE: 'Representation and Warranties',
     ERROR_SERVER: 'Error on server',
+    GOOGLE_AUTH: 'Google Authenticator',
+    TYPE_GOOGLE_AUTH: 'Type your code',
     COUPON: 'Coupon',
     OWN_COUPON: 'My Coupon',
     TYPE_COUPON: 'Type your coupon bonus',
