@@ -80,6 +80,7 @@ export default {
       DEPOSIT: 'Depósito',
       BONUS: 'Bônus'
     },
+    PRE_ICO_FINISHED: 'A pré-ICO da Lunes foi encerrada! A ICO irá iniciar em 15/04/2018',
     TO: 'para',
     BALANCE: 'Saldo',
     EMAIL_ALREADY: 'Email já cadastrado',

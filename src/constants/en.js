@@ -89,6 +89,7 @@ export default {
       DEPOSIT: 'Deposit',
       BONUS: 'Bonus'
     },
+    PRE_ICO_FINISHED: 'The Lunes pre-ICO is closed! The ICO will begin on 15/04/2018.',
     TO: 'to',
     EMAIL_ALREADY: 'The email address already exists',
     TERMS_CONDITION_TITLE: 'Terms and Conditions',

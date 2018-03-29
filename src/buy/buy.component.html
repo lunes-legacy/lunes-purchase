@@ -4,7 +4,7 @@
   <lunesheader showlinks="true" balanceuser="$ctrl.balanceUser.confirmed_balance"></lunesheader>
 
   <!-- BUY -->
-  <section class="buy">
+  <section class="buy" ng-show="!$ctrl.preICOFinished">
     <div class="row">
       <div class="title user-menu">
         <a href="" id="user-menu" ng-click="$ctrl.toogleUserMenu()">
@@ -120,6 +120,40 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- PRE_ICO finished -->
+  <section class="buy" ng-show="$ctrl.preICOFinished">
+
+    <!-- area user and logout -->
+    <div class="row">
+      <div class="title user-menu">
+        <a href="" id="user-menu" ng-click="$ctrl.toogleUserMenu()">
+          <h4>
+            {{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}
+            <span ng-show="!$ctrl.showUserMenu">
+              <i class="fas fa-angle-right green"></i>
+            </span>
+            <span ng-show="$ctrl.showUserMenu">
+              <i class="fas fa-angle-down green"></i>
+            </span>
+          </h4>
+        </a>
+        <div class="logout area-button" ng-show="$ctrl.showUserMenu">
+          <a href="#!/login" class="primary-button" ng-click="$ctrl.logout()">
+            {{'LOGOUT' | translate}}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- message pre-ico finished -->
+    <div class="row">
+      <div class="finished-pre-ico">
+        <h5>{{'PRE_ICO_FINISHED' | translate}}</h5>
+      </div>
+    </div>
+
   </section>
 </div>
 <lunesfooter />
