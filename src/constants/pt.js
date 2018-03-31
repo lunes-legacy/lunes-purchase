@@ -80,6 +80,10 @@ export default {
       DEPOSIT: 'Depósito',
       BONUS: 'Bônus'
     },
+    VERIFY: 'Verificar',
+    AUTH_TWOFA: 'Autenticação em 2 Passos',
+    GOOGLE_AUTH_NUMBER: 'Número Google Autenticador',
+    INVALID_TWOFA_NUMBER: 'Número inválido Google Autenticador',
     TO: 'para',
     BALANCE: 'Saldo',
     EMAIL_ALREADY: 'Email já cadastrado',

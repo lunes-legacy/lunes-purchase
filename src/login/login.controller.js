@@ -51,7 +51,10 @@ class LoginController {
     }
 
     async doLogin() {
+      const self = this;
+
       this.showLoading(true);
+      
       let userLogged = await this.HttpService.login(this.user).catch(error => {
         if (error && error.messageKey === 'NEED_PASS_TWOFA') {
           this.showFieldTwofa = true;
@@ -59,19 +62,30 @@ class LoginController {
         }
         this.notification(true, error);
       });
+
       this.showLoading(false);
 
-      if (this.showFieldTwofa) {
-        if (this.user.twofa) {
-          userLogged = await this.HttpService.login(this.user);
-          if (userLogged) {
-            this.redirectLogin(userLogged);
-          } else {
-            this.twofaInvalidMsg = 'Google Authentcator invalid';
-          }
-        }
+      if (userLogged.twofaEnabled) {
+        this.userLoggedTemporary = JSON.parse(JSON.stringify(userLogged));
+        this.authTwofaEmail = userLogged.email;
+        this.$timeout(() => {
+          $('#modal-verify-twofa').modal('show');
+          self.showVerifyTwofa = true;
+        }, 200);
       } else {
         this.redirectLogin(userLogged);
+      }
+      
+    }
+
+    async redirectTwofa(userLogged) {
+      const verify = await this.HttpService.verifyTwofa(this.authTwofaNumber, this.authTwofaEmail).catch(error => {
+        this.showErrorMsgTwofaError = true;  
+      });
+      if (verify) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(this.userLoggedTemporary));
+        this.userLoggedTemporary = null;
+        this.$state.go('buy');
       }
     }
 

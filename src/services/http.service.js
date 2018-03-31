@@ -11,6 +11,17 @@ class HttpService {
     this.$translate = $translate;
   }
 
+  async verifyTwofa(twofa, email) {
+    if (typeof twofa !== 'string') {
+      return;
+    }
+    if (twofa.length > 6) {
+      twofa = twofa.substr(0, 6);
+    }
+    const a = await LunesLib.users.verifyTwofa({ twofa, email });
+    return a;
+  }
+
   async login(userData) {
     if (userData.email) {
       userData.email = userData.email.toLowerCase();

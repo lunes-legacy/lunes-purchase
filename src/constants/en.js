@@ -90,6 +90,10 @@ export default {
       BONUS: 'Bonus'
     },
     TO: 'to',
+    VERIFY: 'Verify',
+    AUTH_TWOFA: 'Auth in Two-Step',
+    GOOGLE_AUTH_NUMBER: 'Google Auth Number',
+    INVALID_TWOFA_NUMBER: 'Invalid number Google Auth',
     EMAIL_ALREADY: 'The email address already exists',
     TERMS_CONDITION_TITLE: 'Terms and Conditions',
     REPRESENTATION_TERM_TITLE: 'Representation and Warranties',
