@@ -13,6 +13,7 @@ class LoginController {
       this.termsRepresentation = $sce.trustAsHtml($filter('translate')('REPRESENTATION_TERM'));
       this.ErrorMessagesService = ErrorMessagesService;
       this.loadingResetPass = false;
+      this.preICOFinished = true;
       this.user = {
           email: '',
           password: '',
@@ -37,7 +38,7 @@ class LoginController {
           smartlookClient.identify(randomKey, { });
         } else {
           userTrack = { name: currentUser.fullname, email: currentUser.email, ownCoupon: currentUser.ownCoupon, coupon: currentUser.coupon, confirmIcoTerm: currentUser.confirmIcoTerm };
-          if(currentUser.depositWallet){
+          if(currentUser.depositWallet && currentUser.depositWallet.BTC && currentUser.depositWallet.LTC && currentUser.depositWallet.ETH){
             userTrack.btcAddress = currentUser.depositWallet.BTC.address;
             userTrack.ltcAddress = currentUser.depositWallet.LTC.address;
             userTrack.ethAddress = currentUser.depositWallet.ETH.address;
@@ -146,7 +147,6 @@ class LoginController {
         console.log("");
         this.currentPhase = await this.HttpService.obtainPhase().catch(error => {
           console.log(error);
-          alert('Erro ao tentar recuperar dados da fase da ICO');
         });
         if (this.currentPhase) {
           localStorage.setItem('lunes.phase', JSON.stringify(this.currentPhase));
