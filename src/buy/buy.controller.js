@@ -19,7 +19,7 @@ class BuyController {
     this.$state = $state;
     this.currentUser = JSON.parse(localStorage.getItem(STORAGE_KEY));
     this.showContainerCoins = false;
-    this.preICOFinished = true; // enable true here to show message "Pre-ICO finished"
+    this.preICOFinished = false; // enable true here to show message "Pre-ICO finished"
     this.balanceCoins = {};
     this.currentPhase = [];
     this.currentPhaseActive = {};

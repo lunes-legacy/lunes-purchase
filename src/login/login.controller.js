@@ -13,7 +13,7 @@ class LoginController {
       this.termsRepresentation = $sce.trustAsHtml($filter('translate')('REPRESENTATION_TERM'));
       this.ErrorMessagesService = ErrorMessagesService;
       this.loadingResetPass = false;
-      this.preICOFinished = true;
+      this.preICOFinished = false;
       this.user = {
           email: '',
           password: '',
