@@ -57794,11 +57794,7 @@
 
 	'use strict';
 	
-	var URL_WALLET = 'https://api.lunes.io/api';
-	var URL_ICO_PURCHASE = 'https://apiw.lunes.io/api';
-	var URL_LOCAL_TEST = 'http://localhost:6001/api';
-	
-	module.exports = URL_ICO_PURCHASE;
+	module.exports = 'https://apiw.lunes.io/api';
 
 /***/ },
 /* 583 */
@@ -85341,4 +85337,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?v=1523814896421
+//# sourceMappingURL=app.js.map?v=1523825901647

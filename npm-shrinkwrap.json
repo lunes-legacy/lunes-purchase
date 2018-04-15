@@ -1023,6 +1023,11 @@
       "from": "crypto-browserify@https://registry.npmjs.org/crypto-browserify/-/crypto-browserify-3.3.0.tgz",
       "resolved": "https://registry.npmjs.org/crypto-browserify/-/crypto-browserify-3.3.0.tgz"
     },
+    "crypto-js": {
+      "version": "3.1.9-1",
+      "from": "crypto-js@>=3.1.9-1 <4.0.0",
+      "resolved": "https://registry.npmjs.org/crypto-js/-/crypto-js-3.1.9-1.tgz"
+    },
     "css-color-names": {
       "version": "0.0.4",
       "from": "css-color-names@https://registry.npmjs.org/css-color-names/-/css-color-names-0.0.4.tgz",
@@ -2640,6 +2645,11 @@
       "from": "lru-cache@https://registry.npmjs.org/lru-cache/-/lru-cache-4.1.1.tgz",
       "resolved": "https://registry.npmjs.org/lru-cache/-/lru-cache-4.1.1.tgz"
     },
+    "lunes-lib": {
+      "version": "0.0.26",
+      "from": "lunes-lib@0.0.26",
+      "resolved": "https://registry.npmjs.org/lunes-lib/-/lunes-lib-0.0.26.tgz"
+    },
     "macaddress": {
       "version": "0.2.8",
       "from": "macaddress@https://registry.npmjs.org/macaddress/-/macaddress-0.2.8.tgz",
@@ -2783,6 +2793,11 @@
       "version": "2.20.1",
       "from": "moment@https://registry.npmjs.org/moment/-/moment-2.20.1.tgz",
       "resolved": "https://registry.npmjs.org/moment/-/moment-2.20.1.tgz"
+    },
+    "moment-timezone": {
+      "version": "0.5.14",
+      "from": "moment-timezone@>=0.5.14 <0.6.0",
+      "resolved": "https://registry.npmjs.org/moment-timezone/-/moment-timezone-0.5.14.tgz"
     },
     "ms": {
       "version": "2.0.0",
@@ -4541,6 +4556,11 @@
       "version": "3.0.1",
       "from": "validate-npm-package-license@https://registry.npmjs.org/validate-npm-package-license/-/validate-npm-package-license-3.0.1.tgz",
       "resolved": "https://registry.npmjs.org/validate-npm-package-license/-/validate-npm-package-license-3.0.1.tgz"
+    },
+    "validator": {
+      "version": "9.4.1",
+      "from": "validator@>=9.2.0 <10.0.0",
+      "resolved": "https://registry.npmjs.org/validator/-/validator-9.4.1.tgz"
     },
     "vary": {
       "version": "1.1.2",
