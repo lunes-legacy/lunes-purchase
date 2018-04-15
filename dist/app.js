@@ -82506,6 +82506,13 @@
 	      } else {
 	        _smartlookClient2.default.identify(this.currentUser.email, userTrack);
 	      }
+	
+	      window.Intercom('boot', {
+	        app_id: 'a4bez1qo',
+	        name: this.currentUser.fullname, // Full name
+	        email: this.currentUser.email, // Email address
+	        created_at: new Date().toISOString() // Signup date
+	      });
 	    }
 	  }
 	
@@ -82816,15 +82823,15 @@
 	    var _this = this;
 	
 	    if (!this.valueToReceive) {
-	      this.valueToReceive = '000000';
+	      this.valueToReceive = '00000000';
 	    }
 	
 	    if (!this.valueToDeposit) {
 	      this.valueToDeposit = initialValue;
 	    }
 	
-	    if (this.valueToReceive.length > 7) {
-	      this.valueToReceive = this.valueToReceive.substr(0, 7);
+	    if (this.valueToReceive.length > 8) {
+	      this.valueToReceive = this.valueToReceive.substr(0, 8);
 	    }
 	
 	    if (this.valueToReceive.replace) {
@@ -82839,7 +82846,7 @@
 	
 	    if (isNaN(valueToReceive) || isNaN(valueToDeposit)) {
 	      this.valueToDeposit = initialValue;
-	      this.valueToReceive = '000000';
+	      this.valueToReceive = '00000000';
 	    }
 	
 	    if (LNS) {
@@ -83431,6 +83438,13 @@
 	      } else {
 	        _smartlookClient2.default.identify(this.currentUser.email, userTrack);
 	      }
+	
+	      window.Intercom('boot', {
+	        app_id: 'a4bez1qo',
+	        name: this.currentUser.fullname, // Full name
+	        email: this.currentUser.email, // Email address
+	        created_at: new Date().toISOString() // Signup date
+	      });
 	    }
 	  }
 	
@@ -85337,4 +85351,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?v=1523825901647
+//# sourceMappingURL=app.js.map?v=1523828464007

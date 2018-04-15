@@ -31,6 +31,14 @@ class DashboardController {
       } else {
         smartlookClient.identify(this.currentUser.email, userTrack );
       }
+
+      window.Intercom('boot', {
+        app_id: 'a4bez1qo',
+        name: this.currentUser.fullname, // Full name
+        email: this.currentUser.email, // Email address
+        created_at: new Date().toISOString() // Signup date
+      });
+
     }
       
   }
