@@ -1,5 +1,7 @@
 <div class="container login">
 
+
+
   <!-- MODAL - criar directiva depois -->
   <div id="modal-terms" class="modal">
     <div class="modal-header">
@@ -167,6 +169,12 @@
     <div>
       <form name="$ctrl.loginForm">
         <div class="row">
+
+          <div class="col-xs-12 col-md-12 col-lg-12" ng-if="$ctrl.preICOFinished">
+            <div class="finished-pre-ico">
+              <h5>{{'PRE_ICO_FINISHED' | translate}}</h5>
+            </div>
+          </div>
 
           <div class="col-12 title">
             <h4>{{'WELCOME' | translate}}</h4>

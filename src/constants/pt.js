@@ -80,6 +80,7 @@ export default {
       DEPOSIT: 'Depósito',
       BONUS: 'Bônus'
     },
+    PRE_ICO_FINISHED: 'A pré-ICO da Lunes foi encerrada! A ICO irá iniciar em 15/04/2018',
     VERIFY: 'Verificar',
     AUTH_TWOFA: 'Autenticação em 2 Passos',
     GOOGLE_AUTH_NUMBER: 'Número Google Autenticador',
