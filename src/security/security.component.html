@@ -2,8 +2,18 @@
 
   <lunesheader showlogout="true" showlinks="true"></lunesheader>
 
-  <div>
+  <div class="qr-code" ng-if="!$ctrl.currentUser.twofaEnabled">
     <img ng-src="{{$ctrl.base64Img}}" alt="">
+    <p>Use o Google Autenticador para escanear o QR-Code e gerar sua autenticação.</p>
+    <button ng-click="$ctrl.generateAnotherQRCode()">Quero habilitar uma nova</button>
+  </div>
+
+  <div class="qr-code" ng-if="$ctrl.currentUser.twofaEnabled">
+    <span class="enabled-twofa">
+      <i class="fa fa-smile"></i>
+    </span>
+    <p>Você já habilitou sua autenticação em dois-passos.</p>
+    <button ng-click="$ctrl.generateAnotherQRCode()">Quero habilitar uma nova</button>
   </div>
 
 </div>

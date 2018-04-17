@@ -1,0 +1,13 @@
+.qr-code {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  p {
+    margin-top: 15px;
+    text-align: center;
+  }
+  .enabled-twofa {
+    font-size: 5em;
+  }
+}

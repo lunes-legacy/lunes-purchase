@@ -58,8 +58,8 @@ class HttpService {
     return a;
   }
 
-  async generateTwofa(email) {
-    const bae64Img = await LunesLib.users.generateTwofa(email);
+  async generateTwofa(email, generateNewQRCode) {
+    const bae64Img = await LunesLib.users.generateTwofa(email, generateNewQRCode);
     return bae64Img.qrcode;
   }
 
