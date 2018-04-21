@@ -24,6 +24,6 @@ class SecurityController {
 
 }
 
-  SecurityController.$inject = ['$translate', 'HttpService', '$timeout'];
+SecurityController.$inject = ['$translate', 'HttpService', '$timeout'];
 
-  export default SecurityController;
+export default SecurityController;
