@@ -2646,9 +2646,9 @@
       "resolved": "https://registry.npmjs.org/lru-cache/-/lru-cache-4.1.1.tgz"
     },
     "lunes-lib": {
-      "version": "0.0.26",
-      "from": "lunes-lib@0.0.26",
-      "resolved": "https://registry.npmjs.org/lunes-lib/-/lunes-lib-0.0.26.tgz"
+      "version": "0.0.28",
+      "from": "lunes-lib@0.0.28",
+      "resolved": "https://registry.npmjs.org/lunes-lib/-/lunes-lib-0.0.28.tgz"
     },
     "macaddress": {
       "version": "0.2.8",

@@ -38,7 +38,7 @@ class LoginController {
           smartlookClient.identify(randomKey, { });
         } else {
           userTrack = { name: currentUser.fullname, email: currentUser.email, ownCoupon: currentUser.ownCoupon, coupon: currentUser.coupon, confirmIcoTerm: currentUser.confirmIcoTerm };
-          if(currentUser.depositWallet && currentUser.depositWallet.BTC && currentUser.depositWallet.LTC && currentUser.depositWallet.ETH){
+          if (currentUser.depositWallet && currentUser.depositWallet.BTC) {
             userTrack.btcAddress = currentUser.depositWallet.BTC.address;
             userTrack.ltcAddress = currentUser.depositWallet.LTC.address;
             userTrack.ethAddress = currentUser.depositWallet.ETH.address;
@@ -52,25 +52,63 @@ class LoginController {
     }
 
     async doLogin() {
+      const self = this;
+
       this.showLoading(true);
-      const a = await this.HttpService.login(this.user).catch(error => {
+      
+      let userLogged = await this.HttpService.login(this.user).catch(error => {
+        if (error && error.messageKey === 'NEED_PASS_TWOFA') {
+          this.showFieldTwofa = true;
+          return;
+        }
         this.notification(true, error);
       });
+
       this.showLoading(false);
-      if (a && a.accessToken) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
-        if (a.confirmIcoTerm) {
-          if (!a.depositWallet || !a.depositWallet.BTC) {
-            const depositWallet = await this.HttpService.createDepositWallet(a).catch(error => {
+
+      if (userLogged.twofaEnabled) {
+        this.userLoggedTemporary = JSON.parse(JSON.stringify(userLogged));
+        this.authTwofaEmail = userLogged.email;
+        this.$timeout(() => {
+          $('#modal-verify-twofa').modal('show');
+          self.showVerifyTwofa = true;
+        }, 200);
+      } else {
+        this.redirectLogin(userLogged);
+      }
+      
+    }
+
+    async redirectTwofa(userLogged) {
+      const verify = await this.HttpService.verifyTwofa(this.authTwofaNumber, this.authTwofaEmail).catch(error => {
+        this.showErrorMsgTwofaError = true;  
+      });
+      if (verify) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(this.userLoggedTemporary));
+        this.userLoggedTemporary = null;
+        this.$state.go('buy');
+      }
+    }
+
+    async redirectLogin(userLogged) {
+      if (userLogged && userLogged.accessToken) {
+
+        this.showFieldTwofa = false;
+        
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(userLogged));
+
+        if (userLogged.confirmIcoTerm) {
+          if (!userLogged.depositWallet || !userLogged.depositWallet.BTC) {
+            const depositWallet = await this.HttpService.createDepositWallet(userLogged).catch(error => {
                 if (error && error.response && error.response.data) {
                     console.log(error);
                 }
             });
-            a.depositWallet = depositWallet;
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
+            userLogged.depositWallet = depositWallet;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(userLogged));
             this.$state.go('buy');
           } else {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(a));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(userLogged));
             this.$state.go('buy');
           }
         } else {

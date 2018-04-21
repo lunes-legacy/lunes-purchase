@@ -11,6 +11,17 @@ class HttpService {
     this.$translate = $translate;
   }
 
+  async verifyTwofa(twofa, email) {
+    if (typeof twofa !== 'string') {
+      return;
+    }
+    if (twofa.length > 6) {
+      twofa = twofa.substr(0, 6);
+    }
+    const a = await LunesLib.users.verifyTwofa({ twofa, email });
+    return a;
+  }
+
   async login(userData) {
     if (userData.email) {
       userData.email = userData.email.toLowerCase();
@@ -45,6 +56,11 @@ class HttpService {
   async changePassword(email, accessToken) {
     const a = await LunesLib.users.resetPassword({ email });
     return a;
+  }
+
+  async generateTwofa(email, generateNewQRCode) {
+    const bae64Img = await LunesLib.users.generateTwofa(email, generateNewQRCode);
+    return bae64Img.qrcode;
   }
 
   async confirmterm(currentUser) {
