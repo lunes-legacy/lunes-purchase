@@ -83459,7 +83459,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".qr-code {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  -ms-flex-direction: column;\n      flex-direction: column; }\n  .qr-code p {\n    margin-top: 15px;\n    text-align: center; }\n  .qr-code .enabled-twofa {\n    font-size: 5em; }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/security/src/security/security.component.scss"],"names":[],"mappings":"AAAA;EACE,qBAAa;EAAb,cAAa;EACb,uBAAmB;MAAnB,oBAAmB;EACnB,sBAAuB;MAAvB,wBAAuB;EACvB,2BAAsB;MAAtB,uBAAsB,EAQvB;EAZD;IAMI,iBAAgB;IAChB,mBAAkB,EACnB;EARH;IAUI,eAAc,EACf","file":"security.component.scss","sourcesContent":[".qr-code {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  flex-direction: column;\r\n  p {\r\n    margin-top: 15px;\r\n    text-align: center;\r\n  }\r\n  .enabled-twofa {\r\n    font-size: 5em;\r\n  }\r\n}"],"sourceRoot":""}]);
+	exports.push([module.id, ".qr-code {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  -ms-flex-direction: column;\n      flex-direction: column; }\n  .qr-code p {\n    margin-top: 15px;\n    text-align: center; }\n  .qr-code .enabled-twofa {\n    font-size: 5em; }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/security/src/security/security.component.scss"],"names":[],"mappings":"AAAA;EACE,qBAAa;EAAb,cAAa;EACb,uBAAmB;MAAnB,oBAAmB;EACnB,sBAAuB;MAAvB,wBAAuB;EACvB,2BAAsB;MAAtB,uBAAsB,EAQvB;EAZD;IAMI,iBAAgB;IAChB,mBAAkB,EACnB;EARH;IAUI,eAAc,EACf","file":"security.component.scss","sourcesContent":[".qr-code {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  flex-direction: column;\r\n  p {\r\n    margin-top: 15px;\r\n    text-align: center;\r\n  }\r\n  .enabled-twofa {\r\n    font-size: 5em;\r\n  }\r\n}\r\n"],"sourceRoot":""}]);
 	
 	// exports
 
@@ -85774,4 +85774,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?v=1524346508009
+//# sourceMappingURL=app.js.map?v=1524530351906
