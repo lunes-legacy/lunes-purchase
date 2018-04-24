@@ -1,0 +1,168 @@
+.dont-have-account {
+  margin-top: 50px;
+  .label-signup {
+    cursor: pointer;
+  }
+}
+
+.modal-backdrop-error {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #4c2b82;
+  opacity: 0.7;
+  text-align: center;
+  .close-error {
+    border: 0;
+    border-radius: 30px;
+    padding: 5px 50px;
+    background-color: #4cd466;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+/* counter */
+#counter {
+  font-family: 'Offside', cursive;
+  margin-top:20px;
+  margin-bottom:20px;
+  
+}
+#counter #coin_counter {
+  display: block;
+  text-align: right;
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  padding-right: 20px;
+}
+#counter #loading_bar {
+  display:block;
+  background-color: #fff;
+  height: 5px;
+}
+#counter #loading_bar_green {
+  display: block;
+  background-color: #4cd566;
+  height: 5px;
+}
+#counter #base_counter {
+  background-color: #544d8f;
+  padding:20px;
+  border-radius: 0px 0px 4px 4px;
+}
+#counter #number {
+  margin-top: 30px;
+  display: block;
+  text-align: center;
+}
+#counter #number span {
+  font-size: .2em;
+  color:#fff;
+  display: block;
+  margin-top: 20px;
+}
+#counter #hard-cap {
+  display: block;
+  background-color: #544d8f;
+  max-width: 160px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #4cd566;
+  font-size: .8em;
+  text-align: center;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: -40px;
+}
+#counter #hard-cap span {
+  display: block;
+  color: #fff;
+  font-size: 1.2em;
+}
+
+#clockdiv{
+  font-family: sans-serif;
+  color: #fff;
+  display: inline-block;
+  font-weight: 100;
+  text-align: center;
+  font-size: 30px;
+}
+
+#clockdiv > div{
+  padding: 5px;
+  border-radius: 3px;
+  background: #00BF96;
+  display: inline-block;
+  width: 80px;
+}
+
+#clockdiv div > span{
+  padding: 15px;
+  border-radius: 3px;
+  background: #00816A;
+  display: inline-block;
+}
+
+.smalltext{
+  padding-top: 5px;
+  font-size: 16px;
+}
+
+.login {
+
+  #modal-change-password {
+    box-shadow: #3a2261 1px 0px 5px 4px;
+    margin: 10px;
+    overflow-y: hidden;
+  }
+
+  .loadingResetPass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .showEmailSent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .showErrorMsg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    h5 {
+      padding: 2px 10px;
+      background-color: #d83636;
+      border-radius: 20px;
+    }
+    button {
+      border: 0;
+      padding: 5px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+  }
+  
+  .form-msg-pass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+}
+

@@ -1,0 +1,209 @@
+<div class="container">
+
+  <!-- MODAL - criar directiva depois -->
+  <div id="modal-terms" class="modal">
+    <div class="modal-header">
+      <p class="icon-close" data-dismiss="modal">
+        &times;
+      </p>
+    </div>
+    <div class="modal-content">
+      <div>
+        <script>
+          function openCity(evt, cityName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+          }
+        </script>
+        <!-- Tab links -->
+        <div class="tab">
+          <button class="tablinks" onclick="openCity(event, 'terms_condition')" id="defaultOpen">{{'TERMS_CONDITION_TITLE' | translate}}</button>
+          <button class="tablinks" onclick="openCity(event, 'representation_condition')">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>
+        </div>
+        <!-- Tab content -->
+        <div id="terms_condition" class="tabcontent">
+          <div class="content" ng-bind-html="$ctrl.termsCondition" style="height: 500px; overflow-y: scroll;"> </div>
+        </div>
+
+        <div id="representation_condition" class="tabcontent">
+          <div class="content" ng-bind-html="$ctrl.termsRepresentation" style="height: 500px; overflow-y: scroll;"> </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div>
+          <div class="form-check has-success">
+            <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" ng-model="$ctrl.user.check1" ng-change="$ctrl.allCheckboxIsChecked()">
+            <label for="checkboxG1" class="css-label radGroup1 clr"> {{'US_CITIZEN' | translate}} </label>
+          </div>
+          <div class="form-check has-success">
+            <input type="checkbox" name="checkboxG2" id="checkboxG2" class="css-checkbox" ng-model="$ctrl.user.check2">
+            <label for="checkboxG2" class="css-label radGroup1 clr"> {{'AGREE_TERM' | translate}} </label>
+          </div>
+          <!--<div class="form-check has-success">
+            <input type="checkbox" name="checkboxG3" id="checkboxG3" class="css-checkbox" ng-model="$ctrl.user.check3">
+            <label for="checkboxG3" class="css-label radGroup1 clr"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>
+          </div>-->
+          <div class="form-check has-success">
+            <input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" ng-model="$ctrl.user.check4">
+            <label for="checkboxG4" class="css-label radGroup1 clr"> {{'AGREE_FUTURE_VALUE' | translate}}</label>
+          </div>
+          <div class="area-button">
+            <button ng-show="$ctrl.allCheckboxIsChecked()" class="primary-button" data-ng-click="$ctrl.doSignup()" data-dismiss="modal">{{'AGREE' | translate}}</button>
+            <!--<button ng-show="!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()" class="disabled-button">{{'AGREE' | translate}}</button>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <lunesheader showlogout='false' showlinks='false'></lunesheader>
+
+  <!-- AUTHENTICATION FORM -->
+  <section class="authentication">
+    <div>
+      <form name="$ctrl.loginForm">
+
+        <div class="row">
+          <div class="col-xs-12 col-lg-12 title">
+            <h4>{{'WELCOME' | translate}}</h4>
+            <h4>{{'BEGIN_YOUR_REGISTRATION' | translate}}</h4>
+          </div>
+
+          <div class="col-xs-12 col-lg-12 error-fields" ng-show="$ctrl.showErrorForm">{{'ALL_FIELDS_REQUIRED' | translate}}</div>
+
+          <div class="alert alert-danger" ng-show="$ctrl.serverError" role="alert">
+            <h4 class="alert-heading">{{'AN_ERROR_CREATE_ACCOUNT' | translate}}</h4>
+            <p>{{$ctrl.serverErrorMessage</p>
+          </div>
+
+          <!-- USER INFO -->
+          <div class="col-xs-12 col-lg-6">
+            <div class="input-form">
+              <label for="input-name">* {{'NAME' | translate}}</label>
+              <input data-ng-model="$ctrl.user.name" id="input-name" name="name" required type="text" placeholder="{{'NAME_PLACEHOLDER' | translate}}">
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-lg-6">
+            <div class="input-form">
+              <label for="input-lastname">* {{'LAST_NAME' | translate}}</label>
+              <input data-ng-model="$ctrl.user.lastname" id="input-lastname" name="lastname" required type="text" placeholder="{{'LAST_NAME_PLACEHOLDER' | translate}}">
+            </div>
+          </div>
+        </div>
+
+        <!-- EMAIL INFO -->
+        <div class="row">
+          <div class="col-xs-12 col-lg-6">
+            <div class="input-form">
+              <label for="input-email">* {{'EMAIL' | translate}}</label>
+              <input data-ng-model="$ctrl.user.email" id="input-email" name="email" ng-model-options="{ debounce: 3000 }" required type="email"
+                placeholder="{{'EMAIL_PLACEHOLDER' | translate}}">
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-lg-6">
+            <div class="input-form">
+              <label for="input-confirm-email">* {{'CONFIRM_EMAIL' | translate}}</label>
+              <input data-ng-model="$ctrl.user.confirmEmail" id="input-confirm-email" email name="confirmEmail" email-match required type="email"
+                placeholder="{{'CONFIRM_EMAIL_PLACEHOLDER' | translate}}">
+            </div>
+
+            <!-- VALIDATION EMAIL -->
+            <span style="color:#f8b61c;" ng-show="$ctrl.loginForm.email.$dirty && $ctrl.loginForm.email.$invalid">
+              <span ng-show="$ctrl.loginForm.email.$error.required">{{'EMAIL_REQUIRED' | translate}}
+                <br>
+              </span>
+              <span ng-show="$ctrl.loginForm.email.$error.email">{{'EMAIL_INVALID' | translate}}
+                <br>
+              </span>
+            </span>
+            <span style="color:#f8b61c;" ng-show="$ctrl.loginForm.confirmEmail.$dirty && $ctrl.loginForm.confirmEmail.$invalid">
+              <span ng-show="$ctrl.user.email !== $ctrl.user.confirmEmail">{{'EMAIL_MATCH' | translate}}
+                <br> </span>
+            </span>
+
+          </div>
+        </div>
+
+        <!-- PASSWORD INFO -->
+        <div class="row">
+          <div class="col-xs-12 col-lg-6">
+            <div class="input-form">
+              <label for="input-password">* {{'PASSWORD' | translate}}</label>
+              <input type="password" data-ng-model="$ctrl.user.password" id="input-password" ng-model-options="{ debounce: 500 }" uppercase
+                lowercase numeric special-character required name="password" ng-minlength="8" placeholder="{{'PASSWORD_PLACEHOLDER' | translate}}">
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-lg-6">
+            <div class="input-form">
+              <label for="input-confirm-password">* {{'CONFIRM_PASSWORD' | translate}}</label>
+              <input type="password" data-ng-model="$ctrl.user.confirmPassword" id="input-confirm-password" ng-model-options="{ debounce: 500 }"
+                required name="confirmPassword" ng-minlength="8" placeholder="{{'CONFIRM_PASSWORD_PLACEHOLDER' | translate}}">
+            </div>
+            <!-- VALIDATION PASSWORD -->
+            <span style="color:#f8b61c;" ng-show="$ctrl.loginForm.password.$dirty && $ctrl.loginForm.password.$invalid">
+              <span ng-show="$ctrl.loginForm.password.$error.required">{{'PASSWORD_REQUIRED' | translate}}
+                <br>
+              </span>
+              <span ng-show="$ctrl.loginForm.password.$error.minlength">{{'PASSWORD_LENGTH' | translate}}
+                <br>
+              </span>
+            </span>
+            <span style="color:#f8b61c;" ng-show="$ctrl.loginForm.confirmPassword.$dirty && $ctrl.loginForm.confirmPassword.$invalid">
+              <span ng-show="$ctrl.user.confirmPassword !== $ctrl.user.password">{{'PASSWORD_MATCH' | translate}}
+                <br>
+              </span>
+            </span>
+          </div>
+
+        </div>
+
+        <!-- CUPOM -->
+        <div class="row">
+          <div class="col-xs-12 col-lg-6">
+            <div class="input-form">
+              <label for="input-coupon">{{'DO_YOU_HAVE_A_COUPON' | translate}}</label>
+              <input data-ng-model="$ctrl.user.coupon" id="input-coupon" name="coupon" type="text" placeholder="{{'COUPON_PLACEHOLDER' | translate}}">
+            </div>
+          </div>
+          <div class="col-xs-12 col-lg-6" style="margin-top: 15px;">
+            <div class="area-button txt-right" style="display: flex;justify-content: center;">
+              <button class="rounded-button ng-hide" data-toggle="modal" data-target="#modal-terms" ng-show="$ctrl.loginForm.$valid" ng-click="$ctrl.enableTab()">
+                <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png" width="20px" alt="next">
+              </button>
+
+              <button class="rounded-button" ng-show="!$ctrl.loginForm.$valid" ng-click="$ctrl.showError()">
+                <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png" width="20px" alt="next">
+              </button>
+            </div>
+            <div style="display: flex;justify-content: center;" ng-show="false">
+              <a href="#!/login" style="font-size: 10px;color: #fff;">{{'BACK' | translate}}</p>
+            </div>
+          </div>
+
+        </div>
+
+      </form>
+    </div>
+  </section>
+</div>
+<lunesfooter />

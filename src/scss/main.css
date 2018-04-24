@@ -1,0 +1,19 @@
+body {
+  background-color: #f4f4f4; }
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  position: relative;
+  -webkit-box-sizing: border-box; }
+
+.center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  overflow: auto;
+  overflow-y: auto; }
+  @media (min-width: 768px) {
+    .center {
+      max-height: 780px; } }

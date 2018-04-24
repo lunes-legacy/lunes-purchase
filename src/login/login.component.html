@@ -1,0 +1,279 @@
+<div class="container login">
+
+
+
+  <!-- MODAL - criar directiva depois -->
+  <div id="modal-terms" class="modal">
+    <div class="modal-header">
+      <p class="icon-close" data-dismiss="modal">
+        &times;
+      </p>
+    </div>
+    <div class="modal-content">
+      <div>
+        <script>
+          function openCity(evt, cityName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+          }
+        </script>
+        <!-- Tab links -->
+        <div class="tab">
+          <button class="tablinks" onclick="openCity(event, 'terms_condition')" id="defaultOpen">{{'TERMS_CONDITION_TITLE' | translate}}</button>
+          <button class="tablinks" onclick="openCity(event, 'representation_condition')">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>
+        </div>
+        <!-- Tab content -->
+        <div id="terms_condition" class="tabcontent">
+          <div class="content" ng-bind-html="$ctrl.termsCondition" style="height: 500px; overflow-y: scroll;"> </div>
+        </div>
+
+        <div id="representation_condition" class="tabcontent">
+          <div class="content" ng-bind-html="$ctrl.termsRepresentation" style="height: 500px; overflow-y: scroll;"> </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div>
+          <div class="form-check has-success">
+            <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" ng-model="$ctrl.user.check1" ng-change="$ctrl.allCheckboxIsChecked()">
+            <label for="checkboxG1" class="css-label radGroup1 clr"> {{'US_CITIZEN' | translate}} </label>
+          </div>
+          <div class="form-check has-success">
+            <input type="checkbox" name="checkboxG2" id="checkboxG2" class="css-checkbox" ng-model="$ctrl.user.check2">
+            <label for="checkboxG2" class="css-label radGroup1 clr"> {{'AGREE_TERM' | translate}} </label>
+          </div>
+          <!--<div class="form-check has-success">
+            <input type="checkbox" name="checkboxG3" id="checkboxG3" class="css-checkbox" ng-model="$ctrl.user.check3">
+            <label for="checkboxG3" class="css-label radGroup1 clr"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>
+          </div>-->
+          <div class="form-check has-success">
+            <input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" ng-model="$ctrl.user.check4">
+            <label for="checkboxG4" class="css-label radGroup1 clr"> {{'AGREE_FUTURE_VALUE' | translate}}</label>
+          </div>
+          <div class="area-button">
+            <button ng-show="$ctrl.allCheckboxIsChecked()" class="primary-button" data-ng-click="$ctrl.doAccept()" data-dismiss="modal">{{'AGREE' | translate}}</button>
+            <!--<button ng-show="!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()" class="disabled-button">{{'AGREE' | translate}}</button>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL - criar directiva change password -->
+  <div id="modal-change-password" class="modal">
+    <div class="modal-header">
+      <p class="icon-close" data-dismiss="modal">
+        &times;
+      </p>
+    </div>
+    <div class="modal-content" style="height: 100%;">
+
+      <div ng-show="$ctrl.loadingResetPass" class="loadingResetPass">
+        {{'LOADING' | translate}}
+      </div>
+
+      <div ng-show="$ctrl.showMsgEmailSent" class="showEmailSent">
+        <h3 for="change">{{'EMAIL_SENT' | translate}}</h3>
+        <div style="width: 100px;">
+          <button class="icon-close" data-dismiss="modal">{{'CLOSE' | translate}}</button>
+        </div>
+      </div>
+
+      <form class="form-msg-pass" ng-show="!$ctrl.loadingResetPass && !$ctrl.showMsgEmailSent">
+        <div style="text-align: center;">
+          <h3 for="change">{{'CHANGE_PASSWORD_INSTRUCTION' | translate}}</h3>
+        </div>
+        <div ng-show="$ctrl.showErrorMsgEmailSent" class="showErrorMsg">
+          <h5 for="change">{{'EMAIL_NOT_SENT' | translate}}</h5>
+          <div style="width: 100px;">
+            <button style="border: 0;
+              padding: 5px 20px;
+              border-radius: 20px;
+              cursor: pointer;" class="icon-close" data-dismiss="modal">{{'CLOSE' | translate}}</button>
+          </div>
+        </div>
+
+        <div>
+          <input type="text" name="change-password" ng-model="$ctrl.emailToChangePassword" style="    border: 0;
+          width: 200px;
+          border-bottom: solid 1px #734cb3;
+          background-color: transparent;
+          padding: 20px;
+          color: #fff;
+          margin: 20px;">
+        </div>
+        <div>
+          <button ng-click="$ctrl.doChangePassword()" style="    border: 0;
+          padding: 5px 20px;
+          border-radius: 20px;
+          cursor: pointer;">{{'CHANGE_PASSWORD' | translate}}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="modal-verify-twofa" class="modal" ng-if="true">
+    <div class="modal-header">
+      <p class="icon-close" data-dismiss="modal">
+        &times;
+      </p>
+    </div>
+    <div class="modal-content">
+      <form class="form-msg-pass">
+        <div style="text-align: center;">
+          <h3 for="change">{{'AUTH_TWOFA' | translate}}</h3>
+        </div>
+        <div ng-show="$ctrl.showErrorMsgTwofaError" class="showErrorMsg">
+          <h5 for="change" style="margin: 30px;">{{'INVALID_TWOFA_NUMBER' | translate}}</h5>
+        </div>
+
+        <div>
+          <input type="text" name="change-password" ng-model="$ctrl.authTwofaNumber" style="border: 0;
+          width: 200px;
+          border-bottom: solid 1px #734cb3;
+          background-color: transparent;
+          padding: 20px;
+          color: #fff;
+          margin: 20px;">
+        </div>
+        <div>
+          <button ng-click="$ctrl.redirectTwofa()" style="    border: 0;
+          padding: 5px 20px;
+          border-radius: 20px;
+          cursor: pointer;">{{'VERIFY' | translate}}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <lunesheader showlogout='false' showlinks='false'></lunesheader>
+
+  <!-- AUTHENTICATION FORM -->
+  <section class="authentication">
+    <div>
+      <form name="$ctrl.loginForm">
+        <div class="row">
+
+          <div class="col-xs-12 col-md-12 col-lg-12" ng-if="$ctrl.preICOFinished">
+            <div class="finished-pre-ico">
+              <h5>{{'PRE_ICO_FINISHED' | translate}}</h5>
+            </div>
+          </div>
+
+          <div class="col-12 title">
+            <h4>{{'WELCOME' | translate}}</h4>
+          </div>
+
+          <div class="col-12 col-lg-12 error-fields" ng-show="$ctrl.showErrorForm">{{'ALL_FIELDS_REQUIRED' | translate}}</div>
+
+          <div class="col-lg-6 col-xs-12">
+            <div class="input-form">
+              <label for="input-email">{{'EMAIL' | translate}}</label>
+              <input data-ng-model="$ctrl.user.email" id="input-email" name="email" required type="text" placeholder="{{'EMAIL_PLACEHOLDER' | translate}}">
+            </div>
+            <div class="input-form">
+              <label for="input-password">{{'PASSWORD' | translate}}</label>
+              <input data-ng-model="$ctrl.user.password" id="input-password" name="password" minlength="8" required type="password" placeholder="{{'PASSWORD_PLACEHOLDER' | translate}}">
+            </div>
+            <div class="input-form" ng-show="$ctrl.showFieldTwofa">
+              <label for="input-twofa">{{'GOOGLE_AUTH' | translate}}</label>
+              <input data-ng-model="$ctrl.user.twofa" id="input-twofa" name="twofa" type="text" placeholder="{{'TYPE_GOOGLE_AUTH' | translate}}">
+            </div>
+            <div class="area-button txt-center">
+              <button class="rounded-button" data-toggle="modal" ng-click="$ctrl.doLogin()">
+                <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png" width="20px" alt="next" />
+              </button>
+            </div>
+            <div class="dont-have-account">
+              <label>{{'DONT_HAVE_ACCOUNT' | translate}}</label>
+              <label class="txt-green label-signup" ng-click="$ctrl.goToSignup()">{{'SIGNUP' | translate}}</label>
+              <!--<p class="cursor-pointer">{{'RESET_PASSWORD' | translate}}</p>-->
+            </div>
+            <div style="margin: 5px 0 30px 0;">
+              <label>{{'DO_YOU_CHANGE_PASSWORD' | translate}}</label>
+              <label class="txt-green label-signup" data-toggle="modal" data-target="#modal-change-password">{{'CHANGE_PASSWORD' | translate}}</label>
+            </div>
+
+          </div>
+
+          <div class="col-lg-5 col-xs-12" style="margin: 5px 0 30px 0;">
+            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1520387055/illustracao-wallet-lunes_dhikqa.png" width="100%"
+              alt="next" />
+          </div>
+
+          <div class="col-lg-4 col-xs-12" ng-show="false">
+            <div id="counter" class="">
+              <span id="coin_counter" ng-show="false">$ 00 000 000</span>
+              <div id="loading_bar">
+                <div id="loading_bar_green" style="width:50%;"></div>
+              </div>
+              <div>
+                <div class="row" style="text-align: center;">
+                  <div class="col-xs-6 col-lg-6">
+                    Pre-Ico
+                  </div>
+                  <div class="col-xs-6 col-lg-6">
+                    Ico
+                  </div>
+                </div>
+
+                <!-- conter -->
+                <div class="row" id="number">
+                  <div class="col-xs-12" id="time">
+                    <div id="clockdiv">
+                      <div>
+                        <span class="days"></span>
+                        <div class="smalltext">Days</div>
+                      </div>
+                      <div>
+                        <span class="hours"></span>
+                        <div class="smalltext">Hours</div>
+                      </div>
+                      <div>
+                        <span class="minutes"></span>
+                        <div class="smalltext">Minutes</div>
+                      </div>
+                      <div>
+                        <span class="seconds"></span>
+                        <div class="smalltext">Seconds</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- hard cap -->
+                <div class="row" id="number">
+                  <div class="col-xs-12 col-lg-12" id="hard-cap">
+                    <p>Hard cap</p>
+                    <p>$ 100 000 000</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+
+
+      </form>
+      </div>
+  </section>
+  </div>
+  <lunesfooter />

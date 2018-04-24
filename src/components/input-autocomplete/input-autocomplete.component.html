@@ -1,0 +1,12 @@
+<input
+  class="input is-medium"
+  type="text"
+  ng-model="$ctrl.model"
+  ng-change="$ctrl.valueChange($ctrl.name, $ctrl.model)"
+  placeholder="{{ $ctrl.placeholder }}"
+>
+<pop-content>
+  <ul ng-repeat="item in $ctrl.list">
+    <li>{{item}}</li>
+  </ul>
+</pop-content>

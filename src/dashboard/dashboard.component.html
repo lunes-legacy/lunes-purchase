@@ -1,0 +1,111 @@
+<div class="container">
+
+  <lunesheader showlogout="true" showlinks="true"></lunesheader>
+
+  <!-- DASHBOARD -->
+  <section class="dashboard">
+    <div>
+      <div class="title user-menu" style="padding-left: 0;">
+        <a href="" id="user-menu" ng-click="$ctrl.toogleUserMenu()">
+          <h4>
+            {{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}
+            <span ng-show="!$ctrl.showUserMenu">
+              <i class="fas fa-angle-right green"></i>
+            </span>
+            <span ng-show="$ctrl.showUserMenu">
+              <i class="fas fa-angle-down green"></i>
+            </span>
+          </h4>
+        </a>
+        <div class="logout area-button" ng-show="$ctrl.showUserMenu">
+          <a href="#!/login" class="primary-button" ng-click="$ctrl.logout()">
+            {{'LOGOUT' | translate}}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- BALANCE FOR EACH COIN -->
+      <div class="col-xs-12 col-md-6 col-lg-6 transaction-coins">
+        <div class="show-balance" ng-repeat="coin in $ctrl.coins" style="margin-right: 15px;text-align: center;">
+          <img ng-src="{{coin.img}}" alt="{{coin.label}}">
+          <p style="font-size: 10px;margin: 0;">{{coin.label}}</p>
+          <small ng-show="false" style="font-size: 8px;color: #ce3e3e;">{{'UNCONFIRMED_BALANCE' | translate}}</small>
+          <p ng-show="false" style="font-size: 10px;margin: 0;">{{$ctrl.balanceProcessed[coin.name].unconfirmed_balance}}</p>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-6 col-lg-6 balance lns">
+        <span>{{'MY_BALANCE' | translate}}:</span>
+        <span class="monetary">{{ $ctrl.totalLns }}</span>
+        <span class="coin">LNS</span>
+      </div>
+
+      <!-- end -->
+
+      <!-- TABLE RESUME HISTORIC PURCHASE -->
+      <div class="col-12 history">
+        <table class="lunes-table" ng-if="$ctrl.checkWidthScreenDesktop()">
+          <thead>
+            <tr>
+              <td>{{ 'DASHBOARD.DATE' | translate }}</td>
+              <td>{{ 'DASHBOARD.PHASE' | translate }}</td>
+              <td>{{ 'DASHBOARD.DEPOSIT' | translate }}</td>
+              <td>Lunes</td>
+              <td>{{ 'DASHBOARD.BONUS' | translate }}</td>
+              <td>Total</td>
+            </tr>
+          </thead>
+          <tbody data-ng-if="$ctrl.history.length > 0">
+            <tr data-ng-repeat="history in $ctrl.history" ng-class-odd="'odd'" ng-class-even="'even'">
+              <td>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</td>
+              <td>{{ history.phase || 1 }}</td>
+              <td>{{ history.deposit_value }} {{ history.deposit_coin }}</td>
+              <td>{{ history.credit_value }} LNS</td>
+              <td>{{ history.bonus_value }} LNS </td>
+              <td>{{ history.total }} LNS</td>
+            </tr>
+          </tbody>
+          <tfoot data-ng-if="$ctrl.history.length === 0">
+            <tr>
+              <td colspan="6" style="text-align: center;">{{ 'DASHBOARD.NO_HISTORY' | translate }}</td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <div ng-if="$ctrl.checkWidthScreenMobile()">
+          <div data-ng-repeat="history in $ctrl.history" ng-class-odd="'odd'" ng-class-even="'even'" style="border-radius: 5px;">
+            <h6 style="text-align: center; padding: 10px; color: #4cd468;">{{'TRANSACTION' | translate}} {{$index+1}}</h6>
+            <div class="responsive-table-card">
+              <div>{{ 'DASHBOARD.DATE' | translate }}</div>
+              <div>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</div>
+            </div>
+            <div class="responsive-table-card">
+              <div>{{ 'DASHBOARD.PHASE' | translate }}</div>
+              <div>{{ history.phase || 1 }}</div>
+            </div>
+            <div class="responsive-table-card">
+              <div>{{ 'DASHBOARD.DEPOSIT' | translate }}</div>
+              <div>{{ history.deposit_value }} {{history.deposit_coin}}</div>
+            </div>
+            <div class="responsive-table-card">
+              <div>Lunes</div>
+              <div>{{ history.credit_value }} LNS</div>
+            </div>
+            <div class="responsive-table-card">
+              <div>{{ 'DASHBOARD.BONUS' | translate }}</div>
+              <div>{{ history.bonus_value }} LNS</div>
+            </div>
+            <div class="responsive-table-card total-footer" ng-show="false">
+              <div>Total</div>
+              <div>{{ history.total }} LNS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+<lunesfooter />

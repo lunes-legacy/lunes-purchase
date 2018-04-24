@@ -1,0 +1,9 @@
+node_modules/
+.env/
+log.html
+output.xml
+report.html
+npm-debug.log
+package-lock.json
+yarn.lock
+
