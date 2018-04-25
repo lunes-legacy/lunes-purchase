@@ -11,6 +11,12 @@ class HttpService {
     this.$translate = $translate;
   }
 
+  async saveTwofa(twofa, timestamp, email) {
+    console.log(twofa);
+    const a = await LunesLib.users.saveTwofa({ twofa, timestamp, email });
+    return a;
+  }
+
   async verifyTwofa(twofa, email) {
     if (typeof twofa !== 'string') {
       return;
@@ -60,7 +66,7 @@ class HttpService {
 
   async generateTwofa(email, generateNewQRCode) {
     const bae64Img = await LunesLib.users.generateTwofa(email, generateNewQRCode);
-    return bae64Img.qrcode;
+    return bae64Img;
   }
 
   async confirmterm(currentUser) {
