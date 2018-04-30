@@ -128,6 +128,40 @@
     </div>
   </div>
 
+  <div id="modal-verify-twofa" class="modal" ng-if="true">
+    <div class="modal-header">
+      <p class="icon-close" data-dismiss="modal">
+        &times;
+      </p>
+    </div>
+    <div class="modal-content">
+      <form class="form-msg-pass">
+        <div style="text-align: center;">
+          <h3 for="change">{{'AUTH_TWOFA' | translate}}</h3>
+        </div>
+        <div ng-show="$ctrl.showErrorMsgTwofaError" class="showErrorMsg">
+          <h5 for="change" style="margin: 30px;">{{'INVALID_TWOFA_NUMBER' | translate}}</h5>
+        </div>
+
+        <div>
+          <input type="text" name="change-password" ng-model="$ctrl.authTwofaNumber" style="border: 0;
+          width: 200px;
+          border-bottom: solid 1px #734cb3;
+          background-color: transparent;
+          padding: 20px;
+          color: #fff;
+          margin: 20px;">
+        </div>
+        <div>
+          <button ng-click="$ctrl.redirectTwofa()" style="    border: 0;
+          padding: 5px 20px;
+          border-radius: 20px;
+          cursor: pointer;">{{'VERIFY' | translate}}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <lunesheader showlogout='false' showlinks='false'></lunesheader>
 
   <!-- AUTHENTICATION FORM -->
@@ -157,6 +191,10 @@
               <label for="input-password">{{'PASSWORD' | translate}}</label>
               <input data-ng-model="$ctrl.user.password" id="input-password" name="password" minlength="8" required type="password" placeholder="{{'PASSWORD_PLACEHOLDER' | translate}}">
             </div>
+            <div class="input-form" ng-show="$ctrl.showFieldTwofa">
+              <label for="input-twofa">{{'GOOGLE_AUTH' | translate}}</label>
+              <input data-ng-model="$ctrl.user.twofa" id="input-twofa" name="twofa" type="text" placeholder="{{'TYPE_GOOGLE_AUTH' | translate}}">
+            </div>
             <div class="area-button txt-center">
               <button class="rounded-button" data-toggle="modal" ng-click="$ctrl.doLogin()">
                 <img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png" width="20px" alt="next" />
@@ -174,10 +212,12 @@
 
           </div>
 
-          <div class="col-lg-5 col-xs-12" style="margin: 5px 0 30px 0;">
-            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1520387055/illustracao-wallet-lunes_dhikqa.png" width="100%"
-              alt="next" />
+          <div class="col-lg-6 col-xs-12 " style="margin: 0px 0 30px 0; text-align:center;">
+            <img src="https://res.cloudinary.com/luneswallet/image/upload/v1525095648/Banner-ICO_tcagf5.png" class="img-responsive" style="margin-top:-40px; max-width:80%;">
           </div>
+
+
+          
 
           <div class="col-lg-4 col-xs-12" ng-show="false">
             <div id="counter" class="">
@@ -233,8 +273,7 @@
           </div>
 
 
-
-      </form>
+        </form>
       </div>
   </section>
   </div>
