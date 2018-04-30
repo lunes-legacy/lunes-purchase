@@ -118,17 +118,18 @@ export default {
     technology: such as creating tokens, authenticity records, and making payment processing possible through our gateway operators by using “fiat” 
     currencies and cryptocurrencies.`,
     DOUBT_01: `Is Lunes a Waves or Ethereum token?`,
-    DOUBT_01_A: `Our blockchain is a fork of the Waves code, but we have very different functionalities. So Lunes is NOT an ethereum token.`,
+    DOUBT_01_A: `Our blockchain is a fork of the Waves code, but we have very different functionalities. So Lunes is NOT a Waves token, nor Ethereum.`,
     DOUBT_02: `When does PRE_ICO start?`,
     DOUBT_02_A: `The PRE-ICO starts on February 25 and runs until March 30.`,
     DOUBT_03: `When does ICO start?`,
-    DOUBT_03_A: `ICO starts on April 15 and runs until May 20.`,
+    DOUBT_03_A: `ICO starts on April 15 and runs through May 30.`,
     DOUBT_04: `How to buy Lunes?`,
-    DOUBT_04_A: `Visit the website https://ico.lunes.io, register and log in. Just choose the desired payment A- method and send to the address of your choice. That simple.`,
+    DOUBT_04_A: `Visit the site https://ico.lunes.io, register and log in. Just choose the desired form of payment and send to the address of your choice. That simple.
+    If you still have questions: https://medium.com/@Lunes_Pt/ico-como-comprar-tokens-lunes-9189a80e1c83`,
     DOUBT_05: `What currencies will you be accepting?`,
     DOUBT_05_A: `Bitcoin, Ethereum and Litecoin.`,
-    DOUBT_06: `How do I convert my payment for Lunes in the website?`,
-    DOUBT_06_A: `There is no need to convert it. Your Lunes will be automatically converted within 20 minutes to 1 hour after payment is confirmed.`,
+    // DOUBT_06: `How do I convert my payment for Lunes in the website?`,
+    // DOUBT_06_A: `There is no need to convert it. Your Lunes will be automatically converted within 20 minutes to 1 hour after payment is confirmed.`,
     DOUBT_07: `What is the price of 1 LNS?`,
     DOUBT_07_A: `We will have 4 lots with the following prices:`,
     ITEM_07_1: '1st lot:',
@@ -158,7 +159,7 @@ export default {
     DOUBT_13_A: `No. Lunes is a utility token.`,
 
     DOUBT_14: `Is Lunes going to be listed at any exchange?`,
-    DOUBT_14_A: `Yes, but we cannot confirm any at the moment. We will negotiate with exchanges after the ICO is finished.`,
+    DOUBT_14_A: `We have already confirmed GetBTC. As the negotiations move forward and we close with other exchanges, we will notify the whole community.`,
 
     DOUBT_15: `When Lunes wallet will be released for iOS?`,
     DOUBT_15_A: `We do not have a specific date. Apple has been very bureaucratic when it comes to cryptocurrencies. Although we are fully committed to making our app 
@@ -172,8 +173,7 @@ export default {
     DOUBT_17_A: `We not have how to control of the price in the exchanges, the market dictates the rules`,
 
     DOUBT_18: `How can I create a Lunes Node?`,
-    DOUBT_18_A: `The Lunes Node (still in development) is an application in Java, compatible with any operating system which offers support. In order to your Lunes 
-    Node has the chance to mine the transactions, it is necessary for the Wallet set up in the Lunes.conf to hold at least 5,000 coins.`,
+    DOUBT_18_A: `Lunes Node (still in development) is a java application, compatible with any supported operating system. For your Lunes Node has the chance to mine the transactions, it is necessary that the wallet configured on Lunes.conf has the minimum balance of 5000 Lunes. Tutorial on how to run testnet: https://github.com/Lunes-platform/LunesNode/wiki/Testnet:-running-LunesNode`,
 
     
     FAQ_TEXT: `
