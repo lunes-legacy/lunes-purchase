@@ -10,4 +10,33 @@
   .enabled-twofa {
     font-size: 5em;
   }
+  .alert-auth {
+    font-size: 1.3em;
+    label {
+      display: block;
+      width: 100%;
+    }
+  }
+  .input-calculator {
+    text-align: center;
+  }
+}
+
+.twofa-invalid {
+  text-align: center;
+  padding: 10px;
+  border-radius: 25px;
+  background-color: #cc385a;
+  margin: 10px 0 0 0;
+}
+
+.link-google-play {
+  text-align: center;
+  margin: 50px;
+  a {
+    background-color: #32bc57;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: #fff;
+  }
 }
