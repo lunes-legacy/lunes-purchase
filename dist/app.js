@@ -83887,7 +83887,7 @@
 	
 	    if (this.currentUser) {
 	      var userTrack = { name: this.currentUser.fullname, email: this.currentUser.email, ownCoupon: this.currentUser.ownCoupon, coupon: this.currentUser.coupon, confirmIcoTerm: this.currentUser.confirmIcoTerm };
-	      if (this.currentUser.depositWallet) {
+	      if (this.currentUser.depositWallet && this.currentUser.depositWallet.BTC) {
 	        userTrack.btcAddress = this.currentUser.depositWallet.BTC.address;
 	        userTrack.ltcAddress = this.currentUser.depositWallet.LTC.address;
 	        userTrack.ethAddress = this.currentUser.depositWallet.ETH.address;
@@ -85909,4 +85909,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?v=1524631448916
+//# sourceMappingURL=app.js.map?v=1525139920323
