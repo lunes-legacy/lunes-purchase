@@ -1,6 +1,5 @@
 import LunesLib from 'lunes-lib';
 import axios from 'axios';
-import { PERIOD } from '../constants';
 import CCC from '../utils/ccc-streamer-utilities';
 import Interceptor from '../utils/interceptor';
 
@@ -12,7 +11,6 @@ class HttpService {
   }
 
   async saveTwofa(twofa, timestamp, email) {
-    console.log(twofa);
     const a = await LunesLib.users.saveTwofa({ twofa, timestamp, email });
     return a;
   }

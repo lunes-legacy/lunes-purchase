@@ -83408,22 +83408,17 @@
 	
 	var _index = __webpack_require__(689);
 	
-	var _smartlookClient = __webpack_require__(332);
-	
-	var _smartlookClient2 = _interopRequireDefault(_smartlookClient);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	var SecurityController = function () {
-	  function SecurityController($translate, HttpService, $timeout) {
+	  function SecurityController($translate, HttpService, $timeout, $window) {
 	    _classCallCheck(this, SecurityController);
 	
 	    this.HttpService = HttpService;
-	    this.currentUser = JSON.parse(localStorage.getItem(_index.STORAGE_KEY));
+	    this.$localStorage = $window.localStorage;
+	    this.currentUser = JSON.parse(this.$localStorage.getItem(_index.STORAGE_KEY));
 	    this.$timeout = $timeout;
 	    this.numberTestAuthentication = '';
 	    this.renderQRCode();
@@ -83445,7 +83440,7 @@
 	
 	              _context.next = 3;
 	              return this.HttpService.generateTwofa(this.currentUser.email, generateNewQRCode).catch(function (error) {
-	                console.log(error);
+	                _this.errorGenerateTwofa = error;
 	              });
 	
 	            case 3:
@@ -83492,6 +83487,7 @@
 	            case 0:
 	              _context2.next = 2;
 	              return this.HttpService.saveTwofa(this.numberTestAuthentication, this.currentTimestamp, this.currentUser.email).catch(function (error) {
+	                _this2.messageErrorValidateAuth = error;
 	                _this2.showErrorMsgTwofaError = true;
 	              });
 	
@@ -83501,7 +83497,7 @@
 	              if (verify && verify.twofaEnabled) {
 	                this.$timeout(function () {
 	                  _this2.currentUser.twofaEnabled = true;
-	                  localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(_this2.currentUser));
+	                  _this2.$localStorage.setItem(_index.STORAGE_KEY, JSON.stringify(_this2.currentUser));
 	                }, 200);
 	              } else {
 	                this.showErrorMsgTwofaError = true;
@@ -83525,7 +83521,7 @@
 	  return SecurityController;
 	}();
 	
-	SecurityController.$inject = ['$translate', 'HttpService', '$timeout'];
+	SecurityController.$inject = ['$translate', 'HttpService', '$timeout', '$window'];
 	
 	exports.default = SecurityController;
 
@@ -84636,8 +84632,6 @@
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
-	var _constants = __webpack_require__(689);
-	
 	var _cccStreamerUtilities = __webpack_require__(736);
 	
 	var _cccStreamerUtilities2 = _interopRequireDefault(_cccStreamerUtilities);
@@ -84670,15 +84664,14 @@
 	        while (1) {
 	          switch (_context.prev = _context.next) {
 	            case 0:
-	              console.log(twofa);
-	              _context.next = 3;
+	              _context.next = 2;
 	              return _lunesLib2.default.users.saveTwofa({ twofa: twofa, timestamp: timestamp, email: email });
 	
-	            case 3:
+	            case 2:
 	              a = _context.sent;
 	              return _context.abrupt('return', a);
 	
-	            case 5:
+	            case 4:
 	            case 'end':
 	              return _context.stop();
 	          }
@@ -85909,4 +85902,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?v=1525139920323
+//# sourceMappingURL=app.js.map?v=1525140809471
