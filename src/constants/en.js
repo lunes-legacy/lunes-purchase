@@ -83,7 +83,11 @@ export default {
     HELP_CLICK_VIEW_ADDRESS: 'Click to view address or QR Code for deposit',
     VIEW_SEED_AND_ADDRESS: 'Generate Seed and Anddress',
     CHECK_TRANSACTION_ON_BLOCK: 'Check transaction on block',
+    SUCCESS_WITHDRAW: 'Withdraw realized with success!',
     WITHDRAW: 'Withdraw',  
+    QUANTITY: 'Quantity',
+    TXID: 'Txid',
+    ADDRESS: 'Address',    
     EXCEED_LIMIT_BUY: 'You exceeded your limit buy',
     DASHBOARD: {
       NO_HISTORY: 'You have no history yet',

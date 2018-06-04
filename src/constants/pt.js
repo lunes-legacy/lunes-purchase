@@ -74,6 +74,10 @@ export default {
     QUOTATION: 'Cotação:',
     EXCEED_LIMIT_BUY: 'Você excedeu seu limite de compra',
     VIEW_SEED_AND_ADDRESS: 'Gerar seed e endereço',
+    SUCCESS_WITHDRAW: 'Saque realizado com sucesso!',
+    QUANTITY: 'Quantidade',
+    TXID: 'Txid',
+    ADDRESS: 'Endereço',
     CHECK_TRANSACTION_ON_BLOCK: 'Visualizar transação no block',
     WITHDRAW: 'Sacar',    
     DASHBOARD: {

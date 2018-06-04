@@ -94,10 +94,17 @@
     <!-- 2 STEP: SEED AND ADDRESS END -->
     
     <!-- 3 STEP: CHECK TRANSACTION START -->
-      <!-- TRANSCTIONS INFO -->
+    <div class="col-md-12">
+      <div class="transaction">
+        <h3>{{'SUCCESS_WITHDRAW' | translate}}</h3>
+        <p><span>{{'QUANTITY' | translate}}:</span> 15000.00 LUNES</p>
+        <p><span>{{'TXID' | translate}}:</span> 161cmLgavNNkWTjR61RnNqtejFeB88X6FM</p>
+        <p><span>{{'ADDRESS' | translate}}:</span> 161cmLgavNNkWTjR61RnNqtejFeB88X6FM</p>        
+      </div>
       <div class="area-button">
         <button ng-class="$ctrl.valueToDeposit ? '' : 'disabled'" class="green-button" ng-click="$ctrl.toogleShowSeedAndAddress()">{{'CHECK_TRANSACTION_ON_BLOCK' | translate}}</button>
       </div>
+    </div>
     <!-- 3 STEP: CHECK TRANSACTION END -->
 
     
