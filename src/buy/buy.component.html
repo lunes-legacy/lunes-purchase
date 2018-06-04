@@ -38,7 +38,10 @@
         <!-- CALCULATOR -->
         <div class="row">
           <div class="calculator col-lg-12">
-            <div>
+              <div class="area-button">
+              <button ng-class="$ctrl.valueToDeposit ? '' : 'disabled'" class="green-button" ng-click="$ctrl.toogleShowSeedAndAddress()">{{'VIEW_SEED_AND_ADDRESS' | translate}}</button>
+            </div>
+              <div>
               <h5>{{'CALCULATOR' | translate}}
                 <span style="cursor: pointer;" ng-click="$ctrl.showHelp()">
                   <i class="fas fa-question-circle"></i>
@@ -102,24 +105,24 @@
       <!-- QR CODE -->
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" data-step="7" data-intro="{{'HELP_CLICK_VIEW_ADDRESS' | translate}}">
         <div class="area-button" ng-show="!$ctrl.showQrCode" style="margin-top: 20px;">
-          <button ng-class="$ctrl.valueToDeposit ? '' : 'disabled'" class="primary-button" ng-click="$ctrl.toogleShowQrCode()">{{'VIEW_ADDRESS_TO_DEPOSIT' | translate}}</button>
-        </div>
-        <div class="container-qr-code col-lg-8 offset-lg-2" ng-show="$ctrl.showQrCode">
-          <div class="debosit-advice">
-            <span>
-              {{'SEND_TO_THIS_ADDRESS' | translate}} {{$ctrl.valueToDeposit}} {{$ctrl.currentCoinSelected.name}} {{'TO' | translate}}
-            </span>
-            <div class="address">
-              {{$ctrl.currentQRCode.address}}
-            </div>
-            <span>{{'DEPOSIT_CONFIRMATION_ADVICE' | translate}}</span>
+            <button ng-class="$ctrl.valueToDeposit ? '' : 'disabled'" class="primary-button" ng-click="$ctrl.toogleShowQrCode()">{{'VIEW_ADDRESS_TO_DEPOSIT' | translate}}</button>
           </div>
-          <div class="qr-code">
-            <img ng-src="{{$ctrl.currentQRCode.img}}" class="qr-code img-thumbnail img-responsive" />
+          <div class="container-qr-code col-lg-8 offset-lg-2" ng-show="$ctrl.showQrCode">
+            <div class="debosit-advice">
+              <span>
+                {{'SEND_TO_THIS_ADDRESS' | translate}} {{$ctrl.valueToDeposit}} {{$ctrl.currentCoinSelected.name}} {{'TO' | translate}}
+              </span>
+              <div class="address">
+                {{$ctrl.currentQRCode.address}}
+              </div>
+              <span>{{'DEPOSIT_CONFIRMATION_ADVICE' | translate}}</span>
+            </div>
+            <div class="qr-code">
+              <img ng-src="{{$ctrl.currentQRCode.img}}" class="qr-code img-thumbnail img-responsive" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
   </section>
 
   <!-- PRE_ICO finished -->
@@ -155,5 +158,5 @@
     </div>
 
   </section>
-</div>
-<lunesfooter />
+  </div>
+  <lunesfooter />
