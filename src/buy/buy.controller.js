@@ -61,9 +61,9 @@ class BuyController {
         userTrack.ethAddress = this.currentUser.depositWallet.ETH.address;
       }
       if (this.currentUser && this.currentUser._id) {
-        smartlookClient.identify(this.currentUser._id, userTrack );
+        smartlookClient.identify(this.currentUser._id, userTrack);
       } else {
-        smartlookClient.identify(this.currentUser.email, userTrack );
+        smartlookClient.identify(this.currentUser.email, userTrack);
       }
 
       window.Intercom('boot', {
@@ -108,8 +108,8 @@ class BuyController {
         this.currentPhaseActive = JSON.parse(JSON.stringify(phase));
         this.currentPhaseActive.price_value = Number(this.currentPhaseActive.price_value).toFixed(2);
 
-        this.percentBonus = phase.bonus*100;
-        
+        this.percentBonus = phase.bonus * 100;
+
         this.priceValueLunes = parseFloat(phase.price_value);
 
         if (this.currentUser.whitelist && phase.name === 'Whitelist') {
@@ -122,11 +122,11 @@ class BuyController {
           if (this.currentUser.couponOffer.maximum_individual_limit) {
             this.buyLimit = this.currentUser.couponOffer.maximum_individual_limit;
           }
-          if(this.currentUser.couponOffer.bonus) {
-            this.percentBonus = this.currentUser.couponOffer.bonus*100;
+          if (this.currentUser.couponOffer.bonus) {
+            this.percentBonus = this.currentUser.couponOffer.bonus * 100;
           }
         }
-  
+
         this.showLoading(false);
         return;
       }
@@ -137,8 +137,8 @@ class BuyController {
 
       phase = this.getPhaseActive();
 
-      this.percentBonus = phase.bonus*100;
-      
+      this.percentBonus = phase.bonus * 100;
+
       this.priceValueLunes = parseFloat(phase.price_value);
 
       if (this.currentUser.whitelist && phase.name === 'Whitelist') {
@@ -151,7 +151,7 @@ class BuyController {
         if (this.currentUser.couponOffer.maximum_individual_limit) {
           this.buyLimit = this.currentUser.couponOffer.maximum_individual_limit;
         }
-        if(this.currentUser.couponOffer.bonus) {
+        if (this.currentUser.couponOffer.bonus) {
           this.percentBonus = this.currentUser.couponOffer.bonus * 100;
         }
       }
@@ -187,14 +187,14 @@ class BuyController {
   }
 
   showHelp() {
-    introJs().start();  
+    introJs().start();
   }
 
   showLoading(isShow) {
     if (isShow) {
       $(`<div class="modal-backdrop"><img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442469/loading_y9ob8i.svg" /></div>`).appendTo(document.body);
     } else {
-      this.$timeout(function() {
+      this.$timeout(function () {
         $(".modal-backdrop").remove();
         if (!localStorage.getItem(INTROJS_VIEWED_KEY)) {
           localStorage.setItem(INTROJS_VIEWED_KEY, true);
@@ -253,13 +253,13 @@ class BuyController {
     } else if (this.valueToDeposit.indexOf && this.valueToDeposit.indexOf(',') !== -1) {
       this.valueToDeposit = this.valueToDeposit.replace(/[,]+/g, '').trim();
     }
-    
+
     this.checkMaxLength();
     const phase = this.getPhaseActive();
 
     let bonusRate;
     if (this.currentUser.couponOffer) {
-      
+
       if (this.currentUser.couponOffer.bonus) {
         bonusRate = this.currentUser.couponOffer.bonus;
 
@@ -294,7 +294,7 @@ class BuyController {
       calculateFinal = LunesLib.ico.buyConversion.fromLNS(bonusRate, coinAmount, currentPrice, unitPrice, coupon);
       this.valueToDeposit = calculateFinal.buyAmount;
       this.bonusAmountFinal = (parseFloat(bonusRate) * this.valueToReceive).toString();
-      
+
       this.$timeout(() => {
         this.valueToReceive = parseFloat(this.valueToReceive);
         //this.valueToDeposit = parseFloat(this.valueToDeposit);
@@ -315,7 +315,7 @@ class BuyController {
     this.valueToReceive = calculateFinal.buyAmount.toString();
     this.bonusAmountFinal = calculateFinal.bonusAmount;
 
-    
+
 
     if (this.valueToReceive > this.buyLimit) {
       coinAmount = this.buyLimit;
@@ -395,7 +395,7 @@ class BuyController {
     this.showQrCode = false;
     this.valueToDeposit = '';
     this.valueToReceive = '';
-    
+
     this.coins = this.coins.filter(coin => {
       coin.selected = false;
       if (coin.label === coinSelected.label) {
@@ -435,7 +435,12 @@ class BuyController {
 
   toogleShowSeedAndAddress() {
     alert('Este botão funciona!')
-    }
+  }
+
+  async toogleShowWithdraw() {
+    await this.showLoading(true);
+    this.showLoading(false);
+  };
 }
 
 BuyController.$inject = ['$rootScope', '$scope', 'HttpService', '$translate', '$timeout', '$state'];
