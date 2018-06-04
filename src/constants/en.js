@@ -27,7 +27,7 @@ export default {
     SIGNUP: 'Signup',
     RESET_PASSWORD: 'Reset your password',
     WHITELIST: 'Whitelist',
-    BUY: 'Buy',
+    BUY: 'Withdraw',
     DASHBOARD: 'Dashboard',
     PURCHASE_HISTORY: 'Purchase History',
     CURRENCY_SYMBOL: 'U$',

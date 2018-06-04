@@ -23,7 +23,7 @@ export default {
     SIGNUP: 'Cadastrar',
     RESET_PASSWORD: 'Esqueceu sua senha?',
     WHITELIST: 'Whitelist',
-    BUY: 'Comprar',
+    BUY: 'Sacar',
     DASHBOARD: 'Dashboard',
     PURCHASE_HISTORY: 'Histórico de Compras',
     DATE_FORMAT: 'dd-MM-yyyy',
