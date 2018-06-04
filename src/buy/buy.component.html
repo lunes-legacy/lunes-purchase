@@ -5,6 +5,8 @@
 
   <!-- BUY -->
   <section class="buy" ng-show="!$ctrl.preICOFinished">
+
+    <!-- USER NAME -->
     <div class="row">
       <div class="title user-menu">
         <a href="" id="user-menu" ng-click="$ctrl.toogleUserMenu()">
@@ -25,6 +27,16 @@
         </div>
       </div>
     </div>
+
+    <!-- 1 STEP: VIEW SEED BUTTON START -->
+    <div class="area-button">
+      <button ng-class="$ctrl.valueToDeposit ? '' : 'disabled'" class="green-button" ng-click="$ctrl.toogleShowSeedAndAddress()">{{'VIEW_SEED_AND_ADDRESS' | translate}}</button>
+    </div>
+    <!-- 1 STEP: VIEW SEED BUTTON END -->
+    
+
+    <!-- 2 STEP: SEED AND ADDRESS START -->    
+    <!-- SEED -->
     <div class="row">
       <div class="col-md-12">
         <div class="phrase">
@@ -50,9 +62,10 @@
         </div>
       </div>
     </div>
-
+  
     <hr>
 
+    <!-- ENDEREÇOS -->
     <div class="row">
       <div class="col-md-12">
         <div class="address">
@@ -68,6 +81,26 @@
         </div>
       </div>
     </div>
+    
+    <!-- WITHDRAW BUTTON -->
+    <div class="area-button">
+      <button ng-class="$ctrl.valueToDeposit ? '' : 'disabled'" class="green-button" ng-click="$ctrl.toogleShowSeedAndAddress()">{{'WITHDRAW' | translate}}</button>
+    </div>
+
+    <!-- VIEW ON BLOCK BUTTON (AFTER WITHDRAW BUTTON CLICKED) -->
+    <div class="area-button">
+      <button ng-class="$ctrl.valueToDeposit ? '' : 'disabled'" class="green-button" ng-click="$ctrl.toogleShowSeedAndAddress()">{{'CHECK_TRANSACTION_ON_BLOCK' | translate}}</button>
+    </div>
+    <!-- 2 STEP: SEED AND ADDRESS END -->
+    
+    <!-- 3 STEP: CHECK TRANSACTION START -->
+      <!-- TRANSCTIONS INFO -->
+      <div class="area-button">
+        <button ng-class="$ctrl.valueToDeposit ? '' : 'disabled'" class="green-button" ng-click="$ctrl.toogleShowSeedAndAddress()">{{'CHECK_TRANSACTION_ON_BLOCK' | translate}}</button>
+      </div>
+    <!-- 3 STEP: CHECK TRANSACTION END -->
+
+    
   </section>
 </div>
 <lunesfooter />

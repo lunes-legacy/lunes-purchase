@@ -73,6 +73,9 @@ export default {
     HELP_CLICK_VIEW_ADDRESS: 'Clique para visualizar o endereço ou QR Code para depósito',
     QUOTATION: 'Cotação:',
     EXCEED_LIMIT_BUY: 'Você excedeu seu limite de compra',
+    VIEW_SEED_AND_ADDRESS: 'Gerar seed e endereço',
+    CHECK_TRANSACTION_ON_BLOCK: 'Visualizar transação no block',
+    WITHDRAW: 'Sacar',    
     DASHBOARD: {
       NO_HISTORY: 'Você ainda não possui histórico',
       DATE: 'Data',
