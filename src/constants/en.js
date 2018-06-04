@@ -81,7 +81,9 @@ export default {
     HELP_CHECK_TOTAL: 'Check the total of Lunes that you will buy and the amount equivalent to the bonus',
     HELP_USER_MAX: 'User maximum purchase limit',
     HELP_CLICK_VIEW_ADDRESS: 'Click to view address or QR Code for deposit',
-
+    VIEW_SEED_AND_ADDRESS: 'Generate Seed and Anddress',
+    CHECK_TRANSACTION_ON_BLOCK: 'Check transaction on block',
+    WITHDRAW: 'Withdraw',  
     EXCEED_LIMIT_BUY: 'You exceeded your limit buy',
     DASHBOARD: {
       NO_HISTORY: 'You have no history yet',

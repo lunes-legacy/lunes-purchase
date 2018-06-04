@@ -1,31 +1,46 @@
 @import '../scss/base/_color';
 
-.input-calculator {
-  background-color: $darkPrimary;
-  border: 0;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 18px;
-  margin-bottom: 15px;
-  padding: 13px;
-  text-align: right;
-  width: 100%;
-  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #fff;
-    opacity: 1; /* Firefox */
-    font-size: 12px;
-  }
-
-  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-      color: #fff;
-      font-size: 12px;
-  }
-
-  &::-ms-input-placeholder { /* Microsoft Edge */
-      color: #fff;
-      font-size: 12px;
-  }
+hr {
+  border-bottom: 1px dotted #654fa4;
+  margin: 25px 0;
 }
+
+input {
+  background-color: $darkPrimary;
+  border: 1px solid #654fa4;
+  border-radius: 6px;
+  color: #4CD566;
+  font-Size: 1.1rem;
+  margin: 5px 0 0 0;
+  padding: 13px;
+  text-align: center;
+  width: 100%;
+  height: 50px;
+}
+
+.mx-2{
+  margin: 2% 0;
+}
+
+.vcenter {
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.green-button { 
+  border: 0; 
+  border-radius: 10px; 
+  padding: 11px 80px; 
+  text-align: center; 
+  background-color: #4cd566; 
+  color:  #fff; 
+  font-size: 16px; 
+  transition: all .3s ease-in-out; 
+  text-decoration: none; 
+  margin-top:2rem; 
+  margin-bottom: 2rem;
+}
+// ------------------------------------- OLD
 
 .animation-color {
   animation: colorchange 8s infinite; /* animation-name followed by duration in seconds*/
