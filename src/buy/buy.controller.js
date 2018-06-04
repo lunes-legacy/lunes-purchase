@@ -432,6 +432,10 @@ class BuyController {
     });
     this.showQrCode = !this.showQrCode;
   }
+
+  toogleShowSeedAndAddress() {
+    alert('Este botão funciona!')
+    }
 }
 
 BuyController.$inject = ['$rootScope', '$scope', 'HttpService', '$translate', '$timeout', '$state'];

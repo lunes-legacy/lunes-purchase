@@ -106,6 +106,7 @@ export default {
     EMAIL_NOT_SENT: 'Email não enviado ou não existe',
     MSG_COIN_PLACEHOLDER: `Digite um valor em {{COIN}} para calcular`,
     VIEW_ADDRESS_TO_DEPOSIT: 'Visualizar endereço de depósito',
+    VIEW_SEED_AND_ADDRESS: 'Gerar seed e endereço',
     MSG_COIN_PLACEHOLDER_LNS: 'ou digite o valor em Lunes',
     AMOUNT_MINIMUN_VALIDATION: 'A quantidade mínima de LNS deve ser maior do que zero',
     CHOOSE_YOUR_COIN_TO_BUY: 'Escolha sua moeda, digite o valor que você quer comprar e clique no botão "Visualizar endereço para depósito" para ver seu endereço de depósito.',
