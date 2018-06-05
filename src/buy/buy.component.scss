@@ -64,6 +64,24 @@ input {
   font-weight: bold;
 }
 
+.attention-modal {
+  background-color: $green;
+  border-radius: 6px;
+  color: #fff;
+  text-align: center;
+  padding: 3%;
+}
+
+.attention-modal h3{
+  color: $darkPrimary;
+  font-weight: bold;
+}
+
+.attention-modal p{
+  font-size: 1.5rem;
+  line-height: 100%
+}
+
 // ------------------------------------- OLD
 
 .animation-color {

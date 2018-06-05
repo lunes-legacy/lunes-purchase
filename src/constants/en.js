@@ -11,7 +11,7 @@ export default {
     CONFIRM_EMAIL: 'Confirm Email',
     CONFIRM_EMAIL_PLACEHOLDER: 'Type your email again',
     ALL_FIELDS_REQUIRED: 'Please, type the fields required',
-    BACK: 'click here to back',
+    BACK: 'Back',
     CONFIRM_PASSWORD: 'Confirm Password',
     CONFIRM_PASSWORD_PLACEHOLDER: 'Type your password again',
     COUPON: 'Do you have any coupon code?',
@@ -89,6 +89,8 @@ export default {
     TXID: 'Txid',
     ADDRESS: 'Address',    
     EXCEED_LIMIT_BUY: 'You exceeded your limit buy',
+    ATTENTION: 'ATTENTION',
+    SEED_ATTENTION: 'Write down your seed in a safe place. Lose your private key might make you lose all the tokens you have.',
     DASHBOARD: {
       NO_HISTORY: 'You have no history yet',
       DATE: 'Date',

@@ -41,7 +41,8 @@ class BuyController {
       loading: false,
       step1: true, // GENERATE SEED
       step2: false, //SHOW SEED AND ADDRESS
-      step3: false // TRANSACTIONS INFO
+      step3: false, //CONFIRM    
+      step4: false // TRANSACTIONS INFO
     }
     this.userAddressInfo = {}; //SEED AND ADDRESS
     this.transaction = {};
@@ -92,9 +93,10 @@ class BuyController {
   checkWithdraw() {
     try {
       const withdraw = localStorage.getItem('WITHDRAW_STATUS');
+      // const withdraw = localStorage.removeItem('WITHDRAW_STATUS');      
       if (withdraw === 'true' || withdraw === true) {
         this.getTransaction();
-        this.changeStep('step3');
+        this.changeStep('step4');
         return true;
       } 
 
@@ -108,8 +110,9 @@ class BuyController {
   setWithdraw() {
     // GET Withdraw AND SET TRUE OR FALSE INTO this.withdraw
     localStorage.setItem('WITHDRAW_STATUS', true); //TEMP
-    this.changeStep('step3');
-    return this.getTransaction();
+    this.withdraw = true;
+    this.getTransaction();
+    this.changeStep('step4');
   }
 
   getTransaction() {
@@ -147,8 +150,11 @@ class BuyController {
     } else {
       this.screens.step1 = false;      
       this.screens.step2 = false;
-      this.screens.step3 = true;            
+      this.screens.step3 = true;
+      this.screens.step4 = true;                              
     }
+    console.log(this.screens)
+    
   }
 
   async getBuyHistory() {

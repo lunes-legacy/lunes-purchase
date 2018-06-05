@@ -30,14 +30,14 @@
 
     <!-- 1 STEP: VIEW SEED BUTTON START -->
     <div class="area-button" ng-show="$ctrl.screens.step1 && !$ctrl.withdraw">
-      <button name="step2" ng-class="$ctrl.valueToDeposit ? '' : 'disabled'" class="green-button" ng-click="$ctrl.getSeed()">{{'VIEW_SEED_AND_ADDRESS' | translate}}</button>
+      <button name="step2" class="green-button" ng-click="$ctrl.getSeed()">{{'VIEW_SEED_AND_ADDRESS' | translate}}</button>
     </div>
     <!-- 1 STEP: VIEW SEED BUTTON END -->
-
+    
 
     <!-- 2 STEP: SEED AND ADDRESS START -->
     <!-- SEED -->
-    <div ng-show="$ctrl.screens.step2">
+    <div ng-show="$ctrl.screens.step2 && !$ctrl.withdraw">
       <div class="row">
         <div class="col-md-12">
           <div class="phrase">
@@ -85,13 +85,26 @@
 
       <!-- WITHDRAW BUTTON -->
       <div class="area-button" ng-show="!$ctrl.withdraw">
-        <button ng-class="$ctrl.valueToDeposit ? '' : 'disabled'" class="green-button" ng-click="$ctrl.setWithdraw()">{{'WITHDRAW' | translate}}</button>
+        <button class="green-button" ng-click="$ctrl.changeStep('step3')">{{'WITHDRAW' | translate}}</button>
       </div>
     </div>
     <!-- 2 STEP: SEED AND ADDRESS END -->
 
-    <!-- 3 STEP: CHECK TRANSACTION START -->
-    <div class="col-md-12" ng-show="$ctrl.screens.step3">
+    <!-- 3 STEP: CONFIRM START -->
+    <div ng-show="$ctrl.screens.step3 && !$ctrl.withdraw">
+      <div class="attention-modal">
+        <h3>{{'ATTENTION' | translate}}</h3>
+        <p>{{'SEED_ATTENTION' | translate}}</p>
+      </div>
+      <div class="area-button" ng-show="!$ctrl.withdraw">
+        <button class="green-button mx-2" ng-click="$ctrl.changeStep('step2')">{{'BACK' | translate}}</button>      
+        <button class="green-button mx-2" ng-click="$ctrl.setWithdraw()">{{'WITHDRAW' | translate}}</button>
+      </div>
+    </div>
+    <!-- 3 STEP: CONFIRM END -->
+
+    <!-- 4 STEP: CHECK TRANSACTION START -->
+    <div class="col-md-12" ng-show="$ctrl.screens.step4 && $ctrl.withdraw">
       <div class="transaction">
         <h3>{{'SUCCESS_WITHDRAW' | translate}}</h3>
         <p>
@@ -102,10 +115,10 @@
           <span>{{'ADDRESS' | translate}}:</span> {{ $ctrl.transaction.address }}</p>
       </div>
       <div class="area-button">
-        <button ng-class="$ctrl.valueToDeposit ? '' : 'disabled'" class="green-button" ng-click="$ctrl.toogleShowSeedAndAddress()">{{'CHECK_TRANSACTION_ON_BLOCK' | translate}}</button>
+        <button  class="green-button" ng-click="$ctrl.toogleShowSeedAndAddress()">{{'CHECK_TRANSACTION_ON_BLOCK' | translate}}</button>
       </div>
     </div>
-    <!-- 3 STEP: CHECK TRANSACTION END -->
+    <!-- 4 STEP: CHECK TRANSACTION END -->
 
   </section>
 </div>
