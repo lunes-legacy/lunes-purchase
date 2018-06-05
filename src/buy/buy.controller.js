@@ -89,7 +89,8 @@ class BuyController {
 
   // VERIFY WITHDRAW
   getWithdraw() {
-    let withdraw = JSON.parse(localStorage.getItem(WITHDRAW_STATUS));
+    let withdraw = false;
+    // let withdraw = JSON.parse(localStorage.getItem(WITHDRAW_STATUS));
     // localStorage.setItem('lunes.phase', JSON.stringify(this.currentPhase));
     if (withdraw === true) {
       for (let step in this.screens) {
@@ -104,15 +105,12 @@ class BuyController {
 
   // GENERATE SEED AND ADDRESS
 
-  
-
   // CHANGE STEP
   changeStep(step) {
     if (!this.withdraw) {
       for (let step in this.screens) {
         this.screens[step] = false
       }
-
       this.screens[step.target.name] = true;
     } else {
       this.screens.step1 = false;      
