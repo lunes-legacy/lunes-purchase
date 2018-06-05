@@ -116,7 +116,7 @@ class HttpService {
   async getBalanceLunes(coin, currentUser) {
     try {
       const address = currentUser.wallet.coins[0].addresses[0].address;
-      let balance = await LunesLib.coins.bitcoin.getBalance( { address }, currentUser.accessToken);
+      let balance = await LunesLib.coins.bitcoin.getBalance({ address }, currentUser.accessToken);
       return {
         COIN: 'LNS',
         CURRENTPRICE: balance
@@ -130,7 +130,7 @@ class HttpService {
     const toSymbol = this.$translate.instant('CURRENCY_USER');
     const currencySymbol = this.$translate.instant('CURRENCY_SYMBOL');
     const priceData = await axios.get(`https://braziliex.com/api/v1/public/ticker/eth_usd`, {});
-    const price =  parseFloat(priceData.data.last).toFixed(2);
+    const price = parseFloat(priceData.data.last).toFixed(2);
     return {
       COIN: 'ETH',
       CURRENTPRICE: `${currencySymbol} ${price}`,
@@ -178,6 +178,22 @@ class HttpService {
     };
     return ticker;
   }
+
+  getSeedWord() {
+    let data = LunesLib.services.wallet.mnemonic.generateMnemonic();
+    return data;
+  }
+
+  getAddress(seeds) {
+    let data = LunesLib
+      .services
+      .wallet
+      .lns
+      .wallet
+      .newAddress(seeds, LunesLib.networks.LNSTESTNET);
+
+    return data;
+  } 
 }
 
 HttpService.$inject = ['$http', '$translate'];
