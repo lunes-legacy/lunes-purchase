@@ -36,15 +36,16 @@ class BuyController {
     this.showQrCode = false;
     this.msgCoinPlaceholder = $translate.instant('MSG_COIN_PLACEHOLDER', { COIN: this.currentCoinSelected.name });
     this.msgCoinPlaceholderLNS = $translate.instant('MSG_COIN_PLACEHOLDER_LNS');
-    // this.withdraw = JSON.parse(localStorage.getItem(WITHDRAW_STATUS));
-    this.withdraw = this.getWithdraw();
-
+     
     this.screens = {
       loading: false,
       step1: true, // Gerar Seed
       step2: false, //Seed Gerada
       step3: false // Transação
     }
+
+    this.transaction = {};
+    this.withdraw = this.checkWithdraw();
 
     this.getBalanceCoin('BTC').catch(error => {
       console.log(error);
@@ -88,30 +89,50 @@ class BuyController {
   }
 
   // VERIFY WITHDRAW
-  getWithdraw() {
-    let withdraw = false;
-    // let withdraw = JSON.parse(localStorage.getItem(WITHDRAW_STATUS));
-    // localStorage.setItem('lunes.phase', JSON.stringify(this.currentPhase));
-    if (withdraw === true) {
-      for (let step in this.screens) {
-        this.screens[step] = false
-      }
-      this.screens.step3 = true;
-      return true;
-    }
+  checkWithdraw() {
+    try {
+      const withdraw = localStorage.getItem('WITHDRAW_STATUS');
+      if (withdraw === 'true' || withdraw === true) {
+        console.log('screens', this.screens)
+        this.getTransaction();
+        this.changeStep('step3');
+        return true;
+      } 
 
-    return false;
+      return false;
+    } catch (error) {
+
+      return false;
+    }
+  }
+
+  setWithdraw() {
+    localStorage.setItem('WITHDRAW_STATUS', true);
+    this.changeStep('step3');
+    return this.getTransaction();
+  }
+
+  getTransaction() {
+    let transaction = {
+      quantity: 15000.00,
+      txid: '161cmLgavNNkWTjR61RnNqtejFeB88X6FM',
+      address: '161cmLgavNNkWTjR61RnNqtejFeB88X6FM'
+    }
+    this.transaction = transaction;
   }
 
   // GENERATE SEED AND ADDRESS
+  getSeed(step) {
+    this.changeStep('step2')
+  }
 
   // CHANGE STEP
   changeStep(step) {
     if (!this.withdraw) {
       for (let step in this.screens) {
-        this.screens[step] = false
+        this.screens[step] = false;
       }
-      this.screens[step.target.name] = true;
+      this.screens[step] = true;
     } else {
       this.screens.step1 = false;      
       this.screens.step2 = false;
