@@ -39,11 +39,11 @@ class BuyController {
      
     this.screens = {
       loading: false,
-      step1: true, // Gerar Seed
-      step2: false, //Seed Gerada
-      step3: false // Transação
+      step1: true, // GENERATE SEED
+      step2: false, //SHOW SEED AND ADDRESS
+      step3: false // TRANSACTIONS INFO
     }
-
+    this.userAddressInfo = {}; //SEED AND ADDRESS
     this.transaction = {};
     this.withdraw = this.checkWithdraw();
 
@@ -93,7 +93,6 @@ class BuyController {
     try {
       const withdraw = localStorage.getItem('WITHDRAW_STATUS');
       if (withdraw === 'true' || withdraw === true) {
-        console.log('screens', this.screens)
         this.getTransaction();
         this.changeStep('step3');
         return true;
@@ -107,12 +106,14 @@ class BuyController {
   }
 
   setWithdraw() {
-    localStorage.setItem('WITHDRAW_STATUS', true);
+    // GET Withdraw AND SET TRUE OR FALSE INTO this.withdraw
+    localStorage.setItem('WITHDRAW_STATUS', true); //TEMP
     this.changeStep('step3');
     return this.getTransaction();
   }
 
   getTransaction() {
+    // GET TRANSACTION INFO AFTER Withdraw CLICK
     let transaction = {
       quantity: 15000.00,
       txid: '161cmLgavNNkWTjR61RnNqtejFeB88X6FM',
@@ -123,6 +124,16 @@ class BuyController {
 
   // GENERATE SEED AND ADDRESS
   getSeed(step) {
+    // GET SEED INFO AND SET INTO this.userAddressInfo
+    this.userAddressInfo = {
+      seed: {
+        group1: 'fantasy deliver afford',
+        group2: 'disorder primary protect',
+        group3: 'garbage they defense',
+        group4: 'paddle alert reveal',
+      },
+      address: '161cmLgavNNkWTjR61RnNqtejFeB88X6FM'
+    }
     this.changeStep('step2')
   }
 
