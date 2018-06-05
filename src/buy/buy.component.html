@@ -29,77 +29,77 @@
     </div>
 
     <!-- 1 STEP: VIEW SEED BUTTON START -->
-    <div class="area-button">
-      <button ng-class="$ctrl.valueToDeposit ? '' : 'disabled'" class="green-button" ng-click="$ctrl.toogleShowSeedAndAddress()">{{'VIEW_SEED_AND_ADDRESS' | translate}}</button>
+    <div class="area-button" ng-show="$ctrl.screens.step1 && !$ctrl.withdraw">
+      <button name="step2" ng-class="$ctrl.valueToDeposit ? '' : 'disabled'" class="green-button" ng-click="$ctrl.changeStep($event, 2)">{{'VIEW_SEED_AND_ADDRESS' | translate}}</button>
     </div>
     <!-- 1 STEP: VIEW SEED BUTTON END -->
-    
 
-    <!-- 2 STEP: SEED AND ADDRESS START -->    
+
+    <!-- 2 STEP: SEED AND ADDRESS START -->
     <!-- SEED -->
-    <div class="row">
-      <div class="col-md-12">
-        <div class="phrase">
-          <h6>Frases de Backup</h6>
-          <div class="row mx-2">
-            <div class="col-md-3 text-center">
-              <h6 class="mx-2">1º</h6>
-              <input disabled type="text" value="fantasy deliver afford">
-            </div>
-            <div class="col-md-3 text-center">
-              <h6 class="mx-2">2º</h6>
-              <input disabled type="text" value="disorder primary protect">
-            </div>
-            <div class="col-md-3 text-center">
-              <h6 class="mx-2">3º</h6>
-              <input disabled type="text" value="garbage they defense">
-            </div>
-            <div class="col-md-3 text-center">
-              <h6 class="mx-2">4º</h6>
-              <input disabled type="text" value="paddle alert reveal">    
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <hr>
-
-    <!-- ENDEREÇOS -->
-    <div class="row">
-      <div class="col-md-12">
-        <div class="address">
-          <h6>Endereço</h6>
-          <div class="row">
-            <div class="col-sm-12 col-md-1 vcenter">
-              <h5>LNS</h5>
-            </div>
-            <div class="col-sm-12 col-md-11">
-              <input disabled type="text" value="161cmLgavNNkWTjR61RnNqtejFeB88X6FM">
+    <div ng-show="$ctrl.screens.step2">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="phrase">
+            <h6>Frases de Backup</h6>
+            <div class="row mx-2">
+              <div class="col-md-3 text-center">
+                <h6 class="mx-2">1º</h6>
+                <input disabled type="text" value="fantasy deliver afford">
+              </div>
+              <div class="col-md-3 text-center">
+                <h6 class="mx-2">2º</h6>
+                <input disabled type="text" value="disorder primary protect">
+              </div>
+              <div class="col-md-3 text-center">
+                <h6 class="mx-2">3º</h6>
+                <input disabled type="text" value="garbage they defense">
+              </div>
+              <div class="col-md-3 text-center">
+                <h6 class="mx-2">4º</h6>
+                <input disabled type="text" value="paddle alert reveal">
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    
-    <!-- WITHDRAW BUTTON -->
-    <div class="area-button">
-      <button ng-class="$ctrl.valueToDeposit ? '' : 'disabled'" class="green-button" ng-click="$ctrl.toogleShowWithdraw()">{{'WITHDRAW' | translate}}</button>
-    </div>
 
-    <!-- VIEW ON BLOCK BUTTON (AFTER WITHDRAW BUTTON CLICKED) -->
-    <div class="area-button">
-      <button ng-class="$ctrl.valueToDeposit ? '' : 'disabled'" class="green-button" ng-click="$ctrl.toogleShowSeedAndAddress()">{{'CHECK_TRANSACTION_ON_BLOCK' | translate}}</button>
+      <hr>
+
+      <!-- ENDEREÇOS -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="address">
+            <h6>Endereço</h6>
+            <div class="row">
+              <div class="col-sm-12 col-md-1 vcenter">
+                <h5>LNS</h5>
+              </div>
+              <div class="col-sm-12 col-md-11">
+                <input disabled type="text" value="161cmLgavNNkWTjR61RnNqtejFeB88X6FM">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WITHDRAW BUTTON -->
+      <div class="area-button" ng-show="!$ctrl.withdraw">
+        <button name="step3" ng-class="$ctrl.valueToDeposit ? '' : 'disabled'" class="green-button" ng-click="$ctrl.changeStep($event, 2)">{{'WITHDRAW' | translate}}</button>
+      </div>
     </div>
     <!-- 2 STEP: SEED AND ADDRESS END -->
-    
+
     <!-- 3 STEP: CHECK TRANSACTION START -->
-    <div class="col-md-12">
+    <div class="col-md-12" ng-show="$ctrl.screens.step3">
       <div class="transaction">
         <h3>{{'SUCCESS_WITHDRAW' | translate}}</h3>
-        <p><span>{{'QUANTITY' | translate}}:</span> 15000.00 LUNES</p>
-        <p><span>{{'TXID' | translate}}:</span> 161cmLgavNNkWTjR61RnNqtejFeB88X6FM</p>
-        <p><span>{{'ADDRESS' | translate}}:</span> 161cmLgavNNkWTjR61RnNqtejFeB88X6FM</p>        
+        <p>
+          <span>{{'QUANTITY' | translate}}:</span> 15000.00 LUNES</p>
+        <p>
+          <span>{{'TXID' | translate}}:</span> 161cmLgavNNkWTjR61RnNqtejFeB88X6FM</p>
+        <p>
+          <span>{{'ADDRESS' | translate}}:</span> 161cmLgavNNkWTjR61RnNqtejFeB88X6FM</p>
       </div>
       <div class="area-button">
         <button ng-class="$ctrl.valueToDeposit ? '' : 'disabled'" class="green-button" ng-click="$ctrl.toogleShowSeedAndAddress()">{{'CHECK_TRANSACTION_ON_BLOCK' | translate}}</button>
@@ -107,7 +107,6 @@
     </div>
     <!-- 3 STEP: CHECK TRANSACTION END -->
 
-    
   </section>
 </div>
 <lunesfooter />
