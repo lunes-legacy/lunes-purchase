@@ -37,6 +37,8 @@ class BuyController {
     this.msgCoinPlaceholder = $translate.instant('MSG_COIN_PLACEHOLDER', { COIN: this.currentCoinSelected.name });
     this.msgCoinPlaceholderLNS = $translate.instant('MSG_COIN_PLACEHOLDER_LNS');
 
+    this.checkSeed();
+
     this.screens = {
       loading: false,
       logout: false,
@@ -50,6 +52,8 @@ class BuyController {
     this.transaction = {}
     this.withdraw = false;
 
+    this.checkWithdraw();
+    
     this.getBalanceCoin('BTC').catch(error => {
       console.log(error);
     });
@@ -68,8 +72,6 @@ class BuyController {
     });
     this.showLoading(true);
     
-    this.checkWithdraw();
-    this.checkSeed();
 
     if (this.currentUser) {
       const userTrack = { name: this.currentUser.fullname, email: this.currentUser.email, ownCoupon: this.currentUser.ownCoupon, coupon: this.currentUser.coupon, confirmIcoTerm: this.currentUser.confirmIcoTerm };
@@ -119,7 +121,7 @@ class BuyController {
 
   async setWithdraw() {
     try {
-      this.changeStep('loading');
+      this.showLoading(true);
 
       let updateAddress = await this.HttpService.updateAddress(this.userAddressInfo.address, this.currentUser.accessToken);
 
@@ -128,6 +130,7 @@ class BuyController {
 
         if (sendBalance && sendBalance.status === 'SUCCESS') {
           if (sendBalance.data.txID) {
+            this.showLoading(false);
             this.transaction = withdrawInfo.data;
             this.withdraw = true;
             localStorage.removeItem('SEED');
@@ -135,19 +138,23 @@ class BuyController {
             
             return true;
           } else {
+            this.showLoading(false);            
             this.changeStep('step1')
 
             return false;
           }       
         } else {
+          this.showLoading(false);    
           this.changeStep('step1')   
           return false;       
         }
       } else {
+        this.showLoading(false);    
         this.changeStep('step1') 
       }
     } catch (error) {
       console.log(error)
+      this.showLoading(false);
       this.changeStep('step1')
 
       return false;
@@ -156,10 +163,13 @@ class BuyController {
 
    async checkSeed() {
     try {
-      let seed = localStorage.getItem('SEED');
+      let seed = await localStorage.getItem('SEED');
       let withdraw = await this.checkWithdraw();
-
+      console.log(seed)
+      console.log(withdraw)
+      
       if (seed && !withdraw) {
+        this.changeStep('step2')
         this.mountSeed();
       } else if(!seed && withdraw) {
         this.changeStep('step4')
