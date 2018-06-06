@@ -113,7 +113,7 @@
       </div>
 
       <!-- WITHDRAW BUTTON -->
-      <div class="area-button" ng-show="!$ctrl.withdraw">
+      <div class="area-button" ng-show="!$ctrl.withdraw && $ctrl.totalLns > 0.00000000">
         <button class="primary-button" ng-click="$ctrl.changeStep('step3')">{{'WITHDRAW' | translate}}</button>
       </div>
     </div>

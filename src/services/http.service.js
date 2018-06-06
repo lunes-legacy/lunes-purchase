@@ -125,7 +125,7 @@ class HttpService {
       throw new Error(error);
     }
   }
-
+  
   async getBalanceCoinETH(coin) {
     const toSymbol = this.$translate.instant('CURRENCY_USER');
     const currencySymbol = this.$translate.instant('CURRENCY_SYMBOL');
@@ -195,17 +195,43 @@ class HttpService {
     return data;
   } 
 
+  async updateAddress(address, accessToken) {
+    try {
+
+      const updateData = { coin: 'LNS', address: address }
+
+      let updateAddressResult = await LunesLib.coins.services.wallet.addAddress(
+        updateData,
+        accessToken
+      );
+      console.log(address)
+      return updateAddressResult
+    } catch (error) 
+    {
+      console.log(error);
+      return error;
+    }
+  }
+
+  async sendBalance(accessToken) {
+    try {
+      console.log(accessToken)
+      let data = await LunesLib.ico.sendUserBalance(accessToken);
+
+      return data;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
+
   async getWithdraw(accessToken) {
     let data = await LunesLib.ico.verifyUserWithdraw(accessToken);
 
     return data;
   }
 
-  setWithdraw(accessToken) {
-    let data = LunesLib.ico.sendUserBalance(accessToken);
 
-    return data;
-  }
 }
 
 HttpService.$inject = ['$http', '$translate'];

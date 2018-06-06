@@ -50,9 +50,6 @@ class BuyController {
     this.transaction = {}
     this.withdraw = false;
 
-    this.checkWithdraw();
-    this.checkSeed();
-
     this.getBalanceCoin('BTC').catch(error => {
       console.log(error);
     });
@@ -70,6 +67,9 @@ class BuyController {
       console.log(error);
     });
     this.showLoading(true);
+    
+    this.checkWithdraw();
+    this.checkSeed();
 
     if (this.currentUser) {
       const userTrack = { name: this.currentUser.fullname, email: this.currentUser.email, ownCoupon: this.currentUser.ownCoupon, coupon: this.currentUser.coupon, confirmIcoTerm: this.currentUser.confirmIcoTerm };
@@ -97,7 +97,9 @@ class BuyController {
   // VERIFY WITHDRAW
   async checkWithdraw() {
     try {
+      let balance = await this.getLnsBalance();
       let withdrawInfo = await this.HttpService.getWithdraw(this.currentUser.accessToken);
+
       if (withdrawInfo.data.txID) {
         this.transaction = withdrawInfo.data;
         this.withdraw = true;
@@ -115,22 +117,42 @@ class BuyController {
     }
   }
 
-  // setWithdraw() {
-  //   try {
-  //     this.changeStep('loading');
-  //     let withdraw = this.HttpService.sendUserBalance(this.currentUser.accessToken).then( function(res) {
-  //       if (res.data.txID) {
-  //         this.transaction = res.data
-  //         this.changeStep('step4');
+  async setWithdraw() {
+    try {
+      this.changeStep('loading');
 
-  //         return true;
-  //       }
-  //       return false;  
-  //     });
-  //   } catch (error) {
-      
-  //   }
-  // }
+      let updateAddress = await this.HttpService.updateAddress(this.userAddressInfo.address, this.currentUser.accessToken);
+
+      if (updateAddress && updateAddress.status === 'SUCCESS') {
+        let sendBalance = await this.HttpService.sendBalance(this.currentUser.accessToken);
+
+        if (sendBalance && sendBalance.status === 'SUCCESS') {
+          if (sendBalance.data.txID) {
+            this.transaction = withdrawInfo.data;
+            this.withdraw = true;
+            localStorage.removeItem('SEED');
+            this.changeStep('step4')
+            
+            return true;
+          } else {
+            this.changeStep('step1')
+
+            return false;
+          }       
+        } else {
+          this.changeStep('step1')   
+          return false;       
+        }
+      } else {
+        this.changeStep('step1') 
+      }
+    } catch (error) {
+      console.log(error)
+      this.changeStep('step1')
+
+      return false;
+    }
+  }
 
    async checkSeed() {
     try {
@@ -209,6 +231,24 @@ class BuyController {
   }
 
   // END -----------------
+
+  async getLnsBalance() {
+    if (!this.currentUser) {
+      this.totalLns = 0;
+      return 0;
+    }
+    const history = await LunesLib.ico.buyHistory(this.currentUser.email, this.currentUser.accessToken, 1)
+      .catch(err => console.log(err));
+
+    const totalLns = history.reduce((total, item) => {
+      return total + parseFloat(item.credit_value) + parseFloat(item.bonus_value);
+    }, 0);
+
+    this.totalLns = totalLns.toFixed(8);
+    // this.totalLns = 0.00000000;
+
+    return this.totalLns;
+  }
 
   async getBuyHistory() {
     const buyHistory = await this.HttpService.buyHistory(this.currentUser.email, this.currentUser.accessToken);
