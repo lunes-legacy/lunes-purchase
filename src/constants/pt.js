@@ -42,7 +42,7 @@ export default {
     BUY_LIMIT_PHASE: 'Compra limite nessa fase:',
     SIGNUP_SUCCESSFULY: 'Cadastro Realizado',
     REDIRECTING: 'redirecionando para o login...',
-    LOGOUT: 'sair',
+    LOGOUT: 'Sair',
     AUTHENTICATE_INVALID: 'Autenticação Inválida',
     AN_ERROR_CREATE_ACCOUNT: 'Um erro ocorreu ao criar a conta',
     MSG_BALANCE_DEPOSITED: 'Todo saldo depositado nesse endereço será automaticamente convertido em Lunes no dia 26/02/2018 às 23:00',
@@ -81,7 +81,8 @@ export default {
     CHECK_TRANSACTION_ON_BLOCK: 'Visualizar transação no block',
     WITHDRAW: 'Sacar',
     ATTENTION: 'ATENÇÃO',
-    SEED_ATTENTION: 'Anote a seed em um local seguro. Perder sua chave privada pode ocasionar em perda total de seus tokens.',    
+    SEED_ATTENTION: 'Anote a seed em um local seguro. Perder sua chave privada pode ocasionar em perda total de seus tokens.',
+    LOGOUT_ATTENTION: 'Enquanto o saque não for feito, outra seed e endereço serão gerados após o logout ter sido feito. Caso já tenha feito o saque, tenha certeza de que a seed e o endereço foram anotados e armazenados em um local seguro, pois não será possível rever.',  
     DASHBOARD: {
       NO_HISTORY: 'Você ainda não possui histórico',
       DATE: 'Data',
