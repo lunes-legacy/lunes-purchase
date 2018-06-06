@@ -1,0 +1,100 @@
+<div class="container-twofa">
+	<div class="row-generate">
+		<div class="column-6">
+			<h1>Hello, please, scan the code below</h1>	
+			<div class="wrap-qr">
+				<img src="" class="qrcode-generate">
+			</div>
+		</div>
+		<div class="column-6">
+			<h2>And so, type the 6 characters code below</h2>
+			<input type="text" class="token-generate">
+			<button class="btn-generate primary-button">Confirm</button>
+		</div>
+	</div>
+
+	<br/>
+	<hr/>
+	<br/>
+
+	<div class="row-verify">
+		<h1>Type the 6 characters code below</h1>
+		<input type="text" class="token-verify">
+		<button class="btn-verify primary-button">Verify</button>
+	</div>
+</div>
+
+<style type="text/css">
+	.container-twofa {
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		width: 100%;
+		flex-flow: wrap;
+	}
+	.row-verify {
+		width: 100%;	
+	}
+	.row-generate {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		flex-flow: nowrap;
+	}
+	.column-6 {
+		width: 50%;
+	}
+</style>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		var email = 'marcelosmtp@gmail.com';
+		var timestamp;
+		var twofa;
+
+		var qrcodeEl        = document.querySelector('.qrcode-generate');
+		var tokenGenerateEl = document.querySelector('.token-generate');
+		var btnGenerateEl   = document.querySelector('.btn-generate');
+		var tokenVerifyEl   = document.querySelector('.token-verify');
+		var btnVerifyEl     = document.querySelector('.btn-verify');
+
+		// $.post(
+		// 	'https://api-stage.lunes.io/api/auth2step/generate',
+		// 	{ email:email, generateNew:true },
+		// 	function(response)
+		// {
+		// 	localStorage.setItem('generate',JSON.stringify(response));
+		// 	console.log("GENERATE::::", response);
+		// 	// qrcodeEl.setAttribute('src', response.qrcode);
+		// });
+		qrcodeEl.setAttribute('src', 'data:image/png;base64,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');
+
+		btnGenerateEl.onclick = function(){
+			var generate = JSON.parse(localStorage.getItem('generate'));
+			timestamp    = generate.timestamp;
+			twofa        = tokenGenerateEl.value;
+			$.post(
+				'https://api-stage.lunes.io/api/auth2step/save-auth',
+				{ email: email,timestamp:timestamp,twofa:twofa },
+				function(response)
+			{
+				console.warn('SAVE-AUTH:::', response);
+			});
+		}
+
+
+		btnVerifyEl.onclick = function(){
+			twofa = tokenVerifyEl.value;
+			$.post(
+				'https://api-stage.lunes.io/api/auth2step/verify',
+				{email: email, twofa: twofa},
+				function(response)
+			{
+				console.warn("VERIFY:::::", response);
+			});
+		}
+	}
+</script>

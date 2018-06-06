@@ -1,0 +1,1 @@
+Se estiver levando erro de CORS na requisição, falar com Marcelo ou Wandyer, pode ser necessário colocar na lunes-server a url do projeto atual.
