@@ -53,7 +53,7 @@ class BuyController {
     this.withdraw = false;
 
     this.checkWithdraw();
-    
+
     this.getBalanceCoin('BTC').catch(error => {
       console.log(error);
     });
@@ -71,7 +71,7 @@ class BuyController {
       console.log(error);
     });
     this.showLoading(true);
-    
+
 
     if (this.currentUser) {
       const userTrack = { name: this.currentUser.fullname, email: this.currentUser.email, ownCoupon: this.currentUser.ownCoupon, coupon: this.currentUser.coupon, confirmIcoTerm: this.currentUser.confirmIcoTerm };
@@ -112,7 +112,7 @@ class BuyController {
 
       return false;
 
-    } catch (error) { 
+    } catch (error) {
       console.log(error);
       this.withdraw = false;
       return false;
@@ -135,22 +135,22 @@ class BuyController {
             this.withdraw = true;
             localStorage.removeItem('SEED');
             this.changeStep('step4')
-            
+
             return true;
           } else {
-            this.showLoading(false);            
+            this.showLoading(false);
             this.changeStep('step1')
 
             return false;
-          }       
+          }
         } else {
-          this.showLoading(false);    
-          this.changeStep('step1')   
-          return false;       
+          this.showLoading(false);
+          this.changeStep('step1')
+          return false;
         }
       } else {
-        this.showLoading(false);    
-        this.changeStep('step1') 
+        this.showLoading(false);
+        this.changeStep('step1')
       }
     } catch (error) {
       console.log(error)
@@ -161,26 +161,26 @@ class BuyController {
     }
   }
 
-   async checkSeed() {
+  async checkSeed() {
     try {
       let seed = await localStorage.getItem('SEED');
       let withdraw = await this.checkWithdraw();
       console.log(seed)
       console.log(withdraw)
-      
+
       if (seed && !withdraw) {
-        this.changeStep('step2')
+        await this.changeStep('step2')
         this.mountSeed();
-      } else if(!seed && withdraw) {
-        this.changeStep('step4')
+      } else if (!seed && withdraw) {
+        await this.changeStep('step4')
       } else {
-        this.changeStep('step1')
+        await this.changeStep('step1')
       }
 
     } catch (error) {
-      console.log(error);      
-      this.changeStep('step1')
-    }    
+      console.log(error);
+      await this.changeStep('step1')
+    }
   }
 
   // GENERATE SEED AND ADDRESS
@@ -216,12 +216,12 @@ class BuyController {
       }
 
     } catch (error) {
-      console.log(error);      
+      console.log(error);
       let data = this.HttpService.getSeedWord();
       localStorage.setItem('SEED', JSON.stringify(data));
-      
+
       return data;
-    }    
+    }
   }
 
   // CHANGE STEP
@@ -237,7 +237,7 @@ class BuyController {
       this.screens.step2 = false;
       this.screens.step3 = false;
       this.screens.step4 = true;
-    }    
+    }
   }
 
   // END -----------------
