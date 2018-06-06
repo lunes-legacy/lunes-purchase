@@ -18,6 +18,8 @@ class DashboardController {
     this.showUserMenu = false;
     this.getHistory();
     this.getProcessedBalanceUser();
+    this.seed = this.checkSeed();
+    this.logoutModal = false;
 
     if (this.currentUser) {
       const userTrack = { name: this.currentUser.fullname, email: this.currentUser.email, ownCoupon: this.currentUser.ownCoupon, coupon: this.currentUser.coupon, confirmIcoTerm: this.currentUser.confirmIcoTerm };
@@ -41,6 +43,22 @@ class DashboardController {
 
     }
       
+  }
+
+  checkSeed() {
+    try {
+      let seed = localStorage.getItem('SEED');
+      if (seed) {
+        return true;
+      }
+      return false;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  showLogoutModal() {
+    this.logoutModal = !this.logoutModal
   }
 
   async getProcessedBalanceUser() {
@@ -84,6 +102,7 @@ class DashboardController {
   }
 
   logout() {
+    localStorage.removeItem('SEED');
     localStorage.removeItem(STORAGE_KEY);
   }
 

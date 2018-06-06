@@ -41,7 +41,7 @@ export default {
     BONUS: 'Bonus',
     SIGNUP_SUCCESSFULY: 'Sucessful Registration',
     REDIRECTING: 'redirecting to login...',
-    LOGOUT: 'logout',
+    LOGOUT: 'Logout',
     AUTHENTICATE_INVALID: 'Invalid Authentication',
     BUY_LIMIT_PHASE: 'Buy limit for this phase:',
     QUOTATION: 'Price:',
@@ -91,6 +91,7 @@ export default {
     EXCEED_LIMIT_BUY: 'You exceeded your limit buy',
     ATTENTION: 'ATTENTION',
     SEED_ATTENTION: 'Write down your seed in a safe place. Lose your private key might make you lose all the tokens you have.',
+    LOGOUT_ATTENTION: 'While the withdraw is not done, another seed and address will be generated after the logout has been made. If you have already made the withdrawal, make sure that you wrote down the seed and the address in a safe place, as it will not be possible to see it again.',
     DASHBOARD: {
       NO_HISTORY: 'You have no history yet',
       DATE: 'Date',

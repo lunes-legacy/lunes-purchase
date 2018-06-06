@@ -21,19 +21,48 @@
           </h4>
         </a>
         <div class="logout area-button" ng-show="$ctrl.showUserMenu">
-          <a href="#!/login" class="primary-button" ng-click="$ctrl.logout()">
-            {{'LOGOUT' | translate}}
-          </a>
+          <div ng-show="$ctrl.screens.step2 || $ctrl.screens.step3">
+            <a class="primary-button" ng-click="$ctrl.changeStep('logout')">
+              {{'LOGOUT' | translate}}
+            </a>
+          </div>
+
+          <div ng-show="$ctrl.screens.step1 || $ctrl.screens.step4">
+            <a href="#!/login" class="primary-button mx-2" ng-click="$ctrl.logout()">
+              {{'LOGOUT' | translate}}
+            </a>
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- LOGOUT MODAL START -->
+    <div ng-show="!$ctrl.withdraw && $ctrl.screens.logout">
+      <div class="attention-modal my-2">
+        <h3>{{'ATTENTION' | translate}}</h3>
+        <p>{{'LOGOUT_ATTENTION' | translate}}</p>
+      </div>
+      <div class="area-button">
+        <button class="primary-button mx-2" ng-click="$ctrl.changeStep('step2')">{{'BACK' | translate}}</button>
+        <a href="#!/login" class="primary-button mx-2" ng-click="$ctrl.logout()">{{'LOGOUT' | translate}}</a>
+      </div>
+    </div>
+    <!-- LOGOUT MODAL END -->
+
+    <!-- LOADING SATRT -->
+    <div ng-show="$ctrl.screens.loading">
+      <div>
+        <p>Loading...</p>
+      </div>
+    </div>
+    <!-- LOADING END -->
+
     <!-- 1 STEP: VIEW SEED BUTTON START -->
     <div class="area-button" ng-show="$ctrl.screens.step1 && !$ctrl.withdraw">
-      <button name="step2" class="green-button" ng-click="$ctrl.getSeed()">{{'VIEW_SEED_AND_ADDRESS' | translate}}</button>
+      <button name="step2" class="primary-button" ng-click="$ctrl.mountSeed()">{{'VIEW_SEED_AND_ADDRESS' | translate}}</button>
     </div>
     <!-- 1 STEP: VIEW SEED BUTTON END -->
-    
+
 
     <!-- 2 STEP: SEED AND ADDRESS START -->
     <!-- SEED -->
@@ -42,21 +71,21 @@
         <div class="col-md-12">
           <div class="phrase">
             <h6>Frases de Backup</h6>
-            <div class="row mx-2">
+            <div class="row my-2">
               <div class="col-md-3 text-center">
-                <h6 class="mx-2">1º</h6>
+                <h6 class="my-2">1º</h6>
                 <input disabled type="text" value="{{ $ctrl.userAddressInfo.seed.group1 }}">
               </div>
               <div class="col-md-3 text-center">
-                <h6 class="mx-2">2º</h6>
+                <h6 class="my-2">2º</h6>
                 <input disabled type="text" value="{{ $ctrl.userAddressInfo.seed.group2 }}">
               </div>
               <div class="col-md-3 text-center">
-                <h6 class="mx-2">3º</h6>
+                <h6 class="my-2">3º</h6>
                 <input disabled type="text" value="{{ $ctrl.userAddressInfo.seed.group3 }}">
               </div>
               <div class="col-md-3 text-center">
-                <h6 class="mx-2">4º</h6>
+                <h6 class="my-2">4º</h6>
                 <input disabled type="text" value="{{ $ctrl.userAddressInfo.seed.group4 }}">
               </div>
             </div>
@@ -85,20 +114,20 @@
 
       <!-- WITHDRAW BUTTON -->
       <div class="area-button" ng-show="!$ctrl.withdraw">
-        <button class="green-button" ng-click="$ctrl.changeStep('step3')">{{'WITHDRAW' | translate}}</button>
+        <button class="primary-button" ng-click="$ctrl.changeStep('step3')">{{'WITHDRAW' | translate}}</button>
       </div>
     </div>
     <!-- 2 STEP: SEED AND ADDRESS END -->
 
     <!-- 3 STEP: CONFIRM START -->
     <div ng-show="$ctrl.screens.step3 && !$ctrl.withdraw">
-      <div class="attention-modal">
+      <div class="attention-modal my-2">
         <h3>{{'ATTENTION' | translate}}</h3>
         <p>{{'SEED_ATTENTION' | translate}}</p>
       </div>
       <div class="area-button" ng-show="!$ctrl.withdraw">
-        <button class="green-button mx-2" ng-click="$ctrl.changeStep('step2')">{{'BACK' | translate}}</button>      
-        <button class="green-button mx-2" ng-click="$ctrl.setWithdraw()">{{'WITHDRAW' | translate}}</button>
+        <button class="primary-button mx-2" ng-click="$ctrl.changeStep('step2')">{{'BACK' | translate}}</button>
+        <button class="primary-button mx-2" ng-click="$ctrl.setWithdraw()">{{'WITHDRAW' | translate}}</button>
       </div>
     </div>
     <!-- 3 STEP: CONFIRM END -->
@@ -108,14 +137,14 @@
       <div class="transaction">
         <h3>{{'SUCCESS_WITHDRAW' | translate}}</h3>
         <p>
-          <span>{{'QUANTITY' | translate}}:</span> {{ $ctrl.transaction.quantity }} LUNES</p>
+          <span>{{'QUANTITY' | translate}}:</span> {{ $ctrl.transaction.balance }} LUNES</p>
         <p>
-          <span>{{'TXID' | translate}}:</span> {{ $ctrl.transaction.txid }}</p>
+          <span>{{'TXID' | translate}}:</span> {{ $ctrl.transaction.txID }}</p>
         <p>
           <span>{{'ADDRESS' | translate}}:</span> {{ $ctrl.transaction.address }}</p>
       </div>
       <div class="area-button">
-        <button  class="green-button" ng-click="$ctrl.toogleShowSeedAndAddress()">{{'CHECK_TRANSACTION_ON_BLOCK' | translate}}</button>
+        <button class="primary-button" ng-click="$ctrl.toogleShowSeedAndAddress()">{{'CHECK_TRANSACTION_ON_BLOCK' | translate}}</button>
       </div>
     </div>
     <!-- 4 STEP: CHECK TRANSACTION END -->

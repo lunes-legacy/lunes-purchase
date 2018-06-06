@@ -41,7 +41,6 @@ class LoginController {
           if (currentUser.depositWallet && currentUser.depositWallet.BTC) {
             userTrack.btcAddress = currentUser.depositWallet.BTC.address;
             userTrack.ltcAddress = currentUser.depositWallet.LTC.address;
-            userTrack.ethAddress = currentUser.depositWallet.ETH.address;
           }
           if (currentUser && currentUser._id) {
             smartlookClient.identify(currentUser._id, userTrack );

@@ -39,14 +39,19 @@ class BuyController {
 
     this.screens = {
       loading: false,
+      logout: false,
       step1: true, // GENERATE SEED
       step2: false, //SHOW SEED AND ADDRESS
       step3: false, //CONFIRM    
       step4: false // TRANSACTIONS INFO
     }
+
     this.userAddressInfo = {}; //SEED AND ADDRESS
-    this.transaction = {};
-    this.withdraw = this.checkWithdraw();
+    this.transaction = {}
+    this.withdraw = false;
+
+    this.checkWithdraw();
+    this.checkSeed();
 
     this.getBalanceCoin('BTC').catch(error => {
       console.log(error);
@@ -71,7 +76,7 @@ class BuyController {
       if (this.currentUser.depositWallet && this.currentUser.depositWallet.BTC) {
         userTrack.btcAddress = this.currentUser.depositWallet.BTC.address;
         userTrack.ltcAddress = this.currentUser.depositWallet.LTC.address;
-        userTrack.ethAddress = this.currentUser.depositWallet.ETH.address;
+        // userTrack.ethAddress = this.currentUser.depositWallet.ETH.address;
       }
       if (this.currentUser && this.currentUser._id) {
         smartlookClient.identify(this.currentUser._id, userTrack);
@@ -90,44 +95,65 @@ class BuyController {
   }
 
   // VERIFY WITHDRAW
-  checkWithdraw() {
+  async checkWithdraw() {
     try {
-      const withdraw = localStorage.getItem('WITHDRAW_STATUS');
-      // const withdraw = localStorage.removeItem('WITHDRAW_STATUS');      
-      if (withdraw === 'true' || withdraw === true) {
-        this.getTransaction();
-        this.changeStep('step4');
+      let withdrawInfo = await this.HttpService.getWithdraw(this.currentUser.accessToken);
+      if (withdrawInfo.data.txID) {
+        this.transaction = withdrawInfo.data;
+        this.withdraw = true;
+
         return true;
       }
+      this.withdraw = false;
 
       return false;
+
+    } catch (error) { 
+      console.log(error);
+      this.withdraw = false;
+      return false;
+    }
+  }
+
+  // setWithdraw() {
+  //   try {
+  //     this.changeStep('loading');
+  //     let withdraw = this.HttpService.sendUserBalance(this.currentUser.accessToken).then( function(res) {
+  //       if (res.data.txID) {
+  //         this.transaction = res.data
+  //         this.changeStep('step4');
+
+  //         return true;
+  //       }
+  //       return false;  
+  //     });
+  //   } catch (error) {
+      
+  //   }
+  // }
+
+   async checkSeed() {
+    try {
+      let seed = localStorage.getItem('SEED');
+      let withdraw = await this.checkWithdraw();
+
+      if (seed && !withdraw) {
+        this.mountSeed();
+      } else if(!seed && withdraw) {
+        this.changeStep('step4')
+      } else {
+        this.changeStep('step1')
+      }
+
     } catch (error) {
-
-      return false;
-    }
-  }
-
-  setWithdraw() {
-    // GET Withdraw AND SET TRUE OR FALSE INTO this.withdraw
-    localStorage.setItem('WITHDRAW_STATUS', true); //TEMP
-    this.withdraw = true;
-    this.getTransaction();
-    this.changeStep('step4');
-  }
-
-  getTransaction() {
-    // GET TRANSACTION INFO AFTER Withdraw CLICK
-    let transaction = {
-      quantity: 15000.00,
-      txid: '161cmLgavNNkWTjR61RnNqtejFeB88X6FM',
-      address: '161cmLgavNNkWTjR61RnNqtejFeB88X6FM'
-    }
-    this.transaction = transaction;
+      console.log(error);      
+      this.changeStep('step1')
+    }    
   }
 
   // GENERATE SEED AND ADDRESS
-  getSeed(step) {
-    let data = this.HttpService.getSeedWord();
+  mountSeed() {
+    let data = this.getSeed();
     let dataAddress = this.HttpService.getAddress(data);
     let seed = data.split(" ");
 
@@ -143,23 +169,46 @@ class BuyController {
     this.changeStep('step2')
   }
 
+  getSeed() {
+    try {
+      let seed = localStorage.getItem('SEED');
+
+      if (seed) {
+        return JSON.parse(seed);
+      } else {
+        let data = this.HttpService.getSeedWord();
+
+        localStorage.setItem('SEED', JSON.stringify(data));
+
+        return data;
+      }
+
+    } catch (error) {
+      console.log(error);      
+      let data = this.HttpService.getSeedWord();
+      localStorage.setItem('SEED', JSON.stringify(data));
+      
+      return data;
+    }    
+  }
 
   // CHANGE STEP
-  changeStep(step) {
+  async changeStep(toStep) {
     if (!this.withdraw) {
       for (let step in this.screens) {
         this.screens[step] = false;
       }
-      this.screens[step] = true;
+      this.screens[toStep] = true;
     } else {
+      this.screens.logout = false;
       this.screens.step1 = false;
       this.screens.step2 = false;
-      this.screens.step3 = true;
+      this.screens.step3 = false;
       this.screens.step4 = true;
-    }
-    console.log(this.screens)
-
+    }    
   }
+
+  // END -----------------
 
   async getBuyHistory() {
     const buyHistory = await this.HttpService.buyHistory(this.currentUser.email, this.currentUser.accessToken);
@@ -458,6 +507,7 @@ class BuyController {
   }
 
   logout() {
+    localStorage.removeItem('SEED');
     localStorage.removeItem(STORAGE_KEY);
   }
 

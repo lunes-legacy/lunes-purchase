@@ -194,6 +194,18 @@ class HttpService {
 
     return data;
   } 
+
+  async getWithdraw(accessToken) {
+    let data = await LunesLib.ico.verifyUserWithdraw(accessToken);
+
+    return data;
+  }
+
+  setWithdraw(accessToken) {
+    let data = LunesLib.ico.sendUserBalance(accessToken);
+
+    return data;
+  }
 }
 
 HttpService.$inject = ['$http', '$translate'];

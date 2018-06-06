@@ -3003,7 +3003,7 @@
     },
     "crypto-js": {
       "version": "3.1.9-1",
-      "resolved": "https://registry.npmjs.org/crypto-js/-/crypto-js-3.1.9-1.tgz",
+      "resolved": "http://localhost:4873/crypto-js/-/crypto-js-3.1.9-1.tgz",
       "integrity": "sha1-/aGedh/Ad+Af+/3G6f38WeiAbNg="
     },
     "css-loader": {
@@ -9440,7 +9440,7 @@
     "lunes-lib": {
       "version": "0.0.32",
       "resolved": "http://localhost:4873/lunes-lib/-/lunes-lib-0.0.32.tgz",
-      "integrity": "sha512-ZNI74KcgXbi+OqLu1aYm5pIr31GeEkLV+OyjJp3dd++uPL9auTadVjPYovovY88Inau9BIMcjHay76wcwpqsqQ==",
+      "integrity": "sha512-FCMQTY0GpOd8JunX7LQLUH/65J6ADE0TUt6vlG2hfOIWn830unF3T5B824sD0x7bm3KgCohoDSmchYJ9sZmmeA==",
       "requires": {
         "axios": "0.17.1",
         "bip39": "2.5.0",
@@ -13825,7 +13825,7 @@
     },
     "validator": {
       "version": "9.4.1",
-      "resolved": "https://registry.npmjs.org/validator/-/validator-9.4.1.tgz",
+      "resolved": "http://localhost:4873/validator/-/validator-9.4.1.tgz",
       "integrity": "sha512-YV5KjzvRmSyJ1ee/Dm5UED0G+1L4GZnLN3w6/T+zZm8scVua4sOhYKWTUrKa0H/tMiJyO9QLHMPN+9mB/aMunA=="
     },
     "varuint-bitcoin": {
