@@ -9213,51 +9213,51 @@
 	
 	var _components2 = _interopRequireDefault(_components);
 	
-	var _login = __webpack_require__(695);
+	var _login = __webpack_require__(694);
 	
 	var _login2 = _interopRequireDefault(_login);
 	
-	var _signup = __webpack_require__(701);
+	var _signup = __webpack_require__(700);
 	
 	var _signup2 = _interopRequireDefault(_signup);
 	
-	var _buy = __webpack_require__(706);
+	var _buy = __webpack_require__(705);
 	
 	var _buy2 = _interopRequireDefault(_buy);
 	
-	var _security = __webpack_require__(711);
+	var _security = __webpack_require__(710);
 	
 	var _security2 = _interopRequireDefault(_security);
 	
-	var _faq = __webpack_require__(716);
+	var _faq = __webpack_require__(715);
 	
 	var _faq2 = _interopRequireDefault(_faq);
 	
-	var _dashboard = __webpack_require__(721);
+	var _dashboard = __webpack_require__(720);
 	
 	var _dashboard2 = _interopRequireDefault(_dashboard);
 	
-	var _fix = __webpack_require__(726);
+	var _fix = __webpack_require__(725);
 	
 	var _fix2 = _interopRequireDefault(_fix);
 	
-	var _language = __webpack_require__(731);
+	var _language = __webpack_require__(730);
 	
 	var _language2 = _interopRequireDefault(_language);
 	
-	var _en = __webpack_require__(732);
+	var _en = __webpack_require__(731);
 	
 	var _en2 = _interopRequireDefault(_en);
 	
-	var _pt = __webpack_require__(733);
+	var _pt = __webpack_require__(732);
 	
 	var _pt2 = _interopRequireDefault(_pt);
 	
-	var _index = __webpack_require__(689);
+	var _index = __webpack_require__(688);
 	
-	var _services = __webpack_require__(734);
+	var _services = __webpack_require__(733);
 	
-	__webpack_require__(741);
+	__webpack_require__(740);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -52272,7 +52272,7 @@
 /* 470 */
 /***/ function(module, exports) {
 
-	module.exports = "<footer class=\"container-footer\" style=\" width:100%; margin-top:8%;\">\n  <div class=\"row\">\n    <div class=\"col-12 container-social\">\n      <ul class=\"social\" style=\"padding: 0;margin: 0;\">\n        <li>\n          <a href=\"https://www.facebook.com/lunesplatform/\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg\" alt=\"facebook\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://t.me/LunesPlatformEN\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg\" alt=\"telegram\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://twitter.com/lunesplatform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg\" alt=\"twitter\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://medium.com/@lunes.platform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg\" alt=\"medium\" />\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"container-footer\">\n    <div class=\"row\">\n\n      <div class=\"col-xs-12 text-right\" style=\"letter-spacing: -2px;\">\n        <span style=\"font-size:22px;font-family:'Offside',cursive;\">L</span>\n        <span style=\"font-size:22px;font-family:'Offside',cursive;\">u</span>\n        <span style=\"font-size:22px;font-family:'Offside',cursive;\">n</span>\n        <span style=\"font-size:22px;font-family:'Offside',cursive;color: #4cd466;\">e</span>\n        <span style=\"font-size:22px;font-family:'Offside',cursive;\">s</span>\n      </div>\n\n      <div class=\"col-xs-12 text-center\">\n        <a href=\"#!/faq\" style=\"padding-right:100px;\">{{'FAQ' | translate}} </a>\n      </div>\n\n    </div>\n  </div>\n</footer>"
+	module.exports = "<footer class=\"container\" style=\"padding-top:22px;\">\n  <div class=\"row\">\n    <div class=\"col-12 container-social\">\n      <ul class=\"social\" style=\"padding: 0;margin: 0;\">\n        <li>\n          <a href=\"https://www.facebook.com/lunesplatform/\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/facebook_jzfprk.svg\" alt=\"facebook\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://t.me/LunesPlatformEN\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442471/telegram_tuakde.svg\" alt=\"telegram\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://twitter.com/lunesplatform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442472/twitter_qkqnva.svg\" alt=\"twitter\" />\n          </a>\n        </li>\n        <li>\n          <a href=\"https://medium.com/@lunes.platform\" target=\"_blank\" class=\"round-menu\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/medium_sufimk.svg\" alt=\"medium\" />\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"container-footer\">\n    <div class=\"row\">\n\n      <div class=\"col-xs-12 text-right\" style=\"letter-spacing: -2px;\">\n        <span style=\"font-size:22px;font-family:'Offside',cursive;\">L</span>\n        <span style=\"font-size:22px;font-family:'Offside',cursive;\">u</span>\n        <span style=\"font-size:22px;font-family:'Offside',cursive;\">n</span>\n        <span style=\"font-size:22px;font-family:'Offside',cursive;color: #4cd466;\">e</span>\n        <span style=\"font-size:22px;font-family:'Offside',cursive;\">s</span>\n      </div>\n\n      <div class=\"col-xs-12 text-center\">\n        <a href=\"#!/faq\" >{{'FAQ' | translate}} </a>\n      </div>\n\n    </div>\n  </div>\n</footer>"
 
 /***/ },
 /* 471 */
@@ -52386,7 +52386,7 @@
 	
 	var _header2 = _interopRequireDefault(_header);
 	
-	__webpack_require__(690);
+	__webpack_require__(689);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -52405,7 +52405,7 @@
 /* 476 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"row container-logo-header\" style=\"padding: 10px 0;\">\n  <!-- LOGO -->\n  <div class=\"col-sm-12 col-md-12 col-lg-12 logo\" ng-click=\"$ctrl.goToHome()\">\n    <span >L</span>\n    <span>u</span>\n    <span>n</span>\n    <span class=\"txt-green\">e</span>\n    <span>s</span>\n  </div>\n\n  <!-- PRICE CURRENT COIN and LOGOUT -->\n  <div class=\"col-sm-12 col-md-8 col-lg-8 container-data\" ng-show=\"$ctrl.showlinks\">\n    <div class=\"col-xs-12 col-md-6 col-lg-6 coupom\">\n      {{'OWN_COUPON' | translate}}\n      <span style=\"font-weight: bold;color: #3bbe6e;\">{{$ctrl.currentUser.ownCoupon}}</span>\n    </div>\n    <div class=\"col-xs-12 col-md-6 col-lg-6 container-balance\">\n      <span>{{'MY_BALANCE' | translate}}</span>\n      <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\"> {{$ctrl.totalLns}}\n    </div>\n  </div>\n</div>\n\n<!-- QUOTATION COINS -  btc, eth, ltc -->\n<div class=\"quotation-coins\" ng-show=\"$ctrl.showlinks\">\n  <small style=\"padding: 0 10px;color: #fff;\">\n    <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_btc.svg\" alt=\"bitcoin\">&nbsp;$ {{$ctrl.balanceCoins.BTC.balance.PRICE}}</small> |\n\n  <small style=\"padding: 0 10px;color: #fff;\">\n    <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon_ltc.svg\" alt=\"litecoin\">&nbsp;$ {{$ctrl.balanceCoins.LTC.balance.PRICE}}</small> |\n\n  <small style=\"padding: 0 10px;color: #fff;\">\n    <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_eth.svg\" alt=\"ethereum\">&nbsp;$ {{$ctrl.balanceCoins.ETH.balance.PRICE}}</small>\n</div>\n\n<!-- MENU and SOCIAL MEDIA links -->\n<nav class=\"header\" ng-show=\"$ctrl.showlinks\">\n  <div class=\"col-12 nav-menu\">\n    <ul class=\"menu menu-top\" style=\"padding: 0;margin: 0;\">\n      <li ng-class=\"{active: $ctrl.location === 'buy'}\">\n        <a href=\"#!/buy\">{{'BUY' | translate}}</a>\n      </li>\n      <li ng-class=\"{active: $ctrl.location === 'historic'}\">\n        <a href=\"#!/historic\">{{'PURCHASE_HISTORY' | translate}}</a>\n      </li>\n      <li ng-class=\"{active: $ctrl.location === 'security'}\">\n        <a href=\"#!/security\">{{'SECURITY' | translate}}</a>\n      </li>\n    </ul>\n  </div>\n</nav>"
+	module.exports = "<div class=\"row container-logo-header\" style=\"padding: 10px 0;\">\n  <!-- LOGO -->\n  <div class=\"col-sm-4 col-md-4 col-lg-4 logo \" ng-click=\"$ctrl.goToHome()\">\n    <span >L</span>\n    <span>u</span>\n    <span>n</span>\n    <span class=\"txt-green\">e</span>\n    <span>s</span>\n  </div>\n\n  <!-- PRICE CURRENT COIN and LOGOUT -->\n  <div class=\"col-sm-12 col-md-8 col-lg-8 container-data\" ng-show=\"$ctrl.showlinks\">\n    <div class=\"col-xs-12 col-md-6 col-lg-6 coupom\">\n      {{'OWN_COUPON' | translate}}\n      <span style=\"font-weight: bold;color: #3bbe6e;\">{{$ctrl.currentUser.ownCoupon}}</span>\n    </div>\n    <div class=\"col-xs-12 col-md-6 col-lg-6 container-balance\">\n      <span>{{'MY_BALANCE' | translate}}</span>\n      <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\" alt=\"Icon Lunes\"> {{$ctrl.totalLns}}\n    </div>\n  </div>\n</div>\n\n<!-- QUOTATION COINS -  btc, eth, ltc -->\n<div class=\"quotation-coins\" ng-show=\"$ctrl.showlinks\">\n  <small style=\"padding: 0 10px;color: #fff;\">\n    <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_btc.svg\" alt=\"bitcoin\">&nbsp;$ {{$ctrl.balanceCoins.BTC.balance.PRICE}}</small> |\n\n  <small style=\"padding: 0 10px;color: #fff;\">\n    <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon_ltc.svg\" alt=\"litecoin\">&nbsp;$ {{$ctrl.balanceCoins.LTC.balance.PRICE}}</small> |\n\n  <small style=\"padding: 0 10px;color: #fff;\">\n    <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442467/icon_eth.svg\" alt=\"ethereum\">&nbsp;$ {{$ctrl.balanceCoins.ETH.balance.PRICE}}</small>\n</div>\n\n<!-- MENU and SOCIAL MEDIA links -->\n<nav class=\"header\" ng-show=\"$ctrl.showlinks\">\n  <div class=\"col-12 nav-menu\">\n    <ul class=\"menu menu-top\" style=\"padding: 0;margin: 0;\">\n      <li ng-class=\"{active: $ctrl.location === 'buy'}\">\n        <a href=\"#!/buy\">{{'BUY' | translate}}</a>\n      </li>\n      <li ng-class=\"{active: $ctrl.location === 'historic'}\">\n        <a href=\"#!/historic\">{{'PURCHASE_HISTORY' | translate}}</a>\n      </li>\n      <li ng-class=\"{active: $ctrl.location === 'security'}\">\n        <a href=\"#!/security\">{{'SECURITY' | translate}}</a>\n      </li>\n    </ul>\n  </div>\n</nav>"
 
 /***/ },
 /* 477 */
@@ -52421,7 +52421,7 @@
 	
 	var _lunesLib2 = _interopRequireDefault(_lunesLib);
 	
-	var _index = __webpack_require__(689);
+	var _index = __webpack_require__(688);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -52666,8 +52666,8 @@
 	'use strict';
 	
 	var users = __webpack_require__(480);
-	var coins = __webpack_require__(594);
-	var ico = __webpack_require__(681);
+	var coins = __webpack_require__(593);
+	var ico = __webpack_require__(680);
 	module.exports = {
 	  users: users,
 	  coins: coins,
@@ -52691,7 +52691,6 @@
 	var update = __webpack_require__(590);
 	var verifyTwofa = __webpack_require__(591);
 	var generateTwofa = __webpack_require__(592);
-	var saveTwofa = __webpack_require__(593);
 	
 	module.exports = {
 	  create: create,
@@ -52704,8 +52703,7 @@
 	  logout: logout,
 	  update: update,
 	  verifyTwofa: verifyTwofa,
-	  generateTwofa: generateTwofa,
-	  saveTwofa: saveTwofa
+	  generateTwofa: generateTwofa
 	};
 
 /***/ },
@@ -58363,63 +58361,13 @@
 
 	'use strict';
 	
-	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-	
-	var validator = __webpack_require__(482);
-	
-	var axios = __webpack_require__(555);
-	
-	var BASE_URL = __webpack_require__(582);
-	
-	var endpoint = BASE_URL + '/auth2step/save-auth';
-	
-	module.exports = function () {
-	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(userData) {
-	    var email, timestamp, twofa, res;
-	    return regeneratorRuntime.wrap(function _callee$(_context) {
-	      while (1) {
-	        switch (_context.prev = _context.next) {
-	          case 0:
-	            email = userData.email, timestamp = userData.timestamp, twofa = userData.twofa;
-	            _context.prev = 1;
-	            _context.next = 4;
-	            return axios.post(endpoint, { email: email, timestamp: timestamp, twofa: twofa });
-	
-	          case 4:
-	            res = _context.sent;
-	            return _context.abrupt('return', res.data);
-	
-	          case 8:
-	            _context.prev = 8;
-	            _context.t0 = _context['catch'](1);
-	            throw _context.t0.response ? _context.t0.response.data : new Error(_context.t0);
-	
-	          case 11:
-	          case 'end':
-	            return _context.stop();
-	        }
-	      }
-	    }, _callee, undefined, [[1, 8]]);
-	  }));
-	
-	  return function (_x) {
-	    return _ref.apply(this, arguments);
-	  };
-	}();
-
-/***/ },
-/* 594 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var bitcoin = __webpack_require__(595);
-	var getPrice = __webpack_require__(599);
-	var getHistory = __webpack_require__(601);
-	var obtainWallet = __webpack_require__(640);
-	var getFees = __webpack_require__(676);
-	var createDepositWallet = __webpack_require__(679);
-	var getBalance = __webpack_require__(680);
+	var bitcoin = __webpack_require__(594);
+	var getPrice = __webpack_require__(598);
+	var getHistory = __webpack_require__(600);
+	var obtainWallet = __webpack_require__(639);
+	var getFees = __webpack_require__(675);
+	var createDepositWallet = __webpack_require__(678);
+	var getBalance = __webpack_require__(679);
 	
 	module.exports = {
 	  bitcoin: bitcoin,
@@ -58432,14 +58380,14 @@
 	};
 
 /***/ },
-/* 595 */
+/* 594 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var getBalance = __webpack_require__(596);
-	var getHistory = __webpack_require__(597);
-	var createTransaction = __webpack_require__(598);
+	var getBalance = __webpack_require__(595);
+	var getHistory = __webpack_require__(596);
+	var createTransaction = __webpack_require__(597);
 	
 	module.exports = {
 	  getBalance: getBalance,
@@ -58448,7 +58396,7 @@
 	};
 
 /***/ },
-/* 596 */
+/* 595 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58504,7 +58452,7 @@
 	}();
 
 /***/ },
-/* 597 */
+/* 596 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58551,7 +58499,7 @@
 	}();
 
 /***/ },
-/* 598 */
+/* 597 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58635,7 +58583,7 @@
 	}();
 
 /***/ },
-/* 599 */
+/* 598 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58645,7 +58593,7 @@
 	var axios = __webpack_require__(555);
 	var validator = __webpack_require__(482);
 	
-	var endpoint = __webpack_require__(600) + '/price';
+	var endpoint = __webpack_require__(599) + '/price';
 	
 	module.exports = function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(params) {
@@ -58686,7 +58634,7 @@
 	}();
 
 /***/ },
-/* 600 */
+/* 599 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -58694,7 +58642,7 @@
 	module.exports = 'https://min-api.cryptocompare.com/data';
 
 /***/ },
-/* 601 */
+/* 600 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58702,9 +58650,9 @@
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
 	var axios = __webpack_require__(555);
-	var Promise = __webpack_require__(602);
+	var Promise = __webpack_require__(601);
 	
-	var apiUrl = '' + __webpack_require__(600);
+	var apiUrl = '' + __webpack_require__(599);
 	
 	module.exports = function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(params) {
@@ -58808,7 +58756,7 @@
 	};
 
 /***/ },
-/* 602 */
+/* 601 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -58821,12 +58769,12 @@
 	    } catch (e) {}
 	    return bluebird;
 	}
-	var bluebird = __webpack_require__(603)();
+	var bluebird = __webpack_require__(602)();
 	bluebird.noConflict = noConflict;
 	module.exports = bluebird;
 
 /***/ },
-/* 603 */
+/* 602 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -58843,7 +58791,7 @@
 	    };
 	    function Proxyable() {}
 	    var UNDEFINED_BINDING = {};
-	    var util = __webpack_require__(604);
+	    var util = __webpack_require__(603);
 	
 	    var getDomain;
 	    if (util.isNode) {
@@ -58859,11 +58807,11 @@
 	    }
 	    util.notEnumerableProp(Promise, "_getDomain", getDomain);
 	
-	    var es5 = __webpack_require__(605);
-	    var Async = __webpack_require__(606);
+	    var es5 = __webpack_require__(604);
+	    var Async = __webpack_require__(605);
 	    var async = new Async();
 	    es5.defineProperty(Promise, "_async", { value: async });
-	    var errors = __webpack_require__(611);
+	    var errors = __webpack_require__(610);
 	    var TypeError = Promise.TypeError = errors.TypeError;
 	    Promise.RangeError = errors.RangeError;
 	    var CancellationError = Promise.CancellationError = errors.CancellationError;
@@ -58874,16 +58822,16 @@
 	    var INTERNAL = function INTERNAL() {};
 	    var APPLY = {};
 	    var NEXT_FILTER = {};
-	    var tryConvertToPromise = __webpack_require__(612)(Promise, INTERNAL);
-	    var PromiseArray = __webpack_require__(613)(Promise, INTERNAL, tryConvertToPromise, apiRejection, Proxyable);
-	    var Context = __webpack_require__(614)(Promise);
+	    var tryConvertToPromise = __webpack_require__(611)(Promise, INTERNAL);
+	    var PromiseArray = __webpack_require__(612)(Promise, INTERNAL, tryConvertToPromise, apiRejection, Proxyable);
+	    var Context = __webpack_require__(613)(Promise);
 	    /*jshint unused:false*/
 	    var createContext = Context.create;
-	    var debug = __webpack_require__(615)(Promise, Context);
+	    var debug = __webpack_require__(614)(Promise, Context);
 	    var CapturedTrace = debug.CapturedTrace;
-	    var PassThroughHandlerContext = __webpack_require__(616)(Promise, tryConvertToPromise, NEXT_FILTER);
-	    var catchFilter = __webpack_require__(617)(NEXT_FILTER);
-	    var nodebackForPromise = __webpack_require__(618);
+	    var PassThroughHandlerContext = __webpack_require__(615)(Promise, tryConvertToPromise, NEXT_FILTER);
+	    var catchFilter = __webpack_require__(616)(NEXT_FILTER);
+	    var nodebackForPromise = __webpack_require__(617);
 	    var errorObj = util.errorObj;
 	    var tryCatch = util.tryCatch;
 	    function check(self, executor) {
@@ -59518,29 +59466,29 @@
 	
 	    util.notEnumerableProp(Promise, "_makeSelfResolutionError", makeSelfResolutionError);
 	
-	    __webpack_require__(619)(Promise, INTERNAL, tryConvertToPromise, apiRejection, debug);
-	    __webpack_require__(620)(Promise, INTERNAL, tryConvertToPromise, debug);
-	    __webpack_require__(621)(Promise, PromiseArray, apiRejection, debug);
+	    __webpack_require__(618)(Promise, INTERNAL, tryConvertToPromise, apiRejection, debug);
+	    __webpack_require__(619)(Promise, INTERNAL, tryConvertToPromise, debug);
+	    __webpack_require__(620)(Promise, PromiseArray, apiRejection, debug);
+	    __webpack_require__(621)(Promise);
 	    __webpack_require__(622)(Promise);
-	    __webpack_require__(623)(Promise);
-	    __webpack_require__(624)(Promise, PromiseArray, tryConvertToPromise, INTERNAL, async, getDomain);
+	    __webpack_require__(623)(Promise, PromiseArray, tryConvertToPromise, INTERNAL, async, getDomain);
 	    Promise.Promise = Promise;
 	    Promise.version = "3.5.1";
-	    __webpack_require__(625)(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
-	    __webpack_require__(626)(Promise);
-	    __webpack_require__(627)(Promise, apiRejection, tryConvertToPromise, createContext, INTERNAL, debug);
-	    __webpack_require__(628)(Promise, INTERNAL, debug);
-	    __webpack_require__(629)(Promise, apiRejection, INTERNAL, tryConvertToPromise, Proxyable, debug);
-	    __webpack_require__(630)(Promise);
-	    __webpack_require__(631)(Promise, INTERNAL);
-	    __webpack_require__(632)(Promise, PromiseArray, tryConvertToPromise, apiRejection);
-	    __webpack_require__(633)(Promise, INTERNAL, tryConvertToPromise, apiRejection);
-	    __webpack_require__(634)(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
-	    __webpack_require__(635)(Promise, PromiseArray, debug);
-	    __webpack_require__(636)(Promise, PromiseArray, apiRejection);
+	    __webpack_require__(624)(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
+	    __webpack_require__(625)(Promise);
+	    __webpack_require__(626)(Promise, apiRejection, tryConvertToPromise, createContext, INTERNAL, debug);
+	    __webpack_require__(627)(Promise, INTERNAL, debug);
+	    __webpack_require__(628)(Promise, apiRejection, INTERNAL, tryConvertToPromise, Proxyable, debug);
+	    __webpack_require__(629)(Promise);
+	    __webpack_require__(630)(Promise, INTERNAL);
+	    __webpack_require__(631)(Promise, PromiseArray, tryConvertToPromise, apiRejection);
+	    __webpack_require__(632)(Promise, INTERNAL, tryConvertToPromise, apiRejection);
+	    __webpack_require__(633)(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug);
+	    __webpack_require__(634)(Promise, PromiseArray, debug);
+	    __webpack_require__(635)(Promise, PromiseArray, apiRejection);
+	    __webpack_require__(636)(Promise, INTERNAL);
 	    __webpack_require__(637)(Promise, INTERNAL);
-	    __webpack_require__(638)(Promise, INTERNAL);
-	    __webpack_require__(639)(Promise);
+	    __webpack_require__(638)(Promise);
 	
 	    util.toFastProperties(Promise);
 	    util.toFastProperties(Promise.prototype);
@@ -59567,14 +59515,14 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(562)))
 
 /***/ },
-/* 604 */
+/* 603 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {"use strict";
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var es5 = __webpack_require__(605);
+	var es5 = __webpack_require__(604);
 	var canEvaluate = typeof navigator == "undefined";
 	
 	var errorObj = { e: {} };
@@ -59936,7 +59884,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(562)))
 
 /***/ },
-/* 605 */
+/* 604 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -60022,7 +59970,7 @@
 	}
 
 /***/ },
-/* 606 */
+/* 605 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -60033,9 +59981,9 @@
 	} catch (e) {
 	    firstLineError = e;
 	}
-	var schedule = __webpack_require__(607);
-	var Queue = __webpack_require__(610);
-	var util = __webpack_require__(604);
+	var schedule = __webpack_require__(606);
+	var Queue = __webpack_require__(609);
+	var util = __webpack_require__(603);
 	
 	function Async() {
 	    this._customScheduler = false;
@@ -60194,12 +60142,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(562)))
 
 /***/ },
-/* 607 */
+/* 606 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process, setImmediate) {"use strict";
 	
-	var util = __webpack_require__(604);
+	var util = __webpack_require__(603);
 	var schedule;
 	var noAsyncScheduler = function noAsyncScheduler() {
 	    throw new Error("No async scheduler available\n\n    See http://goo.gl/MqrFmX\n");
@@ -60257,10 +60205,10 @@
 	    schedule = noAsyncScheduler;
 	}
 	module.exports = schedule;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(562), __webpack_require__(608).setImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(562), __webpack_require__(607).setImmediate))
 
 /***/ },
-/* 608 */
+/* 607 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
@@ -60313,7 +60261,7 @@
 	};
 	
 	// setimmediate attaches itself to the global object
-	__webpack_require__(609);
+	__webpack_require__(608);
 	// On some exotic environments, it's not clear which object `setimmeidate` was
 	// able to install onto.  Search each possibility in the same order as the
 	// `setimmediate` library.
@@ -60322,7 +60270,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 609 */
+/* 608 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {"use strict";
@@ -60512,7 +60460,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(562)))
 
 /***/ },
-/* 610 */
+/* 609 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -60591,14 +60539,14 @@
 	module.exports = Queue;
 
 /***/ },
-/* 611 */
+/* 610 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var es5 = __webpack_require__(605);
+	var es5 = __webpack_require__(604);
 	var Objectfreeze = es5.freeze;
-	var util = __webpack_require__(604);
+	var util = __webpack_require__(603);
 	var inherits = util.inherits;
 	var notEnumerableProp = util.notEnumerableProp;
 	
@@ -60709,13 +60657,13 @@
 	};
 
 /***/ },
-/* 612 */
+/* 611 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, INTERNAL) {
-	    var util = __webpack_require__(604);
+	    var util = __webpack_require__(603);
 	    var errorObj = util.errorObj;
 	    var isObject = util.isObject;
 	
@@ -60795,13 +60743,13 @@
 	};
 
 /***/ },
-/* 613 */
+/* 612 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, INTERNAL, tryConvertToPromise, apiRejection, Proxyable) {
-	    var util = __webpack_require__(604);
+	    var util = __webpack_require__(603);
 	    var isArray = util.isArray;
 	
 	    function toResolutionValue(val) {
@@ -60980,7 +60928,7 @@
 	};
 
 /***/ },
-/* 614 */
+/* 613 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -61057,7 +61005,7 @@
 	};
 
 /***/ },
-/* 615 */
+/* 614 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
@@ -61067,8 +61015,8 @@
 	module.exports = function (Promise, Context) {
 	    var getDomain = Promise._getDomain;
 	    var async = Promise._async;
-	    var Warning = __webpack_require__(611).Warning;
-	    var util = __webpack_require__(604);
+	    var Warning = __webpack_require__(610).Warning;
+	    var util = __webpack_require__(603);
 	    var canAttachTrace = util.canAttachTrace;
 	    var unhandledRejectionHandled;
 	    var possiblyUnhandledRejection;
@@ -61942,16 +61890,16 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(562)))
 
 /***/ },
-/* 616 */
+/* 615 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, tryConvertToPromise, NEXT_FILTER) {
-	    var util = __webpack_require__(604);
+	    var util = __webpack_require__(603);
 	    var CancellationError = Promise.CancellationError;
 	    var errorObj = util.errorObj;
-	    var catchFilter = __webpack_require__(617)(NEXT_FILTER);
+	    var catchFilter = __webpack_require__(616)(NEXT_FILTER);
 	
 	    function PassThroughHandlerContext(promise, type, handler) {
 	        this.promise = promise;
@@ -62071,14 +62019,14 @@
 	};
 
 /***/ },
-/* 617 */
+/* 616 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (NEXT_FILTER) {
-	    var util = __webpack_require__(604);
-	    var getKeys = __webpack_require__(605).keys;
+	    var util = __webpack_require__(603);
+	    var getKeys = __webpack_require__(604).keys;
 	    var tryCatch = util.tryCatch;
 	    var errorObj = util.errorObj;
 	
@@ -62118,16 +62066,16 @@
 	};
 
 /***/ },
-/* 618 */
+/* 617 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var util = __webpack_require__(604);
+	var util = __webpack_require__(603);
 	var maybeWrapAsError = util.maybeWrapAsError;
-	var errors = __webpack_require__(611);
+	var errors = __webpack_require__(610);
 	var OperationalError = errors.OperationalError;
-	var es5 = __webpack_require__(605);
+	var es5 = __webpack_require__(604);
 	
 	function isUntypedError(obj) {
 	    return obj instanceof Error && es5.getPrototypeOf(obj) === Error.prototype;
@@ -62176,13 +62124,13 @@
 	module.exports = nodebackForPromise;
 
 /***/ },
-/* 619 */
+/* 618 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, INTERNAL, tryConvertToPromise, apiRejection, debug) {
-	    var util = __webpack_require__(604);
+	    var util = __webpack_require__(603);
 	    var tryCatch = util.tryCatch;
 	
 	    Promise.method = function (fn) {
@@ -62233,7 +62181,7 @@
 	};
 
 /***/ },
-/* 620 */
+/* 619 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -62305,13 +62253,13 @@
 	};
 
 /***/ },
-/* 621 */
+/* 620 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, apiRejection, debug) {
-	    var util = __webpack_require__(604);
+	    var util = __webpack_require__(603);
 	    var tryCatch = util.tryCatch;
 	    var errorObj = util.errorObj;
 	    var async = Promise._async;
@@ -62438,7 +62386,7 @@
 	};
 
 /***/ },
-/* 622 */
+/* 621 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -62488,7 +62436,7 @@
 	};
 
 /***/ },
-/* 623 */
+/* 622 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -62594,13 +62542,13 @@
 	};
 
 /***/ },
-/* 624 */
+/* 623 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, tryConvertToPromise, INTERNAL, async, getDomain) {
-	    var util = __webpack_require__(604);
+	    var util = __webpack_require__(603);
 	    var canEvaluate = util.canEvaluate;
 	    var tryCatch = util.tryCatch;
 	    var errorObj = util.errorObj;
@@ -62760,7 +62708,7 @@
 	};
 
 /***/ },
-/* 625 */
+/* 624 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -62769,7 +62717,7 @@
 	
 	module.exports = function (Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug) {
 	    var getDomain = Promise._getDomain;
-	    var util = __webpack_require__(604);
+	    var util = __webpack_require__(603);
 	    var tryCatch = util.tryCatch;
 	    var errorObj = util.errorObj;
 	    var async = Promise._async;
@@ -62917,7 +62865,7 @@
 	};
 
 /***/ },
-/* 626 */
+/* 625 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -62930,7 +62878,7 @@
 	}
 	
 	module.exports = function (Promise) {
-	    var util = __webpack_require__(604);
+	    var util = __webpack_require__(603);
 	    var canEvaluate = util.canEvaluate;
 	    var isIdentifier = util.isIdentifier;
 	
@@ -63047,15 +62995,15 @@
 	};
 
 /***/ },
-/* 627 */
+/* 626 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, apiRejection, tryConvertToPromise, createContext, INTERNAL, debug) {
-	    var util = __webpack_require__(604);
-	    var TypeError = __webpack_require__(611).TypeError;
-	    var inherits = __webpack_require__(604).inherits;
+	    var util = __webpack_require__(603);
+	    var TypeError = __webpack_require__(610).TypeError;
+	    var inherits = __webpack_require__(603).inherits;
 	    var errorObj = util.errorObj;
 	    var tryCatch = util.tryCatch;
 	    var NULL = {};
@@ -63264,13 +63212,13 @@
 	};
 
 /***/ },
-/* 628 */
+/* 627 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, INTERNAL, debug) {
-	    var util = __webpack_require__(604);
+	    var util = __webpack_require__(603);
 	    var TimeoutError = Promise.TimeoutError;
 	
 	    function HandleWrapper(handle) {
@@ -63363,15 +63311,15 @@
 	};
 
 /***/ },
-/* 629 */
+/* 628 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, apiRejection, INTERNAL, tryConvertToPromise, Proxyable, debug) {
-	    var errors = __webpack_require__(611);
+	    var errors = __webpack_require__(610);
 	    var TypeError = errors.TypeError;
-	    var util = __webpack_require__(604);
+	    var util = __webpack_require__(603);
 	    var errorObj = util.errorObj;
 	    var tryCatch = util.tryCatch;
 	    var yieldHandlers = [];
@@ -63566,13 +63514,13 @@
 	};
 
 /***/ },
-/* 630 */
+/* 629 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise) {
-	    var util = __webpack_require__(604);
+	    var util = __webpack_require__(603);
 	    var async = Promise._async;
 	    var tryCatch = util.tryCatch;
 	    var errorObj = util.errorObj;
@@ -63620,7 +63568,7 @@
 	};
 
 /***/ },
-/* 631 */
+/* 630 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -63629,12 +63577,12 @@
 	
 	module.exports = function (Promise, INTERNAL) {
 	    var THIS = {};
-	    var util = __webpack_require__(604);
-	    var nodebackForPromise = __webpack_require__(618);
+	    var util = __webpack_require__(603);
+	    var nodebackForPromise = __webpack_require__(617);
 	    var withAppended = util.withAppended;
 	    var maybeWrapAsError = util.maybeWrapAsError;
 	    var canEvaluate = util.canEvaluate;
-	    var TypeError = __webpack_require__(611).TypeError;
+	    var TypeError = __webpack_require__(610).TypeError;
 	    var defaultSuffix = "Async";
 	    var defaultPromisified = { __isPromisified__: true };
 	    var noCopyProps = ["arity", "length", "name", "arguments", "caller", "callee", "prototype", "__isPromisified__"];
@@ -63887,15 +63835,15 @@
 	};
 
 /***/ },
-/* 632 */
+/* 631 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, tryConvertToPromise, apiRejection) {
-	    var util = __webpack_require__(604);
+	    var util = __webpack_require__(603);
 	    var isObject = util.isObject;
-	    var es5 = __webpack_require__(605);
+	    var es5 = __webpack_require__(604);
 	    var Es6Map;
 	    if (typeof Map === "function") Es6Map = Map;
 	
@@ -64009,13 +63957,13 @@
 	};
 
 /***/ },
-/* 633 */
+/* 632 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, INTERNAL, tryConvertToPromise, apiRejection) {
-	    var util = __webpack_require__(604);
+	    var util = __webpack_require__(603);
 	
 	    var raceLater = function raceLater(promise) {
 	        return promise.then(function (array) {
@@ -64061,14 +64009,14 @@
 	};
 
 /***/ },
-/* 634 */
+/* 633 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug) {
 	    var getDomain = Promise._getDomain;
-	    var util = __webpack_require__(604);
+	    var util = __webpack_require__(603);
 	    var tryCatch = util.tryCatch;
 	
 	    function ReductionPromiseArray(promises, fn, initialValue, _each) {
@@ -64224,14 +64172,14 @@
 	};
 
 /***/ },
-/* 635 */
+/* 634 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, debug) {
 	    var PromiseInspection = Promise.PromiseInspection;
-	    var util = __webpack_require__(604);
+	    var util = __webpack_require__(603);
 	
 	    function SettledPromiseArray(values) {
 	        this.constructor$(values);
@@ -64272,15 +64220,15 @@
 	};
 
 /***/ },
-/* 636 */
+/* 635 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	module.exports = function (Promise, PromiseArray, apiRejection) {
-	    var util = __webpack_require__(604);
-	    var RangeError = __webpack_require__(611).RangeError;
-	    var AggregateError = __webpack_require__(611).AggregateError;
+	    var util = __webpack_require__(603);
+	    var RangeError = __webpack_require__(610).RangeError;
+	    var AggregateError = __webpack_require__(610).AggregateError;
 	    var isArray = util.isArray;
 	    var CANCELLATION = {};
 	
@@ -64420,7 +64368,7 @@
 	};
 
 /***/ },
-/* 637 */
+/* 636 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -64438,7 +64386,7 @@
 	};
 
 /***/ },
-/* 638 */
+/* 637 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -64471,7 +64419,7 @@
 	};
 
 /***/ },
-/* 639 */
+/* 638 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -64497,12 +64445,12 @@
 	};
 
 /***/ },
-/* 640 */
+/* 639 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var Mnemonic = __webpack_require__(641);
+	var Mnemonic = __webpack_require__(640);
 	
 	module.exports = function (encryptedWallet, password) {
 	  try {
@@ -64517,12 +64465,12 @@
 	};
 
 /***/ },
-/* 641 */
+/* 640 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var CryptoJS = __webpack_require__(642);
+	var CryptoJS = __webpack_require__(641);
 	
 	var encryptMnemonic = function encryptMnemonic(mnemonic, passphrase) {
 	  var ciphertext = CryptoJS.AES.encrypt(mnemonic, passphrase);
@@ -64541,7 +64489,7 @@
 	};
 
 /***/ },
-/* 642 */
+/* 641 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -64551,10 +64499,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(644), __webpack_require__(645), __webpack_require__(646), __webpack_require__(647), __webpack_require__(648), __webpack_require__(649), __webpack_require__(650), __webpack_require__(651), __webpack_require__(652), __webpack_require__(653), __webpack_require__(654), __webpack_require__(655), __webpack_require__(656), __webpack_require__(657), __webpack_require__(658), __webpack_require__(659), __webpack_require__(660), __webpack_require__(661), __webpack_require__(662), __webpack_require__(663), __webpack_require__(664), __webpack_require__(665), __webpack_require__(666), __webpack_require__(667), __webpack_require__(668), __webpack_require__(669), __webpack_require__(670), __webpack_require__(671), __webpack_require__(672), __webpack_require__(673), __webpack_require__(674), __webpack_require__(675));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(643), __webpack_require__(644), __webpack_require__(645), __webpack_require__(646), __webpack_require__(647), __webpack_require__(648), __webpack_require__(649), __webpack_require__(650), __webpack_require__(651), __webpack_require__(652), __webpack_require__(653), __webpack_require__(654), __webpack_require__(655), __webpack_require__(656), __webpack_require__(657), __webpack_require__(658), __webpack_require__(659), __webpack_require__(660), __webpack_require__(661), __webpack_require__(662), __webpack_require__(663), __webpack_require__(664), __webpack_require__(665), __webpack_require__(666), __webpack_require__(667), __webpack_require__(668), __webpack_require__(669), __webpack_require__(670), __webpack_require__(671), __webpack_require__(672), __webpack_require__(673), __webpack_require__(674));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(644), __webpack_require__(645), __webpack_require__(646), __webpack_require__(647), __webpack_require__(648), __webpack_require__(649), __webpack_require__(650), __webpack_require__(651), __webpack_require__(652), __webpack_require__(653), __webpack_require__(654), __webpack_require__(655), __webpack_require__(656), __webpack_require__(657), __webpack_require__(658), __webpack_require__(659), __webpack_require__(660), __webpack_require__(661), __webpack_require__(662), __webpack_require__(663), __webpack_require__(664), __webpack_require__(665), __webpack_require__(666), __webpack_require__(667), __webpack_require__(668), __webpack_require__(669), __webpack_require__(670), __webpack_require__(671), __webpack_require__(672), __webpack_require__(673), __webpack_require__(674), __webpack_require__(675)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(643), __webpack_require__(644), __webpack_require__(645), __webpack_require__(646), __webpack_require__(647), __webpack_require__(648), __webpack_require__(649), __webpack_require__(650), __webpack_require__(651), __webpack_require__(652), __webpack_require__(653), __webpack_require__(654), __webpack_require__(655), __webpack_require__(656), __webpack_require__(657), __webpack_require__(658), __webpack_require__(659), __webpack_require__(660), __webpack_require__(661), __webpack_require__(662), __webpack_require__(663), __webpack_require__(664), __webpack_require__(665), __webpack_require__(666), __webpack_require__(667), __webpack_require__(668), __webpack_require__(669), __webpack_require__(670), __webpack_require__(671), __webpack_require__(672), __webpack_require__(673), __webpack_require__(674)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			root.CryptoJS = factory(root.CryptoJS);
@@ -64565,7 +64513,7 @@
 	});
 
 /***/ },
-/* 643 */
+/* 642 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -65328,7 +65276,7 @@
 	});
 
 /***/ },
-/* 644 */
+/* 643 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -65338,10 +65286,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643));
+			module.exports = exports = factory(__webpack_require__(642));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -65637,7 +65585,7 @@
 	});
 
 /***/ },
-/* 645 */
+/* 644 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -65647,10 +65595,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643));
+			module.exports = exports = factory(__webpack_require__(642));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -65709,7 +65657,7 @@
 	});
 
 /***/ },
-/* 646 */
+/* 645 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -65719,10 +65667,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643));
+			module.exports = exports = factory(__webpack_require__(642));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -65863,7 +65811,7 @@
 	});
 
 /***/ },
-/* 647 */
+/* 646 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -65873,10 +65821,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643));
+			module.exports = exports = factory(__webpack_require__(642));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -66002,7 +65950,7 @@
 	});
 
 /***/ },
-/* 648 */
+/* 647 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66012,10 +65960,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643));
+			module.exports = exports = factory(__webpack_require__(642));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -66262,7 +66210,7 @@
 	});
 
 /***/ },
-/* 649 */
+/* 648 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66272,10 +66220,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643));
+			module.exports = exports = factory(__webpack_require__(642));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -66413,7 +66361,7 @@
 	});
 
 /***/ },
-/* 650 */
+/* 649 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66423,10 +66371,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643));
+			module.exports = exports = factory(__webpack_require__(642));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -66613,7 +66561,7 @@
 	});
 
 /***/ },
-/* 651 */
+/* 650 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66623,10 +66571,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(650));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(649));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(650)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(649)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -66695,7 +66643,7 @@
 	});
 
 /***/ },
-/* 652 */
+/* 651 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66705,10 +66653,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(644));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(643));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(644)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(643)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -66977,7 +66925,7 @@
 	});
 
 /***/ },
-/* 653 */
+/* 652 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -66987,10 +66935,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(644), __webpack_require__(652));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(643), __webpack_require__(651));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(644), __webpack_require__(652)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(643), __webpack_require__(651)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67060,7 +67008,7 @@
 	});
 
 /***/ },
-/* 654 */
+/* 653 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67070,10 +67018,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(644));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(643));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(644)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(643)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67378,7 +67326,7 @@
 	});
 
 /***/ },
-/* 655 */
+/* 654 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67388,10 +67336,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643));
+			module.exports = exports = factory(__webpack_require__(642));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67618,7 +67566,7 @@
 	});
 
 /***/ },
-/* 656 */
+/* 655 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67628,10 +67576,10 @@
 	;(function (root, factory) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643));
+			module.exports = exports = factory(__webpack_require__(642));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67766,7 +67714,7 @@
 	});
 
 /***/ },
-/* 657 */
+/* 656 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67776,10 +67724,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(649), __webpack_require__(656));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(648), __webpack_require__(655));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(649), __webpack_require__(656)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(648), __webpack_require__(655)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -67916,7 +67864,7 @@
 	});
 
 /***/ },
-/* 658 */
+/* 657 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -67926,10 +67874,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(649), __webpack_require__(656));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(648), __webpack_require__(655));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(649), __webpack_require__(656)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(648), __webpack_require__(655)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -68053,7 +68001,7 @@
 	});
 
 /***/ },
-/* 659 */
+/* 658 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -68063,10 +68011,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(658));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(657));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(658)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(657)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -68938,7 +68886,7 @@
 	});
 
 /***/ },
-/* 660 */
+/* 659 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -68948,10 +68896,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(659));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(658));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(659)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(658)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -69021,7 +68969,7 @@
 	});
 
 /***/ },
-/* 661 */
+/* 660 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -69031,10 +68979,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(659));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(658));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(659)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(658)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -69084,7 +69032,7 @@
 	});
 
 /***/ },
-/* 662 */
+/* 661 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -69094,10 +69042,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(659));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(658));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(659)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(658)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -69191,7 +69139,7 @@
 	});
 
 /***/ },
-/* 663 */
+/* 662 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -69201,10 +69149,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(659));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(658));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(659)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(658)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -69250,7 +69198,7 @@
 	});
 
 /***/ },
-/* 664 */
+/* 663 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -69260,10 +69208,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(659));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(658));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(659)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(658)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -69295,7 +69243,7 @@
 	});
 
 /***/ },
-/* 665 */
+/* 664 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -69305,10 +69253,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(659));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(658));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(659)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(658)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -69349,7 +69297,7 @@
 	});
 
 /***/ },
-/* 666 */
+/* 665 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -69359,10 +69307,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(659));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(658));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(659)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(658)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -69397,7 +69345,7 @@
 	});
 
 /***/ },
-/* 667 */
+/* 666 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -69407,10 +69355,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(659));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(658));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(659)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(658)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -69442,7 +69390,7 @@
 	});
 
 /***/ },
-/* 668 */
+/* 667 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -69452,10 +69400,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(659));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(658));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(659)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(658)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -69492,7 +69440,7 @@
 	});
 
 /***/ },
-/* 669 */
+/* 668 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -69502,10 +69450,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(659));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(658));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(659)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(658)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -69525,7 +69473,7 @@
 	});
 
 /***/ },
-/* 670 */
+/* 669 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -69535,10 +69483,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(659));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(658));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(659)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(658)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -69596,7 +69544,7 @@
 	});
 
 /***/ },
-/* 671 */
+/* 670 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -69606,10 +69554,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(647), __webpack_require__(648), __webpack_require__(658), __webpack_require__(659));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(646), __webpack_require__(647), __webpack_require__(657), __webpack_require__(658));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(647), __webpack_require__(648), __webpack_require__(658), __webpack_require__(659)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(646), __webpack_require__(647), __webpack_require__(657), __webpack_require__(658)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -69832,7 +69780,7 @@
 	});
 
 /***/ },
-/* 672 */
+/* 671 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -69842,10 +69790,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(647), __webpack_require__(648), __webpack_require__(658), __webpack_require__(659));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(646), __webpack_require__(647), __webpack_require__(657), __webpack_require__(658));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(647), __webpack_require__(648), __webpack_require__(658), __webpack_require__(659)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(646), __webpack_require__(647), __webpack_require__(657), __webpack_require__(658)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70578,7 +70526,7 @@
 	});
 
 /***/ },
-/* 673 */
+/* 672 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70588,10 +70536,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(647), __webpack_require__(648), __webpack_require__(658), __webpack_require__(659));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(646), __webpack_require__(647), __webpack_require__(657), __webpack_require__(658));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(647), __webpack_require__(648), __webpack_require__(658), __webpack_require__(659)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(646), __webpack_require__(647), __webpack_require__(657), __webpack_require__(658)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70722,7 +70670,7 @@
 	});
 
 /***/ },
-/* 674 */
+/* 673 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70732,10 +70680,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(647), __webpack_require__(648), __webpack_require__(658), __webpack_require__(659));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(646), __webpack_require__(647), __webpack_require__(657), __webpack_require__(658));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(647), __webpack_require__(648), __webpack_require__(658), __webpack_require__(659)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(646), __webpack_require__(647), __webpack_require__(657), __webpack_require__(658)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -70907,7 +70855,7 @@
 	});
 
 /***/ },
-/* 675 */
+/* 674 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -70917,10 +70865,10 @@
 	;(function (root, factory, undef) {
 		if (( false ? "undefined" : _typeof(exports)) === "object") {
 			// CommonJS
-			module.exports = exports = factory(__webpack_require__(643), __webpack_require__(647), __webpack_require__(648), __webpack_require__(658), __webpack_require__(659));
+			module.exports = exports = factory(__webpack_require__(642), __webpack_require__(646), __webpack_require__(647), __webpack_require__(657), __webpack_require__(658));
 		} else if (true) {
 			// AMD
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(643), __webpack_require__(647), __webpack_require__(648), __webpack_require__(658), __webpack_require__(659)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(642), __webpack_require__(646), __webpack_require__(647), __webpack_require__(657), __webpack_require__(658)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			// Global (browser)
 			factory(root.CryptoJS);
@@ -71091,7 +71039,7 @@
 	});
 
 /***/ },
-/* 676 */
+/* 675 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71099,7 +71047,7 @@
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
 	var axios = __webpack_require__(555);
-	var _ = __webpack_require__(677);
+	var _ = __webpack_require__(676);
 	
 	var feeURL = 'https://bitaps.com/api/fee';
 	
@@ -71146,7 +71094,7 @@
 	};
 
 /***/ },
-/* 677 */
+/* 676 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {'use strict';var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};/**
@@ -80557,7 +80505,7 @@
 	lodash.prototype.at=wrapperAt;lodash.prototype.chain=wrapperChain;lodash.prototype.commit=wrapperCommit;lodash.prototype.next=wrapperNext;lodash.prototype.plant=wrapperPlant;lodash.prototype.reverse=wrapperReverse;lodash.prototype.toJSON=lodash.prototype.valueOf=lodash.prototype.value=wrapperValue;// Add lazy aliases.
 	lodash.prototype.first=lodash.prototype.head;if(symIterator){lodash.prototype[symIterator]=wrapperToIterator;}return lodash;};/*--------------------------------------------------------------------------*/// Export lodash.
 	var _=runInContext();// Some AMD build optimizers, like r.js, check for condition patterns like:
-	if("function"=='function'&&_typeof(__webpack_require__(678))=='object'&&__webpack_require__(678)){// Expose Lodash on the global object to prevent errors when Lodash is
+	if("function"=='function'&&_typeof(__webpack_require__(677))=='object'&&__webpack_require__(677)){// Expose Lodash on the global object to prevent errors when Lodash is
 	// loaded by a script tag in the presence of an AMD loader.
 	// See http://requirejs.org/docs/errors.html#mismatch for more details.
 	// Use `_.noConflict` to remove Lodash from the global object.
@@ -80571,7 +80519,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(324)(module)))
 
 /***/ },
-/* 678 */
+/* 677 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
@@ -80579,7 +80527,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
-/* 679 */
+/* 678 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -80673,7 +80621,7 @@
 	}();
 
 /***/ },
-/* 680 */
+/* 679 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -80729,18 +80677,18 @@
 	}();
 
 /***/ },
-/* 681 */
+/* 680 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var buyCoin = __webpack_require__(682);
-	var buyConversion = __webpack_require__(683);
-	var buyBalance = __webpack_require__(684);
-	var buyHistory = __webpack_require__(685);
-	var coinAmount = __webpack_require__(686);
-	var confirmTerm = __webpack_require__(687);
-	var obtainPhase = __webpack_require__(688);
+	var buyCoin = __webpack_require__(681);
+	var buyConversion = __webpack_require__(682);
+	var buyBalance = __webpack_require__(683);
+	var buyHistory = __webpack_require__(684);
+	var coinAmount = __webpack_require__(685);
+	var confirmTerm = __webpack_require__(686);
+	var obtainPhase = __webpack_require__(687);
 	
 	module.exports = {
 	  buyCoin: buyCoin,
@@ -80753,7 +80701,7 @@
 	};
 
 /***/ },
-/* 682 */
+/* 681 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -80837,7 +80785,7 @@
 	}();
 
 /***/ },
-/* 683 */
+/* 682 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -80916,7 +80864,7 @@
 	};
 
 /***/ },
-/* 684 */
+/* 683 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -81000,7 +80948,7 @@
 	}();
 
 /***/ },
-/* 685 */
+/* 684 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -81084,13 +81032,13 @@
 	}();
 
 /***/ },
-/* 686 */
+/* 685 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 /***/ },
-/* 687 */
+/* 686 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -81174,7 +81122,7 @@
 	}();
 
 /***/ },
-/* 688 */
+/* 687 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -81215,7 +81163,7 @@
 	}));
 
 /***/ },
-/* 689 */
+/* 688 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -81261,16 +81209,16 @@
 	}];
 
 /***/ },
-/* 690 */
+/* 689 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(691);
+	var content = __webpack_require__(690);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(693)(content, {});
+	var update = __webpack_require__(692)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -81287,21 +81235,21 @@
 	}
 
 /***/ },
-/* 691 */
+/* 690 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(692)(true);
+	exports = module.exports = __webpack_require__(691)(true);
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".quotation-coins {\n  margin: 10px 0;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: end;\n      justify-content: flex-end; }\n  .quotation-coins small {\n    font-size: 14px; }\n    .quotation-coins small img {\n      width: 16px; }\n\n@media only screen and (max-width: 426px) {\n  .quotation-coins {\n    -ms-flex-pack: center;\n        justify-content: center; }\n    .quotation-coins small {\n      font-size: 14px; }\n      .quotation-coins small img {\n        width: 13px; } }\n\n@media only screen and (max-width: 375px) {\n  .quotation-coins small {\n    font-size: 14px; }\n    .quotation-coins small img {\n      width: 13px; } }\n", "", {"version":3,"sources":["C:/Lunes/lunes-purchase/src/components/header/src/components/header/header.component.scss"],"names":[],"mappings":"AAAA;EACE,eAAc;EACd,qBAAa;EAAb,cAAa;EACb,uBAAmB;MAAnB,oBAAmB;EACnB,mBAAyB;MAAzB,0BAAyB,EAO1B;EAXD;IAMI,gBAAe,EAIhB;IAVH;MAQM,YAAW,EACZ;;AAIL;EACE;IACE,sBAAuB;QAAvB,wBAAuB,EAOxB;IARD;MAGI,gBAAe,EAIhB;MAPH;QAKM,YAAW,EACZ,EAAA;;AAKP;EACE;IAEI,gBAAe,EAIhB;IANH;MAIM,YAAW,EACZ,EAAA","file":"header.component.scss","sourcesContent":[".quotation-coins {\r\n  margin: 10px 0; \r\n  display: flex; \r\n  align-items: center; \r\n  justify-content: flex-end;\r\n  small {\r\n    font-size: 14px;\r\n    img {\r\n      width: 16px;\r\n    }\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 426px) {\r\n  .quotation-coins {\r\n    justify-content: center;\r\n    small {\r\n      font-size: 14px;\r\n      img {\r\n        width: 13px;\r\n      }\r\n    }\r\n  }  \r\n}\r\n\r\n@media only screen and (max-width: 375px) {\r\n  .quotation-coins {\r\n    small {\r\n      font-size: 14px;\r\n      img {\r\n        width: 13px;\r\n      }\r\n    }\r\n  }  \r\n}"],"sourceRoot":""}]);
+	exports.push([module.id, ".quotation-coins {\n  margin: 10px 0;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: end;\n      justify-content: flex-end; }\n  .quotation-coins small {\n    font-size: 14px; }\n    .quotation-coins small img {\n      width: 16px; }\n\n@media only screen and (max-width: 426px) {\n  .quotation-coins {\n    -ms-flex-pack: center;\n        justify-content: center; }\n    .quotation-coins small {\n      font-size: 14px; }\n      .quotation-coins small img {\n        width: 13px; } }\n\n@media only screen and (max-width: 375px) {\n  .quotation-coins small {\n    font-size: 14px; }\n    .quotation-coins small img {\n      width: 13px; } }\n", "", {"version":3,"sources":["C:/lunes/lunes-purchase/src/components/header/src/components/header/header.component.scss"],"names":[],"mappings":"AAAA;EACE,eAAc;EACd,qBAAa;EAAb,cAAa;EACb,uBAAmB;MAAnB,oBAAmB;EACnB,mBAAyB;MAAzB,0BAAyB,EAO1B;EAXD;IAMI,gBAAe,EAIhB;IAVH;MAQM,YAAW,EACZ;;AAIL;EACE;IACE,sBAAuB;QAAvB,wBAAuB,EAOxB;IARD;MAGI,gBAAe,EAIhB;MAPH;QAKM,YAAW,EACZ,EAAA;;AAKP;EACE;IAEI,gBAAe,EAIhB;IANH;MAIM,YAAW,EACZ,EAAA","file":"header.component.scss","sourcesContent":[".quotation-coins {\r\n  margin: 10px 0; \r\n  display: flex; \r\n  align-items: center; \r\n  justify-content: flex-end;\r\n  small {\r\n    font-size: 14px;\r\n    img {\r\n      width: 16px;\r\n    }\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 426px) {\r\n  .quotation-coins {\r\n    justify-content: center;\r\n    small {\r\n      font-size: 14px;\r\n      img {\r\n        width: 13px;\r\n      }\r\n    }\r\n  }  \r\n}\r\n\r\n@media only screen and (max-width: 375px) {\r\n  .quotation-coins {\r\n    small {\r\n      font-size: 14px;\r\n      img {\r\n        width: 13px;\r\n      }\r\n    }\r\n  }  \r\n}"],"sourceRoot":""}]);
 	
 	// exports
 
 
 /***/ },
-/* 692 */
+/* 691 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -81382,7 +81330,7 @@
 	}
 
 /***/ },
-/* 693 */
+/* 692 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -81419,7 +81367,7 @@
 		singletonElement = null,
 		singletonCounter = 0,
 		styleElementsInsertedAtTop = [],
-		fixUrls = __webpack_require__(694);
+		fixUrls = __webpack_require__(693);
 	
 	module.exports = function(list, options) {
 		if(false) {
@@ -81678,7 +81626,7 @@
 
 
 /***/ },
-/* 694 */
+/* 693 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -81772,7 +81720,7 @@
 	};
 
 /***/ },
-/* 695 */
+/* 694 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -81781,15 +81729,15 @@
 	  value: true
 	});
 	
-	var _loginComponent = __webpack_require__(696);
+	var _loginComponent = __webpack_require__(695);
 	
 	var _loginComponent2 = _interopRequireDefault(_loginComponent);
 	
-	var _login = __webpack_require__(697);
+	var _login = __webpack_require__(696);
 	
 	var _login2 = _interopRequireDefault(_login);
 	
-	__webpack_require__(699);
+	__webpack_require__(698);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -81801,13 +81749,13 @@
 	exports.default = LoginComponent;
 
 /***/ },
-/* 696 */
+/* 695 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"container login\">\n\n\n\n  <!-- MODAL - criar directiva depois -->\n  <div id=\"modal-terms\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <div>\n        <script>\n          function openCity(evt, cityName) {\n            // Declare all variables\n            var i, tabcontent, tablinks;\n\n            // Get all elements with class=\"tabcontent\" and hide them\n            tabcontent = document.getElementsByClassName(\"tabcontent\");\n            for (i = 0; i < tabcontent.length; i++) {\n              tabcontent[i].style.display = \"none\";\n            }\n\n            // Get all elements with class=\"tablinks\" and remove the class \"active\"\n            tablinks = document.getElementsByClassName(\"tablinks\");\n            for (i = 0; i < tablinks.length; i++) {\n              tablinks[i].className = tablinks[i].className.replace(\" active\", \"\");\n            }\n\n            // Show the current tab, and add an \"active\" class to the button that opened the tab\n            document.getElementById(cityName).style.display = \"block\";\n            evt.currentTarget.className += \" active\";\n          }\n        </script>\n        <!-- Tab links -->\n        <div class=\"tab\">\n          <button class=\"tablinks\" onclick=\"openCity(event, 'terms_condition')\" id=\"defaultOpen\">{{'TERMS_CONDITION_TITLE' | translate}}</button>\n          <button class=\"tablinks\" onclick=\"openCity(event, 'representation_condition')\">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>\n        </div>\n        <!-- Tab content -->\n        <div id=\"terms_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsCondition\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n\n        <div id=\"representation_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsRepresentation\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG1\" id=\"checkboxG1\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check1\" ng-change=\"$ctrl.allCheckboxIsChecked()\">\n            <label for=\"checkboxG1\" class=\"css-label radGroup1 clr\"> {{'US_CITIZEN' | translate}} </label>\n          </div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG2\" id=\"checkboxG2\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check2\">\n            <label for=\"checkboxG2\" class=\"css-label radGroup1 clr\"> {{'AGREE_TERM' | translate}} </label>\n          </div>\n          <!--<div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG3\" id=\"checkboxG3\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check3\">\n            <label for=\"checkboxG3\" class=\"css-label radGroup1 clr\"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>\n          </div>-->\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG4\" id=\"checkboxG4\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check4\">\n            <label for=\"checkboxG4\" class=\"css-label radGroup1 clr\"> {{'AGREE_FUTURE_VALUE' | translate}}</label>\n          </div>\n          <div class=\"area-button\">\n            <button ng-show=\"$ctrl.allCheckboxIsChecked()\" class=\"primary-button\" data-ng-click=\"$ctrl.doAccept()\" data-dismiss=\"modal\">{{'AGREE' | translate}}</button>\n            <!--<button ng-show=\"!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()\" class=\"disabled-button\">{{'AGREE' | translate}}</button>-->\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- MODAL - criar directiva change password -->\n  <div id=\"modal-change-password\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\" style=\"height: 100%;\">\n\n      <div ng-show=\"$ctrl.loadingResetPass\" class=\"loadingResetPass\">\n        {{'LOADING' | translate}}\n      </div>\n\n      <div ng-show=\"$ctrl.showMsgEmailSent\" class=\"showEmailSent\">\n        <h3 for=\"change\">{{'EMAIL_SENT' | translate}}</h3>\n        <div style=\"width: 100px;\">\n          <button class=\"icon-close\" data-dismiss=\"modal\">{{'CLOSE' | translate}}</button>\n        </div>\n      </div>\n\n      <form class=\"form-msg-pass\" ng-show=\"!$ctrl.loadingResetPass && !$ctrl.showMsgEmailSent\">\n        <div style=\"text-align: center;\">\n          <h3 for=\"change\">{{'CHANGE_PASSWORD_INSTRUCTION' | translate}}</h3>\n        </div>\n        <div ng-show=\"$ctrl.showErrorMsgEmailSent\" class=\"showErrorMsg\">\n          <h5 for=\"change\">{{'EMAIL_NOT_SENT' | translate}}</h5>\n          <div style=\"width: 100px;\">\n            <button style=\"border: 0;\n              padding: 5px 20px;\n              border-radius: 20px;\n              cursor: pointer;\" class=\"icon-close\" data-dismiss=\"modal\">{{'CLOSE' | translate}}</button>\n          </div>\n        </div>\n\n        <div>\n          <input type=\"text\" name=\"change-password\" ng-model=\"$ctrl.emailToChangePassword\" style=\"    border: 0;\n          width: 200px;\n          border-bottom: solid 1px #734cb3;\n          background-color: transparent;\n          padding: 20px;\n          color: #fff;\n          margin: 20px;\">\n        </div>\n        <div>\n          <button ng-click=\"$ctrl.doChangePassword()\" style=\"    border: 0;\n          padding: 5px 20px;\n          border-radius: 20px;\n          cursor: pointer;\">{{'CHANGE_PASSWORD' | translate}}</button>\n        </div>\n      </form>\n    </div>\n  </div>\n\n  <div id=\"modal-verify-twofa\" class=\"modal\" ng-if=\"true\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <form class=\"form-msg-pass\">\n        <div style=\"text-align: center;\">\n          <h3 for=\"change\">{{'AUTH_TWOFA' | translate}}</h3>\n        </div>\n        <div ng-show=\"$ctrl.showErrorMsgTwofaError\" class=\"showErrorMsg\">\n          <h5 for=\"change\" style=\"margin: 30px;\">{{'INVALID_TWOFA_NUMBER' | translate}}</h5>\n        </div>\n\n        <div>\n          <input type=\"text\" name=\"change-password\" ng-model=\"$ctrl.authTwofaNumber\" style=\"border: 0;\n          width: 200px;\n          border-bottom: solid 1px #734cb3;\n          background-color: transparent;\n          padding: 20px;\n          color: #fff;\n          margin: 20px;\">\n        </div>\n        <div>\n          <button ng-click=\"$ctrl.redirectTwofa()\" style=\"    border: 0;\n          padding: 5px 20px;\n          border-radius: 20px;\n          cursor: pointer;\">{{'VERIFY' | translate}}</button>\n        </div>\n      </form>\n    </div>\n  </div>\n\n  <lunesheader showlogout='false' showlinks='false'></lunesheader>\n\n  <!-- AUTHENTICATION FORM -->\n  <section class=\"authentication\">\n    <div>\n      <form name=\"$ctrl.loginForm\">\n        <div class=\"row\">\n\n          <div class=\"col-xs-12 col-md-12 col-lg-12\" ng-if=\"$ctrl.preICOFinished\">\n            <div class=\"finished-pre-ico\">\n              <h5>{{'PRE_ICO_FINISHED' | translate}}</h5>\n            </div>\n          </div>\n\n          <div class=\"col-12 title\">\n            <h4>{{'WELCOME' | translate}}</h4>\n          </div>\n\n          <div class=\"col-12 col-lg-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n          <div class=\"col-lg-6 col-xs-12\">\n            <div class=\"input-form\">\n              <label for=\"input-email\">{{'EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.email\" id=\"input-email\" name=\"email\" required type=\"text\" placeholder=\"{{'EMAIL_PLACEHOLDER' | translate}}\">\n            </div>\n            <div class=\"input-form\">\n              <label for=\"input-password\">{{'PASSWORD' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.password\" id=\"input-password\" name=\"password\" minlength=\"8\" required type=\"password\" placeholder=\"{{'PASSWORD_PLACEHOLDER' | translate}}\">\n            </div>\n            <div class=\"input-form\" ng-show=\"$ctrl.showFieldTwofa\">\n              <label for=\"input-twofa\">{{'GOOGLE_AUTH' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.twofa\" id=\"input-twofa\" name=\"twofa\" type=\"text\" placeholder=\"{{'TYPE_GOOGLE_AUTH' | translate}}\">\n            </div>\n            <div class=\"area-button txt-center\">\n              <button class=\"rounded-button\" data-toggle=\"modal\" ng-click=\"$ctrl.doLogin()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\" />\n              </button>\n            </div>\n            <div class=\"dont-have-account\">\n              <label>{{'DONT_HAVE_ACCOUNT' | translate}}</label>\n              <label class=\"txt-green label-signup\" ng-click=\"$ctrl.goToSignup()\">{{'SIGNUP' | translate}}</label>\n              <!--<p class=\"cursor-pointer\">{{'RESET_PASSWORD' | translate}}</p>-->\n            </div>\n            <div style=\"margin: 5px 0 30px 0;\">\n              <label>{{'DO_YOU_CHANGE_PASSWORD' | translate}}</label>\n              <label class=\"txt-green label-signup\" data-toggle=\"modal\" data-target=\"#modal-change-password\">{{'CHANGE_PASSWORD' | translate}}</label>\n            </div>\n\n          </div>\n\n          <div class=\"col-lg-6 col-xs-12 \" style=\"margin: 0px 0 30px 0;\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1524775534/Arco1_qbmvrk.png\" class=\"img-responsive icon-rotate1\">\n             <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1524775534/Arco2_nou1kp.png\" class=\"img-responsive icon-rotate2\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1524775534/Arco3_d3gf6h.png\" class=\"img-responsive icon-rotate3\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1524775542/Whitelist_vgevka.png\" class=\"img-responsive icon-float icon-align-whitelist\" alt=\"next\" />\n          </div>\n\n\n          \n\n          <div class=\"col-lg-4 col-xs-12\" ng-show=\"false\">\n            <div id=\"counter\" class=\"\">\n              <span id=\"coin_counter\" ng-show=\"false\">$ 00 000 000</span>\n              <div id=\"loading_bar\">\n                <div id=\"loading_bar_green\" style=\"width:50%;\"></div>\n              </div>\n              <div>\n                <div class=\"row\" style=\"text-align: center;\">\n                  <div class=\"col-xs-6 col-lg-6\">\n                    Pre-Ico\n                  </div>\n                  <div class=\"col-xs-6 col-lg-6\">\n                    Ico\n                  </div>\n                </div>\n\n                <!-- conter -->\n                <div class=\"row\" id=\"number\">\n                  <div class=\"col-xs-12\" id=\"time\">\n                    <div id=\"clockdiv\">\n                      <div>\n                        <span class=\"days\"></span>\n                        <div class=\"smalltext\">Days</div>\n                      </div>\n                      <div>\n                        <span class=\"hours\"></span>\n                        <div class=\"smalltext\">Hours</div>\n                      </div>\n                      <div>\n                        <span class=\"minutes\"></span>\n                        <div class=\"smalltext\">Minutes</div>\n                      </div>\n                      <div>\n                        <span class=\"seconds\"></span>\n                        <div class=\"smalltext\">Seconds</div>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n\n                <!-- hard cap -->\n                <div class=\"row\" id=\"number\">\n                  <div class=\"col-xs-12 col-lg-12\" id=\"hard-cap\">\n                    <p>Hard cap</p>\n                    <p>$ 100 000 000</p>\n                  </div>\n                </div>\n\n              </div>\n            </div>\n\n          </div>\n\n\n        </form>\n      </div>\n  </section>\n  </div>\n  <lunesfooter />\n"
+	module.exports = "<div class=\"container login\">\n\n\n\n  <!-- MODAL - criar directiva depois -->\n  <div id=\"modal-terms\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <div>\n        <script>\n          function openCity(evt, cityName) {\n            // Declare all variables\n            var i, tabcontent, tablinks;\n\n            // Get all elements with class=\"tabcontent\" and hide them\n            tabcontent = document.getElementsByClassName(\"tabcontent\");\n            for (i = 0; i < tabcontent.length; i++) {\n              tabcontent[i].style.display = \"none\";\n            }\n\n            // Get all elements with class=\"tablinks\" and remove the class \"active\"\n            tablinks = document.getElementsByClassName(\"tablinks\");\n            for (i = 0; i < tablinks.length; i++) {\n              tablinks[i].className = tablinks[i].className.replace(\" active\", \"\");\n            }\n\n            // Show the current tab, and add an \"active\" class to the button that opened the tab\n            document.getElementById(cityName).style.display = \"block\";\n            evt.currentTarget.className += \" active\";\n          }\n        </script>\n        <!-- Tab links -->\n        <div class=\"tab\">\n          <button class=\"tablinks\" onclick=\"openCity(event, 'terms_condition')\" id=\"defaultOpen\">{{'TERMS_CONDITION_TITLE' | translate}}</button>\n          <button class=\"tablinks\" onclick=\"openCity(event, 'representation_condition')\">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>\n        </div>\n        <!-- Tab content -->\n        <div id=\"terms_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsCondition\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n\n        <div id=\"representation_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsRepresentation\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG1\" id=\"checkboxG1\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check1\" ng-change=\"$ctrl.allCheckboxIsChecked()\">\n            <label for=\"checkboxG1\" class=\"css-label radGroup1 clr\"> {{'US_CITIZEN' | translate}} </label>\n          </div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG2\" id=\"checkboxG2\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check2\">\n            <label for=\"checkboxG2\" class=\"css-label radGroup1 clr\"> {{'AGREE_TERM' | translate}} </label>\n          </div>\n          <!--<div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG3\" id=\"checkboxG3\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check3\">\n            <label for=\"checkboxG3\" class=\"css-label radGroup1 clr\"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>\n          </div>-->\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG4\" id=\"checkboxG4\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check4\">\n            <label for=\"checkboxG4\" class=\"css-label radGroup1 clr\"> {{'AGREE_FUTURE_VALUE' | translate}}</label>\n          </div>\n          <div class=\"area-button\">\n            <button ng-show=\"$ctrl.allCheckboxIsChecked()\" class=\"primary-button\" data-ng-click=\"$ctrl.doAccept()\" data-dismiss=\"modal\">{{'AGREE' | translate}}</button>\n            <!--<button ng-show=\"!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()\" class=\"disabled-button\">{{'AGREE' | translate}}</button>-->\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- MODAL - criar directiva change password -->\n  <div id=\"modal-change-password\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\" style=\"height: 100%;\">\n\n      <div ng-show=\"$ctrl.loadingResetPass\" class=\"loadingResetPass\">\n        {{'LOADING' | translate}}\n      </div>\n\n      <div ng-show=\"$ctrl.showMsgEmailSent\" class=\"showEmailSent\">\n        <h3 for=\"change\">{{'EMAIL_SENT' | translate}}</h3>\n        <div style=\"width: 100px;\">\n          <button class=\"icon-close\" data-dismiss=\"modal\">{{'CLOSE' | translate}}</button>\n        </div>\n      </div>\n\n      <form class=\"form-msg-pass\" ng-show=\"!$ctrl.loadingResetPass && !$ctrl.showMsgEmailSent\">\n        <div style=\"text-align: center;\">\n          <h3 for=\"change\">{{'CHANGE_PASSWORD_INSTRUCTION' | translate}}</h3>\n        </div>\n        <div ng-show=\"$ctrl.showErrorMsgEmailSent\" class=\"showErrorMsg\">\n          <h5 for=\"change\">{{'EMAIL_NOT_SENT' | translate}}</h5>\n          <div style=\"width: 100px;\">\n            <button style=\"border: 0;\n              padding: 5px 20px;\n              border-radius: 20px;\n              cursor: pointer;\" class=\"icon-close\" data-dismiss=\"modal\">{{'CLOSE' | translate}}</button>\n          </div>\n        </div>\n\n        <div>\n          <input type=\"text\" name=\"change-password\" ng-model=\"$ctrl.emailToChangePassword\" style=\"    border: 0;\n          width: 200px;\n          border-bottom: solid 1px #734cb3;\n          background-color: transparent;\n          padding: 20px;\n          color: #fff;\n          margin: 20px;\">\n        </div>\n        <div>\n          <button ng-click=\"$ctrl.doChangePassword()\" style=\"    border: 0;\n          padding: 5px 20px;\n          border-radius: 20px;\n          cursor: pointer;\">{{'CHANGE_PASSWORD' | translate}}</button>\n        </div>\n      </form>\n    </div>\n  </div>\n\n  <div id=\"modal-verify-twofa\" class=\"modal\" ng-if=\"true\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <form class=\"form-msg-pass\">\n        <div style=\"text-align: center;\">\n          <h3 for=\"change\">{{'AUTH_TWOFA' | translate}}</h3>\n        </div>\n        <div ng-show=\"$ctrl.showErrorMsgTwofaError\" class=\"showErrorMsg\">\n          <h5 for=\"change\" style=\"margin: 30px;\">{{'INVALID_TWOFA_NUMBER' | translate}}</h5>\n        </div>\n\n        <div>\n          <input type=\"text\" name=\"change-password\" ng-model=\"$ctrl.authTwofaNumber\" style=\"border: 0;\n          width: 200px;\n          border-bottom: solid 1px #734cb3;\n          background-color: transparent;\n          padding: 20px;\n          color: #fff;\n          margin: 20px;\">\n        </div>\n        <div>\n          <button ng-click=\"$ctrl.redirectTwofa()\" style=\"    border: 0;\n          padding: 5px 20px;\n          border-radius: 20px;\n          cursor: pointer;\">{{'VERIFY' | translate}}</button>\n        </div>\n      </form>\n    </div>\n  </div>\n\n  <lunesheader showlogout='false' showlinks='false'></lunesheader>\n\n  <!-- AUTHENTICATION FORM -->\n  <section class=\"authentication\">\n    <div>\n      <form name=\"$ctrl.loginForm\">\n        <div class=\"row\">\n\n          <div class=\"col-xs-12 col-md-12 col-lg-12\" ng-if=\"$ctrl.preICOFinished\">\n            <div class=\"finished-pre-ico\">\n              <h5>{{'PRE_ICO_FINISHED' | translate}}</h5>\n            </div>\n          </div>\n\n          <div class=\"col-12 title\">\n            <h4>{{'WELCOME' | translate}}</h4>\n          </div>\n\n          <div class=\"col-12 col-lg-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n          <div class=\"col-lg-6 col-xs-12\">\n            <div class=\"input-form\">\n              <label for=\"input-email\">{{'EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.email\" id=\"input-email\" name=\"email\" required type=\"text\" placeholder=\"{{'EMAIL_PLACEHOLDER' | translate}}\">\n            </div>\n            <div class=\"input-form\">\n              <label for=\"input-password\">{{'PASSWORD' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.password\" id=\"input-password\" name=\"password\" minlength=\"8\" required type=\"password\" placeholder=\"{{'PASSWORD_PLACEHOLDER' | translate}}\">\n            </div>\n            <div class=\"input-form\" ng-show=\"$ctrl.showFieldTwofa\">\n              <label for=\"input-twofa\">{{'GOOGLE_AUTH' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.twofa\" id=\"input-twofa\" name=\"twofa\" type=\"text\" placeholder=\"{{'TYPE_GOOGLE_AUTH' | translate}}\">\n            </div>\n            <div class=\"area-button txt-center\">\n              <button class=\"rounded-button\" data-toggle=\"modal\" ng-click=\"$ctrl.doLogin()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\" />\n              </button>\n            </div>\n            <div class=\"dont-have-account\">\n              <label>{{'DONT_HAVE_ACCOUNT' | translate}}</label>\n              <label class=\"txt-green label-signup\" ng-click=\"$ctrl.goToSignup()\">{{'SIGNUP' | translate}}</label>\n              <!--<p class=\"cursor-pointer\">{{'RESET_PASSWORD' | translate}}</p>-->\n            </div>\n            <div style=\"margin: 5px 0 30px 0;\">\n              <label>{{'DO_YOU_CHANGE_PASSWORD' | translate}}</label>\n              <label class=\"txt-green label-signup\" data-toggle=\"modal\" data-target=\"#modal-change-password\">{{'CHANGE_PASSWORD' | translate}}</label>\n            </div>\n\n          </div>\n\n          <div class=\"col-lg-6 col-xs-12 \" style=\"margin: 0px 0 30px 0; text-align:center;\">\n            <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1525095648/Banner-ICO_tcagf5.png\" class=\"img-responsive\" style=\"margin-top:-40px; max-width:80%;\">\n          </div>\n\n\n          \n\n          <div class=\"col-lg-4 col-xs-12\" ng-show=\"false\">\n            <div id=\"counter\" class=\"\">\n              <span id=\"coin_counter\" ng-show=\"false\">$ 00 000 000</span>\n              <div id=\"loading_bar\">\n                <div id=\"loading_bar_green\" style=\"width:50%;\"></div>\n              </div>\n              <div>\n                <div class=\"row\" style=\"text-align: center;\">\n                  <div class=\"col-xs-6 col-lg-6\">\n                    Pre-Ico\n                  </div>\n                  <div class=\"col-xs-6 col-lg-6\">\n                    Ico\n                  </div>\n                </div>\n\n                <!-- conter -->\n                <div class=\"row\" id=\"number\">\n                  <div class=\"col-xs-12\" id=\"time\">\n                    <div id=\"clockdiv\">\n                      <div>\n                        <span class=\"days\"></span>\n                        <div class=\"smalltext\">Days</div>\n                      </div>\n                      <div>\n                        <span class=\"hours\"></span>\n                        <div class=\"smalltext\">Hours</div>\n                      </div>\n                      <div>\n                        <span class=\"minutes\"></span>\n                        <div class=\"smalltext\">Minutes</div>\n                      </div>\n                      <div>\n                        <span class=\"seconds\"></span>\n                        <div class=\"smalltext\">Seconds</div>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n\n                <!-- hard cap -->\n                <div class=\"row\" id=\"number\">\n                  <div class=\"col-xs-12 col-lg-12\" id=\"hard-cap\">\n                    <p>Hard cap</p>\n                    <p>$ 100 000 000</p>\n                  </div>\n                </div>\n\n              </div>\n            </div>\n\n          </div>\n\n\n        </form>\n      </div>\n  </section>\n  </div>\n  <lunesfooter />\n"
 
 /***/ },
-/* 697 */
+/* 696 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -81816,13 +81764,13 @@
 	  value: true
 	});
 	
-	var _index = __webpack_require__(689);
+	var _index = __webpack_require__(688);
 	
 	var _smartlookClient = __webpack_require__(332);
 	
 	var _smartlookClient2 = _interopRequireDefault(_smartlookClient);
 	
-	var _countdown = __webpack_require__(698);
+	var _countdown = __webpack_require__(697);
 	
 	var _countdown2 = _interopRequireDefault(_countdown);
 	
@@ -82234,7 +82182,7 @@
 	exports.default = LoginController;
 
 /***/ },
-/* 698 */
+/* 697 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -82289,16 +82237,16 @@
 	exports.default = start;
 
 /***/ },
-/* 699 */
+/* 698 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(700);
+	var content = __webpack_require__(699);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(693)(content, {});
+	var update = __webpack_require__(692)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -82315,21 +82263,21 @@
 	}
 
 /***/ },
-/* 700 */
+/* 699 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(692)(true);
+	exports = module.exports = __webpack_require__(691)(true);
 	// imports
 	
 	
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\n.dont-have-account {\n  margin-top: 50px; }\n  .dont-have-account .label-signup {\n    cursor: pointer; }\n\n.modal-backdrop-error {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1040;\n  background-color: #4c2b82;\n  opacity: 0.7;\n  text-align: center; }\n  .modal-backdrop-error .close-error {\n    border: 0;\n    border-radius: 30px;\n    padding: 5px 50px;\n    background-color: #4cd466;\n    color: #fff;\n    cursor: pointer; }\n\n/* counter */\n#counter {\n  font-family: 'Offside', cursive;\n  margin-top: 20px;\n  margin-bottom: 20px; }\n\n#counter #coin_counter {\n  display: block;\n  text-align: right;\n  font-size: 1.3em;\n  margin-bottom: 10px;\n  padding-right: 20px; }\n\n#counter #loading_bar {\n  display: block;\n  background-color: #fff;\n  height: 5px; }\n\n#counter #loading_bar_green {\n  display: block;\n  background-color: #4cd566;\n  height: 5px; }\n\n#counter #base_counter {\n  background-color: #544d8f;\n  padding: 20px;\n  border-radius: 0px 0px 4px 4px; }\n\n#counter #number {\n  margin-top: 30px;\n  display: block;\n  text-align: center; }\n\n#counter #number span {\n  font-size: .2em;\n  color: #fff;\n  display: block;\n  margin-top: 20px; }\n\n#counter #hard-cap {\n  display: block;\n  background-color: #544d8f;\n  max-width: 160px;\n  margin-left: auto;\n  margin-right: auto;\n  color: #4cd566;\n  font-size: .8em;\n  text-align: center;\n  padding: 10px;\n  border-radius: 4px;\n  margin-top: -40px; }\n\n#counter #hard-cap span {\n  display: block;\n  color: #fff;\n  font-size: 1.2em; }\n\n#clockdiv {\n  font-family: sans-serif;\n  color: #fff;\n  display: inline-block;\n  font-weight: 100;\n  text-align: center;\n  font-size: 30px; }\n\n#clockdiv > div {\n  padding: 5px;\n  border-radius: 3px;\n  background: #00BF96;\n  display: inline-block;\n  width: 80px; }\n\n#clockdiv div > span {\n  padding: 15px;\n  border-radius: 3px;\n  background: #00816A;\n  display: inline-block; }\n\n.smalltext {\n  padding-top: 5px;\n  font-size: 16px; }\n\n.login #modal-change-password {\n  box-shadow: #3a2261 1px 0px 5px 4px;\n  margin: 10px;\n  overflow-y: hidden; }\n\n.login .loadingResetPass {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  height: 100%; }\n\n.login .showEmailSent {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  height: 100%; }\n\n.login .showErrorMsg {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  height: 100%; }\n  .login .showErrorMsg h5 {\n    padding: 2px 10px;\n    background-color: #d83636;\n    border-radius: 20px; }\n  .login .showErrorMsg button {\n    border: 0;\n    padding: 5px 20px;\n    border-radius: 20px;\n    cursor: pointer; }\n\n.login .form-msg-pass {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  height: 100%; }\n\n.icon-rotate1 {\n  /* rotação elipse fixa*/\n  animation: spin 10s linear infinite;\n  position: relative;\n  max-width: 100%;\n  margin-top: -10%;\n  margin-left: 10%; }\n\n.icon-rotate2 {\n  animation: spin 6s linear infinite;\n  position: relative;\n  max-width: 100%;\n  margin-top: -82%;\n  margin-left: 10%; }\n\n.icon-rotate3 {\n  animation: spin 8s linear infinite;\n  position: relative;\n  max-width: 100%;\n  margin-top: -89%;\n  margin-left: 10%; }\n\n.icon-float {\n  /* imagens dos tópicos dos produtos flutuando */\n  animation: float 6s ease-in-out infinite; }\n\n.icon-align-whitelist {\n  position: absolute;\n  top: -10%;\n  width: 75%;\n  margin-left: 10%;\n  display: block;\n  max-width: 90%; }\n\n/*animation fixed circle */\n\n@keyframes spin {\n  100% {\n    transform: rotate(360deg); } }\n\n@keyframes float {\n  0% {\n    transform: translatey(0px); }\n  50% {\n    transform: translatey(-20px); }\n  100% {\n    transform: translatey(0px); } }\n\n@keyframes flashflash {\n  0% {\n    opacity: .2; }\n  50% {\n    opacity: 1; }\n  100% {\n    opacity: .2; } }\n\n@media only screen and (min-width: 992px) and (max-width: 1200px) {\n  .icon-rotate2 {\n    position: relative;\n    max-width: 100%;\n    margin-top: -99%;\n    margin-left: 10%; }\n  .icon-rotate3 {\n    position: relative;\n    max-width: 100%;\n    margin-top: -107%;\n    margin-left: 10%; }\n  .icon-align-whitelist {\n    position: absolute;\n    top: -40px;\n    margin-left: 10%;\n    width: 89%; } }\n\n@media only screen and (min-width: 771px) and (max-width: 991px) {\n  .icon-rotate1 {\n    position: relative;\n    max-width: 100%;\n    margin-left: 20%;\n    margin-top: 0px; }\n  .icon-rotate2 {\n    position: relative;\n    max-width: 100%;\n    margin-top: -64%;\n    margin-left: 20%; }\n  .icon-rotate3 {\n    position: relative;\n    max-width: 100%;\n    margin-top: -70%;\n    margin-left: 20%; }\n  .icon-align-whitelist {\n    position: absolute;\n    top: 10px;\n    margin-left: 20%;\n    width: 55%; } }\n\n@media only screen and (min-width: 570px) and (max-width: 770px) {\n  .icon-rotate1 {\n    margin-top: 10%; }\n  .icon-rotate2 {\n    margin-top: -87%; }\n  .icon-rotate3 {\n    margin-top: -95%; }\n  .icon-align-whitelist {\n    top: 55px; } }\n\n@media only screen and (min-width: 768px) and (max-width: 769px) {\n  .icon-rotate1 {\n    margin-top: 0px; }\n  .icon-rotate2 {\n    margin-top: -65%; }\n  .icon-rotate3 {\n    margin-top: -71%; }\n  .icon-align-whitelist {\n    width: 52%;\n    margin-left: 13%;\n    top: 30px; } }\n\n@media only screen and (max-width: 569px) {\n  .icon-rotate1 {\n    margin-top: 50px; }\n  .icon-rotate2 {\n    margin-top: -89%; }\n  .icon-rotate3 {\n    margin-top: -97%; }\n  .icon-align-whitelist {\n    top: 70px;\n    width: 70%; } }\n", "", {"version":3,"sources":["C:/Lunes/lunes-purchase/src/login/login.component.scss","C:/Lunes/lunes-purchase/src/login/src/login/login.component.scss"],"names":[],"mappings":"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","file":"login.component.scss","sourcesContent":["@charset \"UTF-8\";\n.dont-have-account {\n  margin-top: 50px; }\n  .dont-have-account .label-signup {\n    cursor: pointer; }\n\n.modal-backdrop-error {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1040;\n  background-color: #4c2b82;\n  opacity: 0.7;\n  text-align: center; }\n  .modal-backdrop-error .close-error {\n    border: 0;\n    border-radius: 30px;\n    padding: 5px 50px;\n    background-color: #4cd466;\n    color: #fff;\n    cursor: pointer; }\n\n/* counter */\n#counter {\n  font-family: 'Offside', cursive;\n  margin-top: 20px;\n  margin-bottom: 20px; }\n\n#counter #coin_counter {\n  display: block;\n  text-align: right;\n  font-size: 1.3em;\n  margin-bottom: 10px;\n  padding-right: 20px; }\n\n#counter #loading_bar {\n  display: block;\n  background-color: #fff;\n  height: 5px; }\n\n#counter #loading_bar_green {\n  display: block;\n  background-color: #4cd566;\n  height: 5px; }\n\n#counter #base_counter {\n  background-color: #544d8f;\n  padding: 20px;\n  border-radius: 0px 0px 4px 4px; }\n\n#counter #number {\n  margin-top: 30px;\n  display: block;\n  text-align: center; }\n\n#counter #number span {\n  font-size: .2em;\n  color: #fff;\n  display: block;\n  margin-top: 20px; }\n\n#counter #hard-cap {\n  display: block;\n  background-color: #544d8f;\n  max-width: 160px;\n  margin-left: auto;\n  margin-right: auto;\n  color: #4cd566;\n  font-size: .8em;\n  text-align: center;\n  padding: 10px;\n  border-radius: 4px;\n  margin-top: -40px; }\n\n#counter #hard-cap span {\n  display: block;\n  color: #fff;\n  font-size: 1.2em; }\n\n#clockdiv {\n  font-family: sans-serif;\n  color: #fff;\n  display: inline-block;\n  font-weight: 100;\n  text-align: center;\n  font-size: 30px; }\n\n#clockdiv > div {\n  padding: 5px;\n  border-radius: 3px;\n  background: #00BF96;\n  display: inline-block;\n  width: 80px; }\n\n#clockdiv div > span {\n  padding: 15px;\n  border-radius: 3px;\n  background: #00816A;\n  display: inline-block; }\n\n.smalltext {\n  padding-top: 5px;\n  font-size: 16px; }\n\n.login #modal-change-password {\n  box-shadow: #3a2261 1px 0px 5px 4px;\n  margin: 10px;\n  overflow-y: hidden; }\n\n.login .loadingResetPass {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  height: 100%; }\n\n.login .showEmailSent {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  height: 100%; }\n\n.login .showErrorMsg {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  height: 100%; }\n  .login .showErrorMsg h5 {\n    padding: 2px 10px;\n    background-color: #d83636;\n    border-radius: 20px; }\n  .login .showErrorMsg button {\n    border: 0;\n    padding: 5px 20px;\n    border-radius: 20px;\n    cursor: pointer; }\n\n.login .form-msg-pass {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  height: 100%; }\n\n.icon-rotate1 {\n  /* rotação elipse fixa*/\n  -webkit-animation: spin 10s linear infinite;\n  -moz-animation: spin 10s linear infinite;\n  animation: spin 10s linear infinite;\n  position: relative;\n  max-width: 100%;\n  margin-top: -10%;\n  margin-left: 10%; }\n\n.icon-rotate2 {\n  -webkit-animation: spin 6s linear infinite;\n  -moz-animation: spin 6s linear infinite;\n  animation: spin 6s linear infinite;\n  position: relative;\n  max-width: 100%;\n  margin-top: -82%;\n  margin-left: 10%; }\n\n.icon-rotate3 {\n  -webkit-animation: spin 8s linear infinite;\n  -moz-animation: spin 8s linear infinite;\n  animation: spin 8s linear infinite;\n  position: relative;\n  max-width: 100%;\n  margin-top: -89%;\n  margin-left: 10%; }\n\n.icon-float {\n  /* imagens dos tópicos dos produtos flutuando */\n  animation: float 6s ease-in-out infinite; }\n\n.icon-align-whitelist {\n  position: absolute;\n  top: -10%;\n  width: 75%;\n  margin-left: 10%;\n  display: block;\n  max-width: 90%; }\n\n/*animation fixed circle */\n@-moz-keyframes spin {\n  100% {\n    -moz-transform: rotate(360deg); } }\n\n@-webkit-keyframes spin {\n  100% {\n    -webkit-transform: rotate(360deg); } }\n\n@keyframes spin {\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg); } }\n\n@keyframes float {\n  0% {\n    transform: translatey(0px); }\n  50% {\n    transform: translatey(-20px); }\n  100% {\n    transform: translatey(0px); } }\n\n@keyframes flashflash {\n  0% {\n    opacity: .2; }\n  50% {\n    opacity: 1; }\n  100% {\n    opacity: .2; } }\n\n@media only screen and (min-width: 992px) and (max-width: 1200px) {\n  .icon-rotate2 {\n    position: relative;\n    max-width: 100%;\n    margin-top: -99%;\n    margin-left: 10%; }\n  .icon-rotate3 {\n    position: relative;\n    max-width: 100%;\n    margin-top: -107%;\n    margin-left: 10%; }\n  .icon-align-whitelist {\n    position: absolute;\n    top: -40px;\n    margin-left: 10%;\n    width: 89%; } }\n\n@media only screen and (min-width: 771px) and (max-width: 991px) {\n  .icon-rotate1 {\n    position: relative;\n    max-width: 100%;\n    margin-left: 20%;\n    margin-top: 0px; }\n  .icon-rotate2 {\n    position: relative;\n    max-width: 100%;\n    margin-top: -64%;\n    margin-left: 20%; }\n  .icon-rotate3 {\n    position: relative;\n    max-width: 100%;\n    margin-top: -70%;\n    margin-left: 20%; }\n  .icon-align-whitelist {\n    position: absolute;\n    top: 10px;\n    margin-left: 20%;\n    width: 55%; } }\n\n@media only screen and (min-width: 570px) and (max-width: 770px) {\n  .icon-rotate1 {\n    margin-top: 10%; }\n  .icon-rotate2 {\n    margin-top: -87%; }\n  .icon-rotate3 {\n    margin-top: -95%; }\n  .icon-align-whitelist {\n    top: 55px; } }\n\n@media only screen and (min-width: 768px) and (max-width: 769px) {\n  .icon-rotate1 {\n    margin-top: 0px; }\n  .icon-rotate2 {\n    margin-top: -65%; }\n  .icon-rotate3 {\n    margin-top: -71%; }\n  .icon-align-whitelist {\n    width: 52%;\n    margin-left: 13%;\n    top: 30px; } }\n\n@media only screen and (max-width: 569px) {\n  .icon-rotate1 {\n    margin-top: 50px; }\n  .icon-rotate2 {\n    margin-top: -89%; }\n  .icon-rotate3 {\n    margin-top: -97%; }\n  .icon-align-whitelist {\n    top: 70px;\n    width: 70%; } }\n",".dont-have-account {\r\n  margin-top: 50px;\r\n  .label-signup {\r\n    cursor: pointer;\r\n  }\r\n}\r\n\r\n.modal-backdrop-error {\r\n  position: fixed;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  z-index: 1040;\r\n  background-color: #4c2b82;\r\n  opacity: 0.7;\r\n  text-align: center;\r\n  .close-error {\r\n    border: 0;\r\n    border-radius: 30px;\r\n    padding: 5px 50px;\r\n    background-color: #4cd466;\r\n    color: #fff;\r\n    cursor: pointer;\r\n  }\r\n}\r\n\r\n/* counter */\r\n#counter {\r\n  font-family: 'Offside', cursive;\r\n  margin-top:20px;\r\n  margin-bottom:20px;\r\n  \r\n}\r\n#counter #coin_counter {\r\n  display: block;\r\n  text-align: right;\r\n  font-size: 1.3em;\r\n  margin-bottom: 10px;\r\n  padding-right: 20px;\r\n}\r\n#counter #loading_bar {\r\n  display:block;\r\n  background-color: #fff;\r\n  height: 5px;\r\n}\r\n#counter #loading_bar_green {\r\n  display: block;\r\n  background-color: #4cd566;\r\n  height: 5px;\r\n}\r\n#counter #base_counter {\r\n  background-color: #544d8f;\r\n  padding:20px;\r\n  border-radius: 0px 0px 4px 4px;\r\n}\r\n#counter #number {\r\n  margin-top: 30px;\r\n  display: block;\r\n  text-align: center;\r\n}\r\n#counter #number span {\r\n  font-size: .2em;\r\n  color:#fff;\r\n  display: block;\r\n  margin-top: 20px;\r\n}\r\n#counter #hard-cap {\r\n  display: block;\r\n  background-color: #544d8f;\r\n  max-width: 160px;\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  color: #4cd566;\r\n  font-size: .8em;\r\n  text-align: center;\r\n  padding: 10px;\r\n  border-radius: 4px;\r\n  margin-top: -40px;\r\n}\r\n#counter #hard-cap span {\r\n  display: block;\r\n  color: #fff;\r\n  font-size: 1.2em;\r\n}\r\n\r\n#clockdiv{\r\n  font-family: sans-serif;\r\n  color: #fff;\r\n  display: inline-block;\r\n  font-weight: 100;\r\n  text-align: center;\r\n  font-size: 30px;\r\n}\r\n\r\n#clockdiv > div{\r\n  padding: 5px;\r\n  border-radius: 3px;\r\n  background: #00BF96;\r\n  display: inline-block;\r\n  width: 80px;\r\n}\r\n\r\n#clockdiv div > span{\r\n  padding: 15px;\r\n  border-radius: 3px;\r\n  background: #00816A;\r\n  display: inline-block;\r\n}\r\n\r\n.smalltext{\r\n  padding-top: 5px;\r\n  font-size: 16px;\r\n}\r\n\r\n.login {\r\n\r\n  #modal-change-password {\r\n    box-shadow: #3a2261 1px 0px 5px 4px;\r\n    margin: 10px;\r\n    overflow-y: hidden;\r\n  }\r\n\r\n  .loadingResetPass {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n  \r\n  .showEmailSent {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n  \r\n  .showErrorMsg {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n    h5 {\r\n      padding: 2px 10px;\r\n      background-color: #d83636;\r\n      border-radius: 20px;\r\n    }\r\n    button {\r\n      border: 0;\r\n      padding: 5px 20px;\r\n      border-radius: 20px;\r\n      cursor: pointer;\r\n    }\r\n  }\r\n  \r\n  .form-msg-pass {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n\r\n}\r\n\r\n    .icon-rotate1{  /* rotação elipse fixa*/\r\n      -webkit-animation:spin 10s linear infinite;\r\n      -moz-animation:spin 10s linear infinite;\r\n      animation:spin 10s linear infinite;    \r\n      position: relative;\r\n      max-width: 100%;\r\n      margin-top: -10%;\r\n      margin-left:10%;\r\n    }\r\n  \r\n  .icon-rotate2{\r\n      -webkit-animation:spin 6s linear infinite;\r\n      -moz-animation:spin 6s linear infinite;\r\n      animation:spin 6s linear infinite;    \r\n      position: relative;\r\n      max-width: 100%;\r\n      margin-top: -82%;\r\n      margin-left:10%;\r\n    }\r\n  \r\n  .icon-rotate3{\r\n      -webkit-animation:spin 8s linear infinite;\r\n      -moz-animation:spin 8s linear infinite;\r\n      animation:spin 8s linear infinite;    \r\n      position: relative;\r\n      max-width: 100%;\r\n      margin-top: -89%;\r\n      margin-left:10%;\r\n    }\r\n\r\n  .icon-float { /* imagens dos tópicos dos produtos flutuando */\r\n    animation: float 6s ease-in-out infinite;\r\n    }\r\n  .icon-align-whitelist{\r\n    position: absolute;\r\n    top:-10%;\r\n    width: 75%;\r\n    margin-left:10%;\r\n    display: block;\r\n    max-width: 90%;\r\n   }\r\n  /*animation fixed circle */\r\n@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }\r\n@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }\r\n@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }\r\n@keyframes float {\t0% {\t\ttransform: translatey(0px);\t}\t50% {\t\ttransform: translatey(-20px);\t}\t100% {\t\ttransform: translatey(0px);\t}}\r\n@keyframes flashflash {\t0% {\t\topacity: .2;\t}\t50% {\t\topacity: 1;\t}\t100% {\t\topacity: .2;\t}}\r\n            \r\n@media only screen and (min-width:992px) and (max-width:1200px){\r\n   .icon-rotate2{ \r\n    position: relative;\r\n    max-width: 100%;\r\n    margin-top: -99%;\r\n    margin-left:10%;\r\n  }\r\n  .icon-rotate3{  \r\n    position: relative;\r\n    max-width: 100%;\r\n    margin-top: -107%;\r\n    margin-left:10%;\r\n  }\r\n  .icon-align-whitelist{\r\n    position: absolute;\r\n    top:-40px;\r\n    margin-left:10%;\r\n    width: 89%;\r\n  }\r\n}\r\n@media only screen and (min-width:771px) and (max-width:991px){\r\n  .icon-rotate1{  \r\n    position: relative;\r\n    max-width: 100%;\r\n    margin-left:20%;\r\n    margin-top:0px; \r\n  }\r\n  .icon-rotate2{ \r\n    position: relative;\r\n    max-width: 100%;\r\n    margin-top: -64%;\r\n    margin-left:20%;\r\n  }\r\n  .icon-rotate3{  \r\n    position: relative;\r\n    max-width: 100%;\r\n    margin-top: -70%;\r\n    margin-left:20%;\r\n  }\r\n  .icon-align-whitelist{\r\n    position: absolute;\r\n    top:10px;\r\n    margin-left:20%;\r\n    width: 55%;\r\n  }\r\n}\r\n@media only screen and (min-width:570px) and (max-width:770px){\r\n  .icon-rotate1{\r\n    margin-top:10%;\r\n  }\r\n  .icon-rotate2{\r\n    margin-top: -87%;\r\n  }\r\n  .icon-rotate3{\r\n    margin-top:-95%;\r\n  }\r\n  .icon-align-whitelist{\r\n    top:55px;\r\n  }\r\n  \r\n} \r\n@media only screen and (min-width:768px) and (max-width:769px){\r\n  .icon-rotate1{\r\n    margin-top: 0px;\r\n  }\r\n  .icon-rotate2{\r\n    margin-top: -65%;\r\n  }\r\n  .icon-rotate3{\r\n    margin-top: -71%;\r\n  }\r\n  .icon-align-whitelist{\r\n    width: 52%;\r\n    margin-left: 13%;\r\n    top:30px;\r\n  }  \r\n}\r\n@media only screen and (max-width:569px){\r\n  .icon-rotate1{\r\n    margin-top:50px;\r\n  }\r\n  .icon-rotate2{\r\n    margin-top: -89%;\r\n  }\r\n  .icon-rotate3{\r\n    margin-top:-97%;\r\n  }\r\n  .icon-align-whitelist{\r\n    top:70px;\r\n    width: 70%;\r\n  }\r\n}"],"sourceRoot":""}]);
+	exports.push([module.id, ".dont-have-account {\n  margin-top: 50px; }\n  .dont-have-account .label-signup {\n    cursor: pointer; }\n\n.modal-backdrop-error {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1040;\n  background-color: #4c2b82;\n  opacity: 0.7;\n  text-align: center; }\n  .modal-backdrop-error .close-error {\n    border: 0;\n    border-radius: 30px;\n    padding: 5px 50px;\n    background-color: #4cd466;\n    color: #fff;\n    cursor: pointer; }\n\n/* counter */\n#counter {\n  font-family: 'Offside', cursive;\n  margin-top: 20px;\n  margin-bottom: 20px; }\n\n#counter #coin_counter {\n  display: block;\n  text-align: right;\n  font-size: 1.3em;\n  margin-bottom: 10px;\n  padding-right: 20px; }\n\n#counter #loading_bar {\n  display: block;\n  background-color: #fff;\n  height: 5px; }\n\n#counter #loading_bar_green {\n  display: block;\n  background-color: #4cd566;\n  height: 5px; }\n\n#counter #base_counter {\n  background-color: #544d8f;\n  padding: 20px;\n  border-radius: 0px 0px 4px 4px; }\n\n#counter #number {\n  margin-top: 30px;\n  display: block;\n  text-align: center; }\n\n#counter #number span {\n  font-size: .2em;\n  color: #fff;\n  display: block;\n  margin-top: 20px; }\n\n#counter #hard-cap {\n  display: block;\n  background-color: #544d8f;\n  max-width: 160px;\n  margin-left: auto;\n  margin-right: auto;\n  color: #4cd566;\n  font-size: .8em;\n  text-align: center;\n  padding: 10px;\n  border-radius: 4px;\n  margin-top: -40px; }\n\n#counter #hard-cap span {\n  display: block;\n  color: #fff;\n  font-size: 1.2em; }\n\n#clockdiv {\n  font-family: sans-serif;\n  color: #fff;\n  display: inline-block;\n  font-weight: 100;\n  text-align: center;\n  font-size: 30px; }\n\n#clockdiv > div {\n  padding: 5px;\n  border-radius: 3px;\n  background: #00BF96;\n  display: inline-block;\n  width: 80px; }\n\n#clockdiv div > span {\n  padding: 15px;\n  border-radius: 3px;\n  background: #00816A;\n  display: inline-block; }\n\n.smalltext {\n  padding-top: 5px;\n  font-size: 16px; }\n\n.login #modal-change-password {\n  box-shadow: #3a2261 1px 0px 5px 4px;\n  margin: 10px;\n  overflow-y: hidden; }\n\n.login .loadingResetPass {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  height: 100%; }\n\n.login .showEmailSent {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  height: 100%; }\n\n.login .showErrorMsg {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  height: 100%; }\n  .login .showErrorMsg h5 {\n    padding: 2px 10px;\n    background-color: #d83636;\n    border-radius: 20px; }\n  .login .showErrorMsg button {\n    border: 0;\n    padding: 5px 20px;\n    border-radius: 20px;\n    cursor: pointer; }\n\n.login .form-msg-pass {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  height: 100%; }\n", "", {"version":3,"sources":["C:/lunes/lunes-purchase/src/login/src/login/login.component.scss"],"names":[],"mappings":"AAAA;EACE,iBAAgB,EAIjB;EALD;IAGI,gBAAe,EAChB;;AAGH;EACE,gBAAe;EACf,OAAM;EACN,SAAQ;EACR,UAAS;EACT,QAAO;EACP,cAAa;EACb,0BAAyB;EACzB,aAAY;EACZ,mBAAkB,EASnB;EAlBD;IAWI,UAAS;IACT,oBAAmB;IACnB,kBAAiB;IACjB,0BAAyB;IACzB,YAAW;IACX,gBAAe,EAChB;;AAGH,aAAa;AACb;EACE,gCAA+B;EAC/B,iBAAe;EACf,oBAAkB,EAEnB;;AACD;EACE,eAAc;EACd,kBAAiB;EACjB,iBAAgB;EAChB,oBAAmB;EACnB,oBAAmB,EACpB;;AACD;EACE,eAAa;EACb,uBAAsB;EACtB,YAAW,EACZ;;AACD;EACE,eAAc;EACd,0BAAyB;EACzB,YAAW,EACZ;;AACD;EACE,0BAAyB;EACzB,cAAY;EACZ,+BAA8B,EAC/B;;AACD;EACE,iBAAgB;EAChB,eAAc;EACd,mBAAkB,EACnB;;AACD;EACE,gBAAe;EACf,YAAU;EACV,eAAc;EACd,iBAAgB,EACjB;;AACD;EACE,eAAc;EACd,0BAAyB;EACzB,iBAAgB;EAChB,kBAAiB;EACjB,mBAAkB;EAClB,eAAc;EACd,gBAAe;EACf,mBAAkB;EAClB,cAAa;EACb,mBAAkB;EAClB,kBAAiB,EAClB;;AACD;EACE,eAAc;EACd,YAAW;EACX,iBAAgB,EACjB;;AAED;EACE,wBAAuB;EACvB,YAAW;EACX,sBAAqB;EACrB,iBAAgB;EAChB,mBAAkB;EAClB,gBAAe,EAChB;;AAED;EACE,aAAY;EACZ,mBAAkB;EAClB,oBAAmB;EACnB,sBAAqB;EACrB,YAAW,EACZ;;AAED;EACE,cAAa;EACb,mBAAkB;EAClB,oBAAmB;EACnB,sBAAqB,EACtB;;AAED;EACE,iBAAgB;EAChB,gBAAe,EAChB;;AAED;EAGI,oCAAmC;EACnC,aAAY;EACZ,mBAAkB,EACnB;;AANH;EASI,qBAAa;EAAb,cAAa;EACb,2BAAsB;MAAtB,uBAAsB;EACtB,uBAAmB;MAAnB,oBAAmB;EACnB,sBAAuB;MAAvB,wBAAuB;EACvB,aAAY,EACb;;AAdH;EAiBI,qBAAa;EAAb,cAAa;EACb,2BAAsB;MAAtB,uBAAsB;EACtB,uBAAmB;MAAnB,oBAAmB;EACnB,sBAAuB;MAAvB,wBAAuB;EACvB,aAAY,EACb;;AAtBH;EAyBI,qBAAa;EAAb,cAAa;EACb,2BAAsB;MAAtB,uBAAsB;EACtB,uBAAmB;MAAnB,oBAAmB;EACnB,sBAAuB;MAAvB,wBAAuB;EACvB,aAAY,EAYb;EAzCH;IA+BM,kBAAiB;IACjB,0BAAyB;IACzB,oBAAmB,EACpB;EAlCL;IAoCM,UAAS;IACT,kBAAiB;IACjB,oBAAmB;IACnB,gBAAe,EAChB;;AAxCL;EA4CI,qBAAa;EAAb,cAAa;EACb,2BAAsB;MAAtB,uBAAsB;EACtB,uBAAmB;MAAnB,oBAAmB;EACnB,sBAAuB;MAAvB,wBAAuB;EACvB,aAAY,EACb","file":"login.component.scss","sourcesContent":[".dont-have-account {\r\n  margin-top: 50px;\r\n  .label-signup {\r\n    cursor: pointer;\r\n  }\r\n}\r\n\r\n.modal-backdrop-error {\r\n  position: fixed;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  z-index: 1040;\r\n  background-color: #4c2b82;\r\n  opacity: 0.7;\r\n  text-align: center;\r\n  .close-error {\r\n    border: 0;\r\n    border-radius: 30px;\r\n    padding: 5px 50px;\r\n    background-color: #4cd466;\r\n    color: #fff;\r\n    cursor: pointer;\r\n  }\r\n}\r\n\r\n/* counter */\r\n#counter {\r\n  font-family: 'Offside', cursive;\r\n  margin-top:20px;\r\n  margin-bottom:20px;\r\n  \r\n}\r\n#counter #coin_counter {\r\n  display: block;\r\n  text-align: right;\r\n  font-size: 1.3em;\r\n  margin-bottom: 10px;\r\n  padding-right: 20px;\r\n}\r\n#counter #loading_bar {\r\n  display:block;\r\n  background-color: #fff;\r\n  height: 5px;\r\n}\r\n#counter #loading_bar_green {\r\n  display: block;\r\n  background-color: #4cd566;\r\n  height: 5px;\r\n}\r\n#counter #base_counter {\r\n  background-color: #544d8f;\r\n  padding:20px;\r\n  border-radius: 0px 0px 4px 4px;\r\n}\r\n#counter #number {\r\n  margin-top: 30px;\r\n  display: block;\r\n  text-align: center;\r\n}\r\n#counter #number span {\r\n  font-size: .2em;\r\n  color:#fff;\r\n  display: block;\r\n  margin-top: 20px;\r\n}\r\n#counter #hard-cap {\r\n  display: block;\r\n  background-color: #544d8f;\r\n  max-width: 160px;\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  color: #4cd566;\r\n  font-size: .8em;\r\n  text-align: center;\r\n  padding: 10px;\r\n  border-radius: 4px;\r\n  margin-top: -40px;\r\n}\r\n#counter #hard-cap span {\r\n  display: block;\r\n  color: #fff;\r\n  font-size: 1.2em;\r\n}\r\n\r\n#clockdiv{\r\n  font-family: sans-serif;\r\n  color: #fff;\r\n  display: inline-block;\r\n  font-weight: 100;\r\n  text-align: center;\r\n  font-size: 30px;\r\n}\r\n\r\n#clockdiv > div{\r\n  padding: 5px;\r\n  border-radius: 3px;\r\n  background: #00BF96;\r\n  display: inline-block;\r\n  width: 80px;\r\n}\r\n\r\n#clockdiv div > span{\r\n  padding: 15px;\r\n  border-radius: 3px;\r\n  background: #00816A;\r\n  display: inline-block;\r\n}\r\n\r\n.smalltext{\r\n  padding-top: 5px;\r\n  font-size: 16px;\r\n}\r\n\r\n.login {\r\n\r\n  #modal-change-password {\r\n    box-shadow: #3a2261 1px 0px 5px 4px;\r\n    margin: 10px;\r\n    overflow-y: hidden;\r\n  }\r\n\r\n  .loadingResetPass {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n  \r\n  .showEmailSent {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n  \r\n  .showErrorMsg {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n    h5 {\r\n      padding: 2px 10px;\r\n      background-color: #d83636;\r\n      border-radius: 20px;\r\n    }\r\n    button {\r\n      border: 0;\r\n      padding: 5px 20px;\r\n      border-radius: 20px;\r\n      cursor: pointer;\r\n    }\r\n  }\r\n  \r\n  .form-msg-pass {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n\r\n}\r\n"],"sourceRoot":""}]);
 	
 	// exports
 
 
 /***/ },
-/* 701 */
+/* 700 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -82338,15 +82286,15 @@
 	  value: true
 	});
 	
-	var _signupComponent = __webpack_require__(702);
+	var _signupComponent = __webpack_require__(701);
 	
 	var _signupComponent2 = _interopRequireDefault(_signupComponent);
 	
-	var _signup = __webpack_require__(703);
+	var _signup = __webpack_require__(702);
 	
 	var _signup2 = _interopRequireDefault(_signup);
 	
-	__webpack_require__(704);
+	__webpack_require__(703);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -82358,13 +82306,13 @@
 	exports.default = SignupComponent;
 
 /***/ },
-/* 702 */
+/* 701 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"container\">\n\n  <!-- MODAL - criar directiva depois -->\n  <div id=\"modal-terms\" class=\"modal\">\n    <div class=\"modal-header\">\n      <p class=\"icon-close\" data-dismiss=\"modal\">\n        &times;\n      </p>\n    </div>\n    <div class=\"modal-content\">\n      <div>\n        <script>\n          function openCity(evt, cityName) {\n            // Declare all variables\n            var i, tabcontent, tablinks;\n\n            // Get all elements with class=\"tabcontent\" and hide them\n            tabcontent = document.getElementsByClassName(\"tabcontent\");\n            for (i = 0; i < tabcontent.length; i++) {\n              tabcontent[i].style.display = \"none\";\n            }\n\n            // Get all elements with class=\"tablinks\" and remove the class \"active\"\n            tablinks = document.getElementsByClassName(\"tablinks\");\n            for (i = 0; i < tablinks.length; i++) {\n              tablinks[i].className = tablinks[i].className.replace(\" active\", \"\");\n            }\n\n            // Show the current tab, and add an \"active\" class to the button that opened the tab\n            document.getElementById(cityName).style.display = \"block\";\n            evt.currentTarget.className += \" active\";\n          }\n        </script>\n        <!-- Tab links -->\n        <div class=\"tab\">\n          <button class=\"tablinks\" onclick=\"openCity(event, 'terms_condition')\" id=\"defaultOpen\">{{'TERMS_CONDITION_TITLE' | translate}}</button>\n          <button class=\"tablinks\" onclick=\"openCity(event, 'representation_condition')\">{{'REPRESENTATION_TERM_TITLE' | translate}}</button>\n        </div>\n        <!-- Tab content -->\n        <div id=\"terms_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsCondition\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n\n        <div id=\"representation_condition\" class=\"tabcontent\">\n          <div class=\"content\" ng-bind-html=\"$ctrl.termsRepresentation\" style=\"height: 500px; overflow-y: scroll;\"> </div>\n        </div>\n      </div>\n\n      <div class=\"footer\">\n        <div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG1\" id=\"checkboxG1\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check1\" ng-change=\"$ctrl.allCheckboxIsChecked()\">\n            <label for=\"checkboxG1\" class=\"css-label radGroup1 clr\"> {{'US_CITIZEN' | translate}} </label>\n          </div>\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG2\" id=\"checkboxG2\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check2\">\n            <label for=\"checkboxG2\" class=\"css-label radGroup1 clr\"> {{'AGREE_TERM' | translate}} </label>\n          </div>\n          <!--<div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG3\" id=\"checkboxG3\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check3\">\n            <label for=\"checkboxG3\" class=\"css-label radGroup1 clr\"> {{'AGREE_PRIVACY_POLICY' | translate}} </label>\n          </div>-->\n          <div class=\"form-check has-success\">\n            <input type=\"checkbox\" name=\"checkboxG4\" id=\"checkboxG4\" class=\"css-checkbox\" ng-model=\"$ctrl.user.check4\">\n            <label for=\"checkboxG4\" class=\"css-label radGroup1 clr\"> {{'AGREE_FUTURE_VALUE' | translate}}</label>\n          </div>\n          <div class=\"area-button\">\n            <button ng-show=\"$ctrl.allCheckboxIsChecked()\" class=\"primary-button\" data-ng-click=\"$ctrl.doSignup()\" data-dismiss=\"modal\">{{'AGREE' | translate}}</button>\n            <!--<button ng-show=\"!$ctrl.userIsValidToSignup() || !$ctrl.allCheckboxIsChecked()\" class=\"disabled-button\">{{'AGREE' | translate}}</button>-->\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <lunesheader showlogout='false' showlinks='false'></lunesheader>\n\n  <!-- AUTHENTICATION FORM -->\n  <section class=\"authentication\">\n    <div>\n      <form name=\"$ctrl.loginForm\">\n\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-12 title\">\n            <h4>{{'WELCOME' | translate}}</h4>\n            <h4>{{'BEGIN_YOUR_REGISTRATION' | translate}}</h4>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n          <div class=\"alert alert-danger\" ng-show=\"$ctrl.serverError\" role=\"alert\">\n            <h4 class=\"alert-heading\">{{'AN_ERROR_CREATE_ACCOUNT' | translate}}</h4>\n            <p>{{$ctrl.serverErrorMessage</p>\n          </div>\n\n          <!-- USER INFO -->\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-name\">* {{'NAME' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.name\" id=\"input-name\" name=\"name\" required type=\"text\" placeholder=\"{{'NAME_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-lastname\">* {{'LAST_NAME' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.lastname\" id=\"input-lastname\" name=\"lastname\" required type=\"text\" placeholder=\"{{'LAST_NAME_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n        </div>\n\n        <!-- EMAIL INFO -->\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-email\">* {{'EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.email\" id=\"input-email\" name=\"email\" ng-model-options=\"{ debounce: 3000 }\" required type=\"email\"\n                placeholder=\"{{'EMAIL_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-confirm-email\">* {{'CONFIRM_EMAIL' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.confirmEmail\" id=\"input-confirm-email\" email name=\"confirmEmail\" email-match required type=\"email\"\n                placeholder=\"{{'CONFIRM_EMAIL_PLACEHOLDER' | translate}}\">\n            </div>\n\n            <!-- VALIDATION EMAIL -->\n            <span style=\"color:#f8b61c;\" ng-show=\"$ctrl.loginForm.email.$dirty && $ctrl.loginForm.email.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.email.$error.required\">{{'EMAIL_REQUIRED' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.email.$error.email\">{{'EMAIL_INVALID' | translate}}\n                <br>\n              </span>\n            </span>\n            <span style=\"color:#f8b61c;\" ng-show=\"$ctrl.loginForm.confirmEmail.$dirty && $ctrl.loginForm.confirmEmail.$invalid\">\n              <span ng-show=\"$ctrl.user.email !== $ctrl.user.confirmEmail\">{{'EMAIL_MATCH' | translate}}\n                <br> </span>\n            </span>\n\n          </div>\n        </div>\n\n        <!-- PASSWORD INFO -->\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-password\">* {{'PASSWORD' | translate}}</label>\n              <input type=\"password\" data-ng-model=\"$ctrl.user.password\" id=\"input-password\" ng-model-options=\"{ debounce: 500 }\" uppercase\n                lowercase numeric special-character required name=\"password\" ng-minlength=\"8\" placeholder=\"{{'PASSWORD_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-confirm-password\">* {{'CONFIRM_PASSWORD' | translate}}</label>\n              <input type=\"password\" data-ng-model=\"$ctrl.user.confirmPassword\" id=\"input-confirm-password\" ng-model-options=\"{ debounce: 500 }\"\n                required name=\"confirmPassword\" ng-minlength=\"8\" placeholder=\"{{'CONFIRM_PASSWORD_PLACEHOLDER' | translate}}\">\n            </div>\n            <!-- VALIDATION PASSWORD -->\n            <span style=\"color:#f8b61c;\" ng-show=\"$ctrl.loginForm.password.$dirty && $ctrl.loginForm.password.$invalid\">\n              <span ng-show=\"$ctrl.loginForm.password.$error.required\">{{'PASSWORD_REQUIRED' | translate}}\n                <br>\n              </span>\n              <span ng-show=\"$ctrl.loginForm.password.$error.minlength\">{{'PASSWORD_LENGTH' | translate}}\n                <br>\n              </span>\n            </span>\n            <span style=\"color:#f8b61c;\" ng-show=\"$ctrl.loginForm.confirmPassword.$dirty && $ctrl.loginForm.confirmPassword.$invalid\">\n              <span ng-show=\"$ctrl.user.confirmPassword !== $ctrl.user.password\">{{'PASSWORD_MATCH' | translate}}\n                <br>\n              </span>\n            </span>\n          </div>\n\n        </div>\n\n        <!-- CUPOM -->\n        <div class=\"row\">\n          <div class=\"col-xs-12 col-lg-6\">\n            <div class=\"input-form\">\n              <label for=\"input-coupon\">{{'DO_YOU_HAVE_A_COUPON' | translate}}</label>\n              <input data-ng-model=\"$ctrl.user.coupon\" id=\"input-coupon\" name=\"coupon\" type=\"text\" placeholder=\"{{'COUPON_PLACEHOLDER' | translate}}\">\n            </div>\n          </div>\n          <div class=\"col-xs-12 col-lg-6\" style=\"margin-top: 15px;\">\n            <div class=\"area-button txt-right\" style=\"display: flex;justify-content: center;\">\n              <button class=\"rounded-button ng-hide\" data-toggle=\"modal\" data-target=\"#modal-terms\" ng-show=\"$ctrl.loginForm.$valid\" ng-click=\"$ctrl.enableTab()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\">\n              </button>\n\n              <button class=\"rounded-button\" ng-show=\"!$ctrl.loginForm.$valid\" ng-click=\"$ctrl.showError()\">\n                <img src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442470/next_aozz2n.png\" width=\"20px\" alt=\"next\">\n              </button>\n            </div>\n            <div style=\"display: flex;justify-content: center;\" ng-show=\"false\">\n              <a href=\"#!/login\" style=\"font-size: 10px;color: #fff;\">{{'BACK' | translate}}</p>\n            </div>\n          </div>\n\n        </div>\n\n      </form>\n    </div>\n  </section>\n</div>\n<lunesfooter />"
 
 /***/ },
-/* 703 */
+/* 702 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -82377,7 +82325,7 @@
 	
 	var _smartlookClient2 = _interopRequireDefault(_smartlookClient);
 	
-	var _index = __webpack_require__(689);
+	var _index = __webpack_require__(688);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -82592,16 +82540,16 @@
 	exports.default = SignupController;
 
 /***/ },
-/* 704 */
+/* 703 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(705);
+	var content = __webpack_require__(704);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(693)(content, {});
+	var update = __webpack_require__(692)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -82618,21 +82566,21 @@
 	}
 
 /***/ },
-/* 705 */
+/* 704 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(692)(true);
+	exports = module.exports = __webpack_require__(691)(true);
 	// imports
 	
 	
 	// module
-	exports.push([module.id, "/* Style the tab */\n.tab {\n  overflow: hidden;\n  padding: 0 22px; }\n\n/* Style the buttons that are used to open the tab content */\n.tab button {\n  border: 0;\n  border-radius: 20px;\n  padding: 5px 20px;\n  background-color: #f9f9f9;\n  float: left;\n  outline: none;\n  cursor: pointer;\n  transition: 0.3s;\n  margin-right: 10px; }\n\n/* Change background color of buttons on hover */\n.tab button:hover {\n  background-color: #44af57; }\n\n/* Create an active/current tablink class */\n.tab button.active {\n  background-color: #44af57;\n  color: #fff; }\n\n/* Style the tab content */\n.tabcontent {\n  display: none;\n  padding: 6px 12px;\n  border-top: none; }\n", "", {"version":3,"sources":["C:/Lunes/lunes-purchase/src/signup/src/signup/signup.component.scss","C:/Lunes/lunes-purchase/src/signup/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA,mBAAmB;AACnB;EACE,iBAAgB;EAChB,gBAAe,EAChB;;AAED,6DAA6D;AAC7D;EACE,UAAS;EACT,oBAAmB;EACnB,kBAAiB;EACjB,0BAAyB;EACzB,YAAW;EACX,cAAa;EACb,gBAAe;EACf,iBAAgB;EAChB,mBAAkB,EACnB;;AAED,iDAAiD;AACjD;EACE,0BClBa,EDmBd;;AAED,4CAA4C;AAC5C;EACE,0BCvBa;EDwBb,YAAW,EACZ;;AAED,2BAA2B;AAC3B;EACE,cAAa;EACb,kBAAiB;EACjB,iBAAgB,EACjB","file":"signup.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n/* Style the tab */\r\n.tab {\r\n  overflow: hidden;\r\n  padding: 0 22px;\r\n}\r\n\r\n/* Style the buttons that are used to open the tab content */\r\n.tab button {\r\n  border: 0;\r\n  border-radius: 20px;\r\n  padding: 5px 20px;\r\n  background-color: #f9f9f9;\r\n  float: left;\r\n  outline: none;\r\n  cursor: pointer;\r\n  transition: 0.3s;\r\n  margin-right: 10px;\r\n}\r\n\r\n/* Change background color of buttons on hover */\r\n.tab button:hover {\r\n  background-color: $green;\r\n}\r\n\r\n/* Create an active/current tablink class */\r\n.tab button.active {\r\n  background-color: $green;\r\n  color: #fff;\r\n}\r\n\r\n/* Style the tab content */\r\n.tabcontent {\r\n  display: none;\r\n  padding: 6px 12px;\r\n  border-top: none;\r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #44af57;\r\n$darkGreen: #44af57;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
+	exports.push([module.id, "/* Style the tab */\n.tab {\n  overflow: hidden;\n  padding: 0 22px; }\n\n/* Style the buttons that are used to open the tab content */\n.tab button {\n  border: 0;\n  border-radius: 20px;\n  padding: 5px 20px;\n  background-color: #f9f9f9;\n  float: left;\n  outline: none;\n  cursor: pointer;\n  transition: 0.3s;\n  margin-right: 10px; }\n\n/* Change background color of buttons on hover */\n.tab button:hover {\n  background-color: #44af57; }\n\n/* Create an active/current tablink class */\n.tab button.active {\n  background-color: #44af57;\n  color: #fff; }\n\n/* Style the tab content */\n.tabcontent {\n  display: none;\n  padding: 6px 12px;\n  border-top: none; }\n", "", {"version":3,"sources":["C:/lunes/lunes-purchase/src/signup/src/signup/signup.component.scss","C:/lunes/lunes-purchase/src/signup/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA,mBAAmB;AACnB;EACE,iBAAgB;EAChB,gBAAe,EAChB;;AAED,6DAA6D;AAC7D;EACE,UAAS;EACT,oBAAmB;EACnB,kBAAiB;EACjB,0BAAyB;EACzB,YAAW;EACX,cAAa;EACb,gBAAe;EACf,iBAAgB;EAChB,mBAAkB,EACnB;;AAED,iDAAiD;AACjD;EACE,0BClBa,EDmBd;;AAED,4CAA4C;AAC5C;EACE,0BCvBa;EDwBb,YAAW,EACZ;;AAED,2BAA2B;AAC3B;EACE,cAAa;EACb,kBAAiB;EACjB,iBAAgB,EACjB","file":"signup.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n/* Style the tab */\r\n.tab {\r\n  overflow: hidden;\r\n  padding: 0 22px;\r\n}\r\n\r\n/* Style the buttons that are used to open the tab content */\r\n.tab button {\r\n  border: 0;\r\n  border-radius: 20px;\r\n  padding: 5px 20px;\r\n  background-color: #f9f9f9;\r\n  float: left;\r\n  outline: none;\r\n  cursor: pointer;\r\n  transition: 0.3s;\r\n  margin-right: 10px;\r\n}\r\n\r\n/* Change background color of buttons on hover */\r\n.tab button:hover {\r\n  background-color: $green;\r\n}\r\n\r\n/* Create an active/current tablink class */\r\n.tab button.active {\r\n  background-color: $green;\r\n  color: #fff;\r\n}\r\n\r\n/* Style the tab content */\r\n.tabcontent {\r\n  display: none;\r\n  padding: 6px 12px;\r\n  border-top: none;\r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #44af57;\r\n$darkGreen: #44af57;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
 	
 	// exports
 
 
 /***/ },
-/* 706 */
+/* 705 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -82641,15 +82589,15 @@
 	  value: true
 	});
 	
-	var _buyComponent = __webpack_require__(707);
+	var _buyComponent = __webpack_require__(706);
 	
 	var _buyComponent2 = _interopRequireDefault(_buyComponent);
 	
-	var _buy = __webpack_require__(708);
+	var _buy = __webpack_require__(707);
 	
 	var _buy2 = _interopRequireDefault(_buy);
 	
-	__webpack_require__(709);
+	__webpack_require__(708);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -82661,13 +82609,13 @@
 	exports.default = BuyComponent;
 
 /***/ },
-/* 707 */
+/* 706 */
 /***/ function(module, exports) {
 
 	module.exports = "<!--<loading show=\"$ctrl.loading\"></loading>-->\n<div class=\"container\">\n\n  <lunesheader showlinks=\"true\" balanceuser=\"$ctrl.balanceUser.confirmed_balance\"></lunesheader>\n\n  <!-- BUY -->\n  <section class=\"buy\" ng-show=\"!$ctrl.preICOFinished\">\n    <div class=\"row\">\n      <div class=\"title user-menu\">\n        <a href=\"\" id=\"user-menu\" ng-click=\"$ctrl.toogleUserMenu()\">\n          <h4>\n            {{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}\n            <span ng-show=\"!$ctrl.showUserMenu\">\n              <i class=\"fas fa-angle-right green\"></i>\n            </span>\n            <span ng-show=\"$ctrl.showUserMenu\">\n              <i class=\"fas fa-angle-down green\"></i>\n            </span>\n          </h4>\n        </a>\n        <div class=\"logout area-button\" ng-show=\"$ctrl.showUserMenu\">\n          <a href=\"#!/login\" class=\"primary-button\" ng-click=\"$ctrl.logout()\">\n            {{'LOGOUT' | translate}}\n          </a>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-12 error-fields\" ng-show=\"$ctrl.showErrorForm\">{{'ALL_FIELDS_REQUIRED' | translate}}</div>\n\n    <div class=\"row\">\n      <div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6\">\n        <!-- ERROR LIMIT -->\n        <div class=\"row\">\n          <div ng-show=\"$ctrl.showErrorLimit\" class=\"col-xs-12 col-lg-12 error-limit\">{{$ctrl.showErrorLimit}}</div>\n        </div>\n\n        <!-- CALCULATOR -->\n        <div class=\"row\">\n          <div class=\"calculator col-lg-12\">\n            <div>\n              <h5>{{'CALCULATOR' | translate}}\n                <span style=\"cursor: pointer;\" ng-click=\"$ctrl.showHelp()\">\n                  <i class=\"fas fa-question-circle\"></i>\n                </span>\n              </h5>\n              <p style=\"padding: 0 50px 0 0;\">{{'CHOOSE_YOUR_COIN_TO_BUY' | translate}}</p>\n            </div>\n            <div class=\"select-coin\" data-step=\"1\" data-intro=\"{{'HELP_CHOOSE_COIN' | translate}}\">\n              <ul>\n                <li ng-repeat=\"coin in $ctrl.coins\" ng-click=\"$ctrl.selectCoin(coin)\" ng-class=\"coin.selected ? 'selected': ''\">\n                  <img ng-src=\"{{coin.img}}\" alt=\"coin.label\">\n                </li>\n              </ul>\n            </div>\n            <div class=\"valueCripto\">\n              <input type=\"text\" data-step=\"2\" data-intro=\"{{'HELP_TYPE_AMOUNT' | translate}}\" placeholder=\"{{$ctrl.msgCoinPlaceholder}}\"\n                ng-class=\"$ctrl.valueToDeposit === '' ? 'animation-color' : ''\" class=\"input-calculator\" name=\"value\" ng-model=\"$ctrl.valueToDeposit\"\n                ng-change=\"$ctrl.calcValue()\" />\n\n              <div class=\"lunesAmount\" data-step=\"3\" data-intro=\"{{'HELP_OR_ENTER_LNS' | translate}}\">\n                <img style=\"position: absolute;\n                top: 0;\n                left: 0;\n                z-index: 99;\" class=\"flag-lns\" src=\"https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png\"\n                  alt=\"Icon Lunes\">\n                <input type=\"text\" placeholder=\"{{$ctrl.msgCoinPlaceholderLNS}}\" class=\"input-calculator\" name=\"value\" ng-model=\"$ctrl.valueToReceive\"\n                  ng-change=\"$ctrl.calcValue('LNS')\" />\n              </div>\n              <div class=\"lunes-current-price\" data-step=\"4\" data-intro=\"{{'HELP_CURRENT_PRICE' | translate}}\">\n                <small>1 LNS = {{'$' + $ctrl.currentPhaseActive.price_value}}</small>\n              </div>\n            </div>\n            <div ng-show=\"$ctrl.errorTypeValueToReceive\" style=\"padding: 0 0 10px;font-size: 11px;text-align: center;color: #cf4444;text-shadow: none;\">\n              {{$ctrl.errorTypeValueToReceive}}\n            </div>\n          </div>\n        </div>\n\n        <!-- SHOW TOTAL -->\n        <div class=\"row\" data-step=\"5\" data-intro=\"{{'HELP_CHECK_TOTAL' | translate}}\">\n          <div class=\"amountBalance col-lg-12\">\n            <div class=\"total\">\n              <div class=\"result\">\n                <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>\n                <div>{{$ctrl.bonusAmountFinal}}</div>\n              </div>\n              <hr />\n              <div class=\"result\">\n                <div>Total</div>\n                <div>{{$ctrl.getTotal()}}</div>\n              </div>\n            </div>\n            <div style=\"text-align: center; margin: 10px 0 30px 0;\" data-step=\"6\" data-intro=\"{{'HELP_USER_MAX' | translate}}\">\n              * {{'BUY_LIMIT_PHASE' | translate}}\n              <span style=\"font-size:15px;font-weight:bold\">{{$ctrl.getBuyLimit();}} LNS </span>\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <!-- QR CODE -->\n      <div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6\" data-step=\"7\" data-intro=\"{{'HELP_CLICK_VIEW_ADDRESS' | translate}}\">\n        <div class=\"area-button\" ng-show=\"!$ctrl.showQrCode\" style=\"margin-top: 20px;\">\n          <button ng-class=\"$ctrl.valueToDeposit ? '' : 'disabled'\" class=\"primary-button\" ng-click=\"$ctrl.toogleShowQrCode()\">{{'VIEW_ADDRESS_TO_DEPOSIT' | translate}}</button>\n        </div>\n        <div class=\"container-qr-code col-lg-8 offset-lg-2\" ng-show=\"$ctrl.showQrCode\">\n          <div class=\"debosit-advice\">\n            <span>\n              {{'SEND_TO_THIS_ADDRESS' | translate}} {{$ctrl.valueToDeposit}} {{$ctrl.currentCoinSelected.name}} {{'TO' | translate}}\n            </span>\n            <div class=\"address\">\n              {{$ctrl.currentQRCode.address}}\n            </div>\n            <span>{{'DEPOSIT_CONFIRMATION_ADVICE' | translate}}</span>\n          </div>\n          <div class=\"qr-code\">\n            <img ng-src=\"{{$ctrl.currentQRCode.img}}\" class=\"qr-code img-thumbnail img-responsive\" />\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <!-- PRE_ICO finished -->\n  <section class=\"buy\" ng-show=\"$ctrl.preICOFinished\">\n\n    <!-- area user and logout -->\n    <div class=\"row\">\n      <div class=\"title user-menu\">\n        <a href=\"\" id=\"user-menu\" ng-click=\"$ctrl.toogleUserMenu()\">\n          <h4>\n            {{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}\n            <span ng-show=\"!$ctrl.showUserMenu\">\n              <i class=\"fas fa-angle-right green\"></i>\n            </span>\n            <span ng-show=\"$ctrl.showUserMenu\">\n              <i class=\"fas fa-angle-down green\"></i>\n            </span>\n          </h4>\n        </a>\n        <div class=\"logout area-button\" ng-show=\"$ctrl.showUserMenu\">\n          <a href=\"#!/login\" class=\"primary-button\" ng-click=\"$ctrl.logout()\">\n            {{'LOGOUT' | translate}}\n          </a>\n        </div>\n      </div>\n    </div>\n\n    <!-- message pre-ico finished -->\n    <div class=\"row\">\n      <div class=\"finished-pre-ico\">\n        <h5>{{'PRE_ICO_FINISHED' | translate}}</h5>\n      </div>\n    </div>\n\n  </section>\n</div>\n<lunesfooter />"
 
 /***/ },
-/* 708 */
+/* 707 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -82684,7 +82632,7 @@
 	
 	var _smartlookClient2 = _interopRequireDefault(_smartlookClient);
 	
-	var _index = __webpack_require__(689);
+	var _index = __webpack_require__(688);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -83322,16 +83270,16 @@
 	exports.default = BuyController;
 
 /***/ },
-/* 709 */
+/* 708 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(710);
+	var content = __webpack_require__(709);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(693)(content, {});
+	var update = __webpack_require__(692)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -83348,21 +83296,21 @@
 	}
 
 /***/ },
-/* 710 */
+/* 709 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(692)(true);
+	exports = module.exports = __webpack_require__(691)(true);
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".input-calculator {\n  background-color: #41256f;\n  border: 0;\n  border-radius: 5px;\n  color: #fff;\n  font-size: 18px;\n  margin-bottom: 15px;\n  padding: 13px;\n  text-align: right;\n  width: 100%; }\n  .input-calculator::-webkit-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #fff;\n    opacity: 1;\n    /* Firefox */\n    font-size: 12px; }\n  .input-calculator:-ms-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #fff;\n    opacity: 1;\n    /* Firefox */\n    font-size: 12px; }\n  .input-calculator::placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #fff;\n    opacity: 1;\n    /* Firefox */\n    font-size: 12px; }\n  .input-calculator:-ms-input-placeholder {\n    /* Internet Explorer 10-11 */\n    color: #fff;\n    font-size: 12px; }\n  .input-calculator::-ms-input-placeholder {\n    /* Microsoft Edge */\n    color: #fff;\n    font-size: 12px; }\n\n.animation-color {\n  animation: colorchange 8s infinite;\n  /* animation-name followed by duration in seconds*/\n  -webkit-animation: colorchange 8s infinite;\n  /* Chrome and Safari */ }\n\n@keyframes colorchange {\n  0% {\n    background: #41256f; }\n  50% {\n    background: #2f1b50; }\n  100% {\n    background: #41256f; } }\n\n.equal {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n      justify-content: center;\n  -ms-flex-align: center;\n      align-items: center;\n  font-size: 30px;\n  text-align: center; }\n\n.calculator .valueCripto {\n  margin-top: 15px; }\n\n.calculator .valueMoney {\n  height: 80px;\n  background-color: rgba(65, 37, 111, 0.8);\n  color: #fff;\n  padding: 20px;\n  border-radius: 5px;\n  text-align: right;\n  font-size: 18px; }\n  .calculator .valueMoney .currency {\n    width: 100%;\n    text-align: right;\n    font-size: 10px;\n    padding-right: 9px;\n    padding-top: 3px; }\n\n.lunesAmount .input-calculator {\n  margin-left: 0;\n  border-radius: 0 5px 5px 0;\n  padding: 15px 10px; }\n\n.lunesAmount .flag-lns {\n  background-color: #fff;\n  border-radius: 5px 0 0 5px;\n  margin-bottom: 5px;\n  margin-right: -5px;\n  padding: 10px 10px 14px 15px; }\n\n.amountBalance {\n  text-align: center; }\n  .amountBalance .total {\n    background-color: rgba(65, 37, 111, 0.8);\n    border-radius: 5px;\n    margin: 0 auto;\n    padding: 10px;\n    width: 100%; }\n    .amountBalance .total hr {\n      border-top: solid 1px #44af57; }\n  .amountBalance .result {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-direction: row;\n        flex-direction: row;\n    -ms-flex-pack: justify;\n        justify-content: space-between;\n    -ms-flex-align: center;\n        align-items: center;\n    padding: 0 10px; }\n\n.select-coin {\n  display: -ms-flexbox;\n  display: flex; }\n  .select-coin ul {\n    display: -ms-flexbox;\n    display: flex;\n    margin: 0;\n    padding: 0;\n    text-align: center; }\n    .select-coin ul li {\n      border: 2px solid #41256f;\n      list-style: none;\n      cursor: pointer;\n      margin: 0 20px 0 0;\n      width: 50px;\n      border-radius: 5px;\n      opacity: 0.6; }\n      .select-coin ul li img {\n        display: block;\n        margin: 10px auto;\n        max-width: 25px; }\n      .select-coin ul li:hover, .select-coin ul li.selected {\n        background-color: #44af57;\n        opacity: 1;\n        border: 2px solid #44af57; }\n\n.container-coins {\n  width: 70px;\n  height: 210px;\n  position: absolute;\n  border-radius: 5px;\n  background-color: #e4e4e5;\n  top: 50px;\n  z-index: 99;\n  text-align: center; }\n  .container-coins ul {\n    margin: 0;\n    padding: 0; }\n    .container-coins ul li {\n      list-style: none;\n      text-align: center;\n      padding: 5px 10px;\n      cursor: pointer; }\n      .container-coins ul li.selected, .container-coins ul li:hover {\n        background-color: #c7c7c7;\n        border-radius: 5px; }\n\n.container-qr-code {\n  border-radius: 15px;\n  box-shadow: 0px 0px 25px 0px #41256f;\n  text-align: center;\n  padding: 30px; }\n  .container-qr-code .qr-code {\n    margin-top: 15px; }\n  .container-qr-code .debosit-advice {\n    color: #fff;\n    font-size: 12px; }\n  .container-qr-code .address {\n    color: #44af57;\n    margin-top: 15px 0; }\n\n.show-balance .show-balance-btc {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-btc .coin-name {\n    color: #e0972f; }\n\n.show-balance .show-balance-ltc {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-ltc .coin-name {\n    color: #9f9aa4; }\n\n.show-balance .show-balance-eth {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-eth .coin-name {\n    color: #b4d0cd; }\n\n.finished-pre-ico {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  text-align: center;\n  width: 100%;\n  background-color: #39c357;\n  padding: 10px;\n  border-radius: 5px; }\n\n.flex-right {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: end;\n      justify-content: flex-end; }\n\n.container-logo-header .logo {\n  text-align: center;\n  padding: 10px; }\n\n.container-logo-header .container-data {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  font-size: 14px; }\n  .container-logo-header .container-data .container-balance {\n    text-align: right; }\n  .container-logo-header .container-data .coupom {\n    text-align: center; }\n\n.error-limit {\n  padding: 10px;\n  background-color: #df3535;\n  text-align: center;\n  margin: 10px; }\n\n.lunes-current-price {\n  text-align: right;\n  margin-bottom: 20px; }\n\n@media only screen and (max-width: 426px) {\n  .container-logo-header .logo {\n    text-align: center;\n    margin-bottom: 20px; }\n  .valueCripto .select-coin {\n    clear: both;\n    min-height: 60px;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: center;\n        justify-content: center; }\n  .valueCripto .area-field input {\n    text-align: center; }\n  .container-qr-code {\n    padding: 30px 15px; } }\n\n@media only screen and (max-width: 321px) {\n  .header {\n    display: block !important; }\n  .container-logo-header {\n    text-align: center; }\n    .container-logo-header .container-quotation {\n      margin: 10px 0 0 0; }\n    .container-logo-header .logo {\n      text-align: center;\n      padding: 10px; }\n    .container-logo-header .quotation {\n      text-align: center;\n      display: -ms-flexbox;\n      display: flex;\n      -ms-flex-pack: center;\n          justify-content: center;\n      -ms-flex-direction: row;\n          flex-direction: row; }\n      .container-logo-header .quotation .container-quotation {\n        padding: 0 5px; }\n  .round-menu img {\n    width: 100%; }\n  .flex-right {\n    display: block; }\n  .menu.menu-top {\n    display: -ms-flexbox !important;\n    display: flex !important;\n    -ms-flex-pack: center !important;\n        justify-content: center !important; }\n    .menu.menu-top li img {\n      width: 25px; } }\n", "", {"version":3,"sources":["C:/Lunes/lunes-purchase/src/buy/src/buy/buy.component.scss","C:/Lunes/lunes-purchase/src/buy/src/scss/base/_color.scss"],"names":[],"mappings":"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","file":"buy.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n.input-calculator {\r\n  background-color: $darkPrimary;\r\n  border: 0;\r\n  border-radius: 5px;\r\n  color: #fff;\r\n  font-size: 18px;\r\n  margin-bottom: 15px;\r\n  padding: 13px;\r\n  text-align: right;\r\n  width: 100%;\r\n  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */\r\n    color: #fff;\r\n    opacity: 1; /* Firefox */\r\n    font-size: 12px;\r\n  }\r\n\r\n  &:-ms-input-placeholder { /* Internet Explorer 10-11 */\r\n      color: #fff;\r\n      font-size: 12px;\r\n  }\r\n\r\n  &::-ms-input-placeholder { /* Microsoft Edge */\r\n      color: #fff;\r\n      font-size: 12px;\r\n  }\r\n}\r\n\r\n.animation-color {\r\n  animation: colorchange 8s infinite; /* animation-name followed by duration in seconds*/\r\n  -webkit-animation: colorchange 8s infinite; /* Chrome and Safari */\r\n\r\n  @keyframes colorchange\r\n  {\r\n    0%   {background: #41256f;}\r\n    50% {background: #2f1b50;}\r\n    100% {background: #41256f;}\r\n  }\r\n\r\n  @-webkit-keyframes colorchange\r\n  {\r\n    0%   {background: #41256f;}\r\n    50% {background: #2f1b50;}\r\n    100% {background: #41256f;}\r\n  }\r\n}\r\n\r\n.equal {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  font-size: 30px;\r\n  text-align: center;\r\n}\r\n\r\n.calculator {\r\n  .valueCripto {\r\n    margin-top: 15px;\r\n  }\r\n  .valueMoney {\r\n    height: 80px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    color: #fff;\r\n    padding: 20px;\r\n    border-radius: 5px;\r\n    text-align: right;\r\n    font-size: 18px;\r\n    .currency {\r\n      width: 100%;\r\n      text-align: right;\r\n      font-size: 10px;\r\n      padding-right: 9px;\r\n      padding-top: 3px;\r\n    }\r\n  }\r\n}\r\n\r\n.lunesAmount {\r\n  .input-calculator {\r\n    margin-left: 0;\r\n    border-radius: 0 5px 5px 0;\r\n    padding: 15px 10px;\r\n  }\r\n\r\n  .flag-lns {\r\n    background-color: #fff;\r\n    border-radius: 5px 0 0 5px;\r\n    margin-bottom: 5px;\r\n    margin-right: -5px;\r\n    padding: 10px 10px 14px 15px;\r\n  }\r\n}\r\n\r\n.amountBalance {\r\n  text-align: center;\r\n  .total {\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8); \r\n    border-radius: 5px;\r\n    margin: 0 auto;\r\n    padding: 10px;\r\n    width: 100%;\r\n    hr {\r\n      border-top: solid 1px $green;\r\n    }\r\n  }\r\n\r\n  .result {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    padding: 0 10px;\r\n  }\r\n}\r\n\r\n.select-coin {\r\n  display: flex;\r\n\r\n  ul {\r\n    display: flex;\r\n    margin: 0;\r\n    padding: 0;\r\n    text-align: center;\r\n    li {\r\n      border: 2px solid $darkPrimary;        \r\n      list-style: none;\r\n      cursor: pointer;\r\n      margin: 0 20px 0 0;\r\n      width: 50px;\r\n      border-radius: 5px;\r\n      opacity: 0.6;\r\n      img {\r\n        display: block;\r\n        margin: 10px auto;\r\n        max-width: 25px;\r\n      }\r\n      &:hover, &.selected {\r\n        background-color: $green;\r\n        opacity: 1;\r\n        border: 2px solid $green;        \r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.container-coins {\r\n  width: 70px;\r\n  height: 210px;\r\n  position: absolute;\r\n  border-radius: 5px;\r\n  background-color: #e4e4e5;\r\n  top: 50px;\r\n  z-index: 99;\r\n  text-align: center;\r\n  ul {\r\n    margin: 0;\r\n    padding: 0;\r\n    li {\r\n      list-style: none;\r\n      text-align: center;\r\n      padding: 5px 10px;\r\n      cursor: pointer;\r\n      &.selected, &:hover {\r\n        background-color: #c7c7c7;\r\n        border-radius: 5px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.container-qr-code {\r\n  border-radius: 15px;\r\n  box-shadow: 0px 0px 25px 0px rgba(65,37,111,1);\r\n  text-align: center;\r\n  padding: 30px;\r\n  .qr-code {\r\n    margin-top: 15px;\r\n  }\r\n  .debosit-advice {\r\n    color: #fff;\r\n    font-size: 12px;\r\n  }\r\n  .address {\r\n    color: $green;\r\n    margin-top: 15px 0;\r\n  }\r\n}\r\n\r\n.show-balance {\r\n  $coins: (\r\n    btc: #e0972f,\r\n    ltc: #9f9aa4,\r\n    eth: #b4d0cd\r\n  );\r\n\r\n  @each $coin, $color in $coins {\r\n    .show-balance-#{$coin} {\r\n      margin-top: 1rem;\r\n      font-size: 2rem;\r\n\r\n      .coin-name {\r\n        color: $color;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.finished-pre-ico {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  text-align: center;\r\n  width: 100%;\r\n  background-color: #39c357;\r\n  padding: 10px;\r\n  border-radius: 5px;\r\n}\r\n\r\n.flex-right {\r\n  display: flex;\r\n  justify-content: flex-end;\r\n}\r\n\r\n.container-logo-header {\r\n  .logo {\r\n    text-align: center;\r\n    padding: 10px;\r\n  }\r\n  .container-data {\r\n    // padding: 5px 20px; \r\n    display: flex;\r\n    align-items: center;\r\n    font-size: 14px;\r\n    .container-balance {\r\n      text-align: right;\r\n    }\r\n    .coupom {    \r\n      text-align: center;\r\n    }\r\n  }\r\n}\r\n\r\n.error-limit {\r\n  padding: 10px;\r\n  background-color: #df3535;\r\n  text-align: center;\r\n  margin: 10px;\r\n}\r\n\r\n.lunes-current-price {\r\n  text-align: right;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n@media only screen and (max-width: 426px) {\r\n  .container-logo-header {\r\n    .logo {\r\n      text-align: center;\r\n      margin-bottom: 20px;\r\n    }\r\n  }\r\n  .valueCripto {\r\n    .select-coin {\r\n      clear: both;\r\n      min-height: 60px;\r\n      display: flex;\r\n      justify-content: center;\r\n    }\r\n    .area-field input {\r\n      text-align: center;\r\n    }\r\n  }\r\n  .container-qr-code {\r\n    padding: 30px 15px;\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 321px) {\r\n  .header {\r\n    display: block!important;\r\n  }\r\n  .container-logo-header {\r\n    text-align: center;\r\n    .container-quotation {\r\n      margin: 10px 0 0 0;\r\n    }\r\n    .logo {\r\n      text-align: center;\r\n      padding: 10px;\r\n    }\r\n    .quotation {\r\n      text-align: center;\r\n      display: flex;\r\n      justify-content: center;\r\n      flex-direction: row;\r\n      .container-quotation {\r\n        padding: 0 5px;\r\n      }\r\n    }\r\n  }\r\n  .round-menu img {\r\n    width: 100%;\r\n  }\r\n  .flex-right {\r\n    display: block;\r\n  }\r\n  .menu.menu-top {\r\n    display: flex!important;\r\n    justify-content: center!important;\r\n    li {\r\n      img {\r\n        width: 25px;\r\n      }\r\n    }\r\n  }\r\n}\r\n  ","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #44af57;\r\n$darkGreen: #44af57;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
+	exports.push([module.id, ".input-calculator {\n  background-color: #41256f;\n  border: 0;\n  border-radius: 5px;\n  color: #fff;\n  font-size: 18px;\n  margin-bottom: 15px;\n  padding: 13px;\n  text-align: right;\n  width: 100%; }\n  .input-calculator::-webkit-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #fff;\n    opacity: 1;\n    /* Firefox */\n    font-size: 12px; }\n  .input-calculator:-ms-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #fff;\n    opacity: 1;\n    /* Firefox */\n    font-size: 12px; }\n  .input-calculator::placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #fff;\n    opacity: 1;\n    /* Firefox */\n    font-size: 12px; }\n  .input-calculator:-ms-input-placeholder {\n    /* Internet Explorer 10-11 */\n    color: #fff;\n    font-size: 12px; }\n  .input-calculator::-ms-input-placeholder {\n    /* Microsoft Edge */\n    color: #fff;\n    font-size: 12px; }\n\n.animation-color {\n  animation: colorchange 8s infinite;\n  /* animation-name followed by duration in seconds*/\n  -webkit-animation: colorchange 8s infinite;\n  /* Chrome and Safari */ }\n\n@keyframes colorchange {\n  0% {\n    background: #41256f; }\n  50% {\n    background: #2f1b50; }\n  100% {\n    background: #41256f; } }\n\n.equal {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n      justify-content: center;\n  -ms-flex-align: center;\n      align-items: center;\n  font-size: 30px;\n  text-align: center; }\n\n.calculator .valueCripto {\n  margin-top: 15px; }\n\n.calculator .valueMoney {\n  height: 80px;\n  background-color: rgba(65, 37, 111, 0.8);\n  color: #fff;\n  padding: 20px;\n  border-radius: 5px;\n  text-align: right;\n  font-size: 18px; }\n  .calculator .valueMoney .currency {\n    width: 100%;\n    text-align: right;\n    font-size: 10px;\n    padding-right: 9px;\n    padding-top: 3px; }\n\n.lunesAmount .input-calculator {\n  margin-left: 0;\n  border-radius: 0 5px 5px 0;\n  padding: 15px 10px; }\n\n.lunesAmount .flag-lns {\n  background-color: #fff;\n  border-radius: 5px 0 0 5px;\n  margin-bottom: 5px;\n  margin-right: -5px;\n  padding: 10px 10px 14px 15px; }\n\n.amountBalance {\n  text-align: center; }\n  .amountBalance .total {\n    background-color: rgba(65, 37, 111, 0.8);\n    border-radius: 5px;\n    margin: 0 auto;\n    padding: 10px;\n    width: 100%; }\n    .amountBalance .total hr {\n      border-top: solid 1px #44af57; }\n  .amountBalance .result {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-direction: row;\n        flex-direction: row;\n    -ms-flex-pack: justify;\n        justify-content: space-between;\n    -ms-flex-align: center;\n        align-items: center;\n    padding: 0 10px; }\n\n.select-coin {\n  display: -ms-flexbox;\n  display: flex; }\n  .select-coin ul {\n    display: -ms-flexbox;\n    display: flex;\n    margin: 0;\n    padding: 0;\n    text-align: center; }\n    .select-coin ul li {\n      border: 2px solid #41256f;\n      list-style: none;\n      cursor: pointer;\n      margin: 0 20px 0 0;\n      width: 50px;\n      border-radius: 5px;\n      opacity: 0.6; }\n      .select-coin ul li img {\n        display: block;\n        margin: 10px auto;\n        max-width: 25px; }\n      .select-coin ul li:hover, .select-coin ul li.selected {\n        background-color: #44af57;\n        opacity: 1;\n        border: 2px solid #44af57; }\n\n.container-coins {\n  width: 70px;\n  height: 210px;\n  position: absolute;\n  border-radius: 5px;\n  background-color: #e4e4e5;\n  top: 50px;\n  z-index: 99;\n  text-align: center; }\n  .container-coins ul {\n    margin: 0;\n    padding: 0; }\n    .container-coins ul li {\n      list-style: none;\n      text-align: center;\n      padding: 5px 10px;\n      cursor: pointer; }\n      .container-coins ul li.selected, .container-coins ul li:hover {\n        background-color: #c7c7c7;\n        border-radius: 5px; }\n\n.container-qr-code {\n  border-radius: 15px;\n  box-shadow: 0px 0px 25px 0px #41256f;\n  text-align: center;\n  padding: 30px; }\n  .container-qr-code .qr-code {\n    margin-top: 15px; }\n  .container-qr-code .debosit-advice {\n    color: #fff;\n    font-size: 12px; }\n  .container-qr-code .address {\n    color: #44af57;\n    margin-top: 15px 0; }\n\n.show-balance .show-balance-btc {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-btc .coin-name {\n    color: #e0972f; }\n\n.show-balance .show-balance-ltc {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-ltc .coin-name {\n    color: #9f9aa4; }\n\n.show-balance .show-balance-eth {\n  margin-top: 1rem;\n  font-size: 2rem; }\n  .show-balance .show-balance-eth .coin-name {\n    color: #b4d0cd; }\n\n.finished-pre-ico {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  text-align: center;\n  width: 100%;\n  background-color: #39c357;\n  padding: 10px;\n  border-radius: 5px; }\n\n.flex-right {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: end;\n      justify-content: flex-end; }\n\n.container-logo-header .logo {\n  text-align: left;\n  padding: 10px; }\n\n.container-logo-header .container-data {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  font-size: 14px; }\n  .container-logo-header .container-data .container-balance {\n    text-align: right; }\n  .container-logo-header .container-data .coupom {\n    text-align: center; }\n\n.error-limit {\n  padding: 10px;\n  background-color: #df3535;\n  text-align: center;\n  margin: 10px; }\n\n.lunes-current-price {\n  text-align: right;\n  margin-bottom: 20px; }\n\n@media only screen and (max-width: 426px) {\n  .container-logo-header .logo {\n    text-align: center;\n    margin-bottom: 20px; }\n  .valueCripto .select-coin {\n    clear: both;\n    min-height: 60px;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: center;\n        justify-content: center; }\n  .valueCripto .area-field input {\n    text-align: center; }\n  .container-qr-code {\n    padding: 30px 15px; } }\n\n@media only screen and (max-width: 321px) {\n  .header {\n    display: block !important; }\n  .container-logo-header {\n    text-align: center; }\n    .container-logo-header .container-quotation {\n      margin: 10px 0 0 0; }\n    .container-logo-header .logo {\n      text-align: center;\n      padding: 10px; }\n    .container-logo-header .quotation {\n      text-align: center;\n      display: -ms-flexbox;\n      display: flex;\n      -ms-flex-pack: center;\n          justify-content: center;\n      -ms-flex-direction: row;\n          flex-direction: row; }\n      .container-logo-header .quotation .container-quotation {\n        padding: 0 5px; }\n  .round-menu img {\n    width: 100%; }\n  .flex-right {\n    display: block; }\n  .menu.menu-top {\n    display: -ms-flexbox !important;\n    display: flex !important;\n    -ms-flex-pack: center !important;\n        justify-content: center !important; }\n    .menu.menu-top li img {\n      width: 25px; } }\n", "", {"version":3,"sources":["C:/lunes/lunes-purchase/src/buy/src/buy/buy.component.scss","C:/lunes/lunes-purchase/src/buy/src/scss/base/_color.scss"],"names":[],"mappings":"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","file":"buy.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n.input-calculator {\r\n  background-color: $darkPrimary;\r\n  border: 0;\r\n  border-radius: 5px;\r\n  color: #fff;\r\n  font-size: 18px;\r\n  margin-bottom: 15px;\r\n  padding: 13px;\r\n  text-align: right;\r\n  width: 100%;\r\n  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */\r\n    color: #fff;\r\n    opacity: 1; /* Firefox */\r\n    font-size: 12px;\r\n  }\r\n\r\n  &:-ms-input-placeholder { /* Internet Explorer 10-11 */\r\n      color: #fff;\r\n      font-size: 12px;\r\n  }\r\n\r\n  &::-ms-input-placeholder { /* Microsoft Edge */\r\n      color: #fff;\r\n      font-size: 12px;\r\n  }\r\n}\r\n\r\n.animation-color {\r\n  animation: colorchange 8s infinite; /* animation-name followed by duration in seconds*/\r\n  -webkit-animation: colorchange 8s infinite; /* Chrome and Safari */\r\n\r\n  @keyframes colorchange\r\n  {\r\n    0%   {background: #41256f;}\r\n    50% {background: #2f1b50;}\r\n    100% {background: #41256f;}\r\n  }\r\n\r\n  @-webkit-keyframes colorchange\r\n  {\r\n    0%   {background: #41256f;}\r\n    50% {background: #2f1b50;}\r\n    100% {background: #41256f;}\r\n  }\r\n}\r\n\r\n.equal {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  font-size: 30px;\r\n  text-align: center;\r\n}\r\n\r\n.calculator {\r\n  .valueCripto {\r\n    margin-top: 15px;\r\n  }\r\n  .valueMoney {\r\n    height: 80px;\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8);\r\n    color: #fff;\r\n    padding: 20px;\r\n    border-radius: 5px;\r\n    text-align: right;\r\n    font-size: 18px;\r\n    .currency {\r\n      width: 100%;\r\n      text-align: right;\r\n      font-size: 10px;\r\n      padding-right: 9px;\r\n      padding-top: 3px;\r\n    }\r\n  }\r\n}\r\n\r\n.lunesAmount {\r\n  .input-calculator {\r\n    margin-left: 0;\r\n    border-radius: 0 5px 5px 0;\r\n    padding: 15px 10px;\r\n  }\r\n\r\n  .flag-lns {\r\n    background-color: #fff;\r\n    border-radius: 5px 0 0 5px;\r\n    margin-bottom: 5px;\r\n    margin-right: -5px;\r\n    padding: 10px 10px 14px 15px;\r\n  }\r\n}\r\n\r\n.amountBalance {\r\n  text-align: center;\r\n  .total {\r\n    background-color: rgba($color: $darkPrimary, $alpha: 0.8); \r\n    border-radius: 5px;\r\n    margin: 0 auto;\r\n    padding: 10px;\r\n    width: 100%;\r\n    hr {\r\n      border-top: solid 1px $green;\r\n    }\r\n  }\r\n\r\n  .result {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    padding: 0 10px;\r\n  }\r\n}\r\n\r\n.select-coin {\r\n  display: flex;\r\n\r\n  ul {\r\n    display: flex;\r\n    margin: 0;\r\n    padding: 0;\r\n    text-align: center;\r\n    li {\r\n      border: 2px solid $darkPrimary;        \r\n      list-style: none;\r\n      cursor: pointer;\r\n      margin: 0 20px 0 0;\r\n      width: 50px;\r\n      border-radius: 5px;\r\n      opacity: 0.6;\r\n      img {\r\n        display: block;\r\n        margin: 10px auto;\r\n        max-width: 25px;\r\n      }\r\n      &:hover, &.selected {\r\n        background-color: $green;\r\n        opacity: 1;\r\n        border: 2px solid $green;        \r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.container-coins {\r\n  width: 70px;\r\n  height: 210px;\r\n  position: absolute;\r\n  border-radius: 5px;\r\n  background-color: #e4e4e5;\r\n  top: 50px;\r\n  z-index: 99;\r\n  text-align: center;\r\n  ul {\r\n    margin: 0;\r\n    padding: 0;\r\n    li {\r\n      list-style: none;\r\n      text-align: center;\r\n      padding: 5px 10px;\r\n      cursor: pointer;\r\n      &.selected, &:hover {\r\n        background-color: #c7c7c7;\r\n        border-radius: 5px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.container-qr-code {\r\n  border-radius: 15px;\r\n  box-shadow: 0px 0px 25px 0px rgba(65,37,111,1);\r\n  text-align: center;\r\n  padding: 30px;\r\n  .qr-code {\r\n    margin-top: 15px;\r\n  }\r\n  .debosit-advice {\r\n    color: #fff;\r\n    font-size: 12px;\r\n  }\r\n  .address {\r\n    color: $green;\r\n    margin-top: 15px 0;\r\n  }\r\n}\r\n\r\n.show-balance {\r\n  $coins: (\r\n    btc: #e0972f,\r\n    ltc: #9f9aa4,\r\n    eth: #b4d0cd\r\n  );\r\n\r\n  @each $coin, $color in $coins {\r\n    .show-balance-#{$coin} {\r\n      margin-top: 1rem;\r\n      font-size: 2rem;\r\n\r\n      .coin-name {\r\n        color: $color;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.finished-pre-ico {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  text-align: center;\r\n  width: 100%;\r\n  background-color: #39c357;\r\n  padding: 10px;\r\n  border-radius: 5px;\r\n}\r\n\r\n.flex-right {\r\n  display: flex;\r\n  justify-content: flex-end;\r\n}\r\n\r\n.container-logo-header {\r\n  .logo {\r\n    text-align: left;\r\n    padding: 10px;\r\n  }\r\n  .container-data {\r\n    // padding: 5px 20px; \r\n    display: flex;\r\n    align-items: center;\r\n    font-size: 14px;\r\n    .container-balance {\r\n      text-align: right;\r\n    }\r\n    .coupom {    \r\n      text-align: center;\r\n    }\r\n  }\r\n}\r\n\r\n.error-limit {\r\n  padding: 10px;\r\n  background-color: #df3535;\r\n  text-align: center;\r\n  margin: 10px;\r\n}\r\n\r\n.lunes-current-price {\r\n  text-align: right;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n@media only screen and (max-width: 426px) {\r\n  .container-logo-header {\r\n    .logo {\r\n      text-align: center;\r\n      margin-bottom: 20px;\r\n    }\r\n  }\r\n  .valueCripto {\r\n    .select-coin {\r\n      clear: both;\r\n      min-height: 60px;\r\n      display: flex;\r\n      justify-content: center;\r\n    }\r\n    .area-field input {\r\n      text-align: center;\r\n    }\r\n  }\r\n  .container-qr-code {\r\n    padding: 30px 15px;\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 321px) {\r\n  .header {\r\n    display: block!important;\r\n  }\r\n  .container-logo-header {\r\n    text-align: center;\r\n    .container-quotation {\r\n      margin: 10px 0 0 0;\r\n    }\r\n    .logo {\r\n      text-align: center;\r\n      padding: 10px;\r\n    }\r\n    .quotation {\r\n      text-align: center;\r\n      display: flex;\r\n      justify-content: center;\r\n      flex-direction: row;\r\n      .container-quotation {\r\n        padding: 0 5px;\r\n      }\r\n    }\r\n  }\r\n  .round-menu img {\r\n    width: 100%;\r\n  }\r\n  .flex-right {\r\n    display: block;\r\n  }\r\n  .menu.menu-top {\r\n    display: flex!important;\r\n    justify-content: center!important;\r\n    li {\r\n      img {\r\n        width: 25px;\r\n      }\r\n    }\r\n  }\r\n}\r\n  ","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #44af57;\r\n$darkGreen: #44af57;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
 	
 	// exports
 
 
 /***/ },
-/* 711 */
+/* 710 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -83371,15 +83319,15 @@
 	  value: true
 	});
 	
-	var _securityComponent = __webpack_require__(712);
+	var _securityComponent = __webpack_require__(711);
 	
 	var _securityComponent2 = _interopRequireDefault(_securityComponent);
 	
-	var _security = __webpack_require__(713);
+	var _security = __webpack_require__(712);
 	
 	var _security2 = _interopRequireDefault(_security);
 	
-	__webpack_require__(714);
+	__webpack_require__(713);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -83391,13 +83339,13 @@
 	exports.default = SecurityComponent;
 
 /***/ },
-/* 712 */
+/* 711 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"container\">\n\n  <lunesheader showlogout=\"true\" showlinks=\"true\"></lunesheader>\n\n  <div class=\"qr-code\" ng-if=\"!$ctrl.currentUser.twofaEnabled\">\n    <img ng-src=\"{{$ctrl.base64Img}}\" alt=\"\">\n    <p>1. {{'USE_GOOGLE_OAUTH' | translate}}</p>\n    <p class=\"alert-auth\">\n      <label for=\"\">\n        <i class=\"fa fa-exclamation-circle\"></i>\n      </label>\n      <small>2. {{'YOU_NEED_VALIDATE_YOUR_AUTHENTICATION' | translate}}</small>\n    </p>\n    <input type=\"text\" name=\"validate_authentication\" ng-model=\"$ctrl.numberTestAuthentication\" class=\"input-calculator\" placeholder=\"000 000\"\n    />\n    <button ng-click=\"$ctrl.validateAuthentication()\">{{'VALIDATE_AUTHENTICATION' | translate}}</button>\n  </div>\n\n  <div class=\"qr-code\" ng-if=\"$ctrl.currentUser.twofaEnabled\">\n    <span class=\"enabled-twofa\">\n      <i class=\"fa fa-smile\"></i>\n    </span>\n    <p>{{'YOU_ALREADY_ENABLE_OAUTH' | translate}}</p>\n    <button ng-click=\"$ctrl.generateAnotherQRCode()\">{{'I_WANT_ENABLE_OAUTH' | translate}}</button>\n  </div>\n\n  <div ng-show=\"$ctrl.showErrorMsgTwofaError\" class=\"twofa-invalid\">\n    {{'TWOFA_INVALID' | translate}}\n  </div>\n\n  <div class=\"link-google-play\">\n    <hr>\n    <p>{{'IF_YOU_NOT_HAVE_GOOGLE_AUTH_PLEASE_INSTALL' | translate}}</p>\n    <a href=\"https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2\" target=\"_blank\">Google Play</a>\n  </div>\n\n</div>"
 
 /***/ },
-/* 713 */
+/* 712 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -83406,7 +83354,7 @@
 	  value: true
 	});
 	
-	var _index = __webpack_require__(689);
+	var _index = __webpack_require__(688);
 	
 	var _smartlookClient = __webpack_require__(332);
 	
@@ -83530,16 +83478,16 @@
 	exports.default = SecurityController;
 
 /***/ },
-/* 714 */
+/* 713 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(715);
+	var content = __webpack_require__(714);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(693)(content, {});
+	var update = __webpack_require__(692)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -83556,25 +83504,21 @@
 	}
 
 /***/ },
-/* 715 */
+/* 714 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(692)(true);
+	exports = module.exports = __webpack_require__(691)(true);
 	// imports
 	
 	
 	// module
-<<<<<<< HEAD
-	exports.push([module.id, ".qr-code {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  -ms-flex-direction: column;\n      flex-direction: column; }\n  .qr-code p {\n    margin-top: 15px;\n    text-align: center; }\n  .qr-code .enabled-twofa {\n    font-size: 5em; }\n  .qr-code .alert-auth {\n    font-size: 1.3em; }\n    .qr-code .alert-auth label {\n      display: block;\n      width: 100%; }\n  .qr-code .input-calculator {\n    text-align: center; }\n\n.twofa-invalid {\n  text-align: center;\n  padding: 10px;\n  border-radius: 25px;\n  background-color: #cc385a;\n  margin: 10px 0 0 0; }\n\n.link-google-play {\n  text-align: center;\n  margin: 50px; }\n  .link-google-play a {\n    background-color: #32bc57;\n    padding: 10px 20px;\n    border-radius: 20px;\n    color: #fff; }\n", "", {"version":3,"sources":["D:/workspaces/lunes/lunes-purchase/src/security/src/security/security.component.scss"],"names":[],"mappings":"AAAA;EACE,qBAAa;EAAb,cAAa;EACb,uBAAmB;MAAnB,oBAAmB;EACnB,sBAAuB;MAAvB,wBAAuB;EACvB,2BAAsB;MAAtB,uBAAsB,EAkBvB;EAtBD;IAMI,iBAAgB;IAChB,mBAAkB,EACnB;EARH;IAUI,eAAc,EACf;EAXH;IAaI,iBAAgB,EAKjB;IAlBH;MAeM,eAAc;MACd,YAAW,EACZ;EAjBL;IAoBI,mBAAkB,EACnB;;AAGH;EACE,mBAAkB;EAClB,cAAa;EACb,oBAAmB;EACnB,0BAAyB;EACzB,mBAAkB,EACnB;;AAED;EACE,mBAAkB;EAClB,aAAY,EAOb;EATD;IAII,0BAAyB;IACzB,mBAAkB;IAClB,oBAAmB;IACnB,YAAW,EACZ","file":"security.component.scss","sourcesContent":[".qr-code {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  flex-direction: column;\r\n  p {\r\n    margin-top: 15px;\r\n    text-align: center;\r\n  }\r\n  .enabled-twofa {\r\n    font-size: 5em;\r\n  }\r\n  .alert-auth {\r\n    font-size: 1.3em;\r\n    label {\r\n      display: block;\r\n      width: 100%;\r\n    }\r\n  }\r\n  .input-calculator {\r\n    text-align: center;\r\n  }\r\n}\r\n\r\n.twofa-invalid {\r\n  text-align: center;\r\n  padding: 10px;\r\n  border-radius: 25px;\r\n  background-color: #cc385a;\r\n  margin: 10px 0 0 0;\r\n}\r\n\r\n.link-google-play {\r\n  text-align: center;\r\n  margin: 50px;\r\n  a {\r\n    background-color: #32bc57;\r\n    padding: 10px 20px;\r\n    border-radius: 20px;\r\n    color: #fff;\r\n  }\r\n}\r\n"],"sourceRoot":""}]);
-=======
-	exports.push([module.id, ".qr-code {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  -ms-flex-direction: column;\n      flex-direction: column; }\n  .qr-code p {\n    margin-top: 15px;\n    text-align: center; }\n  .qr-code .enabled-twofa {\n    font-size: 5em; }\n", "", {"version":3,"sources":["C:/Lunes/lunes-purchase/src/security/src/security/security.component.scss"],"names":[],"mappings":"AAAA;EACE,qBAAa;EAAb,cAAa;EACb,uBAAmB;MAAnB,oBAAmB;EACnB,sBAAuB;MAAvB,wBAAuB;EACvB,2BAAsB;MAAtB,uBAAsB,EAQvB;EAZD;IAMI,iBAAgB;IAChB,mBAAkB,EACnB;EARH;IAUI,eAAc,EACf","file":"security.component.scss","sourcesContent":[".qr-code {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  flex-direction: column;\r\n  p {\r\n    margin-top: 15px;\r\n    text-align: center;\r\n  }\r\n  .enabled-twofa {\r\n    font-size: 5em;\r\n  }\r\n}\r\n"],"sourceRoot":""}]);
->>>>>>> ico
+	exports.push([module.id, ".qr-code {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  -ms-flex-direction: column;\n      flex-direction: column; }\n  .qr-code p {\n    margin-top: 15px;\n    text-align: center; }\n  .qr-code .enabled-twofa {\n    font-size: 5em; }\n  .qr-code .alert-auth {\n    font-size: 1.3em; }\n    .qr-code .alert-auth label {\n      display: block;\n      width: 100%; }\n  .qr-code .input-calculator {\n    text-align: center; }\n\n.twofa-invalid {\n  text-align: center;\n  padding: 10px;\n  border-radius: 25px;\n  background-color: #cc385a;\n  margin: 10px 0 0 0; }\n\n.link-google-play {\n  text-align: center;\n  margin: 50px; }\n  .link-google-play a {\n    background-color: #32bc57;\n    padding: 10px 20px;\n    border-radius: 20px;\n    color: #fff; }\n", "", {"version":3,"sources":["C:/lunes/lunes-purchase/src/security/src/security/security.component.scss"],"names":[],"mappings":"AAAA;EACE,qBAAa;EAAb,cAAa;EACb,uBAAmB;MAAnB,oBAAmB;EACnB,sBAAuB;MAAvB,wBAAuB;EACvB,2BAAsB;MAAtB,uBAAsB,EAkBvB;EAtBD;IAMI,iBAAgB;IAChB,mBAAkB,EACnB;EARH;IAUI,eAAc,EACf;EAXH;IAaI,iBAAgB,EAKjB;IAlBH;MAeM,eAAc;MACd,YAAW,EACZ;EAjBL;IAoBI,mBAAkB,EACnB;;AAGH;EACE,mBAAkB;EAClB,cAAa;EACb,oBAAmB;EACnB,0BAAyB;EACzB,mBAAkB,EACnB;;AAED;EACE,mBAAkB;EAClB,aAAY,EAOb;EATD;IAII,0BAAyB;IACzB,mBAAkB;IAClB,oBAAmB;IACnB,YAAW,EACZ","file":"security.component.scss","sourcesContent":[".qr-code {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  flex-direction: column;\r\n  p {\r\n    margin-top: 15px;\r\n    text-align: center;\r\n  }\r\n  .enabled-twofa {\r\n    font-size: 5em;\r\n  }\r\n  .alert-auth {\r\n    font-size: 1.3em;\r\n    label {\r\n      display: block;\r\n      width: 100%;\r\n    }\r\n  }\r\n  .input-calculator {\r\n    text-align: center;\r\n  }\r\n}\r\n\r\n.twofa-invalid {\r\n  text-align: center;\r\n  padding: 10px;\r\n  border-radius: 25px;\r\n  background-color: #cc385a;\r\n  margin: 10px 0 0 0;\r\n}\r\n\r\n.link-google-play {\r\n  text-align: center;\r\n  margin: 50px;\r\n  a {\r\n    background-color: #32bc57;\r\n    padding: 10px 20px;\r\n    border-radius: 20px;\r\n    color: #fff;\r\n  }\r\n}\r\n"],"sourceRoot":""}]);
 	
 	// exports
 
 
 /***/ },
-/* 716 */
+/* 715 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -83583,15 +83527,15 @@
 	  value: true
 	});
 	
-	var _faqComponent = __webpack_require__(717);
+	var _faqComponent = __webpack_require__(716);
 	
 	var _faqComponent2 = _interopRequireDefault(_faqComponent);
 	
-	var _faq = __webpack_require__(718);
+	var _faq = __webpack_require__(717);
 	
 	var _faq2 = _interopRequireDefault(_faq);
 	
-	__webpack_require__(719);
+	__webpack_require__(718);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -83603,13 +83547,13 @@
 	exports.default = FAQComponent;
 
 /***/ },
-/* 717 */
+/* 716 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"container faq\">\n\n  <span onclick=\"window.history.back();\" style=\"cursor: pointer;font-size: 10px;border-radius: 10px;background-color: #4c2b82;box-shadow: #392060 1px 1px 1px;padding: 2px 10px;\">\n    <i class=\"fas fa-angle-left\"></i>&nbsp;&nbsp;&nbsp; {{'BACK' | translate}}\n  </span>\n\n  <h3 style=\"margin: 20px 0;\" id=\"here\">{{'FAQ' | translate}}</h3>\n\n  <p ng-show=\"false\" ng-bind-html=\"$ctrl.faqText\"></p>\n\n  <div style=\"text-align: left;\">\n    <ul style=\"margin: 0;padding: 0;\">\n      <li class=\"containerQuestion\" ng-repeat=\"question in $ctrl.questions\">\n\n        <div class=\"question\" ng-click=\"$ctrl.open(question)\">\n          <p class=\"title\">{{question.question}}</p>\n          <small class=\"smalGreen\" ng-show=\"!question.show\">\n            <i class=\"fas fa-angle-right\"></i>\n          </small>\n          <small class=\"smallGreen\" ng-show=\"question.show\">\n            <i class=\"fas fa-angle-down\"></i>\n          </small>\n        </div>\n\n        <ul class=\"containerAnswer\" ng-show=\"question.show\">\n          <li class=\"answer\">\n            <p style=\"color: #5ad68c; margin: 0;\">{{question.answer}}</p>\n            <p ng-repeat=\"item in question.items\" style=\"margin: 0;font-size: 10px;\">{{item.translate | translate}} {{item.value}}</p>\n          </li>\n        </ul>\n      </li>\n    </ul>\n  </div>\n</div>"
 
 /***/ },
-/* 718 */
+/* 717 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -83618,7 +83562,7 @@
 	  value: true
 	});
 	
-	var _index = __webpack_require__(689);
+	var _index = __webpack_require__(688);
 	
 	var _smartlookClient = __webpack_require__(332);
 	
@@ -83657,10 +83601,10 @@
 	      question: $translate.instant('DOUBT_05'),
 	      answer: $translate.instant('DOUBT_05_A'),
 	      show: false
-	    }, {
-	      question: $translate.instant('DOUBT_06'),
-	      answer: $translate.instant('DOUBT_06_A'),
-	      show: false
+	      // }, {
+	      //   question: $translate.instant('DOUBT_06'),
+	      //   answer: $translate.instant('DOUBT_06_A'),
+	      //   show: false
 	    }, {
 	      question: $translate.instant('DOUBT_07'),
 	      answer: $translate.instant('DOUBT_07_A'),
@@ -83770,16 +83714,16 @@
 	exports.default = FAQController;
 
 /***/ },
-/* 719 */
+/* 718 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(720);
+	var content = __webpack_require__(719);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(693)(content, {});
+	var update = __webpack_require__(692)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -83796,21 +83740,21 @@
 	}
 
 /***/ },
-/* 720 */
+/* 719 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(692)(true);
+	exports = module.exports = __webpack_require__(691)(true);
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".question {\n  font-weight: bold;\n  color: #5dcd5d;\n  margin-top: 20px; }\n\n.faq {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n      justify-content: center;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  margin-top: 40px; }\n  .faq .containerQuestion {\n    width: 100%;\n    background-color: #532e95;\n    padding: 5px 10px;\n    border-bottom: solid 1px #4a2782;\n    width: 500px;\n    list-style: none; }\n  .faq .question {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-align: center;\n        align-items: center;\n    -ms-flex-pack: justify;\n        justify-content: space-between;\n    cursor: pointer; }\n    .faq .question .title {\n      padding: 10px 20px 10px 0;\n      color: #fff; }\n  .faq .smallGreen {\n    color: #64de74; }\n  .faq .containerAnswer {\n    margin: 0;\n    padding: 0;\n    list-style: none; }\n    .faq .containerAnswer .answer {\n      margin: 0;\n      padding: 5px;\n      list-style: none;\n      width: 480px;\n      background-color: #4d2b8a;\n      font-size: 11px; }\n\n@media only screen and (max-width: 426px) {\n  .faq h3 {\n    text-align: center; }\n  .containerQuestion {\n    width: 425px !important; }\n    .containerQuestion .containerAnswer .answer {\n      width: 405px; } }\n\n@media only screen and (max-width: 376px) {\n  .faq h3 {\n    text-align: center; }\n  .containerQuestion {\n    width: 375px !important; }\n    .containerQuestion .containerAnswer .answer {\n      width: 355px; } }\n\n@media only screen and (max-width: 321px) {\n  .faq h3 {\n    text-align: center; }\n  .containerQuestion {\n    width: 320px !important; }\n    .containerQuestion .containerAnswer .answer {\n      width: 298px; } }\n", "", {"version":3,"sources":["C:/Lunes/lunes-purchase/src/faq/src/faq/faq.component.scss"],"names":[],"mappings":"AAAA;EACE,kBAAiB;EACjB,eAAc;EACd,iBAAgB,EACjB;;AAED;EACE,qBAAa;EAAb,cAAa;EACb,sBAAuB;MAAvB,wBAAuB;EACvB,uBAAmB;MAAnB,oBAAmB;EACnB,2BAAsB;MAAtB,uBAAsB;EACtB,iBAAgB,EAoCjB;EAzCD;IAQI,YAAW;IACX,0BAAyB;IACzB,kBAAiB;IACjB,iCAAgC;IAChC,aAAY;IACZ,iBAAgB,EACjB;EAdH;IAgBI,qBAAa;IAAb,cAAa;IACb,uBAAmB;QAAnB,oBAAmB;IACnB,uBAA8B;QAA9B,+BAA8B;IAC9B,gBAAe,EAKhB;IAxBH;MAqBM,0BAAyB;MACzB,YAAW,EACZ;EAvBL;IA0BI,eAAc,EACf;EA3BH;IA6BI,UAAS;IACT,WAAU;IACV,iBAAgB,EASjB;IAxCH;MAiCM,UAAS;MACT,aAAY;MACZ,iBAAgB;MAChB,aAAY;MACZ,0BAAyB;MACzB,gBAAe,EAChB;;AAIL;EACE;IAEI,mBAAkB,EACnB;EAEH;IACE,wBAAsB,EAMvB;IAPD;MAIM,aAAY,EACb,EAAA;;AAKP;EACE;IAEI,mBAAkB,EACnB;EAEH;IACE,wBAAsB,EAMvB;IAPD;MAIM,aAAY,EACb,EAAA;;AAKP;EACE;IAEI,mBAAkB,EACnB;EAEH;IACE,wBAAsB,EAMvB;IAPD;MAIM,aAAY,EACb,EAAA","file":"faq.component.scss","sourcesContent":[".question {\r\n  font-weight: bold;\r\n  color: #5dcd5d;\r\n  margin-top: 20px;\r\n}\r\n\r\n.faq {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  flex-direction: column;\r\n  margin-top: 40px;\r\n\r\n  .containerQuestion {\r\n    width: 100%;\r\n    background-color: #532e95;\r\n    padding: 5px 10px;\r\n    border-bottom: solid 1px #4a2782;\r\n    width: 500px;\r\n    list-style: none;\r\n  }\r\n  .question {\r\n    display: flex; \r\n    align-items: center;\r\n    justify-content: space-between;\r\n    cursor: pointer;\r\n    .title {\r\n      padding: 10px 20px 10px 0;\r\n      color: #fff;\r\n    }\r\n  }\r\n  .smallGreen {\r\n    color: #64de74;\r\n  }\r\n  .containerAnswer {\r\n    margin: 0;\r\n    padding: 0;\r\n    list-style: none;\r\n    .answer {\r\n      margin: 0;\r\n      padding: 5px;\r\n      list-style: none;\r\n      width: 480px;\r\n      background-color: #4d2b8a;\r\n      font-size: 11px;\r\n    }\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 426px) {\r\n  .faq {\r\n    h3 {\r\n      text-align: center;\r\n    }\r\n  }\r\n  .containerQuestion {\r\n    width: 425px!important;\r\n    .containerAnswer {\r\n      .answer {\r\n        width: 405px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 376px) {\r\n  .faq {\r\n    h3 {\r\n      text-align: center;\r\n    }\r\n  }\r\n  .containerQuestion {\r\n    width: 375px!important;\r\n    .containerAnswer {\r\n      .answer {\r\n        width: 355px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 321px) {\r\n  .faq {\r\n    h3 {\r\n      text-align: center;\r\n    }\r\n  }\r\n  .containerQuestion {\r\n    width: 320px!important;\r\n    .containerAnswer {\r\n      .answer {\r\n        width: 298px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n"],"sourceRoot":""}]);
+	exports.push([module.id, ".question {\n  font-weight: bold;\n  color: #5dcd5d;\n  margin-top: 20px; }\n\n.faq {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n      justify-content: center;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  margin-top: 40px; }\n  .faq .containerQuestion {\n    width: 100%;\n    background-color: #532e95;\n    padding: 5px 10px;\n    border-bottom: solid 1px #4a2782;\n    width: 500px;\n    list-style: none; }\n  .faq .question {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-align: center;\n        align-items: center;\n    -ms-flex-pack: justify;\n        justify-content: space-between;\n    cursor: pointer; }\n    .faq .question .title {\n      padding: 10px 20px 10px 0;\n      color: #fff; }\n  .faq .smallGreen {\n    color: #64de74; }\n  .faq .containerAnswer {\n    margin: 0;\n    padding: 0;\n    list-style: none; }\n    .faq .containerAnswer .answer {\n      margin: 0;\n      padding: 5px;\n      list-style: none;\n      width: 480px;\n      background-color: #4d2b8a;\n      font-size: 11px; }\n\n@media only screen and (max-width: 426px) {\n  .faq h3 {\n    text-align: center; }\n  .containerQuestion {\n    width: 425px !important; }\n    .containerQuestion .containerAnswer .answer {\n      width: 405px; } }\n\n@media only screen and (max-width: 376px) {\n  .faq h3 {\n    text-align: center; }\n  .containerQuestion {\n    width: 375px !important; }\n    .containerQuestion .containerAnswer .answer {\n      width: 355px; } }\n\n@media only screen and (max-width: 321px) {\n  .faq h3 {\n    text-align: center; }\n  .containerQuestion {\n    width: 320px !important; }\n    .containerQuestion .containerAnswer .answer {\n      width: 298px; } }\n", "", {"version":3,"sources":["C:/lunes/lunes-purchase/src/faq/src/faq/faq.component.scss"],"names":[],"mappings":"AAAA;EACE,kBAAiB;EACjB,eAAc;EACd,iBAAgB,EACjB;;AAED;EACE,qBAAa;EAAb,cAAa;EACb,sBAAuB;MAAvB,wBAAuB;EACvB,uBAAmB;MAAnB,oBAAmB;EACnB,2BAAsB;MAAtB,uBAAsB;EACtB,iBAAgB,EAoCjB;EAzCD;IAQI,YAAW;IACX,0BAAyB;IACzB,kBAAiB;IACjB,iCAAgC;IAChC,aAAY;IACZ,iBAAgB,EACjB;EAdH;IAgBI,qBAAa;IAAb,cAAa;IACb,uBAAmB;QAAnB,oBAAmB;IACnB,uBAA8B;QAA9B,+BAA8B;IAC9B,gBAAe,EAKhB;IAxBH;MAqBM,0BAAyB;MACzB,YAAW,EACZ;EAvBL;IA0BI,eAAc,EACf;EA3BH;IA6BI,UAAS;IACT,WAAU;IACV,iBAAgB,EASjB;IAxCH;MAiCM,UAAS;MACT,aAAY;MACZ,iBAAgB;MAChB,aAAY;MACZ,0BAAyB;MACzB,gBAAe,EAChB;;AAIL;EACE;IAEI,mBAAkB,EACnB;EAEH;IACE,wBAAsB,EAMvB;IAPD;MAIM,aAAY,EACb,EAAA;;AAKP;EACE;IAEI,mBAAkB,EACnB;EAEH;IACE,wBAAsB,EAMvB;IAPD;MAIM,aAAY,EACb,EAAA;;AAKP;EACE;IAEI,mBAAkB,EACnB;EAEH;IACE,wBAAsB,EAMvB;IAPD;MAIM,aAAY,EACb,EAAA","file":"faq.component.scss","sourcesContent":[".question {\r\n  font-weight: bold;\r\n  color: #5dcd5d;\r\n  margin-top: 20px;\r\n}\r\n\r\n.faq {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  flex-direction: column;\r\n  margin-top: 40px;\r\n\r\n  .containerQuestion {\r\n    width: 100%;\r\n    background-color: #532e95;\r\n    padding: 5px 10px;\r\n    border-bottom: solid 1px #4a2782;\r\n    width: 500px;\r\n    list-style: none;\r\n  }\r\n  .question {\r\n    display: flex; \r\n    align-items: center;\r\n    justify-content: space-between;\r\n    cursor: pointer;\r\n    .title {\r\n      padding: 10px 20px 10px 0;\r\n      color: #fff;\r\n    }\r\n  }\r\n  .smallGreen {\r\n    color: #64de74;\r\n  }\r\n  .containerAnswer {\r\n    margin: 0;\r\n    padding: 0;\r\n    list-style: none;\r\n    .answer {\r\n      margin: 0;\r\n      padding: 5px;\r\n      list-style: none;\r\n      width: 480px;\r\n      background-color: #4d2b8a;\r\n      font-size: 11px;\r\n    }\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 426px) {\r\n  .faq {\r\n    h3 {\r\n      text-align: center;\r\n    }\r\n  }\r\n  .containerQuestion {\r\n    width: 425px!important;\r\n    .containerAnswer {\r\n      .answer {\r\n        width: 405px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 376px) {\r\n  .faq {\r\n    h3 {\r\n      text-align: center;\r\n    }\r\n  }\r\n  .containerQuestion {\r\n    width: 375px!important;\r\n    .containerAnswer {\r\n      .answer {\r\n        width: 355px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 321px) {\r\n  .faq {\r\n    h3 {\r\n      text-align: center;\r\n    }\r\n  }\r\n  .containerQuestion {\r\n    width: 320px!important;\r\n    .containerAnswer {\r\n      .answer {\r\n        width: 298px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n"],"sourceRoot":""}]);
 	
 	// exports
 
 
 /***/ },
-/* 721 */
+/* 720 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -83819,15 +83763,15 @@
 	  value: true
 	});
 	
-	var _dashboardComponent = __webpack_require__(722);
+	var _dashboardComponent = __webpack_require__(721);
 	
 	var _dashboardComponent2 = _interopRequireDefault(_dashboardComponent);
 	
-	var _dashboard = __webpack_require__(723);
+	var _dashboard = __webpack_require__(722);
 	
 	var _dashboard2 = _interopRequireDefault(_dashboard);
 	
-	__webpack_require__(724);
+	__webpack_require__(723);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -83839,13 +83783,13 @@
 	exports.default = DashboardComponent;
 
 /***/ },
-/* 722 */
+/* 721 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"container\">\n\n  <lunesheader showlogout=\"true\" showlinks=\"true\"></lunesheader>\n\n  <!-- DASHBOARD -->\n  <section class=\"dashboard\">\n    <div>\n      <div class=\"title user-menu\" style=\"padding-left: 0;\">\n        <a href=\"\" id=\"user-menu\" ng-click=\"$ctrl.toogleUserMenu()\">\n          <h4>\n            {{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}\n            <span ng-show=\"!$ctrl.showUserMenu\">\n              <i class=\"fas fa-angle-right green\"></i>\n            </span>\n            <span ng-show=\"$ctrl.showUserMenu\">\n              <i class=\"fas fa-angle-down green\"></i>\n            </span>\n          </h4>\n        </a>\n        <div class=\"logout area-button\" ng-show=\"$ctrl.showUserMenu\">\n          <a href=\"#!/login\" class=\"primary-button\" ng-click=\"$ctrl.logout()\">\n            {{'LOGOUT' | translate}}\n          </a>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"row\">\n      <!-- BALANCE FOR EACH COIN -->\n      <div class=\"col-xs-12 col-md-6 col-lg-6 transaction-coins\">\n        <div class=\"show-balance\" ng-repeat=\"coin in $ctrl.coins\" style=\"margin-right: 15px;text-align: center;\">\n          <img ng-src=\"{{coin.img}}\" alt=\"{{coin.label}}\">\n          <p style=\"font-size: 10px;margin: 0;\">{{coin.label}}</p>\n          <small ng-show=\"false\" style=\"font-size: 8px;color: #ce3e3e;\">{{'UNCONFIRMED_BALANCE' | translate}}</small>\n          <p ng-show=\"false\" style=\"font-size: 10px;margin: 0;\">{{$ctrl.balanceProcessed[coin.name].unconfirmed_balance}}</p>\n        </div>\n      </div>\n\n      <div class=\"col-xs-12 col-md-6 col-lg-6 balance lns\">\n        <span>{{'MY_BALANCE' | translate}}:</span>\n        <span class=\"monetary\">{{ $ctrl.totalLns }}</span>\n        <span class=\"coin\">LNS</span>\n      </div>\n\n      <!-- end -->\n\n      <!-- TABLE RESUME HISTORIC PURCHASE -->\n      <div class=\"col-12 history\">\n        <table class=\"lunes-table\" ng-if=\"$ctrl.checkWidthScreenDesktop()\">\n          <thead>\n            <tr>\n              <td>{{ 'DASHBOARD.DATE' | translate }}</td>\n              <td>{{ 'DASHBOARD.PHASE' | translate }}</td>\n              <td>{{ 'DASHBOARD.DEPOSIT' | translate }}</td>\n              <td>Lunes</td>\n              <td>{{ 'DASHBOARD.BONUS' | translate }}</td>\n              <td>Total</td>\n            </tr>\n          </thead>\n          <tbody data-ng-if=\"$ctrl.history.length > 0\">\n            <tr data-ng-repeat=\"history in $ctrl.history\" ng-class-odd=\"'odd'\" ng-class-even=\"'even'\">\n              <td>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</td>\n              <td>{{ history.phase || 1 }}</td>\n              <td>{{ history.deposit_value }} {{ history.deposit_coin }}</td>\n              <td>{{ history.credit_value }} LNS</td>\n              <td>{{ history.bonus_value }} LNS </td>\n              <td>{{ history.total }} LNS</td>\n            </tr>\n          </tbody>\n          <tfoot data-ng-if=\"$ctrl.history.length === 0\">\n            <tr>\n              <td colspan=\"6\" style=\"text-align: center;\">{{ 'DASHBOARD.NO_HISTORY' | translate }}</td>\n            </tr>\n          </tfoot>\n        </table>\n\n        <div ng-if=\"$ctrl.checkWidthScreenMobile()\">\n          <div data-ng-repeat=\"history in $ctrl.history\" ng-class-odd=\"'odd'\" ng-class-even=\"'even'\" style=\"border-radius: 5px;\">\n            <h6 style=\"text-align: center; padding: 10px; color: #4cd468;\">{{'TRANSACTION' | translate}} {{$index+1}}</h6>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.DATE' | translate }}</div>\n              <div>{{ history.created | date: 'yyyy-MM-dd HH:mm:ss Z' }}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.PHASE' | translate }}</div>\n              <div>{{ history.phase || 1 }}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.DEPOSIT' | translate }}</div>\n              <div>{{ history.deposit_value }} {{history.deposit_coin}}</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>Lunes</div>\n              <div>{{ history.credit_value }} LNS</div>\n            </div>\n            <div class=\"responsive-table-card\">\n              <div>{{ 'DASHBOARD.BONUS' | translate }}</div>\n              <div>{{ history.bonus_value }} LNS</div>\n            </div>\n            <div class=\"responsive-table-card total-footer\" ng-show=\"false\">\n              <div>Total</div>\n              <div>{{ history.total }} LNS</div>\n            </div>\n          </div>\n        </div>\n      </div>\n\n    </div>\n  </section>\n</div>\n<lunesfooter />"
 
 /***/ },
-/* 723 */
+/* 722 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -83862,7 +83806,7 @@
 	
 	var _smartlookClient2 = _interopRequireDefault(_smartlookClient);
 	
-	var _index = __webpack_require__(689);
+	var _index = __webpack_require__(688);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -84212,16 +84156,16 @@
 	exports.default = DashboardController;
 
 /***/ },
-/* 724 */
+/* 723 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(725);
+	var content = __webpack_require__(724);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(693)(content, {});
+	var update = __webpack_require__(692)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -84238,21 +84182,21 @@
 	}
 
 /***/ },
-/* 725 */
+/* 724 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(692)(true);
+	exports = module.exports = __webpack_require__(691)(true);
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".green {\n  color: #44af57; }\n\n.mb-1-rem {\n  margin-bottom: 1rem; }\n\n.mb-2-rem {\n  margin-bottom: 2rem; }\n\n.history {\n  margin-bottom: 2rem; }\n\n.balance {\n  font-family: 'Offside', cursive;\n  text-align: right; }\n\n.monetary {\n  font-size: 1.2rem;\n  margin-left: 10px; }\n\n.coin {\n  font-size: 1.5rem;\n  color: #44af57; }\n\n.lunes-table {\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n  font-weight: lighter;\n  font-size: 12px;\n  overflow: hidden;\n  text-align: center;\n  width: 100%; }\n  .lunes-table td {\n    padding: 0.75rem; }\n  .lunes-table thead {\n    background: linear-gradient(to right, #654fa4, #876fc6, #654fa4); }\n  .lunes-table tbody {\n    background-color: #41256f; }\n    .lunes-table tbody tr:hover {\n      background-color: #3f2569; }\n\n/* \r\nMax width before this PARTICULAR table gets nasty\r\nThis query will take effect for any screen smaller than 760px\r\nand also iPads specifically.\r\n*/\n@media only screen and (max-width: 699px) {\n  /* Force table to not be like tables anymore */\n  table, thead, tbody, th, td, tr {\n    display: block; }\n  /* Hide table headers (but not display: none;, for accessibility) */\n  thead tr {\n    position: absolute;\n    top: -9999px;\n    left: -9999px; }\n  tr {\n    border: 1px solid #3f2669; }\n  td {\n    /* Behave  like a \"row\" */\n    border: none;\n    border-bottom: 1px solid #4b2d7d;\n    position: relative;\n    padding-left: 50%; }\n  td:before {\n    /* Now like a table header */\n    position: absolute;\n    /* Top/left values mimic padding */\n    top: 6px;\n    left: 6px;\n    width: 45%;\n    padding-right: 10px;\n    white-space: nowrap; }\n  .monetary {\n    font-size: 1rem;\n    margin-left: 10px; }\n  .coin {\n    font-size: 1.5rem;\n    color: #4cd466; } }\n\n@media only screen and (min-width: 700px) and (max-width: 768px) {\n  .lunes-table {\n    table-layout: fixed; }\n    .lunes-table tbody {\n      max-height: 400px;\n      overflow-y: auto;\n      display: block;\n      width: 690px; } }\n\n.odd {\n  background-color: #41256f; }\n\n.even {\n  background-color: #351e5a; }\n\n.responsive-table-card {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: row;\n      flex-direction: row;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  padding: 10px;\n  margin-bottom: 10px;\n  border-bottom: solid 1px #4c2c7f; }\n  .responsive-table-card div {\n    font-size: 12px; }\n  .responsive-table-card.total-footer {\n    background-color: #4cd468;\n    border-radius: 0 0 5px 5px; }\n\n.transaction-coins {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: row;\n      flex-direction: row;\n  -ms-flex-pack: start;\n      justify-content: flex-start; }\n\n.balance.lns {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: end;\n      justify-content: flex-end;\n  -ms-flex-align: center;\n      align-items: center; }\n\n@media only screen and (max-width: 426px) {\n  .transaction-coins {\n    -ms-flex-pack: center;\n        justify-content: center;\n    margin-bottom: 20px; }\n  .balance.lns {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: end;\n        justify-content: flex-end;\n    -ms-flex-align: center;\n        align-items: center;\n    margin-bottom: 20px; } }\n", "", {"version":3,"sources":["C:/Lunes/lunes-purchase/src/dashboard/src/dashboard/dashboard.component.scss","C:/Lunes/lunes-purchase/src/dashboard/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA;EACI,eCEW,EDDd;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,gCAA+B;EAC/B,kBAAiB,EACpB;;AAED;EACI,kBAAiB;EACjB,kBAAiB,EACpB;;AAED;EACI,kBAAiB;EACjB,eCzBW,ED0Bd;;AAED;EAEI,4BAA2B;EAC3B,6BAA4B;EAC5B,qBAAoB;EACpB,gBAAe;EACf,iBAAgB;EAChB,mBAAkB;EAClB,YAAW,EAiBd;EAzBD;IAWQ,iBAAgB,EACnB;EAZL;IAeQ,iEAAwF,EAC3F;EAhBL;IAmBQ,0BCjDa,EDsDhB;IAxBL;MAsBY,0BCnDc,EDoDjB;;AAIT;;;;EAIE;AACF;EAGC,+CAA+C;EAC/C;IACC,eAAc,EACd;EAED,oEAAoE;EACpE;IACC,mBAAkB;IAClB,aAAY;IACZ,cAAa,EACb;EAED;IAAK,0BAAyB,EAAK;EAEnC;IACC,0BAA0B;IAC1B,aAAY;IACZ,iCAAgC;IAChC,mBAAkB;IAClB,kBAAiB,EACjB;EAED;IACC,6BAA6B;IAC7B,mBAAkB;IAClB,mCAAmC;IACnC,SAAQ;IACR,UAAS;IACT,WAAU;IACV,oBAAmB;IACnB,oBAAmB,EAChB;EAED;IACI,gBAAe;IACf,kBAAiB,EACpB;EAED;IACI,kBAAiB;IACjB,eAAc,EACjB,EAAA;;AAGL;EAEI;IACI,oBAAmB,EAOtB;IARD;MAGQ,kBAAiB;MACjB,iBAAgB;MAChB,eAAc;MACd,aAAY,EACf,EAAA;;AAIT;EACI,0BAAyB,EAC5B;;AACD;EACI,0BAAyB,EAC5B;;AAED;EACI,qBAAa;EAAb,cAAa;EACb,wBAAmB;MAAnB,oBAAmB;EACnB,uBAA8B;MAA9B,+BAA8B;EAC9B,cAAa;EACb,oBAAmB;EACnB,iCAAgC,EAQnC;EAdD;IAQQ,gBAAe,EAClB;EATL;IAWQ,0BAAyB;IACzB,2BAA0B,EAC7B;;AAGL;EACI,qBAAa;EAAb,cAAa;EACb,wBAAmB;MAAnB,oBAAmB;EACnB,qBAA2B;MAA3B,4BAA2B,EAC9B;;AAED;EACI,qBAAa;EAAb,cAAa;EACb,mBAAyB;MAAzB,0BAAyB;EACzB,uBAAmB;MAAnB,oBAAmB,EACtB;;AAED;EACI;IACI,sBAAuB;QAAvB,wBAAuB;IACvB,oBAAmB,EACtB;EAED;IACI,qBAAa;IAAb,cAAa;IACb,mBAAyB;QAAzB,0BAAyB;IACzB,uBAAmB;QAAnB,oBAAmB;IACnB,oBAAmB,EACtB,EAAA","file":"dashboard.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n.green {\r\n    color: $green;\r\n}\r\n\r\n.mb-1-rem {\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n.mb-2-rem {\r\n    margin-bottom: 2rem;\r\n}\r\n\r\n.history {\r\n    margin-bottom: 2rem;\r\n}\r\n\r\n.balance {\r\n    font-family: 'Offside', cursive;\r\n    text-align: right;\r\n}\r\n\r\n.monetary {\r\n    font-size: 1.2rem;\r\n    margin-left: 10px;\r\n}\r\n\r\n.coin {\r\n    font-size: 1.5rem;\r\n    color: $green;\r\n}\r\n\r\n.lunes-table {\r\n    // background: transparent;\r\n    border-top-left-radius: 5px;\r\n    border-top-right-radius: 5px;\r\n    font-weight: lighter;\r\n    font-size: 12px;\r\n    overflow: hidden;\r\n    text-align: center;\r\n    width: 100%;\r\n\r\n    td {\r\n        padding: 0.75rem;\r\n    }\r\n\r\n    thead {\r\n        background: linear-gradient(to right , $lightPrimary, $extraLightPrimary, $lightPrimary);\r\n    }\r\n\r\n    tbody {\r\n        background-color: $darkPrimary;\r\n        \r\n        tr:hover {\r\n            background-color: $extraDarkPrimary;\r\n        }\r\n    }\r\n}\r\n\r\n/* \r\nMax width before this PARTICULAR table gets nasty\r\nThis query will take effect for any screen smaller than 760px\r\nand also iPads specifically.\r\n*/\r\n@media \r\nonly screen and (max-width: 699px)  {\r\n\r\n\t/* Force table to not be like tables anymore */\r\n\ttable, thead, tbody, th, td, tr { \r\n\t\tdisplay: block; \r\n\t}\r\n\t\r\n\t/* Hide table headers (but not display: none;, for accessibility) */\r\n\tthead tr { \r\n\t\tposition: absolute;\r\n\t\ttop: -9999px;\r\n\t\tleft: -9999px;\r\n\t}\r\n\t\r\n\ttr { border: 1px solid #3f2669; }\r\n\t\r\n\ttd { \r\n\t\t/* Behave  like a \"row\" */\r\n\t\tborder: none;\r\n\t\tborder-bottom: 1px solid #4b2d7d; \r\n\t\tposition: relative;\r\n\t\tpadding-left: 50%; \r\n\t}\r\n\t\r\n\ttd:before { \r\n\t\t/* Now like a table header */\r\n\t\tposition: absolute;\r\n\t\t/* Top/left values mimic padding */\r\n\t\ttop: 6px;\r\n\t\tleft: 6px;\r\n\t\twidth: 45%; \r\n\t\tpadding-right: 10px; \r\n\t\twhite-space: nowrap;\r\n    }\r\n\r\n    .monetary {\r\n        font-size: 1rem;\r\n        margin-left: 10px;\r\n    }\r\n    \r\n    .coin {\r\n        font-size: 1.5rem;\r\n        color: #4cd466;\r\n    }\r\n}\r\n\r\n@media\r\nonly screen and (min-width: 700px) and (max-width: 768px) {\r\n    .lunes-table {\r\n        table-layout: fixed;\r\n        tbody {\r\n            max-height: 400px;\r\n            overflow-y: auto;\r\n            display: block;\r\n            width: 690px;\r\n        }\r\n    }\r\n}\r\n\r\n.odd {\r\n    background-color: #41256f;\r\n}\r\n.even {\r\n    background-color: #351e5a;\r\n}\r\n\r\n.responsive-table-card {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n    padding: 10px;\r\n    margin-bottom: 10px;\r\n    border-bottom: solid 1px #4c2c7f;\r\n    div {\r\n        font-size: 12px;\r\n    }\r\n    &.total-footer {\r\n        background-color: #4cd468;\r\n        border-radius: 0 0 5px 5px;\r\n    }\r\n}\r\n\r\n.transaction-coins {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: flex-start;\r\n}\r\n\r\n.balance.lns {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n    align-items: center;\r\n}\r\n\r\n@media only screen and (max-width: 426px) {\r\n    .transaction-coins {\r\n        justify-content: center;\r\n        margin-bottom: 20px;\r\n    }\r\n    \r\n    .balance.lns {\r\n        display: flex;\r\n        justify-content: flex-end;\r\n        align-items: center;\r\n        margin-bottom: 20px;\r\n    }    \r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #44af57;\r\n$darkGreen: #44af57;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
+	exports.push([module.id, ".green {\n  color: #44af57; }\n\n.mb-1-rem {\n  margin-bottom: 1rem; }\n\n.mb-2-rem {\n  margin-bottom: 2rem; }\n\n.history {\n  margin-bottom: 2rem; }\n\n.balance {\n  font-family: 'Offside', cursive;\n  text-align: right; }\n\n.monetary {\n  font-size: 1.2rem;\n  margin-left: 10px; }\n\n.coin {\n  font-size: 1.5rem;\n  color: #44af57; }\n\n.lunes-table {\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n  font-weight: lighter;\n  font-size: 12px;\n  overflow: hidden;\n  text-align: center;\n  width: 100%; }\n  .lunes-table td {\n    padding: 0.75rem; }\n  .lunes-table thead {\n    background: linear-gradient(to right, #654fa4, #876fc6, #654fa4); }\n  .lunes-table tbody {\n    background-color: #41256f; }\n    .lunes-table tbody tr:hover {\n      background-color: #3f2569; }\n\n/* \r\nMax width before this PARTICULAR table gets nasty\r\nThis query will take effect for any screen smaller than 760px\r\nand also iPads specifically.\r\n*/\n@media only screen and (max-width: 699px) {\n  /* Force table to not be like tables anymore */\n  table, thead, tbody, th, td, tr {\n    display: block; }\n  /* Hide table headers (but not display: none;, for accessibility) */\n  thead tr {\n    position: absolute;\n    top: -9999px;\n    left: -9999px; }\n  tr {\n    border: 1px solid #3f2669; }\n  td {\n    /* Behave  like a \"row\" */\n    border: none;\n    border-bottom: 1px solid #4b2d7d;\n    position: relative;\n    padding-left: 50%; }\n  td:before {\n    /* Now like a table header */\n    position: absolute;\n    /* Top/left values mimic padding */\n    top: 6px;\n    left: 6px;\n    width: 45%;\n    padding-right: 10px;\n    white-space: nowrap; }\n  .monetary {\n    font-size: 1rem;\n    margin-left: 10px; }\n  .coin {\n    font-size: 1.5rem;\n    color: #4cd466; } }\n\n@media only screen and (min-width: 700px) and (max-width: 768px) {\n  .lunes-table {\n    table-layout: fixed; }\n    .lunes-table tbody {\n      max-height: 400px;\n      overflow-y: auto;\n      display: block;\n      width: 690px; } }\n\n.odd {\n  background-color: #41256f; }\n\n.even {\n  background-color: #351e5a; }\n\n.responsive-table-card {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: row;\n      flex-direction: row;\n  -ms-flex-pack: justify;\n      justify-content: space-between;\n  padding: 10px;\n  margin-bottom: 10px;\n  border-bottom: solid 1px #4c2c7f; }\n  .responsive-table-card div {\n    font-size: 12px; }\n  .responsive-table-card.total-footer {\n    background-color: #4cd468;\n    border-radius: 0 0 5px 5px; }\n\n.transaction-coins {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: row;\n      flex-direction: row;\n  -ms-flex-pack: start;\n      justify-content: flex-start; }\n\n.balance.lns {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: end;\n      justify-content: flex-end;\n  -ms-flex-align: center;\n      align-items: center; }\n\n@media only screen and (max-width: 426px) {\n  .transaction-coins {\n    -ms-flex-pack: center;\n        justify-content: center;\n    margin-bottom: 20px; }\n  .balance.lns {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: end;\n        justify-content: flex-end;\n    -ms-flex-align: center;\n        align-items: center;\n    margin-bottom: 20px; } }\n", "", {"version":3,"sources":["C:/lunes/lunes-purchase/src/dashboard/src/dashboard/dashboard.component.scss","C:/lunes/lunes-purchase/src/dashboard/src/scss/base/_color.scss"],"names":[],"mappings":"AAEA;EACI,eCEW,EDDd;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,oBAAmB,EACtB;;AAED;EACI,gCAA+B;EAC/B,kBAAiB,EACpB;;AAED;EACI,kBAAiB;EACjB,kBAAiB,EACpB;;AAED;EACI,kBAAiB;EACjB,eCzBW,ED0Bd;;AAED;EAEI,4BAA2B;EAC3B,6BAA4B;EAC5B,qBAAoB;EACpB,gBAAe;EACf,iBAAgB;EAChB,mBAAkB;EAClB,YAAW,EAiBd;EAzBD;IAWQ,iBAAgB,EACnB;EAZL;IAeQ,iEAAwF,EAC3F;EAhBL;IAmBQ,0BCjDa,EDsDhB;IAxBL;MAsBY,0BCnDc,EDoDjB;;AAIT;;;;EAIE;AACF;EAGC,+CAA+C;EAC/C;IACC,eAAc,EACd;EAED,oEAAoE;EACpE;IACC,mBAAkB;IAClB,aAAY;IACZ,cAAa,EACb;EAED;IAAK,0BAAyB,EAAK;EAEnC;IACC,0BAA0B;IAC1B,aAAY;IACZ,iCAAgC;IAChC,mBAAkB;IAClB,kBAAiB,EACjB;EAED;IACC,6BAA6B;IAC7B,mBAAkB;IAClB,mCAAmC;IACnC,SAAQ;IACR,UAAS;IACT,WAAU;IACV,oBAAmB;IACnB,oBAAmB,EAChB;EAED;IACI,gBAAe;IACf,kBAAiB,EACpB;EAED;IACI,kBAAiB;IACjB,eAAc,EACjB,EAAA;;AAGL;EAEI;IACI,oBAAmB,EAOtB;IARD;MAGQ,kBAAiB;MACjB,iBAAgB;MAChB,eAAc;MACd,aAAY,EACf,EAAA;;AAIT;EACI,0BAAyB,EAC5B;;AACD;EACI,0BAAyB,EAC5B;;AAED;EACI,qBAAa;EAAb,cAAa;EACb,wBAAmB;MAAnB,oBAAmB;EACnB,uBAA8B;MAA9B,+BAA8B;EAC9B,cAAa;EACb,oBAAmB;EACnB,iCAAgC,EAQnC;EAdD;IAQQ,gBAAe,EAClB;EATL;IAWQ,0BAAyB;IACzB,2BAA0B,EAC7B;;AAGL;EACI,qBAAa;EAAb,cAAa;EACb,wBAAmB;MAAnB,oBAAmB;EACnB,qBAA2B;MAA3B,4BAA2B,EAC9B;;AAED;EACI,qBAAa;EAAb,cAAa;EACb,mBAAyB;MAAzB,0BAAyB;EACzB,uBAAmB;MAAnB,oBAAmB,EACtB;;AAED;EACI;IACI,sBAAuB;QAAvB,wBAAuB;IACvB,oBAAmB,EACtB;EAED;IACI,qBAAa;IAAb,cAAa;IACb,mBAAyB;QAAzB,0BAAyB;IACzB,uBAAmB;QAAnB,oBAAmB;IACnB,oBAAmB,EACtB,EAAA","file":"dashboard.component.scss","sourcesContent":["@import '../scss/base/_color';\r\n\r\n.green {\r\n    color: $green;\r\n}\r\n\r\n.mb-1-rem {\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n.mb-2-rem {\r\n    margin-bottom: 2rem;\r\n}\r\n\r\n.history {\r\n    margin-bottom: 2rem;\r\n}\r\n\r\n.balance {\r\n    font-family: 'Offside', cursive;\r\n    text-align: right;\r\n}\r\n\r\n.monetary {\r\n    font-size: 1.2rem;\r\n    margin-left: 10px;\r\n}\r\n\r\n.coin {\r\n    font-size: 1.5rem;\r\n    color: $green;\r\n}\r\n\r\n.lunes-table {\r\n    // background: transparent;\r\n    border-top-left-radius: 5px;\r\n    border-top-right-radius: 5px;\r\n    font-weight: lighter;\r\n    font-size: 12px;\r\n    overflow: hidden;\r\n    text-align: center;\r\n    width: 100%;\r\n\r\n    td {\r\n        padding: 0.75rem;\r\n    }\r\n\r\n    thead {\r\n        background: linear-gradient(to right , $lightPrimary, $extraLightPrimary, $lightPrimary);\r\n    }\r\n\r\n    tbody {\r\n        background-color: $darkPrimary;\r\n        \r\n        tr:hover {\r\n            background-color: $extraDarkPrimary;\r\n        }\r\n    }\r\n}\r\n\r\n/* \r\nMax width before this PARTICULAR table gets nasty\r\nThis query will take effect for any screen smaller than 760px\r\nand also iPads specifically.\r\n*/\r\n@media \r\nonly screen and (max-width: 699px)  {\r\n\r\n\t/* Force table to not be like tables anymore */\r\n\ttable, thead, tbody, th, td, tr { \r\n\t\tdisplay: block; \r\n\t}\r\n\t\r\n\t/* Hide table headers (but not display: none;, for accessibility) */\r\n\tthead tr { \r\n\t\tposition: absolute;\r\n\t\ttop: -9999px;\r\n\t\tleft: -9999px;\r\n\t}\r\n\t\r\n\ttr { border: 1px solid #3f2669; }\r\n\t\r\n\ttd { \r\n\t\t/* Behave  like a \"row\" */\r\n\t\tborder: none;\r\n\t\tborder-bottom: 1px solid #4b2d7d; \r\n\t\tposition: relative;\r\n\t\tpadding-left: 50%; \r\n\t}\r\n\t\r\n\ttd:before { \r\n\t\t/* Now like a table header */\r\n\t\tposition: absolute;\r\n\t\t/* Top/left values mimic padding */\r\n\t\ttop: 6px;\r\n\t\tleft: 6px;\r\n\t\twidth: 45%; \r\n\t\tpadding-right: 10px; \r\n\t\twhite-space: nowrap;\r\n    }\r\n\r\n    .monetary {\r\n        font-size: 1rem;\r\n        margin-left: 10px;\r\n    }\r\n    \r\n    .coin {\r\n        font-size: 1.5rem;\r\n        color: #4cd466;\r\n    }\r\n}\r\n\r\n@media\r\nonly screen and (min-width: 700px) and (max-width: 768px) {\r\n    .lunes-table {\r\n        table-layout: fixed;\r\n        tbody {\r\n            max-height: 400px;\r\n            overflow-y: auto;\r\n            display: block;\r\n            width: 690px;\r\n        }\r\n    }\r\n}\r\n\r\n.odd {\r\n    background-color: #41256f;\r\n}\r\n.even {\r\n    background-color: #351e5a;\r\n}\r\n\r\n.responsive-table-card {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n    padding: 10px;\r\n    margin-bottom: 10px;\r\n    border-bottom: solid 1px #4c2c7f;\r\n    div {\r\n        font-size: 12px;\r\n    }\r\n    &.total-footer {\r\n        background-color: #4cd468;\r\n        border-radius: 0 0 5px 5px;\r\n    }\r\n}\r\n\r\n.transaction-coins {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: flex-start;\r\n}\r\n\r\n.balance.lns {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n    align-items: center;\r\n}\r\n\r\n@media only screen and (max-width: 426px) {\r\n    .transaction-coins {\r\n        justify-content: center;\r\n        margin-bottom: 20px;\r\n    }\r\n    \r\n    .balance.lns {\r\n        display: flex;\r\n        justify-content: flex-end;\r\n        align-items: center;\r\n        margin-bottom: 20px;\r\n    }    \r\n}","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #44af57;\r\n$darkGreen: #44af57;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
 	
 	// exports
 
 
 /***/ },
-/* 726 */
+/* 725 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -84261,15 +84205,15 @@
 	  value: true
 	});
 	
-	var _fixComponent = __webpack_require__(727);
+	var _fixComponent = __webpack_require__(726);
 	
 	var _fixComponent2 = _interopRequireDefault(_fixComponent);
 	
-	var _fix = __webpack_require__(728);
+	var _fix = __webpack_require__(727);
 	
 	var _fix2 = _interopRequireDefault(_fix);
 	
-	__webpack_require__(729);
+	__webpack_require__(728);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -84281,13 +84225,13 @@
 	exports.default = FixComponent;
 
 /***/ },
-/* 727 */
+/* 726 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"container\">\n  <div style=\"display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-direction: column;\n  height: 100vh;\n  text-align: center;\">\n    <div class=\"col-xs-12 col-lg-2 logo\" style=\"margin-bottom: 50px;\">\n      <!-- eslint-disable -->\n      <span>L</span>\n      <span>u</span>\n      <span>n</span>\n      <span class=\"txt-green\">e</span>\n      <span>s</span>\n      <!-- eslint-disable -->\n    </div>\n    <h2>{{'PAGE_FIX' | translate}}</h2>\n  </div>\n</div>"
 
 /***/ },
-/* 728 */
+/* 727 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -84309,16 +84253,16 @@
 	exports.default = FixController;
 
 /***/ },
-/* 729 */
+/* 728 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(730);
+	var content = __webpack_require__(729);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(693)(content, {});
+	var update = __webpack_require__(692)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -84335,10 +84279,10 @@
 	}
 
 /***/ },
-/* 730 */
+/* 729 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(692)(true);
+	exports = module.exports = __webpack_require__(691)(true);
 	// imports
 	
 	
@@ -84349,7 +84293,7 @@
 
 
 /***/ },
-/* 731 */
+/* 730 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -84358,7 +84302,7 @@
 	    value: true
 	});
 	
-	var _constants = __webpack_require__(689);
+	var _constants = __webpack_require__(688);
 	
 	var _constants2 = _interopRequireDefault(_constants);
 	
@@ -84372,7 +84316,7 @@
 	};
 
 /***/ },
-/* 732 */
+/* 731 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -84475,10 +84419,10 @@
 	  PHASE: 'Phase',
 	  DEPOSIT: 'Deposit',
 	  BONUS: 'Bonus'
-	}), _defineProperty(_USER$PASSWORD$PASSWO, 'IF_YOU_NOT_HAVE_GOOGLE_AUTH_PLEASE_INSTALL', 'If you not have a Google Authenticator installed in your device, please click below to install.'), _defineProperty(_USER$PASSWORD$PASSWO, 'YOU_NEED_VALIDATE_YOUR_AUTHENTICATION', 'You need validate your authentication'), _defineProperty(_USER$PASSWORD$PASSWO, 'TWOFA_INVALID', 'Invalid Number'), _defineProperty(_USER$PASSWORD$PASSWO, 'VALIDATE_AUTHENTICATION', 'Validate Authentication'), _defineProperty(_USER$PASSWORD$PASSWO, 'PRE_ICO_FINISHED', 'The Lunes pre-ICO is closed! The ICO will begin on 15/04/2018.'), _defineProperty(_USER$PASSWORD$PASSWO, 'TO', 'to'), _defineProperty(_USER$PASSWORD$PASSWO, 'USE_GOOGLE_OAUTH', 'Use Google AUthenticator to generate your QR-Code and generate an authentication'), _defineProperty(_USER$PASSWORD$PASSWO, 'YOU_ALREADY_ENABLE_OAUTH', 'Authentication in 2 steps enabled'), _defineProperty(_USER$PASSWORD$PASSWO, 'I_WANT_ENABLE_OAUTH', 'I want enable a new'), _defineProperty(_USER$PASSWORD$PASSWO, 'VERIFY', 'Verify'), _defineProperty(_USER$PASSWORD$PASSWO, 'AUTH_TWOFA', 'Auth in Two-Step'), _defineProperty(_USER$PASSWORD$PASSWO, 'GOOGLE_AUTH_NUMBER', 'Google Auth Number'), _defineProperty(_USER$PASSWORD$PASSWO, 'INVALID_TWOFA_NUMBER', 'Invalid number Google Auth'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_ALREADY', 'The email address already exists'), _defineProperty(_USER$PASSWORD$PASSWO, 'TERMS_CONDITION_TITLE', 'Terms and Conditions'), _defineProperty(_USER$PASSWORD$PASSWO, 'REPRESENTATION_TERM_TITLE', 'Representation and Warranties'), _defineProperty(_USER$PASSWORD$PASSWO, 'ERROR_SERVER', 'Error on server'), _defineProperty(_USER$PASSWORD$PASSWO, 'GOOGLE_AUTH', 'Google Authenticator'), _defineProperty(_USER$PASSWORD$PASSWO, 'TYPE_GOOGLE_AUTH', 'Type your code'), _defineProperty(_USER$PASSWORD$PASSWO, 'COUPON', 'Coupon'), _defineProperty(_USER$PASSWORD$PASSWO, 'OWN_COUPON', 'My Coupon'), _defineProperty(_USER$PASSWORD$PASSWO, 'TYPE_COUPON', 'Type your coupon bonus'), _defineProperty(_USER$PASSWORD$PASSWO, 'CHANGE_PASSWORD', 'Change Password'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_SENT', 'Email sent successfully'), _defineProperty(_USER$PASSWORD$PASSWO, 'CLOSE', 'Close'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_NOT_SENT', 'Email not sent or not exists'), _defineProperty(_USER$PASSWORD$PASSWO, 'DO_YOU_CHANGE_PASSWORD', 'Do you want change you password?'), _defineProperty(_USER$PASSWORD$PASSWO, 'CHANGE_PASSWORD_INSTRUCTION', 'Type your email for us send for you the instructions to change password'), _defineProperty(_USER$PASSWORD$PASSWO, 'WHATS_LUNES', 'What is Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'WHATS_LUNES_A', 'Lunes is a platform that provides a set of solutions that is decentralized by utilizing blockchain\n    technology: such as creating tokens, authenticity records, and making payment processing possible through our gateway operators by using \u201Cfiat\u201D \n    currencies and cryptocurrencies.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_01', 'Is Lunes a Waves or Ethereum token?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_01_A', 'Our blockchain is a fork of the Waves code, but we have very different functionalities. So Lunes is NOT an ethereum token.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_02', 'When does PRE_ICO start?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_02_A', 'The PRE-ICO starts on February 25 and runs until March 30.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_03', 'When does ICO start?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_03_A', 'ICO starts on April 15 and runs until May 20.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_04', 'How to buy Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_04_A', 'Visit the website https://ico.lunes.io, register and log in. Just choose the desired payment A- method and send to the address of your choice. That simple.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_05', 'What currencies will you be accepting?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_05_A', 'Bitcoin, Ethereum and Litecoin.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_06', 'How do I convert my payment for Lunes in the website?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_06_A', 'There is no need to convert it. Your Lunes will be automatically converted within 20 minutes to 1 hour after payment is confirmed.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_07', 'What is the price of 1 LNS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_07_A', 'We will have 4 lots with the following prices:'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_1', '1st lot:'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_2', '2nd lot:'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_3', '3rd lot:'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_4', '4th lot:'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_08', 'What is the limit of purchase per investor?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_08_A', '1st lot: $ 0.01 - 300.000 coins\n    <br />2nd lot: $ 0.08 - 5.000.000 coins\n    <br />3rd lot: $ 0.15 - 8.000.000 coins\n    <br />4th lot: $ 0.30 10.000.000 coins'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09', 'What is the max supply of coins?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09_A', '600.000.000 coins. Total coins available for ICO process is 450.000.000.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_10', 'What is the Soft Cap?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_10_A', '10.92M USD.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_11', 'Can I buy with fiat currency?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_11_A', 'No. We will accept only cryptocurrency.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_12', 'When can I transfer my Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_12_A', 'After ICO is finished, you will be able to transfer your Lunes coins.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_13', 'Is Lunes a security token?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_13_A', 'No. Lunes is a utility token.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_14', 'Is Lunes going to be listed at any exchange?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_14_A', 'Yes, but we cannot confirm any at the moment. We will negotiate with exchanges after the ICO is finished.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_15', 'When Lunes wallet will be released for iOS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_15_A', 'We do not have a specific date. Apple has been very bureaucratic when it comes to cryptocurrencies. Although we are fully committed to making our app \n    available to iOS system.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_16', 'What is the mining algorithm, PoW or PoS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_16_A', 'LPoS, or Leased Proof of Stake, in which the Lunes tokens that are in your wallet can be used to "forge" tokens through the leasing process, safely \n    and without having to keep an open wallet.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_17', 'What the price to 1LNS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_17_A', 'We not have how to control of the price in the exchanges, the market dictates the rules'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_18', 'How can I create a Lunes Node?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_18_A', 'The Lunes Node (still in development) is an application in Java, compatible with any operating system which offers support. In order to your Lunes \n    Node has the chance to mine the transactions, it is necessary for the Wallet set up in the Lunes.conf to hold at least 5,000 coins.'), _defineProperty(_USER$PASSWORD$PASSWO, 'FAQ_TEXT', '\n      \n    '), _defineProperty(_USER$PASSWORD$PASSWO, 'REPRESENTATION_TERM', '\n      <h3>Representation and Warranties</h3>\n      <p>By participating in the Initial Coin Offering, the User agrees to the T&C and in particular, they represent and warrant that they:</p>\n      <br>1. are authorized and have full power to purchase LNS according to the laws that apply in their jurisdiction of domicile;\n      <br>2. live in a jurisdiction which allows Lunes to sell the Lunes tokens through a Initial Coin Offering without requiring any local authorization;\n      <br>3. are familiar with all related regulations in the specific jurisdiction in which they are based and that purchasing cryptographic tokens in that jurisdiction is not prohibited, restricted or subject to additional conditions of any kind;\n      <br>4. are not a U.S., or Canadian, or Chinese, or South Korean, or Singaporean citizen, resident or entity (a \u201CU.S., or Canadian, or Chinese, or South Korean, or Singaporean Person\u201D) nor are they purchasing Lunes Tokens or signing on behalf of a U.S., or Canadian, or Chinese, or South Korean, or Singaporean Person. Are not acting for the purpose of speculative investment; will not use the Token Sale for any illegal activity, including but not limited to money laundering and the financing of terrorism;\n      <br>5. are solely responsible for determining whether the acquisition of LNS is appropriate for them; are acquiring LNS for future use of the Lunes Platform; understand the risks associated with the Initial Coin Offering (incl. the risks related to the non-development of Lunes Platform and operations);\n      <br>6. understand the use of cryptocurrencies and the associated risks\n    '), _defineProperty(_USER$PASSWORD$PASSWO, 'TERMS_CONDITIONS', '\n      <h3>Terms and Conditions</h3>\n      <p>The Terms and Conditions (the \u201CT&C\u201D) apply to the buyer of the Lunes token\n      (\u201CLNS\u201D) and future user of the Lunes Platform. You should carefully read the T&C, as well as the white paper of the Lunes project before participating in the Initial Coin Offering.</p>\n\n      <h5>Applicability</h5>\n      <p>The following T&C constitute the agreement (the \u201CAgreement\u201D) between Lunes Platform (hereinafter \u201CLunes\u201D or the \u201CCompany\u201D), and you (the \u201CUser\u201D) with respect to\n      the purchase of the Lunes Token and the future services offered through the Lunes Platform. By using our services, you are agreeing to be bound by the T&C in\n      its latest version. You are aware that Lunes may change this T&C at any time. Your continued use of the Lunes Platform means that you accept any new or modified\n      terms.</p>\n\n      <h5>Services</h5>\n      <p>Lunes is a platform which provides a set of decentralized solutions through blockchain.\n      In an uncomplicated and affordable way, we will pulverize our technologies into the population. With real solutions for daily life, we deliver services and\n      products ranging from payment processes and fundraising, to authenticity records.</p>\n\n      <h5>The Lunes Token (LNS)</h5>\n      <p>LNS does not have the legal qualification as a security. LNS is final and non-refundable. LNS is not a share and does not give any right to participate in the\n      general meetings of Lunes. LNS will not have a particular usage outside the Lunes Platform. The purchase of LNS shall therefore not be done for speculative usage.</p>\n\n      <p>LNS can be purchased during the Initial Coin Offering directly from the Company or after the ICO at the Company or exchanger.</p>\n\n      <p>Any future User purchasing LNS expressly acknowledges and represents that she/he has carefully reviewed the T&C and fully understands the risks, costs and\n      benefits associated with the purchase of this token as indicated in the T&C.</p>\n\n      <h5>Knowledge required<h5>\n      <p>A future User undertaking to purchase LNS in relation to the token sale,  should ensure that she/he understands and has significant experience of cryptocurrencies,\n      blockchain systems and services, and that she/he fully understands the risks associated with the token sale as well as the mechanism related to the use of\n      cryptocurrencies (incl. storage).</p>\n\n      <p>Lunes shall not be responsible for any loss of LNS or situations making it impossible to access to LNS, which may result in any actions or omissions of the future\n      User or any person undertaking to acquire LNS.</p>\n\n      <h5>Risks</h5>\n      <p>Acquiring LNS involves various risks, in particular that Lunes may not be able to launch its operations and develop its platform. Therefore, and prior to\n      acquiring\n      LNS, any future user should carefully consider the risks, costs, and benefits of acquiring LNS within the Initial Coin Offering, and, if necessary, obtain\n      independent advice in this regard. Any interested person who is not in the position to accept or to understand the risks associated with the Initial Coin\n      Offering (incl. the risks related to the non- development of Lunes Platform and operations) or any other risks as indicated in the T&C, should not acquire\n      LNS, at this stage or later.</p>\n\n      <h5>Self-Acquisition</h5>\n      <p>Lunes is allowed to acquire LNS from the market at market price as value disbursement method. The acquisition must be authorized by the Board of Directors,\n      under\n      the condition that no conflict of interests is identified. Through acquisition of LNS, Lunes is not allowed to perform operations such as manipulation of LNS\n      market.</p>\n\n      <h5>Important Disclaimer</h5>\n      <p>The T&C shall not and cannot be considered as an invitation to enter into an investment. They do not constitute or relate in any way nor should they be\n      considered\n      as an offering of securities in any jurisdiction. The T&C do not include or contain any information or indication that might be considered as a recommendation\n      or that might be used to base any investment decision. LNS is a utility token and is not intended to be used as an investment.</p>\n\n      <p>Lunes will be an operative entity managing a platform and LNS is only a utility token. Therefore, Lunes is not a financial intermediary and is not\n      required to obtain any authorization for anti-money laundering purposes.</p>\n\n      <p>Acquiring LNS shall not grant any right or influence over Lunes\u2019 organization and governance to the purchasers.</p>\n\n      <p>Employees of Lunes are allowed to operate with LNS at market price if they are in knowledge of information that may modify the price of the token.</p>\n\n      <p>Regulatory authorities are carefully scrutinizing businesses and operations associated to cryptocurrencies in the world. In that respect, regulatory measures,\n      investigations or actions may impact Lunes\u2019 business and even limit or prevent it from developing its operations in the future. Any person undertaking to acquire\n      LNS must be aware that the Lunes business model and the T&C may change or need to be modified because of new regulatory and compliance requirements from any\n      applicable laws in any jurisdictions. In such case, purchasers and any person undertaking to acquire LNS acknowledge and understand that neither Lunes nor any\n      of its affiliates shall be held liable for any direct or indirect loss or damages caused by such changes.</p>\n\n      <p>Lunes will do its best to launch its operations and develop the Lunes Platform. Any person undertaking to acquire LNS acknowledges and understands that Lunes does\n      not provide any guarantee that it will manage to establish an operative platform and therefore it cannot guarantee that the LNS can be used for social trading on\n      the platform. They acknowledge and understand therefore that Lunes (incl. its bodies and employees) assumes no liability or responsibility for any loss or damage\n      that would result from or relate to the incapacity to use LNS, except in the case of intentional misconduct or gross negligence.</p>\n\n      <h5>Intellectual Property Rights</h5>\n      <p>To the extent that copyright or other intellectual property rights exist in the Lunes Platform, such as software, know-how, analysis or programs, those copyrights\n      and other intellectual and industrial rights belong to Lunes.</p>\n\n      <h5>Limitation of Liability</h5>\n      <p>Lunes, as well as its officers, directors, agents, joint ventures, employees and suppliers, assumes no liability or responsibility for any loss arising out of or\n      related to the use of the Lunes Platform or any technical, interruption or malfunction of the platform.</p>\n\n      <p>The limitation of liability set out above shall not be applicable in the event that Lunes, or a Lunes-employee, has caused the damage by intentional misconduct or\n      by gross negligence.</p>\n\n      <h5>Severability</h5>\n      <p>If any of the provisions of the T&C or of the Agreement are deemed to be invalid, void or unenforceable, the remaining provisions shall continue in full force and\n      effect.</p>\n    '), _USER$PASSWORD$PASSWO);
+	}), _defineProperty(_USER$PASSWORD$PASSWO, 'IF_YOU_NOT_HAVE_GOOGLE_AUTH_PLEASE_INSTALL', 'If you not have a Google Authenticator installed in your device, please click below to install.'), _defineProperty(_USER$PASSWORD$PASSWO, 'YOU_NEED_VALIDATE_YOUR_AUTHENTICATION', 'You need validate your authentication'), _defineProperty(_USER$PASSWORD$PASSWO, 'TWOFA_INVALID', 'Invalid Number'), _defineProperty(_USER$PASSWORD$PASSWO, 'VALIDATE_AUTHENTICATION', 'Validate Authentication'), _defineProperty(_USER$PASSWORD$PASSWO, 'PRE_ICO_FINISHED', 'The Lunes pre-ICO is closed! The ICO will begin on 15/04/2018.'), _defineProperty(_USER$PASSWORD$PASSWO, 'TO', 'to'), _defineProperty(_USER$PASSWORD$PASSWO, 'USE_GOOGLE_OAUTH', 'Use Google AUthenticator to generate your QR-Code and generate an authentication'), _defineProperty(_USER$PASSWORD$PASSWO, 'YOU_ALREADY_ENABLE_OAUTH', 'Authentication in 2 steps enabled'), _defineProperty(_USER$PASSWORD$PASSWO, 'I_WANT_ENABLE_OAUTH', 'I want enable a new'), _defineProperty(_USER$PASSWORD$PASSWO, 'VERIFY', 'Verify'), _defineProperty(_USER$PASSWORD$PASSWO, 'AUTH_TWOFA', 'Auth in Two-Step'), _defineProperty(_USER$PASSWORD$PASSWO, 'GOOGLE_AUTH_NUMBER', 'Google Auth Number'), _defineProperty(_USER$PASSWORD$PASSWO, 'INVALID_TWOFA_NUMBER', 'Invalid number Google Auth'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_ALREADY', 'The email address already exists'), _defineProperty(_USER$PASSWORD$PASSWO, 'TERMS_CONDITION_TITLE', 'Terms and Conditions'), _defineProperty(_USER$PASSWORD$PASSWO, 'REPRESENTATION_TERM_TITLE', 'Representation and Warranties'), _defineProperty(_USER$PASSWORD$PASSWO, 'ERROR_SERVER', 'Error on server'), _defineProperty(_USER$PASSWORD$PASSWO, 'GOOGLE_AUTH', 'Google Authenticator'), _defineProperty(_USER$PASSWORD$PASSWO, 'TYPE_GOOGLE_AUTH', 'Type your code'), _defineProperty(_USER$PASSWORD$PASSWO, 'COUPON', 'Coupon'), _defineProperty(_USER$PASSWORD$PASSWO, 'OWN_COUPON', 'My Coupon'), _defineProperty(_USER$PASSWORD$PASSWO, 'TYPE_COUPON', 'Type your coupon bonus'), _defineProperty(_USER$PASSWORD$PASSWO, 'CHANGE_PASSWORD', 'Change Password'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_SENT', 'Email sent successfully'), _defineProperty(_USER$PASSWORD$PASSWO, 'CLOSE', 'Close'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_NOT_SENT', 'Email not sent or not exists'), _defineProperty(_USER$PASSWORD$PASSWO, 'DO_YOU_CHANGE_PASSWORD', 'Do you want change you password?'), _defineProperty(_USER$PASSWORD$PASSWO, 'CHANGE_PASSWORD_INSTRUCTION', 'Type your email for us send for you the instructions to change password'), _defineProperty(_USER$PASSWORD$PASSWO, 'WHATS_LUNES', 'What is Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'WHATS_LUNES_A', 'Lunes is a platform that provides a set of solutions that is decentralized by utilizing blockchain\n    technology: such as creating tokens, authenticity records, and making payment processing possible through our gateway operators by using \u201Cfiat\u201D \n    currencies and cryptocurrencies.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_01', 'Is Lunes a Waves or Ethereum token?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_01_A', 'Our blockchain is a fork of the Waves code, but we have very different functionalities. So Lunes is NOT a Waves token, nor Ethereum.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_02', 'When does PRE_ICO start?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_02_A', 'The PRE-ICO starts on February 25 and runs until March 30.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_03', 'When does ICO start?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_03_A', 'ICO starts on April 15 and runs through May 30.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_04', 'How to buy Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_04_A', 'Visit the site https://ico.lunes.io, register and log in. Just choose the desired form of payment and send to the address of your choice. That simple.\n    If you still have questions: https://medium.com/@Lunes_Pt/ico-como-comprar-tokens-lunes-9189a80e1c83'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_05', 'What currencies will you be accepting?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_05_A', 'Bitcoin, Ethereum and Litecoin.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_07', 'What is the price of 1 LNS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_07_A', 'We will have 4 lots with the following prices:'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_1', '1st lot:'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_2', '2nd lot:'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_3', '3rd lot:'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_4', '4th lot:'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_08', 'What is the limit of purchase per investor?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_08_A', '1st lot: $ 0.01 - 300.000 coins\n    <br />2nd lot: $ 0.08 - 5.000.000 coins\n    <br />3rd lot: $ 0.15 - 8.000.000 coins\n    <br />4th lot: $ 0.30 10.000.000 coins'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09', 'What is the max supply of coins?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09_A', '600.000.000 coins. Total coins available for ICO process is 450.000.000.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_10', 'What is the Soft Cap?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_10_A', '10.92M USD.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_11', 'Can I buy with fiat currency?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_11_A', 'No. We will accept only cryptocurrency.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_12', 'When can I transfer my Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_12_A', 'After ICO is finished, you will be able to transfer your Lunes coins.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_13', 'Is Lunes a security token?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_13_A', 'No. Lunes is a utility token.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_14', 'Is Lunes going to be listed at any exchange?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_14_A', 'We have already confirmed GetBTC. As the negotiations move forward and we close with other exchanges, we will notify the whole community.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_15', 'When Lunes wallet will be released for iOS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_15_A', 'We do not have a specific date. Apple has been very bureaucratic when it comes to cryptocurrencies. Although we are fully committed to making our app \n    available to iOS system.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_16', 'What is the mining algorithm, PoW or PoS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_16_A', 'LPoS, or Leased Proof of Stake, in which the Lunes tokens that are in your wallet can be used to "forge" tokens through the leasing process, safely \n    and without having to keep an open wallet.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_17', 'What the price to 1LNS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_17_A', 'We not have how to control of the price in the exchanges, the market dictates the rules'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_18', 'How can I create a Lunes Node?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_18_A', 'Lunes Node (still in development) is a java application, compatible with any supported operating system. For your Lunes Node has the chance to mine the transactions, it is necessary that the wallet configured on Lunes.conf has the minimum balance of 5000 Lunes. Tutorial on how to run testnet: https://github.com/Lunes-platform/LunesNode/wiki/Testnet:-running-LunesNode'), _defineProperty(_USER$PASSWORD$PASSWO, 'FAQ_TEXT', '\n      \n    '), _defineProperty(_USER$PASSWORD$PASSWO, 'REPRESENTATION_TERM', '\n      <h3>Representation and Warranties</h3>\n      <p>By participating in the Initial Coin Offering, the User agrees to the T&C and in particular, they represent and warrant that they:</p>\n      <br>1. are authorized and have full power to purchase LNS according to the laws that apply in their jurisdiction of domicile;\n      <br>2. live in a jurisdiction which allows Lunes to sell the Lunes tokens through a Initial Coin Offering without requiring any local authorization;\n      <br>3. are familiar with all related regulations in the specific jurisdiction in which they are based and that purchasing cryptographic tokens in that jurisdiction is not prohibited, restricted or subject to additional conditions of any kind;\n      <br>4. are not a U.S., or Canadian, or Chinese, or South Korean, or Singaporean citizen, resident or entity (a \u201CU.S., or Canadian, or Chinese, or South Korean, or Singaporean Person\u201D) nor are they purchasing Lunes Tokens or signing on behalf of a U.S., or Canadian, or Chinese, or South Korean, or Singaporean Person. Are not acting for the purpose of speculative investment; will not use the Token Sale for any illegal activity, including but not limited to money laundering and the financing of terrorism;\n      <br>5. are solely responsible for determining whether the acquisition of LNS is appropriate for them; are acquiring LNS for future use of the Lunes Platform; understand the risks associated with the Initial Coin Offering (incl. the risks related to the non-development of Lunes Platform and operations);\n      <br>6. understand the use of cryptocurrencies and the associated risks\n    '), _defineProperty(_USER$PASSWORD$PASSWO, 'TERMS_CONDITIONS', '\n      <h3>Terms and Conditions</h3>\n      <p>The Terms and Conditions (the \u201CT&C\u201D) apply to the buyer of the Lunes token\n      (\u201CLNS\u201D) and future user of the Lunes Platform. You should carefully read the T&C, as well as the white paper of the Lunes project before participating in the Initial Coin Offering.</p>\n\n      <h5>Applicability</h5>\n      <p>The following T&C constitute the agreement (the \u201CAgreement\u201D) between Lunes Platform (hereinafter \u201CLunes\u201D or the \u201CCompany\u201D), and you (the \u201CUser\u201D) with respect to\n      the purchase of the Lunes Token and the future services offered through the Lunes Platform. By using our services, you are agreeing to be bound by the T&C in\n      its latest version. You are aware that Lunes may change this T&C at any time. Your continued use of the Lunes Platform means that you accept any new or modified\n      terms.</p>\n\n      <h5>Services</h5>\n      <p>Lunes is a platform which provides a set of decentralized solutions through blockchain.\n      In an uncomplicated and affordable way, we will pulverize our technologies into the population. With real solutions for daily life, we deliver services and\n      products ranging from payment processes and fundraising, to authenticity records.</p>\n\n      <h5>The Lunes Token (LNS)</h5>\n      <p>LNS does not have the legal qualification as a security. LNS is final and non-refundable. LNS is not a share and does not give any right to participate in the\n      general meetings of Lunes. LNS will not have a particular usage outside the Lunes Platform. The purchase of LNS shall therefore not be done for speculative usage.</p>\n\n      <p>LNS can be purchased during the Initial Coin Offering directly from the Company or after the ICO at the Company or exchanger.</p>\n\n      <p>Any future User purchasing LNS expressly acknowledges and represents that she/he has carefully reviewed the T&C and fully understands the risks, costs and\n      benefits associated with the purchase of this token as indicated in the T&C.</p>\n\n      <h5>Knowledge required<h5>\n      <p>A future User undertaking to purchase LNS in relation to the token sale,  should ensure that she/he understands and has significant experience of cryptocurrencies,\n      blockchain systems and services, and that she/he fully understands the risks associated with the token sale as well as the mechanism related to the use of\n      cryptocurrencies (incl. storage).</p>\n\n      <p>Lunes shall not be responsible for any loss of LNS or situations making it impossible to access to LNS, which may result in any actions or omissions of the future\n      User or any person undertaking to acquire LNS.</p>\n\n      <h5>Risks</h5>\n      <p>Acquiring LNS involves various risks, in particular that Lunes may not be able to launch its operations and develop its platform. Therefore, and prior to\n      acquiring\n      LNS, any future user should carefully consider the risks, costs, and benefits of acquiring LNS within the Initial Coin Offering, and, if necessary, obtain\n      independent advice in this regard. Any interested person who is not in the position to accept or to understand the risks associated with the Initial Coin\n      Offering (incl. the risks related to the non- development of Lunes Platform and operations) or any other risks as indicated in the T&C, should not acquire\n      LNS, at this stage or later.</p>\n\n      <h5>Self-Acquisition</h5>\n      <p>Lunes is allowed to acquire LNS from the market at market price as value disbursement method. The acquisition must be authorized by the Board of Directors,\n      under\n      the condition that no conflict of interests is identified. Through acquisition of LNS, Lunes is not allowed to perform operations such as manipulation of LNS\n      market.</p>\n\n      <h5>Important Disclaimer</h5>\n      <p>The T&C shall not and cannot be considered as an invitation to enter into an investment. They do not constitute or relate in any way nor should they be\n      considered\n      as an offering of securities in any jurisdiction. The T&C do not include or contain any information or indication that might be considered as a recommendation\n      or that might be used to base any investment decision. LNS is a utility token and is not intended to be used as an investment.</p>\n\n      <p>Lunes will be an operative entity managing a platform and LNS is only a utility token. Therefore, Lunes is not a financial intermediary and is not\n      required to obtain any authorization for anti-money laundering purposes.</p>\n\n      <p>Acquiring LNS shall not grant any right or influence over Lunes\u2019 organization and governance to the purchasers.</p>\n\n      <p>Employees of Lunes are allowed to operate with LNS at market price if they are in knowledge of information that may modify the price of the token.</p>\n\n      <p>Regulatory authorities are carefully scrutinizing businesses and operations associated to cryptocurrencies in the world. In that respect, regulatory measures,\n      investigations or actions may impact Lunes\u2019 business and even limit or prevent it from developing its operations in the future. Any person undertaking to acquire\n      LNS must be aware that the Lunes business model and the T&C may change or need to be modified because of new regulatory and compliance requirements from any\n      applicable laws in any jurisdictions. In such case, purchasers and any person undertaking to acquire LNS acknowledge and understand that neither Lunes nor any\n      of its affiliates shall be held liable for any direct or indirect loss or damages caused by such changes.</p>\n\n      <p>Lunes will do its best to launch its operations and develop the Lunes Platform. Any person undertaking to acquire LNS acknowledges and understands that Lunes does\n      not provide any guarantee that it will manage to establish an operative platform and therefore it cannot guarantee that the LNS can be used for social trading on\n      the platform. They acknowledge and understand therefore that Lunes (incl. its bodies and employees) assumes no liability or responsibility for any loss or damage\n      that would result from or relate to the incapacity to use LNS, except in the case of intentional misconduct or gross negligence.</p>\n\n      <h5>Intellectual Property Rights</h5>\n      <p>To the extent that copyright or other intellectual property rights exist in the Lunes Platform, such as software, know-how, analysis or programs, those copyrights\n      and other intellectual and industrial rights belong to Lunes.</p>\n\n      <h5>Limitation of Liability</h5>\n      <p>Lunes, as well as its officers, directors, agents, joint ventures, employees and suppliers, assumes no liability or responsibility for any loss arising out of or\n      related to the use of the Lunes Platform or any technical, interruption or malfunction of the platform.</p>\n\n      <p>The limitation of liability set out above shall not be applicable in the event that Lunes, or a Lunes-employee, has caused the damage by intentional misconduct or\n      by gross negligence.</p>\n\n      <h5>Severability</h5>\n      <p>If any of the provisions of the T&C or of the Agreement are deemed to be invalid, void or unenforceable, the remaining provisions shall continue in full force and\n      effect.</p>\n    '), _USER$PASSWORD$PASSWO);
 
 /***/ },
-/* 733 */
+/* 732 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -84572,10 +84516,10 @@
 	  PHASE: 'Fase',
 	  DEPOSIT: 'Depósito',
 	  BONUS: 'Bônus'
-	}), _defineProperty(_USER$PASSWORD$PASSWO, 'IF_YOU_NOT_HAVE_GOOGLE_AUTH_PLEASE_INSTALL', 'Se você não tem o Google Autenticador instalado, por favor clique no link abaixo para instalar'), _defineProperty(_USER$PASSWORD$PASSWO, 'YOU_NEED_VALIDATE_YOUR_AUTHENTICATION', 'Você precisa validar sua autenticação'), _defineProperty(_USER$PASSWORD$PASSWO, 'TWOFA_INVALID', 'Número Inválido'), _defineProperty(_USER$PASSWORD$PASSWO, 'VALIDATE_AUTHENTICATION', 'Validar Autenticação'), _defineProperty(_USER$PASSWORD$PASSWO, 'PRE_ICO_FINISHED', 'A pré-ICO da Lunes foi encerrada! A ICO irá iniciar em 15/04/2018'), _defineProperty(_USER$PASSWORD$PASSWO, 'VERIFY', 'Verificar'), _defineProperty(_USER$PASSWORD$PASSWO, 'USE_GOOGLE_OAUTH', 'Use o Google Autenticador para escanear o QR-Code e gerar sua autenticação.'), _defineProperty(_USER$PASSWORD$PASSWO, 'YOU_ALREADY_ENABLE_OAUTH', 'Autenticação em dois-passos habilitada'), _defineProperty(_USER$PASSWORD$PASSWO, 'I_WANT_ENABLE_OAUTH', 'Quero habilitar uma nova'), _defineProperty(_USER$PASSWORD$PASSWO, 'AUTH_TWOFA', 'Autenticação em 2 Passos'), _defineProperty(_USER$PASSWORD$PASSWO, 'GOOGLE_AUTH_NUMBER', 'Número Google Autenticador'), _defineProperty(_USER$PASSWORD$PASSWO, 'INVALID_TWOFA_NUMBER', 'Número inválido Google Autenticador'), _defineProperty(_USER$PASSWORD$PASSWO, 'TO', 'para'), _defineProperty(_USER$PASSWORD$PASSWO, 'BALANCE', 'Saldo'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_ALREADY', 'Email já cadastrado'), _defineProperty(_USER$PASSWORD$PASSWO, 'ERROR_SERVER', 'Erro interno no servidor'), _defineProperty(_USER$PASSWORD$PASSWO, 'GOOGLE_AUTH', 'Autenticador Google'), _defineProperty(_USER$PASSWORD$PASSWO, 'TYPE_GOOGLE_AUTH', 'Digite seu código'), _defineProperty(_USER$PASSWORD$PASSWO, 'COUPON', 'Cupom'), _defineProperty(_USER$PASSWORD$PASSWO, 'OWN_COUPON', 'Meu Cupom'), _defineProperty(_USER$PASSWORD$PASSWO, 'TYPE_COUPON', 'Insira seu cupom de bônus'), _defineProperty(_USER$PASSWORD$PASSWO, 'TERMS_CONDITION_TITLE', 'Termos e Condições'), _defineProperty(_USER$PASSWORD$PASSWO, 'REPRESENTATION_TERM_TITLE', 'Representações e Garantias'), _defineProperty(_USER$PASSWORD$PASSWO, 'CHANGE_PASSWORD', 'Alterar Senha'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_SENT', 'Email enviado com sucesso'), _defineProperty(_USER$PASSWORD$PASSWO, 'CLOSE', 'Fechar'), _defineProperty(_USER$PASSWORD$PASSWO, 'CALCULATOR', 'Calculadora'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_NOT_SENT', 'Email não enviado ou não existe'), _defineProperty(_USER$PASSWORD$PASSWO, 'MSG_COIN_PLACEHOLDER', 'Digite um valor em {{COIN}} para calcular'), _defineProperty(_USER$PASSWORD$PASSWO, 'VIEW_ADDRESS_TO_DEPOSIT', 'Visualizar endereço de depósito'), _defineProperty(_USER$PASSWORD$PASSWO, 'MSG_COIN_PLACEHOLDER_LNS', 'ou digite o valor em Lunes'), _defineProperty(_USER$PASSWORD$PASSWO, 'AMOUNT_MINIMUN_VALIDATION', 'A quantidade mínima de LNS deve ser maior do que zero'), _defineProperty(_USER$PASSWORD$PASSWO, 'CHOOSE_YOUR_COIN_TO_BUY', 'Escolha sua moeda, digite o valor que você quer comprar e clique no botão "Visualizar endereço para depósito" para ver seu endereço de depósito.'), _defineProperty(_USER$PASSWORD$PASSWO, 'PAGE_FIX', 'Página em manutenção'), _defineProperty(_USER$PASSWORD$PASSWO, 'DO_YOU_CHANGE_PASSWORD', 'Você deseja alterar a senha?'), _defineProperty(_USER$PASSWORD$PASSWO, 'CHANGE_PASSWORD_INSTRUCTION', 'Digite seu email para enviarmos as instruções de alteração de sua senha'), _defineProperty(_USER$PASSWORD$PASSWO, 'WHATS_LUNES', 'O que é a Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'WHATS_LUNES_A', 'A plataforma Lunes, viabiliza o fornecimento de um conjunto de solu\xE7\xF5es constru\xEDdas de forma descentralizada utilizando a \n    tecnologia de blockchain como cria\xE7\xE3o de tokens, registros de autenticidade e processamentos de pagamentos atrav\xE9s de operadores de gateway, \n    tanto de moedas fiduci\xE1rias quanto criptomoedas, facilitando a capta\xE7\xE3o de recursos e private labels.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_01', 'A Lunes \xE9 um token do Ethereum ou da Waves?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_01_A', 'Nosso blockchain \xE9 um fork do c\xF3digo da Waves, por\xE9m temos funcionalidades bem distintas. Portanto a Lunes N\xC3O \xE9 um token ethereum.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_02', 'Quando come\xE7a a PR\xC9-ICO?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_02_A', 'A pr\xE9-ICO come\xE7a no dia 25 de Fevereiro e vai at\xE9 o dia 30 de Mar\xE7o.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_03', 'Quando come\xE7a a ICO?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_03_A', 'A ICO come\xE7a no dia 15 de Abril e vai at\xE9 o dia 20 de Maio.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_04', 'Como comprar Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_04_A', 'Visite o site https://ico.lunes.io , fa\xE7a o cadastro e efetue o login. Basta escolher a forma de pagamento desejada e enviar para o endere\xE7o de sua escolha. Simples assim.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_05', 'Quais formas de pagamentos aceitas?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_05_A', 'Bitcoin, Ethereum e Litecoin.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_06', 'Como eu compro Lunes dentro do website?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_06_A', 'N\xE3o h\xE1 necessidade de fazer a compra. As suas Lunes ser\xE3o convertidas automaticamente dentro de 20 minutos a 1 hora.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_07', 'Qual o pre\xE7o de 1 LNS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_07_A', 'Teremos 4 lotes, com os pre\xE7os de acordo com a seguinte ordem:'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_1', 'lote 1'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_2', 'lote 2'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_3', 'lote 3'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_4', 'lote 4'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_08', 'Qual o valor m\xEDnimo para compra?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_08_A', 'N\xE3o h\xE1 valor m\xEDnimo de compra.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09', 'Qual o valor m\xE1ximo de compra por usu\xE1rio?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09_A', '1\xBA lote: $ 0.01 - 300.000 de moedas\n    <br />2\xBA lote: $ 0.08 - 5.000.000 de moedas\n    <br />3\xBA lote: $ 0.15 - 8.000.000 de moedas\n    <br />4\xBA lote: $ 0.30 - 10.000.000 de moedas'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09', 'Qual o m\xE1ximo de moedas emitidas?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09_A', '600 milh\xF5es de moedas. Sendo que 450 milh\xF5es est\xE3o dispon\xEDveis \xE0 venda.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_10', 'Qual o Soft Cap?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_10_A', '10.92M de d\xF3lares.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_11', 'Posso comprar Lunes em Real(BRL)?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_11_A', 'N\xE3o, ser\xE1 aceito apenas BTC, ETH e LTC como forma de pagamento.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_12', 'Quando poderei transferir minhas Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_12_A', 'Ap\xF3s o final da ICO voc\xEA poder\xE1 transferir suas Lunes para a carteira mobile ou web.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_13', 'A Lunes vai ser listada em alguma exchange?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_13_A', 'Pretendemos listar nossa moeda nas exchanges, por\xE9m ainda n\xE3o podemos confirmar em quais. Ap\xF3s a ICO iremos come\xE7ar as negocia\xE7\xF5es e iremos inform\xE1-los.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_14', 'A Lunes \xE9 uma security token?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_14_A', 'N\xE3o. A Lunes \xE9 uma utility token.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_15', 'Quando sai a Lunes Wallet para iOS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_15_A', 'N\xE3o temos uma data definida, a Apple \xE9 muito burocr\xE1tica em rela\xE7\xE3o as criptomoedas. Estamos com empenho total para disponibilizar nosso app tamb\xE9m para o sistema iOS, por\xE9m dependemos da aprova\xE7\xE3o da Apple.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_16', 'Qual o algoritmo de minera\xE7\xE3o, PoW ou PoS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_16_A', 'LPoS, ou Leased Proof of Stake. Onde os tokens Lunes que est\xE3o na sua carteira podem ser utilizados para "forjar" tokens atrav\xE9s do processo de leasing, com seguran\xE7a e sem necessidade de manter uma carteira aberta.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_17', 'Quanto valer\xE1 1 LNS nas exchanges?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_17_A', 'N\xE3o h\xE1 como ter um controle de quanto valer\xE1 nas exchanges, o mercado \xE9 quem dita as regras.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_18', 'Como montar um Lunes Node?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_18_A', 'O Lunes Node (ainda em desenvolvimento) \xE9 uma aplica\xE7\xE3o em java, compat\xEDvel com qualquer sistema operacional que tenha suporte. Para o seu Lunes Node tenha a chance de minerar as transa\xE7\xF5es, \xE9 necess\xE1rio que a carteira configurada no lunes.conf tenha o saldo m\xEDnimo de 5000 Lunes.'), _defineProperty(_USER$PASSWORD$PASSWO, 'FAQ_TEXT', ''), _defineProperty(_USER$PASSWORD$PASSWO, 'REPRESENTATION_TERM', '\n      <h3>Representa\xE7\xE3o e Garantias</h3>\n      <p>Ao participar da ICO o usu\xE1rio concorda com o T&C e, em particular, eles representam e garantem que:</p>\n      <br>1. S\xE3o autorizados e t\xEAm poder completo para comprar LNS de acordo com as leis que se aplicam em sua jurisdi\xE7\xE3o do domic\xEDlio;\n      <br>2. vivem em uma jurisdi\xE7\xE3o que permite que Lunes venda tokens atrav\xE9s de uma ICO sem exigir qualquer autoriza\xE7\xE3o local;\n      <br>3. est\xE3o familiarizados com todos os regulamentos relacionados na jurisdi\xE7\xE3o espec\xEDficas em que eles vivem e que a compra de tokens criptografados na jurisdi\xE7\xE3o n\xE3o \xE9 proibida, restrita ou sujeitas a qualquer tipo de condi\xE7\xF5es adicionais;\n      <br>4. N\xE3o s\xE3o um cidad\xE3o dos Estados Unidos, do Canad\xE1, de Singapura, da China ou da Cor\xE9ia do Sul ou residente ou entidade e nem est\xE3o comprando tokens Lunes ou assinando em nome de um cidad\xE3o americano, ou canadense, ou singapurense, ou sul coreano, ou chin\xEAs. N\xE3o est\xE3o agindo para fins de investimento especulativo; n\xE3o utilizar\xE1 a venda simb\xF3lica para qualquer actividade ilegal, incluindo, mas n\xE3o se limitando \xE0 lavagem de dinheiro e ao financiamento do terrorismo;\n      <br>5. s\xE3o os \xFAnicos respons\xE1veis por determinar se a aquisi\xE7\xE3o de LNS \xE9 adequada para eles; est\xE3o adquirindo LNS para uso futuro da plataforma Lunes; compreender os riscos associados \xE0 ICO (incl. os riscos relacionados com o n\xE3o desenvolvimento da plataforma e opera\xE7\xF5es da Lunes); e\n      <br>6. compreender o uso de criptomoedas e os riscos associados.\n    '), _defineProperty(_USER$PASSWORD$PASSWO, 'TERMS_CONDITIONS', '\n    <h3>Termos e condi\xE7\xF5es</h3>\n    <p>Os termos e condi\xE7\xF5es aplicam-se ao comprador do token Lunes ("LNS") e ao usu\xE1rio futuro da plataforma Lunes. Voc\xEA deve ler atentamente os termos e condi\xE7\xF5es,\n    bem como o Whitepaper do projeto Lunes antes de participar na ICO.</p>\n\n    <h5>Aplicabilidade</h5>\n    <p>Os seguintes termos e condi\xE7\xF5es constituem o acordo entre a plataforma Lunes (doravante "Lunes" ou a "empresa"), e voc\xEA (o "usu\xE1rio") no que diz respeito \xE0 compra dos tokens Lunes e aos servi\xE7os futuros oferecidos atrav\xE9s da Lunes Plataforma. Ao utilizar os nossos servi\xE7os, voc\xEA est\xE1 concordando em ser vinculado pelos termos e condi\xE7\xF5es em sua vers\xE3o mais recente. Voc\xEA est\xE1 ciente de que a Lunes pode mudar estes termos e condi\xE7\xF5es a qualquer momento. O uso continuado da plataforma Lunes significa que voc\xEA aceita quaisquer termos novos ou modificados.\n    Servi\xE7os\n    Lunes \xE9 uma plataforma que fornece um conjunto de solu\xE7\xF5es descentralizadas atrav\xE9s blockchain.\n    De uma forma descomplicada e acess\xEDvel, vamos pulverizar as nossas tecnologias para a  popula\xE7\xE3o. Com solu\xE7\xF5es reais para a vida cotidiana, entregamos servi\xE7os e\n    produtos que v\xE3o desde processos de pagamento e capta\xE7\xE3o de recursos, at\xE9 registros de autenticidade.</p>\n\n    <h5>O token Lunes (LNS)</h5>\n\n    <p>LNS n\xE3o tem a qualifica\xE7\xE3o legal de um cau\xE7\xE3o. Uma vez comprado o LNS n\xE3o \xE9 reembols\xE1vel. LNS n\xE3o \xE9 uma participa\xE7\xE3o da Lunes e n\xE3o d\xE1 qualquer direito de intera\xE7\xE3o nas reuni\xF5es gerais da Lunes. Os LNS podem ser adquiridos durante a fase de ICO diretamente da empresa ou ap\xF3s a ICO na empresa ou em certas exchanges.\n    Qualquer futuro usu\xE1rio que comprar LNS, expressamente reconhece que reviu cuidadosamente os termos e condi\xE7\xF5es e compreende plenamente os riscos, custos e benef\xEDcios associados com a compra deste token, como indicado nos termos e condi\xE7\xF5es.\n    Um futuro usu\xE1rio comprador de LNS tokens deve assegurar que compreenda e tenha uma experi\xEAncia significativa com crypto moedas, sistemas e servi\xE7os blockchain, e que compreenda plenamente os riscos associados a venda de tokens, bem como o mecanismo relacionado ao uso de crypto moedas.\n    A Lunes n\xE3o ser\xE1 respons\xE1vel por qualquer perda de LNS ou situa\xE7\xF5es que impossibilitam o acesso \xE0 LNS, o que pode resultar em quaisquer a\xE7\xF5es ou omiss\xF5es do futuro\n    usu\xE1rio ou de qualquer pessoa que se comprometa a adquirir ins.</p>\n\n    <h5>Os riscos</h5>\n\n    <p>A aquisi\xE7\xE3o de LNS envolve v\xE1rios riscos, em particular que a Lunes pode n\xE3o ser capaz de lan\xE7ar suas opera\xE7\xF5es e desenvolver sua plataforma. Portanto, e\n    antes de adquirir LNS, qualquer futuro usu\xE1rio deve considerar cuidadosamente os riscos, custos e benef\xEDcios da aquisi\xE7\xE3o de LNS dentro da ICO, e, se necess\xE1rio,\n    obter aconselhamento independente a este respeito. Qualquer pessoa interessada que n\xE3o esteja em posi\xE7\xE3o de aceitar ou de compreender os riscos associados \xE0\n    ICO (incl. os riscos relacionados com o n\xE3o desenvolvimento da plataforma e opera\xE7\xF5es da Lunes) ou quaisquer outros riscos conforme indicado nos termos e condi\xE7\xF5es,\n    n\xE3o devem adquirir LNS, nesta fase ou mais tarde.</p>\n\n    <h5>Auto-aquisi\xE7\xE3o</h5>\n\n    <p>\xC9 permitido a Lunes adquirir LNS do mercado a pre\xE7o de mercado como o m\xE9todo do desembolso do valor. A aquisi\xE7\xE3o deve ser autorizada pelo Conselho de\n    administra\xE7\xE3o, a condi\xE7\xE3o de n\xE3o se identificar nenhum conflito de interesses. Atrav\xE9s da aquisi\xE7\xE3o de LNS, Lunes n\xE3o tem permiss\xE3o para realizar opera\xE7\xF5es\n    como a manipula\xE7\xE3o do mercado de LNS.</p>\n\n    <h5>Importante Aviso De Isen\xE7\xE3o</h5>\n\n    <p>Os termos e condi\xE7\xF5es n\xE3o devem e n\xE3o podem ser considerados como um convite para entrar em um investimento. Eles n\xE3o constituem ou se relacionam de forma alguma, nem devem ser considerados como uma oferta de t\xEDtulos em qualquer jurisdi\xE7\xE3o. Os termos e condi\xE7\xF5es n\xE3o incluem nem cont\xE9m qualquer informa\xE7\xE3o ou indica\xE7\xE3o que possa ser considerada como uma recomenda\xE7\xE3o ou que possa ser usada para basear qualquer decis\xE3o de investimento. LNS \xE9 um token utilit\xE1rio e n\xE3o se destina a ser usado como um investimento.\n    A Lunes ser\xE1 uma entidade operativa gerenciando uma plataforma e LNS \xE9 apenas um token utilit\xE1rio. Portanto, Lunes n\xE3o \xE9 um intermedi\xE1rio financeiro, portanto n\xE3o \xE9 obrigado a obter qualquer autoriza\xE7\xE3o para fins anti-lavagem de dinheiro.\n    A aquisi\xE7\xE3o de LNS n\xE3o conceder\xE1 qualquer direito ou influ\xEAncia sobre a organiza\xE7\xE3o e governan\xE7a sobre a Lunes aos compradores.\n    Os funcion\xE1rios de Lunes est\xE3o autorizados a operar com o LNS a pre\xE7o de mercado, caso conhe\xE7am informa\xE7\xF5es que possam modificar o pre\xE7o do token.\n    As autoridades reguladoras est\xE3o examinando cuidadosamente as empresas e opera\xE7\xF5es associadas \xE0 crypto moedas no mundo. Nesse sentido, as medidas regulat\xF3rias, investiga\xE7\xF5es ou a\xE7\xF5es podem impactar os neg\xF3cios da Lunes e at\xE9 mesmo limit\xE1-la ou impedi-la de desenvolver suas opera\xE7\xF5es no futuro. Qualquer pessoa que se comprometa a adquirir o LNS deve estar ciente de que o modelo de neg\xF3cios Lunes e o T&C podem mudar ou precisar ser modificados devido a novos requisitos regulat\xF3rios e de conformidade de quaisquer leis aplic\xE1veis em qualquer jurisdi\xE7\xE3o. Nesse caso, os compradores e qualquer pessoa que se comprometa a adquirir LNS reconhecem e compreendem que a Lunes e suas filiais n\xE3o ser\xE3o responsabilizadas por quaisquer perdas ou danos diretos ou indiretos causados por tais altera\xE7\xF5es.\n    Lunes far\xE1 o seu melhor para lan\xE7ar suas opera\xE7\xF5es e desenvolver a plataforma Lunes. Qualquer pessoa que empreender na aquisi\xE7\xE3o de LNS reconhece e entende que\n    Lunes n\xE3o fornece qualquer garantia de que vai conseguir estabelecer uma plataforma operativa e, portanto, n\xE3o pode garantir que os LNS podem ser utilizados\n    para o com\xE9rcio social na plataforma. Reconhecem e compreendem conseq\xFCentemente que Lunes (incl. seus empregados) n\xE3o assume nenhuma responsabilidade por qualquer\n    perda ou dano que resulte ou se relacione com a incapacidade de usar o LNS, exceto no caso de m\xE1 conduta intencional ou bruta neglig\xEAncia.</p>\n\n    <h5>Direitos de propriedade intelectual</h5>\n\n    <p>Na medida em que o copyright ou outros direitos de propriedade intelectual existem na plataforma Lunes, tais como software, know-how, an\xE1lise ou programas,\n    os direitos autorais e outros direitos intelectuais e industriais pertencem a Lunes.</p>\n\n    <h5>Limita\xE7\xE3o da responsabilidade</h5>\n\n    <p>Lunes, bem como seus oficiais, diretores, agentes, joint-ventures, funcion\xE1rios e fornecedores, n\xE3o assume qualquer responsabilidade por qualquer perda resultante, ou relacionada ao uso, da plataforma Lunes ou qualquer t\xE9cnica, interrup\xE7\xE3o ou avaria da plataforma.\n    A limita\xE7\xE3o da responsabilidade acima referida n\xE3o \xE9 aplic\xE1vel no caso de Lunes, ou de um trabalhador Lunes, ter causado o dano por m\xE1 conduta intencional ou por\n    neglig\xEAncia grosseira.</p>\n\n    <h5>Separa\xE7\xE3o</h5>\n\n    <p>Se qualquer das disposi\xE7\xF5es do T&C ou do acordo for considerada inv\xE1lida, nula ou inexequ\xEDvel, as restantes disposi\xE7\xF5es continuar\xE3o em pleno vigor e efeito.</p>\n'), _USER$PASSWORD$PASSWO);
+	}), _defineProperty(_USER$PASSWORD$PASSWO, 'IF_YOU_NOT_HAVE_GOOGLE_AUTH_PLEASE_INSTALL', 'Se você não tem o Google Autenticador instalado, por favor clique no link abaixo para instalar'), _defineProperty(_USER$PASSWORD$PASSWO, 'YOU_NEED_VALIDATE_YOUR_AUTHENTICATION', 'Você precisa validar sua autenticação'), _defineProperty(_USER$PASSWORD$PASSWO, 'TWOFA_INVALID', 'Número Inválido'), _defineProperty(_USER$PASSWORD$PASSWO, 'VALIDATE_AUTHENTICATION', 'Validar Autenticação'), _defineProperty(_USER$PASSWORD$PASSWO, 'PRE_ICO_FINISHED', 'A pré-ICO da Lunes foi encerrada! A ICO irá iniciar em 15/04/2018'), _defineProperty(_USER$PASSWORD$PASSWO, 'VERIFY', 'Verificar'), _defineProperty(_USER$PASSWORD$PASSWO, 'USE_GOOGLE_OAUTH', 'Use o Google Autenticador para escanear o QR-Code e gerar sua autenticação.'), _defineProperty(_USER$PASSWORD$PASSWO, 'YOU_ALREADY_ENABLE_OAUTH', 'Autenticação em dois-passos habilitada'), _defineProperty(_USER$PASSWORD$PASSWO, 'I_WANT_ENABLE_OAUTH', 'Quero habilitar uma nova'), _defineProperty(_USER$PASSWORD$PASSWO, 'AUTH_TWOFA', 'Autenticação em 2 Passos'), _defineProperty(_USER$PASSWORD$PASSWO, 'GOOGLE_AUTH_NUMBER', 'Número Google Autenticador'), _defineProperty(_USER$PASSWORD$PASSWO, 'INVALID_TWOFA_NUMBER', 'Número inválido Google Autenticador'), _defineProperty(_USER$PASSWORD$PASSWO, 'TO', 'para'), _defineProperty(_USER$PASSWORD$PASSWO, 'BALANCE', 'Saldo'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_ALREADY', 'Email já cadastrado'), _defineProperty(_USER$PASSWORD$PASSWO, 'ERROR_SERVER', 'Erro interno no servidor'), _defineProperty(_USER$PASSWORD$PASSWO, 'GOOGLE_AUTH', 'Autenticador Google'), _defineProperty(_USER$PASSWORD$PASSWO, 'TYPE_GOOGLE_AUTH', 'Digite seu código'), _defineProperty(_USER$PASSWORD$PASSWO, 'COUPON', 'Cupom'), _defineProperty(_USER$PASSWORD$PASSWO, 'OWN_COUPON', 'Meu Cupom'), _defineProperty(_USER$PASSWORD$PASSWO, 'TYPE_COUPON', 'Insira seu cupom de bônus'), _defineProperty(_USER$PASSWORD$PASSWO, 'TERMS_CONDITION_TITLE', 'Termos e Condições'), _defineProperty(_USER$PASSWORD$PASSWO, 'REPRESENTATION_TERM_TITLE', 'Representações e Garantias'), _defineProperty(_USER$PASSWORD$PASSWO, 'CHANGE_PASSWORD', 'Alterar Senha'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_SENT', 'Email enviado com sucesso'), _defineProperty(_USER$PASSWORD$PASSWO, 'CLOSE', 'Fechar'), _defineProperty(_USER$PASSWORD$PASSWO, 'CALCULATOR', 'Calculadora'), _defineProperty(_USER$PASSWORD$PASSWO, 'EMAIL_NOT_SENT', 'Email não enviado ou não existe'), _defineProperty(_USER$PASSWORD$PASSWO, 'MSG_COIN_PLACEHOLDER', 'Digite um valor em {{COIN}} para calcular'), _defineProperty(_USER$PASSWORD$PASSWO, 'VIEW_ADDRESS_TO_DEPOSIT', 'Visualizar endereço de depósito'), _defineProperty(_USER$PASSWORD$PASSWO, 'MSG_COIN_PLACEHOLDER_LNS', 'ou digite o valor em Lunes'), _defineProperty(_USER$PASSWORD$PASSWO, 'AMOUNT_MINIMUN_VALIDATION', 'A quantidade mínima de LNS deve ser maior do que zero'), _defineProperty(_USER$PASSWORD$PASSWO, 'CHOOSE_YOUR_COIN_TO_BUY', 'Escolha sua moeda, digite o valor que você quer comprar e clique no botão "Visualizar endereço para depósito" para ver seu endereço de depósito.'), _defineProperty(_USER$PASSWORD$PASSWO, 'PAGE_FIX', 'Página em manutenção'), _defineProperty(_USER$PASSWORD$PASSWO, 'DO_YOU_CHANGE_PASSWORD', 'Você deseja alterar a senha?'), _defineProperty(_USER$PASSWORD$PASSWO, 'CHANGE_PASSWORD_INSTRUCTION', 'Digite seu email para enviarmos as instruções de alteração de sua senha'), _defineProperty(_USER$PASSWORD$PASSWO, 'WHATS_LUNES', 'O que é a Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'WHATS_LUNES_A', 'A plataforma Lunes, viabiliza o fornecimento de um conjunto de solu\xE7\xF5es constru\xEDdas de forma descentralizada utilizando a \n    tecnologia de blockchain como cria\xE7\xE3o de tokens, registros de autenticidade e processamentos de pagamentos atrav\xE9s de operadores de gateway, \n    tanto de moedas fiduci\xE1rias quanto criptomoedas, facilitando a capta\xE7\xE3o de recursos e private labels.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_01', 'A Lunes \xE9 um token do Ethereum ou da Waves?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_01_A', 'Nosso blockchain \xE9 um fork do c\xF3digo da Waves, por\xE9m temos funcionalidades bem distintas. Portanto a Lunes N\xC3O \xE9 um token Waves, nem Ethereum.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_02', 'Quando come\xE7a a PR\xC9-ICO?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_02_A', 'A pr\xE9-ICO come\xE7a no dia 25 de Fevereiro e vai at\xE9 o dia 30 de Mar\xE7o.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_03', 'Quando come\xE7a a ICO?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_03_A', 'A ICO come\xE7a no dia 15 de Abril e vai at\xE9 o dia 30 de Maio.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_04', 'Como comprar Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_04_A', 'Visite o site https://ico.lunes.io , fa\xE7a o cadastro e efetue o login. Basta escolher a forma de pagamento desejada e enviar para o endere\xE7o de sua escolha. Simples assim. \n    Caso ainda tenha d\xFAvidas: https://medium.com/@lunes.platform/ico-how-to-buy-lunes-tokens-857e402d4926'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_05', 'Quais formas de pagamentos aceitas?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_05_A', 'Bitcoin, Ethereum e Litecoin.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_07', 'Qual o pre\xE7o de 1 LNS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_07_A', 'Teremos 4 lotes, com os pre\xE7os de acordo com a seguinte ordem:'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_1', 'lote 1'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_2', 'lote 2'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_3', 'lote 3'), _defineProperty(_USER$PASSWORD$PASSWO, 'ITEM_07_4', 'lote 4'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_08', 'Qual o valor m\xEDnimo para compra?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_08_A', 'N\xE3o h\xE1 valor m\xEDnimo de compra.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09', 'Qual o valor m\xE1ximo de compra por usu\xE1rio?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09_A', '1\xBA lote: $ 0.01 - 300.000 de moedas\n    <br />2\xBA lote: $ 0.08 - 5.000.000 de moedas\n    <br />3\xBA lote: $ 0.15 - 8.000.000 de moedas\n    <br />4\xBA lote: $ 0.30 - 10.000.000 de moedas'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09', 'Qual o m\xE1ximo de moedas emitidas?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_09_A', '600 milh\xF5es de moedas. Sendo que 450 milh\xF5es est\xE3o dispon\xEDveis \xE0 venda.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_10', 'Qual o Soft Cap?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_10_A', '10.92M de d\xF3lares.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_11', 'Posso comprar Lunes em Real(BRL)?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_11_A', 'N\xE3o, ser\xE1 aceito apenas BTC, ETH e LTC como forma de pagamento.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_12', 'Quando poderei transferir minhas Lunes?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_12_A', 'Ap\xF3s o final da ICO voc\xEA poder\xE1 transferir suas Lunes para a carteira mobile ou web.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_13', 'A Lunes vai ser listada em alguma exchange?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_13_A', 'J\xE1 confirmamos a GetBTC. Conforme as negocia\xE7\xF5es forem avan\xE7ando e formos fechando com outras exchanges, vamos notificar a toda a comunidade.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_14', 'A Lunes \xE9 uma security token?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_14_A', 'N\xE3o. A Lunes \xE9 uma utility token.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_15', 'Quando sai a Lunes Wallet para iOS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_15_A', 'N\xE3o temos uma data definida, a Apple \xE9 muito burocr\xE1tica em rela\xE7\xE3o as criptomoedas. Estamos com empenho total para disponibilizar nosso app tamb\xE9m para o sistema iOS, por\xE9m dependemos da aprova\xE7\xE3o da Apple.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_16', 'Qual o algoritmo de minera\xE7\xE3o, PoW ou PoS?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_16_A', 'LPoS, ou Leased Proof of Stake. Onde os tokens Lunes que est\xE3o na sua carteira podem ser utilizados para "forjar" tokens atrav\xE9s do processo de leasing, com seguran\xE7a e sem necessidade de manter uma carteira aberta.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_17', 'Quanto valer\xE1 1 LNS nas exchanges?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_17_A', 'N\xE3o h\xE1 como ter um controle de quanto valer\xE1 nas exchanges, o mercado \xE9 quem dita as regras.'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_18', 'Como montar um Lunes Node?'), _defineProperty(_USER$PASSWORD$PASSWO, 'DOUBT_18_A', 'O Lunes Node (ainda em desenvolvimento) \xE9 uma aplica\xE7\xE3o em java, compat\xEDvel com qualquer sistema operacional que tenha suporte. Para o seu Lunes Node tenha a chance de minerar as transa\xE7\xF5es, \xE9 necess\xE1rio que a carteira configurada no lunes.conf tenha o saldo m\xEDnimo de 5000 Lunes. Tutorial de como rodar na testnet: https://github.com/Lunes-platform/LunesNode/wiki/Testnet:-running-LunesNode'), _defineProperty(_USER$PASSWORD$PASSWO, 'FAQ_TEXT', ''), _defineProperty(_USER$PASSWORD$PASSWO, 'REPRESENTATION_TERM', '\n      <h3>Representa\xE7\xE3o e Garantias</h3>\n      <p>Ao participar da ICO o usu\xE1rio concorda com o T&C e, em particular, eles representam e garantem que:</p>\n      <br>1. S\xE3o autorizados e t\xEAm poder completo para comprar LNS de acordo com as leis que se aplicam em sua jurisdi\xE7\xE3o do domic\xEDlio;\n      <br>2. vivem em uma jurisdi\xE7\xE3o que permite que Lunes venda tokens atrav\xE9s de uma ICO sem exigir qualquer autoriza\xE7\xE3o local;\n      <br>3. est\xE3o familiarizados com todos os regulamentos relacionados na jurisdi\xE7\xE3o espec\xEDficas em que eles vivem e que a compra de tokens criptografados na jurisdi\xE7\xE3o n\xE3o \xE9 proibida, restrita ou sujeitas a qualquer tipo de condi\xE7\xF5es adicionais;\n      <br>4. N\xE3o s\xE3o um cidad\xE3o dos Estados Unidos, do Canad\xE1, de Singapura, da China ou da Cor\xE9ia do Sul ou residente ou entidade e nem est\xE3o comprando tokens Lunes ou assinando em nome de um cidad\xE3o americano, ou canadense, ou singapurense, ou sul coreano, ou chin\xEAs. N\xE3o est\xE3o agindo para fins de investimento especulativo; n\xE3o utilizar\xE1 a venda simb\xF3lica para qualquer actividade ilegal, incluindo, mas n\xE3o se limitando \xE0 lavagem de dinheiro e ao financiamento do terrorismo;\n      <br>5. s\xE3o os \xFAnicos respons\xE1veis por determinar se a aquisi\xE7\xE3o de LNS \xE9 adequada para eles; est\xE3o adquirindo LNS para uso futuro da plataforma Lunes; compreender os riscos associados \xE0 ICO (incl. os riscos relacionados com o n\xE3o desenvolvimento da plataforma e opera\xE7\xF5es da Lunes); e\n      <br>6. compreender o uso de criptomoedas e os riscos associados.\n    '), _defineProperty(_USER$PASSWORD$PASSWO, 'TERMS_CONDITIONS', '\n    <h3>Termos e condi\xE7\xF5es</h3>\n    <p>Os termos e condi\xE7\xF5es aplicam-se ao comprador do token Lunes ("LNS") e ao usu\xE1rio futuro da plataforma Lunes. Voc\xEA deve ler atentamente os termos e condi\xE7\xF5es,\n    bem como o Whitepaper do projeto Lunes antes de participar na ICO.</p>\n\n    <h5>Aplicabilidade</h5>\n    <p>Os seguintes termos e condi\xE7\xF5es constituem o acordo entre a plataforma Lunes (doravante "Lunes" ou a "empresa"), e voc\xEA (o "usu\xE1rio") no que diz respeito \xE0 compra dos tokens Lunes e aos servi\xE7os futuros oferecidos atrav\xE9s da Lunes Plataforma. Ao utilizar os nossos servi\xE7os, voc\xEA est\xE1 concordando em ser vinculado pelos termos e condi\xE7\xF5es em sua vers\xE3o mais recente. Voc\xEA est\xE1 ciente de que a Lunes pode mudar estes termos e condi\xE7\xF5es a qualquer momento. O uso continuado da plataforma Lunes significa que voc\xEA aceita quaisquer termos novos ou modificados.\n    Servi\xE7os\n    Lunes \xE9 uma plataforma que fornece um conjunto de solu\xE7\xF5es descentralizadas atrav\xE9s blockchain.\n    De uma forma descomplicada e acess\xEDvel, vamos pulverizar as nossas tecnologias para a  popula\xE7\xE3o. Com solu\xE7\xF5es reais para a vida cotidiana, entregamos servi\xE7os e\n    produtos que v\xE3o desde processos de pagamento e capta\xE7\xE3o de recursos, at\xE9 registros de autenticidade.</p>\n\n    <h5>O token Lunes (LNS)</h5>\n\n    <p>LNS n\xE3o tem a qualifica\xE7\xE3o legal de um cau\xE7\xE3o. Uma vez comprado o LNS n\xE3o \xE9 reembols\xE1vel. LNS n\xE3o \xE9 uma participa\xE7\xE3o da Lunes e n\xE3o d\xE1 qualquer direito de intera\xE7\xE3o nas reuni\xF5es gerais da Lunes. Os LNS podem ser adquiridos durante a fase de ICO diretamente da empresa ou ap\xF3s a ICO na empresa ou em certas exchanges.\n    Qualquer futuro usu\xE1rio que comprar LNS, expressamente reconhece que reviu cuidadosamente os termos e condi\xE7\xF5es e compreende plenamente os riscos, custos e benef\xEDcios associados com a compra deste token, como indicado nos termos e condi\xE7\xF5es.\n    Um futuro usu\xE1rio comprador de LNS tokens deve assegurar que compreenda e tenha uma experi\xEAncia significativa com crypto moedas, sistemas e servi\xE7os blockchain, e que compreenda plenamente os riscos associados a venda de tokens, bem como o mecanismo relacionado ao uso de crypto moedas.\n    A Lunes n\xE3o ser\xE1 respons\xE1vel por qualquer perda de LNS ou situa\xE7\xF5es que impossibilitam o acesso \xE0 LNS, o que pode resultar em quaisquer a\xE7\xF5es ou omiss\xF5es do futuro\n    usu\xE1rio ou de qualquer pessoa que se comprometa a adquirir ins.</p>\n\n    <h5>Os riscos</h5>\n\n    <p>A aquisi\xE7\xE3o de LNS envolve v\xE1rios riscos, em particular que a Lunes pode n\xE3o ser capaz de lan\xE7ar suas opera\xE7\xF5es e desenvolver sua plataforma. Portanto, e\n    antes de adquirir LNS, qualquer futuro usu\xE1rio deve considerar cuidadosamente os riscos, custos e benef\xEDcios da aquisi\xE7\xE3o de LNS dentro da ICO, e, se necess\xE1rio,\n    obter aconselhamento independente a este respeito. Qualquer pessoa interessada que n\xE3o esteja em posi\xE7\xE3o de aceitar ou de compreender os riscos associados \xE0\n    ICO (incl. os riscos relacionados com o n\xE3o desenvolvimento da plataforma e opera\xE7\xF5es da Lunes) ou quaisquer outros riscos conforme indicado nos termos e condi\xE7\xF5es,\n    n\xE3o devem adquirir LNS, nesta fase ou mais tarde.</p>\n\n    <h5>Auto-aquisi\xE7\xE3o</h5>\n\n    <p>\xC9 permitido a Lunes adquirir LNS do mercado a pre\xE7o de mercado como o m\xE9todo do desembolso do valor. A aquisi\xE7\xE3o deve ser autorizada pelo Conselho de\n    administra\xE7\xE3o, a condi\xE7\xE3o de n\xE3o se identificar nenhum conflito de interesses. Atrav\xE9s da aquisi\xE7\xE3o de LNS, Lunes n\xE3o tem permiss\xE3o para realizar opera\xE7\xF5es\n    como a manipula\xE7\xE3o do mercado de LNS.</p>\n\n    <h5>Importante Aviso De Isen\xE7\xE3o</h5>\n\n    <p>Os termos e condi\xE7\xF5es n\xE3o devem e n\xE3o podem ser considerados como um convite para entrar em um investimento. Eles n\xE3o constituem ou se relacionam de forma alguma, nem devem ser considerados como uma oferta de t\xEDtulos em qualquer jurisdi\xE7\xE3o. Os termos e condi\xE7\xF5es n\xE3o incluem nem cont\xE9m qualquer informa\xE7\xE3o ou indica\xE7\xE3o que possa ser considerada como uma recomenda\xE7\xE3o ou que possa ser usada para basear qualquer decis\xE3o de investimento. LNS \xE9 um token utilit\xE1rio e n\xE3o se destina a ser usado como um investimento.\n    A Lunes ser\xE1 uma entidade operativa gerenciando uma plataforma e LNS \xE9 apenas um token utilit\xE1rio. Portanto, Lunes n\xE3o \xE9 um intermedi\xE1rio financeiro, portanto n\xE3o \xE9 obrigado a obter qualquer autoriza\xE7\xE3o para fins anti-lavagem de dinheiro.\n    A aquisi\xE7\xE3o de LNS n\xE3o conceder\xE1 qualquer direito ou influ\xEAncia sobre a organiza\xE7\xE3o e governan\xE7a sobre a Lunes aos compradores.\n    Os funcion\xE1rios de Lunes est\xE3o autorizados a operar com o LNS a pre\xE7o de mercado, caso conhe\xE7am informa\xE7\xF5es que possam modificar o pre\xE7o do token.\n    As autoridades reguladoras est\xE3o examinando cuidadosamente as empresas e opera\xE7\xF5es associadas \xE0 crypto moedas no mundo. Nesse sentido, as medidas regulat\xF3rias, investiga\xE7\xF5es ou a\xE7\xF5es podem impactar os neg\xF3cios da Lunes e at\xE9 mesmo limit\xE1-la ou impedi-la de desenvolver suas opera\xE7\xF5es no futuro. Qualquer pessoa que se comprometa a adquirir o LNS deve estar ciente de que o modelo de neg\xF3cios Lunes e o T&C podem mudar ou precisar ser modificados devido a novos requisitos regulat\xF3rios e de conformidade de quaisquer leis aplic\xE1veis em qualquer jurisdi\xE7\xE3o. Nesse caso, os compradores e qualquer pessoa que se comprometa a adquirir LNS reconhecem e compreendem que a Lunes e suas filiais n\xE3o ser\xE3o responsabilizadas por quaisquer perdas ou danos diretos ou indiretos causados por tais altera\xE7\xF5es.\n    Lunes far\xE1 o seu melhor para lan\xE7ar suas opera\xE7\xF5es e desenvolver a plataforma Lunes. Qualquer pessoa que empreender na aquisi\xE7\xE3o de LNS reconhece e entende que\n    Lunes n\xE3o fornece qualquer garantia de que vai conseguir estabelecer uma plataforma operativa e, portanto, n\xE3o pode garantir que os LNS podem ser utilizados\n    para o com\xE9rcio social na plataforma. Reconhecem e compreendem conseq\xFCentemente que Lunes (incl. seus empregados) n\xE3o assume nenhuma responsabilidade por qualquer\n    perda ou dano que resulte ou se relacione com a incapacidade de usar o LNS, exceto no caso de m\xE1 conduta intencional ou bruta neglig\xEAncia.</p>\n\n    <h5>Direitos de propriedade intelectual</h5>\n\n    <p>Na medida em que o copyright ou outros direitos de propriedade intelectual existem na plataforma Lunes, tais como software, know-how, an\xE1lise ou programas,\n    os direitos autorais e outros direitos intelectuais e industriais pertencem a Lunes.</p>\n\n    <h5>Limita\xE7\xE3o da responsabilidade</h5>\n\n    <p>Lunes, bem como seus oficiais, diretores, agentes, joint-ventures, funcion\xE1rios e fornecedores, n\xE3o assume qualquer responsabilidade por qualquer perda resultante, ou relacionada ao uso, da plataforma Lunes ou qualquer t\xE9cnica, interrup\xE7\xE3o ou avaria da plataforma.\n    A limita\xE7\xE3o da responsabilidade acima referida n\xE3o \xE9 aplic\xE1vel no caso de Lunes, ou de um trabalhador Lunes, ter causado o dano por m\xE1 conduta intencional ou por\n    neglig\xEAncia grosseira.</p>\n\n    <h5>Separa\xE7\xE3o</h5>\n\n    <p>Se qualquer das disposi\xE7\xF5es do T&C ou do acordo for considerada inv\xE1lida, nula ou inexequ\xEDvel, as restantes disposi\xE7\xF5es continuar\xE3o em pleno vigor e efeito.</p>\n'), _USER$PASSWORD$PASSWO);
 
 /***/ },
-/* 734 */
+/* 733 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -84584,7 +84528,7 @@
 	  value: true
 	});
 	
-	var _http = __webpack_require__(735);
+	var _http = __webpack_require__(734);
 	
 	Object.defineProperty(exports, 'HttpService', {
 	  enumerable: true,
@@ -84593,7 +84537,7 @@
 	  }
 	});
 	
-	var _cheapflights = __webpack_require__(738);
+	var _cheapflights = __webpack_require__(737);
 	
 	Object.defineProperty(exports, 'CheapFlightService', {
 	  enumerable: true,
@@ -84602,7 +84546,7 @@
 	  }
 	});
 	
-	var _errormessagesService = __webpack_require__(739);
+	var _errormessagesService = __webpack_require__(738);
 	
 	Object.defineProperty(exports, 'ErrorMessagesService', {
 	  enumerable: true,
@@ -84611,7 +84555,7 @@
 	  }
 	});
 	
-	var _apiInterceptorService = __webpack_require__(740);
+	var _apiInterceptorService = __webpack_require__(739);
 	
 	Object.defineProperty(exports, 'APIInterceptorService', {
 	  enumerable: true,
@@ -84623,7 +84567,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 735 */
+/* 734 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -84640,13 +84584,13 @@
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
-	var _constants = __webpack_require__(689);
+	var _constants = __webpack_require__(688);
 	
-	var _cccStreamerUtilities = __webpack_require__(736);
+	var _cccStreamerUtilities = __webpack_require__(735);
 	
 	var _cccStreamerUtilities2 = _interopRequireDefault(_cccStreamerUtilities);
 	
-	var _interceptor = __webpack_require__(737);
+	var _interceptor = __webpack_require__(736);
 	
 	var _interceptor2 = _interopRequireDefault(_interceptor);
 	
@@ -85248,7 +85192,7 @@
 	exports.default = HttpService;
 
 /***/ },
-/* 736 */
+/* 735 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -85738,7 +85682,7 @@
 	exports.default = CCC;
 
 /***/ },
-/* 737 */
+/* 736 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -85747,7 +85691,7 @@
 	  value: true
 	});
 	
-	var _constants = __webpack_require__(689);
+	var _constants = __webpack_require__(688);
 	
 	exports.default = {
 	  responseError: function responseError(response) {
@@ -85759,7 +85703,7 @@
 	};
 
 /***/ },
-/* 738 */
+/* 737 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -85779,7 +85723,7 @@
 	exports.default = CheapFlightService;
 
 /***/ },
-/* 739 */
+/* 738 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -85788,7 +85732,7 @@
 	  value: true
 	});
 	
-	var _constants = __webpack_require__(689);
+	var _constants = __webpack_require__(688);
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -85827,7 +85771,7 @@
 	exports.default = ErrorMessagesService;
 
 /***/ },
-/* 740 */
+/* 739 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -85836,7 +85780,7 @@
 	  value: true
 	});
 	
-	var _constants = __webpack_require__(689);
+	var _constants = __webpack_require__(688);
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -85872,16 +85816,16 @@
 	exports.default = APIInterceptorService;
 
 /***/ },
-/* 741 */
+/* 740 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(742);
+	var content = __webpack_require__(741);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(693)(content, {});
+	var update = __webpack_require__(692)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -85898,19 +85842,19 @@
 	}
 
 /***/ },
-/* 742 */
+/* 741 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(692)(true);
+	exports = module.exports = __webpack_require__(691)(true);
 	// imports
 	
 	
 	// module
-	exports.push([module.id, "input {\n  outline: none; }\n\nbody {\n  background-color: #4c2b82;\n  font-family: 'Roboto', sans-serif;\n  color: #fff;\n  font-size: 14px;\n  line-height: 20px;\n  font-weight: 100; }\n\n*, *:before, *:after {\n  box-sizing: border-box;\n  position: relative;\n  -webkit-box-sizing: border-box; }\n\n.center {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  height: 100%;\n  overflow: auto;\n  overflow-y: auto; }\n  @media (min-width: 768px) {\n    .center {\n      max-height: 780px; } }\n\nh1, h2, h3, h4 {\n  font-family: 'Offside', cursive;\n  line-height: 1.4em; }\n\nh2 {\n  font-size: 4em;\n  line-height: 1em; }\n\nh3 {\n  font-size: 2em;\n  line-height: 1.3em;\n  text-align: center; }\n\nh4 {\n  margin-bottom: 2%; }\n\n.txt-green {\n  color: #44af57; }\n\n.txt-center {\n  text-align: center !important; }\n\n.txt-left {\n  text-align: left !important; }\n\n.txt-right {\n  text-align: right !important; }\n\n.no-padding {\n  padding: 0; }\n\n.cursor-pointer {\n  cursor: pointer; }\n\n.round-menu {\n  text-decoration: none;\n  padding: 10px; }\n  .round-menu img {\n    vertical-align: middle; }\n\n.modal-backdrop {\n  background-color: #4c2b82;\n  opacity: 0.7;\n  text-align: center; }\n\n/* Logo */\n.logo {\n  font-size: 40px;\n  font-family: 'Offside', cursive;\n  letter-spacing: -7px; }\n\n/* Header */\n.header {\n  margin: 20px 0;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  padding: 10px 0; }\n\n.nav-menu {\n  padding-left: 0;\n  width: 100%; }\n\n/* MENU horizontal */\nul.menu {\n  padding-right: 0; }\n  ul.menu.horizontal {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-direction: row;\n        flex-direction: row;\n    -ms-flex-align: center;\n        align-items: center;\n    -ms-flex-pack: distribute;\n        justify-content: space-around; }\n    ul.menu.horizontal li {\n      list-style: none;\n      padding: 10px; }\n      ul.menu.horizontal li a {\n        text-transform: uppercase;\n        text-decoration: none;\n        color: #fff; }\n        ul.menu.horizontal li a:hover {\n          color: #44af57; }\n\n.menu-top {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: row;\n      flex-direction: row;\n  list-style: none;\n  color: #fff;\n  text-transform: uppercase;\n  margin: 0; }\n  .menu-top a {\n    padding: 20px;\n    color: #fff;\n    text-decoration: none; }\n  .menu-top li {\n    margin-right: 15px;\n    font-size: 12px;\n    min-height: 2.2rem; }\n    .menu-top li:hover {\n      border-bottom: 2px solid #44af57; }\n      .menu-top li:hover a {\n        color: #44af57; }\n  .menu-top .active {\n    border-bottom: 2px solid #44af57; }\n    .menu-top .active a {\n      color: #44af57; }\n\n/* authentication */\n.authentication {\n  margin-top: 50px; }\n  .authentication .title {\n    margin: 20px 0; }\n\n.error-fields {\n  padding: 10px;\n  background-color: #f9d660;\n  color: #9b853b;\n  border-radius: 5px;\n  margin-left: 10px;\n  margin-bottom: 20px; }\n\n/* Modal Customized */\n.modal {\n  margin: 20px;\n  background-color: #4c2b82;\n  border-radius: 5px;\n  box-shadow: #4c2b82 1px 1px 17px 5px; }\n  .modal .icon-close {\n    text-align: center;\n    position: absolute;\n    right: 30px;\n    padding: 0 10px;\n    cursor: pointer;\n    font-weight: bold; }\n  .modal .modal-title {\n    margin-left: 2em;\n    font-weight: bold; }\n  .modal .modal-header {\n    border: 0; }\n  .modal .modal-content {\n    background-color: transparent;\n    padding: 10px;\n    border: 0;\n    /*\r\n    *  SCROLL BAR\r\n    */ }\n    .modal .modal-content .content {\n      background-color: #4c2b82;\n      border-radius: 5px;\n      box-shadow: #311d53 1px 1px 32px 0px;\n      color: #fff;\n      padding: 20px;\n      margin: 20px;\n      max-height: 100%;\n      overflow-y: overlay;\n      border: solid 8px #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar-track {\n      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n      background-color: #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar {\n      width: 6px;\n      background-color: #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar-thumb {\n      background-color: #4f2f85; }\n    .modal .modal-content .footer {\n      display: -ms-flexbox;\n      display: flex;\n      text-align: left;\n      -ms-flex-align: center;\n          align-items: center;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n\n/* container button */\n.area-button {\n  text-align: center;\n  padding: 10px;\n  /* primary-button */\n  /* disabled button */ }\n  .area-button .primary-button {\n    border: 0;\n    border-radius: 40px;\n    padding: 11px 80px;\n    text-align: center;\n    background-color: #4cd566;\n    color: #fff;\n    font-size: 16px;\n    transition: all .3s ease-in-out;\n    text-decoration: none; }\n    .area-button .primary-button:hover {\n      background-color: #44af57; }\n    .area-button .primary-button.disabled {\n      background-color: #69548c !important;\n      color: #b4abc3 !important; }\n  .area-button .disabled-button {\n    padding: 10px 80px;\n    border: 0px solid #4e1f85;\n    border-radius: 25px;\n    font-size: 16px;\n    text-decoration: none;\n    display: inline-block;\n    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);\n    color: #FFFFFF;\n    background-color: #6929B3;\n    background-image: linear-gradient(to bottom, #6929B3, #6622B3);\n    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6929B3, endColorstr=#6622B3); }\n  .area-button .rounded-button {\n    border: 0;\n    border-radius: 100%;\n    width: 40px;\n    height: 40px;\n    background-color: #fff;\n    color: #44af57;\n    box-shadow: #444343 0px 1px 6px 0px; }\n\n/* Input customized */\n.input-form label {\n  display: block;\n  font-size: 14px;\n  margin: 0;\n  color: #90df4a; }\n\n.input-form input {\n  width: 90%;\n  border: 0;\n  border-bottom: solid 1px #9c9c9c;\n  background-color: transparent;\n  padding: 10px;\n  margin-bottom: 15px;\n  color: #fff;\n  outline: none; }\n  .input-form input::-webkit-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input:-ms-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input::placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input:-ms-input-placeholder {\n    /* Internet Explorer 10-11 */\n    color: #adadad; }\n  .input-form input::-ms-input-placeholder {\n    /* Microsoft Edge */\n    color: #adadad; }\n\n/* Custom Checkbox */\ninput[type=checkbox].css-checkbox {\n  height: 1px;\n  width: 1px;\n  margin: -1px;\n  padding: 0;\n  border: 0; }\n\ninput[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {\n  padding-left: 23px;\n  height: 18px;\n  display: inline-block;\n  line-height: 18px;\n  background-repeat: no-repeat;\n  background-position: 0 0;\n  font-size: 12px;\n  vertical-align: middle;\n  cursor: pointer; }\n\ninput[type=checkbox].css-checkbox:checked + label.css-label, input[type=checkbox].css-checkbox + label.css-label.chk {\n  background-position: 0 -18px; }\n\nlabel.css-label {\n  background-image: url(https://res.cloudinary.com/luneswallet/image/upload/v1519425382/check.png);\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\nbutton:focus {\n  outline: none !important; }\n\nfooter .social {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: end;\n      justify-content: flex-end; }\n  footer .social li {\n    list-style: none;\n    padding: 2rem 0 0 1rem; }\n    footer .social li img {\n      width: 30px; }\n\nfooter .container-footer {\n  margin-top: 30px;\n  padding: 10px;\n  background-color: #432773;\n  border-radius: 5px; }\n  footer .container-footer .row {\n    padding: 15px;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between; }\n    footer .container-footer .row a {\n      color: #fff; }\n\n.user-menu {\n  position: relative;\n  display: inline-block;\n  height: 100px;\n  margin-top: 1rem;\n  padding-left: 10px; }\n  @media only screen and (max-width: 460px) {\n    .user-menu {\n      height: 150px;\n      text-align: center;\n      width: 100%; } }\n  .user-menu a {\n    color: #fff;\n    text-decoration: none; }\n  .user-menu .logout {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: end;\n        justify-content: flex-end;\n    margin-top: -5px; }\n    @media only screen and (max-width: 460px) {\n      .user-menu .logout {\n        -ms-flex-pack: start;\n            justify-content: flex-start; } }\n    .user-menu .logout a {\n      text-decoration: none !important; }\n\n@media only screen and (max-width: 460px) {\n  footer .container-social {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-align: center;\n        align-items: center;\n    -ms-flex-pack: center;\n        justify-content: center; }\n  .menu-top a {\n    padding: 0; } }\n\n.introjs-tooltip {\n  background-color: #624492 !important; }\n\n.introjs-arrow.left, .introjs-arrow.left-bottom {\n  border-right-color: #624492 !important; }\n\n.introjs-arrow.bottom {\n  border-top-color: #624492 !important; }\n\n.introjs-helperNumberLayer {\n  background: linear-gradient(to bottom, #ffd119 0%, #cf8104 100%) !important; }\n\n.introjs-button.introjs-nextbutton {\n  color: #4acd64 !important; }\n\n.introjs-button.introjs-prevbutton {\n  color: #8f8a96 !important; }\n\n.introjs-bullets ul li a.active {\n  background: #4c2985 !important; }\n\n.introjs-helperLayer {\n  background-color: #563291 !important; }\n\n.select-coin .introjs-showElement {\n  background-color: transparent !important; }\n", "", {"version":3,"sources":["C:/Lunes/lunes-purchase/src/scss/src/scss/base/_reset.scss","C:/Lunes/lunes-purchase/src/scss/src/scss/base/_color.scss"],"names":[],"mappings":"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","file":"main.scss","sourcesContent":["@import 'color';\r\n\r\n$break-small: 320px;\r\n$break-large: 1200px;\r\n\r\ninput {\r\n  outline: none;\r\n}\r\n\r\nbody {\r\n  background-color: $primary;\r\n  font-family: 'Roboto', sans-serif;\r\n  color: #fff;\r\n  font-size: 14px;\r\n  line-height: 20px;\r\n  font-weight: 100;\r\n};\r\n\r\n*, *:before, *:after {\r\n  box-sizing: border-box;\r\n  position: relative;\r\n  -webkit-box-sizing: border-box;\r\n}\r\n\r\n.center {\r\n  position: fixed;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n  height: 100%;\r\n  overflow: auto;\r\n  overflow-y: auto;\r\n  @media (min-width: 768px) {\r\n    max-height: 780px;\r\n  }\r\n}\r\n\r\nh1, h2, h3, h4 {\r\n  font-family: 'Offside', cursive;\r\n  line-height: 1.4em;\r\n}\r\n\r\nh2 {\r\n  font-size: 4em;\r\n  line-height: 1em;\r\n}\r\nh3 {\r\n  font-size: 2em;\r\n  line-height: 1.3em;\r\n  text-align: center;\r\n}\r\nh4{\r\n  margin-bottom: 2%;\r\n}\r\n\r\n.txt-green {\r\n  color: $green;\r\n}\r\n\r\n.txt-center {\r\n  text-align: center!important;\r\n}\r\n\r\n.txt-left {\r\n  text-align: left!important;\r\n}\r\n\r\n.txt-right {\r\n  text-align: right!important;\r\n}\r\n.no-padding {\r\n  padding: 0;\r\n}\r\n.cursor-pointer {\r\n  cursor: pointer;\r\n}\r\n\r\n.round-menu {\r\n  text-decoration: none;\r\n  padding: 10px;\r\n  img {\r\n    vertical-align: middle; \r\n  }\r\n}\r\n\r\n.modal-backdrop {\r\n  background-color: $primary;\r\n  opacity: 0.7;\r\n  text-align: center;\r\n}\r\n/* Logo */\r\n.logo {\r\n  font-size: 40px;\r\n  font-family: 'Offside', cursive;\r\n  letter-spacing: -7px;\r\n}\r\n\r\n/* Header */\r\n.header {\r\n  margin: 20px 0;\r\n  display: flex;\r\n  align-items: center;\r\n  padding: 10px 0;\r\n}\r\n\r\n.nav-menu {\r\n  padding-left: 0;\r\n  width: 100%;\r\n}\r\n\r\n/* MENU horizontal */\r\nul.menu {\r\n  padding-right: 0;\r\n  &.horizontal {\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    justify-content: space-around;\r\n    li {\r\n      list-style: none;\r\n      padding: 10px;\r\n      a {\r\n        text-transform: uppercase;\r\n        text-decoration: none;\r\n        color: #fff;\r\n        &:hover {\r\n          color: $green;\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n// TODO: verificar se pode mesclar essa com a de cima\r\n.menu-top {\r\n  display: flex;\r\n  flex-direction: row;\r\n  list-style: none;\r\n  color: #fff;\r\n  text-transform: uppercase;\r\n  margin: 0;\r\n  a {\r\n    padding: 20px;  \r\n    color: #fff;\r\n    text-decoration: none;\r\n  }\r\n  li {  \r\n    margin-right: 15px;\r\n    font-size: 12px;\r\n    min-height: 2.2rem;\r\n    &:hover {\r\n      border-bottom: 2px solid $green;      \r\n      a {\r\n        color: $green;\r\n      }\r\n    }\r\n  }\r\n  .active {\r\n    border-bottom: 2px solid $green;\r\n    a {\r\n      color: $green;\r\n    }\r\n  }\r\n}\r\n\r\n/* authentication */\r\n.authentication {\r\n  margin-top: 50px;\r\n  .title {\r\n    margin: 20px 0;\r\n  }\r\n}\r\n\r\n.error-fields {\r\n  padding: 10px;\r\n  background-color: $yellow;\r\n  color: #9b853b;\r\n  border-radius: 5px;\r\n  margin-left: 10px;\r\n  margin-bottom: 20px;\r\n}\r\n \r\n/* Modal Customized */\r\n.modal {\r\n  margin: 20px;\r\n  background-color: $primary;\r\n  border-radius: 5px;\r\n  box-shadow: $primary 1px 1px 17px 5px;\r\n\r\n  .icon-close {\r\n    text-align: center;\r\n    position: absolute;\r\n    right: 30px;\r\n    padding: 0 10px;\r\n    cursor: pointer;\r\n    font-weight: bold;\r\n  }\r\n  \r\n  .modal-title{\r\n    margin-left:2em;\r\n    font-weight:bold;\r\n  }\r\n\r\n  .modal-header {\r\n    border: 0;\r\n  }\r\n  \r\n  .modal-content {\r\n    background-color: transparent;\r\n    padding: 10px;\r\n    border: 0;\r\n\r\n    .content {\r\n      background-color: $primary;\r\n      border-radius: 5px;\r\n      box-shadow: #311d53 1px 1px 32px 0px;\r\n      color: #fff;\r\n      padding: 20px;\r\n      margin: 20px;\r\n      max-height: 100%;\r\n      \r\n      overflow-y: overlay;\r\n      border: solid 8px #4c2b82;\r\n    }\r\n\r\n    /*\r\n    *  SCROLL BAR\r\n    */\r\n    .content::-webkit-scrollbar-track\r\n    {\r\n      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);\r\n      background-color: #4c2b82;\r\n    }\r\n    .content::-webkit-scrollbar\r\n    {\r\n      width: 6px;\r\n      background-color: #4c2b82;\r\n    }\r\n    .content::-webkit-scrollbar-thumb\r\n    {\r\n      background-color: #4f2f85;\r\n    }\r\n\r\n    .footer {\r\n      display: flex;\r\n      text-align: left;\r\n      align-items: center;\r\n      flex-direction: column;\r\n    }\r\n\r\n  }\r\n\r\n}\r\n\r\n/* container button */\r\n.area-button {\r\n  text-align: center;\r\n  padding: 10px;\r\n\r\n  /* primary-button */\r\n  .primary-button {\r\n    border: 0;\r\n    border-radius: 40px;\r\n    padding: 11px 80px;\r\n    text-align: center;\r\n    background-color: #4cd566;\r\n    color: #fff;\r\n    font-size: 16px;\r\n    transition: all .3s ease-in-out;\r\n    text-decoration: none;\r\n    &:hover {\r\n      background-color: $darkGreen;\r\n    }\r\n    &.disabled {\r\n      background-color: #69548c!important;\r\n      color: #b4abc3!important;\r\n    }\r\n  }\r\n\r\n  /* disabled button */\r\n  .disabled-button {\r\n    padding: 10px 80px;\r\n    border: 0px solid #4e1f85;\r\n    -webkit-border-radius: 25px; \r\n    -moz-border-radius: 25px;\r\n    border-radius: 25px;\r\n    font-size: 16px;\r\n    text-decoration:none; \r\n    display:inline-block;\r\n    text-shadow: -1px -1px 0 rgba(0,0,0,0.3); \r\n    color: #FFFFFF;\r\n    background-color: #6929B3; \r\n    background-image: -webkit-gradient(linear, left top, left bottom, from(#6929B3), to(#6622B3));\r\n    background-image: -webkit-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -moz-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -ms-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -o-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: linear-gradient(to bottom, #6929B3, #6622B3);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6929B3, endColorstr=#6622B3);\r\n  }\r\n\r\n  .rounded-button {\r\n    border: 0;\r\n    border-radius: 100%;\r\n    width: 40px;\r\n    height: 40px;\r\n    background-color: #fff;\r\n    color: $green;\r\n    box-shadow: #444343 0px 1px 6px 0px;\r\n  }\r\n\r\n}\r\n\r\n/* Input customized */\r\n.input-form label {\r\n  display: block;\r\n  font-size: 14px;\r\n  margin: 0;\r\n  color: #90df4a;\r\n}\r\n.input-form input {\r\n  width: 90%;\r\n  border: 0;\r\n  border-bottom: solid 1px #9c9c9c;\r\n  background-color: transparent;\r\n  padding: 10px ;\r\n  margin-bottom: 15px;\r\n  color: #fff;\r\n  outline: none;\r\n  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */\r\n      color: #adadad;\r\n      opacity: 1; /* Firefox */\r\n  }\r\n\r\n  &:-ms-input-placeholder { /* Internet Explorer 10-11 */\r\n      color: #adadad;\r\n  }\r\n\r\n  &::-ms-input-placeholder { /* Microsoft Edge */\r\n      color: #adadad;\r\n  }\r\n}\r\n\r\n/* Custom Checkbox */\r\ninput[type=checkbox].css-checkbox {\r\n\theight:1px; width:1px; margin:-1px; padding:0; border:0;\r\n}\r\n\r\ninput[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {\r\n\tpadding-left:23px;\r\n  height:18px; \r\n\tdisplay:inline-block;\r\n\tline-height:18px;\r\n\tbackground-repeat:no-repeat;\r\n\tbackground-position: 0 0;\r\n\tfont-size:12px;\r\n\tvertical-align:middle;\r\n\tcursor:pointer;\r\n\r\n}\r\n\r\ninput[type=checkbox].css-checkbox:checked + label.css-label, input[type=checkbox].css-checkbox + label.css-label.chk {\r\n\tbackground-position: 0 -18px;\r\n}\r\nlabel.css-label {\r\n\tbackground-image:url(https://res.cloudinary.com/luneswallet/image/upload/v1519425382/check.png);\r\n\t-webkit-touch-callout: none;\r\n\t-webkit-user-select: none;\r\n\t-khtml-user-select: none;\r\n\t-moz-user-select: none;\r\n\t-ms-user-select: none;\r\n\tuser-select: none;\r\n}\r\n\r\nbutton:focus {\r\n    outline: none !important;\r\n}\r\n\r\nfooter {\r\n  .social {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n    li {\r\n      list-style: none;\r\n      padding: 2rem 0 0 1rem;\r\n      img {\r\n        width: 30px;\r\n      }\r\n    }\r\n  }\r\n  .container-footer {\r\n    margin-top: 30px;\r\n    padding: 10px;\r\n    background-color: #432773;\r\n    border-radius: 5px;\r\n    .row {\r\n      padding: 15px;\r\n      display: flex;\r\n      justify-content: space-between;\r\n      a {\r\n        color: #fff;\r\n      }\r\n    }\r\n  }\r\n}\r\n.user-menu {\r\n  position: relative;\r\n  display: inline-block;\r\n  height: 100px;\r\n  margin-top: 1rem;\r\n  padding-left: 10px;\r\n\r\n  @media only screen and (max-width: 460px) {\r\n    height: 150px;\r\n    text-align: center;\r\n    width: 100%;\r\n  }\r\n\r\n  a {\r\n    color: #fff;\r\n    text-decoration: none;\r\n  }\r\n\r\n  .logout {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n    margin-top: -5px;\r\n\r\n    @media only screen and (max-width: 460px) {\r\n      justify-content: flex-start;\r\n    }\r\n\r\n    // TODO: aplicar suavidade ao exibir o menu\r\n    // .ng-hide {\r\n    //   opacity: 0;\r\n    // }\r\n    \r\n    // .ng-hide-add,\r\n    // .ng-hide-remove {\r\n    //   transition: all linear .5s;\r\n    // }\r\n\r\n    a {\r\n      text-decoration: none !important;\r\n    }\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 460px) {\r\n  footer .container-social {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n  }\r\n  .menu-top {\r\n    a {\r\n      padding: 0;\r\n    }\r\n  }\r\n}\r\n\r\n.introjs-tooltip {\r\n  background-color: #624492!important;\r\n}\r\n\r\n.introjs-arrow.left, .introjs-arrow.left-bottom {\r\n  border-right-color: #624492!important;\r\n}\r\n\r\n.introjs-arrow.bottom {\r\n  border-top-color: #624492!important;\r\n}\r\n\r\n.introjs-helperNumberLayer {\r\n  background: linear-gradient(to bottom, #ffd119 0%, #cf8104 100%)!important;\r\n}\r\n\r\n.introjs-button.introjs-nextbutton {\r\n  color: #4acd64!important;\r\n}\r\n\r\n.introjs-button.introjs-prevbutton {\r\n  color: #8f8a96!important;\r\n}\r\n\r\n.introjs-bullets ul li a.active {\r\n  background: #4c2985!important;\r\n}\r\n\r\n.introjs-helperLayer {\r\n  background-color: rgb(86, 50, 145)!important;\r\n}\r\n\r\n.select-coin .introjs-showElement {\r\n  background-color: transparent!important;\r\n}\r\n","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #44af57;\r\n$darkGreen: #44af57;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
+	exports.push([module.id, "input {\n  outline: none; }\n\nbody {\n  background-color: #4c2b82;\n  font-family: 'Roboto', sans-serif;\n  color: #fff;\n  font-size: 14px;\n  line-height: 20px;\n  font-weight: 100; }\n\n*, *:before, *:after {\n  box-sizing: border-box;\n  position: relative;\n  -webkit-box-sizing: border-box; }\n\n.center {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  height: 100%;\n  overflow: auto;\n  overflow-y: auto; }\n  @media (min-width: 768px) {\n    .center {\n      max-height: 780px; } }\n\nh1, h2, h3, h4 {\n  font-family: 'Offside', cursive;\n  line-height: 1.4em; }\n\nh2 {\n  font-size: 4em;\n  line-height: 1em; }\n\nh3 {\n  font-size: 2em;\n  line-height: 1.3em;\n  text-align: center; }\n\nh4 {\n  margin-bottom: 2%; }\n\n.txt-green {\n  color: #44af57; }\n\n.txt-center {\n  text-align: center !important; }\n\n.txt-left {\n  text-align: left !important; }\n\n.txt-right {\n  text-align: right !important; }\n\n.no-padding {\n  padding: 0; }\n\n.cursor-pointer {\n  cursor: pointer; }\n\n.round-menu {\n  text-decoration: none;\n  padding: 10px; }\n  .round-menu img {\n    vertical-align: middle; }\n\n.modal-backdrop {\n  background-color: #4c2b82;\n  opacity: 0.7;\n  text-align: center; }\n\n/* Logo */\n.logo {\n  font-size: 40px;\n  font-family: 'Offside', cursive;\n  letter-spacing: -7px; }\n\n/* Header */\n.header {\n  margin: 20px 0;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  padding: 10px 0; }\n\n.nav-menu {\n  padding-left: 0;\n  width: 100%; }\n\n/* MENU horizontal */\nul.menu {\n  padding-right: 0; }\n  ul.menu.horizontal {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-direction: row;\n        flex-direction: row;\n    -ms-flex-align: center;\n        align-items: center;\n    -ms-flex-pack: distribute;\n        justify-content: space-around; }\n    ul.menu.horizontal li {\n      list-style: none;\n      padding: 10px; }\n      ul.menu.horizontal li a {\n        text-transform: uppercase;\n        text-decoration: none;\n        color: #fff; }\n        ul.menu.horizontal li a:hover {\n          color: #44af57; }\n\n.menu-top {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: row;\n      flex-direction: row;\n  list-style: none;\n  color: #fff;\n  text-transform: uppercase;\n  margin: 0; }\n  .menu-top a {\n    padding: 20px;\n    color: #fff;\n    text-decoration: none; }\n  .menu-top li {\n    margin-right: 15px;\n    font-size: 12px;\n    min-height: 2.2rem; }\n    .menu-top li:hover {\n      border-bottom: 2px solid #44af57; }\n      .menu-top li:hover a {\n        color: #44af57; }\n  .menu-top .active {\n    border-bottom: 2px solid #44af57; }\n    .menu-top .active a {\n      color: #44af57; }\n\n/* authentication */\n.authentication {\n  margin-top: 50px; }\n  .authentication .title {\n    margin: 20px 0; }\n\n.error-fields {\n  padding: 10px;\n  background-color: #f9d660;\n  color: #9b853b;\n  border-radius: 5px;\n  margin-left: 10px;\n  margin-bottom: 20px; }\n\n/* Modal Customized */\n.modal {\n  margin: 20px;\n  background-color: #4c2b82;\n  border-radius: 5px;\n  box-shadow: #4c2b82 1px 1px 17px 5px; }\n  .modal .icon-close {\n    text-align: center;\n    position: absolute;\n    right: 30px;\n    padding: 0 10px;\n    cursor: pointer;\n    font-weight: bold; }\n  .modal .modal-title {\n    margin-left: 2em;\n    font-weight: bold; }\n  .modal .modal-header {\n    border: 0; }\n  .modal .modal-content {\n    background-color: transparent;\n    padding: 10px;\n    border: 0;\n    /*\r\n    *  SCROLL BAR\r\n    */ }\n    .modal .modal-content .content {\n      background-color: #4c2b82;\n      border-radius: 5px;\n      box-shadow: #311d53 1px 1px 32px 0px;\n      color: #fff;\n      padding: 20px;\n      margin: 20px;\n      max-height: 100%;\n      overflow-y: overlay;\n      border: solid 8px #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar-track {\n      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n      background-color: #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar {\n      width: 6px;\n      background-color: #4c2b82; }\n    .modal .modal-content .content::-webkit-scrollbar-thumb {\n      background-color: #4f2f85; }\n    .modal .modal-content .footer {\n      display: -ms-flexbox;\n      display: flex;\n      text-align: left;\n      -ms-flex-align: center;\n          align-items: center;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n\n/* container button */\n.area-button {\n  text-align: center;\n  padding: 10px;\n  /* primary-button */\n  /* disabled button */ }\n  .area-button .primary-button {\n    border: 0;\n    border-radius: 40px;\n    padding: 11px 80px;\n    text-align: center;\n    background-color: #4cd566;\n    color: #fff;\n    font-size: 16px;\n    transition: all .3s ease-in-out;\n    text-decoration: none; }\n    .area-button .primary-button:hover {\n      background-color: #44af57; }\n    .area-button .primary-button.disabled {\n      background-color: #69548c !important;\n      color: #b4abc3 !important; }\n  .area-button .disabled-button {\n    padding: 10px 80px;\n    border: 0px solid #4e1f85;\n    border-radius: 25px;\n    font-size: 16px;\n    text-decoration: none;\n    display: inline-block;\n    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);\n    color: #FFFFFF;\n    background-color: #6929B3;\n    background-image: linear-gradient(to bottom, #6929B3, #6622B3);\n    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6929B3, endColorstr=#6622B3); }\n  .area-button .rounded-button {\n    border: 0;\n    border-radius: 100%;\n    width: 40px;\n    height: 40px;\n    background-color: #fff;\n    color: #44af57;\n    box-shadow: #444343 0px 1px 6px 0px; }\n\n/* Input customized */\n.input-form label {\n  display: block;\n  font-size: 14px;\n  margin: 0;\n  color: #90df4a; }\n\n.input-form input {\n  width: 90%;\n  border: 0;\n  border-bottom: solid 1px #9c9c9c;\n  background-color: transparent;\n  padding: 10px;\n  margin-bottom: 15px;\n  color: #fff;\n  outline: none; }\n  .input-form input::-webkit-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input:-ms-input-placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input::placeholder {\n    /* Chrome, Firefox, Opera, Safari 10.1+ */\n    color: #adadad;\n    opacity: 1;\n    /* Firefox */ }\n  .input-form input:-ms-input-placeholder {\n    /* Internet Explorer 10-11 */\n    color: #adadad; }\n  .input-form input::-ms-input-placeholder {\n    /* Microsoft Edge */\n    color: #adadad; }\n\n/* Custom Checkbox */\ninput[type=checkbox].css-checkbox {\n  height: 1px;\n  width: 1px;\n  margin: -1px;\n  padding: 0;\n  border: 0; }\n\ninput[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {\n  padding-left: 23px;\n  height: 18px;\n  display: inline-block;\n  line-height: 18px;\n  background-repeat: no-repeat;\n  background-position: 0 0;\n  font-size: 12px;\n  vertical-align: middle;\n  cursor: pointer; }\n\ninput[type=checkbox].css-checkbox:checked + label.css-label, input[type=checkbox].css-checkbox + label.css-label.chk {\n  background-position: 0 -18px; }\n\nlabel.css-label {\n  background-image: url(https://res.cloudinary.com/luneswallet/image/upload/v1519425382/check.png);\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\nbutton:focus {\n  outline: none !important; }\n\nfooter .social {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: end;\n      justify-content: flex-end; }\n  footer .social li {\n    list-style: none;\n    padding: 2rem 0 0 1rem; }\n    footer .social li img {\n      width: 30px; }\n\nfooter .container-footer {\n  margin-top: 30px;\n  padding: 10px;\n  background-color: #432773;\n  border-radius: 5px; }\n  footer .container-footer .row {\n    padding: 15px;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: justify;\n        justify-content: space-between; }\n    footer .container-footer .row a {\n      color: #fff; }\n\n.user-menu {\n  position: relative;\n  display: inline-block;\n  height: 100px;\n  margin-top: 1rem;\n  padding-left: 10px; }\n  @media only screen and (max-width: 460px) {\n    .user-menu {\n      height: 150px;\n      text-align: center;\n      width: 100%; } }\n  .user-menu a {\n    color: #fff;\n    text-decoration: none; }\n  .user-menu .logout {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: end;\n        justify-content: flex-end;\n    margin-top: -5px; }\n    @media only screen and (max-width: 460px) {\n      .user-menu .logout {\n        -ms-flex-pack: start;\n            justify-content: flex-start; } }\n    .user-menu .logout a {\n      text-decoration: none !important; }\n\n@media only screen and (max-width: 460px) {\n  footer .container-social {\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-align: center;\n        align-items: center;\n    -ms-flex-pack: center;\n        justify-content: center; }\n  .menu-top a {\n    padding: 0; } }\n\n.introjs-tooltip {\n  background-color: #624492 !important; }\n\n.introjs-arrow.left, .introjs-arrow.left-bottom {\n  border-right-color: #624492 !important; }\n\n.introjs-arrow.bottom {\n  border-top-color: #624492 !important; }\n\n.introjs-helperNumberLayer {\n  background: linear-gradient(to bottom, #ffd119 0%, #cf8104 100%) !important; }\n\n.introjs-button.introjs-nextbutton {\n  color: #4acd64 !important; }\n\n.introjs-button.introjs-prevbutton {\n  color: #8f8a96 !important; }\n\n.introjs-bullets ul li a.active {\n  background: #4c2985 !important; }\n\n.introjs-helperLayer {\n  background-color: #563291 !important; }\n\n.select-coin .introjs-showElement {\n  background-color: transparent !important; }\n", "", {"version":3,"sources":["C:/lunes/lunes-purchase/src/scss/src/scss/base/_reset.scss","C:/lunes/lunes-purchase/src/scss/src/scss/base/_color.scss"],"names":[],"mappings":"AAKA;EACE,cAAa,EACd;;AAED;EACE,0BCVe;EDWf,kCAAiC;EACjC,YAAW;EACX,gBAAe;EACf,kBAAiB;EACjB,iBAAgB,EACjB;;AAED;EACE,uBAAsB;EACtB,mBAAkB;EAClB,+BAA8B,EAC/B;;AAED;EACE,gBAAe;EACf,SAAQ;EACR,UAAS;EACT,iCAAgC;EAChC,aAAY;EACZ,eAAc;EACd,iBAAgB,EAIjB;EAHC;IARF;MASI,kBAAiB,EAEpB,EAAA;;AAED;EACE,gCAA+B;EAC/B,mBAAkB,EACnB;;AAED;EACE,eAAc;EACd,iBAAgB,EACjB;;AACD;EACE,eAAc;EACd,mBAAkB;EAClB,mBAAkB,EACnB;;AACD;EACE,kBAAiB,EAClB;;AAED;EACE,eCnDa,EDoDd;;AAED;EACE,8BAA4B,EAC7B;;AAED;EACE,4BAA0B,EAC3B;;AAED;EACE,6BAA2B,EAC5B;;AACD;EACE,WAAU,EACX;;AACD;EACE,gBAAe,EAChB;;AAED;EACE,sBAAqB;EACrB,cAAa,EAId;EAND;IAII,uBAAsB,EACvB;;AAGH;EACE,0BCtFe;EDuFf,aAAY;EACZ,mBAAkB,EACnB;;AACD,UAAU;AACV;EACE,gBAAe;EACf,gCAA+B;EAC/B,qBAAoB,EACrB;;AAED,YAAY;AACZ;EACE,eAAc;EACd,qBAAa;EAAb,cAAa;EACb,uBAAmB;MAAnB,oBAAmB;EACnB,gBAAe,EAChB;;AAED;EACE,gBAAe;EACf,YAAW,EACZ;;AAED,qBAAqB;AACrB;EACE,iBAAgB,EAmBjB;EApBD;IAGI,qBAAa;IAAb,cAAa;IACb,wBAAmB;QAAnB,oBAAmB;IACnB,uBAAmB;QAAnB,oBAAmB;IACnB,0BAA6B;QAA7B,8BAA6B,EAa9B;IAnBH;MAQM,iBAAgB;MAChB,cAAa,EASd;MAlBL;QAWQ,0BAAyB;QACzB,sBAAqB;QACrB,YAAW,EAIZ;QAjBP;UAeU,eCzHK,ED0HN;;AAOT;EACE,qBAAa;EAAb,cAAa;EACb,wBAAmB;MAAnB,oBAAmB;EACnB,iBAAgB;EAChB,YAAW;EACX,0BAAyB;EACzB,UAAS,EAuBV;EA7BD;IAQI,cAAa;IACb,YAAW;IACX,sBAAqB,EACtB;EAXH;IAaI,mBAAkB;IAClB,gBAAe;IACf,mBAAkB,EAOnB;IAtBH;MAiBM,iCClJS,EDsJV;MArBL;QAmBQ,eCpJO,EDqJR;EApBP;IAwBI,iCCzJW,ED6JZ;IA5BH;MA0BM,eC3JS,ED4JV;;AAIL,oBAAoB;AACpB;EACE,iBAAgB,EAIjB;EALD;IAGI,eAAc,EACf;;AAGH;EACE,cAAa;EACb,0BCxKc;EDyKd,eAAc;EACd,mBAAkB;EAClB,kBAAiB;EACjB,oBAAmB,EACpB;;AAED,sBAAsB;AACtB;EACE,aAAY;EACZ,0BCzLe;ED0Lf,mBAAkB;EAClB,qCAAqC,EAiEtC;EArED;IAOI,mBAAkB;IAClB,mBAAkB;IAClB,YAAW;IACX,gBAAe;IACf,gBAAe;IACf,kBAAiB,EAClB;EAbH;IAgBI,iBAAe;IACf,kBAAgB,EACjB;EAlBH;IAqBI,UAAS,EACV;EAtBH;IAyBI,8BAA6B;IAC7B,cAAa;IACb,UAAS;IAeT;;MAEE,EAuBH;IAnEH;MA8BM,0BCrNW;MDsNX,mBAAkB;MAClB,qCAAoC;MACpC,YAAW;MACX,cAAa;MACb,aAAY;MACZ,iBAAgB;MAEhB,oBAAmB;MACnB,0BAAyB,EAC1B;IAxCL;MA+CM,qDAAiD;MACjD,0BAAyB,EAC1B;IAjDL;MAoDM,WAAU;MACV,0BAAyB,EAC1B;IAtDL;MAyDM,0BAAyB,EAC1B;IA1DL;MA6DM,qBAAa;MAAb,cAAa;MACb,iBAAgB;MAChB,uBAAmB;UAAnB,oBAAmB;MACnB,2BAAsB;UAAtB,uBAAsB,EACvB;;AAML,sBAAsB;AACtB;EACE,mBAAkB;EAClB,cAAa;EAEb,oBAAoB;EAoBpB,qBAAqB,EA+BtB;EAvDD;IAMI,UAAS;IACT,oBAAmB;IACnB,mBAAkB;IAClB,mBAAkB;IAClB,0BAAyB;IACzB,YAAW;IACX,gBAAe;IACf,gCAA+B;IAC/B,sBAAqB,EAQtB;IAtBH;MAgBM,0BCzQa,ED0Qd;IAjBL;MAmBM,qCAAmC;MACnC,0BAAwB,EACzB;EArBL;IA0BI,mBAAkB;IAClB,0BAAyB;IAGzB,oBAAmB;IACnB,gBAAe;IACf,sBAAoB;IACpB,sBAAoB;IACpB,4CAAwC;IACxC,eAAc;IACd,0BAAyB;IAMzB,+DAA8D;IAAC,8GAA4G,EAC5K;EA3CH;IA8CI,UAAS;IACT,oBAAmB;IACnB,YAAW;IACX,aAAY;IACZ,uBAAsB;IACtB,eC7SW;ID8SX,oCAAmC,EACpC;;AAIH,sBAAsB;AACtB;EACE,eAAc;EACd,gBAAe;EACf,UAAS;EACT,eAAc,EACf;;AACD;EACE,WAAU;EACV,UAAS;EACT,iCAAgC;EAChC,8BAA6B;EAC7B,cAAc;EACd,oBAAmB;EACnB,YAAW;EACX,cAAa,EAad;EArBD;IASmB,0CAA0C;IACvD,eAAc;IACd,WAAU;IAAG,aAAa,EAC7B;EAZH;IASmB,0CAA0C;IACvD,eAAc;IACd,WAAU;IAAG,aAAa,EAC7B;EAZH;IASmB,0CAA0C;IACvD,eAAc;IACd,WAAU;IAAG,aAAa,EAC7B;EAZH;IAc4B,6BAA6B;IACnD,eAAc,EACjB;EAhBH;IAkB6B,oBAAoB;IAC3C,eAAc,EACjB;;AAGH,qBAAqB;AACrB;EACC,YAAU;EAAG,WAAS;EAAG,aAAW;EAAG,WAAS;EAAG,UAAQ,EAC3D;;AAED;EACC,mBAAiB;EAChB,aAAW;EACZ,sBAAoB;EACpB,kBAAgB;EAChB,6BAA2B;EAC3B,yBAAwB;EACxB,gBAAc;EACd,uBAAqB;EACrB,gBAAc,EAEd;;AAED;EACC,6BAA4B,EAC5B;;AACD;EACC,iGAA+F;EAC/F,4BAA2B;EAC3B,0BAAyB;EAEzB,uBAAsB;EACtB,sBAAqB;EACrB,kBAAiB,EACjB;;AAED;EACI,yBAAwB,EAC3B;;AAED;EAEI,qBAAa;EAAb,cAAa;EACb,mBAAyB;MAAzB,0BAAyB,EAQ1B;EAXH;IAKM,iBAAgB;IAChB,uBAAsB,EAIvB;IAVL;MAQQ,YAAW,EACZ;;AATP;EAaI,iBAAgB;EAChB,cAAa;EACb,0BAAyB;EACzB,mBAAkB,EASnB;EAzBH;IAkBM,cAAa;IACb,qBAAa;IAAb,cAAa;IACb,uBAA8B;QAA9B,+BAA8B,EAI/B;IAxBL;MAsBQ,YAAW,EACZ;;AAIP;EACE,mBAAkB;EAClB,sBAAqB;EACrB,cAAa;EACb,iBAAgB;EAChB,mBAAkB,EAoCnB;EAlCC;IAPF;MAQI,cAAa;MACb,mBAAkB;MAClB,YAAW,EA+Bd,EAAA;EAzCD;IAcI,YAAW;IACX,sBAAqB,EACtB;EAhBH;IAmBI,qBAAa;IAAb,cAAa;IACb,mBAAyB;QAAzB,0BAAyB;IACzB,iBAAgB,EAmBjB;IAjBC;MAvBJ;QAwBM,qBAA2B;YAA3B,4BAA2B,EAgB9B,EAAA;IAxCH;MAsCM,iCAAgC,EACjC;;AAIL;EACE;IACE,qBAAa;IAAb,cAAa;IACb,uBAAmB;QAAnB,oBAAmB;IACnB,sBAAuB;QAAvB,wBAAuB,EACxB;EACD;IAEI,WAAU,EACX,EAAA;;AAIL;EACE,qCAAmC,EACpC;;AAED;EACE,uCAAqC,EACtC;;AAED;EACE,qCAAmC,EACpC;;AAED;EACE,4EAA0E,EAC3E;;AAED;EACE,0BAAwB,EACzB;;AAED;EACE,0BAAwB,EACzB;;AAED;EACE,+BAA6B,EAC9B;;AAED;EACE,qCAA4C,EAC7C;;AAED;EACE,yCAAuC,EACxC","file":"main.scss","sourcesContent":["@import 'color';\r\n\r\n$break-small: 320px;\r\n$break-large: 1200px;\r\n\r\ninput {\r\n  outline: none;\r\n}\r\n\r\nbody {\r\n  background-color: $primary;\r\n  font-family: 'Roboto', sans-serif;\r\n  color: #fff;\r\n  font-size: 14px;\r\n  line-height: 20px;\r\n  font-weight: 100;\r\n};\r\n\r\n*, *:before, *:after {\r\n  box-sizing: border-box;\r\n  position: relative;\r\n  -webkit-box-sizing: border-box;\r\n}\r\n\r\n.center {\r\n  position: fixed;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n  height: 100%;\r\n  overflow: auto;\r\n  overflow-y: auto;\r\n  @media (min-width: 768px) {\r\n    max-height: 780px;\r\n  }\r\n}\r\n\r\nh1, h2, h3, h4 {\r\n  font-family: 'Offside', cursive;\r\n  line-height: 1.4em;\r\n}\r\n\r\nh2 {\r\n  font-size: 4em;\r\n  line-height: 1em;\r\n}\r\nh3 {\r\n  font-size: 2em;\r\n  line-height: 1.3em;\r\n  text-align: center;\r\n}\r\nh4{\r\n  margin-bottom: 2%;\r\n}\r\n\r\n.txt-green {\r\n  color: $green;\r\n}\r\n\r\n.txt-center {\r\n  text-align: center!important;\r\n}\r\n\r\n.txt-left {\r\n  text-align: left!important;\r\n}\r\n\r\n.txt-right {\r\n  text-align: right!important;\r\n}\r\n.no-padding {\r\n  padding: 0;\r\n}\r\n.cursor-pointer {\r\n  cursor: pointer;\r\n}\r\n\r\n.round-menu {\r\n  text-decoration: none;\r\n  padding: 10px;\r\n  img {\r\n    vertical-align: middle; \r\n  }\r\n}\r\n\r\n.modal-backdrop {\r\n  background-color: $primary;\r\n  opacity: 0.7;\r\n  text-align: center;\r\n}\r\n/* Logo */\r\n.logo {\r\n  font-size: 40px;\r\n  font-family: 'Offside', cursive;\r\n  letter-spacing: -7px;\r\n}\r\n\r\n/* Header */\r\n.header {\r\n  margin: 20px 0;\r\n  display: flex;\r\n  align-items: center;\r\n  padding: 10px 0;\r\n}\r\n\r\n.nav-menu {\r\n  padding-left: 0;\r\n  width: 100%;\r\n}\r\n\r\n/* MENU horizontal */\r\nul.menu {\r\n  padding-right: 0;\r\n  &.horizontal {\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    justify-content: space-around;\r\n    li {\r\n      list-style: none;\r\n      padding: 10px;\r\n      a {\r\n        text-transform: uppercase;\r\n        text-decoration: none;\r\n        color: #fff;\r\n        &:hover {\r\n          color: $green;\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n// TODO: verificar se pode mesclar essa com a de cima\r\n.menu-top {\r\n  display: flex;\r\n  flex-direction: row;\r\n  list-style: none;\r\n  color: #fff;\r\n  text-transform: uppercase;\r\n  margin: 0;\r\n  a {\r\n    padding: 20px;  \r\n    color: #fff;\r\n    text-decoration: none;\r\n  }\r\n  li {  \r\n    margin-right: 15px;\r\n    font-size: 12px;\r\n    min-height: 2.2rem;\r\n    &:hover {\r\n      border-bottom: 2px solid $green;      \r\n      a {\r\n        color: $green;\r\n      }\r\n    }\r\n  }\r\n  .active {\r\n    border-bottom: 2px solid $green;\r\n    a {\r\n      color: $green;\r\n    }\r\n  }\r\n}\r\n\r\n/* authentication */\r\n.authentication {\r\n  margin-top: 50px;\r\n  .title {\r\n    margin: 20px 0;\r\n  }\r\n}\r\n\r\n.error-fields {\r\n  padding: 10px;\r\n  background-color: $yellow;\r\n  color: #9b853b;\r\n  border-radius: 5px;\r\n  margin-left: 10px;\r\n  margin-bottom: 20px;\r\n}\r\n \r\n/* Modal Customized */\r\n.modal {\r\n  margin: 20px;\r\n  background-color: $primary;\r\n  border-radius: 5px;\r\n  box-shadow: $primary 1px 1px 17px 5px;\r\n\r\n  .icon-close {\r\n    text-align: center;\r\n    position: absolute;\r\n    right: 30px;\r\n    padding: 0 10px;\r\n    cursor: pointer;\r\n    font-weight: bold;\r\n  }\r\n  \r\n  .modal-title{\r\n    margin-left:2em;\r\n    font-weight:bold;\r\n  }\r\n\r\n  .modal-header {\r\n    border: 0;\r\n  }\r\n  \r\n  .modal-content {\r\n    background-color: transparent;\r\n    padding: 10px;\r\n    border: 0;\r\n\r\n    .content {\r\n      background-color: $primary;\r\n      border-radius: 5px;\r\n      box-shadow: #311d53 1px 1px 32px 0px;\r\n      color: #fff;\r\n      padding: 20px;\r\n      margin: 20px;\r\n      max-height: 100%;\r\n      \r\n      overflow-y: overlay;\r\n      border: solid 8px #4c2b82;\r\n    }\r\n\r\n    /*\r\n    *  SCROLL BAR\r\n    */\r\n    .content::-webkit-scrollbar-track\r\n    {\r\n      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);\r\n      background-color: #4c2b82;\r\n    }\r\n    .content::-webkit-scrollbar\r\n    {\r\n      width: 6px;\r\n      background-color: #4c2b82;\r\n    }\r\n    .content::-webkit-scrollbar-thumb\r\n    {\r\n      background-color: #4f2f85;\r\n    }\r\n\r\n    .footer {\r\n      display: flex;\r\n      text-align: left;\r\n      align-items: center;\r\n      flex-direction: column;\r\n    }\r\n\r\n  }\r\n\r\n}\r\n\r\n/* container button */\r\n.area-button {\r\n  text-align: center;\r\n  padding: 10px;\r\n\r\n  /* primary-button */\r\n  .primary-button {\r\n    border: 0;\r\n    border-radius: 40px;\r\n    padding: 11px 80px;\r\n    text-align: center;\r\n    background-color: #4cd566;\r\n    color: #fff;\r\n    font-size: 16px;\r\n    transition: all .3s ease-in-out;\r\n    text-decoration: none;\r\n    &:hover {\r\n      background-color: $darkGreen;\r\n    }\r\n    &.disabled {\r\n      background-color: #69548c!important;\r\n      color: #b4abc3!important;\r\n    }\r\n  }\r\n\r\n  /* disabled button */\r\n  .disabled-button {\r\n    padding: 10px 80px;\r\n    border: 0px solid #4e1f85;\r\n    -webkit-border-radius: 25px; \r\n    -moz-border-radius: 25px;\r\n    border-radius: 25px;\r\n    font-size: 16px;\r\n    text-decoration:none; \r\n    display:inline-block;\r\n    text-shadow: -1px -1px 0 rgba(0,0,0,0.3); \r\n    color: #FFFFFF;\r\n    background-color: #6929B3; \r\n    background-image: -webkit-gradient(linear, left top, left bottom, from(#6929B3), to(#6622B3));\r\n    background-image: -webkit-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -moz-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -ms-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: -o-linear-gradient(top, #6929B3, #6622B3);\r\n    background-image: linear-gradient(to bottom, #6929B3, #6622B3);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6929B3, endColorstr=#6622B3);\r\n  }\r\n\r\n  .rounded-button {\r\n    border: 0;\r\n    border-radius: 100%;\r\n    width: 40px;\r\n    height: 40px;\r\n    background-color: #fff;\r\n    color: $green;\r\n    box-shadow: #444343 0px 1px 6px 0px;\r\n  }\r\n\r\n}\r\n\r\n/* Input customized */\r\n.input-form label {\r\n  display: block;\r\n  font-size: 14px;\r\n  margin: 0;\r\n  color: #90df4a;\r\n}\r\n.input-form input {\r\n  width: 90%;\r\n  border: 0;\r\n  border-bottom: solid 1px #9c9c9c;\r\n  background-color: transparent;\r\n  padding: 10px ;\r\n  margin-bottom: 15px;\r\n  color: #fff;\r\n  outline: none;\r\n  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */\r\n      color: #adadad;\r\n      opacity: 1; /* Firefox */\r\n  }\r\n\r\n  &:-ms-input-placeholder { /* Internet Explorer 10-11 */\r\n      color: #adadad;\r\n  }\r\n\r\n  &::-ms-input-placeholder { /* Microsoft Edge */\r\n      color: #adadad;\r\n  }\r\n}\r\n\r\n/* Custom Checkbox */\r\ninput[type=checkbox].css-checkbox {\r\n\theight:1px; width:1px; margin:-1px; padding:0; border:0;\r\n}\r\n\r\ninput[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {\r\n\tpadding-left:23px;\r\n  height:18px; \r\n\tdisplay:inline-block;\r\n\tline-height:18px;\r\n\tbackground-repeat:no-repeat;\r\n\tbackground-position: 0 0;\r\n\tfont-size:12px;\r\n\tvertical-align:middle;\r\n\tcursor:pointer;\r\n\r\n}\r\n\r\ninput[type=checkbox].css-checkbox:checked + label.css-label, input[type=checkbox].css-checkbox + label.css-label.chk {\r\n\tbackground-position: 0 -18px;\r\n}\r\nlabel.css-label {\r\n\tbackground-image:url(https://res.cloudinary.com/luneswallet/image/upload/v1519425382/check.png);\r\n\t-webkit-touch-callout: none;\r\n\t-webkit-user-select: none;\r\n\t-khtml-user-select: none;\r\n\t-moz-user-select: none;\r\n\t-ms-user-select: none;\r\n\tuser-select: none;\r\n}\r\n\r\nbutton:focus {\r\n    outline: none !important;\r\n}\r\n\r\nfooter {\r\n  .social {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n    li {\r\n      list-style: none;\r\n      padding: 2rem 0 0 1rem;\r\n      img {\r\n        width: 30px;\r\n      }\r\n    }\r\n  }\r\n  .container-footer {\r\n    margin-top: 30px;\r\n    padding: 10px;\r\n    background-color: #432773;\r\n    border-radius: 5px;\r\n    .row {\r\n      padding: 15px;\r\n      display: flex;\r\n      justify-content: space-between;\r\n      a {\r\n        color: #fff;\r\n      }\r\n    }\r\n  }\r\n}\r\n.user-menu {\r\n  position: relative;\r\n  display: inline-block;\r\n  height: 100px;\r\n  margin-top: 1rem;\r\n  padding-left: 10px;\r\n\r\n  @media only screen and (max-width: 460px) {\r\n    height: 150px;\r\n    text-align: center;\r\n    width: 100%;\r\n  }\r\n\r\n  a {\r\n    color: #fff;\r\n    text-decoration: none;\r\n  }\r\n\r\n  .logout {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n    margin-top: -5px;\r\n\r\n    @media only screen and (max-width: 460px) {\r\n      justify-content: flex-start;\r\n    }\r\n\r\n    // TODO: aplicar suavidade ao exibir o menu\r\n    // .ng-hide {\r\n    //   opacity: 0;\r\n    // }\r\n    \r\n    // .ng-hide-add,\r\n    // .ng-hide-remove {\r\n    //   transition: all linear .5s;\r\n    // }\r\n\r\n    a {\r\n      text-decoration: none !important;\r\n    }\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 460px) {\r\n  footer .container-social {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n  }\r\n  .menu-top {\r\n    a {\r\n      padding: 0;\r\n    }\r\n  }\r\n}\r\n\r\n.introjs-tooltip {\r\n  background-color: #624492!important;\r\n}\r\n\r\n.introjs-arrow.left, .introjs-arrow.left-bottom {\r\n  border-right-color: #624492!important;\r\n}\r\n\r\n.introjs-arrow.bottom {\r\n  border-top-color: #624492!important;\r\n}\r\n\r\n.introjs-helperNumberLayer {\r\n  background: linear-gradient(to bottom, #ffd119 0%, #cf8104 100%)!important;\r\n}\r\n\r\n.introjs-button.introjs-nextbutton {\r\n  color: #4acd64!important;\r\n}\r\n\r\n.introjs-button.introjs-prevbutton {\r\n  color: #8f8a96!important;\r\n}\r\n\r\n.introjs-bullets ul li a.active {\r\n  background: #4c2985!important;\r\n}\r\n\r\n.introjs-helperLayer {\r\n  background-color: rgb(86, 50, 145)!important;\r\n}\r\n\r\n.select-coin .introjs-showElement {\r\n  background-color: transparent!important;\r\n}\r\n","$primary: #4c2b82 !default;\r\n$lightPrimary: #654fa4;\r\n$extraLightPrimary: #876fc6;\r\n$darkPrimary: #41256f;\r\n$extraDarkPrimary: #3f2569;\r\n$green: #44af57;\r\n$darkGreen: #44af57;\r\n$yellow: #f9d660;\r\n$darkGray: #333;"],"sourceRoot":""}]);
 	
 	// exports
 
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=app.js.map?v=1525091061593
+//# sourceMappingURL=app.js.map?v=1525810690141

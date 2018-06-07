@@ -190,7 +190,7 @@ class HttpService {
       .wallet
       .lns
       .wallet
-      .newAddress(seeds, LunesLib.networks.LNSTESTNET);
+      .newAddress(seeds, LunesLib.networks.LNS);
 
     return data;
   } 
