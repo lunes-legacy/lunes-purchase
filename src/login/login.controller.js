@@ -22,6 +22,9 @@ class LoginController {
           check3: false,
           check4: false,
       };
+      
+      this.removeUser();
+
       this.obtainPhase().catch(error => {
         console.log(error);
       });
@@ -48,6 +51,10 @@ class LoginController {
             smartlookClient.identify(currentUser.email, userTrack );
           }
         }
+    }
+
+    removeUser() {
+      localStorage.removeItem('lunes.accessToken');
     }
 
     async doLogin() {
