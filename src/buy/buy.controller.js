@@ -37,8 +37,6 @@ class BuyController {
     this.msgCoinPlaceholder = $translate.instant('MSG_COIN_PLACEHOLDER', { COIN: this.currentCoinSelected.name });
     this.msgCoinPlaceholderLNS = $translate.instant('MSG_COIN_PLACEHOLDER_LNS');
 
-    this.checkSeed();
-
     this.screens = {
       loading: false,
       logout: false,
@@ -47,11 +45,12 @@ class BuyController {
       step3: false, //CONFIRM    
       step4: false // TRANSACTIONS INFO
     }
-
+    
     this.userAddressInfo = {}; //SEED AND ADDRESS
     this.transaction = {}
     this.withdraw = false;
-
+    
+    this.checkSeed();
     this.checkWithdraw();
 
     this.getBalanceCoin('BTC').catch(error => {
@@ -105,6 +104,7 @@ class BuyController {
       if (withdrawInfo.data.txID) {
         this.transaction = withdrawInfo.data;
         this.withdraw = true;
+        this.changeStep('step4')
 
         return true;
       }
@@ -131,7 +131,7 @@ class BuyController {
         if (sendBalance && sendBalance.status === 'SUCCESS') {
           if (sendBalance.data.txID) {
             this.showLoading(false);
-            this.transaction = withdrawInfo.data;
+            this.transaction = sendBalance.data;
             this.withdraw = true;
             localStorage.removeItem('SEED');
             this.changeStep('step4')
@@ -139,53 +139,47 @@ class BuyController {
             return true;
           } else {
             this.showLoading(false);
-            this.changeStep('step1')
+            this.changeStep('step2')
 
             return false;
           }
         } else {
           this.showLoading(false);
-          this.changeStep('step1')
+          this.changeStep('step2')
           return false;
         }
       } else {
         this.showLoading(false);
-        this.changeStep('step1')
+        this.changeStep('step2')
       }
     } catch (error) {
       console.log(error)
       this.showLoading(false);
-      this.changeStep('step1')
+      this.changeStep('step2')
 
       return false;
     }
   }
 
-  async checkSeed() {
+  checkSeed() {
     try {
-      let seed = await localStorage.getItem('SEED');
-      let withdraw = await this.checkWithdraw();
-      console.log(seed)
-      console.log(withdraw)
+      let seed = localStorage.getItem('SEED');
 
-      if (seed && !withdraw) {
-        await this.changeStep('step2')
+      if (seed)  {
+        this.changeStep('step2')
         this.mountSeed();
-      } else if (!seed && withdraw) {
-        await this.changeStep('step4')
-      } else {
-        await this.changeStep('step1')
       }
 
     } catch (error) {
       console.log(error);
-      await this.changeStep('step1')
+      this.changeStep('step1')
     }
   }
 
   // GENERATE SEED AND ADDRESS
-  mountSeed() {
-    let data = this.getSeed();
+  async mountSeed() {
+    this.showLoading(true);    
+    let data = await this.getSeed();
     let dataAddress = this.HttpService.getAddress(data);
     let seed = data.split(" ");
 
@@ -198,17 +192,19 @@ class BuyController {
       },
       address: dataAddress
     }
+    this.showLoading(false);
+    
     this.changeStep('step2')
   }
 
-  getSeed() {
+  async getSeed() {
     try {
       let seed = localStorage.getItem('SEED');
 
       if (seed) {
         return JSON.parse(seed);
       } else {
-        let data = this.HttpService.getSeedWord();
+        let data = await this.HttpService.getSeedWord();
 
         localStorage.setItem('SEED', JSON.stringify(data));
 
@@ -225,7 +221,7 @@ class BuyController {
   }
 
   // CHANGE STEP
-  async changeStep(toStep) {
+  changeStep(toStep) {
     if (!this.withdraw) {
       for (let step in this.screens) {
         this.screens[step] = false;

@@ -196,18 +196,16 @@ class HttpService {
   } 
 
   async updateAddress(address, accessToken) {
-    try {
-
+    try {    
       const updateData = { coin: 'LNS', address: address }
 
       let updateAddressResult = await LunesLib.coins.services.wallet.addAddress(
         updateData,
         accessToken
       );
-      console.log(address)
+
       return updateAddressResult
-    } catch (error) 
-    {
+    } catch (error) {
       console.log(error);
       return error;
     }
