@@ -42,7 +42,10 @@
       "transform-async-to-generator"
     ]
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp-watch": "^5.0.0",
+    "json-loader": "^0.5.7"
+  },
   "dependencies": {
     "angular": "1.6.4",
     "angular-mocks": "^1.6.4",
@@ -69,6 +72,7 @@
     "eslint-plugin-import": "^2.2.0",
     "extract-text-webpack-plugin": "1.0.1",
     "file-loader": "^0.11.1",
+    "gulp": "^3.9.1",
     "html-webpack-plugin": "^2.28.0",
     "jasmine-core": "^3.0.0",
     "karma": "^1.6.0",
@@ -80,7 +84,7 @@
     "karma-mocha-reporter": "^2.2.3",
     "karma-sourcemap-loader": "^0.3.4",
     "karma-webpack": "^2.0.12",
-    "lunes-lib": "https://registry.npmjs.org/lunes-lib/-/lunes-lib-0.0.28.tgz",
+    "lunes-lib": "0.0.32",
     "mocha": "^3.2.0",
     "moment": "^2.15.1",
     "ng-annotate-loader": "^0.2.0",

@@ -11,7 +11,7 @@ export default {
     CONFIRM_EMAIL: 'Confirm Email',
     CONFIRM_EMAIL_PLACEHOLDER: 'Type your email again',
     ALL_FIELDS_REQUIRED: 'Please, type the fields required',
-    BACK: 'click here to back',
+    BACK: 'Back',
     CONFIRM_PASSWORD: 'Confirm Password',
     CONFIRM_PASSWORD_PLACEHOLDER: 'Type your password again',
     COUPON: 'Do you have any coupon code?',
@@ -27,7 +27,7 @@ export default {
     SIGNUP: 'Signup',
     RESET_PASSWORD: 'Reset your password',
     WHITELIST: 'Whitelist',
-    BUY: 'Buy',
+    BUY: 'Withdraw',
     DASHBOARD: 'Dashboard',
     PURCHASE_HISTORY: 'Purchase History',
     CURRENCY_SYMBOL: 'U$',
@@ -41,7 +41,7 @@ export default {
     BONUS: 'Bonus',
     SIGNUP_SUCCESSFULY: 'Sucessful Registration',
     REDIRECTING: 'redirecting to login...',
-    LOGOUT: 'logout',
+    LOGOUT: 'Logout',
     AUTHENTICATE_INVALID: 'Invalid Authentication',
     BUY_LIMIT_PHASE: 'Buy limit for this phase:',
     QUOTATION: 'Price:',
@@ -70,6 +70,7 @@ export default {
     AMOUNT_MINIMUN_VALIDATION: 'The amount of LNS must be greater than zero',
     MSG_COIN_PLACEHOLDER: `Type a value in {{COIN}} to calculate`,
     VIEW_ADDRESS_TO_DEPOSIT: 'View address to deposit',
+    VIEW_SEED_AND_ADDRESS: 'Generate seed and address.',
     MSG_COIN_PLACEHOLDER_LNS: 'or type the value in Lunes',
     CHOOSE_YOUR_COIN_TO_BUY: 'Choose the coin, type the value you want to buy and press the "View address to deposit" button to see your deposit address.',
     FAQ: 'F.A.Q',
@@ -80,8 +81,17 @@ export default {
     HELP_CHECK_TOTAL: 'Check the total of Lunes that you will buy and the amount equivalent to the bonus',
     HELP_USER_MAX: 'User maximum purchase limit',
     HELP_CLICK_VIEW_ADDRESS: 'Click to view address or QR Code for deposit',
-
+    VIEW_SEED_AND_ADDRESS: 'Generate Seed and Anddress',
+    CHECK_TRANSACTION_ON_BLOCK: 'Check transaction on block',
+    SUCCESS_WITHDRAW: 'Withdraw realized with success!',
+    WITHDRAW: 'Withdraw',  
+    QUANTITY: 'Quantity',
+    TXID: 'Txid',
+    ADDRESS: 'Address',    
     EXCEED_LIMIT_BUY: 'You exceeded your limit buy',
+    ATTENTION: 'ATTENTION',
+    SEED_ATTENTION: 'Write down your seed in a safe place. Lose your private key might make you lose all the tokens you have.',
+    LOGOUT_ATTENTION: 'While the withdraw is not done, another seed and address will be generated after the logout has been made. If you have already made the withdrawal, make sure that you wrote down the seed and the address in a safe place, as it will not be possible to see it again.',
     DASHBOARD: {
       NO_HISTORY: 'You have no history yet',
       DATE: 'Date',
@@ -89,10 +99,14 @@ export default {
       DEPOSIT: 'Deposit',
       BONUS: 'Bonus'
     },
+    IF_YOU_NOT_HAVE_GOOGLE_AUTH_PLEASE_INSTALL: 'If you not have a Google Authenticator installed in your device, please click below to install.',
+    YOU_NEED_VALIDATE_YOUR_AUTHENTICATION: 'You need validate your authentication',
+    TWOFA_INVALID: 'Invalid Number',
+    VALIDATE_AUTHENTICATION: 'Validate Authentication',
     PRE_ICO_FINISHED: 'The Lunes pre-ICO is closed! The ICO will begin on 15/04/2018.',
     TO: 'to',
     USE_GOOGLE_OAUTH: 'Use Google AUthenticator to generate your QR-Code and generate an authentication',
-    YOU_ALREADY_ENABLE_OAUTH: 'You already your 2 steps oauth',
+    YOU_ALREADY_ENABLE_OAUTH: 'Authentication in 2 steps enabled',
     I_WANT_ENABLE_OAUTH: 'I want enable a new',
     VERIFY: 'Verify',
     AUTH_TWOFA: 'Auth in Two-Step',
@@ -118,17 +132,18 @@ export default {
     technology: such as creating tokens, authenticity records, and making payment processing possible through our gateway operators by using “fiat” 
     currencies and cryptocurrencies.`,
     DOUBT_01: `Is Lunes a Waves or Ethereum token?`,
-    DOUBT_01_A: `Our blockchain is a fork of the Waves code, but we have very different functionalities. So Lunes is NOT an ethereum token.`,
+    DOUBT_01_A: `Our blockchain is a fork of the Waves code, but we have very different functionalities. So Lunes is NOT a Waves token, nor Ethereum.`,
     DOUBT_02: `When does PRE_ICO start?`,
     DOUBT_02_A: `The PRE-ICO starts on February 25 and runs until March 30.`,
     DOUBT_03: `When does ICO start?`,
-    DOUBT_03_A: `ICO starts on April 15 and runs until May 20.`,
+    DOUBT_03_A: `ICO starts on April 15 and runs through May 30.`,
     DOUBT_04: `How to buy Lunes?`,
-    DOUBT_04_A: `Visit the website https://ico.lunes.io, register and log in. Just choose the desired payment A- method and send to the address of your choice. That simple.`,
+    DOUBT_04_A: `Visit the site https://ico.lunes.io, register and log in. Just choose the desired form of payment and send to the address of your choice. That simple.
+    If you still have questions: https://medium.com/@Lunes_Pt/ico-como-comprar-tokens-lunes-9189a80e1c83`,
     DOUBT_05: `What currencies will you be accepting?`,
     DOUBT_05_A: `Bitcoin, Ethereum and Litecoin.`,
-    DOUBT_06: `How do I convert my payment for Lunes in the website?`,
-    DOUBT_06_A: `There is no need to convert it. Your Lunes will be automatically converted within 20 minutes to 1 hour after payment is confirmed.`,
+    // DOUBT_06: `How do I convert my payment for Lunes in the website?`,
+    // DOUBT_06_A: `There is no need to convert it. Your Lunes will be automatically converted within 20 minutes to 1 hour after payment is confirmed.`,
     DOUBT_07: `What is the price of 1 LNS?`,
     DOUBT_07_A: `We will have 4 lots with the following prices:`,
     ITEM_07_1: '1st lot:',
@@ -158,7 +173,7 @@ export default {
     DOUBT_13_A: `No. Lunes is a utility token.`,
 
     DOUBT_14: `Is Lunes going to be listed at any exchange?`,
-    DOUBT_14_A: `Yes, but we cannot confirm any at the moment. We will negotiate with exchanges after the ICO is finished.`,
+    DOUBT_14_A: `We have already confirmed GetBTC. As the negotiations move forward and we close with other exchanges, we will notify the whole community.`,
 
     DOUBT_15: `When Lunes wallet will be released for iOS?`,
     DOUBT_15_A: `We do not have a specific date. Apple has been very bureaucratic when it comes to cryptocurrencies. Although we are fully committed to making our app 
@@ -172,8 +187,7 @@ export default {
     DOUBT_17_A: `We not have how to control of the price in the exchanges, the market dictates the rules`,
 
     DOUBT_18: `How can I create a Lunes Node?`,
-    DOUBT_18_A: `The Lunes Node (still in development) is an application in Java, compatible with any operating system which offers support. In order to your Lunes 
-    Node has the chance to mine the transactions, it is necessary for the Wallet set up in the Lunes.conf to hold at least 5,000 coins.`,
+    DOUBT_18_A: `Lunes Node (still in development) is a java application, compatible with any supported operating system. For your Lunes Node has the chance to mine the transactions, it is necessary that the wallet configured on Lunes.conf has the minimum balance of 5000 Lunes. Tutorial on how to run testnet: https://github.com/Lunes-platform/LunesNode/wiki/Testnet:-running-LunesNode`,
 
     
     FAQ_TEXT: `

@@ -5,6 +5,10 @@ module.exports = webpackMerge(commonConfig, {
   module: {
     loaders: [
       { test: /\.scss$/, loaders: ['style', 'css?sourceMap', 'postcss-loader', 'sass?config=sassLoader'] },
+      {
+        test: /.json$/,
+        loader: 'json-loader'
+      }
     ]
   },
 });

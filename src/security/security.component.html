@@ -4,8 +4,16 @@
 
   <div class="qr-code" ng-if="!$ctrl.currentUser.twofaEnabled">
     <img ng-src="{{$ctrl.base64Img}}" alt="">
-    <p>{{'USE_GOOGLE_OAUTH' | translate}}</p>
-    <button ng-click="$ctrl.generateAnotherQRCode()">{{'I_WANT_ENABLE_OAUTH' | translate}}</button>
+    <p>1. {{'USE_GOOGLE_OAUTH' | translate}}</p>
+    <p class="alert-auth">
+      <label for="">
+        <i class="fa fa-exclamation-circle"></i>
+      </label>
+      <small>2. {{'YOU_NEED_VALIDATE_YOUR_AUTHENTICATION' | translate}}</small>
+    </p>
+    <input type="text" name="validate_authentication" ng-model="$ctrl.numberTestAuthentication" class="input-calculator" placeholder="000 000"
+    />
+    <button ng-click="$ctrl.validateAuthentication()">{{'VALIDATE_AUTHENTICATION' | translate}}</button>
   </div>
 
   <div class="qr-code" ng-if="$ctrl.currentUser.twofaEnabled">
@@ -14,6 +22,16 @@
     </span>
     <p>{{'YOU_ALREADY_ENABLE_OAUTH' | translate}}</p>
     <button ng-click="$ctrl.generateAnotherQRCode()">{{'I_WANT_ENABLE_OAUTH' | translate}}</button>
+  </div>
+
+  <div ng-show="$ctrl.showErrorMsgTwofaError" class="twofa-invalid">
+    {{'TWOFA_INVALID' | translate}}
+  </div>
+
+  <div class="link-google-play">
+    <hr>
+    <p>{{'IF_YOU_NOT_HAVE_GOOGLE_AUTH_PLEASE_INSTALL' | translate}}</p>
+    <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" target="_blank">Google Play</a>
   </div>
 
 </div>

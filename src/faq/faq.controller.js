@@ -27,10 +27,10 @@ class FAQController {
         question: $translate.instant('DOUBT_05'),
         answer: $translate.instant('DOUBT_05_A'),
         show: false
-      }, {
-        question: $translate.instant('DOUBT_06'),
-        answer: $translate.instant('DOUBT_06_A'),
-        show: false
+      // }, {
+      //   question: $translate.instant('DOUBT_06'),
+      //   answer: $translate.instant('DOUBT_06_A'),
+      //   show: false
       }, {
         question: $translate.instant('DOUBT_07'),
         answer: $translate.instant('DOUBT_07_A'),
