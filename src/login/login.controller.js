@@ -75,7 +75,8 @@ class LoginController {
       } else {
         this.redirectLogin(userLogged);
       }
-      
+
+      this.doAccept()
     }
 
     async redirectTwofa(userLogged) {
