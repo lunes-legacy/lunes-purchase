@@ -206,8 +206,7 @@ class HttpService {
       );
       console.log(address)
       return updateAddressResult
-    } catch (error) 
-    {
+    } catch (error) {
       console.log(error);
       return error;
     }

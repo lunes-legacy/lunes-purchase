@@ -49,16 +49,8 @@
     </div>
     <!-- LOGOUT MODAL END -->
 
-    <!-- LOADING SATRT -->
-    <div ng-show="$ctrl.screens.loading">
-      <div>
-        <p>Loading...</p>
-      </div>
-    </div>
-    <!-- LOADING END -->
-
     <!-- 1 STEP: VIEW SEED BUTTON START -->
-    <div class="area-button" ng-show="$ctrl.screens.step1 && !$ctrl.withdraw">
+    <div class="area-button" ng-show="$ctrl.screens.step1">
       <button name="step2" class="primary-button" ng-click="$ctrl.mountSeed()">{{'VIEW_SEED_AND_ADDRESS' | translate}}</button>
     </div>
     <!-- 1 STEP: VIEW SEED BUTTON END -->
@@ -66,7 +58,7 @@
 
     <!-- 2 STEP: SEED AND ADDRESS START -->
     <!-- SEED -->
-    <div ng-show="$ctrl.screens.step2 && !$ctrl.withdraw">
+    <div ng-show="$ctrl.screens.step2">
       <div class="row">
         <div class="col-md-12">
           <div class="phrase">
@@ -113,14 +105,14 @@
       </div>
 
       <!-- WITHDRAW BUTTON -->
-      <div class="area-button" ng-show="!$ctrl.withdraw && $ctrl.totalLns > 0.00000000">
+      <div class="area-button" ng-show="$ctrl.totalLns > 0.00000000">
         <button class="primary-button" ng-click="$ctrl.changeStep('step3')">{{'WITHDRAW' | translate}}</button>
       </div>
     </div>
     <!-- 2 STEP: SEED AND ADDRESS END -->
 
     <!-- 3 STEP: CONFIRM START -->
-    <div ng-show="$ctrl.screens.step3 && !$ctrl.withdraw">
+    <div ng-show="$ctrl.screens.step3">
       <div class="attention-modal my-2">
         <h3>{{'ATTENTION' | translate}}</h3>
         <p>{{'SEED_ATTENTION' | translate}}</p>
@@ -133,7 +125,7 @@
     <!-- 3 STEP: CONFIRM END -->
 
     <!-- 4 STEP: CHECK TRANSACTION START -->
-    <div class="col-md-12" ng-show="$ctrl.screens.step4 && $ctrl.withdraw">
+    <div class="col-md-12" ng-show="$ctrl.screens.step4">
       <div class="transaction">
         <h3>{{'SUCCESS_WITHDRAW' | translate}}</h3>
         <p>
