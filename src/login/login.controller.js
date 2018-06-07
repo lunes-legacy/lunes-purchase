@@ -22,6 +22,9 @@ class LoginController {
           check3: false,
           check4: false,
       };
+      
+      this.removeUser();
+
       this.obtainPhase().catch(error => {
         console.log(error);
       });
@@ -50,6 +53,10 @@ class LoginController {
         }
     }
 
+    removeUser() {
+      localStorage.removeItem('lunes.accessToken');
+    }
+
     async doLogin() {
       const self = this;
 
@@ -75,7 +82,8 @@ class LoginController {
       } else {
         this.redirectLogin(userLogged);
       }
-      
+
+      this.doAccept()
     }
 
     async redirectTwofa(userLogged) {
