@@ -6,7 +6,7 @@ import Components from './components/components';
 import LoginComponent from './login/login.component';
 import SignupComponent from './signup/signup.component';
 import BuyComponent from './buy/buy.component';
-import SecurityComponent from './security/security.component';
+// import SecurityComponent from './security/security.component';
 import FaqComponent from './faq/faq.component';
 import DashboardComponent from './dashboard/dashboard.component';
 import FixComponent from './fix/fix.component';
@@ -33,7 +33,7 @@ angular.module('myApp', [
 .component('loginPage', LoginComponent)
 .component('signupPage', SignupComponent)
 .component('buyPage', BuyComponent)
-.component('securityPage', SecurityComponent)
+// .component('securityPage', SecurityComponent)
 .component('dashboardPage', DashboardComponent)
 .component('fixPage', FixComponent)
 .component('faqPage', FaqComponent)
@@ -111,11 +111,11 @@ angular.module('myApp', [
     .state('home', {
       url: '/',
       template: '<login-page></login-page>',
-    })
-    .state('security', {
-      url: '/security',
-      template: '<security-page></security-page>',
     });
+    // .state('security', {
+    //   url: '/security',
+    //   template: '<security-page></security-page>',
+    // });
     /*.state('fix', {
       url: '/',
       template: '<fix-page></fix-page>',
