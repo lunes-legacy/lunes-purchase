@@ -1,5 +1,6 @@
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common.js');
+// const HardSourcePlugin   = require('hard-source-webpack-plugin');
 
 module.exports = webpackMerge(commonConfig, {
   module: {
@@ -10,5 +11,5 @@ module.exports = webpackMerge(commonConfig, {
         loader: 'json-loader'
       }
     ]
-  },
+  }
 });

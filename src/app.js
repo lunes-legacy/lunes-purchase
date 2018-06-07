@@ -112,10 +112,10 @@ angular.module('myApp', [
       url: '/',
       template: '<login-page></login-page>',
     })
-    /*.state('security', {
+    .state('security', {
       url: '/security',
       template: '<security-page></security-page>',
-    });*/
+    });
     /*.state('fix', {
       url: '/',
       template: '<fix-page></fix-page>',
