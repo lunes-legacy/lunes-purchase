@@ -128,7 +128,6 @@ class BuyController {
       }
       
       this.showLoading(false);
-      console.log(this.screens)
     } catch (error) {
       console.log(error);
       this.changeStep('step1');
