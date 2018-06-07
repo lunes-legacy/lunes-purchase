@@ -21,13 +21,17 @@
     text-align: center;
   }
 }
-
-.twofa-invalid {
+.wrap-error-message {
   text-align: center;
-  padding: 10px;
+}
+.twofa-invalid {
+  display: inline-block;
+  text-align: center;
+  padding: 5px 15px 5px 15px;
   border-radius: 25px;
   background-color: #cc385a;
   margin: 10px 0 0 0;
+  cursor:pointer;
 }
 
 .link-google-play {

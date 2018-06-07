@@ -12,9 +12,7 @@ class HttpService {
   }
 
   async saveTwofa(twofa, timestamp, email) {
-    console.log(twofa);
     const a = await LunesLib.users.saveTwofa({ twofa, timestamp, email });
-    console.warn('A::',a);
     return a;
   }
 

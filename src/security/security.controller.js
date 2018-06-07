@@ -32,14 +32,15 @@ class SecurityController {
     const verify = await this.HttpService.saveTwofa(this.numberTestAuthentication, this.currentTimestamp, this.currentUser.email).catch(error => {
       this.showErrorMsgTwofaError = true;  
     });
-    console.warn('verify',verify);
     if (verify && verify.twofaEnabled) {
       this.$timeout(() => {
         this.currentUser.twofaEnabled = true;
         localStorage.setItem(STORAGE_KEY, JSON.stringify(this.currentUser));
       }, 200);
     } else {
-      this.showErrorMsgTwofaError = true;  
+      this.showErrorMsgTwofaError = true;
+      //depois colocar um timeout para desaparecer com a mensagem,
+      //tentei o timeout a cima, mas nao deu. Marcelo.
     }
   }
 

@@ -21,11 +21,13 @@
       <i class="fa fa-smile"></i>
     </span>
     <p>{{'YOU_ALREADY_ENABLE_OAUTH' | translate}}</p>
-    <button ng-click="$ctrl.generateAnotherQRCode()">{{'I_WANT_ENABLE_OAUTH' | translate}}</button>
+    <button ng-click="$ctrl.generateAnotherQRCode()" class="btn btn-default">{{'I_WANT_ENABLE_OAUTH' | translate}}</button>
   </div>
 
-  <div ng-show="$ctrl.showErrorMsgTwofaError" class="twofa-invalid">
-    {{'TWOFA_INVALID' | translate}}
+  <div class="wrap-error-message">
+    <div ng-show="$ctrl.showErrorMsgTwofaError" class="twofa-invalid">
+      {{'TWOFA_INVALID' | translate}}
+    </div>
   </div>
 
   <div class="link-google-play">

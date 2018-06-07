@@ -107,7 +107,7 @@ export default {
     TO: 'to',
     USE_GOOGLE_OAUTH: 'Use Google AUthenticator to generate your QR-Code and generate an authentication',
     YOU_ALREADY_ENABLE_OAUTH: 'Authentication in 2 steps enabled',
-    I_WANT_ENABLE_OAUTH: 'I want enable a new',
+    I_WANT_ENABLE_OAUTH: 'I want to enable a new one',
     VERIFY: 'Verify',
     AUTH_TWOFA: 'Auth in Two-Step',
     GOOGLE_AUTH_NUMBER: 'Google Auth Number',
