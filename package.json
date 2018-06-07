@@ -43,7 +43,8 @@
     ]
   },
   "devDependencies": {
-    "gulp-watch": "^5.0.0"
+    "gulp-watch": "^5.0.0",
+    "json-loader": "^0.5.7"
   },
   "dependencies": {
     "angular": "1.6.4",
@@ -83,7 +84,7 @@
     "karma-mocha-reporter": "^2.2.3",
     "karma-sourcemap-loader": "^0.3.4",
     "karma-webpack": "^2.0.12",
-    "lunes-lib": "https://registry.npmjs.org/lunes-lib/-/lunes-lib-0.0.29.tgz",
+    "lunes-lib": "0.0.32",
     "mocha": "^3.2.0",
     "moment": "^2.15.1",
     "ng-annotate-loader": "^0.2.0",

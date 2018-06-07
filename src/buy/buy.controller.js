@@ -6,6 +6,7 @@ const initialValue = '0.00000000';
 
 class BuyController {
   constructor($rootScope, $scope, HttpService, $translate, $timeout, $state) {
+
     $rootScope.$on('unauthorized', () => {
       $state.go('login');
     });
@@ -35,6 +36,23 @@ class BuyController {
     this.showQrCode = false;
     this.msgCoinPlaceholder = $translate.instant('MSG_COIN_PLACEHOLDER', { COIN: this.currentCoinSelected.name });
     this.msgCoinPlaceholderLNS = $translate.instant('MSG_COIN_PLACEHOLDER_LNS');
+
+    this.screens = {
+      loading: false,
+      logout: false,
+      step1: true, // GENERATE SEED
+      step2: false, //SHOW SEED AND ADDRESS
+      step3: false, //CONFIRM    
+      step4: false // TRANSACTIONS INFO
+    }
+    
+    this.userAddressInfo = {}; //SEED AND ADDRESS
+    this.transaction = {}
+    this.withdraw = false;
+    
+    this.checkSeed();
+    this.checkWithdraw();
+
     this.getBalanceCoin('BTC').catch(error => {
       console.log(error);
     });
@@ -53,27 +71,189 @@ class BuyController {
     });
     this.showLoading(true);
 
+
     if (this.currentUser) {
       const userTrack = { name: this.currentUser.fullname, email: this.currentUser.email, ownCoupon: this.currentUser.ownCoupon, coupon: this.currentUser.coupon, confirmIcoTerm: this.currentUser.confirmIcoTerm };
       if (this.currentUser.depositWallet && this.currentUser.depositWallet.BTC) {
         userTrack.btcAddress = this.currentUser.depositWallet.BTC.address;
         userTrack.ltcAddress = this.currentUser.depositWallet.LTC.address;
-        userTrack.ethAddress = this.currentUser.depositWallet.ETH.address;
+        // userTrack.ethAddress = this.currentUser.depositWallet.ETH.address;
       }
       if (this.currentUser && this.currentUser._id) {
-        smartlookClient.identify(this.currentUser._id, userTrack );
+        smartlookClient.identify(this.currentUser._id, userTrack);
       } else {
-        smartlookClient.identify(this.currentUser.email, userTrack );
+        smartlookClient.identify(this.currentUser.email, userTrack);
       }
 
       window.Intercom('boot', {
         app_id: 'a4bez1qo',
         name: this.currentUser.fullname, // Full name
         email: this.currentUser.email, // Email address
-        created_at: new Date().toISOString() // Signup date
+        created_at: new Date().toISOString(), // Signup date
       });
 
     }
+  }
+
+  // VERIFY WITHDRAW
+  async checkWithdraw() {
+    try {
+      let balance = await this.getLnsBalance();
+      let withdrawInfo = await this.HttpService.getWithdraw(this.currentUser.accessToken);
+
+      if (withdrawInfo.data.txID) {
+        this.transaction = withdrawInfo.data;
+        this.withdraw = true;
+        this.changeStep('step4')
+
+        return true;
+      }
+      this.withdraw = false;
+
+      return false;
+
+    } catch (error) {
+      console.log(error);
+      this.withdraw = false;
+      return false;
+    }
+  }
+
+  async setWithdraw() {
+    try {
+      this.showLoading(true);
+
+      let updateAddress = await this.HttpService.updateAddress(this.userAddressInfo.address, this.currentUser.accessToken);
+
+      if (updateAddress && updateAddress.status === 'SUCCESS') {
+        let sendBalance = await this.HttpService.sendBalance(this.currentUser.accessToken);
+
+        if (sendBalance && sendBalance.status === 'SUCCESS') {
+          if (sendBalance.data.txID) {
+            this.showLoading(false);
+            this.transaction = sendBalance.data;
+            this.withdraw = true;
+            localStorage.removeItem('SEED');
+            this.changeStep('step4')
+
+            return true;
+          } else {
+            this.showLoading(false);
+            this.changeStep('step2')
+
+            return false;
+          }
+        } else {
+          this.showLoading(false);
+          this.changeStep('step2')
+          return false;
+        }
+      } else {
+        this.showLoading(false);
+        this.changeStep('step2')
+      }
+    } catch (error) {
+      console.log(error)
+      this.showLoading(false);
+      this.changeStep('step2')
+
+      return false;
+    }
+  }
+
+  checkSeed() {
+    try {
+      let seed = localStorage.getItem('SEED');
+
+      if (seed)  {
+        this.changeStep('step2')
+        this.mountSeed();
+      }
+
+    } catch (error) {
+      console.log(error);
+      this.changeStep('step1')
+    }
+  }
+
+  // GENERATE SEED AND ADDRESS
+  async mountSeed() {
+    this.showLoading(true);    
+    let data = await this.getSeed();
+    let dataAddress = this.HttpService.getAddress(data);
+    let seed = data.split(" ");
+
+    this.userAddressInfo = {
+      seed: {
+        group1: seed[0] + " " + seed[1] + " " + seed[2],
+        group2: seed[3] + " " + seed[4] + " " + seed[5],
+        group3: seed[6] + " " + seed[7] + " " + seed[8],
+        group4: seed[9] + " " + seed[10] + " " + seed[11]
+      },
+      address: dataAddress
+    }
+    this.showLoading(false);
+    
+    this.changeStep('step2')
+  }
+
+  async getSeed() {
+    try {
+      let seed = localStorage.getItem('SEED');
+
+      if (seed) {
+        return JSON.parse(seed);
+      } else {
+        let data = await this.HttpService.getSeedWord();
+
+        localStorage.setItem('SEED', JSON.stringify(data));
+
+        return data;
+      }
+
+    } catch (error) {
+      console.log(error);
+      let data = this.HttpService.getSeedWord();
+      localStorage.setItem('SEED', JSON.stringify(data));
+
+      return data;
+    }
+  }
+
+  // CHANGE STEP
+  changeStep(toStep) {
+    if (!this.withdraw) {
+      for (let step in this.screens) {
+        this.screens[step] = false;
+      }
+      this.screens[toStep] = true;
+    } else {
+      this.screens.logout = false;
+      this.screens.step1 = false;
+      this.screens.step2 = false;
+      this.screens.step3 = false;
+      this.screens.step4 = true;
+    }
+  }
+
+  // END -----------------
+
+  async getLnsBalance() {
+    if (!this.currentUser) {
+      this.totalLns = 0;
+      return 0;
+    }
+    const history = await LunesLib.ico.buyHistory(this.currentUser.email, this.currentUser.accessToken, 1)
+      .catch(err => console.log(err));
+
+    const totalLns = history.reduce((total, item) => {
+      return total + parseFloat(item.credit_value) + parseFloat(item.bonus_value);
+    }, 0);
+
+    this.totalLns = totalLns.toFixed(8);
+    // this.totalLns = 0.00000000;
+
+    return this.totalLns;
   }
 
   async getBuyHistory() {
@@ -108,8 +288,8 @@ class BuyController {
         this.currentPhaseActive = JSON.parse(JSON.stringify(phase));
         this.currentPhaseActive.price_value = Number(this.currentPhaseActive.price_value).toFixed(2);
 
-        this.percentBonus = phase.bonus*100;
-        
+        this.percentBonus = phase.bonus * 100;
+
         this.priceValueLunes = parseFloat(phase.price_value);
 
         if (this.currentUser.whitelist && phase.name === 'Whitelist') {
@@ -122,11 +302,11 @@ class BuyController {
           if (this.currentUser.couponOffer.maximum_individual_limit) {
             this.buyLimit = this.currentUser.couponOffer.maximum_individual_limit;
           }
-          if(this.currentUser.couponOffer.bonus) {
-            this.percentBonus = this.currentUser.couponOffer.bonus*100;
+          if (this.currentUser.couponOffer.bonus) {
+            this.percentBonus = this.currentUser.couponOffer.bonus * 100;
           }
         }
-  
+
         this.showLoading(false);
         return;
       }
@@ -137,8 +317,8 @@ class BuyController {
 
       phase = this.getPhaseActive();
 
-      this.percentBonus = phase.bonus*100;
-      
+      this.percentBonus = phase.bonus * 100;
+
       this.priceValueLunes = parseFloat(phase.price_value);
 
       if (this.currentUser.whitelist && phase.name === 'Whitelist') {
@@ -151,7 +331,7 @@ class BuyController {
         if (this.currentUser.couponOffer.maximum_individual_limit) {
           this.buyLimit = this.currentUser.couponOffer.maximum_individual_limit;
         }
-        if(this.currentUser.couponOffer.bonus) {
+        if (this.currentUser.couponOffer.bonus) {
           this.percentBonus = this.currentUser.couponOffer.bonus * 100;
         }
       }
@@ -187,14 +367,14 @@ class BuyController {
   }
 
   showHelp() {
-    introJs().start();  
+    introJs().start();
   }
 
   showLoading(isShow) {
     if (isShow) {
       $(`<div class="modal-backdrop"><img src="https://res.cloudinary.com/luneswallet/image/upload/v1519442469/loading_y9ob8i.svg" /></div>`).appendTo(document.body);
     } else {
-      this.$timeout(function() {
+      this.$timeout(function () {
         $(".modal-backdrop").remove();
         if (!localStorage.getItem(INTROJS_VIEWED_KEY)) {
           localStorage.setItem(INTROJS_VIEWED_KEY, true);
@@ -253,13 +433,13 @@ class BuyController {
     } else if (this.valueToDeposit.indexOf && this.valueToDeposit.indexOf(',') !== -1) {
       this.valueToDeposit = this.valueToDeposit.replace(/[,]+/g, '').trim();
     }
-    
+
     this.checkMaxLength();
     const phase = this.getPhaseActive();
 
     let bonusRate;
     if (this.currentUser.couponOffer) {
-      
+
       if (this.currentUser.couponOffer.bonus) {
         bonusRate = this.currentUser.couponOffer.bonus;
 
@@ -294,7 +474,7 @@ class BuyController {
       calculateFinal = LunesLib.ico.buyConversion.fromLNS(bonusRate, coinAmount, currentPrice, unitPrice, coupon);
       this.valueToDeposit = calculateFinal.buyAmount;
       this.bonusAmountFinal = (parseFloat(bonusRate) * this.valueToReceive).toString();
-      
+
       this.$timeout(() => {
         this.valueToReceive = parseFloat(this.valueToReceive);
         //this.valueToDeposit = parseFloat(this.valueToDeposit);
@@ -315,7 +495,7 @@ class BuyController {
     this.valueToReceive = calculateFinal.buyAmount.toString();
     this.bonusAmountFinal = calculateFinal.bonusAmount;
 
-    
+
 
     if (this.valueToReceive > this.buyLimit) {
       coinAmount = this.buyLimit;
@@ -373,6 +553,7 @@ class BuyController {
   }
 
   logout() {
+    localStorage.removeItem('SEED');
     localStorage.removeItem(STORAGE_KEY);
   }
 
@@ -395,7 +576,7 @@ class BuyController {
     this.showQrCode = false;
     this.valueToDeposit = '';
     this.valueToReceive = '';
-    
+
     this.coins = this.coins.filter(coin => {
       coin.selected = false;
       if (coin.label === coinSelected.label) {
@@ -431,6 +612,10 @@ class BuyController {
       console.log(error);
     });
     this.showQrCode = !this.showQrCode;
+  }
+
+  toogleShowSeedAndAddress() {
+    alert('Este botão funciona!')
   }
 }
 

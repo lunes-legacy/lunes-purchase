@@ -16,6 +16,16 @@ body {
   font-weight: 100;
 };
 
+.no-select {
+  /*block select value*/
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
   position: relative;
@@ -268,6 +278,7 @@ ul.menu {
     font-size: 16px;
     transition: all .3s ease-in-out;
     text-decoration: none;
+    margin-top: 0.5rem;
     &:hover {
       background-color: $darkGreen;
     }
@@ -276,7 +287,23 @@ ul.menu {
       color: #b4abc3!important;
     }
   }
-
+  /* primary-button */
+  .green-button {
+    border: 0;
+    border-radius: 10px;
+    padding: 11px 80px;
+    text-align: center;
+    background-color: #4cd566;
+    color: #fff;
+    font-size: 16px;
+    transition: all .3s ease-in-out;
+    text-decoration: none;
+    margin-top:2rem;
+    margin-bottom: 2rem;
+    // &:hover {
+    //   background-color: $darkGreen;
+    // }
+  }
   /* disabled button */
   .disabled-button {
     padding: 10px 80px;

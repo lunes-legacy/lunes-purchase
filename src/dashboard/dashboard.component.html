@@ -17,15 +17,33 @@
             </span>
           </h4>
         </a>
-        <div class="logout area-button" ng-show="$ctrl.showUserMenu">
+        <div class="logout area-button" ng-show="$ctrl.showUserMenu && !$ctrl.seed">
           <a href="#!/login" class="primary-button" ng-click="$ctrl.logout()">
+            {{'LOGOUT' | translate}}
+          </a>
+        </div>
+        <div class="logout area-button" ng-show="$ctrl.showUserMenu && $ctrl.seed">
+          <a class="primary-button mx-2" ng-click="$ctrl.showLogoutModal()">
             {{'LOGOUT' | translate}}
           </a>
         </div>
       </div>
     </div>
 
-    <div class="row">
+    <!-- LOGOUT MODAL START -->
+    <div ng-show="$ctrl.logoutModal">
+      <div class="attention-modal my-2">
+        <h3>{{'ATTENTION' | translate}}</h3>
+        <p>{{'LOGOUT_ATTENTION' | translate}}</p>
+      </div>
+      <div class="area-button">
+        <button class="primary-button mx-2" ng-click="$ctrl.showLogoutModal()">{{'BACK' | translate}}</button>
+        <a href="#!/login" class="primary-button mx-2" ng-click="$ctrl.logout()">{{'LOGOUT' | translate}}</a>
+      </div>
+    </div>
+    <!-- LOGOUT MODAL END -->
+
+    <div class="row" ng-show="!$ctrl.logoutModal">
       <!-- BALANCE FOR EACH COIN -->
       <div class="col-xs-12 col-md-6 col-lg-6 transaction-coins">
         <div class="show-balance" ng-repeat="coin in $ctrl.coins" style="margin-right: 15px;text-align: center;">

@@ -5,6 +5,8 @@
 
   <!-- BUY -->
   <section class="buy" ng-show="!$ctrl.preICOFinished">
+
+    <!-- USER NAME -->
     <div class="row">
       <div class="title user-menu">
         <a href="" id="user-menu" ng-click="$ctrl.toogleUserMenu()">
@@ -19,140 +21,133 @@
           </h4>
         </a>
         <div class="logout area-button" ng-show="$ctrl.showUserMenu">
-          <a href="#!/login" class="primary-button" ng-click="$ctrl.logout()">
-            {{'LOGOUT' | translate}}
-          </a>
+          <div ng-show="$ctrl.screens.step2 || $ctrl.screens.step3">
+            <a class="primary-button" ng-click="$ctrl.changeStep('logout')">
+              {{'LOGOUT' | translate}}
+            </a>
+          </div>
+
+          <div ng-show="$ctrl.screens.step1 || $ctrl.screens.step4">
+            <a href="#!/login" class="primary-button mx-2" ng-click="$ctrl.logout()">
+              {{'LOGOUT' | translate}}
+            </a>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="col-12 error-fields" ng-show="$ctrl.showErrorForm">{{'ALL_FIELDS_REQUIRED' | translate}}</div>
+    <!-- LOGOUT MODAL START -->
+    <div ng-show="!$ctrl.withdraw && $ctrl.screens.logout">
+      <div class="attention-modal my-2">
+        <h3>{{'ATTENTION' | translate}}</h3>
+        <p>{{'LOGOUT_ATTENTION' | translate}}</p>
+      </div>
+      <div class="area-button">
+        <button class="primary-button mx-2" ng-click="$ctrl.changeStep('step2')">{{'BACK' | translate}}</button>
+        <a href="#!/login" class="primary-button mx-2" ng-click="$ctrl.logout()">{{'LOGOUT' | translate}}</a>
+      </div>
+    </div>
+    <!-- LOGOUT MODAL END -->
 
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-        <!-- ERROR LIMIT -->
-        <div class="row">
-          <div ng-show="$ctrl.showErrorLimit" class="col-xs-12 col-lg-12 error-limit">{{$ctrl.showErrorLimit}}</div>
-        </div>
+    <!-- LOADING SATRT -->
+    <div ng-show="$ctrl.screens.loading">
+      <div>
+        <p>Loading...</p>
+      </div>
+    </div>
+    <!-- LOADING END -->
 
-        <!-- CALCULATOR -->
-        <div class="row">
-          <div class="calculator col-lg-12">
-            <div>
-              <h5>{{'CALCULATOR' | translate}}
-                <span style="cursor: pointer;" ng-click="$ctrl.showHelp()">
-                  <i class="fas fa-question-circle"></i>
-                </span>
-              </h5>
-              <p style="padding: 0 50px 0 0;">{{'CHOOSE_YOUR_COIN_TO_BUY' | translate}}</p>
-            </div>
-            <div class="select-coin" data-step="1" data-intro="{{'HELP_CHOOSE_COIN' | translate}}">
-              <ul>
-                <li ng-repeat="coin in $ctrl.coins" ng-click="$ctrl.selectCoin(coin)" ng-class="coin.selected ? 'selected': ''">
-                  <img ng-src="{{coin.img}}" alt="coin.label">
-                </li>
-              </ul>
-            </div>
-            <div class="valueCripto">
-              <input type="text" data-step="2" data-intro="{{'HELP_TYPE_AMOUNT' | translate}}" placeholder="{{$ctrl.msgCoinPlaceholder}}"
-                ng-class="$ctrl.valueToDeposit === '' ? 'animation-color' : ''" class="input-calculator" name="value" ng-model="$ctrl.valueToDeposit"
-                ng-change="$ctrl.calcValue()" />
+    <!-- 1 STEP: VIEW SEED BUTTON START -->
+    <div class="area-button" ng-show="$ctrl.screens.step1 && !$ctrl.withdraw">
+      <button name="step2" class="primary-button" ng-click="$ctrl.mountSeed()">{{'VIEW_SEED_AND_ADDRESS' | translate}}</button>
+    </div>
+    <!-- 1 STEP: VIEW SEED BUTTON END -->
 
-              <div class="lunesAmount" data-step="3" data-intro="{{'HELP_OR_ENTER_LNS' | translate}}">
-                <img style="position: absolute;
-                top: 0;
-                left: 0;
-                z-index: 99;" class="flag-lns" src="https://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png"
-                  alt="Icon Lunes">
-                <input type="text" placeholder="{{$ctrl.msgCoinPlaceholderLNS}}" class="input-calculator" name="value" ng-model="$ctrl.valueToReceive"
-                  ng-change="$ctrl.calcValue('LNS')" />
-              </div>
-              <div class="lunes-current-price" data-step="4" data-intro="{{'HELP_CURRENT_PRICE' | translate}}">
-                <small>1 LNS = {{'$' + $ctrl.currentPhaseActive.price_value}}</small>
-              </div>
-            </div>
-            <div ng-show="$ctrl.errorTypeValueToReceive" style="padding: 0 0 10px;font-size: 11px;text-align: center;color: #cf4444;text-shadow: none;">
-              {{$ctrl.errorTypeValueToReceive}}
-            </div>
-          </div>
-        </div>
 
-        <!-- SHOW TOTAL -->
-        <div class="row" data-step="5" data-intro="{{'HELP_CHECK_TOTAL' | translate}}">
-          <div class="amountBalance col-lg-12">
-            <div class="total">
-              <div class="result">
-                <div>{{'BONUS' | translate}} {{$ctrl.percentBonus}}%</div>
-                <div>{{$ctrl.bonusAmountFinal}}</div>
+    <!-- 2 STEP: SEED AND ADDRESS START -->
+    <!-- SEED -->
+    <div ng-show="$ctrl.screens.step2 && !$ctrl.withdraw">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="phrase">
+            <h6>Frases de Backup</h6>
+            <div class="row my-2">
+              <div class="col-md-3 text-center">
+                <h6 class="my-2">1º</h6>
+                <input disabled type="text" value="{{ $ctrl.userAddressInfo.seed.group1 }}">
               </div>
-              <hr />
-              <div class="result">
-                <div>Total</div>
-                <div>{{$ctrl.getTotal()}}</div>
+              <div class="col-md-3 text-center">
+                <h6 class="my-2">2º</h6>
+                <input disabled type="text" value="{{ $ctrl.userAddressInfo.seed.group2 }}">
               </div>
-            </div>
-            <div style="text-align: center; margin: 10px 0 30px 0;" data-step="6" data-intro="{{'HELP_USER_MAX' | translate}}">
-              * {{'BUY_LIMIT_PHASE' | translate}}
-              <span style="font-size:15px;font-weight:bold">{{$ctrl.getBuyLimit();}} LNS </span>
+              <div class="col-md-3 text-center">
+                <h6 class="my-2">3º</h6>
+                <input disabled type="text" value="{{ $ctrl.userAddressInfo.seed.group3 }}">
+              </div>
+              <div class="col-md-3 text-center">
+                <h6 class="my-2">4º</h6>
+                <input disabled type="text" value="{{ $ctrl.userAddressInfo.seed.group4 }}">
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- QR CODE -->
-      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" data-step="7" data-intro="{{'HELP_CLICK_VIEW_ADDRESS' | translate}}">
-        <div class="area-button" ng-show="!$ctrl.showQrCode" style="margin-top: 20px;">
-          <button ng-class="$ctrl.valueToDeposit ? '' : 'disabled'" class="primary-button" ng-click="$ctrl.toogleShowQrCode()">{{'VIEW_ADDRESS_TO_DEPOSIT' | translate}}</button>
-        </div>
-        <div class="container-qr-code col-lg-8 offset-lg-2" ng-show="$ctrl.showQrCode">
-          <div class="debosit-advice">
-            <span>
-              {{'SEND_TO_THIS_ADDRESS' | translate}} {{$ctrl.valueToDeposit}} {{$ctrl.currentCoinSelected.name}} {{'TO' | translate}}
-            </span>
-            <div class="address">
-              {{$ctrl.currentQRCode.address}}
+      <hr>
+
+      <!-- ENDEREÇOS -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="address">
+            <h6>Endereço</h6>
+            <div class="row">
+              <div class="col-sm-12 col-md-1 vcenter">
+                <h5>LNS</h5>
+              </div>
+              <div class="col-sm-12 col-md-11">
+                <input disabled type="text" value="{{ $ctrl.userAddressInfo.address }}">
+              </div>
             </div>
-            <span>{{'DEPOSIT_CONFIRMATION_ADVICE' | translate}}</span>
-          </div>
-          <div class="qr-code">
-            <img ng-src="{{$ctrl.currentQRCode.img}}" class="qr-code img-thumbnail img-responsive" />
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- PRE_ICO finished -->
-  <section class="buy" ng-show="$ctrl.preICOFinished">
-
-    <!-- area user and logout -->
-    <div class="row">
-      <div class="title user-menu">
-        <a href="" id="user-menu" ng-click="$ctrl.toogleUserMenu()">
-          <h4>
-            {{'WELCOME' | translate}}, {{$ctrl.currentUser.fullname}}
-            <span ng-show="!$ctrl.showUserMenu">
-              <i class="fas fa-angle-right green"></i>
-            </span>
-            <span ng-show="$ctrl.showUserMenu">
-              <i class="fas fa-angle-down green"></i>
-            </span>
-          </h4>
-        </a>
-        <div class="logout area-button" ng-show="$ctrl.showUserMenu">
-          <a href="#!/login" class="primary-button" ng-click="$ctrl.logout()">
-            {{'LOGOUT' | translate}}
-          </a>
-        </div>
+      <!-- WITHDRAW BUTTON -->
+      <div class="area-button" ng-show="!$ctrl.withdraw && $ctrl.totalLns > 0.00000000">
+        <button class="primary-button" ng-click="$ctrl.changeStep('step3')">{{'WITHDRAW' | translate}}</button>
       </div>
     </div>
+    <!-- 2 STEP: SEED AND ADDRESS END -->
 
-    <!-- message pre-ico finished -->
-    <div class="row">
-      <div class="finished-pre-ico">
-        <h5>{{'PRE_ICO_FINISHED' | translate}}</h5>
+    <!-- 3 STEP: CONFIRM START -->
+    <div ng-show="$ctrl.screens.step3 && !$ctrl.withdraw">
+      <div class="attention-modal my-2">
+        <h3>{{'ATTENTION' | translate}}</h3>
+        <p>{{'SEED_ATTENTION' | translate}}</p>
+      </div>
+      <div class="area-button" ng-show="!$ctrl.withdraw">
+        <button class="primary-button mx-2" ng-click="$ctrl.changeStep('step2')">{{'BACK' | translate}}</button>
+        <button class="primary-button mx-2" ng-click="$ctrl.setWithdraw()">{{'WITHDRAW' | translate}}</button>
       </div>
     </div>
+    <!-- 3 STEP: CONFIRM END -->
+
+    <!-- 4 STEP: CHECK TRANSACTION START -->
+    <div class="col-md-12" ng-show="$ctrl.screens.step4 && $ctrl.withdraw">
+      <div class="transaction">
+        <h3>{{'SUCCESS_WITHDRAW' | translate}}</h3>
+        <p>
+          <span>{{'QUANTITY' | translate}}:</span> {{ $ctrl.transaction.balance }} LUNES</p>
+        <p>
+          <span>{{'TXID' | translate}}:</span> {{ $ctrl.transaction.txID }}</p>
+        <p>
+          <span>{{'ADDRESS' | translate}}:</span> {{ $ctrl.transaction.address }}</p>
+      </div>
+      <div class="area-button">
+        <button class="primary-button" ng-click="$ctrl.toogleShowSeedAndAddress()">{{'CHECK_TRANSACTION_ON_BLOCK' | translate}}</button>
+      </div>
+    </div>
+    <!-- 4 STEP: CHECK TRANSACTION END -->
 
   </section>
 </div>

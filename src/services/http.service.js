@@ -116,7 +116,7 @@ class HttpService {
   async getBalanceLunes(coin, currentUser) {
     try {
       const address = currentUser.wallet.coins[0].addresses[0].address;
-      let balance = await LunesLib.coins.bitcoin.getBalance( { address }, currentUser.accessToken);
+      let balance = await LunesLib.coins.bitcoin.getBalance({ address }, currentUser.accessToken);
       return {
         COIN: 'LNS',
         CURRENTPRICE: balance
@@ -125,12 +125,12 @@ class HttpService {
       throw new Error(error);
     }
   }
-
+  
   async getBalanceCoinETH(coin) {
     const toSymbol = this.$translate.instant('CURRENCY_USER');
     const currencySymbol = this.$translate.instant('CURRENCY_SYMBOL');
     const priceData = await axios.get(`https://braziliex.com/api/v1/public/ticker/eth_usd`, {});
-    const price =  parseFloat(priceData.data.last).toFixed(2);
+    const price = parseFloat(priceData.data.last).toFixed(2);
     return {
       COIN: 'ETH',
       CURRENTPRICE: `${currencySymbol} ${price}`,
@@ -178,6 +178,58 @@ class HttpService {
     };
     return ticker;
   }
+
+  getSeedWord() {
+    let data = LunesLib.services.wallet.mnemonic.generateMnemonic();
+    return data;
+  }
+
+  getAddress(seeds) {
+    let data = LunesLib
+      .services
+      .wallet
+      .lns
+      .wallet
+      .newAddress(seeds, LunesLib.networks.LNSTESTNET);
+
+    return data;
+  } 
+
+  async updateAddress(address, accessToken) {
+    try {    
+      const updateData = { coin: 'LNS', address: address }
+
+      let updateAddressResult = await LunesLib.coins.services.wallet.addAddress(
+        updateData,
+        accessToken
+      );
+
+      return updateAddressResult
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
+
+  async sendBalance(accessToken) {
+    try {
+      console.log(accessToken)
+      let data = await LunesLib.ico.sendUserBalance(accessToken);
+
+      return data;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
+
+  async getWithdraw(accessToken) {
+    let data = await LunesLib.ico.verifyUserWithdraw(accessToken);
+
+    return data;
+  }
+
+
 }
 
 HttpService.$inject = ['$http', '$translate'];
