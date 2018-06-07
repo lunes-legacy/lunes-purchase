@@ -6,6 +6,8 @@ const initialValue = '0.00000000';
 
 class BuyController {
   constructor($rootScope, $scope, HttpService, $translate, $timeout, $state) {
+    
+    this.showLoading(true);
 
     $rootScope.$on('unauthorized', () => {
       $state.go('login');
@@ -40,7 +42,7 @@ class BuyController {
     this.screens = {
       loading: false,
       logout: false,
-      step1: true, // GENERATE SEED
+      step1: false, // GENERATE SEED
       step2: false, //SHOW SEED AND ADDRESS
       step3: false, //CONFIRM    
       step4: false // TRANSACTIONS INFO
@@ -48,11 +50,9 @@ class BuyController {
     
     this.userAddressInfo = {}; //SEED AND ADDRESS
     this.transaction = {}
-    this.withdraw = false;
     
-    this.checkSeed();
     this.checkWithdraw();
-
+    
     this.getBalanceCoin('BTC').catch(error => {
       console.log(error);
     });
@@ -69,8 +69,6 @@ class BuyController {
     this.getBuyHistory().catch(error => {
       console.log(error);
     });
-    this.showLoading(true);
-
 
     if (this.currentUser) {
       const userTrack = { name: this.currentUser.fullname, email: this.currentUser.email, ownCoupon: this.currentUser.ownCoupon, coupon: this.currentUser.coupon, confirmIcoTerm: this.currentUser.confirmIcoTerm };
@@ -104,18 +102,78 @@ class BuyController {
       if (withdrawInfo.data.txID) {
         this.transaction = withdrawInfo.data;
         this.withdraw = true;
-        this.changeStep('step4')
-
-        return true;
+      } else {
+        this.withdraw = false;
       }
-      this.withdraw = false;
 
-      return false;
+      this.checkSeed();
 
     } catch (error) {
       console.log(error);
       this.withdraw = false;
       return false;
+    }
+  }
+
+  checkSeed() {
+    try {
+      let seed = localStorage.getItem('SEED');
+
+      if (!seed && !this.withdraw) {
+        this.changeStep('step1');
+      } else if (seed) {
+        this.mountSeed()
+      } else if (this.withdraw) {
+        this.changeStep('step4')
+      }
+      
+      this.showLoading(false);
+      console.log(this.screens)
+    } catch (error) {
+      console.log(error);
+      this.changeStep('step1');
+    }
+  }
+
+  // GENERATE SEED AND ADDRESS
+  mountSeed() {
+    let data = this.getSeed();
+    let dataAddress = this.HttpService.getAddress(data);
+    let seed = data.split(" ");
+
+    this.userAddressInfo = {
+      seed: {
+        group1: seed[0] + " " + seed[1] + " " + seed[2],
+        group2: seed[3] + " " + seed[4] + " " + seed[5],
+        group3: seed[6] + " " + seed[7] + " " + seed[8],
+        group4: seed[9] + " " + seed[10] + " " + seed[11]
+      },
+      address: dataAddress
+    }
+
+    this.changeStep('step2');       
+  }
+
+  getSeed() {
+    try {
+      let seed = localStorage.getItem('SEED');
+
+      if (seed) {
+        return JSON.parse(seed);
+      } else {
+        let data = this.HttpService.getSeedWord();
+
+        localStorage.setItem('SEED', JSON.stringify(data));
+
+        return data;
+      }
+
+    } catch (error) {
+      console.log(error);
+      let data = this.HttpService.getSeedWord();
+      localStorage.setItem('SEED', JSON.stringify(data));
+
+      return data;
     }
   }
 
@@ -139,84 +197,25 @@ class BuyController {
             return true;
           } else {
             this.showLoading(false);
-            this.changeStep('step2')
+            this.changeStep('step1')
 
             return false;
           }
         } else {
           this.showLoading(false);
-          this.changeStep('step2')
+          this.changeStep('step1')
           return false;
         }
       } else {
         this.showLoading(false);
-        this.changeStep('step2')
+        this.changeStep('step1')
       }
     } catch (error) {
       console.log(error)
       this.showLoading(false);
-      this.changeStep('step2')
+      this.changeStep('step1')
 
       return false;
-    }
-  }
-
-  checkSeed() {
-    try {
-      let seed = localStorage.getItem('SEED');
-
-      if (seed)  {
-        this.changeStep('step2')
-        this.mountSeed();
-      }
-
-    } catch (error) {
-      console.log(error);
-      this.changeStep('step1')
-    }
-  }
-
-  // GENERATE SEED AND ADDRESS
-  async mountSeed() {
-    this.showLoading(true);    
-    let data = await this.getSeed();
-    let dataAddress = this.HttpService.getAddress(data);
-    let seed = data.split(" ");
-
-    this.userAddressInfo = {
-      seed: {
-        group1: seed[0] + " " + seed[1] + " " + seed[2],
-        group2: seed[3] + " " + seed[4] + " " + seed[5],
-        group3: seed[6] + " " + seed[7] + " " + seed[8],
-        group4: seed[9] + " " + seed[10] + " " + seed[11]
-      },
-      address: dataAddress
-    }
-    this.showLoading(false);
-    
-    this.changeStep('step2')
-  }
-
-  async getSeed() {
-    try {
-      let seed = localStorage.getItem('SEED');
-
-      if (seed) {
-        return JSON.parse(seed);
-      } else {
-        let data = await this.HttpService.getSeedWord();
-
-        localStorage.setItem('SEED', JSON.stringify(data));
-
-        return data;
-      }
-
-    } catch (error) {
-      console.log(error);
-      let data = this.HttpService.getSeedWord();
-      localStorage.setItem('SEED', JSON.stringify(data));
-
-      return data;
     }
   }
 
@@ -234,6 +233,7 @@ class BuyController {
       this.screens.step3 = false;
       this.screens.step4 = true;
     }
+    this.$scope.$apply();
   }
 
   // END -----------------
@@ -265,7 +265,7 @@ class BuyController {
     const a = await this.HttpService.showDepositWalletAddressQRCode(this.currentUser, this.currentCoinSelected);
     this.currentQRCode = JSON.parse(JSON.stringify(a));
     if (coin) {
-      this.getCurrentBalanceUser(coin.name, this.currentQRCode.address, this.currentUser);
+      // this.getCurrentBalanceUser(coin.name, this.currentQRCode.address, this.currentUser);
     }
   }
 
@@ -557,18 +557,18 @@ class BuyController {
     localStorage.removeItem(STORAGE_KEY);
   }
 
-  async getCurrentBalanceUser(coin, address, currentUser) {
-    const balance = await this.HttpService.getBalance(coin, address, currentUser);
-    this.$timeout(() => {
-      if (balance && balance.network === 'ETH') {
-        this.balanceUser = {
-          confirmed_balance: balance.balance
-        };
-      } else {
-        this.balanceUser = balance;
-      }
-    }, 200);
-  }
+  // async getCurrentBalanceUser(coin, address, currentUser) {
+  //   const balance = await this.HttpService.getBalance(coin, address, currentUser);
+  //   this.$timeout(() => {
+  //     if (balance && balance.network === 'ETH') {
+  //       this.balanceUser = {
+  //         confirmed_balance: balance.balance
+  //       };
+  //     } else {
+  //       this.balanceUser = balance;
+  //     }
+  //   }, 200);
+  // }
 
   selectCoin(coinSelected) {
     let self = this;
