@@ -63,9 +63,18 @@ input {
   font-size: 16px; 
 }
 
-.transaction > p > span {
+.transaction-info > p > span {
   color: $green;
   font-weight: bold;
+}
+
+@media (max-width: 485px) {
+  .hash {
+    font-size: 10px
+  }
+  .area-button .primary-button {
+    padding: 11px 35px !important;
+  }
 }
 
 .attention-modal {
