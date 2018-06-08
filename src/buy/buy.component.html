@@ -128,15 +128,21 @@
     <div class="col-md-12" ng-show="$ctrl.screens.step4">
       <div class="transaction">
         <h3>{{'SUCCESS_WITHDRAW' | translate}}</h3>
-        <p>
-          <span>{{'QUANTITY' | translate}}:</span> {{ $ctrl.transaction.balance }} LUNES</p>
-        <p>
-          <span>{{'TXID' | translate}}:</span> {{ $ctrl.transaction.txID }}</p>
-        <p>
-          <span>{{'ADDRESS' | translate}}:</span> {{ $ctrl.transaction.address }}</p>
+        <div class="transaction-info">
+          <p> <span>{{'QUANTITY' | translate}}:</span> <p>
+          <p> {{ $ctrl.transaction.balance }} LUNES </p>
+        </div>
+        <div class="transaction-info">
+          <p> <span>{{'TXID' | translate}}: </span> </p>
+          <p class="hash"> {{ $ctrl.transaction.txID }} </p>
+        </div>
+        <div class="transaction-info">
+          <p> <span>{{'ADDRESS' | translate}}:</span> </p>
+          <p class="hash"> {{ $ctrl.transaction.address }} </p>
+        </div>
       </div>
       <div class="my-2 area-button">
-        <a href="https://blockexplorer.lunes.io/tx/{{ $ctrl.transaction.txID }}" class="primary-button" ng-click="$ctrl.logout()">{{'CHECK_TRANSACTION_ON_BLOCK' | translate}}</a>        
+        <a href="https://blockexplorer.lunes.io/tx/{{ $ctrl.transaction.txID }}" target="_blank" class="primary-button" ng-click="$ctrl.logout()">{{'CHECK_TRANSACTION_ON_BLOCK' | translate}}</a>        
       </div>
     </div>
     <!-- 4 STEP: CHECK TRANSACTION END -->

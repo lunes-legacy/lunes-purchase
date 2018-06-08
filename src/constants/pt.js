@@ -78,7 +78,7 @@ export default {
     QUANTITY: 'Quantidade',
     TXID: 'Txid',
     ADDRESS: 'Endereço',
-    CHECK_TRANSACTION_ON_BLOCK: 'Visualizar transação no block',
+    CHECK_TRANSACTION_ON_BLOCK: 'Block Explorer',
     WITHDRAW: 'Sacar',
     ATTENTION: 'ATENÇÃO',
     SEED_ATTENTION: 'Anote a seed em um local seguro. Perder sua chave privada pode ocasionar em perda total de seus tokens.',
