@@ -26,7 +26,7 @@ class DashboardController {
       if (this.currentUser.depositWallet && this.currentUser.depositWallet.BTC) {
         userTrack.btcAddress = this.currentUser.depositWallet.BTC.address;
         userTrack.ltcAddress = this.currentUser.depositWallet.LTC.address;
-        userTrack.ethAddress = this.currentUser.depositWallet.ETH.address;
+        // userTrack.ethAddress = this.currentUser.depositWallet.ETH.address;
       }
       if (this.currentUser._id) {
         smartlookClient.identify(this.currentUser._id, userTrack );
