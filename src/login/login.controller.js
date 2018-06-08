@@ -55,6 +55,7 @@ class LoginController {
 
     removeUser() {
       localStorage.removeItem('lunes.accessToken');
+      localStorage.removeItem('SEED');
     }
 
     async doLogin() {
