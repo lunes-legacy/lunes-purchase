@@ -59,9 +59,6 @@ class BuyController {
     this.getBalanceCoin('LTC').catch(error => {
       console.log(error);
     });
-    this.getBalanceCoin('ETH').catch(error => {
-      console.log(error);
-    });
     this.showDepositWalletAddressQRCode(this.currentUser, this.currentCoinSelected);
     this.obtainPhase().catch(error => {
       console.log(error);
@@ -348,11 +345,6 @@ class BuyController {
 
   async getBalanceCoin(coin) {
     const balance = await this.HttpService.getBitcoinBalance(coin);
-    this.balanceCoins[coin] = { balance };
-  }
-
-  async getBalanceCoinETH(coin) {
-    const balance = await this.HttpService.getBalanceCoinETH(coin);
     this.balanceCoins[coin] = { balance };
   }
 
