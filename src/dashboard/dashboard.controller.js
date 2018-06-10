@@ -64,24 +64,18 @@ class DashboardController {
   async getProcessedBalanceUser() {
     const BTC = await this.HttpService.showDepositWalletAddressQRCode(this.currentUser, this.coins[0]);
     const LTC = await this.HttpService.showDepositWalletAddressQRCode(this.currentUser, this.coins[1]);
-    const ETH = await this.HttpService.showDepositWalletAddressQRCode(this.currentUser, this.coins[2]);
+    // const ETH = await this.HttpService.showDepositWalletAddressQRCode(this.currentUser, this.coins[2]);
 
     this.balanceBTC = await this.getCurrentBalanceUser(this.coins[0].name, BTC.address, this.currentUser);
     this.balanceLTC = await this.getCurrentBalanceUser(this.coins[1].name, LTC.address, this.currentUser);
-    this.balanceETH = await this.getCurrentBalanceUser(this.coins[2].name, ETH.address, this.currentUser);
+    // this.balanceETH = await this.getCurrentBalanceUser(this.coins[2].name, ETH.address, this.currentUser);
 
-    if (this.balanceETH && this.balanceETH.network === 'ETH') {
-      if (this.balanceETH.balance === '0') {
-        this.balanceETH.balance = '0.00000000';
-      }
-      this.balanceETH.confirmed_balance = this.balanceETH.balance;
-    }
 
     this.$timeout(() => {
       this.balanceProcessed = {
         BTC: JSON.parse(JSON.stringify(this.balanceBTC)),
         LTC: JSON.parse(JSON.stringify(this.balanceLTC)),
-        ETH: JSON.parse(JSON.stringify(this.balanceETH))
+        // ETH: JSON.parse(JSON.stringify(this.balanceETH))
       };
     }, 200);
   }
