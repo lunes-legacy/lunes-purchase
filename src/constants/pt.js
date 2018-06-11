@@ -93,6 +93,7 @@ export default {
     IF_YOU_NOT_HAVE_GOOGLE_AUTH_PLEASE_INSTALL: 'Se você não tem o Google Autenticador instalado, por favor clique no link abaixo para instalar',
     YOU_NEED_VALIDATE_YOUR_AUTHENTICATION: 'Você precisa validar sua autenticação',
     TWOFA_INVALID: 'Número Inválido',
+    IF_YOU_LOST_AUTHENTICATOR_SECRET: 'Se você perdeu seu smartphone e/ou a chave secreta do Google Authenticator, você pode nos enviar um e-mail para: ',
     VALIDATE_AUTHENTICATION: 'Validar Autenticação',
     PRE_ICO_FINISHED: 'A pré-ICO da Lunes foi encerrada! A ICO irá iniciar em 15/04/2018',
     VERIFY: 'Verificar',

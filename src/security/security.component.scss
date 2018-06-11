@@ -19,7 +19,23 @@
   }
   .input-calculator {
     text-align: center;
+    width: 150px;
+    display: box;
+    margin: 0 auto;
   }
+  .button-validate {
+    margin-top: 15px;
+  }
+}
+.link-support {
+  color: white;
+  text-decoration: underline;
+}
+.link-support:hover {
+  color: white;
+}
+.link-support:active, .link-support:visited {
+  color: lightgreen;
 }
 .wrap-error-message {
   text-align: center;
